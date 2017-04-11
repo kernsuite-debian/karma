@@ -1,0 +1,43 @@
+.TH DS_SET_DATA_SCALING 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_set_data_scaling \- Set the data scale and offset for a data element in a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_set_data_scaling
+.sp
+(CONST char *elem_name, packet_desc *pack_desc,
+char **packet, double scale, double offset)
+.SH DESCRIPTION
+Set the data scale and offset for a data element in a packet.
+.IP \fIelem_name\fP 1i
+The name of the element.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet.
+.IP \fIscale\fP 1i
+The scale value. The name of the scale value is constructed by
+appending "__SCALE" to the element name.
+If appropriate, the FITS-style "BSCALE" keyword is written instead.
+.IP \fIoffset\fP 1i
+The offset value. The name of the offset value is constructed
+by appending "__OFFSET" to the element name.
+If appropriate, the FITS-style "BZERO" keyword is written instead.
+.SH RETURN VALUE
+TRUE if the scale information is different from what was
+already attached to the array, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

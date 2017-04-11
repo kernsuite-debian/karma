@@ -1,0 +1,38 @@
+.TH VRENDER_CLIENT_NOTIFY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_client_notify_func \- Register new client callback.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B KCallbackFunc vrender_client_notify_func
+.sp
+(KVolumeRenderContext context,
+void (*func) (KVolumeRenderContext context, void **info),
+void *info)
+.SH DESCRIPTION
+This routine will register a function which should be called
+whenever a new client connects to the master.
+.IP \fIcontext\fP 1i
+The volume render context.
+.IP \fIfunc\fP 1i
+The routine to be called. The prototype function is
+<-vrender_PROTO_client_notify_func->. This is called when a client has
+connected.
+.IP \fIinfo\fP 1i
+The initial arbitrary information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object on success. On failure, the process aborts
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

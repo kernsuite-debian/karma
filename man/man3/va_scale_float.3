@@ -1,0 +1,50 @@
+.TH VA_SCALE_FLOAT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+va_scale_float \- Scale and offset an array of floats.
+.SH SYNOPSIS
+.B #include <karma_va.h>
+.sp
+.B void va_scale_float
+.sp
+(float *out, int out_stride, float *inp, int inp_stride,
+int length, float scale, float offset)
+.SH DESCRIPTION
+This routine will perform a scale and offset operation on an
+array of floating point numbers. The arithmetic form is as follows:
+out[i] = inp[i] * scale + offset
+.IP \fIout\fP 1i
+The result array will be written here.
+.IP \fIout_stride\fP 1i
+The stride (in floats) of consecutive elements in the output
+array.
+.IP \fIinp\fP 1i
+The input array.
+.IP \fIinp_stride\fP 1i
+The stride (in floats) of consecutive elements in the input
+array.
+.IP \fIlength\fP 1i
+The length of the input and output arrays.
+.IP \fIscale\fP 1i
+The scale factor.
+.IP \fIoffset\fP 1i
+The offset value.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The elements of the input and output arrays must be aligned on a
+float boundary.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,29 @@
+.TH DM_NATIVE_GET_ACTIVITY_COUNT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dm_native_get_activity_count \- Get the current activity count.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B unsigned long dm_native_get_activity_count
+.sp
+()
+.SH DESCRIPTION
+This function will get the current activity count. This is the
+count of the number of times the OS has detected activity on one or more
+file descriptors.
+.SH RETURN VALUE
+The activity count.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

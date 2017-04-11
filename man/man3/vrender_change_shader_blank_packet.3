@@ -1,0 +1,33 @@
+.TH VRENDER_CHANGE_SHADER_BLANK_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_change_shader_blank_packet \- Change blank value for a particular shader.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_change_shader_blank_packet
+.sp
+(CONST char *name,
+CONST char *blank_packet)
+.SH DESCRIPTION
+This routine will change the data used to write blank values for
+a particular shader.
+.IP \fIname\fP 1i
+The name of the shader.
+.IP \fIblank_packet\fP 1i
+A pointer to a sample packet containing blank data.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

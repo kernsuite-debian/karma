@@ -1,0 +1,53 @@
+.TH DS_FITGAUSS_PROFILE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_fitgauss_profile \- Fit a gaussian to a 1-dimensional profile.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_fitgauss_profile
+.sp
+(CONST float *array, CONST uaddr *offsets,
+unsigned int num_points, double background,
+flag inverted,
+double xcentre, double *peak_height, double *fwhm,
+double *sum)
+.SH DESCRIPTION
+This routine will fit a gaussian to a 1-dimensional profile. The
+algorithm uses a non-linear least squares method.
+.IP \fIarray\fP 1i
+The 1-dimensional array of data.
+.IP \fIoffsets\fP 1i
+The array of byte offsets for the array data.
+.IP \fInum_points\fP 1i
+The length of the array.
+.IP \fIbackground\fP 1i
+The background sky level.
+.IP \fIinverted\fP 1i
+If TRUE the object values are inverted (i.e. is negative) else
+the object is positive.
+.IP \fIxcentre\fP 1i
+The centre of the profile. If this is 0 it is assumed the profile
+is radial (i.e. the centre is at 0).
+.IP \fIpeak_height\fP 1i
+The height of the fitted peak above the background is written
+here.
+.IP \fIfwhm\fP 1i
+The Full Width Half Maximum of the fit is written here.
+.IP \fIsum\fP 1i
+The sum of the fitted profile above the background is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

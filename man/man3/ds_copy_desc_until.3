@@ -1,0 +1,41 @@
+.TH DS_COPY_DESC_UNTIL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_desc_until \- Recursively copy a packet descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B packet_desc * ds_copy_desc_until
+.sp
+(CONST packet_desc *inp_desc, CONST char *name)
+.SH DESCRIPTION
+This routine will recursively copy a packet descriptor until
+an element with a specified name is found, at which time the copying
+process stops. The routine will trap such errors as multiple occurences of
+the element name.
+This routine is useful to duplicate a data structure above a certain
+element or dimension. This simplifies the processing of data which is
+sitting near the bottom of a complex data structure.
+If an array or linked list pointer is one of the elements, and it is not
+successfully copied, the routine will set the output element type to NONE
+and the descriptor pointer for that element will be NULL.
+.IP \fIinp_desc\fP 1i
+The input packet descriptor.
+.IP \fIname\fP 1i
+The name of the element at which the copying process should stop.
+If this is NULL, then the entire data structure descriptor is copied.
+.SH RETURN VALUE
+A pointer to the new packet descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

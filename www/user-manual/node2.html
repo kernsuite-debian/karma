@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>1 Introduction</TITLE>
+<META NAME="description" CONTENT="1 Introduction">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html301" HREF="node3.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html299" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html293" HREF="node1.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html303" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html304" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html302" HREF="node3.html">2 Common Features</A>
+<B>Up:</B> <A NAME="tex2html300" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html294" HREF="node1.html">Contents</A>
+<BR> <P>
+<H1><A NAME="SECTION00200000000000000000">1 Introduction</A></H1>
+<P>
+Karma is a general purpose programmer's toolkit and contains KarmaLib
+(the structured library and API) and a large number of modules
+(applications) to perform many standard tasks. This manual describes
+the many visualisation tools which are distributed with the Karma
+library.
+<P>
+This document is written for Karma version 
+1.7.25
+, which is
+probably my ``experimental'' version. Most of this manual will still
+be relevant to the previously released binary-only (or ``beta'')
+version, since binary releases come every few weeks or so. Full public
+releases come once or twice a year, so this document may talk about
+several new things not available in the last public release of Karma.
+<P>
+Click <A NAME="tex2html2" HREF="ftp://ftp.atnf.csiro.au/pub/software/karma/user-manual.ps.gz">here</A>
+to get a compressed PostScript version of this document.
+Click <A NAME="tex2html3" HREF="ftp://ftp.atnf.csiro.au/pub/software/karma/user-cover.ps.gz">here</A>
+to get a fancy colour front cover for this document in compressed
+PostScript.
+<P>
+Separate on-line documents (the Karma Reference and Programming
+Manuals) are available from the <A NAME="tex2html4" HREF="../index.html">Karma Home
+Page</A>.  Most of the visualisation tools are available
+via the
+<A NAME="tex2html5" HREF="../index.html"><B>Karma home
+page</B></A> or you can go directly to the
+<A NAME="tex2html6" HREF="ftp://ftp.atnf.csiro.au/pub/software/karma/"><B>Karma ftp
+site</B></A>.
+<P>
+The programmes available at the moment are:
+<P>
+<UL>
+<LI> volume rendering of data cubes
+<A HREF="node6.html#chapterxray"><B>&lt;xray&gt;</B></A>
+<LI> play movies of data cubes <A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A>
+<LI> inspecting multiple images and cubes at the same time
+<A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A>
+<LI> slice a cube <A HREF="node8.html#chapterkslice3d"><B>&lt;kslice_3d&gt;</B></A>
+<LI> superimposing images
+<A HREF="node12.html#sectionhueintensity"><B>&lt;kvis&gt;</B></A> and
+<A HREF="node12.html#sectionintensityandintensity"><B>&lt;kvis&gt;</B></A>
+<LI> interactive position-velocity slices
+<A HREF="node7.html#chapterkpvslice"><B>&lt;kpvslice&gt;</B></A>
+<LI> look for expanding shells
+<A HREF="node9.html#chapterkshell"><B>&lt;kshell&gt;</B></A>
+<LI> interactive co-ordinate placement
+<A HREF="node10.html#chapterkoords"><B>&lt;koords&gt;</B></A>
+<LI> rectangular to polar gridding of images
+<A HREF="node11.html#chapterkpolar"><B>&lt;kpolar&gt;</B></A>
+<P>
+</UL>
+<P>
+<A NAME="112">&#160;</A><A NAME="113">&#160;</A>
+<H1><A NAME="SECTION00210000000000000000">1.1 Supported Data Formats</A></H1>
+<A NAME="pubdataformats">&#160;</A>
+<P>
+All the visualisation tools support a variety of data formats,
+including:
+<P>
+<UL><A NAME="117">&#160;</A>
+<LI> <B>AIPS</B> this is the format used by the AIPS package
+(Astronomical Image Processing System), sometimes called ``Classic
+AIPS'' or ``AIPS1'', not to be confused with ``AIPS++'' (which is
+sometimes called ``AIPS2''). This data format uses a catalogue file
+which is automatically scanned by the file browser and each available
+dataset is given an entry in the browser, with the string ``AIPS''
+shown in the left-hand column. By default, <EM>all</EM> map files in the
+catalogue are shown. You may set the <TT>AIPS_ID</TT> environment
+variable to your AIPS user ID to avoid seeing files belonging to other
+users. To see AIPS files on an AIPS disc, you will need to change
+directory to the AIPS data area (i.e. where all those odd-looking
+``<TT>CBD??????.???;</TT>'' files are kept). You can use the file browser
+to change directories. Byte-swapped data are automatically detected
+and corrected
+<P>
+<A NAME="122">&#160;</A>
+<LI> <B>AIPS++</B> this is the format used by the AIPS++ package
+(Astronomical Information Processing System), not to be confused with
+``AIPS''. This is a directory-based data format like Miriad. It is a
+new package still under development. The Karma support for AIPS++
+requires the <B>&lt;image2fits&gt;</B> programme to be in your <TT>
+PATH</TT>. The source code is located somewhere in the AIPS++ source
+tree. A precompiled binary is available
+<A NAME="tex2html7" HREF="ftp://ftp.atnf.csiro.au/pub/software/karma/other-packages/aips++/">here</A>
+for your convenience
+<P>
+<A NAME="128">&#160;</A>
+<LI> <B>DRAO</B> this is the format produced by the Dominion Radio
+Astronomy Observatory (Penticton, B.C., Canada) reduction
+software. This data format uses a catalogue file which is
+automatically scanned by the file browser and each available dataset
+(whether a single image file or a ``family'' of files for a cube) is
+given one entry in the browser, with the string ``DRAO'' shown in the
+left-hand column. Unlike the DRAO software, <B>Karma</B> requires no
+environment variable to cope with byte-swapped data; they are
+automatically detected and corrected. This format supports loading of
+partial 3-dimensional datasets (section <A HREF="node2.html#pubpartialdata">1.1.3</A>)
+<P>
+<A NAME="132">&#160;</A>
+<LI> <B>FITS</B> this is a popular format amongst astronomers,
+allowing you to move data between many different software packages. It
+is more efficient to use <B>&lt;fits2karma&gt;</B> to convert to <B>
+Karma</B> format first. For the file browser to recognise a <B>FITS</B>
+file, the extension should be either <TT>.fits</TT>, <TT>.fit</TT>, <TT>
+.fts</TT> or uppercase versions. Files with extension <TT>.efits</TT> are
+treated specially, in that only the header is read. These are called
+``empty'' <B>FITS</B> files, where the image data are set to all zeros.
+This format supports loading of partial datasets (section
+<A HREF="node2.html#pubpartialdata">1.1.3</A>)
+<P>
+<A NAME="143">&#160;</A>
+<LI> <B>GIF</B> another popular image format. This requires the NetPBM
+tools to be installed on your machine
+<P>
+<A NAME="145">&#160;</A>
+<LI> <B>GIPSY</B> this is the format for the <B>GIPSY</B> data
+reduction package. It is more efficient to use
+<B>&lt;gipsy2karma&gt;</B> to convert to <B>Karma</B> format first.
+This format supports loading of partial datasets (section
+<A HREF="node2.html#pubpartialdata">1.1.3</A>)
+<P>
+<A NAME="151">&#160;</A>
+<LI> <B>IRAF</B> this is the format for the <B>IRAF</B> optical
+astronomy analysis package. The current implementation requires <B>
+IRAF</B> to be installed (because it uses the <B>wfits</B> task in <B>
+IRAF</B>), and will create a temporary file which is automatically
+deleted
+<P>
+<A NAME="157">&#160;</A>
+<LI> <B>Karma</B> this is the native data format. Reading and writing
+<A NAME="tex2html8" HREF="http://www.atnf.csiro.au/karma/">Karma</A> files is
+the most efficient. These files may be memory-mapped upon load, which
+can give enormous speed benefits and reduce swap (virtual memory)
+requirements. Note that <B>Karma</B> files have the extension <TT>.kf</TT>
+and that this extension is automatically produced by any <B>Karma</B>
+software
+<P>
+<A NAME="164">&#160;</A><A NAME="165">&#160;</A>
+<LI> <B>Miriad</B> this is the image format used by the <B>Miriad</B>
+data reduction package. It is more efficient to use
+<B>&lt;miriad2karma&gt;</B> to convert to <B>Karma</B> format first. If
+your <B>Miriad</B> file has no mask attached to it, then the file may
+be memory-mapped just like a <B>Karma</B> file, which means loading may
+be just as fast as loading <B>Karma</B> files. For this reason, it is
+worthwhile to avoid creating masks for <B>Miriad</B> files if you can
+help it
+<P>
+<A NAME="174">&#160;</A><A NAME="175">&#160;</A> <A NAME="176">&#160;</A>
+<LI> <B>PNM/PPM/PGM</B> this is a common image interchange format. The
+format does not support anything fancy like co-ordinate systems, but
+it is useful for converting between the many different image formats
+out there
+<P>
+<A NAME="178">&#160;</A>
+<LI> <B>Simple FITS</B> this is a derivative of the <B>FITS</B> format
+which is easier for the human to manipulate. Lines in the header are
+separated by newline characters rather than having to be padded to 80
+characters. The data directly follows the <TT>END</TT> keyword and must
+be in plain ASCII format, a single value per line. The blank value for
+floating point data is <TT>1e30</TT>. The filename extension should be
+<TT>.sfits</TT>
+<P>
+<A NAME="184">&#160;</A>
+<LI> <B>Starlink Image</B> this an astronomical reduction package used
+by many optical astronomers. The file extension is <TT>.sdf</TT> and
+requires the <B>&lt;sdf2karma&gt;</B> programme to be in your <TT>
+PATH</TT>. A precompiled binary is available
+<A NAME="tex2html9" HREF="ftp://ftp.atnf.csiro.au/pub/software/karma/other-packages/starlink/">here</A>
+for your convenience
+<P>
+<A NAME="191">&#160;</A>
+<LI> <B>Sun Rasterfile</B> another popular image format, having the
+distinct advantage of not using a patented compression algorithm
+(unfortunately the <B>GIF</B> format uses a patented image compression
+algorithm)
+<P>
+<A NAME="194">&#160;</A>
+<LI> <B>Targa TrueVision</B> (tga files) yet another image
+format. This requires the NetPBM tools to be installed on your machine
+<P>
+<A NAME="196">&#160;</A>
+<LI> <B>TIFF</B> another popular image format. This requires the NetPBM
+tools to be installed on your machine.
+<P>
+</UL>
+<P>
+In addition, the automatic decompression of gzipped and bzip2'ed <B>
+Karma</B> and <B>FITS</B> files is also supported by the file browser
+<A NAME="tex2html10" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node3.html#Filepopup">2.1</A>).
+<P>
+If your data are not in one of the supported formats, you will need to
+convert it to a supported format like <B>FITS</B>.
+<P>
+<H2><A NAME="SECTION00211000000000000000">1.1.1 Converting Other Data Formats to Karma Format</A></H2>
+<P>
+A number of command-line utilities are provided to convert between
+other data formats and <B>Karma</B>. These are described below:
+<P>
+<UL>
+<LI> <B>FITS</B> requires the <B>&lt;fits2karma&gt;</B> programme, which
+is used:<A NAME="209">&#160;</A>
+<P>
+<TT><code>fits2karma &lt;fits file&gt; &lt;karma file&gt;</code></TT>
+<P>
+<B>&lt;fits2karma&gt;</B> will attempt to trap most deviations from
+standard FITS and continue gracefully. However, a truly bizzare FITS
+file may cause <B>&lt;fits2karma&gt;</B> to reject the conversion. In this
+rare case, please notify <A NAME="tex2html11" HREF="http://www.atnf.csiro.au/<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">rgooch/">Richard Gooch</A>,
+who will attempt to add a trap so that the data can be converted.
+<P>
+Also note that <B>&lt;fits2karma&gt;</B> will by default truncate axes
+so that they are divisible by 4 or larger. The reason for this is that
+this then allows the programme to tile the data (tiling is a way of
+organising data so that most ways of accessing it are faster). If you
+really don't want to loose up to 3 co-ordinate points along an axis,
+you can run <B>&lt;fits2karma&gt;</B> as follows:
+<P>
+<TT><code>fits2karma -allow_truncation off &lt;fits file&gt; &lt;karma file&gt;</code></TT>
+<P>
+But remember: for the sake of a little bit of data, you may be
+throwing away enormous speed benefits!
+<LI> <B>Miriad</B> requires the <B>&lt;miriad2karma&gt;</B> programme,
+which is used:<A NAME="220">&#160;</A>
+<P>
+<TT><code>miriad2karma &lt;miriad file&gt; &lt;karma file&gt;</code></TT>
+<P>
+This programme also tries to tile data like <B>&lt;fits2karma&gt;</B>
+does.
+<LI> <B>GIPSY</B> requires the <B>&lt;gipsy2karma&gt;</B> programme,
+which is used:<A NAME="225">&#160;</A>
+<P>
+<TT><code>gipsy2karma &lt;gipsy file&gt; &lt;karma file&gt;</code></TT>
+<P>
+This programme also tries to tile data like <B>&lt;fits2karma&gt;</B> does
+<P>
+</UL><H2><A NAME="SECTION00212000000000000000">1.1.2 Converting Between Data Formats</A></H2>
+<P>
+There are also command-line utilities which allow you to convert
+between other data formats, which are provided as a convenience. These
+are described below:
+<P>
+<UL>
+<LI><B>&lt;miriad2gipsy&gt;</B> will convert from <B>Miriad</B> format
+to <B>GIPSY</B> format, which is used thus:
+<A NAME="234">&#160;</A><A NAME="235">&#160;</A>
+<A NAME="236">&#160;</A>
+<P>
+<TT><code>miriad2gipsy &lt;miriad file&gt; &lt;GIPSY file&gt;</code></TT>
+<P>
+This programme is obsoleted by the more general <B>&lt;ktranslate&gt;</B>
+<LI><B>&lt;ktranslate&gt;</B> will convert from any format supported
+by <B>Karma</B> to another format. It is used thus:
+<A NAME="241">&#160;</A><A NAME="242">&#160;</A>
+<A NAME="243">&#160;</A>
+<P>
+<TT><code>ktranslate &lt;input file&gt; &lt;output file&gt;</code></TT>
+<P>
+The input and output formats are guessed by the programme, based on
+the filename extensions. You can force the format if you wish. An
+example of this is:
+<P>
+<TT><code>ktranslate -intype fits -outtype miriad - &lt;input file&gt; &lt;output file&gt;</code></TT>
+<P>
+The choice of supported output formats is limited to <B>Karma</B>,
+<B>PPM</B>, <B>FITS</B>, <B>Sun Rasterfile</B>, <B>Miriad</B> and
+<B>GIPSY</B>. If possible, the conversion process is ``streamed'', to
+avoid the need to allocate large amounts of virtual memory.
+<P>
+</UL><H2><A NAME="SECTION00213000000000000000">1.1.3 Loading partial files</A></H2>
+<A NAME="pubpartialdata">&#160;</A>
+<A NAME="255">&#160;</A>
+<P>
+Some data formats support loading of partial datasets. With these
+formats, if part of the data are missing, the part of the dataset that
+is available can be loaded (if desired). This is useful if you want to
+see a preview of a dataset that is currently being written by another
+process.
+<P>
+<H1><A NAME="SECTION00220000000000000000">1.2 Adding your own Data Formats</A></H1>
+<A NAME="pubdatafilters">&#160;</A>
+<A NAME="258">&#160;</A>
+<P>
+The visualisation tools also provide a mechanism for you to add
+support for other data formats not already supported by the <B>
+Karma</B> library. You will need a programme that converts from your data
+format to either <B>Karma</B>, <B>FITS</B> or <B>PNM</B> format, and for
+some data formats (in particular directory-based formats) you will
+need to provide a tester programme which determines if a dataset is of
+a particular type.
+<P>
+To set this up, you need to have a file <TT>
+<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">/.karma/data-filters</TT> which contains rules on how to convert
+data formats. A system-wide file maintained by your local <B>Karma</B>
+installer is also searched, and is called<BR> 
+<TT>$KARMABASE/site/share/data-filters</TT>. Finally, the file<BR> 
+<TT>$KARMABASE/share/data-filters</TT> is scanned to load any filters
+which come with the Karma distribution. Your own data filters override
+the system data filters, which in turn override the Karma distribution
+filters.
+<P>
+A typical file would contain:
+<PRE># Extension     Converter       Tester          Output  Format Name
+imh             iraf2fits       -               FITS    IRAF Image
+sdf             sdf2karma       -               Karma   Starlink Image
+DIRECTORY       dd2fits         isdd            FITS    A directory dataset
+DIRECTORY       aips++2fits     isaips++        FITS    AIPS++ Image
+gif             giftopnm        -               PNM     GIF Image
+tga             tgatoppm        -               PNM     Targa TrueVision</PRE>
+<P>
+This would use the <B>&lt;iraf2fits&gt;</B> programme to convert files
+with <TT>.imh</TT> extensions to <B>FITS</B>. The <B>FITS</B> data would
+then be read in with the standard <B>FITS</B> reader in <B>
+Karma</B>. Similarly, files with <TT>.sdf</TT> extensions would be converted
+to <B>Karma</B> format using the <B>&lt;sdf2karma&gt;</B> programme, which
+would write out <B>Karma</B> data. Note that it is much more efficient
+to have a filter which generates <B>Karma</B> than <B>FITS</B>.
+<P>
+Note the <B>&lt;giftopnm&gt;</B> and <B>&lt;tgatoppm&gt;</B> filters are
+both registered as producing <B>PNM</B> files, whereas
+<B>&lt;tgatoppm&gt;</B> appears to produce <B>PPM</B> files. This is not a
+problem, since <B>PNM</B> (Portable aNy Map) is the generic format and
+<B>PPM</B> (Portable Pixel Map) is a specific subset of <B>PNM</B>.
+<P>
+The converter programmes are called with a single argument, that being
+the name of the input file. The output <B>Karma</B>, <B>FITS</B> or <B>
+PNM</B> data must be written to the standard output.
+<P>
+You will note that the tester programme supplied for the <TT>.imh</TT>
+and <TT>.sdf</TT> formats is <TT>-</TT> which means no tester is needed for
+these formats.
+<P>
+The special extension name <TT>DIRECTORY</TT> signifies that this data
+format is a directory-based one (examples of such formats are Miriad
+and AIPS++ images). Directory-based formats <EM>require</EM> a tester
+programme in order to determine if the directory contains a dataset
+(in which case it should be loaded) or just a plain directory which
+should be entered. The tester programme must exit with status 0 if it
+recognises the dataset, otherwise it should exit with some other
+value. If it returns the value 16 no warning will be given. It is
+given the name of the dataset directory as a single argument.
+<P>
+The file browser described in section <A HREF="node3.html#sectionloadingdata">2.1</A> will
+show all files which are supported by data filters, making the loading
+of extra data formats transparent to the user.
+<P>
+If you want to write your own data filters, see the section on
+<A NAME="tex2html12" HREF="../programmer-manual/datafilters.html#pubdatafilters">datafilters</A> in the Karma Programming Manual.
+<P>
+The converter and tester programmes may be specified with absolute
+pathnames or you may give a plain filename and the <TT>PATH</TT> is
+searched. As well as the normal absolute pathnames (i.e. those with a
+leading ``<TT>/</TT>'' character) you may also specify an expression,
+such as:<BR> 
+<TT>$KARMABASE/site/$MACHINE_OS/bin/sdf2karma</TT><BR> 
+or, alteratively:<BR> 
+<TT>${KARMABASE:-/usr/local/karma}/site/bin/sdf2karma</TT><BR> 
+which is useful if you want to specify <TT>
+$KARMABASE/site/bin/sdf2karma</TT> if the <TT>KARMABASE</TT> environment
+variable is defined, otherwise use<BR> 
+<TT>/usr/local/karma/site/bin/sdf2karma</TT><BR> 
+instead. This is a good way of providing a default location.
+<P>
+<H1><A NAME="SECTION00230000000000000000">1.3 Units</A></H1>
+<A NAME="305">&#160;</A>
+<P>
+Karma follows the FITS conventions for units. In other words, SI units
+are used. Please see the FITS standard for more information.
+<P>
+<H1><A NAME="SECTION00240000000000000000">Co-ordinate Systems</A></H1>
+<A NAME="307">&#160;</A>
+<P>
+The Karma data format supports simple regular co-ordinate systems as
+well as irregularly-spaced co-ordinates. In addition, the curvilinear
+co-ordinate systems (i.e. Right Ascension/Declination and Galactic
+Longitude/Galactic Latitude) commonly found in astronomy are
+supported. Many common projections for these curvilinear co-ordinate
+systems are supported, as is the polynomial-based ``projection'' used
+for DSS (Digital Sky Survey) images.
+<P>
+The co-ordinate system support is tightly integrated with much of the
+Karma internal infrastructure. In general, mixing of data with
+different projections is handled correctly. For example, displaying
+overlays and contours over a greyscale image will work correctly even
+if the datasets have different rotations, scales and projections.
+Support for mixing different co-ordinate systems (i.e. RA/DEC overlaid
+with GLON/GLAT) is not yet supported, nor are data of mixed epochs.
+<P>
+<HR><A NAME="tex2html301" HREF="node3.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html299" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html293" HREF="node1.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html303" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html304" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html302" HREF="node3.html">2 Common Features</A>
+<B>Up:</B> <A NAME="tex2html300" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html294" HREF="node1.html">Contents</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

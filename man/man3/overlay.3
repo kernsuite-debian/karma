@@ -1,0 +1,114 @@
+.TH OVERLAY 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+overlay \- Routines to manipulate 2-dimensional (image) overlay objects
+.SH PURPOSE
+These routines provide a simple interface to the recursive,
+heirarchical data structure supported in Karma, to define 2-dimensional
+(image) overlay objects. In addition, all the mechanics for drawing onto
+world canvases (see the <-canvas-> package) is supplied automatically.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIoverlay_va_create_list\fP 1i
+Create a managed overlay object list.
+.IP \fIoverlay_destroy_list\fP 1i
+Destroy an overlay list.
+.IP \fIoverlay_prepare_for_slavery\fP 1i
+Allow an overlay list to be slaved.
+.IP \fIoverlay_specify_iarray_2d\fP 1i
+Extract specifications from an Intelligent Array.
+.IP \fIoverlay_specify_canvas\fP 1i
+Extract specification from a world canvas.
+.IP \fIoverlay_create_viewable\fP 1i
+Create a viewable overlay list.
+.IP \fIoverlay_set_active\fP 1i
+Set active state for a viewable overlay list controlled refresh.
+.IP \fIoverlay_set_all_inactive\fP 1i
+Clear active state all viewable overlay lists controlled refresh.
+.IP \fIoverlay_destroy_viewable\fP 1i
+Destroy a viewable overlay list.
+.IP \fIoverlay_redraw_on_canvas\fP 1i
+Redraw an overlay list onto a world canvas.
+.IP \fIoverlay_set_canvas_attributes\fP 1i
+Set the canvas attributes for overlay list display.
+.IP \fIoverlay_line\fP 1i
+Add a line to an overlay object list. See also <-overlay_lines->.
+.IP \fIoverlay_lines\fP 1i
+Add many lines to an overlay list.
+.IP \fIoverlay_text\fP 1i
+Add a text string to an overlay object list.
+.IP \fIoverlay_ellipse\fP 1i
+Add an ellipse to an overlay list. See also <-overlay_ellipses->
+.IP \fIoverlay_arc\fP 1i
+Add a rotated ellipse to an overlay list.
+.IP \fIoverlay_filled_polygon\fP 1i
+Add a filled polygon to an overlay object list.
+.IP \fIoverlay_vector\fP 1i
+Add a vector to an overlay list.
+.IP \fIoverlay_ellipses\fP 1i
+Add many ellipses to an overlay list.
+.IP \fIoverlay_segments\fP 1i
+Add many segments to an overlay list.
+.IP \fIoverlay_vectors\fP 1i
+Add many vectors to an overlay list.
+.IP \fIoverlay_remove_objects\fP 1i
+Remove objects from the end of an overlay object list.
+.IP \fIoverlay_remove_object\fP 1i
+Remove one object from an overlay object list.
+.IP \fIoverlay_move_object\fP 1i
+Move a object in an overlay object list.
+.IP \fIoverlay_get_num_coords\fP 1i
+Get the number of co-ordinates in an overlay object.
+.IP \fIoverlay_get_coords\fP 1i
+Get the co-ordinates for an overlay object.
+.IP \fIoverlay_have_token\fP 1i
+Test if an overay list has the token.
+.IP \fIoverlay_release_token\fP 1i
+Release the token to the master.
+.IP \fIoverlay_read_karma\fP 1i
+Read overlay instructions from a Karma file.
+.IP \fIoverlay_write_karma\fP 1i
+Write overlay instructions to a Karma file.
+.IP \fIoverlay_read_ascii\fP 1i
+Read overlay instructions from an ASCII file.
+.SH TABLE overlay_CANVAS_ATTRIBUTES
+List of overlay attributes for KWorldCanvas objects
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                         Get Type       Set Type      Meaning
+
+OVERLAY_CANVAS_ATT_END                                    End of varargs list
+OVERLAY_CANVAS_ATT_CROP      flag *         flag          Crop out-of-bounds objects
+.TE
+.SH TABLE overlay_COORDINATE_TYPES
+List of co-ordinate types
+
+.TS
+l l
+_ _
+l l.
+Name                    Meaning
+
+OVERLAY_COORD_PIXEL     Screen pixel co-ordinates
+OVERLAY_COORD_RELATIVE  Relative to a unit canvas (0,0) to (1,1)
+OVERLAY_COORD_WORLD     True world co-ordinates
+OVERLAY_COORD_LAST      Use last co-ordinate instead
+OVERLAY_COORD_LINEAR    Canvas linear co-ordinates
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Operating System Interface</TITLE>
+<META NAME="description" CONTENT="Operating System Interface">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html702" HREF="node4.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html700" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html694" HREF="node2.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html704" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html705" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html703" HREF="node4.html">Channels: the basic Input/Output </A>
+<B>Up:</B> <A NAME="tex2html701" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html695" HREF="node2.html">Introduction</A>
+<BR> <P>
+<H1><A NAME="SECTION00300000000000000000">Operating System Interface</A></H1>
+<P>
+The promise of POSIX-compliant operating systems has not yet
+materialised. A few packages are available in Karma to assist
+portability, and provide a few enhancements.
+<P>
+<H1><A NAME="SECTION00310000000000000000">``a'' package</A></H1>
+<P>
+The <A NAME="tex2html12" HREF="../lib/a.html"><B>a</B></A> package provides a few convenience routines for
+displaying warning messages and aborting the execution of the
+application. It is important to abort and not just exit the
+application when a fatal error occurs, in order for a debugger to
+produce a meaningful traceback.
+<P>
+<H1><A NAME="SECTION00320000000000000000">``m'' package</A></H1>
+<P>
+The <A NAME="tex2html13" HREF="../lib/m.html"><B>m</B></A> package provides an enhanced interface to the standard
+C library <TT>malloc()</TT> and associated functions. In
+particular, periodic checks are made by the memory allocator to see
+whether something has written past the bounds of an array.
+<P>
+<H1><A NAME="SECTION00330000000000000000">``s'' package</A></H1>
+<P>
+The <A NAME="tex2html14" HREF="../lib/s.html"><B>s</B></A> package provides portable interfaces to some of the
+common Unix signal-handling facilities, such as blocking and
+unblocking of signals. In addition, a few ``standard'' signal handlers
+are provided.
+<P>
+<H1><A NAME="SECTION00340000000000000000">``dir'' package</A></H1>
+<P>
+The <A NAME="tex2html15" HREF="../lib/dir.html"><B>dir</B></A> package provides a portable and more powerful means
+of scanning directories. As well as being a portable interface, each
+entry in a directory is analysed (using the <TT>stat()</TT>
+system call under Unix-like systems) as it is scanned. This provides
+the application with more information about a file than just it's
+name.
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

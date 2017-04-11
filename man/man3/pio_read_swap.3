@@ -1,0 +1,33 @@
+.TH PIO_READ_SWAP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+pio_read_swap \- Read from a channel object and swap bytes.
+.SH SYNOPSIS
+.B #include <karma_pio.h>
+.sp
+.B flag pio_read_swap
+.sp
+(Channel channel, char *data, unsigned int length)
+.SH DESCRIPTION
+Read from a channel object and swap bytes.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIdata\fP 1i
+The data bytes will be written here.
+.IP \fIlength\fP 1i
+The number of bytes to read and then swap.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

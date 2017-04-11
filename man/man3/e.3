@@ -1,0 +1,54 @@
+.TH E 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+e \- Routines to generate periodic events
+.SH PURPOSE
+These routines are meant to provide a flexible, portable means to generate
+periodic events.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIe_test_supported\fP 1i
+Test if application supports scheduled events.
+.IP \fIe_create_list\fP 1i
+Create a periodic event management list.
+.IP \fIe_dispatch_events\fP 1i
+Dispatch events for a list.
+.IP \fIe_register_func\fP 1i
+Register a function to be called periodically.
+.IP \fIe_unregister_func\fP 1i
+Unregister an event function.
+.IP \fIe_unix_init\fP 1i
+Initialise periodic event management support under Unix.
+.IP \fIe_unix_dispatch_events\fP 1i
+Dispatch events for Unix.
+.IP \fIe_PROTO_event_func\fP 1i
+Event callback.
+.SH TABLE e_DISPATCH_LEVELS
+List of dispatch levels
+
+.TS
+l l
+_ _
+l l.
+Dispatch level        Meaning
+DISPATCH_SYNCHRONOUS  Dispatch synchronously with the application main
+                      thread
+DISPATCH_ASYNCHRONOUS Dispatch asynchronously (like a Unix signal handler).
+                      Use with caution, as race conditions may result
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

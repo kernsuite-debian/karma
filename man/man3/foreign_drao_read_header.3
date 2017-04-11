@@ -1,0 +1,44 @@
+.TH FOREIGN_DRAO_READ_HEADER 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_drao_read_header \- Read a DRAO dataset header.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_drao_read_header
+.sp
+(CONST char *setname, flag data_alloc,
+flag convert_int_to_float,
+KDRAODataContext *context, ...)
+.SH DESCRIPTION
+Read a DRAO dataset header.
+.IP \fIsetname\fP 1i
+The DRAO dataset name.
+.IP \fIdata_alloc\fP 1i
+If TRUE, the data space is allocated.
+.IP \fIconvert_int_to_float\fP 1i
+If TRUE, integer data are converted to floating
+point data.
+.IP \fIcontext\fP 1i
+The data reading context is written here, to be used in
+subsequent calls to <-foreign_drao_read_data->. This may be NULL.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_DRAO_READ_HEADER_END. See <-foreign_ATT_DRAO_READ_HEADER-> for a
+list of defined attributes.
+.SH RETURN VALUE
+A multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

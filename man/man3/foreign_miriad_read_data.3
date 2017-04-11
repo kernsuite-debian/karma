@@ -1,0 +1,45 @@
+.TH FOREIGN_MIRIAD_READ_DATA 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_miriad_read_data \- Read data in a Miriad Image file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_miriad_read_data
+.sp
+(KMiriadDataContext context,
+multi_array *multi_desc,
+char *data, uaddr num_values, ...)
+.SH DESCRIPTION
+This routine will read the data of a Miriad Image file from a
+KMiradDataContext object. The header section is NOT read.
+.IP \fIcontext\fP 1i
+The context to read from.
+.IP \fImulti_desc\fP 1i
+The Karma data structure to write the data into.
+.IP \fIdata\fP 1i
+An alternate data array to write the data into. If this is NULL,
+the routine will write the data into the Karma data structure.
+.IP \fInum_values\fP 1i
+The number of values to write into the data array. This is
+used when data is not NULL or skipping is requested.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_MIRIAD_READ_DATA_END. See <-foreign_ATT_MIRIAD_READ_DATA-> for a list
+of defined attributes.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

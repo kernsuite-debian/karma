@@ -1,0 +1,36 @@
+.TH FOREIGN_FITS_WRITE_HEADER 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_fits_write_header \- Write a FITS header to a channel object.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_fits_write_header
+.sp
+(Channel channel,
+CONST multi_array *multi_desc,
+CONST history *first_hist)
+.SH DESCRIPTION
+Write a FITS header to a channel object.
+.IP \fIchannel\fP 1i
+The channel to write to. The channel is not flushed.
+.IP \fImulti_desc\fP 1i
+The new header descriptor.
+.IP \fIfirst_hist\fP 1i
+The first history string. This may be NULL. After this history
+is appended, any history from <<multi_desc>> is appended.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

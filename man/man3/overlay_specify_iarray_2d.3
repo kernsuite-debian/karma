@@ -1,0 +1,36 @@
+.TH OVERLAY_SPECIFY_IARRAY_2D 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_specify_iarray_2d \- Extract specifications from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B void overlay_specify_iarray_2d
+.sp
+(KOverlayList olist, iarray array)
+.SH DESCRIPTION
+This routine will specify horizontal and vertical label matching
+for an overlay list based on the dimension names of a 2-dimensional
+Intelligent Array. No further restrictions are imposed (any existing
+restrictions are removed) if the Intelligent Array is a pure 2-dimensional
+array. If the array is an alias of a plane of a 3-dimensional (or greater)
+array, then further restrictions are imposed.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

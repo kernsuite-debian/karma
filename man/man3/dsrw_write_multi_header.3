@@ -1,0 +1,33 @@
+.TH DSRW_WRITE_MULTI_HEADER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_write_multi_header \- Write a multi_array data structure header.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_write_multi_header
+.sp
+(Channel channel, CONST multi_array *multi_desc)
+.SH DESCRIPTION
+This routine will write a binary multi_array descriptor header to
+a channel object. The various top-level packet descriptors, data and
+history are not written.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fImulti_desc\fP 1i
+The data structure.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

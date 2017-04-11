@@ -1,0 +1,37 @@
+.TH FOREIGN_SUNRAS_WRITE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_sunras_write \- Write a colour image to a channel in Sun rasterfile format.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_sunras_write
+.sp
+(Channel channel, multi_array *multi_desc, ...)
+.SH DESCRIPTION
+Write a colour image to a channel in Sun rasterfile format.
+.IP \fIchannel\fP 1i
+The channel to write to. The channel is not flushed.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor pointer. The routine will find a
+TrueColour image or a PseudoColour image within the data structure.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_SUNRAS_WRITE_END. See <-foreign_ATT_SUNRAS_WRITE-> for a list of defined
+attributes.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

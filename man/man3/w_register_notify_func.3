@@ -1,0 +1,33 @@
+.TH W_REGISTER_NOTIFY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+w_register_notify_func \- Register new work function callback.
+.SH SYNOPSIS
+.B #include <karma_w.h>
+.sp
+.B void w_register_notify_func
+.sp
+(void (*func) (void *info), void *info)
+.SH DESCRIPTION
+This routine will register a routine which is called whenever a
+new work function is registered.
+.IP \fIfunc\fP 1i
+The function that is called when a new work function is registered.
+The prototype function is <-w_PROTO_new_func->.
+.IP \fIinfo\fP 1i
+The initial arbitrary information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

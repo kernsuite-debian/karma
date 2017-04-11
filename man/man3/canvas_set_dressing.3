@@ -1,0 +1,35 @@
+.TH CANVAS_SET_DRESSING 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_set_dressing \- Set dressing parameters for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_set_dressing
+.sp
+(KWorldCanvas canvas, ...)
+.SH DESCRIPTION
+Set dressing parameters for a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value pairs. This
+list must be terminated with the value KCD_ATT_END.
+.SH RETURN VALUE
+TRUE if changes were made, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The dressing code is not yet complete.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

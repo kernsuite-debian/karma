@@ -1,0 +1,39 @@
+<html><head><title>Widget: MomentGenerator</title></head> 
+<body>
+<center><h1>The "MomentGenerator" Widget</h1></center>    This widget provides a mement-map generator in a popup.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=MomentGenerator></a></table><h4>Tables</h4><table><tr><td><a href=MomentGenerator.html#MomentGenerator_ResourceNames>MomentGenerator_ResourceNames</a></td><td>List of resource names for MomentGenerator widget
+</td></tr>
+<tr><td><a href=MomentGenerator.html#MomentGenerator_Resources>MomentGenerator_Resources</a></td><td>List of resources for MomentGenerator widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=MomentGenerator.html#XkwMomentGeneratorNewArray>XkwMomentGeneratorNewArray</a></td><td>Register new array.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=MomentGenerator_ResourceNames><b>MomentGenerator_ResourceNames</b></a> List of resource names for MomentGenerator widget
+<p> <table><tr><td>Name                  </td><td>Purpose
+</td></tr><tr><td>XkwNverbose           </td><td>If TRUE verbose messages are displayed
+</td></tr><tr><td>XkwNmom0Array         </td><td>The internally created 0th moment Intelligent Array
+</td></tr><tr><td>XkwNmom1Array         </td><td>The internally created 1st moment Intelligent Array
+</td></tr><tr><td>XkwNmomentCallback    </td><td>Callbacks when the moment maps are (re)computed
+</table><p><hr> <a name=MomentGenerator_Resources><b>MomentGenerator_Resources</b></a> List of resources for MomentGenerator widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNverbose	</td><td>XkwCVerbose	</td><td>XtRBool	</td><td>FALSE
+</td></tr><tr><td>XkwNmom0Array	</td><td>XkwCArray	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNmom1Array	</td><td>XkwCArray	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNmomentCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwMomentGeneratorNewArray></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwMomentGeneratorNewArray</b><i>    (Widget W, iarray array, double min,double max)
+</i><br><p>    Register new array.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The MomentGenerator widget.
+<br><li><i>array :</i> 
+    The new array. This may be NULL.
+<br><li><i>min :</i> 
+    The minimum data value in the array.
+<br><li><i>max :</i> 
+    The maximum data value in the array. If this is less than <em>min</em>
+    then the minimum and maximum values are computed.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

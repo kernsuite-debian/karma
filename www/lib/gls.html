@@ -1,0 +1,28 @@
+<html><head><title>Package: gls</title></head> 
+<body>
+<center><h1>The "gls" Package</h1></center>    These routines are meant to provide an interface to the Glish library.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=gls></a></table><h4>Functions</h4><table><tr><td><a href=gls.html#gls_initialise>gls_initialise</a></td><td>Initialise Glish support.
+</td></tr>
+<tr><td><a href=gls.html#gls_test_running>gls_test_running</a></td><td>Test if Glish available and running.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=gls_initialise></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>gls_initialise</b><i>    (int *argc, char **argv)
+</i><br><p>    Initialise Glish support.
+<p><b>Parameters:</b><ul><li><i>argc :</i> 
+    As passed to the <em>main</em> function.
+<br><li><i>argv :</i> 
+    As passed to the <em>main</em> function.
+<br></ul><b>Returns:</b>     TRUE if running under Glish, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     This function must not be called until the <a href=dm.html#dm>dm</a> package is
+    initialised.
+</ul><p><hr> <a name=gls_test_running></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>gls_test_running</b><i>    ()
+</i><br><p>    Test if Glish available and running.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     TRUE if Glish available and running, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

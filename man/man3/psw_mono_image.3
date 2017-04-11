@@ -1,0 +1,56 @@
+.TH PSW_MONO_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_mono_image \- Write a monochrome image to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_mono_image
+.sp
+(PostScriptPage pspage, CONST unsigned char *image,
+unsigned int xlen, unsigned int ylen,
+CONST uaddr *xoffsets, CONST uaddr *yoffsets,
+CONST unsigned char imap[256],
+double xstart, double ystart, double xend, double yend)
+.SH DESCRIPTION
+Write a monochrome image to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIimage\fP 1i
+The image.
+.IP \fIxlen\fP 1i
+The horizontal size of the image (in pixels).
+.IP \fIylen\fP 1i
+The vertical size of the image (in pixels).
+.IP \fIxoffsets\fP 1i
+The horizontal offset array. If this is NULL, the image data is
+assumed to be contiguous in memory.
+.IP \fIyoffsets\fP 1i
+The vertical offset array. If this is NULL, the image data is
+assumed to be contiguous in memory.
+.IP \fIimap\fP 1i
+The intensity mapping to use. If this is NULL, a linear mapping is
+used (0 = black, 255 = white).
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIxend\fP 1i
+The x ending point (scaled from 0.0 to 1.0).
+.IP \fIyend\fP 1i
+The y ending point (scaled from 0.0 to 1.0).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

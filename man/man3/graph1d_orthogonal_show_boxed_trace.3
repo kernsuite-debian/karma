@@ -1,0 +1,50 @@
+.TH GRAPH1D_ORTHOGONAL_SHOW_BOXED_TRACE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_show_boxed_trace \- Show a boxed trace.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B void graph1d_orthogonal_show_boxed_trace
+.sp
+(KOrthogonalProfile profile,
+CONST unsigned int *dim_indices,
+flag sum,
+CONST uaddr *start_indices,
+CONST uaddr *stop_indices,
+uaddr refpos)
+.SH DESCRIPTION
+Show a boxed trace.
+.IP \fIprofile\fP 1i
+The orthogonal profile.
+.IP \fIdim_indices\fP 1i
+The dimension indicies. The length of this array must be one
+less than the number of dimensions in the array.
+.IP \fIsum\fP 1i
+If TRUE the traces are summed, else they are averaged.
+.IP \fIstart_indices\fP 1i
+The starting co-ordinate indices of the box. The length of
+this array must be one less than the number of dimensions in the array.
+.IP \fIstop_indices\fP 1i
+The stopping co-ordinate indices of the box. The length of
+this array must be one less than the number of dimensions in the array.
+.IP \fIrefpos\fP 1i
+The reference position along the profile dimension.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This function will attempt to correct for chromatic aberration.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

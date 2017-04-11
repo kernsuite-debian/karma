@@ -1,0 +1,48 @@
+.TH T 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+t \- Low level Transform routines
+.SH PURPOSE
+These routines are meant to provide a low level mechanism to perform
+mathematical transformations on data. For example, low level Fast Fourier
+Transforms are supplied in this package.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIt_c_to_c_1D_fft_float\fP 1i
+Compute a 1D complex to complex single precision FFT.
+.IP \fIt_c_to_c_many_1D_fft_float\fP 1i
+Compute many 1D complex to complex single precision FFTs.
+.IP \fIt_check_power_of_2\fP 1i
+Check if a number is a power of 2.
+.IP \fIt_r_to_c_many_1D_fft_float\fP 1i
+Compute many 1D real to complex single precision FFTs.
+.SH TABLE t_FFT_STATUS
+List of FFT status values
+
+.TS
+l l
+_ _
+l l.
+Name                              Meaning
+
+KARMA_FFT_OK                      Transform successful
+KARMA_FFT_BAD_LENGTH              Bad length supplied
+KARMA_FFT_BAD_TYPE                Bad data type
+KARMA_FFT_ALLOC_ERROR             Internal allocation error
+KARMA_FFT_METHOD_NOT_AVAILABLE    Method not available
+KARMA_FFT_BAD_STRIDE              Bad stride
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

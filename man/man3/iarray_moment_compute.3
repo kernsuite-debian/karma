@@ -1,0 +1,53 @@
+.TH IARRAY_MOMENT_COMPUTE 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_moment_compute \- Compute the 0th and 1st moments along the Z axis of a cube.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_moment_compute
+.sp
+(iarray mom0, iarray mom1, iarray cube,
+float lower_clip, float sum_clip,
+unsigned int moment1_algorithm,
+unsigned int start_z, unsigned int stop_z,
+float *mom0_min, float *mom0_max)
+.SH DESCRIPTION
+Compute the 0th and 1st moments along the Z axis of a cube.
+.IP \fImom0\fP 1i
+The 0th moment array.
+.IP \fImom1\fP 1i
+The 1st moment array.
+.IP \fIcube\fP 1i
+The cube.
+.IP \fIlower_clip\fP 1i
+Values in the cube lower than this value are not used in the
+computation of the moments.
+.IP \fIsum_clip\fP 1i
+Values in the 0th moment map lower than this value are not used
+in the computation of the 1st moment.
+.IP \fImoment1_algorithm\fP 1i
+The 1st moment algorithm.
+.IP \fIstart_z\fP 1i
+The start channel.
+.IP \fIstop_z\fP 1i
+The stop channel.
+.IP \fImom0_min\fP 1i
+The minimum value in the 0th moment image is written here.
+.IP \fImom0_max\fP 1i
+The maximum value in the 0th moment image is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

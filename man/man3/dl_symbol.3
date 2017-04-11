@@ -1,0 +1,32 @@
+.TH DL_SYMBOL 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dl_symbol \- Lookup a symbol in loaded object.
+.SH SYNOPSIS
+.B #include <karma_dl.h>
+.sp
+.B void * dl_symbol
+.sp
+(void *handle, CONST char *symbol)
+.SH DESCRIPTION
+Lookup a symbol in loaded object.
+.IP \fIhandle\fP 1i
+A handle to the loaded object.
+.IP \fIsymbol\fP 1i
+The symbol to lookup.
+.SH RETURN VALUE
+The address where the symbol is loaded, else NULL if it is not
+found.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

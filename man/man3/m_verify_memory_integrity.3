@@ -1,0 +1,29 @@
+.TH M_VERIFY_MEMORY_INTEGRITY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_verify_memory_integrity \- Periodically verify memory integrity.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B unsigned int m_verify_memory_integrity
+.sp
+(flag force)
+.SH DESCRIPTION
+Periodically verify memory integrity.
+.IP \fIforce\fP 1i
+If TRUE, the check is forced, else the check is made periodically.
+.SH RETURN VALUE
+The number of corrupted blocks.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

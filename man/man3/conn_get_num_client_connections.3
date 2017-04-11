@@ -1,0 +1,31 @@
+.TH CONN_GET_NUM_CLIENT_CONNECTIONS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_get_num_client_connections \- Get number of client connections.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B unsigned int conn_get_num_client_connections
+.sp
+(CONST char *protocol_name)
+.SH DESCRIPTION
+This routine will get the number of connections from this client
+with a specified protocol.
+.IP \fIprotocol_name\fP 1i
+The protocol name.
+.SH RETURN VALUE
+The number of current connections. A return value of 0 indicates
+that the protocol is not supported or there are no current connections.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH M_SHM_ATTACH 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_shm_attach \- Attach a shared memory segment to the process address space.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void * m_shm_attach
+.sp
+(int shmid, flag reattach, flag writable)
+.SH DESCRIPTION
+Attach a shared memory segment to the process address space.
+.IP \fIshmid\fP 1i
+The ID of the shared memory segment to mark for deletion.
+.IP \fIreattach\fP 1i
+If TRUE an existing attachment of the segment is returned, if
+available.
+.IP \fIwritable\fP 1i
+If TRUE the segment is given write access. This is ignored if
+<<reattach>> is TRUE.
+.SH RETURN VALUE
+The address at which the segment was attached on success, else
+NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

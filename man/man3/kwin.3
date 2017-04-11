@@ -1,0 +1,218 @@
+.TH KWIN 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+kwin \- Manipulate pixel canvases in a device independent way
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate pixel canvases. After creating a pixel canvas from some graphics
+system primitive object, the canvas may be manipulated without the need to
+use the underlying graphics system interface. This renders code much more
+portable.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIkwin_create_x\fP 1i
+Create a pixel canvas from an X window.
+.IP \fIkwin_set_gc_x\fP 1i
+Set Graphics Context for an X-based pixel canavas.
+.IP \fIkwin_get_gc_x\fP 1i
+Get Graphics Context for an X-based pixel canavas.
+.IP \fIkwin_create_generic\fP 1i
+Create generic pixel canvas.
+.IP \fIkwin_create_child\fP 1i
+Create a child pixel canvas.
+.IP \fIkwin_destroy\fP 1i
+Destroy a pixel canvas.
+.IP \fIkwin_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIkwin_register_refresh_func\fP 1i
+Register a refresh callback.
+.IP \fIkwin_register_position_event_func\fP 1i
+Register position event callback.
+.IP \fIkwin_register_bindings\fP 1i
+Register mouse and key binding descriptions with a pixel canvas.
+.IP \fIkwin_resize\fP 1i
+Resize a pixel canvas.
+.IP \fIkwin_refresh_if_visible\fP 1i
+Refresh a pixel canvas if it is visible.
+.IP \fIkwin_partial_refresh\fP 1i
+Perform a partial refresh of a pixel canvas.
+.IP \fIkwin_process_position_event\fP 1i
+Process position event on a pixel canvas.
+.IP \fIkwin_get_attributes\fP 1i
+Get the attributes for a pixel canvas.
+.IP \fIkwin_set_attributes\fP 1i
+Set the attributes for a pixel canvas.
+.IP \fIkwin_associate_object\fP 1i
+Associate an object with a pixel canvas.
+.IP \fIkwin_get_associated_object\fP 1i
+Get an associated object for a pixel canvas.
+.IP \fIkwin_clear\fP 1i
+Clear a rectangular portion of a pixel canvas.
+.IP \fIkwin_draw_pc_image\fP 1i
+Draw PseudoColour image to a pixel canvas.
+.IP \fIkwin_compute_pc_subimage\fP 1i
+Compute PseudoColour subimage for a pixel canvas.
+.IP \fIkwin_draw_rgb_image\fP 1i
+Draw TrueColour image to a pixel canvas.
+.IP \fIkwin_draw_cached_image\fP 1i
+Draw cached image to a pixel canvas.
+.IP \fIkwin_draw_cached_subimages\fP 1i
+Draw previously computed cached subimages.
+.IP \fIkwin_draw_point\fP 1i
+Draw a single point onto a pixel canvas.
+.IP \fIkwin_draw_points\fP 1i
+Draw multiple points onto a pixel canvas.
+.IP \fIkwin_draw_line\fP 1i
+Draw a single line onto a pixel canvas.
+.IP \fIkwin_draw_lines\fP 1i
+Draw multiple connected lines onto a pixel canvas.
+.IP \fIkwin_fill_ellipse\fP 1i
+Draw a filled ellipse onto a pixel canvas.
+.IP \fIkwin_fill_polygon\fP 1i
+Draw a filled polygon onto a pixel canvas.
+.IP \fIkwin_draw_string\fP 1i
+Draw a string onto a pixel canvas.
+.IP \fIkwin_draw_rectangle\fP 1i
+Draw a single rectangle onto a pixel canvas.
+.IP \fIkwin_fill_rectangle\fP 1i
+Draw a single filled rectangle onto a pixel canvas.
+.IP \fIkwin_draw_arc\fP 1i
+Draw an arc onto a pixel canvas.
+.IP \fIkwin_draw_ellipse\fP 1i
+Draw an ellipse onto a pixel canvas.
+.IP \fIkwin_draw_ellipses\fP 1i
+Draw multiple ellipses onto a pixel canvas.
+.IP \fIkwin_fill_ellipses\fP 1i
+Draw multiple filled ellipses onto a pixel canvas.
+.IP \fIkwin_draw_segments\fP 1i
+Draw multiple disjoint lines onto a pixel canvas.
+.IP \fIkwin_get_size\fP 1i
+Get the size of a pixel canvas.
+.IP \fIkwin_free_cache_data\fP 1i
+Free some cache data allocated by <-kwin_draw_pc_image->.
+.IP \fIkwin_set_clip_areas\fP 1i
+Set the clip areas.
+.IP \fIkwin_convert_to_canvas_coord\fP 1i
+Convert low-level co-ordinates to pixel co-ordinates.
+.IP \fIkwin_convert_from_canvas_coord\fP 1i
+Convert pixel co-ordinates to low-level co-ordinates.
+.IP \fIkwin_get_colour\fP 1i
+Get (possibly allocate) a colourcell for a canvas.
+.IP \fIkwin_get_pixel_RGB_values\fP 1i
+Get RGB components of pixel values.
+.IP \fIkwin_load_font\fP 1i
+Load a font for later use.
+.IP \fIkwin_get_string_size\fP 1i
+Determine the size of a string.
+.IP \fIkwin_warp_pointer\fP 1i
+Warp the pointer to a new location.
+.IP \fIkwin_hershey_get_string\fP 1i
+Get string using Hershey (stroke) font for later drawing.
+.IP \fIkwin_hershey_draw_string\fP 1i
+Draw string using Hershey (stroke) font.
+.IP \fIkwin_mem_write_rgb\fP 1i
+Refresh a pixel canvas into a memory buffer.
+.IP \fIkwin_get_colour_harder\fP 1i
+Get (possibly allocate) a colourcell for a canvas.
+.IP \fIkwin_open_gl_test_available\fP 1i
+Test if the GLX extension is supported for a display.
+.IP \fIkwin_open_gl_test_stereo\fP 1i
+Test if a particular visual can display stereo.
+.IP \fIkwin_write_ps\fP 1i
+Refresh a pixel canvas onto a PostScriptPage object.
+.IP \fIkwin_ps_generate\fP 1i
+Generate PostScript output.
+.IP \fIkwin_queue_position_event\fP 1i
+Queue a position event on a pixel canvas for possible processing.
+.IP \fIkwin_xgl_test_stereo\fP 1i
+Test if stereo supported using XGL.
+.IP \fIkwin_xgl_create_stereo\fP 1i
+Create a stereo pixel canvas using XGL.
+.IP \fIkwin_PROTO_refresh_func\fP 1i
+Process a refresh event for a pixel canvas.
+.IP \fIkwin_PROTO_position_func\fP 1i
+Process a position event on a pixel canvas.
+.IP \fIkwin_PROTO_destroy_func\fP 1i
+Process a destroy event for an object.
+.IP \fIkwin_PROTO_iscale_func\fP 1i
+Intensity scale function.
+.SH TABLE kwin_ATTRIBUTES
+List of attributes for KPixCanvas objects
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                      Get Type          Set Type       Meaning
+
+KWIN_ATT_END                                               End of varargs list
+KWIN_ATT_VISUAL           unsigned int *                   Visual type
+KWIN_ATT_DEPTH            unsigned int *                   Depth of canvas
+KWIN_ATT_VISIBLE          flag *            flag           Canvas is visible
+KWIN_ATT_FONT             KPixCanvasFont *  KPixCanvasFont Current font
+KWIN_ATT_PIX_RED_MASK     unsigned long *                  Red pixel mask
+KWIN_ATT_PIX_GREEN_MASK   unsigned long *                  Green pixel mask
+KWIN_ATT_PIX_BLUE_MASK    unsigned long *                  Blue pixel mask
+KWIN_ATT_IM_RED_MASK      unsigned long *                  Red image mask
+KWIN_ATT_IM_GREEN_MASK    unsigned long *                  Green image mask
+KWIN_ATT_IM_BLUE_MASK     unsigned long *                  Blue image mask
+KWIN_ATT_IM_RED_OFFSET    uaddr *                          Red image offset
+KWIN_ATT_IM_GREEN_OFFSET  uaddr *                          Green image offset
+KWIN_ATT_IM_BLUE_OFFSET   uaddr *                          Blue image offset
+KWIN_ATT_LOWER_HANDLE     void **                          Lower handle
+KWIN_ATT_USER_PTR         void **           void *         User pointer
+KWIN_ATT_LINEWIDTH        double *          double         Line width in pixels (0.0 = thin)
+.TE
+.SH TABLE kwin_STRING_ATTRIBUTES
+List of attributes for KPixCanvasFont string
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                      Get Type          Meaning
+
+KWIN_STRING_END                             End of varargs list
+KWIN_STRING_WIDTH         int *             String width
+KWIN_STRING_HEIGHT        int *             String height
+KWIN_STRING_ASCENT        int *             String ascent
+KWIN_STRING_DESCENT       int *             String descent
+.TE
+.SH TABLE kwin_XGL_STATUS
+List of XGL stereo support types
+
+.TS
+l l
+_ _
+l l.
+Name                           Meaning
+
+KWIN_XGL_NOT_AVAILABLE         XGL is not supported
+KWIN_XGL_STEREO_NOT_AVAILABLE  No stereo display hardware
+KWIN_XGL_STEREO_AVAILABLE      Stereo available
+.TE
+.SH TABLE kwin_ENVIRONMENT
+List of environment variables
+
+.TS
+l l
+_ _
+l l.
+Variable                     Meaning
+
+KWIN_DISABLE_PIXMAPS              Disable pixmap cache
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

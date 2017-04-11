@@ -1,0 +1,36 @@
+.TH CH_TELL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_tell \- Get the read and write pointers for a channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_tell
+.sp
+(Channel channel, unsigned long *read_pos,
+unsigned long *write_pos)
+.SH DESCRIPTION
+Get the read and write pointers for a channel.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIread_pos\fP 1i
+The read position (relative to the start of the channel data)
+will be written here.
+.IP \fIwrite_pos\fP 1i
+The write position (relative to the start of the channel data)
+will be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

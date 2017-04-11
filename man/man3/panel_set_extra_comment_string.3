@@ -1,0 +1,31 @@
+.TH PANEL_SET_EXTRA_COMMENT_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+panel_set_extra_comment_string \- Set the extra comment string for a panel.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B void panel_set_extra_comment_string
+.sp
+(KControlPanel panel, CONST char *string)
+.SH DESCRIPTION
+Set the extra comment string for a panel.
+.IP \fIpanel\fP 1i
+The control panel.
+.IP \fIstring\fP 1i
+The comment string. The contents are copied.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

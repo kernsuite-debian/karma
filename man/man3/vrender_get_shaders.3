@@ -1,0 +1,31 @@
+.TH VRENDER_GET_SHADERS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_get_shaders \- Get the names of all registered shaders.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B CONST char ** vrender_get_shaders
+.sp
+(unsigned int *num_shaders)
+.SH DESCRIPTION
+Get the names of all registered shaders.
+.IP \fInum_shaders\fP 1i
+The number of registered shaders is written here.
+.SH RETURN VALUE
+An array of shader names on success, else NULL. This array must
+be deallocated when no longer needed. The individual names must NOT be
+deallocated.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

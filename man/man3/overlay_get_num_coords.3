@@ -1,0 +1,37 @@
+.TH OVERLAY_GET_NUM_COORDS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_get_num_coords \- Get the number of co-ordinates in an overlay object.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_get_num_coords
+.sp
+(KOverlayList olist,
+unsigned int id_in_list,
+unsigned int list_id)
+.SH DESCRIPTION
+Get the number of co-ordinates in an overlay object.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIid_in_list\fP 1i
+The object ID. This ID refers to an object created by a
+particular list master or slave.
+.IP \fIlist_id\fP 1i
+The ID of the list which created the object. If this is 0, the
+list given by <<olist>> is assumed.
+.SH RETURN VALUE
+The number of co-ordinates on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

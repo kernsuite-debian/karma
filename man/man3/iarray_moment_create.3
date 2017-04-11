@@ -1,0 +1,33 @@
+.TH IARRAY_MOMENT_CREATE 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_moment_create \- Create 2-D arrays to contain computed moment maps.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_moment_create
+.sp
+(iarray *mom0, iarray *mom1, iarray cube)
+.SH DESCRIPTION
+Create 2-D arrays to contain computed moment maps.
+.IP \fImom0\fP 1i
+The Intelligent Array for the 0th moment is written here.
+.IP \fImom1\fP 1i
+The Intelligent Array for the 1st moment is written here.
+.IP \fIcube\fP 1i
+The cube from which the moment maps are created.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

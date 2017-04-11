@@ -1,0 +1,41 @@
+#! /bin/csh -f
+
+if ( ! -d ~/.karma ) mkdir ~/.karma
+
+set script = ~/.karma/cl.script
+
+set fits   = $argv.$$.fits
+if (-e $fits) then
+    rm -f $fits
+endif
+touch $fits >& /dev/null
+if ( ! -e $fits ) then
+    set fits = /tmp/iraf2fits.$user.fits
+endif
+if (-e $fits) rm -f $fits
+if (-e $fits) then
+    exit 1
+endif
+if ( ! -e uparmdaowfits.par ) then
+    set file_to_delete = uparmdaowfits.par
+
+# Construct conversion script
+echo "cl <<\!" >  $script
+echo "dataio"  >> $script
+echo "wfits"   >> $script
+echo "$argv"   >> $script
+echo "$fits"   >> $script
+echo "bye"     >> $script
+echo "logout"  >> $script
+echo "\!"      >> $script
+
+chmod u+x $script
+$script >& /dev/null
+rm $script
+if ($?file_to_delete != 0) then
+    rm $file_to_delete
+endif
+
+(sleep 10; rm $fits &)
+
+exec cat $fits

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>koords: interactive co-ordinate fitting</TITLE>
+<META NAME="description" CONTENT="koords: interactive co-ordinate fitting">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html397" HREF="node11.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html395" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html389" HREF="node9.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html399" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html400" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html398" HREF="node11.html">kpolar: regridding to polar </A>
+<B>Up:</B> <A NAME="tex2html396" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html390" HREF="node9.html">8 kshell: looking for </A>
+<BR> <P>
+<H1><A NAME="SECTION001000000000000000000">koords: interactive co-ordinate fitting</A></H1>
+<P>
+<A NAME="chapterkoords">&#160;</A><A NAME="pubkoords">&#160;</A><A NAME="1742">&#160;</A>
+<A NAME="1743">&#160;</A><A NAME="1744">&#160;</A>
+<P>
+This tool allows you to quickly place a co-ordinate system (compute a
+plate solution) onto an image which does not have one. This is very
+useful if you have, say, a CCD image which does not have a co-ordinate
+system on it. All you need is an image of a similar piece of sky which
+does have a co-ordinate system (such as an image from the Digital Sky
+Survey). The tool handles flipping and rotation correctly. This tool
+is much faster to use than the various command-line driven tools
+currently available (usually less than a minute).
+<P>
+After you start the tool, you will get two windows. The left window
+should be loaded with the reference image (the image which has a
+co-ordinate system), by pressing <B>Ref. Images</B>. The right
+window should be loaded with your target image (the image without the
+co-ordinate system), by pressing <B>Target Images</B>.
+<P>
+The programme should also work with a photographic negative. The
+picking algorithm is automatically modified to look for a trough
+rather than a peak.
+<P>
+Once you have loaded your images, you are now ready to define matching
+pairs of points (stars). To do this, you must first click (middle) in
+the left window, near a star, and then click (middle) in the right
+window near the corresponding star. You then go back to the left
+window and define another star, and click on it's mate in the right
+window. You must define at least three pairs of stars.
+<P>
+As you select a star, a green circle is drawn around the fitted centre
+of the star. If at any time you miss the star, you can just click
+again (only before going to the other window). If you press
+<B>Undo Pair</B>, a pair of stars will be removed from the list. As
+long as some visible part of the star is within the circle cursor
+(also known as the ``capture region'') when you click (middle), the
+tool will find the centroid of the star.
+<P>
+You might find it helpful to click the <B>Magnifier</B> button to see
+the magnifier window. You will see a crosshair which is centred on the
+current mouse position in the main window. You will also see a green
+circle which shows the ``capture region'': if any part of the star
+lies within that circle, when you click (middle) the centroid of the
+star will be picked. You can adjust the size of the capture region by
+clicking with the left mouse button in the magnifier window. You will
+also see a dashed green circle which is slightly larger than the solid
+green circle. The area between the two circles is called the
+background annulus. The magnifier will also show small red crosshairs
+at the exact centroid positions of selected stars.
+<P>
+Once you have selected all your star pairs, you can click on
+<B>Compute Co-ordinate System</B> and the tool solves for a
+co-ordinate system. In your command-line window a report of the
+solution is displayed. If you move your mouse around the right window,
+you will see the proper world co-ordinates of the pixels. Once you are
+happy with the co-ordinate solution, you can press the <B>Apply
+Co-ordinate System</B> button, and then save the image (with the new
+co-ordinate system) using the <B>Export</B> menu. The coordinate
+system is written in the header using the standard (CTYPEn, CRVALn,
+CDELTn, CRPIXn) notation.
+<P>
+The coordinate system is computed under the assumption that the image
+of the sky has been projected by the telescope optics in a particular
+way. The projection geometry is assumed to be the Rectangular
+projection (denoted by the standard projection name ``ARC''), which is
+used by Schmidt telescopes. This may not be always be the appropriate
+projection to use, but the errors should only become noticeable for
+fields larger than 0.5&nbsp;degree.
+<P>
+<H1><A NAME="SECTION001010000000000000000">9.1 Centring Algorithm</A></H1>
+<P>
+<A NAME="pubcentroidingalgorithm">&#160;</A>
+<P>
+The following steps are taken by the picking algorithm:
+<P>
+<UL>
+<LI> find the brightest pixel within the circle cursor (``capture
+region'')
+<LI> proceed from that point by ``walking up the hill'', searching
+for a neighbouring pixel which is of a greater value. It continues
+searching until it finds a pixel with no neighbours with a greater
+value (i.e. a local maximum). This is usually the peak pixel
+<LI> find the half-intensity size of the star. To do this it needs an
+estimate of the background value. The background is computed by
+finding the median value inside the background annulus
+<LI> computes the centroid position by using a two-dimensional
+weighted mean algorithm. The centroid is computed out to the
+half-intensity size.
+<P>
+</UL>
+<P>
+Note that the centring algorithm will not work with heavily clipped
+images. This is because there is no real peak to work with, rather
+there is only a plateau. In these cases, the centring algorithm is
+effectively bypassed and the position you selected will be used for
+the star position. This allows you to position by eye. Please note
+that heavily clipped images have lost information, and hence the
+accuracy of star positions will be limited.
+<P>
+A screen snapshot is available
+<a href="../tool-screen-snapshots/koords.gif" target=image_window>here</a>
+<P>
+<HR><A NAME="tex2html397" HREF="node11.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html395" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html389" HREF="node9.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html399" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html400" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html398" HREF="node11.html">kpolar: regridding to polar </A>
+<B>Up:</B> <A NAME="tex2html396" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html390" HREF="node9.html">8 kshell: looking for </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

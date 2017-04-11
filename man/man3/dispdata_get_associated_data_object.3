@@ -1,0 +1,32 @@
+.TH DISPDATA_GET_ASSOCIATED_DATA_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_associated_data_object \- Get an associated named object for a data object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void * dispdata_get_associated_data_object
+.sp
+(KDisplayDataObject dataobject,
+CONST char *name)
+.SH DESCRIPTION
+Get an associated named object for a data object.
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject.
+.IP \fIname\fP 1i
+The name of the associated data object.
+.SH RETURN VALUE
+A pointer to the associated object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

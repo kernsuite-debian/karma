@@ -1,0 +1,46 @@
+.TH IARRAY_SCALE_AND_OFFSET_INT 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_scale_and_offset_int \- Scale and offset an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_scale_and_offset_int
+.sp
+(iarray out, iarray inp, int scale,int offset)
+.SH DESCRIPTION
+This routine will perform a scale and offset on every element in
+an "Intelligent Array" (output = input * scale + offset).
+.IP \fIout\fP 1i
+The output Intelligent Array.
+.IP \fIinp\fP 1i
+The input Intelligent Array.
+.IP \fIscale\fP 1i
+The complex scale value.
+.IP \fIoffset\fP 1i
+The complex offset value.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The input and output arrays MUST be the same size (though not
+necessarily the same type).
+.sp
+When converting from a complex to a real array, the magnitude is
+scaled and offset.
+.sp
+When converting from a real to a complex array, the imaginary
+component of the output array is set to 0.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

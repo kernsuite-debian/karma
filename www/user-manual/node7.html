@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>kpvslice: interactive position-velocity slicing</TITLE>
+<META NAME="description" CONTENT="kpvslice: interactive position-velocity slicing">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html361" HREF="node8.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html359" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html353" HREF="node6.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html363" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html364" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html362" HREF="node8.html">7 kslice_3d: slicing data </A>
+<B>Up:</B> <A NAME="tex2html360" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html354" HREF="node6.html">5 Volume Rendering a </A>
+<BR> <P>
+<H1><A NAME="SECTION00700000000000000000">kpvslice: interactive position-velocity slicing</A></H1>
+<P>
+<A NAME="chapterkpvslice">&#160;</A><A NAME="pubkpvslice">&#160;</A><A NAME="1664">&#160;</A>
+<P>
+The <B>&lt;kpvslice&gt;</B> programme allows you to use a two-dimensional
+image to define a slice through a three-dimensional data cube. The
+image and cube must have two dimensions in common, and the coordinate
+range of those dimensions must (partially) overlap, but the axes need
+not have the same reference point, orientation or scale.
+<P>
+A typical use is to examine the position-velocity diagram for a slice
+drawn along the major axis of a rotating galaxy. The slice is drawn on
+the total column density or velocity field map, and the corresponding
+position-velocity diagram will appear in the other window. The slice
+can be moved around interactively for quick comparison of different
+regions.
+<P>
+A screen snapshot is available
+<a href="../tool-screen-snapshots/kpvslice.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00710000000000000000">6.1 How to use it</A></H1>
+<P>
+You need a cube (naturally) and a sky map image. The image is usually
+taken to be the total-intensity map of the cube, but it could just as
+easily be the velocity-field or an optical image. As long as the cube
+and the image have a proper co-ordinate system for RA and DEC, you're
+in business. To load the cube, press the <B>Cubes</B> button in the
+left window and select a cube file. Press the <B>Images</B> button to
+load the image file. The image is displayed in the left window. If you
+then click (middle) in the image and drag the mouse (still keeping the
+button pressed), you will see the position-velicity slice in the right
+window being updated before your very eyes. Back in the image window a
+line is drawn over the image to show where the slice is. The
+horizontal axis in the right window shows position and the vertical
+axis shows velocity. If the machine you are running this on is rather
+old and slow, you can disable <B>Auto Update</B> and the
+position-velocity image will only be computed once you release the
+middle mouse button. The cursor position (in RA and DEC) is printed to
+the command shell window whenever the middle button is pressed or
+released. This tells you the endpoints of the slice. Also, the centre
+of the slice and it's position angle are also printed.
+<P>
+If you click with the right mouse button near the centre of the slice,
+you can then move the slice centre around whilst the length and
+position angle is kept constant. If instead you clicked the right
+button near either end of the slice, you can change the position angle
+while the length and centre are kept fixed.
+<P>
+When moving the cursor in the slice window, the coordinates of the
+cursor are displayed in several ways. The ``natural'' coordinates of
+offset (from the slice centre) and third-axis coordinate are shown in
+the second line. The image coordinates corresponding to the offset are
+shown in the third line. The position of the cursor along the slice is
+also shown by a small circle in the image window.
+<P>
+If you compute the moments of the cube with <B>&lt;kpvslice&gt;</B>, both
+are held in memory, so you may switch between them easily. The values
+in the first moment image along the slice are plotted as a red trace
+in the slice window. Note that no smoothing is done before the
+clipping level is applied, so they do not do as good a job of
+representing weak signals as the standard MOMNT task in AIPS. This
+may be fixed in later versions of the program.
+<P>
+If the values in the two-dimensional image have the same units as the
+cube's third coordinate axis, the values are extracted and displayed
+as a green trace in the slice window. In practice this usually happens
+when one draws a slice on a velocity field image; the velocities from
+the image are drawn as a green line on the position-velocity
+diagram. The position angle is defined as the angle in the corner of a
+spherical triangle.
+<P>
+<H2><A NAME="SECTION00711000000000000000">6.1.1 Viewing Profiles</A></H2>
+<P>
+You can also view a profile (spectrum) of your cube
+<A HREF="node3.html#sectionprofiles">profiles</A>. Just press the <B>
+Z-Profile</B> button and move the mouse over the image window.
+<P>
+If you wish to see a profile <EM>along the slice across the image</EM>,
+press the <B>I-Profile</B> button and another profile window will
+appear. Just don't confuse the two different profile windows.
+<P>
+<H1><A NAME="SECTION00720000000000000000">6.2 Extracting Slices From An Image</A></H1>
+<P>
+<B>&lt;kpvslice&gt;</B> can also extract a (one dimensional) slice from an
+image. In this case, you do not have to load a cube, only the image is
+needed. Click on the <B>I-Profile</B> button and draw your slice. The
+profile window will show the values in the image which lie along the
+slice locus.
+<P>
+<H1><A NAME="SECTION00730000000000000000">Command-line Options</A></H1>
+<A NAME="1681">&#160;</A>
+<P>
+The following command-line options are supported by
+<B>&lt;kpvslice&gt;</B>:
+<P>
+<UL>
+<LI> <TT>-trace_internal_colour &lt;colour&gt;</TT> the colour specified by
+<TT>colour</TT> is used when displaying the trace taken from the
+internally computed 1st moment map
+<LI> <TT>-trace_external_colour &lt;colour&gt;</TT> the colour specified by
+<TT>colour</TT> is used when displaying the trace taken from the
+externally computed (loaded) 1st moment map
+<P>
+</UL><H1><A NAME="SECTION00740000000000000000">6.4 Algorithmic Details</A></H1>
+<P>
+<H2><A NAME="SECTION00741000000000000000">6.4.1 How the Slice is Computed</A></H2>
+<P>
+The slices are interpolated using a weighted average of the nearest
+four pixels. The weighting is inversely proportional to the distance
+of the point in the slice from the centre of the neighbour pixel.
+<P>
+So the ``thickness'' is basically one spatial pixel, but the width of
+the region that the interpolation is made over varies depending on the
+angle of the slice with respect to the pixel grid. It is least (3
+pixels wide) when the slice is along the x or y axis of the pixel
+grid, and greatest (sqrt(2)*3) when the slice is at 45<IMG WIDTH=5 HEIGHT=6 ALIGN=BOTTOM ALT="tex2html_wrap_inline4890" SRC="img14.gif"> to the
+pixel grid.
+<P>
+The interpolation is made only with respect to the pixel grid, so the
+above numbers are only strictly true if the x and y directions have
+the same spatial scales. If the arcsec/pixel is different in the x and
+y directions, the width of the slice in arcsec will change from
+differently as the angle of the slice w.r.t the pixel grid changes.
+<P>
+<PRE>         ++++.+++++++
+         +++++.*+++++
+         +++++*x*++++   'x' is the current pixel, '*' are the neighbours
+         ++++++*.++++   '.' is the other pixels in the slice.
+         ++++++++.+++
+         +++++++++.++</PRE>
+<P>
+<HR><A NAME="tex2html361" HREF="node8.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html359" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html353" HREF="node6.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html363" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html364" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html362" HREF="node8.html">7 kslice_3d: slicing data </A>
+<B>Up:</B> <A NAME="tex2html360" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html354" HREF="node6.html">5 Volume Rendering a </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,549 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Device-independent data-oriented graphics library</TITLE>
+<META NAME="description" CONTENT="Device-independent data-oriented graphics library">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html762" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html760" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html754" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html764" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html765" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html763" HREF="node9.html">Image Editing</A>
+<B>Up:</B> <A NAME="tex2html761" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html755" HREF="node7.html">Event generation and dispatch</A>
+<BR> <P>
+<H1><A NAME="SECTION00800000000000000000">Device-independent data-oriented graphics library</A></H1>
+<P>
+<A NAME="Deviceindependentdataorientedgraphicslibrary">&#160;</A>
+<P>
+<H1><A NAME="SECTION00810000000000000000">Purpose</A></H1>
+<P>
+The image display support is intended to ease the display of computed
+images by modules (applications). In most situations, the X Window
+system is used as the basic graphics system. However, there is more to
+image display than just writing a 2-D array to the graphics system.
+Issues such as handling window resize events, colourmap resizes, fast
+movie animation, controlled zooming, cursor events, etc. complicate
+applications requiring image display. Besides, you may want to display
+a 2-D array as a contour map, rather than as a bitmapped image. The
+image display support provided in the Karma library can save thousands
+of lines of messy, intricate code.
+<P>
+<H1><A NAME="SECTION00820000000000000000">Related documents</A></H1>
+<P>
+The documentation on ``Intelligent Arrays'', communications support,
+colourmap support and image editing support are highly recommended.
+The documentation on Karma widgets explains how to build a complete
+graphical application using the Xt Graphical User Interface toolkit.
+<P>
+<H1><A NAME="SECTION00830000000000000000">Architecture</A></H1>
+<P>
+The image display support in Karma is built on a layered approach, in
+a similar way to the communications support. The image display support
+requires linking of the core Karma library and the Karma graphics
+library.
+<P>
+The various packages in the Karma library which provide image display
+support are listed below.
+<P>
+<H2><A NAME="SECTION00831000000000000000">``ds'' package</A></H2>
+<P>
+The starting point for image display support in Karma is based on
+direct conversion from 2-D array to image display. Any simple, 2-D
+array using the Karma data format may be easily displayed.  The data
+structure support is provided by the <A NAME="tex2html93" HREF="../lib/ds.html"><B>ds</B></A> package. You can
+also construct your own C arrays and use a function like
+<A NAME="tex2html94" HREF="../lib/ds.html#ds_wrap_preallocated_n_element_array"><B>ds_wrap_preallocated_n_element_array</B></A> to create the
+Karma data structure wrappers for the data, and then pass these to the
+graphics library.
+<P>
+<H2><A NAME="SECTION00832000000000000000">``xi'' package</A></H2>
+<P>
+X11 XImage structure manipulation support is provided by the
+<A NAME="tex2html95" HREF="../lib/xi.html"><B>xi</B></A> package. This package is not meant to be used by the
+application programmer: it provides support for higher levels in the
+Karma library. It is mentioned here only for reference.
+<P>
+<H2><A NAME="SECTION00833000000000000000">``imw'' package</A></H2>
+<P>
+Image display support is provided by the <A NAME="tex2html96" HREF="../lib/imw.html"><B>imw</B></A> package. This
+code is not meant to be used by the application programmer: it
+provides support for higher levels in the Karma library. It is
+mentioned here only for reference.
+<P>
+<H2><A NAME="SECTION00834000000000000000">``kwin'' package</A></H2>
+<A NAME="465">&#160;</A>
+<P>
+The lowest level display canvas is provided by the <A NAME="tex2html97" HREF="../lib/kwin.html"><B>kwin</B></A>
+package. It provides a pixel canvas class. A pixel canvas is graphics
+system independent. The graphics system is the layer of software that
+provides basic access to display hardware. There is support for the
+following graphics systems:
+<P>
+<UL>
+<LI> The X Window System (using Xlib)
+<LI> The XGL rendering library
+<LI> The OpenGL rendering library
+<LI> A VX board (used to be hot stuff in it's day:-)
+</UL><H3><A NAME="SECTION00834100000000000000">Purpose</A></H3>
+<P>
+Routines are provided to create a pixel canvas from an X window. Many
+pixel canvases may be created per X window (though typically only one)
+and mosaiced. The routines to create pixel canvases are naturally
+graphics system dependent.
+<P>
+A number of routines allow drawing onto a pixel canvas. These routines
+have generic interfaces (i.e. no reference to the graphics system such
+as X). This allows an application to be written that can easily be
+ported to a non-X environment (provided the Karma graphics library
+supports the new graphics system). Note that these drawing routines
+generally do NOT perform any &quot;clipping&quot;. If an object is drawn outside
+the pixel canvas boundaries, it is not necessarily clipped. It is the
+responsibility of the underlying graphics system (i.e. X) to handle
+this. The reason for this is that it is not my purpose to reinvent X,
+but rather to ease the porting of image display applications to
+specialised display hardware and different windowing systems, as well
+as providing some higher-level graphics primitives.
+<P>
+<H3><A NAME="SECTION00834200000000000000">Graphics Primitives</A></H3>
+<P>
+Drawing operations on a pixel canvas are given in terms of pixels. The
+origin of a pixel canvas (0, 0) is the top-left corner of the canvas.
+Some of the pixel canvas drawing routines allows one to draw an image.
+However, these routines are not intended for general use: they merely
+provide the interface for higher library packages.  Events
+(ie. refresh/ resize/ cursor) on the underlying window (i.e. X window)
+may be ``pushed'' up into the pixel canvas, where they will be
+redistributed to application or library code which has registered an
+interest in these events.
+<P>
+<H3><A NAME="SECTION00834300000000000000">Refresh and Resize events</A></H3>
+<P>
+<A NAME="472">&#160;</A>
+<P>
+When the underlying window (i.e. X window) needs to be redisplayed or
+has resized, the <A NAME="tex2html98" HREF="../lib/kwin.html#kwin_resize"><B>kwin_resize</B></A> routine should be
+called. This will send refresh/ resize events to higher levels in the
+image display system. If you are using the ``Canvas'' widget (or a
+derivative) provided by the Karma widgets library, you don't have to
+worry about explicitely calling <A NAME="tex2html99" HREF="../lib/kwin.html#kwin_resize"><B>kwin_resize</B></A>, the
+widget does this automatically whenever the window is
+refreshed/resized. You can use the
+<A NAME="tex2html100" HREF="../lib/kwin.html#kwin_register_refresh_func"><B>kwin_register_refresh_func</B></A> function to register a 
+function which will be called whenever a pixel canvas should be
+refreshed (redrawn).
+<P>
+The following code example shows the structure of a refresh
+function. All it does is draw a green line diagonally across the
+canvas.
+<P>
+<PRE>void refresh_func (KPixCanvas canvas, int width, int height,
+                   void **info, PostScriptPage pspage,
+                   unsigned int num_areas,
+                   KPixCanvasRefreshArea *areas,
+                   flag *honoured_areas)
+/*  [SUMMARY] Process a refresh event for a pixel canvas.
+    &lt;canvas&gt; The pixel canvas.
+    &lt;width&gt; The width of the canvas in pixels.
+    &lt;height&gt; The height of the canvas in pixels.
+    &lt;info&gt; A pointer to the arbitrary canvas information pointer.
+    &lt;pspage&gt; If not NULL, the PostScriptPage object the refresh is
+    redirected to.
+    &lt;num_areas&gt; The number of areas that need to be refreshed. If this is
+    0 then the entire pixel canvas needs to be refreshed.
+    &lt;areas&gt; The list of areas that need to be refreshed.
+    &lt;honoured_areas&gt; If the value TRUE is written here it is assumed the
+    routine honoured the list of refresh areas and did not write outside
+    these areas and hence the list of areas will be passed to subsequent
+    registered refresh routines. If FALSE is written here (or nothing is
+    written here), implying the routine refreshed the entire pixel canvas,
+    subsequent refresh routines will be told to refresh the entire canvas.
+    [RETURNS] Nothing.
+*/
+{
+    unsigned int pixel_value;
+
+    if ( !kwin_get_colour (canvas, &quot;green&quot;, &amp;pixel_value, NULL, NULL, NULL) )
+    {
+        fprintf (stderr, &quot;Error getting colour: \"green\"\n&quot;);
+        return;
+    }
+    kwin_draw_line (canvas, 0, 0, width - 1, height - 1, pixel_value);
+}   /*  End Function refresh_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00834400000000000000">Input events</A></H3>
+<A NAME="sectionkwinevents">&#160;</A>
+<A NAME="481">&#160;</A>
+<P>
+Other events, such as cursor events on the X window are inserted using
+the <A NAME="tex2html101" HREF="../lib/kwin.html#kwin_process_position_event"><B>kwin_process_position_event</B></A> function. The
+pixel canvas will automatically forward these events to all routines
+previously registered to handle these events. The process stops when
+the event is consumed by a routine.  In many applications, the higher
+levels of the library process these events, so the application
+programmer need not write any event processing code. This can save
+thousands of lines of code even in a modest application. If you are
+using the ``Canvas'' widget (or a derivative) provided by the Karma
+widgets library, you don't have to worry about explicitely calling
+<A NAME="tex2html102" HREF="../lib/kwin.html#kwin_process_position_event"><B>kwin_process_position_event</B></A>, the widget does this
+automatically whenever an event occurs on a window.
+<P>
+You simply call <A NAME="tex2html103" HREF="../lib/kwin.html#kwin_register_position_event_func"><B>kwin_register_position_event_func</B></A>
+if you want to register a function that receives input (position)
+events.
+<P>
+The follow code example shows a simple event handling function (termed
+a callback) for a pixel canvas. This function simply prints the
+current mouse pointer position when the left mouse button is pressed
+down.
+<P>
+<PRE>flag position_func (KPixCanvas canvas, int x, int y,
+                    unsigned int event_code, void *e_info, void **f_info)
+    [SUMMARY] Process a position event on a pixel canvas.
+    &lt;canvas&gt; The pixel canvas on which the event occurred.
+    &lt;x&gt; The horizontal position of the event, relative to the canvas origin
+    &lt;y&gt; The vertical position of the event, relative to the canvas origin.
+    &lt;event_code&gt; The arbitrary event code.
+    &lt;e_info&gt; A pointer to arbitrary event information.
+    &lt;f_info&gt; A pointer to an arbitrary function information pointer.
+    [RETURNS] TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+*/
+{
+    if (event_code != K_CANVAS_EVENT_LEFT_MOUSE_CLICK) return (FALSE);
+    fprintf (stderr, &quot;left click at: %d %d\n&quot;, x, y);
+    return (TRUE);
+}   /*  End Function position_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00834500000000000000">24bit Support</A></H3>
+<P>
+There are special attributes associated with each pixel canvas which
+must be used when computing pixel values for drawing on canvases with
+visual type TrueColour or DirectColour. This paragraph is only of
+relevance for TrueColour or DirectColour pixel canvasses.  Those
+familiar with Xlib programming will recall that there is a defined
+bitmask for red, green and blue for each visual of type TrueColour or
+DirectColour. The bits in a pixel value required for full intensity
+for a primary colour requires using all the bits of that colour's
+bitmask. The colour white is a pixel value that is the OR of all three
+bitmasks. The Xlib model allows you to construct pixel values this way
+and draw them as required. However, for efficiency reasons, the model
+used in the Karma Graphics library is a little more complete. In Karma
+the distinction is made between pixel values used in most drawing
+operations and those used when drawing images of pixels. Hence a pixel
+canvas has the following attributes:
+<P>
+  red|green|blue pixel masks which should be used except when
+                   drawing images
+<P>
+  red|green|blue image masks which should be used only when drawing
+                   images
+<P>
+<H2><A NAME="SECTION00835000000000000000">``kcmap'' package</A></H2>
+<P>
+The support for dynamic colourmaps is provided by the <A NAME="tex2html104" HREF="../lib/kcmap.html"><B>kcmap</B></A>
+package. This is another generic package, portable to non-X
+environments. It allows colourmaps to be resized, changed, dynamically
+shared across a network as well as reading and writing to disc. See
+the chapter on colourmaps for more details.
+<P>
+<H2><A NAME="SECTION00836000000000000000">``event'' package</A></H2>
+<A NAME="494">&#160;</A>
+<P>
+The <A NAME="tex2html107" HREF="../lib/event.html"><B>event</B></A> package provides a mechanism for graphics events
+to be sent to other programmes. This should not be confused with the
+event dispatching mechanism in the
+<A HREF="node8.html#sectionkwinevents"><A NAME="tex2html105" HREF="../lib/kwin.html"><B>kwin</B></A></A> package, which descibes
+events <EM>within</EM> a single programme. The <A NAME="tex2html108" HREF="../lib/event.html"><B>event</B></A> package
+distributes events to other programmes over network connections, and
+depends on the
+<A HREF="node5.html#chapterinterprocesscommunications">interprocess communications</A>
+support in the Karma library. This package is useful if you want to
+capture events from an existing visualisation tool such as
+<B>&lt;kvis&gt;</B> in another programme.
+<P>
+The package defines the ``generic_event'' protocol with the
+<A NAME="tex2html109" HREF="../lib/conn.html"><B>conn</B></A> package. A server is the programme which
+dispatches events to ``generic_event'' clients. Usually, you don't
+have to worry about writing server support, as that has already been
+done inside the standard visualisation tools. Most programmers will be
+interested in how to write a client.
+<P>
+Clients specify which events they wish to receive from the server by
+specifying a bitmask. Table <A NAME="tex2html110" HREF="../lib/event.html#event_MASKS"><B>event_MASKS</B></A> defines the
+mask values. Clients will only receive the type of events specified in
+the the bitmask.
+<P>
+There are two basic modes in which a client can communicate with the
+server. One is <EM>blocking</EM> and the other is <EM>asynchronous</EM>.
+These are described below.
+<P>
+<H3><A NAME="SECTION00836100000000000000">Blocking Mode</A></H3>
+<P>
+This involves the client waiting (blocking) for a single event from a
+specified server. Any events in the server will not be sent to the
+client unless the client is waiting. The client waits for an event by
+calling <A NAME="tex2html111" HREF="../lib/event.html#event_wait"><B>event_wait</B></A>. Once the client has received the
+event, the server will no longer send events. This mode of operation
+is useful for simple mainline programmes (i.e. non event-driven) which
+only occasionally want to look for an event. A disadvantage of this
+mode is if the server is generating events very quickly, the client
+can miss some.
+<P>
+The following example code shows a client connecting to the
+<B>&lt;kvis&gt;</B> programme on the local machine, capturing a number
+of keypress events. The client is operating in blocking mode.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_wcs.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+#include &lt;karma_event.h&gt;
+
+#define MAX_EVENTS 10
+
+main ()
+{
+    KEvent event;
+    Connection conn;
+    unsigned int count;
+    char ra_str[STRING_LENGTH], dec_str[STRING_LENGTH];
+
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    event_initialise ();
+    conn = conn_attempt_connection (&quot;localhost&quot;,
+                                    r_get_def_port (&quot;kview&quot;,
+                                                    r_getenv (&quot;DISPLAY&quot;)),
+                                    &quot;generic_event&quot;);
+    for (count = 0; count &lt; MAX_EVENTS; ++count)
+    {
+        event_wait (K_EVENT_MASK_KEYPRESS, conn, &amp;event);
+        wcs_astro_format_hms (ra_str,
+                              event.data.keypress.position.world.x / 15.0);
+        wcs_astro_format_dms (dec_str, event.data.keypress.position.world.y);
+        fprintf (stderr,
+                 &quot;Key: \"%s\" at impix: %g %g  world: Ra %s  Dec %s\n&quot;,
+                 event.data.keypress.string,
+                 event.data.keypress.position.image_pixel.x, 
+                 event.data.keypress.position.image_pixel.y,
+                 ra_str, dec_str);
+    }
+}   /*  End Function main  */</PRE>
+<P>
+<H3><A NAME="SECTION00836200000000000000">Asynchronous Mode</A></H3>
+<P>
+This is used for event-driven clients (such as visualisation
+tools). Here the client calls
+<A NAME="tex2html112" HREF="../lib/event.html#event_register_event_func"><B>event_register_event_func</B></A> to register an
+application function that is called whenever a new event is received
+from any server. The client calls <A NAME="tex2html113" HREF="../lib/event.html#event_set_mask"><B>event_set_mask</B></A> to
+set the event mask for a specific server or all servers. This mode of
+operation is more efficient and does not suffer from the event loss
+problem. The disadvantage is that the client has to relinquish control
+of its main loop to the Karma event management system (provided by the
+<A NAME="tex2html114" HREF="../lib/dm.html"><B>dm</B></A> package) or some other co-operating event management
+system (such as that provided by the Xt library).
+<P>
+The following example code shows a client connecting to the
+<B>&lt;kvis&gt;</B> programme on the local machine, capturing a number
+of keypress events. The client is operating in asynchronous mode.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_wcs.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+#include &lt;karma_event.h&gt;
+
+#define MAX_EVENTS 10
+
+STATIC_FUNCTION (flag event_func,
+                 (KEvent event, Connection connection, void **f_info) );
+
+main ()
+{
+    unsigned int count = 0;
+
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    event_initialise ();
+    conn_attempt_connection (&quot;localhost&quot;,
+                             r_get_def_port (&quot;kview&quot;, r_getenv (&quot;DISPLAY&quot;)),
+                             &quot;generic_event&quot;);
+    event_register_event_func (event_func, &amp;count);
+    event_set_mask (K_EVENT_MASK_KEYPRESS, MAX_EVENTS, NULL);
+    while (TRUE) dm_native_poll (-1);
+}   /*  End Function main  */
+
+static flag event_func (KEvent event, Connection connection, void **f_info)
+/*  [SUMMARY] Generic event callback.
+    &lt;event&gt; The event data. This becomes invalid when the callback returns.
+    &lt;connection&gt; The connection over which the event came.
+    &lt;f_info&gt; The arbitrary function information pointer.
+    [RETURNS] TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+*/
+{
+    unsigned int *count = (unsigned int *) *f_info;
+    char ra_str[STRING_LENGTH], dec_str[STRING_LENGTH];
+
+    wcs_astro_format_hms (ra_str, event.data.keypress.position.world.x / 15.0);
+    wcs_astro_format_dms (dec_str, event.data.keypress.position.world.y);
+    fprintf (stderr,
+             &quot;Key: \"%s\" at impix: %g %g  world: Ra %s  Dec %s\n&quot;,
+             event.data.keypress.string,
+             event.data.keypress.position.image_pixel.x, 
+             event.data.keypress.position.image_pixel.y,
+             ra_str, dec_str);
+    if (++*count &gt;= MAX_EVENTS) exit (RV_OK);
+    return (TRUE);
+}   /*  End Function event_func  */</PRE>
+<P>
+<H2><A NAME="SECTION00837000000000000000">``iedit'' package</A></H2>
+<P>
+Image editing support is based on the <A NAME="tex2html115" HREF="../lib/iedit.html"><B>iedit</B></A> package. This
+allows 2-D image edit instructions to be processed and shared among
+modules.  See the image-edit guide for more details.
+<P>
+<H2><A NAME="SECTION00838000000000000000">``iarray'' package</A></H2>
+<P>
+The simplified Karma data structure interface is provided by the
+<A NAME="tex2html116" HREF="../lib/iarray.html"><B>iarray</B></A> package, which defines ``Intelligent Arrays''. Using this
+package, it is trivial to create and fill 2-D arrays, prior to
+display. See the iarray chapter for more details.
+<P>
+<H2><A NAME="SECTION00839000000000000000">``canvas'' package</A></H2>
+<A NAME="524">&#160;</A>
+<P>
+The next level up in the image display system is the <A NAME="tex2html117" HREF="../lib/canvas.html"><B>canvas</B></A>
+package. It defines a world canvas class. A world canvas is similar to
+a pixel canvas, however, drawing operations are specified in world
+co-ordinates, rather than pixel co-ordinates. For example, a pixel
+canvas might be 512*512 pixels. A world canvas may map this to a
+simple unit canvas from (0.0, 0.0) to (1.0, 1.0).  A world canvas is
+created from a pixel canvas.
+<P>
+The origin of a world canvas is the bottom-left corner of the canvas.
+Note how this differs with the pixel canvas. The pixel canvas is a
+nearly direct mapping onto the underlying graphics system. The world
+canvas is modelled on a standard cartesian co-ordinate system. A
+linear transformation is applied when converting between pixel and
+world co-ordinates. If a non-linear world co-ordinate system is
+required, the <A NAME="tex2html118" HREF="../lib/canvas.html#canvas_register_transforms_func"><B>canvas_register_transforms_func</B></A>
+routine may be used to register co-ordinate conversion routines. Note,
+however, that when drawing into a world canvas, the co-ordinates (or
+offsets: radii) specified in the function call are transformed into
+pixel co-ordinates and a similarly shaped object is drawn into the
+underlying pixel canvas. Thus, an ellipse draw in a world canvas
+appears as an ellipse, irrespective of the co-ordinate transformation
+specified.
+<P>
+The world canvas package also provides drawing routines allowing one
+to draw an image. However, these routines are not intended for general
+use: it merely provides the interface for higher library packages.
+The <A NAME="tex2html119" HREF="../lib/canvas.html"><B>canvas</B></A> package allows 2-D image edit instructions to be
+drawn onto a window, and interfaces directly onto the <A NAME="tex2html120" HREF="../lib/iedit.html"><B>iedit</B></A>
+package. This makes the process of drawing objects (i.e. filled
+ellipses, polygons) in world co-ordinates a trivial task.
+<P>
+<H2><A NAME="SECTION008310000000000000000">``viewimg'' package</A></H2>
+<P>
+The most important package (as far as the application programmer is
+concerned) is the <A NAME="tex2html121" HREF="../lib/viewimg.html"><B>viewimg</B></A> package. This defines a viewable
+image class. A viewable image may be created from a plane of an n-D
+Karma array, or from a 2-D Intelligent Array. A viewable image is
+associated with one world canvas. Each world canvas may have many
+viewable images associated with it. A viewable image contains a
+reference to the 2-D data array. It is this data array which is easily
+filled by the application programmer. All the mechanics of determining
+how to refresh, resize, zoom the image display are handled by the
+<A NAME="tex2html122" HREF="../lib/viewimg.html"><B>viewimg</B></A> package. This greatly simplifies the implementation
+of panning and zooming. Window refresh and resize events for viewable
+images are handled <EM>entirely</EM> inside the library, leaving the
+programmer free to concentrate on the data to be displayed, rather
+than having to cope with a cumbersome event driven system. This does
+not preclude the registration of other routines to process events on
+the underlying world and pixel canvases.
+<P>
+An example of where a world canvas would have a refresh/ resize
+routine registered is when graphic overlays on an image are desired
+(however, there is also library support for maintaining overlay lists
+to make this simpler too).
+<P>
+The application programmer may update the data array at will, and,
+using the <A NAME="tex2html123" HREF="../lib/viewimg.html#viewimg_register_data_change"><B>viewimg_register_data_change</B></A> function,
+update the window display with the new image. Just as simply, the
+<A NAME="tex2html124" HREF="../lib/viewimg.html#viewimg_make_active"><B>viewimg_make_active</B></A> function may be used to select
+which viewable image should be displayed in a world canvas: this is
+termed making the viewable image &quot;active&quot;.  This makes the
+implementation of a movie loop trivial. Nor is there any penalty for
+using the layers of image display support in Karma: frame rates of
+over 10 frames per second (512*512*8bit) on conventional SUN IPCs,
+without graphics accelerators, have been attained.
+<P>
+The <A NAME="tex2html125" HREF="../lib/viewimg.html"><B>viewimg</B></A> package allows 2-D image edit instructions to be
+drawn onto a viewable image. This means that the original 2-D data
+array is modified and the viewable image is redisplayed. Thus writing
+a painting and image editing application becomes far simpler.  These
+features interface directly onto the <A NAME="tex2html126" HREF="../lib/iedit.html"><B>iedit</B></A> package. Because
+of this integration, the networking support built into the
+<A NAME="tex2html127" HREF="../lib/iedit.html"><B>iedit</B></A> package allows one to easily implement a ``shared
+whiteboard'' application, a research topic in collaboration
+technology.
+<P>
+<H2><A NAME="SECTION008311000000000000000">``overlay'' package</A></H2>
+<P>
+Another important package is the <A NAME="tex2html128" HREF="../lib/overlay.html"><B>overlay</B></A> package. This
+manages overlay lists (lists of geometric objects). Each overlay
+object is defined in (possibly mixed) co-ordinates, and may be
+selectively moved or removed. Overlay lists may be shared between
+modules (using the ``2D_overlay'' connection protocol). Each overlay
+list may be associated with multiple world canvases. When the canvas
+is refreshed, any associated overlay lists will be automatically
+redrawn. By using the restriction specification mechanisms, a single
+overlay list can have objects which apply to all frames of a movie
+(when using the <A NAME="tex2html129" HREF="../lib/viewimg.html"><B>viewimg</B></A> package) or to a single
+frame. Hence, from frame to frame, a different set of overlay objects
+is automatically drawn.
+<P>
+Mixing of co-ordinate types can be very powerful. For example, you may
+place a line with one end specified by relative co-ordinates and the
+other in world co-ordinates. This would allow you to have a line which
+was fixed to some convenient position in the canvas at one end, and
+the other end would be placed near some feature of interest.
+<P>
+<H2><A NAME="SECTION008312000000000000000">``contour'' package</A></H2>
+<P>
+The <A NAME="tex2html130" HREF="../lib/contour.html"><B>contour</B></A> package provides a similar interface as the
+<A NAME="tex2html131" HREF="../lib/viewimg.html"><B>viewimg</B></A> package, except that 2-D array data is displayed as
+contours rather than a bitmapped image. This package is designed to
+have an almost identical interface to the <A NAME="tex2html132" HREF="../lib/viewimg.html"><B>viewimg</B></A> package so
+that little distinction is made between the two different methods of
+displaying 2-D array data.
+<P>
+<H1><A NAME="SECTION00840000000000000000">Tutorial</A></H1>
+<P>
+A quite powerful image display tool is <B>&lt;kvis&gt;</B>. The power
+user is urged to use this module and then read the source code to see
+how much functionality may be packed into so few lines of code, using
+the image display support in the Karma library. An entire chapter is
+devoted to a simple image display tool (this uses Karma widgets and is
+less then 500 lines long), so you are urged to read this.
+<P>
+<HR><A NAME="tex2html762" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html760" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html754" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html764" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html765" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html763" HREF="node9.html">Image Editing</A>
+<B>Up:</B> <A NAME="tex2html761" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html755" HREF="node7.html">Event generation and dispatch</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

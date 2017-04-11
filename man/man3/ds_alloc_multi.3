@@ -1,0 +1,31 @@
+.TH DS_ALLOC_MULTI 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_multi \- Allocate a multi_array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B multi_array * ds_alloc_multi
+.sp
+(unsigned int num_arrays)
+.SH DESCRIPTION
+This routine will allocate a multi_array descriptor. The memory
+for the array of pointers to the array names, headers and data arrays is
+also allocated.
+.IP \fInum_arrays\fP 1i
+The number of independent general data structures arrays.
+.SH RETURN VALUE
+A pointer to the header on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

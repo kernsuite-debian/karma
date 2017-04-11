@@ -1,0 +1,42 @@
+.TH KWIN_PROTO_POSITION_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+kwin_PROTO_position_func \- Process a position event on a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_PROTO_position_func
+.sp
+(KPixCanvas canvas, int x, int y,
+unsigned int event_code, void *e_info,
+void **f_info)
+.SH DESCRIPTION
+Process a position event on a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas on which the event occurred.
+.IP \fIx\fP 1i
+The horizontal position of the event, relative to the canvas origin
+.IP \fIy\fP 1i
+The vertical position of the event, relative to the canvas origin.
+.IP \fIevent_code\fP 1i
+The arbitrary event code.
+.IP \fIe_info\fP 1i
+A pointer to arbitrary event information.
+.IP \fIf_info\fP 1i
+A pointer to an arbitrary function information pointer.
+.SH RETURN VALUE
+TRUE if the event was consumed, else FALSE indicating that
+the event is still to be processed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>G Quirks and Unexpected Behaviour</TITLE>
+<META NAME="description" CONTENT="G Quirks and Unexpected Behaviour">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html517" HREF="node21.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html515" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html509" HREF="node19.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html519" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html520" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html518" HREF="node21.html">H Undocumented Features</A>
+<B>Up:</B> <A NAME="tex2html516" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html510" HREF="node19.html">F Acknowledgements</A>
+<BR> <P>
+<H1><A NAME="SECTION002000000000000000000">G Quirks and Unexpected Behaviour</A></H1>
+<P>
+<A NAME="chapterquirks">&#160;</A><A NAME="2240">&#160;</A>
+<P>
+There are some operations that may not behave in the way you may
+expect, although they are operating according to design. These are
+``quirks'' rather than ``bugs''. Below is a list of quirks.
+<P>
+<UL>
+<LI> When loading a file and ``Reset Intensity Upon File Load'' is
+disabled, the intensity range of the previous image will be used.
+However, the intensity range that is used is the <EM>raw</EM> range, not
+the scaled range. Thus, with images which have different scaling
+parameters, the scaled intensity range will change.
+<LI> When moving between two images (such as when blinking, or when
+loading a new image), the display system attempts to retain the old
+image parameters (i.e. zoom box). What is retained are the corners of
+the zoom box measured in image pixel co-ordinates, not world
+co-ordinates.
+<LI> Co-ordinate positions start from 0, not 1.
+<P>
+</UL><BR> <HR>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

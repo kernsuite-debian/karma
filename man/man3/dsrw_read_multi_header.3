@@ -1,0 +1,31 @@
+.TH DSRW_READ_MULTI_HEADER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_read_multi_header \- Read the binary representation of a multi_array header.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B multi_array * dsrw_read_multi_header
+.sp
+(Channel channel)
+.SH DESCRIPTION
+This routine will read the binary representation of a
+multi_array general data structure header from a channel object. The
+various top-level packet descriptors, data and history are not read.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+A pointer to the multi array header on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,38 @@
+.TH GRAPH1D_ALLOCATE_COORDS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_allocate_coords \- Allocate co-ordinates for a viewable graph.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B flag graph1d_allocate_coords
+.sp
+(KViewableGraph vgraph, unsigned int num_coords,
+double **x, double **y)
+.SH DESCRIPTION
+Allocate co-ordinates for a viewable graph.
+.IP \fIvgraph\fP 1i
+The viewable graph.
+.IP \fInum_points\fP 1i
+The number of co-ordinate pairs to allocate.
+.IP \fIx\fP 1i
+The pointer to the array of horizontal values is written here. The
+space is automatically dealloated when the graph is destroyed.
+.IP \fIy\fP 1i
+The pointer to the array of vertical values is written here. The space
+is automatically dealloated when the graph is destroyed.
+.SH RETURN VALUE
+TRUE on success, else FALSE, indicating an allocation error.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

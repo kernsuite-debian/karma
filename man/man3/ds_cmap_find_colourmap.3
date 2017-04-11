@@ -1,0 +1,59 @@
+.TH DS_CMAP_FIND_COLOURMAP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_cmap_find_colourmap \- Search a Karma data structure for an instance of a colourmap.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned short * ds_cmap_find_colourmap
+.sp
+(packet_desc *top_pack_desc,
+char *top_packet, unsigned int *size,
+flag *reordering_done,
+CONST char *restr_names[],
+double *restr_values,
+unsigned int num_restr)
+.SH DESCRIPTION
+Search a Karma data structure for an instance of a colourmap.
+.IP \fItop_pack_desc\fP 1i
+The top level packet descriptor.
+.IP \fItop_packet\fP 1i
+The top level packet data.
+.IP \fIsize\fP 1i
+The size of the colourmap (number of colours) in the colourmap will
+be here.
+.IP \fIreordering_done\fP 1i
+The routine is tolerant of incorrect ordering of the
+intensity elements. If they are ordered incorrectly, the data will be
+re-ordered, and the value TRUE will be written here. If the data is not
+re-ordered, the value FALSE is written here. If this is NULL, then nothing
+is written here.
+.IP \fIrestr_names\fP 1i
+The array of pointers to restrictions names.
+.IP \fIrestr_values\fP 1i
+The array of restriction values.
+.IP \fInum_restr\fP 1i
+The number of restriction values.
+.SH RETURN VALUE
+A pointer to a colourmap on success, else NULL. The returned
+colourmap will contain <<*size>> contiguous packets which each contain
+first a red intensity, then a green and then a blue.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+NULL pointers may be passed for <<restr_names>> and <<restr_values>>
+and <<num_restr>> set to zero. In this case, the routine will only return a
+colourmap if there is only one instance of a colourmap in the entire data
+structure.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

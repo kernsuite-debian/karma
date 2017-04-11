@@ -1,0 +1,29 @@
+.TH DIR_OPEN 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dir_open \- Open a directory for reading (scanning).
+.SH SYNOPSIS
+.B #include <karma_dir.h>
+.sp
+.B KDir dir_open
+.sp
+(CONST char *dirname)
+.SH DESCRIPTION
+Open a directory for reading (scanning).
+.IP \fIdirname\fP 1i
+The directory name.
+.SH RETURN VALUE
+A KDir object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

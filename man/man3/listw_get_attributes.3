@@ -1,0 +1,33 @@
+.TH LISTW_GET_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+listw_get_attributes \- Get list widget attributes.
+.SH SYNOPSIS
+.B #include <karma_listw.h>
+.sp
+.B void listw_get_attributes
+.sp
+(KListWidget list, ...)
+.SH DESCRIPTION
+Get list widget attributes.
+.IP \fIlist\fP 1i
+The list widget.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pointer pairs. The list must be terminated with
+LISTW_ATT_END. See <-listw_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

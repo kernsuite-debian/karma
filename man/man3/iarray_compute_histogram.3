@@ -1,0 +1,53 @@
+.TH IARRAY_COMPUTE_HISTOGRAM 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_compute_histogram \- Compute a histogram of an "Intelligent Array".
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_compute_histogram
+.sp
+(iarray array, unsigned int conv_type,
+double min, double max, unsigned long num_bins,
+unsigned long *histogram_array,
+unsigned long *histogram_peak,
+unsigned long *histogram_mode)
+.SH DESCRIPTION
+Compute a histogram of an "Intelligent Array".
+.IP \fIarray\fP 1i
+The array.
+.IP \fIconv_type\fP 1i
+The conversion type to use for complex numbers. See
+<-ds_COMPLEX_CONVERSIONS-> for legal values. CONV_CtoR_ENVELOPE is not
+legal.
+.IP \fImin\fP 1i
+Data values below this will be ignored.
+.IP \fImax\fP 1i
+Data values above this will be ignored.
+.IP \fInum_bins\fP 1i
+The number of histogram bins.
+.IP \fIhistogram_array\fP 1i
+A pointer to the histogram array. The values in this
+array are updated, and hence must be initialised externally.
+.IP \fIhistogram_peak\fP 1i
+The peak of the histogram is written here. This value is
+updated, and hence must be externally initialised to 0.
+.IP \fIhistogram_mode\fP 1i
+The mode of the histogram (index value of the peak) will
+be written here. This value is updated, and hence must be externally
+initialised to 0.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

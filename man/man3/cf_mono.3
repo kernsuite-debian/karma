@@ -1,0 +1,45 @@
+.TH CF_MONO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+cf_mono \- Compute a greyscale colourmap.
+.SH SYNOPSIS
+.B #include <karma_cf.h>
+.sp
+.B void cf_mono
+.sp
+(unsigned int num_cells, unsigned short *reds,
+unsigned short *greens, unsigned short *blues,
+unsigned int stride, double x, double y, void *var_param)
+.SH DESCRIPTION
+Compute a greyscale colourmap.
+.IP \fInum_cells\fP 1i
+The number of colour cells to modify.
+.IP \fIreds\fP 1i
+The red intensity values. This may be NULL.
+.IP \fIgreens\fP 1i
+The green intensity values. This may be NULL.
+.IP \fIblues\fP 1i
+The blue intensity values. This may be NULL.
+.IP \fIstride\fP 1i
+The stride (in unsigned shorts) between intensity values.
+.IP \fIx\fP 1i
+A parameter used to compute the colour values, ranging from 0.0 to 1.0.
+.IP \fIy\fP 1i
+A parameter used to compute the colour values, ranging from 0.0 to 1.0.
+.IP \fIvar_param\fP 1i
+A parameter used to compute the colour values. Ignored.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

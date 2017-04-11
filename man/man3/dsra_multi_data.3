@@ -1,0 +1,36 @@
+.TH DSRA_MULTI_DATA 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsra_multi_data \- READ ASCII representation of data in a multi_array descriptor.
+.SH SYNOPSIS
+.B #include <karma_dsra.h>
+.sp
+.B flag dsra_multi_data
+.sp
+(Channel channel, multi_array *multi_desc)
+.SH DESCRIPTION
+READ ASCII representation of data in a multi_array descriptor.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor to store the data in. This is
+modified.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine will only allocate space for linked list as it reads
+them.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,32 @@
+.TH R_GET_DISPLAY_NUM_FROM_DISPLAY 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_display_num_from_display \- Get display number from a display string.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_get_display_num_from_display
+.sp
+(CONST char *display)
+.SH DESCRIPTION
+This routine will get the display number from a display string
+(following the X Windows system syntax for the DISPLAY environmental
+variable).
+.IP \fIdisplay\fP 1i
+The display string. If this is NULL, the display number defaults
+to 0.
+.SH RETURN VALUE
+The display number on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

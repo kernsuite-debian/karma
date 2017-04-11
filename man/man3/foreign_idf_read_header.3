@@ -1,0 +1,42 @@
+.TH FOREIGN_IDF_READ_HEADER 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_idf_read_header \- Read an IDF file header.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_idf_read_header
+.sp
+(Channel channel, flag data_alloc,
+flag sanitise, ...)
+.SH DESCRIPTION
+This routine will read the header of an IDF file from a channel.
+The data section is NOT read.
+.IP \fIchannel\fP 1i
+The channel to read from.
+.IP \fIdata_alloc\fP 1i
+If TRUE, the data space is allocated.
+.IP \fIsanitise\fP 1i
+If TRUE, IDF axes with length 1 are ignored. This is highly
+recommended.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_IDF_READ_HEADER_END. See <-foreign_ATT_IDF_READ_HEADER-> for a
+list of defined attributes.
+.SH RETURN VALUE
+A pointer to the multi_array data structure on success, else
+NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

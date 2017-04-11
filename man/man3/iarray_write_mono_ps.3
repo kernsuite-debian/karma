@@ -1,0 +1,47 @@
+.TH IARRAY_WRITE_MONO_PS 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_write_mono_ps \- Write an Intelligent Array as monochrome PostScript.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_write_mono_ps
+.sp
+(iarray image, PostScriptPage pspage,
+double xstart, double ystart,
+double xend, double yend, flag iscale)
+.SH DESCRIPTION
+This routine will convert a 2-dimensional Intelligent Array to
+monochrome PostScript. The routine does NOT write PostScript headers or
+tails.
+.IP \fIimage\fP 1i
+The Intelligent Array.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIxend\fP 1i
+The x ending point (scaled from 0.0 to 1.0).
+.IP \fIyend\fP 1i
+The y ending point (scaled from 0.0 to 1.0).
+.IP \fIiscale\fP 1i
+If FALSE and the input Intelligent Array is of type K_UBYTE the
+images values will be unscaled prior to PostScript conversion (0 = black,
+255 = white), otherwise (min = black, max = white).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

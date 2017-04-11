@@ -1,0 +1,34 @@
+.TH IARRAY_GET_COORDINATE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_coordinate \- Get a co-ordinate along a dimension.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B double iarray_get_coordinate
+.sp
+(iarray array, unsigned int dim_index,
+double coord_index)
+.SH DESCRIPTION
+Get a co-ordinate along a dimension.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIdim_index\fP 1i
+The dimension index.
+.IP \fIcoord_index\fP 1i
+The co-ordinate index.
+.SH RETURN VALUE
+The co-ordinate on success, else TOOBIG.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

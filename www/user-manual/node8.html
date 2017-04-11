@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>7 kslice_3d: slicing data cubes</TITLE>
+<META NAME="description" CONTENT="7 kslice_3d: slicing data cubes">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html373" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html371" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html365" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html375" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html376" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html374" HREF="node9.html">8 kshell: looking for </A>
+<B>Up:</B> <A NAME="tex2html372" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html366" HREF="node7.html">kpvslice: interactive position-velocity slicing</A>
+<BR> <P>
+<H1><A NAME="SECTION00800000000000000000">7 kslice_3d: slicing data cubes</A></H1>
+<P>
+<A NAME="chapterkslice3d">&#160;</A><A NAME="pubkslice3d">&#160;</A><A NAME="1694">&#160;</A>
+<P>
+The programme <B>&lt;kslice_3d&gt;</B> is the <B>Karma</B> version of an
+idea of Fran&#231;ois Viallefond (a program called <B>3view</B>).  Also
+<B>GIPSY</B> has an implementation of something very similar.  Because
+<B>Karma</B> is much more designed for this kind of work,
+<B>&lt;kslice_3d&gt;</B> is much faster than the other two versions.
+<P>
+The program shows 3 images in a window, being the data cube sliced
+along the principle planes.  The top left image is a <I>XY</I> image
+(so for a radio cube this would be a channel), the bottom image is
+<I>XZ</I> (so normally <IMG WIDTH=27 HEIGHT=17 ALIGN=MIDDLE ALT="tex2html_wrap_inline4900" SRC="img15.gif">) and the top right <I>ZY</I>
+(<IMG WIDTH=24 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline4902" SRC="img16.gif">).  With the mouse one can interactively change the planes
+that are shown.  If the mouse is in the <I>XY</I> image, the other two
+images are the <I>XZ</I> and the <I>ZY</I> image corresponding the the
+<I>(x,y)</I> position of the cursor.  Alternatively, if the mouse is in
+one of the two other images, the <I>XY</I> image shown is the image
+corresponding to the <I>Z</I>-coordinate of the mouse.
+<P>
+<B>&lt;kslice_3d&gt;</B> is fast enough (contrary to <B>3view</B> and
+<B>GIPSY</B>) that if you move the mouse while keeping the left button
+pressed, the images are updated real time.
+<P>
+Note that the volume rendering programme <A HREF="node6.html#chapterxray">xray</A> will
+automatically display a <B>&lt;kslice_3d&gt;</B> window so that you can
+slice through the cube as well as volume render it.
+<P>
+There are only a few buttons in <B>&lt;kslice_3d&gt;</B>:
+<P>
+<A NAME="1717">&#160;</A>
+<H1><A NAME="SECTION00810000000000000000">7.1 Precompute</A></H1>
+<P>
+If a cube is loaded, the images to display are not computed
+automatically.  If next you move the mouse, <B>&lt;kslice_3d&gt;</B> will
+have to compute the image that is has to display in real time.  This
+makes things a bit slow sometimes.  Clicking <B>Precompute</B> will
+make <B>&lt;kslice_3d&gt;</B> compute all the images it can display.  This
+takes a few seconds, but it makes the update of the images very fast.
+<P>
+Note that to run smoothly, <B>&lt;kslice_3d&gt;</B> requires quite a bit
+of memory, certainly if you expand the images. If this gives problems,
+try running it sitting in front of <B>phoenix</B>. Note that the memory
+requirement is on the machine you are sitting in front of, not the
+machine that you are running the programme on (although for best
+performance they should be the same).
+<P>
+<A NAME="1724">&#160;</A>
+<H1><A NAME="SECTION00820000000000000000">7.2 Magnifications</A></H1>
+<P>
+There are three sliders that control the size of the three images. If
+you expand too much, <B>&lt;kslice_3d&gt;</B> will not display anything
+(i.e. you will see a blank window). Just reduce your expansion factor
+appropriately until the display re-appears.
+<P>
+If you want to make the images larger than the window would allow, you
+can resize the window (drag on the bottom right corner) and after this
+increase the magnifications.
+<P>
+<HR><A NAME="tex2html373" HREF="node9.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html371" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html365" HREF="node7.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html375" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html376" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html374" HREF="node9.html">8 kshell: looking for </A>
+<B>Up:</B> <A NAME="tex2html372" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html366" HREF="node7.html">kpvslice: interactive position-velocity slicing</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

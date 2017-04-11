@@ -1,0 +1,32 @@
+.TH R_CHECK_FILE_VARIANTS 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_check_file_variants \- Test for variants of a filename.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_check_file_variants
+.sp
+(CONST char *path, CONST char **extensions)
+.SH DESCRIPTION
+Test for variants of a filename.
+.IP \fIpath\fP 1i
+The base pathname to check.
+.IP \fIextensions\fP 1i
+The list of extensions to append to <<path>>. This must be
+terminated with a NULL pointer.
+.SH RETURN VALUE
+TRUE if one of the paths exists and is a file, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

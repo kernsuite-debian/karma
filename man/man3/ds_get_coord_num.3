@@ -1,0 +1,36 @@
+.TH DS_GET_COORD_NUM 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_coord_num \- Get index of a co-ordinate along a dimension.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned long ds_get_coord_num
+.sp
+(CONST dim_desc *dimension, double coordinate,
+unsigned int bias)
+.SH DESCRIPTION
+Get index of a co-ordinate along a dimension.
+.IP \fIdimension\fP 1i
+The dimension descriptor.
+.IP \fIcoordinate\fP 1i
+The co-ordinate to find.
+.IP \fIbias\fP 1i
+This specifies which co-ordinate index to pick when the co-ordinate
+lies between two dimension co-ordinates. See <-ds_SEARCH_BIASES-> for legal
+values.
+.SH RETURN VALUE
+The index number of the co-ordinate found.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

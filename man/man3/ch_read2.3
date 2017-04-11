@@ -1,0 +1,45 @@
+.TH CH_READ2 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_read2 \- Read from a channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B uaddr ch_read2
+.sp
+(Channel channel, char *buffer, CONST char **newbuf,
+unsigned char alignment, uaddr length)
+.SH DESCRIPTION
+This routine will read a number of bytes from a channel and
+places them into a buffer.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIbuffer\fP 1i
+A suggested buffer to write the data into.
+.IP \fInewbuf\fP 1i
+The buffer pointer used is written here. This may be a read-only
+buffer. If this is NULL, the suggested <<buffer>> is always used.
+.IP \fIalignment\fP 1i
+The number of bytes the buffer must be aligned to.
+.IP \fIlength\fP 1i
+The number of bytes to write into the buffer.
+.SH RETURN VALUE
+The number of bytes read.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the channel is a connection and the number of bytes readable from
+the connection is equal to or more than <<length>> the routine will NOT
+block.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

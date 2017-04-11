@@ -1,0 +1,44 @@
+.TH M_ALLOC_NO_CHECKS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_alloc_no_checks \- Allocate Virtual Memory.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void * m_alloc_no_checks
+.sp
+(uaddr size)
+.SH DESCRIPTION
+Allocate Virtual Memory.
+.IP \fIsize\fP 1i
+The number of bytes to allocate.
+.SH RETURN VALUE
+A pointer to the memory on success, else NULL.
+.SH Multi-threading Level
+Safe under POSIX threads.
+.SH NOTES
+Periodic memory bounds checks are not performed.
+.sp
+If the environment variable "M_ALLOC_DEBUG" is set to "TRUE" then
+the routine will print allocation debugging information.
+.sp
+If the environment variable "M_ALLOC_FAST" is set to "TRUE" then NO
+periodic integrity check of memory is performed and no debugging
+.sp
+The "M_ALLOC_MAX_CHECK_INTERVAL" environment variable controls the
+maximum interval between integrity checks.
+.sp
+If the environment variable "M_ALLOC_ABORT" is set to "TRUE" then
+any memory error will cause the programme to abort.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

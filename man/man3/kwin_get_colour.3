@@ -1,0 +1,49 @@
+.TH KWIN_GET_COLOUR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_get_colour \- Get (possibly allocate) a colourcell for a canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_get_colour
+.sp
+(KPixCanvas canvas, CONST char *colourname,
+unsigned long *pixel_value, unsigned short *red,
+unsigned short *green, unsigned short *blue)
+.SH DESCRIPTION
+Get (possibly allocate) a colourcell for a canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIcolourname\fP 1i
+The name of the colour to get.
+.IP \fIpixel_value\fP 1i
+The pixel value will be written here.
+.IP \fIred\fP 1i
+The red intensity in the hardware colourmap for the pixel will be
+written here. If this is NULL, nothing is written here.
+.IP \fIgreen\fP 1i
+The green intensity in the hardware colourmap for the pixel will be
+written here. If this is NULL, nothing is written here.
+.IP \fIblue\fP 1i
+The blue intensity in the hardware colourmap for the pixel will be
+written here. If this is NULL, nothing is written here.
+.SH RETURN VALUE
+TRUE if the colourcell was allocated, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The pixel value is valid ONLY for this canvas. ALSO: the pixel value
+becomes invalid EVERY time the canvas is refreshed/ resized. If the canvas
+is refreshed/ resized, this routine MUST be called again.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

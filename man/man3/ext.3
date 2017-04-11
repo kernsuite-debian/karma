@@ -1,0 +1,37 @@
+.TH EXT 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+ext \- Routines for loading shared object extensions
+.SH PURPOSE
+These routines are meant to support loading of shared object extensions.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIext_call\fP 1i
+Call an extension function.
+.SH TABLE ext_ENVIRONMENT
+List of environment variables
+
+.TS
+l l
+_ _
+l l.
+Variable                     Meaning
+
+EXT_VERBOSE                  Enable verbose output if defined
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

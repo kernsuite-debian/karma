@@ -1,0 +1,30 @@
+.TH ST_DUP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_dup \- Make a duplicate copy of a string.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B char * st_dup
+.sp
+(CONST char *input)
+.SH DESCRIPTION
+Make a duplicate copy of a string.
+.IP \fIstring\fP 1i
+The input string.
+.SH RETURN VALUE
+A pointer to a copy of the string (allocated using <-m_alloc->)
+on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

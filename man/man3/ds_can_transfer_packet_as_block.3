@@ -1,0 +1,32 @@
+.TH DS_CAN_TRANSFER_PACKET_AS_BLOCK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_can_transfer_packet_as_block \- Test if a packet can be transferred in one block.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_can_transfer_packet_as_block
+.sp
+(CONST packet_desc *pack_desc)
+.SH DESCRIPTION
+This routine will determine if a packet can be transferred as a
+single block of data (i.e. no conversion between host and network format is
+needed).
+.IP \fIpack_desc\fP 1i
+A pointer to the packet descriptor.
+.SH RETURN VALUE
+TRUE if the packet may be transferred as a single block, else
+FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

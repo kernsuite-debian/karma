@@ -1,0 +1,43 @@
+.TH KWIN_CLEAR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_clear \- Clear a rectangular portion of a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_clear
+.sp
+(KPixCanvas canvas, int x, int y, int width, int height)
+.SH DESCRIPTION
+Clear a rectangular portion of a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIx\fP 1i
+The horizontal offset of the rectangle.
+.IP \fIy\fP 1i
+The vertical offset of the rectangle.
+.IP \fIwidth\fP 1i
+The width of the rectangle. If this is less than 0 the pixel canvas
+is cleared to its right edge.
+.IP \fIheight\fP 1i
+The height of the rectangle. If this is less than 0 the pixel
+canvas is cleared to its bottom edge.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+To clear the entire canvas, the following should be used:
+kwin_clear (canvas, 0, 0, -1, -1);
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

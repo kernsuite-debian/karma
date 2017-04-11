@@ -1,0 +1,37 @@
+.TH DISPDATA_REGISTER_DATA_CREATE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_register_data_create_func \- Register a function to be called when a dataobject is created.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KCallbackFunc dispdata_register_data_create_func
+.sp
+(KDisplayDataClass dataclass,
+void (*func)
+(void *info,
+KDisplayDataObject data),
+void *info)
+.SH DESCRIPTION
+Register a function to be called when a dataobject is created.
+.IP \fIdataclass\fP 1i
+The KDisplayDataClass the data belong to.
+.IP \fIfunc\fP 1i
+The function that is called when a new dataobject is created.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer passed to <<func>>.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,41 @@
+.TH PSW_SET_CLIP_AREAS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+psw_set_clip_areas \- Set the clip areas.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B void psw_set_clip_areas
+.sp
+(PostScriptPage pspage, unsigned int num_areas,
+CONST float *x0, CONST float *y0,
+CONST float *x1, CONST float *y1)
+.SH DESCRIPTION
+Set the clip areas.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fInum_areas\fP 1i
+The number of clip areas. If 0, there are no clip areas.
+.IP \fIx0\fP 1i
+The first horizontal co-ordinate array.
+.IP \fIy0\fP 1i
+The first vertical co-ordinate array.
+.IP \fIx1\fP 1i
+The second horizontal co-ordinate array.
+.IP \fIy1\fP 1i
+The second vertical co-ordinate array.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

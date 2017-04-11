@@ -1,0 +1,42 @@
+.TH DS_CONVERT_ATOMIC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_convert_atomic \- Convert an atomic datum to a double precision value.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B double ds_convert_atomic
+.sp
+(CONST char *datum, unsigned int datum_type,
+double *real_out, double *imag_out)
+.SH DESCRIPTION
+Convert an atomic datum to a double precision value.
+.IP \fIdatum\fP 1i
+The datum to be converted.
+.IP \fIdatum_type\fP 1i
+The type of the datum. See <-ds_KARMA_DATA_TYPES-> for a list
+of legal values. The following data types are not convertible, and the
+routine will return the value TOOBIG:  NONE, K_ARRAY, LISTP, MULTI_ARRAY.
+.IP \fIreal_out\fP 1i
+The real component of the data is written here. If this is NULL,
+nothing is written here. This must lie on a <<double>> boundary.
+.IP \fIimag_out\fP 1i
+The imaginary component of the data is written here. If this is
+NULL, nothing is written here. This must lie on a <<double>> boundary. For
+a real value, 0.0 is written.
+.SH RETURN VALUE
+The absolute magnitude of the converted value on success,
+else TOOBIG.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

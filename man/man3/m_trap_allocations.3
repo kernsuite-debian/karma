@@ -1,0 +1,31 @@
+.TH M_TRAP_ALLOCATIONS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_trap_allocations \- Trap memory allocations within a certain range and abort.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_trap_allocations
+.sp
+(uaddr min, uaddr max)
+.SH DESCRIPTION
+Trap memory allocations within a certain range and abort.
+.IP \fImin\fP 1i
+Allocations less than this size will not be trapped.
+.IP \fImax\fP 1i
+Allocations equal to or greater than this size will not be trapped.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

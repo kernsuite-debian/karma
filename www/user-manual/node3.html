@@ -1,0 +1,1232 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>2 Common Features</TITLE>
+<META NAME="description" CONTENT="2 Common Features">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html313" HREF="node4.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html311" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html305" HREF="node2.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html315" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html316" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html314" HREF="node4.html">3 Viewing and Comparing </A>
+<B>Up:</B> <A NAME="tex2html312" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html306" HREF="node2.html">1 Introduction</A>
+<BR> <P>
+<H1><A NAME="SECTION00300000000000000000">2 Common Features</A></H1>
+<P>
+<A NAME="chaptercommonfeatures">&#160;</A><A NAME="pubcommonfeatures">&#160;</A>
+<A NAME="311">&#160;</A>
+<P>
+Some features of different programmes are the same. You may also
+notice that parts of one programme may also be available as a separate
+programme or also appear in other programmes. This is due to the
+modular approach provided by <B>Karma</B>. Most of the window-based
+control panels you see are in fact ``widgets'', and these are reused
+many times in the same programme or in different programmes.
+<P>
+Below are some hotlinks to the sections in this chapter.
+<P>
+<UL>
+<LI> <A HREF="node3.html#publoadingdata">Loading Data</A>
+<LI> <A HREF="node3.html#pubcolourcontrol">Intensity Scaling</A>
+<LI> <A HREF="node3.html#pubmovies">Sequences of Images</A>
+<LI> <A HREF="node3.html#pubhardcopies">Hardcopies</A>
+<LI> <A HREF="node3.html#sectionexportingdata">Exporting Data</A>
+<LI> <A HREF="node3.html#pubzooming">Zooming</A>
+<LI> <A HREF="node3.html#pubresizingdisplays">Resizing/autoscaling</A>
+<LI> <A HREF="node3.html#pubaxislabels">Axis Labels</A>
+<LI> <A HREF="node3.html#pubmagnifier">Magnifying Glass</A>
+<LI> <A HREF="node3.html#pubpanner">Panner</A>
+<LI> <A HREF="node3.html#pubprofiles">Spectrum Profiles</A>
+<LI> <A HREF="node3.html#pubimagestatistics">Image Statistics</A>
+<LI> <A HREF="node3.html#pubviewingheaders">Viewing Header Information</A>
+<LI> <A HREF="node3.html#pubfreezingevents">Freezing Events</A>
+<LI> <A HREF="node3.html#ImageDisplay">Common Image Display Features</A>
+<LI> <A HREF="node3.html#MomentGenerator">Generating Moment Maps</A>
+<LI> <A HREF="node3.html#sectioncursorreadout">Cursor Readout</A>
+<LI> <A HREF="node3.html#sectionguicommandlineswitches">GUI Command-line Switches</A>
+<LI> <A HREF="node3.html#OverlayEditorControl">Drawing Overlays</A>
+<LI> <A HREF="node3.html#sectionloadingoverlays">Loading Overlays</A>
+<LI> <A HREF="node3.html#ImageEditorControl">Editing Images</A>
+</UL><H1><A NAME="SECTION00310000000000000000">2.1 Loading Data</A></H1>
+<A NAME="sectionloadingdata">&#160;</A><A NAME="publoadingdata">&#160;</A>
+<A NAME="360">&#160;</A>
+<P>
+All programmes have the same interface to load data. Clicking (left) on
+<B>Load</B> or <B>File</B> or whatever it is called, will show a window
+with the files that you can load.  This will be all files with
+extension <TT>.kf</TT>, <TT>.fts</TT> or <TT>.fits</TT>.  Also subdirectories
+and the parent directory are shown.  Clicking on these changes the
+directory. If a directory is in fact a <B>Miriad</B> image dataset,
+clicking on it will load that dataset.  Note that <B>GIPSY</B> files
+consist of two files, one with a <TT>.descr</TT> extension and another
+with a <TT>.image</TT> extension. Most of the software will simply
+display a <TT>.gipsy</TT> file instead, since that makes the directory
+browser look less cluttered.
+<P>
+The <A NAME="tex2html15" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget provides the file browsing
+interface. 
+<A NAME="Filepopup">&#160;</A><A NAME="373">&#160;</A>
+This widget allows the user to browse a directory tree and select
+files. All the files and directories the application wants the user to
+see are displayed. Any one of these may be selected by clicking the
+left mouse button over the filename. The ``D'' character is used to
+denote directories, while the ``F'' character is used to denote
+ordinary files. Above the list of files and directories is shown the
+current directory for the browser. If you edit the text and press
+return the current directory is changed appropriately. The ``<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">''
+notation is supported, as well as other simple Bourne Shell-like
+expansions of environment variables using the <TT>$variable</TT>, <TT>
+${variable}</TT> and <TT>
+${variable:-word}</TT> notations. The following controls are provided:
+<P>
+<UL>
+<LI> <B>close</B> close the window
+<LI> <B>rescan</B> rescan the directory in case a new file has
+appeared
+<LI> <B>pin</B> enable to force the fileselector window to stay
+``pinned'' up even if files are selected. The default is to close the
+window once a file is selected
+<LI> <B>new</B> create a new file browser. The current directory will
+be independent of the original file browser
+<LI> <B>filter</B> if enabled, selected files are not automatically
+loaded, rather, the <A NAME="tex2html13" HREF="../lib/LoadAndDecimate.html"><B>LoadAndDecimate</B></A> widget (section
+<A HREF="node3.html#LoadAndDecimate">2.1.1</A>) is displayed
+<P>
+<A NAME="385">&#160;</A>
+<LI> <B>partial</B> if enabled, support loading of partial files. This
+is useful if you want to see a preview of a dataset that is currently
+being written by another process. See the section on
+<A NAME="tex2html14" HREF="../user-manual/partialdata.html#pubpartialdata">partialdata</A> data in the Karma User Manual
+<LI> <B>writable</B> if enabled, the file may be modified later
+(i.e. by the image editing facility)
+<LI> <B>pull</B> change the directory in this browser to match the
+most recent directory change in <EM>any</EM> browser (i.e. pull the most
+recent directory change)
+<LI> <B>push</B> change the directory in all other browsers to match
+the directory for this browser (i.e. push this directory to others)
+<P>
+</UL>
+<P>
+Convenience buttons for jumping to commonly-used directories may be
+configured by the local Karma administrator or by the user. The
+following files are searched:
+<UL>
+<LI> <TT>$KARMABASE/share/browser-dirbuttons</TT>
+<LI> <TT>$KARMABASE/site/share/browser-dirbuttons</TT>
+<LI> <TT>$HOME/.karma/browser-dirbuttons</TT>
+</UL>
+<P>
+in that order. The format of this file is a sequence of ASCII lines,
+with each line containing the name of the button followed by the
+directory to jump to. For example:
+<PRE>survey  /nfs/survey
+mydata  /nfs/data1/users/fred</PRE>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/Filepopup.gif" target=image_window>here</a>.
+<P>
+<H2><A NAME="SECTION00311000000000000000">2.1.1 Subsetting/Decimation of Array Data</A></H2>
+<P>
+<A NAME="399">&#160;</A><A NAME="400">&#160;</A>
+<P>
+Sometimes, your image or datacube is too big to handle efficiently. If
+you have a file which is much bigger than your physical memory (RAM),
+then most of the visualisation tools will run slower than a lame
+dog. It generally does not make sense to visualise a dataset bigger
+than RAM. To get around this, the visualisation tools provide a
+mechanism whereby you can decimate a 2-dimensional (image) or
+3-dimensional (cube) array. Decimation involves taking every <TT>N</TT>
+values along an axis and averaging them together to produce a single
+output value, then jumping to the next group of <TT>N</TT> input
+values. If you use a decimation factor of 2 for each axis, the output
+cube is 8 times smaller (4 times smaller for an image). You can also
+extract a subcube, if you are only interested in a small section of
+the data.
+<P>
+Note that the decimator allocates some temporary 2-dimensional
+buffers, so when decimating a 2-dimensional array, the memory
+requirements may be significantly higher than reported for the output array.
+<P>
+The <A NAME="tex2html16" HREF="../lib/LoadAndDecimate.html"><B>LoadAndDecimate</B></A> widget provides the decimation
+interface. 
+<A NAME="LoadAndDecimate">&#160;</A><A NAME="405">&#160;</A>
+This widget controls the process of loading and decimating a
+datacube. The user can skip/average data values along each dimension
+as well as extract a subcube. The following controls are provided:
+<P>
+<UL>
+<LI> <B>Cancel</B> close the window
+<LI> <B>Load</B> load the file using the specified parameters
+<LI> <B>Abort</B> abort the loading process
+<LI> <B>Auto Save</B> if enabled, the decimated subcube is
+automatically saved to disc
+<LI> <B>X Start</B> select the starting position of the subcube in
+the X dimension
+<LI> <B>Y Start</B> select the starting position of the subcube in
+the Y dimension
+<LI> <B>Z Start</B> select the starting position of the subcube in
+the Z dimension
+<LI> <B>X End</B> select the end position of the subcube in the X
+dimension
+<LI> <B>Y End</B> select the end position of the subcube in the Y
+dimension
+<LI> <B>Z End</B> select the end position of the subcube in the Z
+dimension
+<LI> <B>X Skip</B> select the skip factor along the X dimension. The
+default value of 2 will make every 2 input values along X averaged
+together
+<LI> <B>Y Skip</B> select the skip factor along the Y dimension. The
+default value of 2 will make every 2 input values along Y averaged
+together
+<LI> <B>Z Skip</B> select the skip factor along the Z dimension. The
+default value of 2 will make every 2 input values along Z averaged
+together
+<LI> <B>Output filename</B> change this to select the name of the
+file which is saved to disc
+<P>
+</UL>
+<P>
+Under the first row of buttons, the size of the file (in data
+elements) is displayed and the memory size required by the decimated
+subcube is displayed. Underneath these, the subcube bottom-left corner
+(BLC) and top-right corner (TRC) co-ordinates are displayed, and also
+the pixel increment (INC).
+<P>
+As you change the slider parameters, the memory requirement changes,
+as do the BLC, TRC and INC values, and these are reported to you. It
+is wise to not use more than about half the physical RAM (Random
+Access Memory) available in your machine.
+<P>
+As the file is loaded and decimated, a simple progress meter shows you
+how much longer you have to wait. Remember: you can always abort.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/LoadAndDecimate.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00320000000000000000">2.2 Intensity Scaling</A></H1>
+<A NAME="sectionintensityscaling">&#160;</A>
+<A NAME="pubcolourcontrol">&#160;</A>
+<A NAME="425">&#160;</A><A NAME="426">&#160;</A>
+<P>
+With many images that you display, you will want to change the
+colourtable used. The colourtable control appears after selecting the
+<B>PseudoColour (8 bit)</B> option in the <B>Intensity</B> menu in most
+tools.
+<P>
+The <A NAME="tex2html17" HREF="../lib/Cmapwinpopup.html"><B>Cmapwinpopup</B></A> widget provides the colourtable control
+interface. 
+<A NAME="Cmapwinpopup">&#160;</A><A NAME="431">&#160;</A>
+This widget controls a colourtable for a ``PseudoColour'' display
+canvas. Data values are used to index into a table of colours. This is
+typically used for ``false colour'' image display. The following
+controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> close the window
+<LI> <B>Reverse</B> this reverses the colour table; the colours of
+the minimum and maximum are swapped
+<LI> <B>Invert</B> this inverts every colour (e.g. white becomes
+black, green becomes purple, blue becomes yellow and so on)
+<LI> <B>Save</B> this brings up a popup window which allows you to
+save a colourtable
+<LI> <B>Load</B> this brings up a file browser popup which allows you
+to load a previously saved colourtable
+<P>
+</UL>
+<P>
+You can manipulate the colours in the colourtable by moving the round
+dot in the big square box (left mouse button). Usually moving the dot
+horizontally changes the apparent position of the colours, while
+moving it vertically changes the range of colours.
+<P>
+There are many ``colour functions'' available to set the colourmap,
+the default one being ``Greyscale1''. Some colour functions produce
+smoothly-varying colourtables, while others have sharp boundaries.
+<P>
+A final way of manipulating the colourtable is provided by the <B>
+Red Scale</B>, <B>Green Scale</B> and <B>Blue Scale</B> sliders. With these
+you can turn down the amount of each primary colour for all the
+colours in the colourtable.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/Cmapwinpopup.gif" target=image_window>here</a>.
+<P>
+<A NAME="442">&#160;</A>
+In many cases you will want to change the intensity scale in an
+image. This may be because the image has a very large dynamic range or
+has a few ``outlier'' values, and the control provided by the
+colourtable is inadequate. Most programmes have an <B>Intensity</B>
+menu with a selection named <B>IScale for Dataset</B> which will pop up
+a <A NAME="tex2html18" HREF="../lib/Dataclip.html"><B>Dataclip</B></A> widget.
+<P>
+<A NAME="Dataclip">&#160;</A><A NAME="447">&#160;</A>
+This widget allows the user to specify a number of data ``regions''
+(ranges). It it most often used to give control over a single region,
+so that an intensity range may be specified. The widget displays a
+histogram of the data values in the array, with the vertical axis
+being logarithmic. The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> close the window
+<LI> <B>Blank</B> enable to blank data outside specified region (not
+all applications will show this toggle)
+<LI> <B>Zoom</B> zoom the histogram display to the range of the
+current region
+<LI> <B>Unzoom</B> unzoom the histogram display to the full range of
+the data
+<LI> <B>Apply</B> apply any changes made to the regions (most
+applications will then rescale and display their main image)
+<LI> <B>Auto Apply</B> enable this to automatically apply every
+change as they are made
+<LI> <B>Subset</B> enable this to use only a subset of the input
+data. This will speed up the histogram computation, and may avoid
+unwanted outlier values
+<LI> <B>Full Range</B> set the region to the full range of the data
+<LI> <B>95%</B> set the region to clip to the inner 95% of the data
+values (i.e. clip the lower 5% and upper 5% of the data
+values). This is very handy when your data contains ``outliers''
+(small numbers of data values which lie far away from the real data)
+<LI> <B>98%</B> set the region to clip to the inner 98% of the data
+values
+<LI> <B>99%</B> set the region to clip to the inner 99% of the data
+values
+<LI> <B>99.5%</B> set the region to clip to the inner 99.5% of the
+data values
+<LI> <B>99.9%</B> set the region to clip to the inner 99.9% of the
+data values
+<LI> <B>99.99%</B> set the region to clip to the inner 99.99% of the
+data values
+<LI> <B>Save</B> save a new file which has been clipped to the
+specified range
+<LI> <B>Output Type Menu</B> change the output type of the array to
+save (not all applications will show this menu)
+<LI> <B>Filename string</B> the name of the file which will be
+saved. This may be changed prior to saving
+<P>
+</UL>
+<P>
+If you click with the left mouse button in the histogram display, you
+define the lower boundary of a region. If no region exists, one is
+created. If you then click with the right mouse button, the upper
+boundary is defined. Once the lower and upper boundaries are defined,
+you will see two vertical lines depicting the boundaries, with two
+diagonal lines joining them. You will also see a circle, the height of
+which indicates the width of the region relative to the width of the
+entire histogram. If you click with the middle mouse button, the
+horizontal cursor position will control the midpoint of the region
+(i.e. change the lower and upper boundaries at the same time), and the
+vertical cursor position changes the width of the region. You can drag
+any of the three mouse buttons to see things continuously change.
+<P>
+If you have not yet defined a region, you may first click with the
+right button to define the upper boundary. The lower boundary is
+automatically set to the data minimum. This is a convenience facility
+when you want to set the lower boundary to the data minimum and set
+the upper boundary manually. You can get the same effect by pressing
+<B>Full Range</B> first and then clicking with the right button.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/Dataclip.gif" target=image_window>here</a>.
+<P>
+You can also change the intensity control policy by selecting the <B>
+Intensity Policy</B> option in the <B>Intensity</B> menu. This will pop up
+an <A NAME="tex2html19" HREF="../lib/IntensityPolicy.html"><B>IntensityPolicy</B></A> widget.
+<P>
+<A NAME="IntensityPolicy">&#160;</A><A NAME="472">&#160;</A>
+This widget controls the intensity policy to be used for displaying
+image data on a drawing canvas. The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Apply</B> apply control changes and refresh the window
+<LI> <B>Auto Refresh</B> if enabled, each control change is
+automatically applied and the window refreshed
+<LI> <B>Auto Intensity Scale</B> if enabled, the intensity range
+of the (sub)image being viewed is mapped onto the colourmap, otherwise
+the intensity range of the entire image/movie is mapped onto the
+colourmap
+<A NAME="478">&#160;</A>
+<LI> <B>Reset Intensity Upon File Load</B> if enabled, the intensity
+scale is reset when a new dataset is loaded (it is reset to the full
+data range). If disabled, the intensity scale is not changed on file
+load
+<LI> <B>Intensity Scale Menu</B> this menu allows you to change
+between different intensity scales. By default, the intensity scale is
+linear, but you can select a logarithmic intensity scale or a
+square-root intensity scale. If you are using a logarithmic intensity
+scale, you can set the <B>Log Cycles</B> value to control the
+visible dynamic range in powers of 10
+<P>
+</UL>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/IntensityPolicy.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00330000000000000000">2.3 Sequences of Images</A></H1>
+<A NAME="pubmovies">&#160;</A>
+<A NAME="485">&#160;</A>
+<P>
+If you load a datacube into the <B>&lt;kvis&gt;</B> programme, you may
+wish to play it as a movie (sequence of images). A window to control
+this sequence is under <B>View-&gt;Animate</B>.
+<P>
+The <A NAME="tex2html20" HREF="../lib/AnimateControl.html"><B>AnimateControl</B></A> widget provides the animation control
+interface. 
+<A NAME="AnimateControl">&#160;</A><A NAME="490">&#160;</A>
+This widget controls movie loops. It allows the user to control the
+speed and direction of movies, as well as the ability to skip
+frames. The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> close the window
+<LI> <B>Previous Frame</B> show the previous frame
+<LI> <B>Next Frame</B> show the next frame
+<LI> <B>Start Movie</B> start the movie
+<LI> <B>Stop Movie</B> stop the movie
+<LI> <B>Sync</B> wait for each frame to be drawn before sending the
+next draw request. Normally, this is enabled. You can make movies run
+a little bit faster (not much) by disabling this, but you run the risk
+of developing a backlog of display requests in the display
+machinary. A large backlog will make the interactive response
+extremely poor
+<LI> <B>Spin Mode</B> you can select forward or backward spin, or
+alternatively spin forwards-&gt;backwards-&gt;forwards-&gt;...
+<LI> <B>Anti Flicker</B><A NAME="500">&#160;</A> remove the flicker
+observed when overlays (i.e. contours and/or annotations) and/or axis
+labels are shown. This is normally disabled because it slows down
+movie playing and interactive display updates. Also, flicker is only
+noticeable under some conditions (complex overlays and/or slow display
+hardware)
+<LI> <B>Frame Interval</B> the time interval between between frame
+draws. A low interval will give fast movies
+<LI> <B>Skip Factor</B> allows you to skip frames. A skip factor of 2
+would skip every second frame
+<LI> <B>Goto Frame</B> jump to the frame number shown in the <B>
+Current Frame</B> control
+<LI> <B>Current Frame</B> the current frame number
+<LI> <B>Starting Frame</B> the starting frame number in the movie
+loop
+<LI> <B>End Frame</B> the end frame number in the movie loop
+<P>
+</UL>
+<P>
+You can also step through the cube by clicking (left) for the previous
+frame or click (right) for the next frame in the black rectangle which
+appears below the <B>Goto Frame</B> button. In addition, you can click
+(middle) and drag in this black rectangle, allowing you to dynamically
+slide through the movie.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/AnimateControl.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00340000000000000000">2.4 Hardcopies</A></H1>
+<A NAME="pubhardcopies">&#160;</A>
+<A NAME="512">&#160;</A><A NAME="513">&#160;</A>
+<A NAME="514">&#160;</A>
+<P>
+To make a PostPcript hardcopy of the display, click on the menu button
+<B>Export</B> in the visualisation tools and select <B>
+PostScript</B>. This will display the <A NAME="tex2html21" HREF="../lib/Postscript.html"><B>Postscript</B></A>
+widget. 
+<A NAME="Postscript">&#160;</A><A NAME="519">&#160;</A><A NAME="520">&#160;</A>
+This widget provides controls for generating PostScript hardcopy. It
+supports different orientations and trays and allows you to queue
+directly to a printer. The following controls are available:
+<P>
+<UL>
+<LI> <B>close</B> this will close the window
+<LI> <B>save .ps</B> save a PostScript file
+<LI> <B>save .eps</B> save an Encapsulated PostScript file
+<LI> <B>print</B> queue directly to a printer
+<LI> <B>Tray Menu</B> you can choose between default, paper or
+transparency trays
+<LI> <B>Size Menu</B> you can choose between a variety of media sizes
+(A3, A4, A5, letter and so on). The ``<TT>A4/letter</TT>'' size will fit
+on both A4 and letter size media. If you select ``<TT>user defined</TT>''
+then you can define the bounding box using the offset and size
+controls described below. The default is taken from the ``<TT>
+PAPER_SIZE</TT>'' environment variable
+<LI> <B>Keep Aspect</B> if enabled, screen pixels will always be drawn
+square in the PostScript output
+<LI> <B>Orientation Menu</B> you can choose between portrait and
+landscape orientation, or you can let the choice be <EM>automatic</EM> so
+that a best fit is made (e.g. a display window that is much wider than
+it is high would be displayed in landscape mode on A4 size media)
+<LI> <B>hoffset</B> controls the horizontal offset of the output
+<LI> <B>voffset</B> controls the vertical offset of the output
+<LI> <B>hsize</B> controls the horizontal size of the output
+<LI> <B>vsize</B> controls the vertical size of the output
+<LI> <B>Auto Increment</B> when enabled, existing PostScript files
+are not overwritten, rather, the outfile filename has an incrementing
+sequence number added to it
+<LI> <B>Lock Filename</B> when enabled, the application will never
+automatically change the suggested output filename
+<LI> <B>Output file</B> controls the basename of the output file
+<LI> <B>Printer queue</B> controls which printer queue to print
+to. The default is taken from the ``<TT>PRINTER</TT>'' environment
+variable
+<P>
+</UL>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/Postscript.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00350000000000000000">2.5 Exporting Data</A></H1>
+<A NAME="sectionexportingdata">&#160;</A>
+<A NAME="546">&#160;</A>
+<P>
+To save data you are looking at, click(left) and hold the <B>Export</B>
+button. This will show the <A NAME="tex2html23" HREF="../lib/ExportMenu.html"><B>ExportMenu</B></A> widget.
+<P>
+<A NAME="ExportMenu">&#160;</A><A NAME="550">&#160;</A><A NAME="551">&#160;</A>
+This widget allows you to export the currently displayed data to some
+other format. The following options are available:
+<P>
+<UL>
+<LI> <B>PostScript</B> generate hardcopy output of the contents of
+the drawing canvas. This will pop up the <A NAME="tex2html22" HREF="../lib/Postscript.html"><B>Postscript</B></A> widget
+(section <A HREF="node3.html#Postscript">2.4</A>)
+<LI> <B>SunRasterfile</B> export the currently viewed image to Sun
+Rasterfile format
+<LI> <B>PPM Data Image</B> export the currently viewed image data to
+PPM format. Non-image data (i.e. axis labels and annotations) are not
+exported. The output is at the resolution of the image data
+<LI> <B>PPM Data Movie</B> export the currently viewed cube data to
+PPM format, similar to <TT>PPM Data Image</TT>. One PPM file is written
+for each image along the unseen axis
+<LI> <B>PPM Data Window</B> export the contents of the window to PPM
+format. Non-image data (i.e. axis labels and annotations) are also
+exported. The output is at the resolution of the window, and yields
+higher quality than using a separate screen-capture tool
+<LI> <B>Karma (whole dataset)</B> export the currently viewed dataset
+to Karma format
+<LI> <B>FITS (whole dataset)</B> export the currently viewed dataset
+to FITS format
+<LI> <B>Miriad (whole dataset)</B> export the currently viewed dataset
+to Miriad Image format
+<LI> <B>GIPSY (whole dataset)</B> export the currently viewed dataset
+to GIPSY format
+<LI> <B>Karma (subset)</B> export the currently viewed (sub)image to
+Karma format. If the subimage being viewed is a cube, the subcube will
+be saved
+<LI> <B>FITS (subset)</B> export the currently viewed (sub)image to
+FITS format. If the subimage being viewed is a cube, the subcube will
+be saved
+<LI> <B>Miriad Image (subset)</B> export the currently viewed
+(sub)image to Miriad Image format. If the subimage being viewed is a
+cube, the subcube will be saved
+<LI> <B>GIPSY (subset)</B> export the currently viewed (sub)image to
+GIPSY format. If the subimage being viewed is a cube, the subcube will
+be saved
+<P>
+</UL><H1><A NAME="SECTION00360000000000000000">2.6 Zooming</A></H1>
+<A NAME="sectionzooming">&#160;</A><A NAME="pubzooming">&#160;</A>
+<A NAME="573">&#160;</A>
+<P>
+Most tools provide a generic 2-dimensional zooming interface. This
+interface is provided by the <A NAME="tex2html24" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget (section
+<A HREF="node3.html#ImageDisplay">2.15</A>).
+<P>
+<H1><A NAME="SECTION00370000000000000000">2.7 Resizing/autoscaling</A></H1>
+<A NAME="pubresizingdisplays">&#160;</A>
+<A NAME="578">&#160;</A><A NAME="579">&#160;</A>
+<P>
+To resize a display window, grab the bottom right corner of it and
+drag to the size that you want. The image is updated automatically.
+Most programs have a menu <B>Zoom</B> which has a selection
+<B>Zoom Policy</B> which will show the <A NAME="tex2html25" HREF="../lib/ZoomPolicy.html"><B>ZoomPolicy</B></A> widget
+which gives you control over how zooming is done.
+<P>
+<A NAME="ZoomPolicy">&#160;</A><A NAME="584">&#160;</A>
+This widget controls the policy to be used for displaying image data
+on a drawing canvas. The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Apply</B> apply control changes and refresh the window
+<LI> <B>Auto Refresh</B> if enabled, each control change is
+automatically applied and the window refreshed
+<LI> <B>Fix Aspect</B> if enabled, the image will be
+expanded/shrunk with the same factor in both dimensions to fill the
+window. If disabled, the factors are not necessarily the same (i.e.
+the pixels will not be square, but the image will fill the window
+better)
+<LI> <B>Allow Truncation</B> if enabled, and the image is too big
+for the window and integer zooming is enforced, a few rows or columns
+of data may be discarded to allow the image to be shrunk
+<LI> <B>Integer X Zoom</B> if enabled, force zooming in the
+horizontal dimension do be done in integer multiples. Turning this off
+allows you to fill the window, but can introduce artefacts
+<LI> <B>Integer Y Zoom</B> if enabled, force zooming in the
+vertical dimension do be done in integer multiples. Turning this off
+allows you to fill the window, but can introduce artefacts
+<LI> <B>Zoom In on Middle Mouse Click</B> if enabled, clicking the
+middle mouse button will zoom in 2x using the mouse click position as
+the new centre
+<LI> <B>Zoom Out on Right Mouse Click</B> if enabled, clicking the
+right mouse button will zoom out 2x
+<P>
+</UL>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/ZoomPolicy.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00380000000000000000">2.8 Axis Labels</A></H1>
+<A NAME="pubaxislabels">&#160;</A>
+<A NAME="598">&#160;</A><A NAME="599">&#160;</A>
+<P>
+All the standard visualisation tools now support axis labelling.
+Most programs have an <B>Axis Labels</B> button which will show the
+<A NAME="tex2html27" HREF="../lib/DressingControl.html"><B>DressingControl</B></A> widget which gives you control over how
+labelling is done.
+<P>
+<A NAME="DressingControl">&#160;</A><A NAME="603">&#160;</A>
+This widget controls the way axis labels are drawn onto a canvas. The
+following controls are available:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Enable</B> if enabled, the axis labels are displayed
+<LI> <B>Apply</B> apply control changes and refresh the window
+<LI> <B>Auto Refresh</B> if enabled, each control change is
+automatically applied and the window refreshed
+<LI> <B>Show Labels</B> if enabled, the axis names are displayed
+<LI> <B>Show Scale</B> if enabled, the scale values corresponding to
+major tick marks are displayed
+<LI> <B>Show Top Tick Marks</B> if enabled, the tick marks at the
+top of the window are displayed
+<LI> <B>Show Bottom Tick Marks</B> if enabled, the tick marks at the
+bottom of the window are displayed
+<LI> <B>Show Left Tick Marks</B> if enabled, the tick marks at the
+left of the window are displayed
+<LI> <B>Show Right Tick Marks</B> if enabled, the tick marks at the
+right of the window are displayed
+<LI> <B>Internal Ticks</B> if enabled (the default), the tick marks
+are placed inside the bounding box, otherwise they are placed outside
+<LI> <B>Grid Lines</B> if enabled, the co-ordinate grid is
+shown
+<LI> <B>Screen Colours</B> pressing this will set the background
+colour of the window to black and the colour of the axis labels to
+green. If a colourmap is associated with the window, it's
+<B>Reverse</B> option is turned off
+<LI> <B>Paper Colours</B> pressing this will set the background
+colour of the window to white and the colour of the axis labels to
+black. If a colourmap is associated with the window, it's
+<B>Reverse</B> option is turned on
+<LI> <B>Change Colourmap</B> if enabled, the <B>Reverse</B>
+option for the window colourmap <A NAME="tex2html26" HREF="../lib/Cmapwinpopup.html"><B>Cmapwinpopup</B></A> widget (section
+<A HREF="node3.html#Cmapwinpopup">2.2</A>) is set when you press either <B>Screen Colours</B>
+or <B>Paper Colours</B>
+<LI> <B>Show Colourbar</B> if enabled, a colourbar is displayed. This
+shows the mapping between data value and colour. Note that currently
+only linear intensity scales are supported
+<LI> <B>Font scale</B> this slider allows you to enlarge or shrink
+the font scale for the labels
+<P>
+</UL>
+<P>
+A further set of controls is provided under the red line (most of the
+time you will not need to use these):
+<P>
+<UL>
+<LI> <B>Background Colour</B> the background colour of the
+window. You need to press the <B>Apply</B> button for your changes
+to take effect
+<LI> <B>Label Colour</B> the colour the labels are drawn in. You
+need to press the <B>Apply</B> button for your changes to take
+effect
+<LI> <B>Grid Colour</B> the colour the grid is drawn in
+<P>
+</UL>
+<P>
+Note that the axis labelling currently does not handle co-ordinate
+systems which have rotations close to 90 degrees or 270 degrees.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/DressingControl.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00390000000000000000">2.9 Magnifying Glass</A></H1>
+<A NAME="pubmagnifier">&#160;</A><A NAME="639">&#160;</A>
+<P>
+Many programmes have a <B>Zoom</B> menu with a <B>Magnifier</B> option
+which, when selected, will show a magnifying-glass window. As you move
+the mouse cursor over the main image window, a zoomed-in subsection
+around the cursor is displayed in the magnifying glass. This view is
+zoomed in four times the scale of the input image. If the image in the
+main window is zoomed in ten times, the view in the magnifying glass
+will actually be smaller!
+<P>
+<A NAME="MagnifierPopup">&#160;</A><A NAME="643">&#160;</A>
+This widget is a subclass of the <A NAME="tex2html28" HREF="../lib/SlaveImageDisplayPopup.html"><B>SlaveImageDisplayPopup</B></A>
+widget.
+<P>
+<H1><A NAME="SECTION003100000000000000000">2.10 Panner</A></H1>
+<A NAME="pubpanner">&#160;</A><A NAME="647">&#160;</A>
+<P>
+Many programmes have a <B>Zoom</B> menu with a <B>Panner</B> option
+which, when selected, will show a panner control window. By pressing
+the left mouse button in this window, the image in the main window is
+panned.
+<P>
+<A NAME="PannerPopup">&#160;</A><A NAME="651">&#160;</A>
+This widget is a subclass of the <A NAME="tex2html29" HREF="../lib/SlaveImageDisplayPopup.html"><B>SlaveImageDisplayPopup</B></A>
+widget.
+<P>
+<H1><A NAME="SECTION003110000000000000000">2.11 Spectrum Profiles</A></H1>
+<A NAME="sectionprofiles">&#160;</A><A NAME="pubprofiles">&#160;</A>
+<A NAME="656">&#160;</A>
+<P>
+Many programmes allow you to point at an image and obtain the
+corresponding profile along the third axis (usually a spectrum
+profile). Some programmes provide a <B>Profile</B> button which you
+need to press first before you will see the profile, while some others
+will automatically display the profile window when you have loaded a
+cube of floating-point data. You don't need to press any buttons to
+update the profile display, simply point the mouse at the desired
+spot. The ability to display spectrum profiles is provided by the
+<A NAME="tex2html31" HREF="../lib/TracePopup.html"><B>TracePopup</B></A>
+widget. 
+<A NAME="TracePopup">&#160;</A><A NAME="660">&#160;</A>
+This widget will display a line plot of a single trace of
+one-dimensional data. It is fast, allowing dynamic display of data,
+and provides zooming and smoothing controls, as well as having the
+ability to display axis labels. The controls available are:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Auto Zoom</B> if enabled, the vertical scale is automatically
+zoomed to the range of the data in the profile
+<LI> <B>Unzoom</B> this will unzoom the window
+<LI> <B>Smooth</B> menu, to select what kind of smoothing to apply to
+the data, prior to display. Both hanning and uniform smoothing kernels
+are available, with a range of sizes
+<LI> <B>Print</B> this will pop up the <A NAME="tex2html30" HREF="../lib/Postscript.html"><B>Postscript</B></A> widget
+(section <A HREF="node3.html#Postscript">2.4</A>)
+<LI> <B>Overlay</B> this allows you to popup various control panels to
+control overlay display, including axis labelling (section
+<A HREF="node3.html#DressingControl">2.8</A>)
+<P>
+<A NAME="671">&#160;</A>
+<LI> <B>Save Data</B> this will pop up a dialog widget which allows
+you to save the data to a file. The data is saved in a simple ASCII
+format with a few comment lines followed by two columns of
+numbers. The first column is for the horizontal axis and the second
+column is for the vertical axis
+<LI> <B>Style</B> menu, to select the drawing style for the data
+points. The following choices are available:
+<UL>
+<LI> <B>join</B> a straight line is drawn from each point to the next
+<LI> <B>hist</B> a centred column is drawn for each point
+(aka. ``histogram'' style)
+<LI> <B>cross</B> a small crosshair is drawn for each point
+</UL></UL><H3><A NAME="SECTION003110100000000000000">Zooming in TracePopup Widget</A></H3>
+<P>
+To zoom a profile, click (left) and drag the mouse (still keeping the
+left button down) across the window. You will see a ``rubber-banded''
+box stretching between the first point and the current mouse cursor
+position. When you release the button the section of the profile within
+the box will be zoomed. To unzoom, choose the <B>Unzoom</B> option in
+the <B>Zoom</B> menu, or press the ``u'' key while the cursor is in the
+profile window. This will show the entire image.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/TracePopup.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION003120000000000000000">2.12 Image Statistics</A></H1>
+<A NAME="pubimagestatistics">&#160;</A>
+<A NAME="685">&#160;</A><A NAME="686">&#160;</A>
+<P>
+Many programmes have a facility to compute and display the statistics
+of the current (sub)image being viewed. This interface is provided by
+the <A NAME="tex2html32" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget (section <A HREF="node3.html#ImageDisplay">2.15</A>).
+<P>
+<H1><A NAME="SECTION003130000000000000000">2.13 Viewing Header Information</A></H1>
+<A NAME="pubviewingheaders">&#160;</A>
+<A NAME="691">&#160;</A>
+<P>
+Many programmes allow you to inspect the header of the dataset you are
+currently viewing as an image. This interface is provided by
+the <A NAME="tex2html33" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget (section <A HREF="node3.html#ImageDisplay">2.15</A>).
+<P>
+<H1><A NAME="SECTION003140000000000000000">2.14 Freezing Events</A></H1>
+<A NAME="pubfreezingevents">&#160;</A>
+<A NAME="696">&#160;</A>
+<P>
+<A NAME="Canvas">&#160;</A><A NAME="698">&#160;</A>
+All drawing operations in Karma tools are performed on a ``canvas'',
+which is usually a big plain black or white rectangle.
+<P>
+<A NAME="699">&#160;</A>
+The canvas allows you to freeze ``mouse move'' operations (i.e. things
+which happen in response to your moving the mouse over the window, but
+not while pressing any mouse buttons or keyboard keys). This is useful
+when you have pointed at a certain place, and want to maintain a
+position or profile display while you move the mouse to some other
+window (perhaps to print the window). All you need to do is press the
+spacebar, and any further mouse moves are ignored. If you press the
+spacebar again the mouse moves once again do something. So that you
+don't forget that mouse moves are disabled, you will hear a quiet beep
+every time you move the mouse into the window.
+<P>
+<A NAME="700">&#160;</A>
+Similar to above, except that when pressing any mouse buttons or
+keyboard keys the freeze position is used, rather than the real
+position of the mouse.
+<P>
+<H1><A NAME="SECTION003150000000000000000">2.15 Common Image Display Features</A></H1>
+<P>
+<A NAME="ImageDisplay">&#160;</A><A NAME="703">&#160;</A>
+Many of the visualisation tools have one or two very similar main
+windows. This is because they are all derived from the
+<A NAME="tex2html41" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget, which provides most of the common
+functionality. Most of the tools which use this widget provide the
+following controls:
+<P>
+<UL>
+<LI> <B>Set1</B> sometimes labelled as <B>Files</B>, or <B>Cubes</B>
+this will popup up the <A NAME="tex2html35" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section
+<A HREF="node3.html#Filepopup">2.1</A>)
+<LI> <B>Intensity</B> menu, this will popup widgets to control the
+colourmap<BR> (<A NAME="tex2html36" HREF="../lib/Cmapwinpopup.html"><B>Cmapwinpopup</B></A>), intensity policy
+(<A NAME="tex2html37" HREF="../lib/IntensityPolicy.html"><B>IntensityPolicy</B></A>) and intensity scaling (section
+<A HREF="node3.html#Dataclip">2.2</A>)
+<LI> <B>Zoom</B> menu, this allows you to popup a magnifier or a
+panner, zoom the image in or out 2x or 4x, unzoom, or popup the
+<A NAME="tex2html38" HREF="../lib/ZoomPolicy.html"><B>ZoomPolicy</B></A> widget (section <A HREF="node3.html#ZoomPolicy">2.7</A>)
+<LI> <B>Overlays</B> menu, this allows you to popup various control
+panels to control overlay display. The following choices are
+available:
+<UL>
+<LI> <B>Axis Labels</B> this will popup controls for the axis
+labelling (section <A HREF="node3.html#DressingControl">2.8</A>)
+<LI> <B>Load Annotations</B> this will bring up a file browser to load
+a file of ASCII overlay commands. The file format is described in an
+appendix to the User Manual
+<LI> <B>Editor</B> this will popup the <A NAME="tex2html34" HREF="../lib/OverlayEditorControl.html"><B>OverlayEditorControl</B></A>
+widget (section <A HREF="node3.html#OverlayEditorControl">2.19</A>) which allows you to
+interactively draw overlays
+<LI> <B>Remove Last (connection)</B> this will remove the last overlay
+object sent via a network connection
+<LI> <B>Remove All (connection)</B> this will remove all overlay
+objects sent via a network connection
+<LI> <B>Contours</B> this will pop up a file browser which allows you
+to load an image and display it as contours. You can load an unlimited
+number of images this way
+</UL>
+<LI> <B>Export</B> menu, you can export data in a variety of
+formats. See section <A HREF="node3.html#ExportMenu">2.5</A>
+<LI> <B>View</B> this will popup a control panel used for displaying
+two datasets (section <A HREF="node5.html#View2Datasets">4</A>). This is only available in
+tools like <B>&lt;kvis&gt;</B> and <B>&lt;MultibeamView&gt;</B>
+<LI> <B>Edit</B> this will popup the <A NAME="tex2html39" HREF="../lib/ImageEditorControl.html"><B>ImageEditorControl</B></A>
+widget (section <A HREF="node3.html#ImageEditorControl">2.21</A>) which allows you to
+interactively edit image data
+<LI> <B>Quit</B> this will quit the application
+<LI> <B>Set2</B> sometimes labelled as <B>Images</B> this will popup
+up the <A NAME="tex2html40" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node3.html#Filepopup">2.1</A>)
+<P>
+</UL>
+<P>
+You will also see a few lines of display under the control buttons,
+which gives information about the data under the current cursor
+position.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/ImageDisplay.gif" target=image_window>here</a>.
+<P>
+<H3><A NAME="SECTION003150100000000000000">The Magnifier</A></H3>
+<P>
+Wherever you move the mouse over the main image, you will see a
+magnified portion of that part of the image (the magnification is 4x
+the data resolution). You can resize the magnifier window.
+<P>
+<H3><A NAME="SECTION003150200000000000000">The Panner</A></H3>
+<P>
+Simply click with the left mouse button in the panner window and the
+main window will pan to the desired location. The panner window will
+display a green rectangle showing you where you have panned to,
+relative to the entire image. You can resize the panner window. When
+you select the panner from the <B>Intensity</B> menu, the panner is
+popped up and the main window is set to panning mode.
+<P>
+<H3><A NAME="SECTION003150300000000000000">Zooming in the ImageDisplay Widget</A></H3>
+<P>
+<A NAME="749">&#160;</A>
+<P>
+To zoom an image, click (left) and drag the mouse (still keeping the
+left button down) across the window. You will see a ``rubber-banded''
+box stretching between the first point and the current mouse cursor
+position. When you release the button the section of the image within
+the box will be zoomed. To unzoom, choose the <B>Unzoom</B> option
+in the <B>Zoom</B> menu, or press the ``u'' key while the cursor is
+in the image window. This will show the entire image.
+<P>
+<A NAME="752">&#160;</A><A NAME="753">&#160;</A>
+You can also press the ``i'' key (zoom in) and the image is zoomed 2x,
+with the new centre of the image being the position of the mouse when
+the ``i'' key was pressed. You can zoom in as many times as you
+like. To unzoom 2x, press the ``o'' key (zoom out). When unzooming it
+doesn't matter where the mouse is.
+<P>
+If you press and release the left mouse button without moving the
+mouse in between, the image will be panned so that what is under the
+mouse cursor is moved to the centre of the image. An extra facility in
+<B>&lt;kvis&gt;</B> and <B>&lt;MultibeamView&gt;</B> is the ability to zoom
+in and out using the middle and right mouse buttons, respectively, in
+a similar fashion to using the ``i'' and ``o'' keys.
+<P>
+Note that these zoom controls are not available when you place the
+main window in panning mode.
+<P>
+<A NAME="756">&#160;</A>
+Another key you can press is ``r'' which simply refreshes the window,
+without changing the zoom area.
+<P>
+<H3><A NAME="SECTION003150400000000000000">Image Statistics in the ImageDisplay Widget</A></H3>
+<P>
+<A NAME="758">&#160;</A>
+<P>
+Many programmes have a facility to compute and display the statistics
+of the current (sub)image being viewed. Simply press the ``s'' key in
+the display window and you will see a summary of the image statistics
+in the terminal window. This summary includes the number of
+(non-blank) values, the standard deviation, the mean, minimum, maximum
+and sum value. Alternatively, you can click (left) and drag the mouse
+to a new position (still holding the mouse down!) and press the ``s''
+key. The statistics are computed over the boxed area. After you press
+``s'' you may release the mouse button. This feature saves you from
+having to zoom in and unzoom every time you wish to compute statistics
+on a sub-image. Note that the old box remains on the image until
+something clears it (this is useful when you want to know which
+regions you have already computed statistics over).
+<P>
+<A NAME="759">&#160;</A><A NAME="760">&#160;</A>
+<A NAME="761">&#160;</A>
+<P>
+The ``v'' key allows you to see the individual image pixel values,
+rather than their statistics. This works in a similar fashion to the
+``s'' key. The ``V'' key is a variation which shows raw image pixel
+values. Note that if you press ``v'' or ``V'' without the mouse, all
+the pixels in the subimage being viewed would be printed. Since this
+can take a long time with a large number of pixels, a warning message
+is issued if you attempt this with many pixels. If you definately want
+to display a large number of pixels, press the control key at the same
+time.
+<P>
+<H3><A NAME="SECTION003150500000000000000">Viewing Header Information in the ImageDisplay Widget</A></H3>
+<P>
+<A NAME="763">&#160;</A><A NAME="764">&#160;</A><A NAME="765">&#160;</A>
+<P>
+Many programmes allow you to inspect the header of the dataset you are
+currently viewing as an image. Simply press the ``h'' key and the
+header will be displayed in the terminal window. If you press the
+``H'' key, you will get the header without the history.
+<P>
+<H3><A NAME="SECTION003150600000000000000">Capturing Co-ordinate positions in the ImageDisplay Widget</A></H3>
+<P>
+<A NAME="767">&#160;</A><A NAME="768">&#160;</A>
+<P>
+Many programmes allow you to capture the current world co-ordinate
+position of the mouse, by pressing the ``l'' key in the image
+window. The output is set to the standard output, which you may
+redirect to a file prior to starting the programme.
+<P>
+<H1><A NAME="SECTION003160000000000000000">2.16 Generating Moment Maps</A></H1>
+<A NAME="770">&#160;</A>
+<P>
+Some of the programmes allow you to generate quick moment maps. This
+is usually available in tools where you need both a cube and an image
+of a similar section of sky. To save you the trouble of going into an
+astromonical reduction package to generate the moment maps, a menu is
+provided so that you can generate and view a moment map. This is
+usually the <B>Loaded Image Menu</B>, and has entries like <B>0th
+moment</B> and <B>1st moment</B>. Selecting either one of these will pop
+up the <A NAME="tex2html42" HREF="../lib/MomentGenerator.html"><B>MomentGenerator</B></A>
+widget. 
+<A NAME="MomentGenerator">&#160;</A><A NAME="776">&#160;</A>
+This widget allows the user to generate the 0th (total intensity) and
+1st (velocity field) moment maps from a cube. The following controls
+are available:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Apply Parameters</B> this will apply the parameters and
+compute the moment maps
+<LI> <B>1st Moment Algorithm Menu</B> this allows you to choose
+between a simple ``weighted mean'' algorithm or a more robust
+``median'' algorithm
+<LI> <B>Lower Clip Level</B> values in the cube lower than this value
+are not used in the computation of the moments
+<LI> <B>Sum Clip Level</B> values in the computed 0th moment map
+lower than this value are not used in the computation of the 1st
+moment map
+<LI> <B>Start Channel</B> the first channel that will be used in the
+computation
+<LI> <B>End Channel</B> the last channel that will be used in the
+computation
+<P>
+</UL>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/MomentGenerator.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION003170000000000000000">2.17 Cursor Readout</A></H1>
+<A NAME="sectioncursorreadout">&#160;</A>
+<A NAME="788">&#160;</A>
+<P>
+Most data display windows have cursor readout facilities: simply move
+the mouse over the display canvas and you will see a few lines of
+numbers change above the canvas. In most cases positions are shown both
+in data pixel co-ordinates as well as real-world co-ordinates.
+<P>
+<H2><A NAME="SECTION003171000000000000000">2.17.1 Warning for Astronomers</A></H2>
+<P>
+Most astronomical reduction packages count from 1, so the bottom-left
+corner of an image is at (1,1). This reflects the FORTRAN language
+from which these packages originated. The <B>Karma</B> software is
+written in the C language and reflects the C convention of counting
+from 0. This means that the bottom-left corner of an image is at (0,0)
+in <B>Karma</B>.
+<P>
+<H1><A NAME="SECTION003180000000000000000">GUI Command-line Switches</A></H1>
+<P>
+<A NAME="sectionguicommandlineswitches">&#160;</A><A NAME="794">&#160;</A>
+<P>
+Many of the Graphical User Interface tools have a number of
+command-line switches which may be used to modify their
+behaviour. These are listed below:
+<P>
+<UL>
+<LI> <B>-private_cmap</B> This option will force the tool to
+use a private colourmap for its PseudoColour window. Otherwise, the
+tool trys to allocate colours from the default colourmap
+<LI> <B>-num_colours</B> This option specifies the number of colour
+cells that the tool will try to allocate for its PsuedoColour window
+upon startup. If less colours are available it allocates as many as
+possible (minimum 2)
+<LI> <B>-cmap_master host:port</B> This option will make the tool use
+the colourmap of another tool. The <EM>host</EM> portion of the second
+argument is the Internet hostname or address where another Karma tool
+is running. If this is ``unix'' or ``localhost'' the tool to connect
+to is running on the same machine. The <EM>port</EM> portion specifies
+which Karma programme to connect to. You may use the port number
+which is displayed in the other tools title bar, or you may use the
+name of the tool (such as ``kvis''), and it will connect to the first
+``kvis'' tool you started on that machine
+<LI> <B>-fullscreen</B> This option will make the image display
+window take up the entire screen. This is useful if you wish to make a
+video of the data. You will need to configure your window manager to
+cycle the window stacking order when a special key is pressed (e.g.
+the &quot;Back&quot; key with the Open Look window manager). Alternatively,
+pressing the right mouse button in the image window will place it
+underneath other windows. See also the appendix on
+<A HREF="node18.html#chaptermakingvideos">making videos</A>.
+<P>
+</UL>
+<P>
+In addition, the standard Xt command-line switches are supported. Read
+the manual page for <B>xterm</B> for more details. In particular, the
+following options are worth noting:
+<P>
+<UL>
+<LI> <B>-display</B> control where the tool is displayed
+<LI> <B>-geometry</B> control the size and postion of the tool
+<LI> <B>-xrm</B> pass a resource string
+<P>
+</UL><H2><A NAME="SECTION003181000000000000000">2.18.1 Avoiding Colourmap Flashing</A></H2>
+<A NAME="812">&#160;</A>
+<P>
+Standard workstations with 8bit ``PseudoColour'' displays only have a
+single colourmap active at one time. If you start two display tools,
+each wanting to use a large number of colours, then when you move the
+mouse between the windows you get that horrible colourmap flashing
+effect as the window manager updates the hardware colourmap. Also,
+since the colours used by one tool are likely to be quite different
+from those used in another tool, the image in one tool will look
+completely wrong when the mouse is in another tool. It is particularly
+annoying if colourmap flashing occurs when moving between an image
+window and the desktop (i.e. normal terminal windows), because often
+you may want to read something in a terminal window while also looking
+at an image. There are a number of ways to get around this.
+<P>
+One of the most common problems is a WWW browser (like Netscape) or a
+display tool (like xv or ghostview) which is started before you start
+a display tool. You can try to limit the number of colours Netscape
+uses, but I haven't found that to be all that reliable. You can also
+use the <B>-install</B> command-line switch, which will force Netscape
+to use it's own colourmap, rather than stealing colours from the
+standard one. This will of course mean that as you move the mouse into
+the Netscape window the colours flash, but in practice this shouldn't
+matter so much because people tend to use Netscape less often than a
+visualisation tool.
+<P>
+Another more recent (and more insidious) problem is the ``CDE'' (the
+Common Desktop Environment), which steals not only too much screen
+space but also a large number of colours. Unfortunately, users don't
+get much choice about CDE, as the system administrator often blindly
+enables it when installing the operating system. If you start a
+display tool under CDE, the tool will usually have to create its own
+private colourmap in order to get enough colours. This would give you
+that colourmap flashing whenever you move between the image window and
+the desktop. You can try to get around this by using the <B>
+-num_colours</B> option to Karma tools (see above). Many tools try to
+allocate 200 colours, but you can use 100 instead and it is usually
+still workable. In the long run, though, it is probably better to get
+rid of CDE, or possibly configure it so it only takes a few colours
+(good luck).
+<P>
+Another problem can be when you use more than one Karma visualisation
+tool at the same time. The second tool is likely to create its own
+colourmap because the standard (desktop) colourmap has few colours
+left. You can either reduce the number of colours required by each
+tool, or you can share colourmaps using the <B>-cmap_master
+host:port</B> command-line switch (see above).
+<P>
+Finally, you may be wanting to use a Karma visualisation tool as well
+as some other display tool. To avoid colourmap flashing, you will need
+to reduce the number of colours each tool uses. You will need to read
+the manual for the other tool to see what option controls the
+colourmap size.
+<P>
+<H3><A NAME="SECTION003181100000000000000">Summary</A></H3>
+<P>
+Examples of things you can do:
+<UL>
+<LI> <TT>unix% netscape -install</TT>
+<LI> If running within the CDE, or other display tools (eg SAOimage),<BR> 
+      <TT>unix% kvis -num_colours&nbsp;100</TT><BR> and reducing the number
+      of colours in the other tools: <BR> 
+      <TT>unix% saoimage -palette 100</TT>
+<LI> When running multiple Karma tools at once, even on different
+      machines, you can do this:<BR> 
+      <TT>junior% kvis <BR> 
+           Port allocated: 17545</TT><BR> 
+      <TT>jumbo% xray -cmap_master junior:17545</TT>
+</UL><H1><A NAME="SECTION003190000000000000000">2.19 Drawing Overlays</A></H1>
+<P>
+Many tools provide a facility to draw overlays. This is provided by
+the <A NAME="tex2html43" HREF="../lib/OverlayEditorControl.html"><B>OverlayEditorControl</B></A> widget.
+<P>
+<A NAME="OverlayEditorControl">&#160;</A><A NAME="827">&#160;</A>
+<A NAME="828">&#160;</A><A NAME="829">&#160;</A>
+<A NAME="830">&#160;</A>
+This widget allows you to interactively draw overlays on top of an
+image. It uses the <A NAME="tex2html44" HREF="../lib/overlay.html"><B>overlay</B></A> package which maintains a list of
+geometric figures which should be drawn.
+<P>
+The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Remove Last</B> will remove the last overlay that you drew
+from the list
+<LI> <B>Remove All</B> will remove all overlays from the list
+<LI> <B>Object Menu</B> allows you to choose between the different
+types of object that you can draw
+<LI> <B>First Coordinate Type Menu</B> sets the co-ordinate type of
+the first defining point for a geometric object
+<LI> <B>Remaining Coordinate Types Menu</B> sets the co-ordinate types
+of the remaining points which define a geometric object
+<P>
+</UL>
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/OverlayEditorControl.gif" target=image_window>here</a>.
+<P>
+This widget uses the middle mouse button for its drawing
+functions. Some tools may already be using this button for other
+purposes, in which case the tool should provide a control which allows
+you to disable the normal use of the middle mouse button. For
+instance, the <B>&lt;kvis&gt;</B> programme provides such a control
+through the <A NAME="tex2html45" HREF="../lib/ZoomPolicy.html"><B>ZoomPolicy</B></A> widget (section <A HREF="node3.html#ZoomPolicy">2.7</A>).
+<P>
+<H3><A NAME="SECTION003190100000000000000">Drawing Rectangles</A></H3>
+<P>
+You click down the mouse button to define one corner of the rectangle
+and move the mouse (keeping the button down) until you have a
+rectangle to your liking. Once you are happy, release the button and
+the rectangle will be added to the overlay list.
+<P>
+<H3><A NAME="SECTION003190200000000000000">Drawing Ellipses</A></H3>
+<P>
+Click the mouse button to define the centre of the ellipse and move
+the mouse (keeping the button down) to change the size and shape of
+the ellipse. If you press and release the 'r' key (still with the
+button down), this will toggle <EM>rotation</EM> mode, so that now as you
+move the mouse the ellipse will rotate. To leave <EM>rotate</EM> mode,
+just press the 'r' key again, and you will be back to changing the
+size and shape of the ellipse. Once you have an ellipse you are happy
+with, release the mouse button and it will be added to the overlay
+list.
+<P>
+<H3><A NAME="SECTION003190300000000000000">Drawing Polygons</A></H3>
+<P>
+Click and release the mouse button to define the first and subsequent
+vertices of the polygon. To close (terminate) the polygon, click and
+release the button twice without moving the mouse. Once you have
+closed the polygon it is added to the overlay list.
+<P>
+<H1><A NAME="SECTION003200000000000000000">2.20 Loading Overlays</A></H1>
+<A NAME="sectionloadingoverlays">&#160;</A>
+<A NAME="850">&#160;</A><A NAME="851">&#160;</A>
+<P>
+Many tools provide a facility to load overlays (annotations) from an
+ASCII file. Please see appendix <A HREF="node17.html#chapterannotationformat">D</A> for
+details.
+<P>
+<H1><A NAME="SECTION003210000000000000000">2.21 Editing Images</A></H1>
+<P>
+Many tools provide a facility to edit image data. This is provided by
+the <A NAME="tex2html46" HREF="../lib/ImageEditorControl.html"><B>ImageEditorControl</B></A> widget.
+<P>
+<A NAME="ImageEditorControl">&#160;</A><A NAME="856">&#160;</A><A NAME="857">&#160;</A>
+<A NAME="858">&#160;</A><A NAME="859">&#160;</A>
+This widget allows you to interactively edit images. It uses the
+<A NAME="tex2html47" HREF="../lib/iedit.html"><B>iedit</B></A> package which maintains a list of geometric figures
+which can be drawn and then applied to data.
+<P>
+The following controls are provided:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Undo Last</B> will undo the last edit object that you drew
+from the list
+<LI> <B>Undo All</B> will undo all edit objects from the list
+<LI> <B>Apply</B> apply the edit objects to the data (after this you
+can no longer undo previous edits)
+<LI> <B>Brush Width</B> the width of the paint brush in pixels
+<LI> <B>Paint Value</B> the data value to paint with
+<LI> <B>Minimum</B> set the data value to paint with to the current
+minimum (clip) value for the display canvas
+<LI> <B>Middle</B> set the data value to paint with to halfway between
+the current minimum and maximum (clip) values for the display canvas
+<LI> <B>Maximum</B> set the data value to paint with to the current
+maximum (clip) value for the display canvas
+<P>
+</UL>
+<P>
+This widget uses the middle mouse button for its drawing
+functions. Some tools may already be using this button for other
+purposes, in which case the tool should provide a control which allows
+you to disable the normal use of the middle mouse button. For
+instance, the <B>&lt;kvis&gt;</B> programme provides such a control
+through the <A NAME="tex2html48" HREF="../lib/ZoomPolicy.html"><B>ZoomPolicy</B></A> widget (section <A HREF="node3.html#ZoomPolicy">2.7</A>).
+<P>
+The drawing interface is the same as for the
+<A NAME="tex2html49" HREF="../lib/OverlayEditorControl.html"><B>OverlayEditorControl</B></A> widget (section
+<A HREF="node3.html#OverlayEditorControl">2.19</A>).
+<P>
+<HR><A NAME="tex2html313" HREF="node4.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html311" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html305" HREF="node2.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html315" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html316" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html314" HREF="node4.html">3 Viewing and Comparing </A>
+<B>Up:</B> <A NAME="tex2html312" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html306" HREF="node2.html">1 Introduction</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

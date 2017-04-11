@@ -1,0 +1,33 @@
+.TH WCS_ASTRO_FORMAT_VEL 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_format_vel \- Format a velocity value into a string.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B void wcs_astro_format_vel
+.sp
+(KwcsAstro ap, char *string, double vel)
+.SH DESCRIPTION
+Format a velocity value into a string.
+.IP \fIap\fP 1i
+The KwcsAstro object.
+.IP \fIstring\fP 1i
+The string to write to. Sufficient storage must be available.
+.IP \fIvel\fP 1i
+The velocity value.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

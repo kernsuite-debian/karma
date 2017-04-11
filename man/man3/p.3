@@ -1,0 +1,63 @@
+.TH P 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+p \- Low level routines to convert data
+.SH PURPOSE
+These routines are meant to provide a low level means of converting C data
+types to the "network" data format (ie. big endian, IEEE 754).
+These are memory to memory routines only. Although they are made public,
+their use is NOT recommended.
+When reading or writing raw data from and to files or connections, the
+<-pio-> routines are suggested.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIp_write_buf_float\fP 1i
+Write a floating point number to a buffer.
+.IP \fIp_write_buf_float_trap\fP 1i
+Write a floating point number to a buffer, trapping blanks.
+.IP \fIp_read_buf_float\fP 1i
+Read a floating point number from a buffer.
+.IP \fIp_read_buf_floats\fP 1i
+Read floating point data from a buffer, trapping NaNs.
+.IP \fIp_write_buf_double\fP 1i
+Write a double precision floating point number to a buffer.
+.IP \fIp_write_buf_double_trap\fP 1i
+Write a dfloating point number to a buffer, trapping blanks.
+.IP \fIp_read_buf_double\fP 1i
+Read a double precision floating point number from a buffer.
+.IP \fIp_read_buf_doubles\fP 1i
+Read double floating point data from a buffer, trapping NaNs.
+.IP \fIp_write_buf16s\fP 1i
+Write 16 bits of signed data to a buffer,
+.IP \fIp_read_buf16s\fP 1i
+Read 16 bits of signed data from a buffer.
+.IP \fIp_write_buf32s\fP 1i
+Write 32 bits of signed data to a buffer,
+.IP \fIp_read_buf32s\fP 1i
+Read 32 bits of signed data from a buffer.
+.IP \fIp_write_buf16\fP 1i
+Write 16 bits of unsigned data to a buffer,
+.IP \fIp_read_buf16\fP 1i
+Read 16 bits of unsigned data from a buffer.
+.IP \fIp_write_buf32\fP 1i
+Write 32 bits of unsigned data to a buffer,
+.IP \fIp_read_buf32\fP 1i
+Read 32 bits of unsigned data from a buffer.
+.IP \fIp_write_buf64\fP 1i
+Write 64 bits of data to a buffer.
+.IP \fIp_read_buf64\fP 1i
+Read 64 bits of signed data from a buffer.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

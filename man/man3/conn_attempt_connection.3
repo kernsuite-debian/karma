@@ -1,0 +1,41 @@
+.TH CONN_ATTEMPT_CONNECTION 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_attempt_connection \- Attempt connection.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B Connection conn_attempt_connection
+.sp
+(CONST char *hostname,
+unsigned int port_number,
+CONST char *protocol_name)
+.SH DESCRIPTION
+This routine will attempt to make a connection to a server. The
+routine always makes a connection using the most efficient transport layer
+available.
+.IP \fIhostname\fP 1i
+The hostname of the machine on which the server is running.
+.IP \fIport_number\fP 1i
+The Karma port number to connect to.
+.IP \fIprotocol_name\fP 1i
+The protocol to connect with.
+.SH RETURN VALUE
+The connection object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The appropriate callback functions registered with
+<-conn_register_client_protocol-> will be called.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,39 @@
+.TH DS_COMPLEX_TO_REAL_1D 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_complex_to_real_1D \- Convert a 1 dimensional array of complex values to real values.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_complex_to_real_1D
+.sp
+(double *out, unsigned int out_stride,
+double *inp, unsigned int num_values,
+unsigned int conv_type)
+.SH DESCRIPTION
+Convert a 1 dimensional array of complex values to real values.
+.IP \fIout\fP 1i
+A pointer to the output array.
+.IP \fIout_stride\fP 1i
+The stride (in doubles) of the output array.
+.IP \fIinp\fP 1i
+The array of input complex values.
+.IP \fInum_values\fP 1i
+The number of values to convert.
+.IP \fIconv_type\fP 1i
+The conversion type to apply.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

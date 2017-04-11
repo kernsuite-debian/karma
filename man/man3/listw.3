@@ -1,0 +1,43 @@
+.TH LISTW 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+listw \- Routines to manage list widgets
+.SH PURPOSE
+These routines are meant to provide a simple mechanism to display a list of
+strings.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIlistw_create\fP 1i
+Create a list widget.
+.IP \fIlistw_bind\fP 1i
+Bind a list widget to a pixel canvas.
+.IP \fIlistw_destroy\fP 1i
+Destroy a list widget
+.IP \fIlistw_register_position_event_func\fP 1i
+Register position event callback.
+.IP \fIlistw_get_attributes\fP 1i
+Get list widget attributes.
+.IP \fIlistw_set_attributes\fP 1i
+Set list widget attributes.
+.IP \fIlistw_register_att_notify_func\fP 1i
+Register an attribute change function.
+.IP \fIlistw_PROTO_position_func\fP 1i
+Position event callback.
+.IP \fIlistw_PROTO_att_notify_func\fP 1i
+Registers a change in the attributes of a list widget.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

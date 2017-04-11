@@ -1,0 +1,37 @@
+.TH WCS_ASTRO_UPDATE_LOCATION 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_update_location \- Update the location ("CRVALn" and "CRPIXn") values.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B void wcs_astro_update_location
+.sp
+(KwcsAstro ap, unsigned int axis_number,
+CONST packet_desc *pack_desc,
+CONST char *packet)
+.SH DESCRIPTION
+Update the location ("CRVALn" and "CRPIXn") values.
+.IP \fIap\fP 1i
+The KwcsAstro object to update.
+.IP \fIaxis_number\fP 1i
+The FITS axis number to update.
+.IP \fIpack_desc\fP 1i
+The packet descriptor to extract the new values from.
+.IP \fIpacket\fP 1i
+The packet to extract the new values from.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

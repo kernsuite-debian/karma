@@ -1,0 +1,52 @@
+.TH KWIN_CREATE_CHILD 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_create_child \- Create a child pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B KPixCanvas kwin_create_child
+.sp
+(KPixCanvas parent, int xoff, int yoff,
+int width, int height, flag absorb_events)
+.SH DESCRIPTION
+This routine will create a pixel canvas, ready for drawing,
+within an existing pixel canvas. The new pixel canvas is a child of the
+parent pixel canvas. The child *does not* receive refresh events from the
+parent, it *does* receive position events from the parent, provided these
+events lie within the child's boundaries. For X-based graphics, a copy of
+the Graphics Context is made for the child.
+Note that the origin of a KPixCanvas is the upper-left corner.
+.IP \fIparent\fP 1i
+The parent pixel canvas.
+.IP \fIxoff\fP 1i
+The horizontal offset of the canvas origin (upper-left corner)
+relative to the parent pixel canvas.
+.IP \fIyoff\fP 1i
+The vertical offset of the canvas origin (upper-left corner)
+relative to the parent pixel canvas.
+.IP \fIwidth\fP 1i
+The width (vertical extent) of the canvas.
+.IP \fIheight\fP 1i
+The height (horizontal extent) of the canvas.
+.IP \fIabsorb_events\fP 1i
+If TRUE, any events passed from the parent canvas to the
+child canvas and consumed by the registered event functions for the child
+canvas are consumed from the parent canvas. If FALSE, the child canvas does
+not consume events from the parent. Note that the parent events are still
+*passed* to the child canvas.
+.SH RETURN VALUE
+A pixel canvas on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

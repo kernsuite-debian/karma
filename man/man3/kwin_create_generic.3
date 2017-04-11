@@ -1,0 +1,62 @@
+.TH KWIN_CREATE_GENERIC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_create_generic \- Create generic pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B KPixCanvas kwin_create_generic
+.sp
+(void *info, int xoff, int yoff,
+int width, int height, unsigned int depth,
+unsigned int visual, flag visible,
+KPixFuncCreateChild create_child,
+KPixFuncClearArea clear_area,
+KPixFuncDestroy destroy, ...)
+.SH DESCRIPTION
+This routine will create a pixel canvas. The interface to this
+routine is generic. Note that the origin of a KPixCanvas is the upper-left
+corner.
+.IP \fIinfo\fP 1i
+A pointer to canvas specific data.
+.IP \fIxoff\fP 1i
+The horizontal offset of the canvas origin (upper-left corner)
+relative to the parent object.
+.IP \fIyoff\fP 1i
+The vertical offset of the canvas origin (upper-left corner)
+relative to the parent object.
+.IP \fIwidth\fP 1i
+The width (vertical extent) of the canvas.
+.IP \fIheight\fP 1i
+The height (horizontal extent) of the canvas.
+.IP \fIdepth\fP 1i
+The depth (in bits) of the canvas.
+.IP \fIvisual\fP 1i
+The visual type of the canvas.
+.IP \fIvisible\fP 1i
+TRUE if the canvas is visible, else FALSE.
+.IP \fIcreate_child\fP 1i
+The function that is called when a child canvas is created.
+.IP \fIclear_area\fP 1i
+The function that is called when the canvas is to be cleared.
+.IP \fIdestroy\fP 1i
+The function that is called when the canvas is destroyed.
+.IP \fI...\fP 1i
+The optional list of parameter attribute-key attribute-value
+pairs must follow. See the header file for details on defined attributes.
+This list must be terminated with the value  KWIN_ATT_END  .
+.SH RETURN VALUE
+A pixel canvas on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

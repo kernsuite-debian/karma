@@ -1,0 +1,60 @@
+.TH DS_TRAVERSE_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_traverse_array \- Recursively traverse a pair of arrays.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_traverse_array
+.sp
+( array_desc *desc1, char *data1,
+array_desc *desc2, char *data2, flag as_whole,
+flag (*func) () )
+.SH DESCRIPTION
+This routine will traverse a pair of multi-dimensional arrays
+will process a sub structure for every occurence wherever there is a
+difference in the two data structures' descriptors.
+.IP \fIdesc1\fP 1i
+One of the array descriptors.
+.IP \fIdata1\fP 1i
+One of the arrays.
+.IP \fIdesc2\fP 1i
+The other array descriptor.
+.IP \fIdata2\fP 1i
+The other array.
+.IP \fIas_whole\fP 1i
+If FALSE:
+If the type or name of any element in the two packet descriptors are
+different, the packets are deemed divergent and they are passed to
+<<func>>.
+If any aspect of the two array's dimension descriptors are different,
+then the arrays are deemed divergent and their descriptors are passed
+to <<func>>.
+If TRUE:
+If the type or name of any element in the two packet descriptors are
+different, the packets are deemed divergent and they are passed to
+<<func>>.
+If any aspect of the two array's dimension descriptors are different,
+or their packet descriptors are divergent, then the arrays are deemed
+divergent and the array descriptors are passed to <<func>>.
+If the packet descriptors for linked lists are divergent, then the two
+lists are deemed divergent and their descriptors and headers are passed
+to <<func>>.
+.IP \fIfunc\fP 1i
+The function to call for each divergence. The prototype function is
+<-ds_PROTO_traverse_func->. If this returns FALSE, iterations are stopped.
+.SH RETURN VALUE
+TRUE if all iterations completed successfully, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

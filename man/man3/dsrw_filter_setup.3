@@ -1,0 +1,36 @@
+.TH DSRW_FILTER_SETUP 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dsrw_filter_setup \- Set up a Karma data filter.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B multi_array * dsrw_filter_setup
+.sp
+(Channel channel, CONST array_desc *arr_desc,
+CONST char *infile, CONST char *outfile)
+.SH DESCRIPTION
+Set up a Karma data filter.
+.IP \fIchannel\fP 1i
+The channel to write to.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIinfile\fP 1i
+The input filename.
+.IP \fIoutfile\fP 1i
+The output Karma filename.
+.SH RETURN VALUE
+A multi_array pointer on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

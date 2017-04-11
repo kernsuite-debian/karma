@@ -1,0 +1,32 @@
+.TH DSPROC_PROTO_POST_PROCESS 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dsproc_PROTO_post_process \- Perform post-processing on a multi_array data structure.
+.SH SYNOPSIS
+.B #include <karma_dsproc.h>
+.sp
+.B flag dsproc_PROTO_post_process
+.sp
+(CONST multi_array *inp_desc,
+multi_array *out_desc)
+.SH DESCRIPTION
+Perform post-processing on a multi_array data structure.
+.IP \fIinp_desc\fP 1i
+The input multi_array descriptor.
+.IP \fIout_desc\fP 1i
+The output multi_array_descriptor.
+.SH RETURN VALUE
+TRUE if the array is to be saved/transmitted, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

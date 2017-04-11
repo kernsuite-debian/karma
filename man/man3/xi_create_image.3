@@ -1,0 +1,47 @@
+.TH XI_CREATE_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xi_create_image \- Create an XImage structure for a window.
+.SH SYNOPSIS
+.B #include <karma_xi.h>
+.sp
+.B XImage * xi_create_image
+.sp
+(Display *display, Window window,
+unsigned int image_width, unsigned int image_height,
+flag *share)
+.SH DESCRIPTION
+Create an XImage structure for a window.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIwindow\fP 1i
+The X window ID.
+.IP \fIimage_width\fP 1i
+The width of the desired image in pixels.
+.IP \fIimage_height\fP 1i
+The height of the desired image in pixels.
+.IP \fIshare\fP 1i
+If this points to the value TRUE, the routine will attempt to use
+a shared memory segment for the image data (as per the MIT-Shared Memory
+Extension to the X Protocol). If the routine did in fact
+allocate a shared memory segment, the value of TRUE will be written here,
+else FALSE will be written here.
+.SH RETURN VALUE
+A pointer to the image structure on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Do NOT request a shared image if the routine
+<-xi_check_shared_images_available-> did not return TRUE.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,30 @@
+.TH PANEL_CREATE_GROUP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+panel_create_group \- Create a panel to contain a group.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B KControlPanel panel_create_group
+.sp
+()
+.SH DESCRIPTION
+This routine will create a control panel object which is a
+container for a group of items. Panel items may be added to this panel
+object, and the panel object itself may be later added as panel item to
+another panel object (of type PIT_GROUP).
+.SH RETURN VALUE
+A KControlPanel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

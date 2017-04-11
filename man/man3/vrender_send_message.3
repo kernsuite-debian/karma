@@ -1,0 +1,39 @@
+.TH VRENDER_SEND_MESSAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+vrender_send_message \- Send a message to all "VRENDER_private" clients.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_send_message
+.sp
+(KVolumeRenderContext context, unsigned long command,
+CONST char *message, unsigned int length, flag sync)
+.SH DESCRIPTION
+Send a message to all "VRENDER_private" clients.
+.IP \fIcontext\fP 1i
+The volume render context.
+.IP \fIcommand\fP 1i
+The 32 bit command.
+.IP \fImessage\fP 1i
+The message data.
+.IP \fIlength\fP 1i
+The length of the message in bytes.
+.IP \fIsync\fP 1i
+If TRUE the function will not return until all clients have received
+and acknowledged the message.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

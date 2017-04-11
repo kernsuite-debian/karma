@@ -1,0 +1,34 @@
+.TH KWIN_GET_GC_X 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_get_gc_x \- Get Graphics Context for an X-based pixel canavas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B GC kwin_get_gc_x
+.sp
+(KPixCanvas canvas)
+.SH DESCRIPTION
+This routine will get the Graphics Context used when drawing into
+the pixel canvas. If the Graphics Context is modified, it should be
+registered prior to drawing on the canvas by calling <-kwin_set_gc_x->.
+.IP \fIcanvas\fP 1i
+The canvas.
+.SH RETURN VALUE
+The Graphics Context.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine is only available with the X window system.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

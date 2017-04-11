@@ -1,0 +1,88 @@
+<html><head><title>Package: event</title></head> 
+<body>
+<center><h1>The "event" Package</h1></center>    These routines are meant to provide a general pupose event dispatching
+    mechanism for communicating programmes.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><b>Note:</b> <li>     THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<br><p><a name=event></a></table><h4>Functions</h4><table><tr><td><a href=event.html#event_initialise>event_initialise</a></td><td>Initialise the package.
+</td></tr>
+<tr><td><a href=event.html#event_dispatch>event_dispatch</a></td><td>Dispatch an event.
+</td></tr>
+<tr><td><a href=event.html#event_register_event_func>event_register_event_func</a></td><td>Register event callback.
+</td></tr>
+<tr><td><a href=event.html#event_set_mask>event_set_mask</a></td><td>Set the event mask
+</td></tr>
+<tr><td><a href=event.html#event_wait>event_wait</a></td><td>Wait for an event.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=event.html#event_PROTO_event_func>event_PROTO_event_func</a></td><td>Generic event callback.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=event.html#event_MASKS>event_MASKS</a></td><td>List of event bitmasks
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=event_initialise></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>event_initialise</b><i>    ()
+</i><br><p>    Initialise the package.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=event_dispatch></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>event_dispatch</b><i>    (KEvent event)
+</i><br><p>    Dispatch an event.
+<p><b>Parameters:</b><ul><li><i>event :</i> 
+    The event.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=event_register_event_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>event_register_event_func</b><i>    (flag (*func) (), void *f_info)
+</i><br><p>    Register event callback.
+<p><b>Parameters:</b><ul><li><i>func :</i> 
+    The function that is called when a position event occurs. The
+    prototype function is <a href=event.html#event_PROTO_event_func>event_PROTO_event_func</a>.
+<br><li><i>f_info :</i> 
+    The initial arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A handle to a KCallbackFunc object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=event_set_mask></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>event_set_mask</b><i>    (unsigned long mask, long num_events,
+		     Connection connection)
+</i><br><p>    Set the event mask
+<p><b>Parameters:</b><ul><li><i>mask :</i> 
+    The event mask. See <a href=event.html#event_MASKS>event_MASKS</a> for a list of event masks.
+<br><li><i>num_events :</i> 
+    The number of events to receive per connection. If this is
+    less than 0, an unlimited number of events may be received.
+<br><li><i>connection :</i> 
+    The connection to apply the mask to. If this is NULL, all
+    connections will have the mask applied.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=event_wait></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>event_wait</b><i>    (unsigned long mask, Connection connection, KEvent *event)
+</i><br><p>    Wait for an event.
+<p><b>Parameters:</b><ul><li><i>mask :</i> 
+    The event mask. After an event is received the event mask is set to
+    0. See <a href=event.html#event_MASKS>event_MASKS</a> for a list of event masks.
+<br><li><i>connection :</i> 
+    The connection to receive the event from.
+<br><li><i>event :</i> 
+    The event data will be written here
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=event_PROTO_event_func></a> flag
+ <b>event_PROTO_event_func</b><i>    (KEvent event, Connection connection,void **f_info)
+</i><br><p>    Generic event callback.
+<p><b>Parameters:</b><ul><li><i>event :</i> 
+    The event data. This becomes invalid when the callback returns.
+<br><li><i>connection :</i> 
+    The connection over which the event came.
+<br><li><i>f_info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=event_MASKS><b>event_MASKS</b></a> List of event bitmasks
+<p> <table><tr><td>Value                       </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>K_EVENT_MASK_MOUSE_CLICK    </td><td>Mouse button click down
+</td></tr><tr><td>K_EVENT_MASK_MOUSE_RELEASE  </td><td>Mouse button release
+</td></tr><tr><td>K_EVENT_MASK_MOUSE_DRAG     </td><td>Mouse move while button down
+</td></tr><tr><td>K_EVENT_MASK_POINTER_MOVE   </td><td>Mouse move
+</td></tr><tr><td>K_EVENT_MASK_KEYPRESS       </td><td>Keyboard press
+</td></tr><tr><td>K_EVENT_MASK_POINTER_WARP   </td><td>Mouse warp
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

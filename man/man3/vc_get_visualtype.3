@@ -1,0 +1,35 @@
+.TH VC_GET_VISUALTYPE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vc_get_visualtype \- Get the current visual of the viewable colourmap.
+.SH SYNOPSIS
+.B #include <karma_vc.h>
+.sp
+.B void vc_get_visualtype
+.sp
+(Kdisplay dpy_handle, unsigned int *visual,
+flag *overlay)
+.SH DESCRIPTION
+Get the current visual of the viewable colourmap.
+.IP \fIdpy_handle\fP 1i
+The low level display handle.
+.IP \fIvisual\fP 1i
+The visual type for the canvas will be written here.
+.IP \fIoverlay\fP 1i
+If the overlay channel is visible, the value TRUE will be written
+here, else the value FALSE will be written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

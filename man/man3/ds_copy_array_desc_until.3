@@ -1,0 +1,35 @@
+.TH DS_COPY_ARRAY_DESC_UNTIL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_array_desc_until \- Recursively copy an array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B array_desc * ds_copy_array_desc_until
+.sp
+(CONST array_desc *inp_desc,
+CONST char *name)
+.SH DESCRIPTION
+This routine will make a copy of an array descriptor and all
+sub-descriptors until a specified name is encountered. All tiling
+information is copied, but address offset arrays are NOT copied.
+.IP \fIinp_desc\fP 1i
+The input array descriptor.
+.IP \fIname\fP 1i
+The name specifying where the copying should stop. If this is NULL,
+the entire data structure descriptor is copied.
+.SH RETURN VALUE
+A pointer to the array descriptor created on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

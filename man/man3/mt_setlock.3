@@ -1,0 +1,35 @@
+.TH MT_SETLOCK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_setlock \- Set a lock on a thread pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void mt_setlock
+.sp
+(KThreadPool pool, flag lock)
+.SH DESCRIPTION
+This function will lock a thread pool such that no other thread
+can lock the pool at the same time. This does not prevent other threads
+from running, nor new jobs from being launched, it merely prevents them
+from aquiring the lock.
+.IP \fIpool\fP 1i
+The thread pool to lock.
+.IP \fIlock\fP 1i
+If TRUE the pool is locked. If FALSE the pool is unlocked and any
+other threads wishing to lock the pool may do so (one at a time of course).
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

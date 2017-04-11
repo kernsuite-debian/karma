@@ -1,0 +1,33 @@
+.TH FOREIGN_PPM_READ 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_ppm_read \- Read a colour image in PPM format from a channel.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_ppm_read
+.sp
+(Channel channel, ...)
+.SH DESCRIPTION
+Read a colour image in PPM format from a channel.
+.IP \fIchannel\fP 1i
+The channel to read from.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with FA_PPM_READ_END.
+See <-foreign_ATT_PPM_READ-> for a list of defined attributes.
+.SH RETURN VALUE
+A pointer to the multi_array data structure on success, else NULL
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

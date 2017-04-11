@@ -1,0 +1,39 @@
+.TH CONTOUR_SET_ACTIVE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_set_active \- Set active state for a viewable contour image.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B flag contour_set_active
+.sp
+(KViewableContourImage vcimage, flag active,
+flag force_refresh, flag refresh_if_changed)
+.SH DESCRIPTION
+This routine will make a viewable contour image active or
+inactive.
+.IP \fIvcimage\fP 1i
+The viewable contour image.
+.IP \fIactive\fP 1i
+If TRUE, the viewable contour image is made active, else it is
+made inactive.
+.IP \fIforce_refresh\fP 1i
+If TRUE, the canvas is always refreshed.
+.IP \fIrefresh_if_changed\fP 1i
+If TRUE, the canvas is refreshed if the viewable
+contour image active state changed.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

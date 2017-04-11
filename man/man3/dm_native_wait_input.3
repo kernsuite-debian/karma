@@ -1,0 +1,32 @@
+.TH DM_NATIVE_WAIT_INPUT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dm_native_wait_input \- Block waiting for input on a file descriptor.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B flag dm_native_wait_input
+.sp
+(int fd, int timeout)
+.SH DESCRIPTION
+Block waiting for input on a file descriptor.
+.IP \fIfd\fP 1i
+The file descriptor.
+.IP \fItimeout\fP 1i
+The time to wait for (in milliseconds). If this is less than 0
+the function waits indefinately.
+.SH RETURN VALUE
+TRUE on activity, else FALSE on error/timeout.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

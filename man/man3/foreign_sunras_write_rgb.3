@@ -1,0 +1,63 @@
+.TH FOREIGN_SUNRAS_WRITE_RGB 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_sunras_write_rgb \- Write a TrueColor image to a channel in Sun rasterfile format.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_sunras_write_rgb
+.sp
+(Channel channel,
+CONST unsigned char *image_red,
+CONST unsigned char *image_green,
+CONST unsigned char *image_blue,
+uaddr *hoffsets, uaddr *voffsets,
+unsigned int width, unsigned int height,
+CONST unsigned short *cmap_red,
+CONST unsigned short *cmap_green,
+CONST unsigned short *cmap_blue,
+unsigned int cmap_stride)
+.SH DESCRIPTION
+Write a TrueColor image to a channel in Sun rasterfile format.
+.IP \fIchannel\fP 1i
+The channel to write to. The channel is not flushed.
+.IP \fIred_image\fP 1i
+The red image data.
+.IP \fIgreen_image\fP 1i
+The green image data.
+.IP \fIblue_image\fP 1i
+The blue image data.
+.IP \fIhoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIvoffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIwidth\fP 1i
+The width of the image.
+.IP \fIheight\fP 1i
+The height of the image.
+.IP \fIcmap_red\fP 1i
+The red component colourmap entries. 256 entries required. If
+this is NULL a linear mapping is assumed.
+.IP \fIcmap_green\fP 1i
+The green component colourmap entries. 256 entries required.
+If this is NULL a linear mapping is assumed.
+.IP \fIcmap_blue\fP 1i
+The blue component colourmap entries. 256 entries required. If
+this is NULL a linear mapping is assumed.
+.IP \fIcmap_stride\fP 1i
+The stride (in unsigned shorts) between colourmap values.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,38 @@
+.TH CHS_GET_VALUE2 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+chs_get_value2 \- Scan a channel object for a whitespace separated value.
+.SH SYNOPSIS
+.B #include <karma_chs.h>
+.sp
+.B unsigned int chs_get_value2
+.sp
+(Channel channel, char *string,
+unsigned int length, flag *newline)
+.SH DESCRIPTION
+This routine will scan a channel object for a whitespace
+separated value. '#' is the comment character.
+.IP \fIchannel\fP 1i
+The channel to read from.
+.IP \fIstring\fP 1i
+The buffer to write the value to.
+.IP \fIlength\fP 1i
+The size of the buffer (in bytes).
+.IP \fInewline\fP 1i
+The value TRUE is written here if a newline was read, else FALSE
+is written here.
+.SH RETURN VALUE
+The length of the string scanned on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

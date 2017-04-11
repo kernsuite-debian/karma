@@ -1,0 +1,35 @@
+.TH CONTOUR_SET_LEVELS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_set_levels \- Set/update the contour levels for a KContourImage object.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B void contour_set_levels
+.sp
+(KContourImage cimage, unsigned int num_levels,
+CONST double *contour_levels)
+.SH DESCRIPTION
+This routine will set/update the contour levels for a
+KContourImage object. Canvases are not refreshed by this operation.
+.IP \fIcimage\fP 1i
+The KContourImage object.
+.IP \fInum_levels\fP 1i
+The number of contour levels.
+.IP \fIcontour_levels\fP 1i
+The array of contour levels. These are copied.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

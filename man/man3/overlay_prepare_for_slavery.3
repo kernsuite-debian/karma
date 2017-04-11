@@ -1,0 +1,32 @@
+.TH OVERLAY_PREPARE_FOR_SLAVERY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_prepare_for_slavery \- Allow an overlay list to be slaved.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B void overlay_prepare_for_slavery
+.sp
+(KOverlayList olist)
+.SH DESCRIPTION
+This routine will register an overlay list to be the choosen
+overlay list for subsequent attempts to open a slave "2D_overlay"
+connection. In order to make the overlay list a slave, a subsequent call to
+<-conn_attempt_connection-> must be made.
+.IP \fIcmap\fP 1i
+The overlay list.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

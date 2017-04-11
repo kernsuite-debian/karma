@@ -1,0 +1,52 @@
+.TH DS_FIND_1D_EXTREMES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_find_1D_extremes \- Find the minimum and maximum of a 1D array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_find_1D_extremes
+.sp
+(CONST char *data,
+unsigned int num_values, uaddr *offsets,
+unsigned int elem_type, unsigned int conv_type,
+double *min, double *max)
+.SH DESCRIPTION
+This routine will find the extremes (minimum and maximum) of a
+single trace (element versus a dimension).
+.IP \fIdata\fP 1i
+A pointer to the data. Misaligned data will cause bus errors on some
+platforms.
+.IP \fInum_values\fP 1i
+The number of values to process.
+.IP \fIoffsets\fP 1i
+The address offsets for data along the dimension.
+.IP \fIelem_type\fP 1i
+The type of the element.
+.IP \fIconv_type\fP 1i
+The type of conversion to use for complex numbers.
+.IP \fImin\fP 1i
+The minimum value will be written here.
+.IP \fImax\fP 1i
+The maximum value will be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH NOTE
+The minimum and maximum value must be initialised to a very large
+positive number and a very large negative number, respectively, outside of
+the routine. In other words, the routine does not initialise these values
+prior to testing for the minimum and maximum.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

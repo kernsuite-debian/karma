@@ -1,0 +1,43 @@
+.TH IARRAY_GET_2D_SLICE_FROM_3D 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_2D_slice_from_3D \- Create a 2-dimensional Intelligent Array alias from a slice.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_get_2D_slice_from_3D
+.sp
+(iarray cube, unsigned int ydim,
+unsigned int xdim, unsigned int slice_pos)
+.SH DESCRIPTION
+This routine will create a 2-D "Intelligent Array" which is an
+alias of an arbitrary slice of a 3-D array.
+.IP \fIcube\fP 1i
+The input 3-D array.
+.IP \fIydim\fP 1i
+The dimension in the 3-D array which will become the y dimension
+(most significant) of the output array.
+.IP \fIxdim\fP 1i
+The dimension in the 3-D array which will become the x dimension
+(least significant) of the output array.
+.IP \fIslice_pos\fP 1i
+The position of the slice along the unspecified (remaining)
+dimension in the 3-D array.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Alias arrays cannot be saved to disc.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

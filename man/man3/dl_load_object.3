@@ -1,0 +1,37 @@
+.TH DL_LOAD_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dl_load_object \- Load shared object.
+.SH SYNOPSIS
+.B #include <karma_dl.h>
+.sp
+.B void * dl_load_object
+.sp
+(CONST char *name, CONST char *dirs,
+char failed_object[STRING_LENGTH])
+.SH DESCRIPTION
+Load shared object.
+.IP \fIname\fP 1i
+The name of the shared object to load (without the ".so" extension).
+.IP \fIdirs\fP 1i
+An optional list of colon-separated directories in which to search
+for the shared object, and any other shared objects depended upon. This may
+be NULL.
+.IP \fIfailed_object\fP 1i
+The name of the object which failed to load is written here
+(without the ".so" extension).
+.SH RETURN VALUE
+A handle to the loaded object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

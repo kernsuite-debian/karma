@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Intelligent Arrays</TITLE>
+<META NAME="description" CONTENT="Intelligent Arrays">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html798" HREF="node12.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html796" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html790" HREF="node10.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html800" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html801" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html799" HREF="node12.html">Foreign Data</A>
+<B>Up:</B> <A NAME="tex2html797" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html791" HREF="node10.html">Colourmaps</A>
+<BR> <P>
+<H1><A NAME="SECTION001100000000000000000">Intelligent Arrays</A></H1>
+<A NAME="chapteriarray">&#160;</A>
+<A NAME="596">&#160;</A>
+<P>
+<H1><A NAME="SECTION001110000000000000000">Purpose</A></H1>
+<P>
+The name ``iarray'' is a contraction of ``Intelligent Array'', which
+is supposed to describe the power of these arrays. Iarrays are
+n-dimensional arrays similar to ordinary C arrays, but have the
+following advantages:
+<P>
+<UL>
+<LI> They are dynamically allocated. This is one of their biggest
+advantages over ordinary C arrays. Dynamically allocating arrays in C
+normally requires the user to either be very clever in the method of
+allocation, or to do a multiplication at every element access
+(assuming a 2D array). Iarrays use double indirection to allow for an
+efficient and neat accessing scheme. This method also allows for
+interesting mappings of the iarray, such as taking real subarrays, or
+mapping an array onto a torus efficiently.
+<LI> They know their own size. This removes the necessity for passing
+in dimension lengths to functions which take arrays as
+arguments. <A NAME="tex2html149" HREF="../lib/iarray.html#iarray_dim_length"><B>iarray_dim_length</B></A> allows you to query
+an array for one of it's dimension lengths.
+<LI> They can do run time bounds checking. If you compile with
+``-DDEBUG'' all element accesses will be bounds and type checked. This
+is somewhat slower than normal, but the implementation is such that
+without bounds checking there is no performance penalty over C arrays.
+<LI> They can have named attachments. Using
+<A NAME="tex2html150" HREF="../lib/iarray.html#iarray_put_float"><B>iarray_put_float</B></A> and
+<A NAME="tex2html151" HREF="../lib/iarray.html#iarray_get_float"><B>iarray_get_float</B></A>, named floating point values can
+be attached to and retrieved from an iarray. There are corresponding
+functions for attaching ints and strings, and a pair of generic
+functions for handling other data types. This is very useful when
+writing iarrays to disk or to a connection, as attachments are also
+transferred. Attachments are often thought of as ``keyword-value''
+pairs in the ``header of a data file.
+<LI> They can be written to a disk or connection very easily, and are
+written in the Karma data format, which ensures portability across a
+wide range of platforms, and ease of use with Karma modules.
+<P>
+</UL>
+<P>
+They have the following disadvantages:
+<P>
+<UL>
+<LI> They use an unusual syntax for accessing elements. This is
+actually not such a problem, as in my opinion the syntax (once you get
+used to it) enhances the readability of the code, by always showing
+the type of the array being accessed. The syntax is described below.
+<LI> Currently, simple methods are in place for working with arrays
+of one two, three or four dimensions, comprised of floats, ints,
+unsigned ints, bytes (chars) or unsigned bytes. Using other types is a
+fairly trivial matter, requiring only some new macros in
+&lt;karma_iarray.h&gt;, but using arrays of more dimensions also
+requires a generic function to be written for accessing elements of
+such arrays.  This is still not terribly complex, but I hope to remove
+this requirement at some later stage.
+<P>
+</UL><H1><A NAME="SECTION001120000000000000000">Syntax</A></H1>
+<P>
+There is only one real oddity about iarrays, and that is the way
+individual elements of the array are accessed. Element access is done
+with a function notation, although normally a macro actually does the
+work for performance reasons. Functions are used when -DDEBUG is used
+on the command line. The element access function names are based on
+the type of the elements in the array, and the number of dimensions.
+Thus, given a two dimensional floating point array called ``a'', to
+access element [i][j], you use the notation <TT>F2(a,i,j)</TT>. A few of
+the macros are listed below to give you an idea of the format:
+<P>
+<PRE>Access macro            Type                            Number of dimensions
+B1  (a, x)              signed byte                     1
+F1  (a, x)              floating point                  1
+UB2 (a, y, x)           unsigned byte                   2
+US2 (a, y, x)           unsigned short                  2
+D3  (a, z, y, x)        double precision floating point 3
+I4  (a, z, y, x, w)     signed integer                  4
+UI4 (a, z, y, x, w)     unsigned integer                4</PRE>
+<P>
+where &lt;a&gt; is the Iarray, &lt;z&gt;, &lt;y&gt;, &lt;x&gt; and &lt;w&gt; are
+indices along each dimension.
+<P>
+As mentioned above, this notation is currently available for arrays of
+one, two, three or four dimensions, with float, int, byte or unsigned
+byte elements. If other dimensions or types are required, macros
+should be written to handle these, and possibly function calls
+also. See &lt;karma_iarray.h&gt; for macros.
+<P>
+It is important to remember that the type ``iarray'' is a generic
+type: it has no size, dimensionality or type. However, once you create
+or get (read) an iarray and assign it to an instance of an ``iarray''
+type, that instance is a pointer to an Intelligent Array which has a
+specific dimensionality, size and type. All the library routines can
+handle Iarrays of any type and size, and many can handle Iarrays of
+any dimensionality. However, when it comes to your own code which
+accesses Iarrays, the access macro you use <B>MUST</B> match the type
+and dimensionality of the Iarray you read/created.
+<P>
+<H1><A NAME="SECTION001130000000000000000">Allocating</A></H1>
+<P>
+An iarray must be allocated before it can be used. The simplest method
+is to use <A NAME="tex2html152" HREF="../lib/iarray.html#iarray_create_2D"><B>iarray_create_2D</B></A> (or the corresponding
+1D, 3D or 4D versions), which takes the lengths of the dimensions and
+the type of the elements as parameters, and returns an iarray. So for
+example, to make ``a'' an m by n floating point array, use:
+<P>
+<PRE>iarray a;
+a = iarray_create_2D (m, n, K_FLOAT);</PRE>
+<P>
+The space allocated for an iarray remains allocated until specifically
+deallocated using <A NAME="tex2html153" HREF="../lib/iarray.html#iarray_dealloc"><B>iarray_dealloc</B></A>. Think of an array
+as a pointer, just as you would an ordinary dynamically allocated
+array.
+<P>
+<H1><A NAME="SECTION001140000000000000000">Disks and Connections</A></H1>
+<P>
+One of the main benefits of iarrays and the karma library is the
+simplicity with which they can be written to disk or connections.  The
+karma data format is portable across platforms, so the problems of
+endianness and size of types is removed from the application
+programmer.
+<P>
+An iarray can be written to disk with the function
+<A NAME="tex2html154" HREF="../lib/iarray.html#iarray_write"><B>iarray_write</B></A> which requires only the iarray to write, and
+the name of the disk file. If the name given for the file is
+``connections'', then the iarray is written over any open connections
+(see the documentation for Karma communications to find out how to
+make iarray connections).
+<P>
+Iarrays are read using the <A NAME="tex2html155" HREF="../lib/iarray.html#iarray_read_nD"><B>iarray_read_nD</B></A> function,
+which takes a number of parameters, most of which can (fortunately) be
+ignored in most cases. I normally use the following:
+<P>
+<TT>a = iarray_read_nD (fname, FALSE, NULL, n, NULL, NULL,
+K_CH_MAP_NEVER);</TT>
+<P>
+Using this as a model, you merely need to provide the filename (a
+string), and the expected number of dimensions (e.g. 2 for an image).
+<P>
+<H1><A NAME="SECTION001150000000000000000">Functions on iarrays</A></H1>
+<P>
+An assortment of functions are provided by the Karma library for doing
+various work on iarrays. For example, there are functions to find the
+minimum and maximum values, to fill the array with some value, and to
+perform element-wise arithmetic on arrays. These functions should be
+used whenever possible, as they are generally tested to be correct
+(let us know if they aren't), perform error checking, and are highly
+optimised on some platforms.
+<P>
+If you create any functions that you feel are of great general
+interest, please mail them to ``karma-suggestions@atnf.csiro.au''.
+<P>
+<H1><A NAME="SECTION001160000000000000000">Example</A></H1>
+<P>
+The following is a simple example program showing how iarrays are used
+in practice. It creates an iarray with the multiplication table in it,
+reads another iarray from disk, and adds one to the other element
+wise. It then writes the resulting array to disk.
+<P>
+<PRE>/*------------------------------------------------------*/
+/* Iarray sample program                                */
+/*------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_iarray.h&gt;
+
+main()
+{
+    /* Declare variables */
+    int i, j;
+    iarray a, b;
+    static double one[2] = {1.0, 0.0};
+
+    /*  Create a 10x10 integer 2D iarray  */
+    a = iarray_create_2D (10, 10, K_INT);
+
+    /*  Read in from disk a file called &quot;input&quot; which contains an iarray  */
+    b = iarray_read_nD (&quot;input&quot;, FALSE, NULL, 2, NULL, NULL, K_CH_MAP_NEVER);
+
+    /*  Check that this is also a 10x10 array  */
+    if ( (iarray_dim_length (b, 0) != 10) ||
+         (iarray_dim_length (b, 1) != 10) )
+    {
+        fprintf (stderr, &quot;Input array is not 10x10\n&quot;);
+        exit (1);
+    }
+
+    /*  Fill a with the multiplication table  */
+    for (i = 0; i &lt; 10; i++)
+        for (j = 0; j &lt; 10; j++)
+            I2 (a, i, j) = i * j;
+
+    /*  Add a to b elementwise  */
+    iarray_add_and_scale (b, a, b, one, FALSE);
+
+    /*  Write b to disk  */
+    iarray_write (b, &quot;output&quot;);
+
+    /*  Deallocate both arrays  */
+    iarray_dealloc (a);
+    iarray_dealloc (b);
+}</PRE>
+<P>
+<HR><A NAME="tex2html798" HREF="node12.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html796" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html790" HREF="node10.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html800" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html801" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html799" HREF="node12.html">Foreign Data</A>
+<B>Up:</B> <A NAME="tex2html797" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html791" HREF="node10.html">Colourmaps</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

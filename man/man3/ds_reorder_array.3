@@ -1,0 +1,42 @@
+.TH DS_REORDER_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_reorder_array \- Re-order a multi-dimensional array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_reorder_array
+.sp
+(array_desc *arr_desc, unsigned int order_list[],
+char *array, flag mod_desc)
+.SH DESCRIPTION
+Re-order a multi-dimensional array.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIorder_list\fP 1i
+This specifies the ordering of the dimensions. The first entry
+in the order list contains the number of the dimension, in the old order,
+which is to become the most significant dimension in the new ordering.
+.IP \fIarray\fP 1i
+The array. If this is NULL, only the array descriptor can be
+re-ordered (no data can be re-ordered).
+.IP \fImod_desc\fP 1i
+If TRUE the array descriptor will have its dimension descriptors
+re-ordered, else they will not be. This is useful to traverse a data
+structure, re-ordering the data, and then finally re-ordering the array
+descriptor to match.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

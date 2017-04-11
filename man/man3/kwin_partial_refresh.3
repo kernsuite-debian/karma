@@ -1,0 +1,38 @@
+.TH KWIN_PARTIAL_REFRESH 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_partial_refresh \- Perform a partial refresh of a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_partial_refresh
+.sp
+(KPixCanvas canvas, unsigned int num_areas,
+KPixCanvasRefreshArea *areas, flag clear_all)
+.SH DESCRIPTION
+Perform a partial refresh of a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fInum_areas\fP 1i
+The number of areas in the pixel canvas to refresh.
+.IP \fIareas\fP 1i
+The list of areas to refresh. The values here are updated to ensure
+all points lie within the boundaries of the pixel canvas.
+.IP \fIclear_all\fP 1i
+If TRUE, each refreshed region is first cleared, else the
+<<clear>> field of each area determines whether an area is cleared.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH MT_NEW_THREAD_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_new_thread_info \- Register new thread information for the threads in a pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void mt_new_thread_info
+.sp
+(KThreadPool pool, void *info, uaddr size)
+.SH DESCRIPTION
+Register new thread information for the threads in a pool.
+.IP \fIpool\fP 1i
+The thread pool.
+.IP \fIinfo\fP 1i
+A pointer to the thread information array. If NULL and <<size>> is
+not 0 then the routine will allocate an array of sufficient size.
+.IP \fIsize\fP 1i
+The size (per thread) in bytes of the thread information. When
+threads are executing each is guaranteed to have a private working space of
+this size.
+.SH RETURN VALUE
+Nothing. On failure the process aborts.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

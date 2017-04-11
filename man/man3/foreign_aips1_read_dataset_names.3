@@ -1,0 +1,36 @@
+.TH FOREIGN_AIPS1_READ_DATASET_NAMES 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_aips1_read_dataset_names \- Get the names of AIPS1 datasets in the directory catalogue.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B CONST char * foreign_aips1_read_dataset_names
+.sp
+(CONST char *dirname,
+unsigned int *num_datasets)
+.SH DESCRIPTION
+This routine will read the "CA*.???;*" catalogue file in
+the specified directory and extracts the names of the datasets. The
+"AIPS_ID" environment variable should be set to your AIPS user ID.
+.IP \fIdirname\fP 1i
+The directory containing the catalogue file.
+.IP \fInum_datasets\fP 1i
+The number of datasets found is written here.
+.SH RETURN VALUE
+A pointer to a buffer packed with dataset names. Each dataset
+name is separated by a '\0' character. The buffer is internally allocated
+and must not be freed. If no datasets are found NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

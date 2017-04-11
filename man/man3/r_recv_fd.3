@@ -1,0 +1,29 @@
+.TH R_RECV_FD 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_recv_fd \- Receive a file descriptor over a connection.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_recv_fd
+.sp
+(int conn_fd)
+.SH DESCRIPTION
+Receive a file descriptor over a connection.
+.IP \fIconn_fd\fP 1i
+The connection file descriptor.
+.SH RETURN VALUE
+The received file descriptor on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

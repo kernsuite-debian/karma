@@ -1,0 +1,35 @@
+.TH IARRAY_SCROLL 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_scroll \- Scroll an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_scroll
+.sp
+(iarray array, unsigned long num_to_scroll,
+unsigned int scroll_mode)
+.SH DESCRIPTION
+This routine will scroll "down" an array by a specified number of
+co-ordinates along the major dimension (dimension 0).
+.IP \fIarray\fP 1i
+The Intelligent Array to scroll.
+.IP \fInum_to_scroll\fP 1i
+The number of co-ordinates to scroll by.
+.IP \fIscroll_mode\fP 1i
+The scroll mode.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

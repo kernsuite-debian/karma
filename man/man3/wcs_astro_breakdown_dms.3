@@ -1,0 +1,50 @@
+.TH WCS_ASTRO_BREAKDOWN_DMS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_breakdown_dms \- Break down an angular value into degrees, minutes and seconds.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_astro_breakdown_dms
+.sp
+(flag *negative, int *degrees, int *minutes,
+double *seconds, int *whole_seconds,
+double *subseconds, double input, double offset)
+.SH DESCRIPTION
+Break down an angular value into degrees, minutes and seconds.
+.IP \fInegative\fP 1i
+If the value is negative the value TRUE is written here, else
+FALSE is written here. This may be NULL.
+.IP \fIdegrees\fP 1i
+The degrees are written here. This may be NULL.
+.IP \fIminutes\fP 1i
+The minutes are written here. This may be NULL.
+.IP \fIseconds\fP 1i
+The seconds are written here. This may be NULL.
+.IP \fIwhole_seconds\fP 1i
+The integer truncated seconds are written here. This may be
+NULL.
+.IP \fIsubseconds\fP 1i
+The fractional seconds are written here. This may be NULL.
+.IP \fIinput\fP 1i
+The input value in degrees.
+.IP \fIoffset\fP 1i
+The offset (in arcseconds) to apply for rounding purposes.
+.SH RETURN VALUE
+TRUE if the value was legal, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+All component values are guaranteed to be positive.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

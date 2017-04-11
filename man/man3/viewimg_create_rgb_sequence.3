@@ -1,0 +1,86 @@
+.TH VIEWIMG_CREATE_RGB_SEQUENCE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_create_rgb_sequence \- Create sequence of TrueColour viewable images from 3D slice.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B ViewableImage * viewimg_create_rgb_sequence
+.sp
+(KWorldCanvas canvas,
+multi_array *multi_desc,
+array_desc *arr_desc, char *cube,
+unsigned int hdim,
+unsigned int vdim,
+unsigned int fdim,
+unsigned int red_index,
+unsigned int green_index,
+unsigned int blue_index,
+unsigned num_restr,
+CONST char **restr_names,
+CONST double *restr_values)
+.SH DESCRIPTION
+This routine will create a sequence of TrueColour viewable image
+objects from a 3-dimensional cube of a Karma data structure. At a later
+time, this sequence of viewable images may be made visible in any order.
+This routine will not cause the canvas to be refreshed.
+.IP \fIcanvas\fP 1i
+The world canvas onto which the viewable image may be drawn. Many
+viewable images may be associated with a single canvas.
+.IP \fImulti_desc\fP 1i
+The  multi_array  descriptor which contains the Karma data
+structure must. The routine increments the attachment count on the
+descriptor on successful completion. This may be NULL.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIcube\fP 1i
+The start of the cube data.
+.IP \fIhdim\fP 1i
+The dimension index of the horizontal dimension.
+.IP \fIvdim\fP 1i
+The dimension index of the vertical dimension.
+.IP \fIfdim\fP 1i
+The dimension index of the frame dimension (dimension containing the
+sequence). The number of frames is the same as the length of this dimension
+.IP \fIred_index\fP 1i
+The element index of the red component in the data packets.
+.IP \fIgreen_index\fP 1i
+The element index of the green component in the data packets.
+.IP \fIblue_index\fP 1i
+The element index of the blue component in the data packets.
+.IP \fInum_restr\fP 1i
+The number of matched restrictions. If this is 0, no
+restrictions are recorded.
+.IP \fIrestr_names\fP 1i
+The restriction names.
+.IP \fIrestr_values\fP 1i
+The restriction values.
+.SH RETURN VALUE
+A viewable image on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The 3 colour components must be of type K_UBYTE.
+.sp
+Restriction information is copied into internally allocated
+storage.
+.sp
+The routine may produce cache data which will vastly increase the
+speed of subsequent operations on this data. Prior to process exit, a call
+MUST be made to <-viewimg_destroy->, otherwise shared memory segments could
+remain after the process exits.
+.sp
+The ViewableImage objects will be automatically destroyed if the
+canvas is destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

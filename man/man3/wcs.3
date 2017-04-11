@@ -1,0 +1,87 @@
+.TH WCS 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+wcs \- Routines to support Astronomical sky-projections
+.SH PURPOSE
+These routines are meant to provide support for Astronomical
+sky-projections.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIwcs_astro_get_associated\fP 1i
+Create/get associated Astronomical Sky Co-ordinate projections.
+.IP \fIwcs_astro_setup\fP 1i
+Setup for Astronomical Sky Co-ordinate projections.
+.IP \fIwcs_astro_destroy\fP 1i
+Destroy KwcsAstro object.
+.IP \fIwcs_astro_test_radec\fP 1i
+Test if a KwcsAstro object has RA/GLON and DEC/GLAT defined.
+.IP \fIwcs_astro_test_velocity\fP 1i
+Test if a KwcsAstro object has velocity or frequency defined.
+.IP \fIwcs_astro_test_if_ra\fP 1i
+Test if an axis is a Right Ascension axis.
+.IP \fIwcs_astro_test_if_dec\fP 1i
+Test if an axis is a Declination axis.
+.IP \fIwcs_astro_test_if_glon\fP 1i
+Test if an axis is a Galactic Longitude axis.
+.IP \fIwcs_astro_test_if_glat\fP 1i
+Test if an axis is a Galactic Latitude axis.
+.IP \fIwcs_astro_test_if_lon\fP 1i
+Test if an axis is a longitude axis.
+.IP \fIwcs_astro_test_if_lat\fP 1i
+Test if an axis is a latitude axis.
+.IP \fIwcs_astro_test_if_velocity\fP 1i
+Test if an axis is a velocity axis.
+.IP \fIwcs_astro_transform\fP 1i
+Transform between linear and projected co-ordinates.
+.IP \fIwcs_astro_transform3\fP 1i
+Transform between linear and projected co-ordinates.
+.IP \fIwcs_astro_breakdown_hms\fP 1i
+Breakdown a time value into components.
+.IP \fIwcs_astro_format_hms\fP 1i
+Format a time value into a string.
+.IP \fIwcs_astro_breakdown_dms\fP 1i
+Break down an angular value into degrees, minutes and seconds.
+.IP \fIwcs_astro_format_dms\fP 1i
+Format an angle value into a string.
+.IP \fIwcs_astro_format_vel\fP 1i
+Format a velocity value into a string.
+.IP \fIwcs_astro_breakdown_time\fP 1i
+Breakdown a time value into components.
+.IP \fIwcs_astro_format_time\fP 1i
+Format a time value into a string.
+.IP \fIwcs_astro_format\fP 1i
+Format a value. No transformation is applied.
+.IP \fIwcs_astro_format_all\fP 1i
+Transform and format all available information.
+.IP \fIwcs_astro_get_preferred_units\fP 1i
+Get preferred units for data.
+.IP \fIwcs_astro_get_equinox\fP 1i
+Get the Equinox.
+.IP \fIwcs_astro_get_reference\fP 1i
+Get reference value for an axis.
+.IP \fIwcs_astro_get_increment\fP 1i
+Get increment value for an axis.
+.IP \fIwcs_astro_update_location\fP 1i
+Update the location ("CRVALn" and "CRPIXn") values.
+.IP \fIwcs_astro_compare_axes\fP 1i
+Compare axis names.
+.IP \fIwcs_astro_has_chromatic_aberration\fP 1i
+Test if a co-ordinate system has chromatic aberration.
+.IP \fIwcs_compare_grids_2D\fP 1i
+Compare if two images have the same world co-ordinate grid.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

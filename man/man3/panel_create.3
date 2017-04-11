@@ -1,0 +1,30 @@
+.TH PANEL_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+panel_create \- Create a control panel object.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B KControlPanel panel_create
+.sp
+(flag blank)
+.SH DESCRIPTION
+Create a control panel object.
+.IP \fIblank\fP 1i
+If TRUE, then the routine will create a blank form, else it will
+add some internally defined panel items.
+.SH RETURN VALUE
+A KControlPanel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

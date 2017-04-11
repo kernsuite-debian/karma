@@ -1,0 +1,39 @@
+.TH KCMAP_REGISTER_MODIFY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kcmap_register_modify_func \- Register a colourmap modify function.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B KCallbackFunc kcmap_register_modify_func
+.sp
+(Kcolourmap cmap,
+void (*modify_func) (), void *info)
+.SH DESCRIPTION
+This routine will register a modify callback function for a high
+level colourmap. The function will be called whenever the colourmap is
+modified.
+Many modify callbacks may be registered per colourmap. The first function
+registered is the first function called upon modify.
+.IP \fIcmap\fP 1i
+The colourmap.
+.IP \fImodify_func\fP 1i
+The function which is called when the colourmap is modified.
+The prototype function is <-kcmap_PROTO_modify_func->.
+.IP \fIinfo\fP 1i
+The initial arbitrary colourmap information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

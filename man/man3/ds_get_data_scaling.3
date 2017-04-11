@@ -1,0 +1,53 @@
+.TH DS_GET_DATA_SCALING 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_get_data_scaling \- Get the scale and offset for a data element in a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_get_data_scaling
+.sp
+(CONST char *elem_name, CONST packet_desc *pack_desc,
+CONST char *packet, double *scale, double *offset)
+.SH DESCRIPTION
+This routine will determine the scale and offset for data in a
+packet. This may be important when a floating-point array has
+been converted to an integer array to save space. Scaling information
+should be attached to the array so that the original data values may be
+reconstructed (aside from quantisation effects). The following expression
+may be used to convert scaled values to real values:
+(output = input * scale + offset). The scaling and offset values should
+previously have been attached to the array using an appropriate routine.
+No low-level routine currently exists to do this, but higher-level support
+is given by the <-iarray_set_data_scaling-> routine.
+.IP \fIelem_name\fP 1i
+The name of the element.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet.
+.IP \fIscale\fP 1i
+The scaling value will be written here. The name of the scaling
+value is constructed by appending "__SCALE" to the element name. If no
+scaling value is found, 1.0 is written here. As a fallback, if the
+FITS-style "BSCALE" keyword is found and is appropriate, this is used.
+.IP \fIoffset\fP 1i
+The offset value will be written here. The name of the offset
+value is constructed by appending "__OFFSET" to the element name. If no
+offset value is found, 0.0 is written here. As a fallback, if the
+FITS-style "BZERO" keyword is found and is appropriate, this is used.
+.SH RETURN VALUE
+TRUE if either the scaling or offset value were found, else FALSE
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

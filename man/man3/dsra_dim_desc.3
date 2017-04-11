@@ -1,0 +1,29 @@
+.TH DSRA_DIM_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsra_dim_desc \- Read ASCII representation of a dimension descriptor.
+.SH SYNOPSIS
+.B #include <karma_dsra.h>
+.sp
+.B dim_desc * dsra_dim_desc
+.sp
+(Channel channel)
+.SH DESCRIPTION
+Read ASCII representation of a dimension descriptor.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.SH RETURN VALUE
+A pointer to the dimension descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

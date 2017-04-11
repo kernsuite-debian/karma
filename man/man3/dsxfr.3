@@ -1,0 +1,44 @@
+.TH DSXFR 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dsxfr \- Routines to transfer data structures over connections
+.SH PURPOSE
+These routines are meant to provide high level transfer of the recursive,
+heirarchical data structure supported in Karma from and to files and
+connections.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIdsxfr_register_connection_limits\fP 1i
+Register connection limits for "multi_array" protocol.
+.IP \fIdsxfr_put_multi\fP 1i
+Write a multi_array data structure.
+.IP \fIdsxfr_send_multi\fP 1i
+Send a multi_array data structure over a connection.
+.IP \fIdsxfr_get_multi\fP 1i
+Read a multi_array data structure.
+.IP \fIdsxfr_register_read_func\fP 1i
+Register callback for new "multi_array" data.
+.IP \fIdsxfr_register_close_func\fP 1i
+Register callback for closed "multi_array" connection.
+.IP \fIdsxfr_test_split\fP 1i
+Test if a file is part of a split Karma file.
+.IP \fIdsxfr_read_split\fP 1i
+Read a multi_array data structure.
+.IP \fIdsxfr_PROTO_read_func\fP 1i
+New "multi_array" data callback.
+.IP \fIdsxfr_PROTO_close_func\fP 1i
+Callback for "multi_array" connection closures.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

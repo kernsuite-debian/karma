@@ -1,0 +1,41 @@
+#! /bin/csh -f
+
+if ("$argv[1]" == "-c") then
+    shift argv
+endif
+if ("$argv[1]" == "-m") then
+    set mode = $argv[2]
+    shift argv
+    shift argv
+else
+    set mode = 755
+endif
+if ("$argv[1]" == "-s") then
+    shift argv
+    set strip = "TRUE"
+endif
+
+# Do it again
+if ("$argv[1]" == "-c") then
+    shift argv
+endif
+if ("$argv[1]" == "-m") then
+    set mode = $argv[2]
+    shift argv
+    shift argv
+else
+    set mode = 755
+endif
+if ("$argv[1]" == "-s") then
+    shift argv
+    set strip = "TRUE"
+endif
+
+set infile = $argv[1]
+set outfile = $argv[2]
+
+cp -p $infile $outfile
+if ($?strip == 1) strip $outfile
+chmod $mode $outfile
+
+exit 0

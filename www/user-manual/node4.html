@@ -1,0 +1,727 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>3 Viewing and Comparing multiple Images and Cubes</TITLE>
+<META NAME="description" CONTENT="3 Viewing and Comparing multiple Images and Cubes">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html325" HREF="node5.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html323" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html317" HREF="node3.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html327" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html328" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html326" HREF="node5.html">4 Viewing Images and </A>
+<B>Up:</B> <A NAME="tex2html324" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html318" HREF="node3.html">2 Common Features</A>
+<BR> <P>
+<H1><A NAME="SECTION00400000000000000000">3 Viewing and Comparing multiple Images and Cubes</A></H1>
+<P>
+<A NAME="chapterkvis">&#160;</A><A NAME="pubkvis">&#160;</A>
+<A NAME="880">&#160;</A><A NAME="881">&#160;</A><A NAME="882">&#160;</A>
+<P>
+The <B>&lt;kvis&gt;</B> programme allows you to view multiple
+datasets.
+<P>
+This tool allows you to compare different datasets in a very easy
+fashion. You can display any dataset as an image, overlay contours of
+datasets, show profiles along any axis, and much more. The programme
+uses the <A NAME="tex2html50" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget (section <A HREF="node3.html#ImageDisplay">2.15</A>) to
+provide the usual interface.
+<P>
+<H1><A NAME="SECTION00410000000000000000">3.1 Overview</A></H1>
+<P>
+The tool is centred around the concept of a <EM>blink-state</EM>, which
+defines how you want to display datasets (i.e. which dataset is shown
+as the image, which datasets are shown as contours, how to control
+movies and profiles and so on). A blink-state can control the display
+settings of all datasets that have been loaded into the application.
+<P>
+Multiple blink-states may be created, each with a different
+configuration of what datasets are to be shown. By pressing a key, the
+display is switched from one blink-state to another.
+<P>
+Blink-states are created and managed using the <A NAME="tex2html51" HREF="../lib/DataBrowser.html"><B>DataBrowser</B></A>
+widget.
+<P>
+<H1><A NAME="SECTION00420000000000000000">3.2 View Control</A></H1>
+<P>
+Pressing the <B>View</B> button will pop up the <A NAME="tex2html56" HREF="../lib/ViewDatasets.html"><B>ViewDatasets</B></A>
+widget.
+<P>
+<A NAME="ViewDatasets">&#160;</A><A NAME="893">&#160;</A>
+This widget provides controls for a display window to manage the
+display of multiple datasets. Most of the controls for data display
+management are in the <A NAME="tex2html57" HREF="../lib/DataBrowser.html"><B>DataBrowser</B></A> widget.
+<P>
+The controls provided are:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Browsers</B> this will pop up the data browser window(s) for
+this display window
+<LI> <B>Movie</B> this will pop up the <A NAME="tex2html54" HREF="../lib/AnimateControl.html"><B>AnimateControl</B></A> widget
+(section <A HREF="node3.html#AnimateControl">2.3</A>), which will allow you to play movies
+and step through frames. In addition, the following key bindings are
+defined for the main display window:
+<UL><A NAME="902">&#160;</A>
+<LI> <B>PgDn</B> go to previous frame
+<A NAME="904">&#160;</A>
+<LI> <B>PgUp</B> go to next frame
+<A NAME="906">&#160;</A>
+<LI> <B>Home</B> go to start frame
+<A NAME="908">&#160;</A>
+<LI> <B>End</B> go to end frame
+</UL>
+On some keyboards, <TT>PgDn</TT> is marked as <TT>Next</TT> and <TT>PgUp</TT>
+is marked as <TT>Prev</TT>.
+<LI> <B>Profile Mode Menu</B> this allows you to pop up the
+<A NAME="tex2html55" HREF="../lib/TracePopup.html"><B>TracePopup</B></A> widget (section <A HREF="node3.html#TracePopup">2.11</A>) and choose the
+profile mode. The following modes are available:
+<P>
+<UL>
+<LI> <B>None</B> will pop down the <A NAME="tex2html52" HREF="../lib/TracePopup.html"><B>TracePopup</B></A> widget
+<P>
+<A NAME="921">&#160;</A>
+<LI> <B>Line</B> will show a single profile in the selected direction
+<P>
+<A NAME="923">&#160;</A>
+<LI> <B>Box Sum</B> lets you draw a box over the image window
+(using the middle mouse button, in a similar way as using the left
+mouse button to zoom) and then the sum of all the profiles in that
+region is displayed. Box mode only works for 3-dimensional datasets,
+and will always display a profile along the unseen dimension
+<P>
+<A NAME="925">&#160;</A>
+<LI> <B>Box Average</B> is like the <B>box sum</B> mode except that the
+average of all profiles is displayed rather than the sum
+<P>
+<A NAME="928">&#160;</A><A NAME="929">&#160;</A>
+<A NAME="930">&#160;</A><A NAME="931">&#160;</A>
+<LI> <B>Radial</B> will azimuthally average the image plane data and
+produce a plot of average value versus radius. A gaussian is then
+fitted to the radial profile and over-plotted in red and the FWHM (full
+width half max) of the gaussian is displayed over the profile. You
+must click the middle mouse button to define the centre of the object
+of interest, then, keeping the mouse button down, drag out to define
+the maximum radius of the profile and release the button to
+display. The algorithm automatically adjusts the centre position using
+a centroiding operation, so you don't have to be too careful about
+picking the centre of your object. More information on the
+<A NAME="tex2html53" HREF="../user-manual/centroidingalgorithm.html#pubcentroidingalgorithm">centroidingalgorithm</A> can be found in the Karma User
+Manual.
+<P>
+The programme should also work with a photographic negative. The
+centroiding algorithm is automatically modified to look for a trough
+rather than a peak
+<P>
+<A NAME="934">&#160;</A>
+<LI> <B>Boxed Horiz</B> will produce a horizontal profile which is
+averaged vertically. The box is drawn the same way as for the <B>box
+sum</B> mode. The horizontal centroid of the profile is computed and a
+gaussian is fitted and displayed
+<LI> <B>Boxed Vert</B> will produce a vertical profile which is
+averaged horizontally. The box is drawn the same way as for the <B>
+box sum</B> mode. The vertical centroid of the profile is computed and
+a gaussian is fitted and displayed
+</UL>
+<LI> <B>Slice Direction Menu</B> this allows you to choose how you
+want to slice your cube. You can view XY, XZ or ZY planes
+<LI> <B>Profile Axis Menu</B> this allows you to choose along which
+axis you want the profile to be displayed (valid only for line profile
+mode)
+<LI> <B>Freeze Displayed Intensity Range</B> if unset (the default),
+the intensity range specified for a dataset is used when that dataset
+is displayed as an image. If set, switching from one dataset to the
+next will not change the displayed intensity range (however, changing
+the intensity range for the image dataset will change the displayed
+intensity range)
+<LI> <B>Track Cursor</B> if set, the corresponding image display
+window will ``listen'' for cursor moves which occur in other image
+display windows, and will draw a red circle at the same world
+co-ordinate position
+<LI> <B>Show Frame in Line Profile</B> if this is set the current
+frame displayed in the main image window is shown as a vertical red
+line in the profile window. This marker is only drawn if the profile
+axis is the unseen axis
+<LI> <B>Auto Title</B> if enabled, the axis labelling title is
+automatically generated. Whenever this is disabled, the string
+specified by <B>Axis Labelling Title</B> is used instead
+<LI> <B>Show Beam</B> if enabled, the dataset headers are searched for
+``BPA'', ``BMAJ'' and ``BMIN'' FITS-style keywords. If these keywords
+are present, a representation of the telescope beam is overlaid on the
+image
+<LI> <B>Show Beam Name</B> if enabled, the name of the dataset is
+placed near the beam representation
+<LI> <B>Beam Xpos</B> controls the horizontal position of the
+the beam
+<LI> <B>Beam Ypos</B> controls the vertical position of the
+the beam
+<P>
+</UL>
+<P>
+<A NAME="952">&#160;</A>
+In addition, if you click the left mouse button in the display window
+without moving it in between the press and release, the image will pan
+across. If you click the middle mouse button, the image will zoom in
+2x (the new centre of the image will be the place where you
+clicked). Click the right mouse button to zoom out 2x. If the profile
+mode is ``box'' then you can't use the middle mouse button to zoom.
+<P>
+<A NAME="paragraphkvisscatterplot">&#160;</A>
+<A NAME="954">&#160;</A><A NAME="955">&#160;</A>
+Pressing the <TT>c</TT> key in the display window will compute and
+display a scatter plot of intensity values in the image dataset versus
+intensity values in the ``alternate'' dataset. This is useful for
+seeing if there is a correlation between the values in two images. You
+can use the left mouse button to define a sub-image (similarly to
+zooming in) from which the scatter plot is computed.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/ViewDatasets.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00430000000000000000">3.3 Data Browser</A></H1>
+<P>
+<A NAME="DataBrowser">&#160;</A><A NAME="959">&#160;</A>
+<A NAME="960">&#160;</A>
+This widget provides controls for managing the display of multiple
+datasets.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/DataBrowser.gif" target=image_window>here</a>.
+<P>
+The controls provided are:
+<P>
+<H3><A NAME="SECTION00430100000000000000">Browser Controls</A></H3>
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Destroy</B> the blink-state that the browser is showing is
+destroyed. It is not possible to destroy the first blink-state for the
+display window
+<LI> <B>Copy</B> create a new blink-state (and browser) which has the
+same configuration as the currently viewed blink-state. In <TT>all</TT>
+mode, the browser for the new blink-state is popped up
+<LI> <B>Show</B> menu gives control over how the various blink-states
+are displayed. The following modes are available:
+<UL>
+<LI> <B>all</B> each blink-state is viewed in its own browser
+<LI> <B>some</B> each display window has a single browser, which can
+be switched to display any blink-state for the display window
+</UL>
+<LI> <B>Data</B> menu selects which kind of data is displayed in the
+browser. The choices are:
+<UL>
+<LI> <B>Arrays</B> gridded array data (can be viewed as images or
+contours)
+<LI> <B>Annotations</B> text and geometric figures which can be
+overlaid for annotation purposes
+</UL>
+<LI> <B>Advanced</B> this will raise the
+<A HREF="node4.html#sectiondatabrowseradvanced">advanced control panel</A>
+<LI> <B>Make Data</B> this will raise the
+<A HREF="node4.html#sectiondatabrowsermakedata">make data control panel</A>
+<P>
+</UL><H3><A NAME="SECTION00430200000000000000">Data List</A></H3>
+<P>
+Beneath these general controls, the list of loaded data appears. Each
+line shows the name and a summary of the configuration settings for
+that dataset. The list section is different for each data type. There
+are common operations that may be performed irrespective of data type,
+which are described here.
+<P>
+There is always a highlighted line, which shows which entry you can
+make changes to (using either the mouse buttons or the keyboard). The
+highlighted line is shown by a slightly different background
+colour. You can change the highlighted line by using the mouse or
+up/down arrow keys.
+<P>
+There is also a <EM>selected</EM> line, which shows which entry has more
+detail shown in the section(s) below. The list section only shows a
+summary of the current configuration for each dataset. The selected
+line is shown by using reverse video.
+<P>
+If the browser is in <EM>active</EM> mode (the default), then the <EM>
+selected</EM> line is locked to the highlighted line. If in <EM>passive</EM>
+mode, the <EM>selected</EM> line does not move until you explicitly
+select an entry.
+<P>
+If you select an entry while in <EM>active</EM> mode, the browser
+switches to <EM>passive</EM> mode. If in <EM>passive</EM> mode and you
+select the already selected entry, the browser switches to <EM>
+active</EM> mode.
+<P>
+As the mouse is moved over the data names, one of the names will be
+highlighted. The mouse and keyboard may be pressed to control the
+settings of the highlighted data. The following bindings are
+available:
+<P>
+<UL>
+<LI> <B>Left Mouse</B> select the highlighted dataset for display in
+the sections below, and disable <EM>active</EM> mode. If the data is
+already selected and active mode is disabled, <EM>active</EM> mode is
+enabled
+<LI> <B>Spacebar</B> same effect as left mouse button
+<LI> <B>Up Arrow</B> highlight and select the previous data
+<LI> <B>Down Arrow</B> highlight and select the next data
+<LI> <B>=</B> (equals sign) selects this dataset for
+<A HREF="node4.html#sectiondatareplacement">replacement</A>, copying all data
+attributes
+<LI> <B><IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif"></B> (tilde sign) selects this dataset for
+<A HREF="node4.html#sectiondatareplacement">replacement</A> without attribute copying
+<P>
+</UL>
+<P>
+There are other key bindings which are independent of which dataset
+the mouse is highlighting:
+<P>
+<UL>
+<LI> <B>Left Arrow</B> cycle backwards in the list of blink-states for
+the same window (in <TT>Some</TT> or <TT>One</TT> modes). Has no effect in
+<TT>All</TT> mode)
+<LI> <B>Right Arrow</B> as above, but cycle forwards
+<LI> <B>Shift Left Arrow</B> similar to <TT>Left Arrow</TT>, but also
+make the blink-state active
+<LI> <B>Shift Right Arrow</B> similar to <TT>Right Arrow</TT>, but also
+make the blink-state active
+<LI> <B>Control Left Arrow</B> cycle backwards to the last browser
+for the previous display window (<TT>One</TT> mode). Has no effect in
+other modes
+<LI> <B>Control Right Arrow</B> cycle forwards to the first browser
+for the next display window (<TT>One</TT> mode). Has no effect in
+other modes
+<LI> <B>Shift Control Left Arrow</B> similar to <TT>Control Left
+Arrow</TT>, but also make the blink-state active
+<LI> <B>Shift Control Right Arrow</B> similar to <TT>Control Right
+Arrow</TT>, but also make the blink-state active
+<LI> <B>b key</B> blink the display window to the next browser for
+this display window
+<LI> <B>B key</B> make the currently viewed blink-state active
+<LI> <B>&gt; key</B> blink the display window to the next browser for
+this display window
+<LI> <B>&lt; key</B> blink the display window to the next browser for
+this display window
+<P>
+</UL>
+<P>
+The list section will show single character codes in a number of
+columns to the left of the data entry names. Different data types will
+show a different number of columns, and the character codes have
+different meanings as well. However following convention is followed:
+<P>
+<UL>
+<LI> <B>=</B> (equals sign) this dataset has been selected for
+<A HREF="node4.html#sectiondatareplacement">replacement</A> with data attribute
+copying
+<LI> <B><IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif"></B> (tilde sign) this dataset has been selected for
+<A HREF="node4.html#sectiondatareplacement">replacement</A> without attribute copying
+<LI> <B>uppercase</B> this is an exclusive option: only one entry may
+have this option set per blink-state
+<LI> <B>lowercase</B> non-inclusive option. Any number of entries may
+have this option set
+<P>
+</UL>
+<P>
+Below the list of data, more detailed information and configuration
+settings are shown. The appearance depends on the kind of data being
+shown.
+<P>
+The configuration controls for the different data types are described
+below.
+<P>
+<H3><A NAME="SECTION00430300000000000000">Data Replacement</A></H3>
+<P>
+<A NAME="sectiondatareplacement">&#160;</A><A NAME="1043">&#160;</A>
+<P>
+As discussed above, a dataset may be selected for <EM>replacement</EM>.
+When a new dataset is loaded, the list of already loaded datasets is
+scanned for a dataset which has been selected for replacement, <EM>
+and</EM> was loaded from the same data source. A typical data source is a
+file browser, but may also include network connections. When a dataset
+is replaced with a new one, either all the old settings (such as
+intensity range, contour levels, etc.) are retained or none of the
+settings are retained, depending on which replacement mode was
+selected.
+<P>
+If more than one dataset is selected for replacement, and these
+datasets were loaded from the same data source, the selected dataset
+closest to the top of the list is replaced.
+<P>
+Note that if a data source is removed (e.g. a file browser is
+destroyed), then datasets loaded via that data source can no longer be
+replaced. These datasets can still be explicitly unloaded, however.
+<P>
+<H3><A NAME="SECTION00430400000000000000">Array List</A></H3>
+<P>
+There are several columns used to display a summary of the
+configuration, using a simple legend. These are described below:
+<P>
+<UL>
+<LI> <B>Image Column</B> shows which dataset(s) contribute to the
+displayed image. These are exclusive settings. The legend is:
+<UL>
+<LI> <B>I</B> show this array as the image
+<LI> <B>A</B> this array is the &quot;alternate image&quot; for
+intensity-intensity scatter plot computation
+hue-intensity
+</UL>
+<LI> <B>Contour Column</B> shows which datasets are displayed as
+contours. These are non-exclusive settings. The legend is:
+<UL>
+<LI> <B>c</B> show this array as a normal contour map
+<LI> <B>r</B> show this array as a Renzogram (only for cubes)
+</UL>
+<LI> <B>Movie Column</B> shows which datasets can be shown as a
+movie. The legend is:
+<UL>
+<LI> <B>M</B> enable movie controls for this array
+<LI> <B>m</B> slave this array to the movie controls
+</UL>
+<LI> <B>Profile Column</B> shows which datasets can be shown as
+profiles. The legend is:
+<UL>
+<LI> <B>P</B> display line profiles of this array (this array controls
+the axis labelling and is drawn on top)
+<LI> <B>p</B> display line profiles of this array
+</UL></UL>
+<P>
+The following keyboard and mouse bindings are available to quickly
+control the configuration:
+<P>
+<UL>
+<LI> <B>Middle Mouse</B> show as the image, the previous image becomes
+the &quot;alternate image&quot;. If already displayed as the image, disable
+image display
+<LI> <B>Right Mouse</B> toggle between enabling and disabling contour
+display
+<LI> <B>i key</B> same effect as the middle mouse button
+<LI> <B>control-i</B> make the next dataset in the list the currently
+displayed image. This will cycle back to the top of the list when the
+end is reached
+<LI> <B>control-shift-i</B> make the previous dataset in the list the
+currently displayed image. This will cycle back to the end of the list
+when the top is reached
+<LI> <B>a key</B> make this image the &quot;alternate image&quot;
+<LI> <B>c key</B> same effect as the right mouse button
+<LI> <B>r key</B> toggle between enabling and disabling Renzogram
+display
+<LI> <B>control-c</B> enable contours and apply levels
+<LI> <B>control-r</B> enable Renzogram and apply level
+<LI> <B>M key</B> enable movie controls for this array
+<LI> <B>m key</B> slave this array to the movie controls
+<LI> <B>P key</B> display line profiles of this array (this array
+controls the axis labelling and is drawn on top)
+<LI> <B>p key</B> display line profiles of this array
+<P>
+</UL><H3><A NAME="SECTION00430500000000000000">Detailed Array Information</A></H3>
+<P>
+This shows information about the array, such as the directory from
+where the array was loaded, the format of the data (i.e. FITS, AIPS,
+Miriad, Gipsy and many more), the size and dimensionality and the
+range of data values. The following control buttons are available:
+<P>
+<UL>
+<LI> <B>Histogram</B> pop up a histogram for this array. The histogram
+display can be used to control the intensity range for this array
+<LI> <B>Clone</B> create a virtual copy of the array, which will have
+independent configuration settings. Note that the data are not copied,
+instead a reference is made
+<LI> <B>Unload</B> unload the array
+<P>
+</UL>
+<P>
+Note that these operations affect all browsers/blink-states and all
+display windows.
+<P>
+<H3><A NAME="SECTION00430600000000000000">Array Configuration</A></H3>
+<P>
+How to display an array is controlled via this section. Some controls
+are per blink-state, while others are global and apply to all
+blink-states and all display windows. The following controls are per
+blink-state:
+<P>
+<UL>
+<LI> <B>Image</B> menu. The choices are:
+<UL>
+<LI> <B>off</B> the array is not selected for image display
+<LI> <B>main</B> the array is selected for normal image display
+<LI> <B>alt</B> the array is the ``alternate'' image for computing
+intensity-intensity scatter plots
+</UL>
+<LI> <B>Contour</B> menu. The choices are:
+<UL>
+<LI> <B>off</B> the array is not displayed as contours
+<LI> <B>map</B> the array is shown as normal contours
+<LI> <B>renzo</B> the array is shown as a ``Renzogram''
+</UL>
+<LI> <B>Movie</B> menu. The choices are:
+<UL>
+<LI> <B>off</B> the array will not be shown as a movie
+<LI> <B>master</B> the array is shown as a movie and controls the
+frames
+<LI> <B>slave</B> the array is shown as a movie and is slaved to the
+master
+</UL></UL>
+<P>
+The following controls are global to the application, and affect all
+blink-states and display windows:
+<P>
+<UL>
+<LI> <B>Low</B> the low end of the intensity range
+<LI> <B>High</B> the high end of the intensity range
+<LI> <B>Map Contour Levels</B> the contour levels for normal
+contours. The syntax for the contour levels is as follows:
+<P>
+<A NAME="1116">&#160;</A>
+<UL>
+<LI> just type the levels you want e.g. <TT>0.001 0.002 0.003 0.004</TT>
+<LI> levels with a constant increment: <TT>0.001:0.004+0.001</TT> means that
+the first level is <TT>0.001</TT>, that this level is incremented with
+<TT>0.001</TT> until <TT>0.004</TT> is reached.  So this example gives the
+same levels as in the first case
+<LI> levels incremented by a factor: <TT>0.001:0.016*2</TT>. This gives levels
+<TT>0.001 0.002 0.004 0.008 0.016</TT>
+<LI> levels as percentage of the peak: first character should be %,
+numbers are taken as percentage, the rest of the syntax is as above,
+e.g. %10:40+10 gives 10, 20, 30 and 40 % of the maximum of the data
+<LI> the special values <TT>min</TT> and <TT>max</TT> indicate the minimum
+and maximum value
+</UL>
+<P>
+These options can be mixed, i.e. <TT>-0.03:-0.01+0.01
+0.003:0.1+0.02 0.2 0.3</TT> is interpreted correctly. You should press the
+enter key for your changes to take effect
+<LI> <B>-ve Cont. Width</B> the width of negative contour levels
+<LI> <B>+ve Cont. Width</B> the width of positive contour levels
+<LI> <B>-Colour</B> the colour of negative contour levels
+<LI> <B>+Colour</B> the colour of positive contour levels
+<LI> <B>Renzo Contour Levels</B> the contour levels for
+Renzograms. The syntax is the same as for the contour levels
+<LI> <B>Renzogram Channels</B><A NAME="1135">&#160;</A>
+the channels (along the unseen axis) to
+display in the Renzogram. The syntax is similar as for the contour
+levels, except that a leading ``I'' or ``W'' must be given. Again,
+press the enter key for your changes to take effect. These leading
+characters have the following meaning:
+<UL>
+<LI> <B>I</B> specify channel <B>I</B>ndices. Thus <TT>Imin:max+1</TT>
+selects channels between channel 0 (the first) and the last channel,
+in single channel increments (i.e. all channels). For example, if you
+wanted to display channels 10 to 20 inclusive, type: <TT>I10:20+1</TT>
+<LI> <B>W</B> specify <B>W</B>orld co-ordinates (i.e. velocity in m/s
+or frequency in Hz). For example, if you wanted to show channels
+between 1418 and 1420 MHz, in 100 KHz steps, type: <TT>
+W1418e6:1420e6+1e5</TT>
+</UL>
+<LI> <B>Profile</B> menu. The choices are:
+<UL>
+<LI> <B>off</B> the array will not be shown as a profile
+<LI> <B>master</B> the array is shown as a profile, is drawn on top
+and controls the axis labels
+<LI> <B>slave</B> the array is shown as a profile and is slaved to the
+master
+</UL>
+<LI> <B>Dark</B> the colour to use for profile display. This must be a
+dark colour, appropriate for display on light backgrounds (i.e. white
+paper)
+<LI> <B>Light</B> the colour to use for profile display. This must be a
+light colour, appropriate for display on dark backgrounds (i.e. a
+computer monitor)
+<P>
+</UL><H3><A NAME="SECTION00430700000000000000">Advanced Control Panel</A></H3>
+<P>
+<A NAME="sectiondatabrowseradvanced">&#160;</A><A NAME="1156">&#160;</A>
+<P>
+This control panel allows you to control some extra aspects of the
+behaviour of all data browsers. The following controls are available:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Clip Mode</B> menu controls how changes in the low and high
+clip levels affect display windows. The following modes are available:
+<UL>
+<LI> <B>Image and Profiles</B> the image intensity range and profile
+vertical range are synchronised and clip level changes affect both
+<LI> <B>Images only</B> only the image intensity range is affected by
+clip level changes
+<LI> <B>Profiles only</B> only the profile vertical range is affected
+by clip level changes
+<LI> <B>Both later</B> the image intensity range and profile
+vertical range are affected by subsequent clip level changes, but they
+are not immediately synchronised
+</UL>
+<LI> <B>Range changes affect all arrays</B> if this is turned on, an
+attempt to change the clip levels of any array dataset will change the
+clip levels for all array datasets
+<LI> <B>Make slaved movie on load</B> if this is turned on, an array
+dataset with three or more dimensions will be automatically marked as
+a movie slave when loaded
+<LI> <B>Activate annotations on load</B> if this is turned on, an
+annotation dataset is automatically made active (i.e. displayed) when
+loaded
+<LI> <B>Slave Profile H-range to image window</B> if this is turned
+on, the horizontal range of the profile window is set to the same
+as the horizontal range of the image window if the the axes correspond
+<LI> <B>Show new data as Image</B> if this is turned on, an array
+dataset is marked as the active image when loaded
+<P>
+</UL><H3><A NAME="SECTION00430800000000000000">Make Data Control Panel</A></H3>
+<P>
+<A NAME="sectiondatabrowsermakedata">&#160;</A><A NAME="1174">&#160;</A>
+<P>
+This control panel allows you to create new array data from existing
+array data. This is useful if you want to combine data together. The
+following controls are available:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Algorithm</B> menu controls how data arrays are combined. The
+following modes are available:
+<UL>
+<LI> <B>RGB</B> combine one, two or three datasets into an RGB (red,
+green and blue) array. Each colour component is 8 bits, yielding a 24
+bit array. The input values between the low and high clip are linearly
+scaled into the output. If the clip values on an input array are
+subsequently changed, the RGB image is rescaled. The following
+bindings are available:
+<UL>
+<LI> <B>R</B> use this dataset as the red colour component
+<LI> <B>G</B> use this dataset as the green colour component
+<LI> <B>B</B> use this dataset as the blue colour component
+<LI> <B>Left Mouse</B> use this dataset as the red colour component
+<LI> <B>Middle Mouse</B> use this dataset as the green colour component
+<LI> <B>Right Mouse</B> use this dataset as the blue colour component
+<LI> <B>#</B> use this dataset as the grid template
+</UL>
+<LI> <B>Arithmetic</B> combine multiple datasets using simple
+arithmetic (addition, subtraction, multiplication or division). The
+output dataset is computed by processing the list of datasets from top
+to bottom, applying the specified arithmetic operations for selected
+datasets. Before processing any datasets, the output dataset is
+initialised to either zeros (if the first operator is addition or
+subtraction) or ones (if the first operator is multiplication or
+division). The following bindings are available:
+<UL>
+<LI> <B>+</B> add this dataset to the output dataset
+<LI> <B>-</B> subtract this dataset from the output dataset
+<LI> <B>*</B> multiply the output dataset by this dataset
+<LI> <B>/</B> divide the output dataset by this dataset
+</UL>
+<LI> <B>Hue Intensity</B> combine two datasets into a Hue-Intensity
+array. The two datasets may be directly mapped to intensity and hue,
+or they can represent a complex image. The real and imaginary
+components will be in separate datasets and they are converted to
+amplitude and phase values, which are then mapped to intensity and
+hue. The following bindings are available:
+<UL>
+<LI> <B>B</B> use this dataset as the brightness (intensity) component
+<LI> <B>H</B> use this dataset as the hue (colour) component
+<LI> <B>R</B> use this dataset as the real component
+<LI> <B>I</B> use this dataset as the imaginary component
+<LI> <B>Left Mouse</B> use this dataset as the brightness component
+<LI> <B>Middle Mouse</B> use this dataset as the hue component
+<LI> <B>Right Mouse</B> use this dataset as the grid template
+<LI> <B>#</B> use this dataset as the grid template
+</UL></UL>
+<LI> the dataset list shows the available datasets. This is used to
+mark which datasets are used as inputs to the combining process. This
+list has a similar interface as the dataset list in the data
+browser. Note that in most cases, a dataset can only be marked
+once. If you need to mark a dataset for multiple purposes (such as to
+use it for both red and green inputs), you will need to clone the
+dataset first
+<LI> <B>Name</B> this allows you to specify the name for the new
+dataset. A default name is provided
+<LI> <B>Make</B> this will create the new dataset, based on the
+selections you have made. This could take some time, depending on how
+large the input datasets are
+<P>
+</UL><H3><A NAME="SECTION00430900000000000000">Annotation List</A></H3>
+<P>
+There is just one column used to display a summary of the
+configuration. The <TT>a</TT> character is used to indicate whether a
+annotation file is active (visible) or not. The <TT>a</TT> key may be
+used to switch between the two states. The middle mouse button has the
+same effect of switching between the two states.
+<P>
+<H3><A NAME="SECTION004301000000000000000">Detailed Annotation Information</A></H3>
+<P>
+This shows where directory from which the annotation file was
+loaded. the <TT>Unload</TT> button may be used to unload the annotation
+file. This affects all blink-states and display windows.
+<P>
+<H3><A NAME="SECTION004301100000000000000">Annotation Configuration</A></H3>
+<P>
+The <TT>Active</TT> toggle may be used to switch between active (visible)
+and inactive settings for this annotation file.
+<P>
+<H1><A NAME="SECTION00440000000000000000">Command-line Options</A></H1>
+<A NAME="1219">&#160;</A>
+<P>
+You may pass the names of files to be loaded via the command-line. You
+may specify as many files as you desire, up to the limit imposed by
+the operating system.
+<P>
+<H1><A NAME="SECTION00450000000000000000">Intensity-Intensity Scatter Plots</A></H1>
+<A NAME="1221">&#160;</A>
+<A NAME="1222">&#160;</A>
+<P>
+Earlier in this chapter (<A HREF="node4.html#paragraphkvisscatterplot">3.2</A>) is a brief
+description of how you can use the <TT>c</TT> key to compute and display
+an intensity-intensity scatter plot of two images. You may also use
+this facility to display a scatter plot of two channels from the same
+cube. Simply <EM>clone</EM> the cube (i.e. using the <TT>Clone</TT> data
+browser button), and select the two channels, one from each cube. You
+will need to ensure that the original and cloned cube do not have a
+master/slave movie relationship.
+<P>
+If there is a master/slave movie relationship, then the scatter plot
+is computed using the two frames which have corresponding co-ordinates
+for the frame axes. This is usually the desired setting when
+generating scatter plots from frames of two different cubes.
+<P>
+Note that when computing a scatter plot from two images with a
+different co-ordinate grid, the pixels from the unseen image
+correspond to pixels with the same world co-ordinates in the visible
+image. Thus, there is no need to re-grid either of the images.
+<P>
+<H1><A NAME="SECTION00460000000000000000">3.6 Renzograms, an alternative to velocity fields</A></H1>
+<P>
+<A NAME="pubpubrenzograms">&#160;</A><A NAME="1229">&#160;</A>
+<P>
+A ``renzogram'' is a technique for displaying velocity information in
+a cube in a different (better) way than velocity fields. The technique
+was pioneered by Renzo Sancisi at the Kapteyn Institute in Groningen.
+A ``renzogram'' overlays a single-level contour map for every channel
+in a cube over an image (such as an optical image or moment map). The
+contour map for each channel is displayed in a different colour
+(typically red-blue, although this can be changed interactively). This
+has an advantage over velocity fields because it shows multiple peaks
+in the velocity profile, which a velocity field cannot do.
+<P>
+To use this feature, simply load a cube and select it for renzogram
+display in the data browser. You can control the contour level used
+for the renzogram, and the range of channels displayed.
+<P>
+You may wish to load a separate image (perhaps an optical image) and
+display that as the image. This can be useful for comparing optical
+and radio data.
+<P>
+You can also view a <A HREF="node3.html#sectionprofiles">profile</A> (spectrum) of your
+cube. Just select select line profile display and a profile window
+will appear. You will note that the profile is drawn in the same
+colours as the contours.
+<P>
+A screen snapshot of the older <B>&lt;krenzo&gt;</B> programme is available
+<a href="../tool-screen-snapshots/krenzo.gif" target=image_window>here</a>
+<P>
+<HR><A NAME="tex2html325" HREF="node5.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html323" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html317" HREF="node3.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html327" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html328" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html326" HREF="node5.html">4 Viewing Images and </A>
+<B>Up:</B> <A NAME="tex2html324" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html318" HREF="node3.html">2 Common Features</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,41 @@
+.TH PIO_LE_READ_FLOATS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+pio_le_read_floats \- Read floating point data from a channel object, trapping NaNs.
+.SH SYNOPSIS
+.B #include <karma_pio.h>
+.sp
+.B uaddr pio_le_read_floats
+.sp
+(Channel channel, uaddr num_values, float *data,
+uaddr *num_nan)
+.SH DESCRIPTION
+This routine will read many floating point numbers from a channel
+object and will optionally trap IEEE Not-A-Number (NaN) values. Trapped
+NaNs are converted to the TOOBIG value.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fInum_values\fP 1i
+The number of values to read.
+.IP \fIdata\fP 1i
+The data will be written here. This will be written in host natural
+format. The data will be converted from IEEE little-endian format prior to
+writing.
+.IP \fInum_nan\fP 1i
+The number of NaN values found will be written here. If this is
+NULL then NaN values are not trapped.
+.SH RETURN VALUE
+The number of values read and converted.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

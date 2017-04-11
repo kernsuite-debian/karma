@@ -1,0 +1,31 @@
+.TH RP_PROTO_DESTROY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+rp_PROTO_destroy_func \- Destroy callback.
+.SH SYNOPSIS
+.B #include <karma_rp.h>
+.sp
+.B void rp_PROTO_destroy_func
+.sp
+(RandPool rp, void *info)
+.SH DESCRIPTION
+This routine is called when a random pool is destroyed.
+.IP \fIrp\fP 1i
+The random pool.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,32 @@
+.TH OVERLAY_READ_KARMA 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_read_karma \- Read overlay instructions from a Karma file.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_read_karma
+.sp
+(KOverlayList olist, CONST char *filename)
+.SH DESCRIPTION
+This routine will read overlay instructions from a Karma file
+and will add the instructions to an overlay list.
+.IP \fIolist\fP 1i
+The KOverlayList to add instructions to.
+.IP \fIfilename\fP 1i
+The name of the Karma file to read instructions from.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

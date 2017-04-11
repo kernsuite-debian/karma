@@ -1,0 +1,31 @@
+.TH R_GET_FD_FILETYPE 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_get_fd_filetype \- Get filetype for a descriptor.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_get_fd_filetype
+.sp
+(int fd, unsigned int *type)
+.SH DESCRIPTION
+Get filetype for a descriptor.
+.IP \fIfd\fP 1i
+The file descriptor.
+.IP \fItype\fP 1i
+The filetype is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE and an error message is displayed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

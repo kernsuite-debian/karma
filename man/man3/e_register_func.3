@@ -1,0 +1,44 @@
+.TH E_REGISTER_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+e_register_func \- Register a function to be called periodically.
+.SH SYNOPSIS
+.B #include <karma_e.h>
+.sp
+.B KPeriodicEventFunc e_register_func
+.sp
+(KPeriodicEventList list, flag (*func) (),
+void *info, unsigned long interval,
+unsigned int dispatch_level)
+.SH DESCRIPTION
+Register a function to be called periodically.
+.IP \fIlist\fP 1i
+The event list to manage the function.
+.IP \fIfunc\fP 1i
+The function to be called upon the specified timout. The prototype
+function is <-e_PROTO_event_func->.
+.IP \fIinfo\fP 1i
+An arbitrary pointer passed to <<func>>.
+.IP \fIinterval\fP 1i
+The interval between successive calls to <<func>>. This is
+measured in units of the list timeout.
+.IP \fIdispatch_level\fP 1i
+The preferred method of dispatch for the function. See
+<-e_DISPATCH_LEVELS-> for a list of legal values. Not all implementations
+may support the higher levels, so events may dispatched at a lower level
+than desired.
+.SH RETURN VALUE
+A KPeriodicEventFunc on success, else the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

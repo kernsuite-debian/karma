@@ -1,0 +1,38 @@
+.TH ARLN_READ_FROM_STDIN 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+arln_read_from_stdin \- Read a line from the user.
+.SH SYNOPSIS
+.B #include <karma_arln.h>
+.sp
+.B flag arln_read_from_stdin
+.sp
+(char *buffer, unsigned int length,
+CONST char *prompt)
+.SH DESCRIPTION
+This routine will read a line from the standard input without
+preventing event processing. The standard input channel is internally
+allocated.
+.IP \fIbuffer\fP 1i
+The NULL terminated string will be written here. The routine will
+NOT copy the '\n' newline character into the buffer.
+.IP \fIlength\fP 1i
+The length of the buffer.
+.IP \fIprompt\fP 1i
+The prompt which is to be displayed. Note that the prompt is only
+displayed if the standard input is NOT a disc file.
+.SH RETURN VALUE
+TRUE on successful reading, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

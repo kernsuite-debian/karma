@@ -1,0 +1,30 @@
+.TH VIEWIMG_COLOURBAR_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+viewimg_colourbar_create \- Create a colourbar world canvas for another world canvas.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B KWorldCanvas viewimg_colourbar_create
+.sp
+(KWorldCanvas main_wc)
+.SH DESCRIPTION
+Create a colourbar world canvas for another world canvas.
+.IP \fImain_wc\fP 1i
+The main world canvas to create the colourbar world canvas for.
+.SH RETURN VALUE
+The colourbar world canvas on success, else NULL. This will be
+automatically destroyed when the main world canvas is destroyed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

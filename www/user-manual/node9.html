@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>8 kshell: looking for expanding shells</TITLE>
+<META NAME="description" CONTENT="8 kshell: looking for expanding shells">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html385" HREF="node10.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html383" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html377" HREF="node8.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html387" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html388" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html386" HREF="node10.html">koords: interactive co-ordinate fitting</A>
+<B>Up:</B> <A NAME="tex2html384" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html378" HREF="node8.html">7 kslice_3d: slicing data </A>
+<BR> <P>
+<H1><A NAME="SECTION00900000000000000000">8 kshell: looking for expanding shells</A></H1>
+<P>
+<A NAME="chapterkshell">&#160;</A><A NAME="pubkshell">&#160;</A><A NAME="1730">&#160;</A>
+<P>
+This tool allows you to browse your datacube searching for expanding
+shells. Since most shells are mostly radially symmetric, it is
+reasonable to azimuthally average concentric annuli around a
+designated centre. What this means is that the programme allows you to
+define a centre position on the sky and a maximum radius. It will then
+step through a range of radii (from zero to the maximum), and at each
+radius will average the values in one velocity map around the
+circumference of a circle (hence ``azimuthal average''). This process
+is repeated for each velocity map, and the result is an image with one
+axis corresponding to radius and the other velocity.
+<P>
+If you are looking at an expanding shell, for each velocity map the
+average radius of the emission from the centre is approximately
+constant. As you progress from one velocity extreme to the other, the
+radius will change from zero, pass through a maximum at the central
+velocity and go back down to zero. So, in the computed radius-velocity
+map, you should see half an ellipse (the ``signature''). If you have
+slightly missed the centre of the expansion, you will see a double
+ellipse, so this is a good way of finding the centre. If you are not
+looking at an expanding shell at all, you just see a mess, so this is
+also a good way for speculatively searching for shells. The lower the
+expansion velocity, the more squashed the ellipse becomes (vertically,
+of course). In fact, if you had a static shell, you would just see a
+straight line.  The power of this tool is that it is both a fast way
+of browsing for expanding shells (because of their charactistic
+signature) and that it is insensitive to fragmentation of shells.
+<P>
+To drive this programme, you need a cube file (load with the
+<B>Cubes</B> button) and an image file (load with the
+<B>Images</B> button). Actually, the image file is optional: you
+can compute an image on the fly from the cube by selecting say the
+<B>0th moment</B> option from the <B>Image Mode</B> menu, and
+adjusting the parameters as needed and pressing <B>Apply</B>. The
+reason you need an image is so that you can search for a possible
+centre of an expanding shell. The image is displayed in the left
+window. The image and cube files do not have to lie on the same
+co-ordinate grid.
+<P>
+Once you have loaded your files, you simply click with the middle
+mouse button (don't let go yet!) to define the centre of the shell,
+``drag'' the mouse so that you see the expanding circle, and release
+the middle button when you think the radius is sufficiently large such
+that the entire shell is enclosed. Don't make it larger than is really
+necessary, since it will take longer for the programme to compute the
+radius-velocity image. After a short time (fraction of a second to a
+few seconds for typical cubes), you will see the computed
+radius-velocity image. Do you see a nice ellipse in the right window?
+If you move the mouse into the right window, you should see the
+current position (in sensible units) as well as the averaged intensity
+at that point. You can use the <B>Export</B> menu above the image
+to write the image (with co-ordinates) in a variety of formats (choose
+one of the ``(whole dataset)'' options).
+<P>
+A small tip for people looking at data with very high dynamic range
+(such as OHIR masers): set intensity scale for the right window to
+logarithmic (see the <A HREF="node3.html#sectionzooming">zooming</A> section),
+otherwise you will only see a few bright blobs.
+<P>
+A screen snapshot is available
+<a href="../tool-screen-snapshots/kshell.gif" target=image_window>here</a>
+<P>
+<HR><A NAME="tex2html385" HREF="node10.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html383" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html377" HREF="node8.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html387" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html388" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html386" HREF="node10.html">koords: interactive co-ordinate fitting</A>
+<B>Up:</B> <A NAME="tex2html384" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html378" HREF="node8.html">7 kslice_3d: slicing data </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

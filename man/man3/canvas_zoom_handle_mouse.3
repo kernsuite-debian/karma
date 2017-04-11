@@ -1,0 +1,34 @@
+.TH CANVAS_ZOOM_HANDLE_MOUSE 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_zoom_handle_mouse \- Install callbacks to handle left mouse zooming for world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B KPixCanvasEditorContext canvas_zoom_handle_mouse
+.sp
+(KWorldCanvas canvas,
+CONST KWorldCanvasLimits *limits)
+.SH DESCRIPTION
+Install callbacks to handle left mouse zooming for world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIlimits\fP 1i
+The canvas limits. This is referenced when the appropriate keys
+are pressed.
+.SH RETURN VALUE
+The KPixCanvasEditorContext created for rubber-banding. Extra key
+bindings may be added to this context.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

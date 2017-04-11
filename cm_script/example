@@ -1,0 +1,61 @@
+#! /usr/local/karma/bin/cmshell
+
+# This file is a sample script (executable) which runs the Connection
+# Management tool in batch mode.
+# Karma modules may be started on many hosts, connected together and then made
+# to perform some function.
+# Blank lines and comments ('#' is the comment character) are ignored.
+
+# First the list of hosts to run on. Shell escapes allowed here
+HOSTLIST
+# hostname [KARMABASE] [-manual] [-- args...]
+# hostname "local[host]" is always defined
+lynx
+!echo "Executing a Bourne shell command"  # Note the '!' shell escape character
+asterix /usr/local/karma
+phoenix:vx -- -stereo1152x900
+obelix -manual # Wait for the user to manually make a CM slave connection
+END
+
+# Now the list of modules to run
+MODULES
+# Format of each module line:
+# hostname  module_name  [x y] [-- args...]
+#   x  and  y  are optional icons positions used when the Connection Management
+#   tool is operating in Interactive mode.
+#   optional arguments to be passed to the module must be separated by "--"
+local kview_2d -- -bg black
+asterix tx 15 15
+  DEFAULTS	# Optional
+    animate off
+    num_iterations 5
+  END	# Defaults
+END	# Modules
+
+# Next the list of connections to make
+CONNECTIONS
+# client_module_num  server_module_num  protocol_name [transport]
+1 0 multi_array
+END
+
+# And the list of commands to send to modules (via their  stdin  )
+# Shell escapes allowed here
+COMMANDS	# Optional
+# module_num  delay (milliseconds)  command
+1 5000 girl
+1 1000 animate on
+!echo "Executing a Bourne shell command"  # Note the '!' shell escape character
+1 10 script
+1 1 abort
+END
+
+# After processing all commands, the Connection Management tool will wait
+# forever in an event loop. When any module dies or connection closes,
+# all slave processes and controlled modules should finish. A number of shell
+# commands may then be processed prior to the Connection Management tool
+# terminating.
+
+SHELL_CLEANUP	# Optional Bourne shell commands
+echo "Application finished"
+
+# No "END" directive is required: EndOfFile is sufficient

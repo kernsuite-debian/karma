@@ -1,0 +1,34 @@
+.TH CH_FILL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_fill \- Fill a channel with bytes.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B unsigned int ch_fill
+.sp
+(Channel channel, unsigned int length, char fill_value)
+.SH DESCRIPTION
+This routine will write a specified byte to a channel a number of
+times.
+.IP \fIchannel\fP 1i
+The Channel object.
+.IP \fIlength\fP 1i
+The number of bytes to write.
+.IP \fIfill_value\fP 1i
+The fill value.
+.SH RETURN VALUE
+The number of bytes written.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

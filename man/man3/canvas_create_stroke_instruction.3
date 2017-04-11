@@ -1,0 +1,51 @@
+.TH CANVAS_CREATE_STROKE_INSTRUCTION 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_create_stroke_instruction \- Create an image editing stroke instruction.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_create_stroke_instruction
+.sp
+(KWorldCanvas canvas,
+double x0, double y0,
+double x1, double y1,
+unsigned int brush_width,
+double value[2], KImageEditList ilist)
+.SH DESCRIPTION
+This routine will create a 2-dimensional edit stroke instruction,
+according to the specification in the <-iedit-> package and will append it
+to a managed edit list.
+.IP \fIcanvas\fP 1i
+The world canvas which contains the world co-ordinate system.
+.IP \fIx0\fP 1i
+The starting horizontal co-ordidinate of the stroke.
+.IP \fIy0\fP 1i
+The starting vertical co-ordidinate of the stroke.
+.IP \fIx1\fP 1i
+The ending horizontal co-ordidinate of the stroke.
+.IP \fIy1\fP 1i
+The ending vertical co-ordidinate of the stroke.
+.IP \fIbrush_width\fP 1i
+The width of the stroke (in canvas pixels). This must be at
+least 1.
+.IP \fIvalue\fP 1i
+The data value in the stroke instruction. This must be of type
+K_DCOMPLEX.
+.IP \fIilist\fP 1i
+The managed edit list.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

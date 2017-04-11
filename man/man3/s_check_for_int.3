@@ -1,0 +1,28 @@
+.TH S_CHECK_FOR_INT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+s_check_for_int \- Check for queued SIGINTs.
+.SH SYNOPSIS
+.B #include <karma_s.h>
+.sp
+.B flag s_check_for_int
+.sp
+()
+.SH DESCRIPTION
+This routine will check if there is a queued interrupt (SIGINT)
+pending. A single pending interrupt is removed from the queue.
+.SH RETURN VALUE
+TRUE if there is a queued SIGINT, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

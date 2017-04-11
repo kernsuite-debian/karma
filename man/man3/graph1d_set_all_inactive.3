@@ -1,0 +1,39 @@
+.TH GRAPH1D_SET_ALL_INACTIVE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_set_all_inactive \- Clear active state all viewable graphs controlled refresh.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B flag graph1d_set_all_inactive
+.sp
+(KWorldCanvas canvas, flag force_refresh,
+flag refresh_if_changed, uaddr key)
+.SH DESCRIPTION
+This routine will make all viewable graphs associated with a
+world canvas inactive.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIforce_refresh\fP 1i
+If TRUE, the canvas is always refreshed.
+.IP \fIrefresh_if_changed\fP 1i
+If TRUE, the canvas is refreshed if the active state
+of any viewable graph changed.
+.IP \fIkey\fP 1i
+The key to use for inactivation of viewable graphs. If this is 0 then
+all viewable graphs will be made inactive.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

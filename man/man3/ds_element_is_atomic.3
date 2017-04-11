@@ -1,0 +1,31 @@
+.TH DS_ELEMENT_IS_ATOMIC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_element_is_atomic \- Test if an element is atomic.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_element_is_atomic
+.sp
+(unsigned int element_type)
+.SH DESCRIPTION
+This routine will determine if an element is atomic (i.e. not a
+sub-array, linked list or string). The element type must be legal, else the
+routine will print an error message and abort processing.
+.IP \fIelement_type\fP 1i
+The type of the element.
+.SH RETURN VALUE
+TRUE if the element is atomic, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

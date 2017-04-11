@@ -1,0 +1,35 @@
+.TH CH_TEST_VALID 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_test_valid \- Test if a channel is valid.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_test_valid
+.sp
+(Channel channel, CONST char *function_name)
+.SH DESCRIPTION
+Test if a channel is valid.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIfunction_name\fP 1i
+If not NULL diagnostic messages are written to the standard
+error prepended with <<function_name>>.
+.SH RETURN VALUE
+TRUE if the channel is valid, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Frequent use may degrade performance.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

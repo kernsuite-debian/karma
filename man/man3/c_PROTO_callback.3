@@ -1,0 +1,36 @@
+.TH C_PROTO_CALLBACK 3 "07 Aug 2006" "Karma Distribution"
+.SH PROTO_FUNC
+c_PROTO_callback \- Generic callback.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B flag c_PROTO_callback
+.sp
+(void *object, void *client1_data, void *call_data,
+void *client2_data)
+.SH DESCRIPTION
+This routine is called when object callbacks are called.
+.IP \fIobject\fP 1i
+The object information pointer.
+.IP \fIclient1_data\fP 1i
+The first client information pointer.
+.IP \fIcall_data\fP 1i
+The call information pointer.
+.IP \fIclient2_data\fP 1i
+The second client information pointer.
+.SH RETURN VALUE
+TRUE if further callbacks should not be called, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,35 @@
+.TH KWIN_REGISTER_BINDINGS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_register_bindings \- Register mouse and key binding descriptions with a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_register_bindings
+.sp
+(KPixCanvas canvas, KPixCanvasBinding *bindings,
+flag copy)
+.SH DESCRIPTION
+Register mouse and key binding descriptions with a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIbindings\fP 1i
+The list of bindings. This must be terminated with NULL entries.
+.IP \fIcopy\fP 1i
+If TRUE, the string contents are copied, else pointer copies are
+made.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

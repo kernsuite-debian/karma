@@ -1,0 +1,102 @@
+#  .karmarc  Bourne shell script. This shell script should be sourced by
+# every  Karma  user.
+
+
+#   Copyright (C) 1993-1997  Richard Gooch
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#   Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+#   The postal address is:
+#     Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+
+#  This file created because of a request from aLinux-SLS user. But you really
+# should be using  tcsh  :-)
+
+
+# Written by		Richard Gooch	14-DEC-1993
+
+# Last updated by	Richard Gooch	3-DEC-1997
+
+
+# Define Karma installed base (for ordinary users)
+# Try various known Karma base directories
+for i in /usr/local/karma /local/karma /usr/physics/karma; do
+    if [ -d $i ]; then
+	KARMABASE=${KARMABASE:-$i}
+	export KARMABASE
+    fi
+done
+
+# List of Karma root directories
+for i in /vindaloo1/karma /home/karma /applic/karma /nfs/applic/karma /aips++1/karma /usr/local/src/karma $HOME/karma; do
+    if [ -d $i ]; then
+	KARMAROOT=${KARMAROOT:-$i}
+	export KARMAROOT
+    fi
+done
+
+# Find out what kind of platform this is
+if [ "${MACHINE_OS:-UNSET}" = "UNSET" ]; then
+    if [ -x /usr/local/bin/platform ]; then
+	_platform_file=/usr/local/bin/platform
+    else
+	_platform_file=${KARMABASE}/csh_script/uname_to_platform
+    fi
+    MACHINE_OS=`$_platform_file`; export MACHINE_OS
+    unset _platform_file
+fi
+
+###############################################################################
+#			No user servicable parts below			      #
+###############################################################################
+
+if [ "${OS:-UNSET}" = "UNSET" ]; then
+    MACHINE=`echo "$MACHINE_OS" | sed -e "s/_/ /" | awk '{print $1}'`
+    OS=`echo "$MACHINE_OS" | sed -e "s/_/ /" | awk '{print $2}'`
+    export MACHINE
+    export OS
+fi
+
+KARMABINPATH=${KARMABASE}/bin; export KARMABINPATH
+KARMALIBPATH=${KARMABASE}/lib; export KARMALIBPATH
+KARMAINCLUDEPATH=${KARMABASE}/include; export KARMAINCLUDEPATH
+
+# Set version number environment variable
+_versionfile=$KARMAINCLUDEPATH/k_version.h
+KARMA_VERSION=`fgrep KARMA_VERSION $_versionfile |tr '"' ' ' |awk '{print $4}'`
+export KARMA_VERSION
+if [ "$KARMA_VERSION" = "" ]; then
+    echo "WARNING: KARMA_VERSION environment variable could not be computed."
+fi
+unset _versionfile
+
+# Libraries to depend on (for modules)
+if [ "$OS" = "SunOS" ]
+then
+    KDEPLIB_KARMA=$KARMALIBPATH/libkarma.sa.$KARMA_VERSION;export KDEPLIB_KARMA
+else
+    if [ "$OS" = "Linux" ]
+    then
+	KARMASTATICLIBPATH=${KARMABASE}/static-lib; export KARMASTATICLIBPATH
+    else
+	KARMASTATICLIBPATH=${KARMABASE}/static-lib; export KARMASTATICLIBPATH
+    fi
+fi
+
+PATH=${KARMABASE}/cm_script:${KARMABASE}/csh_script:$KARMABASE/site/$MACHINE_OS/bin:$KARMABINPATH:$PATH
+export PATH
+
+unset i

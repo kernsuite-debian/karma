@@ -1,0 +1,64 @@
+.TH FOREIGN_SUNRAS_WRITE_PSEUDO 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_sunras_write_pseudo \- Write a PseudoColor image to a channel in Sun rasterfile format.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_sunras_write_pseudo
+.sp
+(Channel channel,
+CONST char *image, unsigned int type,
+uaddr *hoffsets, uaddr *voffsets,
+unsigned int width, unsigned int height,
+CONST unsigned short *cmap_reds,
+CONST unsigned short *cmap_greens,
+CONST unsigned short *cmap_blues,
+unsigned int cmap_size,
+unsigned int cmap_stride,
+double i_min, double i_max)
+.SH DESCRIPTION
+Write a PseudoColor image to a channel in Sun rasterfile format.
+.IP \fIchannel\fP 1i
+The channel to write to. The channel is not flushed.
+.IP \fIimage\fP 1i
+The image data.
+.IP \fItype\fP 1i
+The type of the image data.
+.IP \fIhoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIvoffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIwidth\fP 1i
+The width of the image.
+.IP \fIheight\fP 1i
+The height of the image.
+.IP \fIcmap_reds\fP 1i
+The red colourmap values.
+.IP \fIcmap_greens\fP 1i
+The green colourmap values.
+.IP \fIcmap_blues\fP 1i
+The blue colourmap values.
+.IP \fIcmap_size\fP 1i
+The number of colourmap entries.
+.IP \fIcmap_stride\fP 1i
+The stride (in unsigned shorts) between colourmap values.
+.IP \fIi_min\fP 1i
+The minimum image value. Image values below this will be clipped.
+.IP \fIi_max\fP 1i
+The maximum image value. Image values above this will be clipped.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

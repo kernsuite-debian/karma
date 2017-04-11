@@ -1,0 +1,37 @@
+.TH MT_GET_NOTIFY_PIPE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+mt_get_notify_pipe \- Create/get the notification pipe.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B int mt_get_notify_pipe
+.sp
+(KThreadPool pool)
+.SH DESCRIPTION
+This routine gets the read-end of the notification pipe for a
+thread pool. If the pipe does not yet exist, it is created. Every time a
+job completes, an unsigned integer is written to the write-end of the pipe
+(if it exists). The value if the integer is equal to the thread index.
+.IP \fIpool\fP 1i
+The thread pool.
+.SH RETURN VALUE
+The read-end of the pipe. On failure the process aborts.
+.SH Multi-threading Level
+Safe.
+.SH NOTE
+Once the pipe is created/gotten (and it has not been disabled by
+<-mt_disable_notify_pipe->, the notification bytes <<must>> be consumed,
+otherwise threads in the pool will eventually become deadlocked.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,50 @@
+.TH VRENDER_TO_BUFFER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_to_buffer \- Render a scene in a volume rendering context to a buffer.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B flag vrender_to_buffer
+.sp
+(KVolumeRenderContext context, char *left_buffer,
+char *right_buffer, double *min, double *max,
+void (*notify_func) (void *info), void *info)
+.SH DESCRIPTION
+Render a scene in a volume rendering context to a buffer.
+.IP \fIcontext\fP 1i
+The volume rendering context.
+.IP \fIleft_buffer\fP 1i
+The left eye buffer to render into. This must be correctly
+allocated.
+.IP \fIright_buffer\fP 1i
+The right eye buffer to render into. If this is NULL no
+right eye view is rendered and a monoscopic image is rendered into the left
+eye buffer.
+.IP \fImin\fP 1i
+The minimum value in the rendered images(s) is written here.
+.IP \fImax\fP 1i
+The maximum value in the rendered images(s) is written here.
+.IP \fInotify_func\fP 1i
+The function that is called when the rendering is completed.
+The prototype function is <-vrender_PROTO_render_notify_func->.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe per context.
+.SH NOTE
+This function may block.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

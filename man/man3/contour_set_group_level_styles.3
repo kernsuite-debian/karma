@@ -1,0 +1,40 @@
+.TH CONTOUR_SET_GROUP_LEVEL_STYLES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_set_group_level_styles \- Set/update clevel styles for KViewableContourImage objects.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B void contour_set_group_level_styles
+.sp
+(KViewableContourImageGroup group,
+CONST unsigned long *contour_pixels,
+CONST flag *dash,
+CONST double *linewidths)
+.SH DESCRIPTION
+This routine will set/update the contour level styles for a group
+of KViewableContourImage objects. No canvas is refreshed by this operation.
+.IP \fIgroup\fP 1i
+The group of KViewableContourImage objects.
+.IP \fIcontour_pixels\fP 1i
+The array of contour pixels. These are copied. This may be
+NULL.
+.IP \fIdash\fP 1i
+The array of dash flags. This may be NULL.
+.IP \fIlinewidths\fP 1i
+The array of line widths. This may be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

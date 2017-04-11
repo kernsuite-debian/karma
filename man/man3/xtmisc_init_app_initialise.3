@@ -1,0 +1,54 @@
+.TH XTMISC_INIT_APP_INITIALISE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xtmisc_init_app_initialise \- Initialise an application for Xt.
+.SH SYNOPSIS
+.B #include <karma_xtmisc.h>
+.sp
+.B Widget xtmisc_init_app_initialise
+.sp
+(XtAppContext *app_context_return,
+CONST char* application_class,
+XrmOptionDescList options,
+Cardinal num_options,
+int *argc_in_out, String *argv_in_out,
+String *fallback_resources,
+...)
+.SH DESCRIPTION
+This routine will initialise an application to use Xt. This
+routine is similar to the <<XtVaAppInitialize>> routine, except that a new
+colourmap for the application may be created.
+.IP \fIapp_context_return\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fIapplication_class\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fIoptions\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fInum_options\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fIargc_in_out\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fIargv_in_out\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fIfallback_resources\fP 1i
+As for <<XtVaAppInitialize>>.
+.IP \fI...\fP 1i
+Two separate lists of optional pairs of attribute-key
+attribute-value. The first list is processed by this routine and must be
+terminated with XTMISC_INIT_ATT_END. The second list is processed by
+<<XtVaAppInitialize>> and must be terminated by NULL.
+.SH RETURN VALUE
+The application shell.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

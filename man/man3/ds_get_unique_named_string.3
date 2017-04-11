@@ -1,0 +1,35 @@
+.TH DS_GET_UNIQUE_NAMED_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_unique_named_string \- Get a unique named string from a Karma general data structure.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B char * ds_get_unique_named_string
+.sp
+(CONST packet_desc *pack_desc,
+CONST char *packet, CONST char *name)
+.SH DESCRIPTION
+Get a unique named string from a Karma general data structure.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet containing the named string.
+.IP \fIname\fP 1i
+The element name.
+.SH RETURN VALUE
+A pointer to a dynamically allocated copy of the string on
+success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

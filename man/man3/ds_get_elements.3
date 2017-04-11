@@ -1,0 +1,43 @@
+.TH DS_GET_ELEMENTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_elements \- Convert atomic data values to double precision complex values.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_get_elements
+.sp
+(CONST char *data, unsigned int data_type,
+unsigned int data_stride, double *values, flag *complex,
+unsigned int num_values)
+.SH DESCRIPTION
+Convert atomic data values to double precision complex values.
+.IP \fIdata\fP 1i
+The data to be converted.
+.IP \fIdata_type\fP 1i
+The type of the data.
+.IP \fIdata_stride\fP 1i
+The stride of data elements in memory (in bytes).
+.IP \fIvalues\fP 1i
+The data values will be written here. This MUST lie on a
+<<double>> boundary.
+.IP \fIcomplex\fP 1i
+TRUE is written here if the data are a complex type, else FALSE
+is written here. If this is NULL, nothing is written here.
+.IP \fInum_values\fP 1i
+The number of data values to convert.
+.SH RETURN VALUE
+TRUE if the data was successfully converted, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

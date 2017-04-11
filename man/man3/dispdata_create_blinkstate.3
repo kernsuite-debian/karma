@@ -1,0 +1,36 @@
+.TH DISPDATA_CREATE_BLINKSTATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_create_blinkstate \- Create a blink state object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataBlinkState dispdata_create_blinkstate
+.sp
+(KDisplayDataWindow window,
+void (*active_change) (void *info, flag active),
+void *info)
+.SH DESCRIPTION
+Create a blink state object.
+.IP \fIwindow\fP 1i
+The window the blink state is associated with.
+.IP \fIactive_change\fP 1i
+The function that is called when the blinkstate is made
+active or inactive.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer.
+.SH RETURN VALUE
+A KDisplayDataBlinkState object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

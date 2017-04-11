@@ -1,0 +1,30 @@
+.TH DS_COPY_DIM_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_dim_desc \- Copy a dimension descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B dim_desc * ds_copy_dim_desc
+.sp
+(CONST dim_desc *inp_desc)
+.SH DESCRIPTION
+Copy a dimension descriptor.
+.IP \fIinp_desc\fP 1i
+The input
+.SH RETURN VALUE
+A pointer to a freshly allocated dimension descriptor on success,
+else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

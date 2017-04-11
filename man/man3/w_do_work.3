@@ -1,0 +1,28 @@
+.TH W_DO_WORK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+w_do_work \- Do some work.
+.SH SYNOPSIS
+.B #include <karma_w.h>
+.sp
+.B flag w_do_work
+.sp
+()
+.SH DESCRIPTION
+This routine will call any pending work functions. The work
+function at the top of the list is called once only.
+.SH RETURN VALUE
+TRUE if more work is left to be done, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

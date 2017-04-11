@@ -1,0 +1,74 @@
+.TH VIEWIMG_VALUES_POSITION_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+viewimg_values_position_func \- Position event callback.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_values_position_func
+.sp
+(ViewableImage vimage,
+double x, double y,
+void *value, unsigned int event_code,
+void *e_info, void **f_info,
+double x_lin, double y_lin,
+unsigned int value_type,
+double x_im, double y_im,
+int x_pix, int y_pix)
+.SH DESCRIPTION
+This routine is a position event consumer for a world canvas
+which has a number of ViewableImage objects associated with it.
+.IP \fIviewimg\fP 1i
+The active viewable image.
+.IP \fIx\fP 1i
+The horizontal world co-ordinate of the event.
+.IP \fIy\fP 1i
+The vertical world co-ordinate of the event.
+These values will have been transformed by the registered transform
+function (see <-canvas_register_transforms_func->) for the associated
+world canvas.
+.IP \fIvalue\fP 1i
+A pointer to the data value in the viewable image corresponding
+to the event co-ordinates.
+.IP \fIevent_code\fP 1i
+The arbitrary event code.
+.IP \fIe_info\fP 1i
+The arbitrary event information.
+.IP \fIf_info\fP 1i
+The arbitrary function information pointer.
+.IP \fIx_lin\fP 1i
+The linear horizontal world co-ordinate (the co-ordinate prior
+to the transform function being called).
+.IP \fIy_lin\fP 1i
+The linear vertical world co-ordinate (the co-ordinate prior
+to the transform function being called).
+.IP \fIvalue_type\fP 1i
+The type of the data value. This may be K_DCOMPLEX or
+K_UB_RGB.
+.IP \fIx_im\fP 1i
+The horizontal image pixel co-ordinate. 0.0 is the pixel centre.
+.IP \fIy_im\fP 1i
+The vertical image pixel co-ordinate. 0.0 is the pixel centre.
+.IP \fIx_pix\fP 1i
+The horizontal screen pixel co-ordinate.
+.IP \fIy_pix\fP 1i
+The vertical screen pixel co-ordinate.
+.SH RETURN VALUE
+TRUE if the event was consumed, else FALSE indicating that
+the event is still to be processed.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+All co-ordinates are clipped to pixel boundaries.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

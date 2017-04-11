@@ -1,0 +1,32 @@
+.TH IEDIT_APPLY_INSTRUCTIONS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_apply_instructions \- Apply image edit instructions.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B flag iedit_apply_instructions
+.sp
+(KImageEditList ilist)
+.SH DESCRIPTION
+This routine will issue an apply (commit) request for a managed
+image edit instruction list. The <<apply_func>> function registered for
+this instruction list will be called at a future time. Some time after
+this, the <<loss_func>> registered will also be called.
+.IP \fIilist\fP 1i
+The instruction list.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

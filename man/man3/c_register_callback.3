@@ -1,0 +1,60 @@
+.TH C_REGISTER_CALLBACK 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+c_register_callback \- Register a callback function with a list.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B KCallbackFunc c_register_callback
+.sp
+(KCallbackList *list, flag (*callback) (),
+void *object,
+void *client1_data, flag client1_indirect,
+void *client2_data, flag client2_indirect,
+flag quenchable)
+.SH DESCRIPTION
+This routine will register a function which should be called when
+the callbacks for an object should be called. When the object is destroyed
+a call should be made to <-c_destroy_list->. The first callback registered
+is the first one called. Multiple callback functions may be registered per
+object.
+.IP \fIlist\fP 1i
+A pointer to the callback list. This is changed. The initial value
+must be NULL.
+.IP \fIcallback\fP 1i
+The function to be called when the object callbacks are called.
+The prototype function is <-c_PROTO_callback->.
+.IP \fIobject\fP 1i
+The object pointer passed to the callback. This may be NULL.
+.IP \fIclient1_data\fP 1i
+The first client information pointer passed to the callback.
+This may be NULL.
+.IP \fIclient1_indirect\fP 1i
+If TRUE the callback is passed a pointer to the storage
+containing <<client1_data>>, else <<client1_data>> is passed directly to
+the callback.
+.IP \fIclient2_data\fP 1i
+The second client information pointer passed to the callback
+This may be NULL.
+.IP \fIclient2_indirect\fP 1i
+If TRUE the callback is passed a pointer to the storage
+containing <<client2_data>>, else <<client2_data>> is passed directly to
+the callback.
+.IP \fIquenchable\fP 1i
+If TRUE then the routine is permitted to quench calls to the
+following callbacks in the list.
+.SH RETURN VALUE
+A KCallbackFunc on success. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

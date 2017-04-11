@@ -1,0 +1,32 @@
+.TH KCMAP_LIST_FUNCS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_list_funcs \- Get list of colourmap functions.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B CONST char ** kcmap_list_funcs
+.sp
+()
+.SH DESCRIPTION
+This routine will get the array of supported colour function
+names. This array is dynamically allocated, and should be freed using
+<-m_free->. The array is terminated with a NULL pointer.
+.SH RETURN VALUE
+A pointer to the array.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The names in the array are statically allocated.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

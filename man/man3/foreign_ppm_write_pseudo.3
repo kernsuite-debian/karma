@@ -1,0 +1,96 @@
+.TH FOREIGN_PPM_WRITE_PSEUDO 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_ppm_write_pseudo \- Write a PseudoColor image to a channel in PPM format.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_ppm_write_pseudo
+.sp
+(Channel channel, flag binary,
+CONST char *image, unsigned int type,
+uaddr *hoffsets, uaddr *voffsets,
+unsigned int inp_width, unsigned int inp_height,
+unsigned int out_width, unsigned int out_height,
+CONST unsigned short *cmap_reds,
+CONST unsigned short *cmap_greens,
+CONST unsigned short *cmap_blues,
+unsigned int cmap_size,
+unsigned int min_sat_index,
+unsigned int max_sat_index,
+unsigned int blank_index,
+unsigned int cmap_stride,
+double i_min, double i_max,
+flag (*iscale_func) (), void *iscale_info)
+.SH DESCRIPTION
+Write a PseudoColor image to a channel in PPM format.
+.IP \fIchannel\fP 1i
+The channel to write to. The channel is not flushed.
+.IP \fIbinary\fP 1i
+If TRUE, the pixels will be written in binary mode.
+.IP \fIimage\fP 1i
+The image data.
+.IP \fItype\fP 1i
+The type of the image data.
+.IP \fIhoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIvoffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIinp_width\fP 1i
+The width of the input image.
+.IP \fIinp_height\fP 1i
+The height of the input image.
+.IP \fIout_width\fP 1i
+The width of the output image. If the input image is
+smaller than this, then the image will be centred with blank-filling. If
+the input image is larger than this, the image will be truncated. If this
+is 0, the output image will be the same width as the input image.
+.IP \fIout_height\fP 1i
+The height of the output image. If the input image is smaller
+than this, then the image will be centred with blank-filling. If the input
+image is larger than this, the image will be truncated. If this is 0, the
+output image will be the same height as the input image.
+.IP \fIcmap_reds\fP 1i
+The red colourmap values.
+.IP \fIcmap_greens\fP 1i
+The green colourmap values.
+.IP \fIcmap_blues\fP 1i
+The blue colourmap values.
+.IP \fIcmap_size\fP 1i
+The number of colourmap entries.
+.IP \fImin_sat_index\fP 1i
+The index into the colourmap for the colour to use when
+data values are below <<i_min>>.
+.IP \fImax_sat_index\fP 1i
+The index into the colourmap for the colour to use when
+data values are above <<i_max>>.
+.IP \fIblank_index\fP 1i
+The index into the colourmap for the colour to use when
+data values are blank.
+.IP \fIcmap_stride\fP 1i
+The stride (in unsigned shorts) between colourmap values.
+.IP \fIi_min\fP 1i
+The minimum image value. Image values below this will be clipped.
+.IP \fIi_max\fP 1i
+The maximum image value. Image values above this will be clipped.
+.IP \fIiscale_func\fP 1i
+The function to be called when non-linear intensity scaling
+is required. If NULL, linear intensity scaling is used. The prototype
+function is <-imw_PROTO_iscale_func->.
+.IP \fIiscale_info\fP 1i
+A pointer to arbitrary information for <<iscale_func>>.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

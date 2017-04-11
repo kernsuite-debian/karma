@@ -1,0 +1,42 @@
+.TH FOREIGN_GIPSY_WRITE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_gipsy_write \- Write a GIPSY file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_gipsy_write
+.sp
+(CONST char *basename, multi_array *multi_desc, ...)
+.SH DESCRIPTION
+This routine will write a Karma data structure to a GIPSY
+file. The routine will automatically generate essential keywords such as:
+"NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn",
+"BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+structure which do not conflict with the generated keywords are copied.
+.IP \fIbasename\fP 1i
+The base filename of the GIPSY file. The ".descr" and ".image"
+extensions are added automatically.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor pointer. The routine will find a
+n-dimensional array within the data structure.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_GIPSY_WRITE_END.
+See <-foreign_ATT_GIPSY_WRITE-> for a list of defined attributes.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

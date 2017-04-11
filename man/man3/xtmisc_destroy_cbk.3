@@ -1,0 +1,34 @@
+.TH XTMISC_DESTROY_CBK 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+xtmisc_destroy_cbk \- Destroy a popup widget.
+.SH SYNOPSIS
+.B #include <karma_xtmisc.h>
+.sp
+.B void xtmisc_destroy_cbk
+.sp
+(Widget w, XtPointer client_data, XtPointer call_data)
+.SH DESCRIPTION
+This routine will destroy a widget. This routine is a convenience
+routine to be used as a callback.
+.IP \fIw\fP 1i
+The widget on which the event occurred. This is ignored.
+.IP \fIclient_data\fP 1i
+The callback client data. This must be the widget to destroy.
+.IP \fIcall_data\fP 1i
+The callback call data. This is ignored.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

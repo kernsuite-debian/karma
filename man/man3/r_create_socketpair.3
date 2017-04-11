@@ -1,0 +1,33 @@
+.TH R_CREATE_SOCKETPAIR 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_create_socketpair \- Create an un-named pair of connected sockets.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_create_socketpair
+.sp
+(int *fd1, int *fd2)
+.SH DESCRIPTION
+This routine will create an un-named pair of connected sockets.
+This routine provides an enhanced interface to the <<socketpair(2)>>
+routine.
+.IP \fIfd1\fP 1i
+One end of the socketpair is written here.
+.IP \fIfd2\fP 1i
+The other end of the socketpair is written here.
+.SH RETURN VALUE
+0 on success, else -1 and sets <<errno>> with the error code.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

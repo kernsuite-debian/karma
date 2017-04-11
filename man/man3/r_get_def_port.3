@@ -1,0 +1,38 @@
+.TH R_GET_DEF_PORT 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_def_port \- Get the default Karma port number for a module.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_get_def_port
+.sp
+(CONST char *module_name, CONST char *display)
+.SH DESCRIPTION
+Get the default Karma port number for a module.
+.IP \fImodule_name\fP 1i
+The module name.
+.IP \fIdisplay\fP 1i
+The display string. The display number entry in the string is
+also used to compute the port number. The syntax for this string is the
+same as for the X Windows system DISPLAY environmental variable. If this is
+NULL, the display number defaults to 0.
+.SH RETURN VALUE
+The default port number on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine does not resolve multiple port numbers residing on the
+same machine and the same display number.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,35 @@
+.TH DSXFR_SEND_MULTI 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dsxfr_send_multi \- Send a multi_array data structure over a connection.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B flag dsxfr_send_multi
+.sp
+(Connection connection, CONST multi_array *multi_desc,
+CONST char *name)
+.SH DESCRIPTION
+Send a multi_array data structure over a connection.
+.IP \fIconnection\fP 1i
+The connection to send the data to. If this is NULL the data
+will be sent to all "multi_array" connections.
+.IP \fImulti_desc\fP 1i
+The data to send.
+.IP \fIname\fP 1i
+The event name. This may be NULL.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

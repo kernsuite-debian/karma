@@ -1,0 +1,32 @@
+.TH CH_OPEN_AND_FILL_MEMORY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_open_and_fill_memory \- Create and fill memory channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_open_and_fill_memory
+.sp
+(char **strings)
+.SH DESCRIPTION
+This routine will open a memory channel with sufficient space to
+contain a list of strings.
+.IP \fIstrings\fP 1i
+The NULL terminated array of string pointers.
+The strings are written with a NEWLINE character to terminate the string.
+The NULL terminator character is not written.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

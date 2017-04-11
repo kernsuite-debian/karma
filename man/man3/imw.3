@@ -1,0 +1,41 @@
+.TH IMW 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+imw \- Routines to write raw images
+.SH PURPOSE
+These routines provide a means to convert from image data to raw images
+suitable for low level graphics display. Although these routines are made
+public, their use is NOT recommended. The <-viewimg-> package is the
+suggested means to manage image display.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIimw_to8_bilinear\fP 1i
+Convert generic image to 8 bit image, with resizing.
+.IP \fIimw_to8_lossy2\fP 1i
+Convert generic image to 8 bit image, with resizing.
+.IP \fIimw_to8_lossy\fP 1i
+Convert generic image to 8 bit image, with resizing.
+.IP \fIimw_to8_magnify\fP 1i
+Convert generic image to 8 bit image, increasing size.
+.IP \fIimw_to8_oi\fP 1i
+Convert generic image to 8 bit image, preserving size.
+.IP \fIimw_scmap_16to24_lossy\fP 1i
+Write 16bit image to a 24bit image using a software colourmap.
+.IP \fIimw_scmap_16to24_o\fP 1i
+Write 16bit image to a 24bit image using a software colourmap.
+.IP \fIimw_PROTO_iscale_func\fP 1i
+Intensity scaling callback.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

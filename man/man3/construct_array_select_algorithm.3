@@ -1,0 +1,32 @@
+.TH CONSTRUCT_ARRAY_SELECT_ALGORITHM 3 "13 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+construct_array_select_algorithm \- Select an algorithm for constructing data.
+.SH SYNOPSIS
+.B #include <karma_construct.h>
+.sp
+.B void construct_array_select_algorithm
+.sp
+(KConstructArrayManager manager,
+unsigned int index)
+.SH DESCRIPTION
+Select an algorithm for constructing data.
+.IP \fImanager\fP 1i
+The management object.
+.IP \fIindex\fP 1i
+The index into <<construct_array_algorithm_choices>>.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

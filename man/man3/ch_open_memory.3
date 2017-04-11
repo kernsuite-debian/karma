@@ -1,0 +1,35 @@
+.TH CH_OPEN_MEMORY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_open_memory \- Open a memory channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_open_memory
+.sp
+(char *buffer, unsigned int size)
+.SH DESCRIPTION
+This routine will open a memory channel. A memory channel behaves
+like a disc channel with a limited (specified) file (device) size. Data is
+undefined when reading before writing has occurred.
+.IP \fIbuffer\fP 1i
+The buffer to use. If this is NULL, the routine will allocate a
+buffer of the specified size which is automatically deallocated upon
+closure of the channel.
+.IP \fIsize\fP 1i
+The size of the buffer to allocate.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

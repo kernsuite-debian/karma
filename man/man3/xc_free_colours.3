@@ -1,0 +1,35 @@
+.TH XC_FREE_COLOURS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xc_free_colours \- Free a number of colourcells in a low level colourmap.
+.SH SYNOPSIS
+.B #include <karma_xc.h>
+.sp
+.B void xc_free_colours
+.sp
+(unsigned int num_cells, unsigned long *pixel_values,
+Kdisplay dpy_handle)
+.SH DESCRIPTION
+Free a number of colourcells in a low level colourmap.
+.IP \fInum_cells\fP 1i
+The number of colourcells to free.
+.IP \fIpixel_values\fP 1i
+The array of pixel values (colourcells) to free.
+.IP \fIdpy_handle\fP 1i
+The low level display handle. The meaning of this value
+depends on the lower level graphics library used.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

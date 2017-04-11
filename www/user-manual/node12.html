@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>11 Superimposing Images</TITLE>
+<META NAME="description" CONTENT="11 Superimposing Images">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html421" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html419" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html413" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html423" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html424" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html422" HREF="node13.html">Command-line Tools</A>
+<B>Up:</B> <A NAME="tex2html420" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html414" HREF="node11.html">kpolar: regridding to polar </A>
+<BR> <P>
+<H1><A NAME="SECTION001200000000000000000">11 Superimposing Images</A></H1>
+<P>
+<A NAME="chaptersuperimposingimages">&#160;</A><A NAME="pubsuperimposingimages">&#160;</A>
+<A NAME="1766">&#160;</A>
+<P>
+The <A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A> programme allows you to
+display different images on top of each other, while each image has a
+different colour coding. This can be used to display amplitude and
+phase together in one image, or compare different channels from a data
+cube by superimposing them.
+<P>
+These visualisation techniques require a 24-bit display.
+<P>
+<H1><A NAME="SECTION001210000000000000000">11.1 Image and Contours</A></H1>
+<A NAME="1770">&#160;</A>
+<P>
+Note that there is another way to superimpose images which involves
+drawing one image as a greyscale or false-colour image and the other
+is drawn over the top as contours. This can be done with
+<A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A>, and does not require a 24-bit
+display.
+<P>
+You may also use the
+<A HREF="node13.html#sectionsendcontours"><B>&lt;send-contours&gt;</B></A> programme to
+draw contours over any image. This programme is a command-line tool,
+however, and is not normally used since the the GUI tools are much
+easier to use.
+<P>
+<H1><A NAME="SECTION001220000000000000000">11.2 Hue and Intensity</A></H1>
+<A NAME="sectionhueintensity">&#160;</A>
+<A NAME="1777">&#160;</A>
+<P>
+With the program <B>&lt;kvis&gt;</B> you can superimpose two images,
+where one image is taken to control the intensity and the other the
+colour. This can be used to display amplitude and phase together in
+one image, or line integral and a velocity field.
+<P>
+To display the images run
+<P>
+<TT>kvis</TT>
+<P>
+First load <B>File1</B> and <B>File2</B>. You should now see the
+combined images. The sliders <B>Start Hue</B> and <B>Stop Hue</B>
+manipulate the colour of the image, the sliders <B>Minimum
+Intensity</B> and <B>Saturation</B> the intensity.
+<P>
+By default, <B>File1</B> will control the intensity, and <B>File2</B>
+the hue. You can swap this by choosing ``Phase, Amplitude'' from the
+<B>RAW DATA FORM</B> menu. If you select ``Real, Imaginary'' then a
+rectangular to polar transformation of the data is performed, where
+<B>File1</B> is real image and <B>File2</B> is the imaginary image. You
+can swap the sense of this by choosing ``Imaginary, Real''. After the
+rectangular to polar transformation, the amplitude value will control
+the intensity and the phase value will control the hue.
+<P>
+A screen snapshot is available
+<a href="../tool-snapshots/khuei/main.gif" target=image_window>here</a>
+<H1><A NAME="SECTION001230000000000000000">11.3 Intensity and Intensity</A></H1>
+<P>
+<A NAME="sectionintensityandintensity">&#160;</A>
+<P>
+Another possibility is to overlay images so that all images are coded
+as intensity but in a different colour.  This you can use to overlay
+two or three different channels of a data cube and inspect subtle
+differences. The <A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A> programme can be
+used to do this.
+<P>
+<HR><A NAME="tex2html421" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html419" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html413" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html423" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html424" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html422" HREF="node13.html">Command-line Tools</A>
+<B>Up:</B> <A NAME="tex2html420" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html414" HREF="node11.html">kpolar: regridding to polar </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

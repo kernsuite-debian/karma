@@ -1,0 +1,93 @@
+.TH KWIN_DRAW_PC_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_pc_image \- Draw PseudoColour image to a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_pc_image
+.sp
+(KPixCanvas canvas, int x_off, int y_off,
+int x_pixels, int y_pixels,
+CONST char *slice,
+CONST uaddr *hoffsets, CONST uaddr *voffsets,
+unsigned int width, unsigned int height,
+unsigned int type, unsigned int conv_type,
+unsigned int num_pixels, unsigned long *pixel_values,
+unsigned long blank_pixel,unsigned long min_sat_pixel,
+unsigned long max_sat_pixel,
+double i_min, double i_max,
+flag (*iscale_func) (), void *iscale_info,
+KPixCanvasImageCache *cache_ptr)
+.SH DESCRIPTION
+This routine will draw a 2-dimensional slice of a Karma array
+onto a pixel canvas. This slice may be tiled. The slice is a PseudoColour
+image.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIx_off\fP 1i
+The horizontal offset, relative to the top-left corner of the
+canvas.
+.IP \fIy_off\fP 1i
+The vertical offset, relative to the top-left corner of the canvas.
+.IP \fIx_pixels\fP 1i
+The number of horizontal pixels to draw.
+.IP \fIy_pixels\fP 1i
+The number of vertical pixels to draw.
+.IP \fIslice\fP 1i
+The start of the slice image data.
+.IP \fIhoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIvoffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIwidth\fP 1i
+The width of the input image (in values).
+.IP \fIheight\fP 1i
+The height of the input image (in values).
+.IP \fItype\fP 1i
+The type of the slice image data.
+.IP \fIconv_type\fP 1i
+The input conversion type (when the input is complex).
+.IP \fInum_pixels\fP 1i
+The number of pixels in the pixel array.
+.IP \fIpixel_values\fP 1i
+The array of pixel values.
+.IP \fIblank_pixel\fP 1i
+The pixel value to be used when the intensity value is an
+undefined value.
+.IP \fImin_sat_pixel\fP 1i
+The pixel value to be used when the intensity value is
+below the minimum value.
+.IP \fImax_sat_pixel\fP 1i
+The pixel value to be used when the intensity value is
+above the maximum value.
+.IP \fIi_min\fP 1i
+The minimum intensity value.
+.IP \fIi_max\fP 1i
+The maximum intensity value.
+.IP \fIiscale_func\fP 1i
+The function to be called when non-linear intensity scaling
+is required. If NULL, linear intensity scaling is used. The prototype
+function is <-kwin_PROTO_iscale_func->.
+.IP \fIiscale_info\fP 1i
+A pointer to arbitrary information for <<iscale_func>>.
+.IP \fIcache_ptr\fP 1i
+Cache data is written here. The routine may produce cache data
+which will vastly increase the speed of subsequent operations on this data.
+Prior to process exit, a call MUST be made to <-kwin_free_cache_data->,
+otherwise shared memory segments could remain after the process exits.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,44 @@
+.TH J_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+j_create \- Create a general purpose associative array of key-value pairs.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B KJoinedPairList j_create
+.sp
+(void *info,
+int (*key_compare_func) (CONST void *key1,
+CONST void *key2),
+void *(*key_copy_func) (CONST void *key,
+uaddr length, flag *ok),
+void (*key_destroy_func) (void *key))
+.SH DESCRIPTION
+Create a general purpose associative array of key-value pairs.
+.IP \fIinfo\fP 1i
+Arbitrary information to be stored with the associative array.
+.IP \fIkey_compare_func\fP 1i
+The function used to compare two keys. The prototype
+function is <-j_PROTO_key_compare_func->. If this is NULL, pointer values
+are compared.
+.IP \fIkey_copy_func\fP 1i
+The function used to copy keys. The prototype function is
+<-j_PROTO_key_copy_func->.
+.IP \fIkey_destroy_func\fP 1i
+The function used to destroy keys. The prototype
+function is <-j_PROTO_key_destroy_func->.
+.SH RETURN VALUE
+An associative array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

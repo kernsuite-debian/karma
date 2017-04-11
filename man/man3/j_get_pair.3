@@ -1,0 +1,33 @@
+.TH J_GET_PAIR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+j_get_pair \- Find a key-value pair in an associative array.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B KJoinedPair j_get_pair
+.sp
+(KJoinedPairList list, CONST void *key, void **value)
+.SH DESCRIPTION
+Find a key-value pair in an associative array.
+.IP \fIlist\fP 1i
+The associative array.
+.IP \fIkey\fP 1i
+The key.
+.IP \fIvalue\fP 1i
+The value found will be written here on success.
+.SH RETURN VALUE
+A KJoinedPair object if the key was found, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

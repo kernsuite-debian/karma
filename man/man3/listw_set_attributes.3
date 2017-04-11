@@ -1,0 +1,36 @@
+.TH LISTW_SET_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+listw_set_attributes \- Set list widget attributes.
+.SH SYNOPSIS
+.B #include <karma_listw.h>
+.sp
+.B flag listw_set_attributes
+.sp
+(KListWidget list, flag refresh_if_needed, ...)
+.SH DESCRIPTION
+Set list widget attributes.
+.IP \fIlist\fP 1i
+The list widget.
+.IP \fIrefresh_if_needed\fP 1i
+If TRUE, the list display is refreshed if something has
+changed.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. The list must be terminated with
+LISTW_ATT_END. See <-listw_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

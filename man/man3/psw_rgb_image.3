@@ -1,0 +1,76 @@
+.TH PSW_RGB_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_rgb_image \- Write a truecolour image to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_rgb_image
+.sp
+(PostScriptPage pspage, CONST unsigned char *image_reds,
+CONST unsigned char *image_greens,
+CONST unsigned char *image_blues,
+unsigned int xlen, unsigned int ylen,
+CONST uaddr *xoffsets_red, CONST uaddr *yoffsets_red,
+CONST uaddr *xoffsets_green, CONST uaddr *yoffsets_green,
+CONST uaddr *xoffsets_blue, CONST uaddr *yoffsets_blue,
+uaddr stride,
+double xstart, double ystart, double xend, double yend)
+.SH DESCRIPTION
+Write a truecolour image to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIimage_red\fP 1i
+The red component image.
+.IP \fIimage_green\fP 1i
+The green component image.
+.IP \fIimage_blue\fP 1i
+The blue component image.
+.IP \fIxlen\fP 1i
+The horizontal size of the image (in pixels).
+.IP \fIylen\fP 1i
+The vertical size of the image (in pixels).
+.IP \fIxoffsets_red\fP 1i
+The horizontal offset array for the red component image. If
+this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIyoffsets_red\fP 1i
+The vertical offset array for the red component image. If
+this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIxoffsets_green\fP 1i
+The horizontal offset array for the green component image.
+If this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIyoffsets_green\fP 1i
+The vertical offset array for the green component image.
+If this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIxoffsets_blue\fP 1i
+The horizontal offset array for the blue component image.
+If this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIyoffsets_blue\fP 1i
+The vertical offset array for the blue component image. If
+this is NULL, the image data is assumed to be contiguous in memory.
+.IP \fIstride\fP 1i
+The stride of successive component values. This is ignored if
+both offset arrays are supplied for a component image.
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIxend\fP 1i
+The x ending point (scaled from 0.0 to 1.0).
+.IP \fIyend\fP 1i
+The y ending point (scaled from 0.0 to 1.0).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

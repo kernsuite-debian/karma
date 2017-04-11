@@ -1,0 +1,41 @@
+.TH DS_COPY_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_list \- Recursively copy linked lists.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_copy_list
+.sp
+(CONST packet_desc *inp_desc, CONST list_header *inp_head,
+packet_desc *out_desc, list_header *out_head)
+.SH DESCRIPTION
+This routine will copy a linked list to another.
+The routine will recursively copy sub arrays and linked lists.
+The linked list entries and data fields will be allocated. The entries
+will be contiguous in memory.
+For information on the copying rules when the two list descriptors differ,
+see the routine <-ds_copy_data->.
+.IP \fIinp_desc\fP 1i
+The input data structure descriptor.
+.IP \fIinp_head\fP 1i
+The input linked list header.
+.IP \fIout_desc\fP 1i
+The output data structure descriptor.
+.IP \fIout_head\fP 1i
+The output linked list header.
+.SH RETURN VALUE
+TRUE if the two packet descriptors are identical, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

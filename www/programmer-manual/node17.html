@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Dynamic Extensions</TITLE>
+<META NAME="description" CONTENT="Dynamic Extensions">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html870" HREF="node18.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html868" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html862" HREF="node16.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html872" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html873" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html871" HREF="node18.html">Graphics without Widgets</A>
+<B>Up:</B> <A NAME="tex2html869" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html863" HREF="node16.html">Image Display Tool</A>
+<BR> <P>
+<H1><A NAME="SECTION001700000000000000000">Dynamic Extensions</A></H1>
+<A NAME="extensions">&#160;</A><A NAME="2043">&#160;</A>
+<P>
+Dynamic extensions are a mechanism whereby you can have your own code
+automatically loaded and executed by parts of the Karma library. This
+requires that your operating system supports building shared objects
+(often called shared libraries) and that loading of shared objects is
+supported by the <B>dlopen()</B> function.
+<P>
+<H1><A NAME="SECTION001710000000000000000">Rationale</A></H1>
+<P>
+An alternative to dynamic extensions is to modify the source code for
+a Karma module or some part of the library. Modifying the code is
+appropriate for a generic change (if you submit the code I can include
+it in the mainstream Karma release), but if it's something specific to
+your own work environment it might not be appropriate to include it in
+the mainstream Karma. Maintaining your own private versions of pieces
+of Karma can quickly become a maintenance nightmare, since newer
+versions of Karma will contain bugfixes and improvements but don't
+include your private changes. Simply replacing the Karma version of
+some module or part of the library with your own version may not work,
+since other parts of Karma may depend on new features which your code
+does not have. Merging in your changes with each new source release of
+Karma involves work, and does not solve the problem if you want to
+install a new beta (binary-only) release of Karma, since you won't
+have access to the source code changes until the next source release.
+<P>
+Other changes you may wish to make to Karma may require linking with
+extra libraries. This is something that is unlikely to be included in
+the mainstream Karma release, since it introduces dependencies on
+libraries not commonly available.
+<P>
+To solve these problems, dynamic extensions are supported. These
+provide a way to have your own changes integrated into the library or
+a module, maintaining binary compatibility between different releases
+of Karma. The aim is to allow you to include your own code without
+having to worry about maintenance when you install a newer version of
+Karma.
+<P>
+<H1><A NAME="SECTION001720000000000000000">Architecture</A></H1>
+<P>
+Karma defines many ``services'' which can be extended in defined
+ways. A service may be a module (i.e. the entire application), a
+widget or some other part of the library. Each service will call
+certain known functions within the relevant extension at defined
+points in the execution of the service. There are three main classes
+of services:
+<UL>
+<LI> packages
+<LI> widgets
+<LI> modules
+</UL><H2><A NAME="SECTION001721000000000000000">Package Services</A></H2>
+<P>
+The service name for a package is the name of the package itself. For
+example, the <A NAME="tex2html285" HREF="../lib/foreign.html"><B>foreign</B></A> package defines the <TT>foreign</TT>
+service. Each package will call known extension functions specific to
+that package. You will need to read the package-specific documentation
+to determine which extension functions are defined for that package.
+<P>
+<H2><A NAME="SECTION001722000000000000000">Widget Services</A></H2>
+<P>
+The service name for a widget is the class name of the widget. For
+example, the <A NAME="tex2html286" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node14.html#Filepopup">13.17.2</A>)
+defines the service <TT>Filepopup</TT>. Widgets may call the following
+known functions:
+<P>
+<UL>
+<LI> <B>ClassInitialise</B> this is called only once when the widget
+class is initialised
+<LI> <B>WidgetInitialise</B> this is called as the last stage of
+initialisation of a widget instance
+<LI> <B>WidgetRealise</B> this is called as the last stage of
+realisation of a widget instance
+<LI> <B>WidgetDestroy</B> this is called as the last stage of
+destruction of a widget instance
+<P>
+</UL>
+<P>
+Each of these functions has the same interface definition as the
+generic Xt class member functions. Note that not all widgets currently
+call these extension functions. The widgets will be changed as
+required (most widgets will probably never have extensions written for
+them by anybody). See the chapter on widgets (section <A HREF="node14.html#widgets">13</A>)
+where each widget documents any extension functions it calls.
+<P>
+<H2><A NAME="SECTION001723000000000000000">Module Services</A></H2>
+<P>
+The service name for a module is the name of the module
+itself. Modules may call the following known functions:
+<P>
+<UL>
+<LI> <B>Xt_AppInitialise</B> this is called only once when the Xt
+application context is created (this only applies to Xt-based
+programmes)
+<LI> <B>Xt_InEventLoop</B> this is called only once when the Xt main
+event loop starts (this only applies to Xt-based
+programmes)
+<P>
+</UL><H1><A NAME="SECTION001730000000000000000">Creating an Extension</A></H1>
+<P>
+You will need to compile your C source code with whatever option your
+compiler uses for generating position-independent code. You may wish
+to include <TT>$KARMAINCLUDEPATH/gmakedefs/general.h1</TT> in your
+GNUmakefile because it defines make variables with the correct
+compiler flags that you require for your platform. Once you have
+compiled your C code, you will need to use the linker to generate a
+shared object with extension <TT>.so</TT> which may then be dynamically
+loaded. An example <TT>GNUmakefile</TT> is shown below:
+<P>
+<PRE>include $(KARMAINCLUDEPATH)/gmakedefs/general.h1
+
+myobject.so: mysource.o
+        $(LDso) -o myobject.so mysource.o</PRE>
+<P>
+This uses the implicit rule in <B>&lt;gmake&gt;</B> to compile the source
+file into an object. If necessary, you may define the <TT>CFLAGS</TT>
+variable to provide extra compile flags (the implicit rule uses this
+variable).
+<P>
+<H1><A NAME="SECTION001740000000000000000">Configuration</A></H1>
+<P>
+A single file is used to configure the extensions available. Your
+personal configuration file is scanned first, and is called <TT>
+<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline5797" SRC="img4.gif">/.karma/extensions</TT> which specifies which shared objects are
+available for the various services. After that the <TT>
+$KARMABASE/site/share/extensions</TT> file is scanned to load any extensions
+provided by your local <B>Karma</B> installer. Finally the <TT>
+$KARMABASE/share/extensions</TT> file is scanned to load any extensions
+provided with the Karma distribution. The format of this file is as
+follows:
+<P>
+<PRE>SO_DIRS  directories
+SERVICE  servicename objects</PRE>
+<P>
+where:
+<P>
+<UL>
+<LI> <TT>directories</TT> is a colon-separated list of
+directories containing shared objects. Simple Bourne Shell-like
+expansion of environment variables is supported (such as the
+``<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline5797" SRC="img4.gif">'', <TT>$variable</TT>, <TT>${variable}</TT> and <TT>
+${variable:-word}</TT> notations). This aids the
+maintenance of extensions for different platforms
+<LI> <TT>servicename</TT> is the name of a service
+<LI> <TT>objects</TT> is the name of one or more objects (separated by
+whitespace) without the trailing <TT>.so</TT> extension
+</UL>
+<P>
+It is legal to list the same service multiple times: this simply
+concatenates the list of objects for that service. Functions will be
+called in the same order in which the configuration files were
+scanned.
+<P>
+<H1><A NAME="SECTION001750000000000000000">Example</A></H1>
+<P>
+The following is an example of an extension for the
+<A NAME="tex2html287" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node14.html#Filepopup">13.17.2</A>) which defines the
+service <TT>Filepopup</TT>. It adds a few accelerator buttons to the file
+browser. Note how there is no state defined in the extension: using
+static variables must be done with caution, since the same <TT>
+WidgetInitialise</TT> function is called several times, once for each
+widget that is created.
+<P>
+To use this, my <TT><IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline5797" SRC="img4.gif">/.karma/extensions</TT> file contains the
+following:
+<P>
+<PRE>SO_DIRS  ~/.karma/lib/$MACHINE_OS
+SERVICE  Filepopup myobject</PRE>
+<P>
+And the code to implement this follows:
+<P>
+<PRE>/*  This extension adds some accelerator buttons to a Filepopup widget
+    Copyright (C) 1997-1998  Richard Gooch
+    This code is distributed under the GNU General Public License
+*/
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;X11/Intrinsic.h&gt;
+#include &lt;X11/Xos.h&gt;
+#include &lt;X11/StringDefs.h&gt;
+#include &lt;X11/Xaw/Command.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_a.h&gt;
+#include &lt;Xkw/Filepopup.h&gt;
+#include &lt;Xkw/Filewin.h&gt;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (Widget add_button,
+                 (Widget box, CONST char *label, CONST char *directory) );
+STATIC_FUNCTION (void chdir_cbk, (Widget w, XtPointer client_data,
+                                  XtPointer call_data) );
+
+
+/*  Public functions follow  */
+
+flag WidgetInitialise (Widget Request, Widget New)
+{
+    Widget box;
+
+    XtVaGetValues (New, XkwNboxWidget, &amp;box, NULL);
+    /*  Add the various personalised buttons  */
+    add_button (box, &quot;/&quot;, &quot;/&quot;);
+    add_button (box, &quot;/data&quot;, &quot;/data&quot;);
+    add_button (box, &quot;/cdrom&quot;, &quot;/cdrom&quot;);
+    return (TRUE);
+}   /*  End Function WidgetInitialise  */
+
+
+/*  Private functions follow */
+
+static Widget add_button (Widget box, CONST char *label, CONST char *directory)
+/*  [SUMMARY] Add a button to a box.
+    &lt;box&gt; The enclosing box widget.
+    &lt;upper&gt; The widget under which the new widget should be placed.
+    &lt;left&gt; The widget to the left of where the widget should be placed.
+    &lt;label&gt; The label to appear in the button. The pointer must remain valid.
+    &lt;directory&gt; The directory to change to when the button is pressed. The
+    pointer must remain valid.
+    [RETURNS] The new button widget.
+*/
+{
+    Widget w;
+
+    w = XtVaCreateManagedWidget (&quot;button&quot;, commandWidgetClass, box,
+                                 XtNlabel, label,
+                                 NULL);
+    XtAddCallback (w, XtNcallback, chdir_cbk, (XtPointer) directory);
+    return (w);
+}   /*  End Function add_button  */
+
+static void chdir_cbk (Widget w, XtPointer client_data, XtPointer call_data)
+{
+    Widget filewin, parent, filepopup;
+    CONST char *dirname = (CONST char *) client_data;
+    static char function_name[] = &quot;Filepopup-ext_chdir_cbk&quot;;
+
+    for ( parent = XtParent (w), filepopup = NULL;
+          (filepopup == NULL) &amp;&amp; (parent != NULL);
+          parent = XtParent (parent) )
+    {
+        if ( XtIsFilepopup (parent) ) filepopup = parent;
+    }
+    if (filepopup == NULL)
+    {
+        fprintf (stderr, &quot;Could not find a Filepopup ancestor\n&quot;);
+        a_prog_bug (function_name);
+    }
+    XtVaGetValues (filepopup, XkwNfilewinWidget, &amp;filewin, NULL);
+    XkwFilewinChangeDirectory (filewin, dirname);
+}   /*  End Function chdir_cbk  */</PRE>
+<P>
+Note how the exported function <TT>WidgetInitialise</TT> returns a
+boolean value. <B>All</B> extension functions must return either <TT>
+TRUE</TT> or <TT>FALSE</TT>.
+<P>
+<HR><A NAME="tex2html870" HREF="node18.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html868" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html862" HREF="node16.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html872" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html873" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html871" HREF="node18.html">Graphics without Widgets</A>
+<B>Up:</B> <A NAME="tex2html869" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html863" HREF="node16.html">Image Display Tool</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

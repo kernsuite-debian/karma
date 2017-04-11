@@ -1,0 +1,31 @@
+.TH CH_UNREGISTER_CONVERTER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_unregister_converter \- Unregister converter.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B void ch_unregister_converter
+.sp
+(ChConverter converter)
+.SH DESCRIPTION
+This routine will unregister a set of converter functions
+previously registered with <-ch_register_converter->. This will cause the
+registered flush and close functions to be called.
+.IP \fIconverter\fP 1i
+The ChConverter object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

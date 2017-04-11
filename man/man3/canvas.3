@@ -1,0 +1,201 @@
+.TH CANVAS 3 "07 Aug 2006" "Karma Distribution"
+.SH PACKAGE
+canvas \- Routines to manipulate world canvases
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate world canvases (canvases which have a co-ordinate system based
+on real-world co-ordinates). These canvases utilise the pixel canvases
+available in the <-kwin-> package, hence the resulting code is device
+independent.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIcanvas_draw_edit_list\fP 1i
+Draw a list of edit objects to a world canvas.
+.IP \fIcanvas_draw_edit_object\fP 1i
+Draw one edit object to a world canvas.
+.IP \fIcanvas_create\fP 1i
+Create world canvas.
+.IP \fIcanvas_destroy\fP 1i
+Destroy a world canvas.
+.IP \fIcanvas_register_precompute_func\fP 1i
+Register a refresh precompute callback.
+.IP \fIcanvas_register_refresh_func\fP 1i
+Register world canvas refresh callback.
+.IP \fIcanvas_register_size_control_func\fP 1i
+Register size control callback.
+.IP \fIcanvas_register_legend_reservation_func\fP 1i
+Register legend space reservation callback.
+.IP \fIcanvas_register_position_event_func\fP 1i
+Register position event callback.
+.IP \fIcanvas_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIcanvas_get_attributes\fP 1i
+Get canvas attributes.
+.IP \fIcanvas_set_attributes\fP 1i
+Set canvas attributes.
+.IP \fIcanvas_resize\fP 1i
+Resize a world canvas.
+.IP \fIcanvas_refresh_if_visible\fP 1i
+Refresh a world canvas if it is visible.
+.IP \fIcanvas_specify\fP 1i
+Set specification information for a world canvas.
+.IP \fIcanvas_get_specification\fP 1i
+Get specification information for a world canvas.
+.IP \fIcanvas_convert_to_canvas_coords\fP 1i
+Convert pixel co-ordinates to world co-ordinates.
+.IP \fIcanvas_convert_from_canvas_coords\fP 1i
+Convert world co-ordinates to pixel co-ordinates.
+.IP \fIcanvas_register_coords_convert_func\fP 1i
+Register co-ordinate conversion function.
+.IP \fIcanvas_coords_transform\fP 1i
+Transform world co-ordinates.
+.IP \fIcanvas_register_transforms_func\fP 1i
+Register non-linear co-ordinate transformation function.
+.IP \fIcanvas_register_transforms_free_func\fP 1i
+Register non-linear co-ordinate transformation free function.
+.IP \fIcanvas_get_pixcanvas\fP 1i
+Get the underlying pixel canvas of a world canvas.
+.IP \fIcanvas_get_colour\fP 1i
+Get (possibly allocating) a colourcell for a canvas.
+.IP \fIcanvas_set_dressing\fP 1i
+Set dressing parameters for a world canvas.
+.IP \fIcanvas_get_dressing\fP 1i
+Get dressing parameters for a world canvas.
+.IP \fIcanvas_sequence_dressing_refresh\fP 1i
+Set order in which dressing is refreshed.
+.IP \fIcanvas_draw_dressing\fP 1i
+Draw the dressing (axes, etc.) for a world canvas.
+.IP \fIcanvas_get_cmap\fP 1i
+Get the Kcolourmap object associated with a world canvas.
+.IP \fIcanvas_warp_pointer\fP 1i
+Warp the pointer to a new location.
+.IP \fIcanvas_test_for_boundary\fP 1i
+Test if co-ordinates lie within the canvas boundary.
+.IP \fIcanvas_draw_image\fP 1i
+Draw a PseudoColour image onto a world canvas.
+.IP \fIcanvas_draw_rgb_image\fP 1i
+Draw a TrueColour image onto a world canvas.
+.IP \fIcanvas_draw_point\fP 1i
+Draw a single point onto a world canvas.
+.IP \fIcanvas_draw_point_p\fP 1i
+Draw a single point onto a world canvas.
+.IP \fIcanvas_draw_line\fP 1i
+Draw a single line onto a world canvas.
+.IP \fIcanvas_draw_line_p\fP 1i
+Draw a single line onto a world canvas.
+.IP \fIcanvas_draw_arc\fP 1i
+Draw an arc onto a world canvas.
+.IP \fIcanvas_draw_arc_p\fP 1i
+Draw an ellipse onto a world canvas.
+.IP \fIcanvas_draw_ellipse\fP 1i
+Draw an ellipse onto a world canvas.
+.IP \fIcanvas_draw_ellipse_p\fP 1i
+Draw an ellipse onto a world canvas.
+.IP \fIcanvas_fill_ellipse\fP 1i
+Draw a filled ellipse onto a world canvas.
+.IP \fIcanvas_fill_ellipse_p\fP 1i
+Draw a filled ellipse onto a world canvas.
+.IP \fIcanvas_convert_ellipse_coords\fP 1i
+Convert co-ordinates for an ellipse.
+.IP \fIcanvas_fill_polygon\fP 1i
+Draw a filled polygon onto a world canvas.
+.IP \fIcanvas_draw_rectangle\fP 1i
+Draw a single rectangle onto a world canvas.
+.IP \fIcanvas_draw_rectangle_p\fP 1i
+Draw a single rectangle onto a world canvas.
+.IP \fIcanvas_fill_rectangle\fP 1i
+Fill a single rectangle onto a world canvas.
+.IP \fIcanvas_fill_rectangle_p\fP 1i
+Fill a single rectangle onto a world canvas.
+.IP \fIcanvas_draw_lines\fP 1i
+Draw multiple connected lines onto a world canvas.
+.IP \fIcanvas_draw_lines_p\fP 1i
+Draw multiple connected lines onto a world canvas.
+.IP \fIcanvas_draw_segments\fP 1i
+Draw multiple disjoint lines onto a world canvas.
+.IP \fIcanvas_draw_segments_p\fP 1i
+Draw multiple disjoint lines onto a world canvas.
+.IP \fIcanvas_get_margins\fP 1i
+Get margin space for a canvas.
+.IP \fIcanvas_associate_object\fP 1i
+Associate an object with a world canvas.
+.IP \fIcanvas_get_associated_object\fP 1i
+Get an associated object for a world canvas.
+.IP \fIcanvas_init_win_scale\fP 1i
+Initialise win_scale structure.
+.IP \fIcanvas_use_log_scale\fP 1i
+Enable logarithmic scaling for a world canvas.
+.IP \fIcanvas_use_astro_transform\fP 1i
+Use astronomical sky projections for a canvas.
+.IP \fIcanvas_track_compute\fP 1i
+Compute track strings.
+.IP \fIcanvas_draw_circle_marker\fP 1i
+Draw a circle marker.
+.IP \fIcanvas_draw_line_marker\fP 1i
+Draw a line marker.
+.IP \fIcanvas_create_stroke_instruction\fP 1i
+Create an image editing stroke instruction.
+.IP \fIcanvas_zoom_handle_keys\fP 1i
+Install callbacks to handle zoom key bindings for a world canvas.
+.IP \fIcanvas_zoom_handle_mouse\fP 1i
+Install callbacks to handle left mouse zooming for world canvas.
+.IP \fIcanvas_PROTO_precompute_func\fP 1i
+Precompute event callback.
+.IP \fIcanvas_PROTO_refresh_func\fP 1i
+Refresh event callback.
+.IP \fIcanvas_PROTO_size_control_func\fP 1i
+Size control callback.
+.IP \fIcanvas_PROTO_position_func\fP 1i
+Position event callback.
+.IP \fIcanvas_PROTO_destroy_func\fP 1i
+Process a destroy event on a world canvas.
+.IP \fIcanvas_PROTO_coord_convert_func\fP 1i
+Co-ordinate conversion callback.
+.IP \fIcanvas_PROTO_coord_transform_func\fP 1i
+Co-ordinate transformation callback.
+.IP \fIcanvas_PROTO_legend_reservation_func\fP 1i
+Legend space reservation callback.
+.SH TABLE canvas_ATTRIBUTES
+List of attributes for KWorldCanvas objects
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                         Get Type       Set Type      Meaning
+
+CANVAS_ATT_END                                            End of varargs list
+CANVAS_ATT_X_OFFSET          int *          int           X offset (pixels)
+CANVAS_ATT_Y_OFFSET          int *          int           Y offset (pixels)
+CANVAS_ATT_X_PIXELS          int *          int           X size (pixels)
+CANVAS_ATT_Y_PIXELS          int *          int           Y size (pixels)
+CANVAS_ATT_BLANK_PIXEL       unsigned long *unsigned long Blank pixel
+CANVAS_ATT_MIN_SAT_PIXEL     unsigned long *unsigned long Min saturation pixel
+CANVAS_ATT_MAX_SAT_PIXEL     unsigned long *unsigned long Max saturation pixel
+CANVAS_ATT_LEFT_X            double *       double        Left X (linear)
+CANVAS_ATT_RIGHT_X           double *       double        Right X (linear)
+CANVAS_ATT_BOTTOM_Y          double *       double        Bottom Y (linear)
+CANVAS_ATT_TOP_Y             double *       double        Top Y (linear)
+CANVAS_ATT_VALUE_MIN         double *       double        Minimum value
+CANVAS_ATT_VALUE_MAX         double *       double        Maximum value
+CANVAS_ATT_ISCALE_FUNC                      flag (*) ()   Intensity scale function
+CANVAS_ATT_ISCALE_FREE_FUNC                 void (*) ()   Free function
+CANVAS_ATT_ISCALE_INFO       void **        void          iscale info
+CANVAS_ATT_AUTO_MIN_SAT      flag *         flag          Auto min-sat
+CANVAS_ATT_AUTO_MAX_SAT      flag *         flag          Auto max-sat
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

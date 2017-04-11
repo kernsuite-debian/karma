@@ -1,0 +1,41 @@
+.TH DS_ALLOC_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_array \- Allocate an array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_array
+.sp
+(CONST array_desc *arr_desc, char *element, flag clear,
+flag array_alloc)
+.SH DESCRIPTION
+This routine will allocate memory for an array. The routine will
+recursively allocate sub arrays and linked lists.
+Any memory which is allocated will be deallocated if an error occurs.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIelement\fP 1i
+The element to write the array pointer to.
+.IP \fIclear\fP 1i
+If TRUE, then the routine will initialise (set to zero) all the
+data.
+.IP \fIarray_alloc\fP 1i
+If FALSE, and an array is an atomic array, then instances of
+that array will NOT be allocated, and a NULL pointer will be written into
+the parent element, else the array will be allocated.
+.SH RETURN VALUE
+A pointer to the array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

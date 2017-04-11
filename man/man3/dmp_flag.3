@@ -1,0 +1,36 @@
+.TH DMP_FLAG 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dmp_flag \- Dump a flag value to a file.
+.SH SYNOPSIS
+.B #include <karma_dmp.h>
+.sp
+.B void dmp_flag
+.sp
+(FILE *fp, flag logical, char *comment_string, flag comments)
+.SH DESCRIPTION
+This routine will dump the ASCII representation of a flag value
+to a file.
+.IP \fIfp\fP 1i
+The file.
+.IP \fIlogical\fP 1i
+The flag value.
+.IP \fIcomment_string\fP 1i
+The comment string.
+.IP \fIcomments\fP 1i
+If TRUE, the comment string is written.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

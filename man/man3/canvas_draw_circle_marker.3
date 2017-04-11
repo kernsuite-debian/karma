@@ -1,0 +1,37 @@
+.TH CANVAS_DRAW_CIRCLE_MARKER 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_draw_circle_marker \- Draw a circle marker.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_draw_circle_marker
+.sp
+(KWorldCanvas canvas,
+KPixCanvasRefreshArea *area,
+double x, double y)
+.SH DESCRIPTION
+Draw a circle marker.
+.IP \fIcanvas\fP 1i
+The world canvas to draw to.
+.IP \fIarea\fP 1i
+State information for undrawing the old marker. This is updated.
+.IP \fIx\fP 1i
+The horizontal linear co-ordinate of the marker.
+.IP \fIy\fP 1i
+The vertical linear co-ordinate of the marker.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

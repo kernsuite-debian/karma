@@ -1,0 +1,30 @@
+.TH DSXFR_PROTO_CLOSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dsxfr_PROTO_close_func \- Callback for "multi_array" connection closures.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B void dsxfr_PROTO_close_func
+.sp
+(flag data_deallocated)
+.SH DESCRIPTION
+This routine is called when any "multi_array" connection closes.
+.IP \fIdata_deallocated\fP 1i
+If there was a multi_array data structure already
+received over the connection, it is deallocated and this is TRUE.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

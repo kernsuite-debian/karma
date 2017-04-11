@@ -1,0 +1,74 @@
+/*  TracePopupP.h
+
+    Public header for  TracePopup  widget class.
+
+    Copyright (C) 1996-2002  Richard Gooch
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public
+    License along with this library; if not, write to the Free
+    Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+    Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+    The postal address is:
+      Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+*/
+
+/*
+
+    This include file contains the public class declarations for the
+  TracePopup widget, a simple trace display widget for Xt.
+
+
+    Written by      Richard Gooch   15-SEP-1996
+
+    Last updated by Richard Gooch   12-FEB-2002
+
+*/
+#ifndef TRACEPOPUP__H
+#define TRACEPOPUP__H
+
+#include <karma_iarray.h>
+
+extern WidgetClass tracePopupWidgetClass;
+typedef struct _TracePopupClassRec *TracePopupWidgetClass;
+typedef struct _TracePopupRec *TracePopupWidget;
+
+#define XtIsTracePopup(w) XtIsSubclass((w), tracePopupWidgetClass)
+
+#define XkwNverbose "verbose"
+#define XkwNcanvasVisual "canvasVisual"
+#define XkwNworldCanvas "worldCanvas"
+#define XkwNrealiseCallback "realiseCallback"
+#define XkwNkarmaColourmap "karmaColourmap"
+
+#define XkwCVerbose "Verbose"
+#define XkwCWorldCanvas "WorldCanvas"
+#define XkwCKarmaColourmap "KarmaColourmap"
+
+EXTERN_FUNCTION (void XkwTracePopupNewArray,
+		 (Widget W, iarray array, double min, double max) );
+EXTERN_FUNCTION (void XkwTracePopupShowTrace,
+		 (Widget W, CONST unsigned int *dim_indices,
+		  CONST uaddr *coord_indices) );
+EXTERN_FUNCTION (void XkwTracePopupShowTraces,
+		 (Widget W, CONST unsigned int *dim_indices,
+		  flag sum, float global_weight, unsigned int num_traces,
+		  CONST uaddr *coord_indices, CONST float *weights) );
+EXTERN_FUNCTION (void XkwTracePopupShowBoxedTrace,
+		 (Widget W, CONST unsigned int *dim_indices, flag sum,
+		  CONST uaddr *start_indices, CONST uaddr *stop_indices) );
+EXTERN_FUNCTION (void XkwTracePopupInvalidate, (Widget W) );
+EXTERN_FUNCTION (void XkwTracePopupRefresh, (Widget W, flag clear) );
+
+
+#endif

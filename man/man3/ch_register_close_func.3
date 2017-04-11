@@ -1,0 +1,38 @@
+.TH CH_REGISTER_CLOSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_register_close_func \- Register close callback.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B KCallbackFunc ch_register_close_func
+.sp
+(Channel channel,
+void (*func) (), void *info)
+.SH DESCRIPTION
+This routine will register a close function for a channel. This
+is called when <-ch_close-> is called. Many close functions may be
+registered per channel. The first function registered is the first function
+called upon closure.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIfunc\fP 1i
+The function that is called when the canvas is closed. The
+prototype function is <-ch_PROTO_close_func->.
+.IP \fIinfo\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

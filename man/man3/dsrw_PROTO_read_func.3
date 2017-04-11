@@ -1,0 +1,33 @@
+.TH DSRW_PROTO_READ_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dsrw_PROTO_read_func \- Read data and write to a buffer.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_PROTO_read_func
+.sp
+(void *buffer, uaddr num_values, void *info)
+.SH DESCRIPTION
+Read data and write to a buffer.
+.IP \fIbuffer\fP 1i
+The buffer to write to.
+.IP \fInum_values\fP 1i
+The number of values to read.
+.IP \fIinfo\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

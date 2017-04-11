@@ -1,0 +1,34 @@
+.TH R_TEST_INPUT_EVENT 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_test_input_event \- Test for activity on a connection.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_test_input_event
+.sp
+(int connection)
+.SH DESCRIPTION
+This routine will test if there is input activity on a
+connection. This activity also covers the case of connection closure. The
+connection descriptor must be given by  connection  .
+.SH RETURN VALUE
+TRUE if there is some input activity, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine is only available on platforms which emulate the
+communications facilities of Unix. It is NOT available on standard Unix
+systems.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

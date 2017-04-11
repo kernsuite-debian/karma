@@ -1,0 +1,31 @@
+.TH EX_HOUR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ex_hour \- Extract hour value from string.
+.SH SYNOPSIS
+.B #include <karma_ex.h>
+.sp
+.B double ex_hour
+.sp
+(CONST char *p, CONST char **nxt)
+.SH DESCRIPTION
+Extract hour value from string.
+.IP \fIp\fP 1i
+The string to extract from.
+.IP \fInxt\fP 1i
+A pointer beyond the value will be written here.
+.SH RETURN VALUE
+The value.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,46 @@
+.TH OVERLAY_LINES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_lines \- Add many lines to an overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_lines
+.sp
+(KOverlayList olist, unsigned int num_coords,
+unsigned int *types, double *x_arr, double *y_arr,
+CONST char *colourname)
+.SH DESCRIPTION
+This routine will add a number of connected lines to an overlay
+object list. These lines will form a single object. Using this routine is
+far more efficient than calling <-overlay_line-> repeatedly.
+.IP \fIolist\fP 1i
+The overlay list.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates. The number of lines is one less
+than this value.
+.IP \fItypes\fP 1i
+An array of co-ordinate types. If this is NULL, all co-ordinates
+are assumed to be world co-ordinates. See <-overlay_COORDINATE_TYPES-> for
+a list of supported co-ordinate types.
+.IP \fIx_arr\fP 1i
+The horizontal co-ordinate values.
+.IP \fIy_arr\fP 1i
+The vertical co-ordinate values.
+.IP \fIcolourname\fP 1i
+The colourname.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

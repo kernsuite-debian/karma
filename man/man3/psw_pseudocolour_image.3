@@ -1,0 +1,62 @@
+.TH PSW_PSEUDOCOLOUR_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_pseudocolour_image \- Write a pseudocolour image to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_pseudocolour_image
+.sp
+(PostScriptPage pspage, CONST unsigned char *image,
+unsigned int xlen, unsigned int ylen,
+CONST uaddr *xoffsets, CONST uaddr *yoffsets,
+CONST unsigned char imap_red[256],
+CONST unsigned char imap_green[256],
+CONST unsigned char imap_blue[256],
+double xstart, double ystart,
+double xend, double yend)
+.SH DESCRIPTION
+Write a pseudocolour image to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIimage\fP 1i
+The image.
+.IP \fIxlen\fP 1i
+The horizontal size of the image (in pixels).
+.IP \fIylen\fP 1i
+The vertical size of the image (in pixels).
+.IP \fIxoffsets\fP 1i
+The horizontal offset array. If this is NULL, the image data is
+assumed to be contiguous in memory.
+.IP \fIyoffsets\fP 1i
+The vertical offset array. If this is NULL, the image data is
+assumed to be contiguous in memory.
+.IP \fIimap_red\fP 1i
+The red component colourmap entries.
+.IP \fIimap_green\fP 1i
+The green component colourmap entries.
+.IP \fIimap_blue\fP 1i
+The blue component colourmap entries.
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIxend\fP 1i
+The x ending point (scaled from 0.0 to 1.0).
+.IP \fIyend\fP 1i
+The y ending point (scaled from 0.0 to 1.0).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

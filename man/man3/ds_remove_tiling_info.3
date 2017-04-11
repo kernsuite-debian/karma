@@ -1,0 +1,30 @@
+.TH DS_REMOVE_TILING_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_remove_tiling_info \- Remove any tiling information from an array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_remove_tiling_info
+.sp
+(array_desc *arr_desc)
+.SH DESCRIPTION
+This routine will remove any tiling information from an array
+descriptor. The routine will NOT remove (or change) any offset information.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

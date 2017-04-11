@@ -1,0 +1,70 @@
+<html><head><title>Package: dir</title></head> 
+<body>
+<center><h1>The "dir" Package</h1></center>    These routines are meant to provide an enhanced, portable method for
+    scanning directories and automatically obtaining file status information.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=dir></a></table><h4>Functions</h4><table><tr><td><a href=dir.html#dir_open>dir_open</a></td><td>Open a directory for reading (scanning).
+</td></tr>
+<tr><td><a href=dir.html#dir_read>dir_read</a></td><td>Read (scan) a directory for files.
+</td></tr>
+<tr><td><a href=dir.html#dir_get_size>dir_get_size</a></td><td>Find number of entries in a directory.
+</td></tr>
+<tr><td><a href=dir.html#dir_close>dir_close</a></td><td>Close a directory.
+</td></tr>
+<tr><td><a href=dir.html#dir_rewind>dir_rewind</a></td><td>Rewind a directory.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=dir.html#dir_SKIP_VALUES>dir_SKIP_VALUES</a></td><td>List of defined skip control values
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=dir_open></a> KDir
+ <b>dir_open</b><i>    (CONST char *dirname)
+</i><br><p>    Open a directory for reading (scanning).
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name.
+<br></ul><b>Returns:</b>     A KDir object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dir_read></a> KFileInfo *
+ <b>dir_read</b><i>    (KDir dir, unsigned int skip_control)
+</i><br><p>    Read (scan) a directory for files.
+<p><b>Parameters:</b><ul><li><i>dir :</i> 
+    The directory object.
+<br><li><i>skip_control :</i> 
+    Determines whether or not to skip the special files: "."
+    and "..". See <a href=dir.html#dir_SKIP_VALUES>dir_SKIP_VALUES</a> for a list of legal values.
+<br></ul><b>Returns:</b>     A pointer to a <em>KFileInfo</em> structure on success, else NULL.
+    The data in this structure is valid until the next call to <a href=dir.html#dir_read>dir_read</a> or
+    <a href=dir.html#dir_close>dir_close</a> with this directory object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dir_get_size></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned long
+ <b>dir_get_size</b><i>    (KDir dir, unsigned int skip_control,
+			    unsigned long *max_width)
+</i><br><p>    Find number of entries in a directory.
+<p><b>Parameters:</b><ul><li><i>dir :</i> 
+    The directory object. This is automatically rewound.
+<br><li><i>skip_control :</i> 
+    Determines whether or not to skip the special files: "."
+    and "..". See <a href=dir.html#dir_SKIP_VALUES>dir_SKIP_VALUES</a> for a list of legal values.
+<br><li><i>max_width :</i> 
+    The maximum width of the entries is written here. This may be
+    NULL.
+<br></ul><b>Returns:</b>     The number of entries in the directory.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dir_close></a> void
+ <b>dir_close</b><i>    (KDir dir)
+</i><br><p>    Close a directory.
+<p><b>Parameters:</b><ul><li><i>dir :</i> 
+    The directory object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dir_rewind></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dir_rewind</b><i>    (KDir dir)
+</i><br><p>    Rewind a directory.
+<p><b>Parameters:</b><ul><li><i>dir :</i> 
+    The directory object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=dir_SKIP_VALUES><b>dir_SKIP_VALUES</b></a> List of defined skip control values
+<p> <table><tr><td>Mode                      </td><td>Meaning
+
+</td></tr><tr><td>KDIR_DOT                  </td><td>Pass ".", skip ".."
+</td></tr><tr><td>KDIR_DOTDOT               </td><td>Pass "..", skip "."
+</td></tr><tr><td>KDIR_DOT_AND_DOTDOT       </td><td>Pass "." and ".."
+</td></tr><tr><td>KDIR_NO_DOTS              </td><td>Skip "." and ".."
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,33 @@
+.TH DISPDATA_GET_CLASSLIST 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_classlist \- Get the list of supported dataclasses.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B unsigned int dispdata_get_classlist
+.sp
+(KDisplayDataClass **classes,char ***names)
+.SH DESCRIPTION
+Get the list of supported dataclasses.
+.IP \fIclasses\fP 1i
+The list of KDisplayDataClass objects is written here. This may
+be subsequently deallocated.
+.IP \fInames\fP 1i
+The list of name pointers is written here. This may be subsequently
+deallocated.
+.SH RETURN VALUE
+The number of dataclasses. On failure the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

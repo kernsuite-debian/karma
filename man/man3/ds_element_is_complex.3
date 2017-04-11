@@ -1,0 +1,30 @@
+.TH DS_ELEMENT_IS_COMPLEX 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_element_is_complex \- Test if the type of an element is complex or not.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_element_is_complex
+.sp
+(unsigned int element_type)
+.SH DESCRIPTION
+Test if the type of an element is complex or not.
+.IP \fIelement_type\fP 1i
+The element type. If this is not atomic the routine will
+print an error message and abort processing.
+.SH RETURN VALUE
+TRUE if the element type is complex, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

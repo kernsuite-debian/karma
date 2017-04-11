@@ -1,0 +1,250 @@
+				Installing Karma
+===============================================================================
+
+1.0	Where to get the compressed tar files
+-------------------------------------------------------------------------------
+
+Please see the README file for instructions on getting Karma.
+
+ALSO: read the README file for instructions on how to get on the mailing list
+This mailing list is VERY important.
+
+1.1	What to do with the compressed tar files
+-------------------------------------------------------------------------------
+
+The simplest way to install Karma is to ftp the binary distribution, rather
+than trying to compile it. If there is no binary distribution for the
+platform you want available, please Email a request to:
+    karma-suggestions@atnf.csiro.au
+with details of you platform. You may be asked for an account on this
+platform so I can port Karma if it hasn't been ported yet.
+If you port it yourself, *please* Email me the details so that I can update
+the master version.
+
+The binary distribution tar files will create a directory  karma  which will
+contain appropriate sub-directories for binaries, libraries, include files
+and documentation.
+
+The binary distribution should be installed in /usr/local.
+To unpack the binary distribution, change directory to /usr/local and untar
+the binary distribution tar file.
+If you want to put the binary distribution in a different place, you will
+need to create a symbolic link, /usr/local/karma -> {whatever}/karma.
+This is necessary to make karma's shared libraries load correctly.
+
+Example installation (Intel-based machine running Linux):
+	bash$ cd /usr/local
+	bash$ tar zxvf /tmp/karma.share-v1.7.3.tar.gz
+	bash$ tar zxvf /tmp/i386_Linux-v1.7.3.tar.gz
+
+The share library is common to all installations. The binary tar file
+you need to use will depend on the CPU type and operating system of
+your computer.  Linux users will need to choose between the libc5
+(above) and libc6 versions. One way to do that is look in /lib:
+
+	bash$ ls -l /lib/libc.*
+  lrwxrwxrwx 1 root  root   13 Apr  9 03:11 /lib/libc.so.6 -> libc-2.2.4.so
+
+The .so.6 indicates libc6, thus use:
+	bash$ tar zxvf /tmp/i386_Linux_libc6.1-v1.7.3.tar.gz
+
+If you do not have system privilege or your local system administrator
+will not create a directory or symbolic link /usr/local/karma then you
+have two options:
+
+1)  set the LD_LIBRARY_PATH environment variable to include:
+    {whatever}/karma/lib
+    This works on most systems which have shared libraries
+
+2)  get the source distribution and build it yourself
+
+The source tar file will also create a directory  karma  which will contain
+the source tree. This should NOT be in the same directory in which a binary
+distribution is placed.
+
+2.0	Setting up your  ~/.cshrc  and  ~/.login
+-------------------------------------------------------------------------------
+
+With any distribution, you should have two files:
+    karma/.cshrc
+    karma/.login
+
+The  .cshrc  file should be sourced in a user's  ~/.cshrc  file in the
+following manner:
+
+>- BEGIN-- sample code ---<
+# Include Karma environment
+if ("$?KARMABASE" != "0") then
+    source $KARMABASE/.cshrc
+endif
+>- END-- sample code -----<
+
+The  .login  file should be sourced by the user's  ~/.login  file (or better
+still, the user should use the  setpath  script, which is available at
+CSIRO RP/AT).
+
+2.1	Environment variables required
+-------------------------------------------------------------------------------
+
+These startup scripts require the definition of the  OS  and  MACHINE
+environment variables. This tells Karma makefiles what platform you are on.
+The  MACHINE_OS  environment variable is also required. In fact, if you
+haven't defined  OS  and  MACHINE  then the Karma  .login  script will
+derive them for you from  MACHINE_OS  .The format of  MACHINE_OS  can be
+represented by:  ${MACHINE}_${OS}
+
+Legal values of  MACHINE  are:
+
+    sparc		Sun Sparc
+    c2			Convex C2
+    rs6000		IBM rs6000
+    mips1		Mips (r2000/r3000/r4000)
+    mips2		Mips (r4000)
+    mips4		Mips (r8000 in 64 bit mode)
+    cray		Cray PVP (Parallel Vector Processor) (Y-MP) (Unicos)
+    i860		Intel i860
+    i386		Intel i386
+    alpha		DEC alpha
+    hp9000		HP PA-RISC
+
+Legal values of  OS  are:
+
+    SunOS		Sun (SunOS 4.x)
+    Solaris		Solaris 2.x
+    ConvexOS		Convex (ConvexOS)
+    AIX			IBM (AIX)
+    ULTRIX		DEC (Ultrix)
+    IRIX5		SGI (IRIX 5.x)
+    UNICOS		Cray Y-MP
+    VXMVX		Vicom (VX/ MVX i860 accelerator(s) for Sun Sparc)
+    Linux		IBM PC (Linux: free 386 Unix)
+    OSF1		OSF/1
+    MSDOS		IBM PC 386 in 32 bit mode (MS-DOS)
+
+This environment variable is also used by the supplied  .login  script.
+
+At CSIRO RP/AT, the  OS  and  MACHINE  environment variables may be 
+determined by the following in a user's  ~/.cshrc  file:
+
+>- BEGIN-- sample code ---<
+if ("$?OS" == "0") then
+    if (-r /usr/local/csh_script/machine_type) then
+	set _database_file = /usr/local/csh_script/machine_type
+    else
+	set _database_file = $HOME/csh_script/machine_type
+    endif
+    source $_database_file
+endif
+>- END-- sample code -----<
+
+Further environment variables required are  XINCLUDEPATH  and  XLIBPATH
+These define the directory tree containing the X11 include files and the
+directory containing the X libraries.
+
+2.2	Environment variables produced
+-------------------------------------------------------------------------------
+
+The  .login  script will define a number of environment variables. Of
+particular note are:
+
+    KARMABASE		root of the binary distribution for the platform
+    KARMAROOT		root of the source distribution
+
+KARMABASE  is required at runtime by Karma modules in order to find some
+crucial database files. If this is not defined, the default  /usr/local/karma
+is used.
+Both environment variables are used when building a runtime version from the
+source code.
+If you are not building and installing a runtime (binary) version of Karma
+into  /usr/local/karma  you will need to edit the supplied  .login  to
+reflect the locations of the Karma source tree and runtime tree.
+To save confusion, it might help to have KARMABASE and KARMAROOT being
+different places.
+
+You may need to define KARMAROOT yourself, if the  .login  script
+cannot find where you installed the Karma source tree.
+
+2.3	What you will need
+-------------------------------------------------------------------------------
+
+You will need access to GNU Make Version 3.64 or later in order to build the
+library.
+To produce dependencies for library source code and headers, you will need
+access to  makedepend  as shipped with the MIT X distribution, Version 11,
+Release 5, or possibly later.
+You will also need an ANSI C compiler.
+
+2.4	Making a binary distribution directory tree
+-------------------------------------------------------------------------------
+
+You are strongly recommended to use a pre-built binary distribution rather
+than wasting effort doing it yourself. However, if you are really keen,
+here are the instructions:
+You will need the following directories (at least) under $KARMABASE:
+
+    bin			where the executables go (should go in PATH)
+    lib			where the libraries go
+    doc			where the documentation goes
+    csh_script		C-shell scripts (should go in PATH)
+    cm_script		Connection Management Tool scripts (should go in PATH)
+    include		headers
+    man			where the manual pages go
+    www			where the HTML files go
+
+You should also place the  .cshrc  and  .login  files in this
+directory so users can source them. You will need to source these
+files yourself before you can compile.
+
+2.5	PATH requirements
+-------------------------------------------------------------------------------
+
+Below is an ad-hoc list of special PATH requirements for different platforms:
+
+Solaris 2: you need  /usr/ccs/bin /usr/ucb
+
+Karma expects a Berkely-style <install> programme. If you don't have
+one, you could try the $KARMABASE/csh_script/install-BSD-style script.
+You will need to install this as "install" ahead of the native
+install programme. Alternatively, you can define the KINSTALL environment
+variable to contain the name of the BSD-style install if you don't want
+to have two different types of "install" in your PATH.
+
+3.0	Creating the build tree
+-------------------------------------------------------------------------------
+
+Karma uses a build tree for each platform. This build tree is used for both
+the libraries and the modules. You need to manually create some
+directories, thus:
+	mkdir -p $KARMAROOT/build/$MACHINE_OS
+	mkdir -p $KARMAROOT/admin.bin/$MACHINE_OS
+
+3.1	Building the libraries
+-------------------------------------------------------------------------------
+
+The first thing you need to do is create the directory tree
+$KARMAROOT/build/$MACHINE_OS/lib
+by running the script  csh_script/make_build.libs
+This will create the build directories and install makefiles.
+You should then change directory to the library build tree and run GNU
+make. The compiled libraries will be installed in  $KARMALIBPATH
+
+
+3.2	Building support programmes
+-------------------------------------------------------------------------------
+
+cd to $KARMAROOT/source/kutil and do a 'gmake'.
+This puts various required utility programs in
+$KARMAROOT/admin.bin/$MACHINE_OS
+Add this directory to the path by doing 
+setenv PATH $KARMAROOT/admin.bin/${MACHINE_OS}:$PATH
+rehash
+
+3.3	Building the modules
+-------------------------------------------------------------------------------
+
+The first thing you need to do is create the directory tree
+$KARMAROOT/build/$MACHINE_OS/modules
+by running the script  csh_script/make_build.modules
+This will create the build directories and install makefiles.
+You should then change directory to the module build tree and run GNU
+make. The compiled binaries will be installed in  $KARMABINPATH

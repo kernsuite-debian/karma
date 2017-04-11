@@ -1,0 +1,31 @@
+.TH CANVAS_USE_ASTRO_TRANSFORM 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_use_astro_transform \- Use astronomical sky projections for a canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_use_astro_transform
+.sp
+(KWorldCanvas canvas, KwcsAstro ap)
+.SH DESCRIPTION
+Use astronomical sky projections for a canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIap\fP 1i
+The KwcsAstro object. This may be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

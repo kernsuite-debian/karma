@@ -1,0 +1,261 @@
+<html><head><title>Package: xtmisc</title></head> 
+<body>
+<center><h1>The "xtmisc" Package</h1></center>    These routines are meant to provide miscellaneuos Xt support.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmaXt
+<br><b>Link With:</b> -lkarmaXt
+<br><p><a name=xtmisc></a></table><h4>Functions</h4><table><tr><td><a href=xtmisc.html#xtmisc_destroy_cbk>xtmisc_destroy_cbk</a></td><td>Destroy a popup widget.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_event_init>xtmisc_event_init</a></td><td>Initialise periodic event management support under Xt.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_ext_call>xtmisc_ext_call</a></td><td>Call an extension function.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_set_icon>xtmisc_set_icon</a></td><td>Create an icon for an application's top level widget.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_init_app_initialise>xtmisc_init_app_initialise</a></td><td>Initialise an application for Xt.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_init_post_realise_arg_process>xtmisc_init_post_realise_arg_process</a></td><td>Process and remove arguments after main widget realisation.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_init_get_pc_colourmap>xtmisc_init_get_pc_colourmap</a></td><td>Get PseudoColour colourmap with a minimum of free colourcells.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_popup_cbk>xtmisc_popup_cbk</a></td><td>Pop up a popup widget.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_exclusive_popup_cbk>xtmisc_exclusive_popup_cbk</a></td><td>Pop up a popup widget with exclusive grab.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_popdown_cbk>xtmisc_popdown_cbk</a></td><td>Pop down a popup widget.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_sensitive_cbk>xtmisc_sensitive_cbk</a></td><td>Make a widget sensitive.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_insensitive_cbk>xtmisc_insensitive_cbk</a></td><td>Make a widget insensitive.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_toggle_cbk>xtmisc_toggle_cbk</a></td><td>Default toggle callback.
+</td></tr>
+<tr><td><a href=xtmisc.html#xtmisc_support_work_funcs>xtmisc_support_work_funcs</a></td><td>Register support for work functions within an Xt application.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=xtmisc.html#xtmisc_PROTO_icon_func>xtmisc_PROTO_icon_func</a></td><td>Write an icon pixmap.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=xtmisc.html#xtmisc_INIT_ATTRIBUTES>xtmisc_INIT_ATTRIBUTES</a></td><td>List of attributes for <a href=xtmisc.html#xtmisc_init_app_initialise>xtmisc_init_app_initialise</a>
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=xtmisc_destroy_cbk></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_destroy_cbk</b><i>    (Widget w, XtPointer client_data, XtPointer call_data)
+</i><br><p>    This routine will destroy a widget. This routine is a convenience
+    routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the widget to destroy.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_event_init></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_event_init</b><i>    (XtAppContext app_context)
+</i><br><p>    Initialise periodic event management support under Xt.
+<p><b>Parameters:</b><ul><li><i>app_context :</i> 
+    The application context to use.
+<br></ul><b>Returns:</b>     Nothing on success, else the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_ext_call></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_ext_call</b><i>    (Widget w, CONST char *function, unsigned int max_func,
+		      unsigned int *num_ok, flag allow_consumption,
+		      void *arg1, void *arg2, void *arg3)
+</i><br><p>    Call an extension function.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget to take the class name from.
+<br><li><i>function :</i> 
+    The function to call.
+<br><li><i>max_func :</i> 
+    The maximum number of functions to call. If this is 0 there is
+    no limit.
+<br><li><i>num_ok :</i> 
+    The number of functions which returned TRUE is written here. This
+    may be NULL.
+<br><li><i>allow_consumption :</i> 
+    If TRUE, the first function that returns TRUE will
+    consume the event, preventing further functions from being called.
+<br><li><i>arg1 :</i> 
+    An optional argument.
+<br><li><i>arg2 :</i> 
+    An optional argument.
+<br><li><i>arg3 :</i> 
+    An optional argument.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_set_icon></a> void
+ <b>xtmisc_set_icon</b><i>    ( Widget top_level,
+		       void (*icon_func) (Display *display, Pixmap pixmap,
+					  int width, int height) )
+</i><br><p>    Create an icon for an application's top level widget.
+<p><b>Parameters:</b><ul><li><i>top_level :</i> 
+    The top level widget.
+<br><li><i>icon_func :</i> 
+    The function to use when writing the icon. The prototype
+    function is <a href=xtmisc.html#xtmisc_PROTO_icon_func>xtmisc_PROTO_icon_func</a>.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_init_app_initialise></a> Widget
+ <b>xtmisc_init_app_initialise</b><i>    (XtAppContext *app_context_return,
+				   CONST char* application_class,
+				   XrmOptionDescList options,
+				   Cardinal num_options,
+				   int *argc_in_out, String *argv_in_out,
+				   String *fallback_resources,
+				   ...)
+</i><br><p>    This routine will initialise an application to use Xt. This
+    routine is similar to the <em>XtVaAppInitialize</em> routine, except that a new
+    colourmap for the application may be created.
+<p><b>Parameters:</b><ul><li><i>app_context_return :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>application_class :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>options :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>num_options :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>argc_in_out :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>argv_in_out :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>fallback_resources :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>... :</i> 
+    Two separate lists of optional pairs of attribute-key
+    attribute-value. The first list is processed by this routine and must be
+    terminated with XTMISC_INIT_ATT_END. The second list is processed by
+    <em>XtVaAppInitialize</em> and must be terminated by NULL.
+<br></ul><b>Returns:</b>     The application shell.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_init_post_realise_arg_process></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_init_post_realise_arg_process</b><i>    (int *argc_in_out,
+					   String *argv_in_out)
+</i><br><p>    Process and remove arguments after main widget realisation.
+<p><b>Parameters:</b><ul><li><i>argc_in_out :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br><li><i>argv_in_out :</i> 
+    As for <em>XtVaAppInitialize</em>.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_init_get_pc_colourmap></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>Colormap
+ <b>xtmisc_init_get_pc_colourmap</b><i>    (Screen *screen, unsigned int min_ccells,
+				       unsigned int num_ccells, flag verbose,
+				       flag *avoid_flash)
+</i><br><p>    Get PseudoColour colourmap with a minimum of free colourcells.
+<p><b>Parameters:</b><ul><li><i>screen :</i> 
+    The screen.
+<br><li><i>min_ccells :</i> 
+    The minimum number of free colourcells required.
+<br><li><i>num_ccells :</i> 
+    The number of free colourcells desired.
+<br><li><i>verbose :</i> 
+    If TRUE, verbose messages are given.
+<br><li><i>avoid_flash :</i> 
+    If this is not NULL and a PseudoColour colourmap has to be
+    created to satisfy colour requirements and a TrueColour visual is available
+    then TRUE is written here, else FALSE is written here.
+<br></ul><b>Returns:</b>     The colourmap.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_popup_cbk></a> void
+ <b>xtmisc_popup_cbk</b><i>    (Widget w, XtPointer client_data, XtPointer call_data)
+</i><br><p>    This routine will pop up a popup widget. This routine is a
+    convenience routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the popup widget.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_exclusive_popup_cbk></a> void
+ <b>xtmisc_exclusive_popup_cbk</b><i>    (Widget w, XtPointer client_data,
+				 XtPointer call_data)
+</i><br><p>    This routine will pop up a popup widget. This routine is a
+    convenience routine to be used as a callback. An exclusive grab is
+    performed on the popped up widget.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the popup widget.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_popdown_cbk></a> void
+ <b>xtmisc_popdown_cbk</b><i>    (Widget w, XtPointer client_data, XtPointer call_data)
+</i><br><p>    This routine will pop down a popup widget. This routine is a
+    convenience routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the popup widget.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_sensitive_cbk></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_sensitive_cbk</b><i>    (Widget w, XtPointer client_data,
+			   XtPointer call_data)
+</i><br><p>    This routine will make a widget sensitive. This routine is a
+    convenience routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the widget to set the
+    sensitivity state of.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_insensitive_cbk></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>xtmisc_insensitive_cbk</b><i>    (Widget w, XtPointer client_data,
+			     XtPointer call_data)
+</i><br><p>    This routine will make a widget insensitive. This routine is a
+    convenience routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the widget to set the
+    sensitivity state of.
+<br><li><i>call_data :</i> 
+    The callback call data. This is ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_toggle_cbk></a> void
+ <b>xtmisc_toggle_cbk</b><i>    (Widget w, XtPointer client_data, XtPointer call_data)
+</i><br><p>    This routine will set a flag. This routine is a convenience
+    routine to be used as a callback.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget on which the event occurred. This is ignored.
+<br><li><i>client_data :</i> 
+    The callback client data. This must be the pointer to the
+    (flag) type.
+<br><li><i>call_data :</i> 
+    The callback call data. This is the toggle state.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=xtmisc_support_work_funcs></a> void
+ <b>xtmisc_support_work_funcs</b><i>    (XtAppContext app_context)
+</i><br><p>    This routine will register Xt support for work functions using
+    the <a href=w.html#w>w</a> package.
+<p><b>Parameters:</b><ul><li><i>app_context :</i> 
+    The Xt application context.
+<br></ul><b>Returns:</b>     Nothing. On failure the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=xtmisc_PROTO_icon_func></a> void
+ <b>xtmisc_PROTO_icon_func</b><i>    (Display *display, Pixmap pixmap,
+			     int width, int height)
+</i><br><p>    Write an icon pixmap.
+<p><b>Parameters:</b><ul><li><i>display :</i> 
+    The display pointer.
+<br><li><i>pixmap :</i> 
+    The pixmap to write to.
+<br><li><i>width :</i> 
+    The width of the pixmap.
+<br><li><i>height :</i> 
+    The height of the pixmap.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=xtmisc_INIT_ATTRIBUTES><b>xtmisc_INIT_ATTRIBUTES</b></a> List of attributes for <a href=xtmisc.html#xtmisc_init_app_initialise>xtmisc_init_app_initialise</a>
+<p> <table><tr><td>Name                          </td><td>Type         </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>XTMISC_INIT_ATT_END           </td><td>             </td><td>End of varargs list
+</td></tr><tr><td>XTMISC_INIT_ATT_MIN_CCELLS    </td><td>unsigned int </td><td>The min. number of colourcells
+                                           that the application will want
+                                           to allocate.
+</td></tr><tr><td>XTMISC_INIT_ATT_COMMS_SETUP   </td><td>flag         </td><td>If TRUE, communications setting
+                                           up is performed
+</td></tr><tr><td>XTMISC_INIT_ATT_CONTROLLED    </td><td>flag *       </td><td>TRUE is written here if an
+                                           external agent is controlling
+</td></tr><tr><td>XTMISC_INIT_ATT_VERBOSE       </td><td>flag *       </td><td>TRUE is written here if the
+                                           "-verbose" flag is given by user
+</td></tr><tr><td>XTMISC_INIT_ATT_BECOME_SERVER </td><td>flag         </td><td>If TRUE, become a server
+</td></tr><tr><td>XTMISC_INIT_ATT_TITLE         </td><td>char *       </td><td>Title string is written here
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

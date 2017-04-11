@@ -1,0 +1,44 @@
+.TH DISPDATA_ARRAY_CONVERT_3COORD 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_array_convert_3coord \- Convert canvas co-ordinate to 3D dataset co-ordinate.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B flag dispdata_array_convert_3coord
+.sp
+(KDisplayDataObject dataobject,
+KDisplayDataWindow window,
+double *x, double *y, double *z,
+double h, double v)
+.SH DESCRIPTION
+Convert canvas co-ordinate to 3D dataset co-ordinate.
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject to clone.
+.IP \fIwindow\fP 1i
+The KDisplayDataWindow.
+.IP \fIx\fP 1i
+The dataset X image pixel co-ordinate is written here.
+.IP \fIy\fP 1i
+The dataset Y image pixel co-ordinate is written here.
+.IP \fIz\fP 1i
+The dataset Z image pixel co-ordinate is written here.
+.IP \fIh\fP 1i
+The horizontal co-ordinate on the world canvas.
+.IP \fIv\fP 1i
+The vertical co-ordinate on the world canvas.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

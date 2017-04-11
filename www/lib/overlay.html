@@ -1,0 +1,615 @@
+<html><head><title>Package: overlay</title></head> 
+<body>
+<center><h1>The "overlay" Package</h1></center>    These routines provide a simple interface to the recursive,
+    heirarchical data structure supported in Karma, to define 2-dimensional
+    (image) overlay objects. In addition, all the mechanics for drawing onto
+    world canvases (see the <a href=canvas.html#canvas>canvas</a> package) is supplied automatically.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=overlay></a></table><h4>Functions</h4><table><tr><td><a href=overlay.html#overlay_va_create_list>overlay_va_create_list</a></td><td>Create a managed overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_destroy_list>overlay_destroy_list</a></td><td>Destroy an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_prepare_for_slavery>overlay_prepare_for_slavery</a></td><td>Allow an overlay list to be slaved.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_specify_iarray_2d>overlay_specify_iarray_2d</a></td><td>Extract specifications from an Intelligent Array.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_specify_canvas>overlay_specify_canvas</a></td><td>Extract specification from a world canvas.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_create_viewable>overlay_create_viewable</a></td><td>Create a viewable overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_set_active>overlay_set_active</a></td><td>Set active state for a viewable overlay list controlled refresh.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_set_all_inactive>overlay_set_all_inactive</a></td><td>Clear active state all viewable overlay lists controlled refresh.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_destroy_viewable>overlay_destroy_viewable</a></td><td>Destroy a viewable overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_redraw_on_canvas>overlay_redraw_on_canvas</a></td><td>Redraw an overlay list onto a world canvas.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_set_canvas_attributes>overlay_set_canvas_attributes</a></td><td>Set the canvas attributes for overlay list display.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_line>overlay_line</a></td><td>Add a line to an overlay object list. See also <a href=overlay.html#overlay_lines>overlay_lines</a>.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_lines>overlay_lines</a></td><td>Add many lines to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_text>overlay_text</a></td><td>Add a text string to an overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_ellipse>overlay_ellipse</a></td><td>Add an ellipse to an overlay list. See also <a href=overlay.html#overlay_ellipses>overlay_ellipses</a>
+</td></tr>
+<tr><td><a href=overlay.html#overlay_arc>overlay_arc</a></td><td>Add a rotated ellipse to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_filled_polygon>overlay_filled_polygon</a></td><td>Add a filled polygon to an overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_vector>overlay_vector</a></td><td>Add a vector to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_ellipses>overlay_ellipses</a></td><td>Add many ellipses to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_segments>overlay_segments</a></td><td>Add many segments to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_vectors>overlay_vectors</a></td><td>Add many vectors to an overlay list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_remove_objects>overlay_remove_objects</a></td><td>Remove objects from the end of an overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_remove_object>overlay_remove_object</a></td><td>Remove one object from an overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_move_object>overlay_move_object</a></td><td>Move a object in an overlay object list.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_get_num_coords>overlay_get_num_coords</a></td><td>Get the number of co-ordinates in an overlay object.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_get_coords>overlay_get_coords</a></td><td>Get the co-ordinates for an overlay object.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_have_token>overlay_have_token</a></td><td>Test if an overay list has the token.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_release_token>overlay_release_token</a></td><td>Release the token to the master.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_read_karma>overlay_read_karma</a></td><td>Read overlay instructions from a Karma file.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_write_karma>overlay_write_karma</a></td><td>Write overlay instructions to a Karma file.
+</td></tr>
+<tr><td><a href=overlay.html#overlay_read_ascii>overlay_read_ascii</a></td><td>Read overlay instructions from an ASCII file.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=overlay.html#overlay_CANVAS_ATTRIBUTES>overlay_CANVAS_ATTRIBUTES</a></td><td>List of overlay attributes for KWorldCanvas objects
+</td></tr>
+<tr><td><a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a></td><td>List of co-ordinate types
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=overlay_va_create_list></a> KOverlayList
+ <b>overlay_va_create_list</b><i>    (void *info, CONST char *name, ...)
+</i><br><p>    Create a managed overlay object list.
+<p><b>Parameters:</b><ul><li><i>info :</i> 
+    The arbitrary information pointer for the overlay list. This may be
+    NULL.
+<br><li><i>name :</i> 
+    The name to be associated with the list. If this is NULL a default
+    name is choosen.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. The list must be terminated with
+    OVERLAY_ATT_END. See <a href=overlay.html#overlay_ATTRIBUTES>overlay_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     A KOverlayList object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_destroy_list></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>overlay_destroy_list</b><i>    (KOverlayList olist)
+</i><br><p>    Destroy an overlay list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_prepare_for_slavery></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>overlay_prepare_for_slavery</b><i>    (KOverlayList olist)
+</i><br><p>    This routine will register an overlay list to be the choosen
+    overlay list for subsequent attempts to open a slave "2D_overlay"
+    connection. In order to make the overlay list a slave, a subsequent call to
+    <a href=conn.html#conn_attempt_connection>conn_attempt_connection</a> must be made.
+<p><b>Parameters:</b><ul><li><i>cmap :</i> 
+    The overlay list.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_specify_iarray_2d></a> void
+ <b>overlay_specify_iarray_2d</b><i>    (KOverlayList olist, iarray array)
+</i><br><p>    This routine will specify horizontal and vertical label matching
+    for an overlay list based on the dimension names of a 2-dimensional
+    Intelligent Array. No further restrictions are imposed (any existing
+    restrictions are removed) if the Intelligent Array is a pure 2-dimensional
+    array. If the array is an alias of a plane of a 3-dimensional (or greater)
+    array, then further restrictions are imposed.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>array :</i> 
+    The Intelligent Array.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_specify_canvas></a> void
+ <b>overlay_specify_canvas</b><i>    (KOverlayList olist, KWorldCanvas canvas)
+</i><br><p>    This routine will register a world canvas to extract
+    specification information from for all future overlay objects which are
+    created with an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>canvas :</i> 
+    The world canvas object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_create_viewable></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableOverlayList
+ <b>overlay_create_viewable</b><i>    (KOverlayList olist,
+					      KWorldCanvas canvas)
+</i><br><p>    Create a viewable overlay list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list to create the viewable object from.
+<br><li><i>canvas :</i> 
+    The world canvas that the overlay list is viewable on.
+<br></ul><b>Returns:</b>     A KViewableOverlayList object on success, else NULL. This is
+    automatically destroyed when either the overlay list or the world canvas
+    are destroyed.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_set_active></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_set_active</b><i>    (KViewableOverlayList vlist, flag active,
+			 flag force_refresh, flag refresh_if_changed,
+			 flag exclusive, uaddr key)
+</i><br><p>    Set active state for a viewable overlay list controlled refresh.
+<p><b>Parameters:</b><ul><li><i>vlist :</i> 
+    The viewable overlay list.
+<br><li><i>active :</i> 
+    If TRUE, the viewable overlist list is made active, else it is
+    made inactive.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the viewable
+    overlay list active state changed.
+<br><li><i>exclusive :</i> 
+    If TRUE and <em>active</em> is TRUE, make this viewable overlay list
+    the only active one for this canvas. Other viewable overlay lists for this
+    canvas will be made inactive.
+<br><li><i>key :</i> 
+    The key to use for inactivation of other viewable overlay lists. If
+    this is 0 then all other viewable overlay lists will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_set_all_inactive></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_set_all_inactive</b><i>    (KWorldCanvas canvas, flag force_refresh,
+			       flag refresh_if_changed, uaddr key)
+</i><br><p>    This routine will make all viewable overlay lists associated with
+    a world canvas inactive.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the active state
+    of any viewable overlay list changed.
+<br><li><i>key :</i> 
+    The key to use for inactivation of viewable overlay lists. If this is
+    0 then all viewable overlay lists will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_destroy_viewable></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>overlay_destroy_viewable</b><i>    (KViewableOverlayList vlist)
+</i><br><p>    Destroy a viewable overlay list.
+<p><b>Parameters:</b><ul><li><i>vlist :</i> 
+    The KViewableOverlayList object to destroy.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_redraw_on_canvas></a> flag
+ <b>overlay_redraw_on_canvas</b><i>    (KOverlayList olist, KWorldCanvas canvas)
+</i><br><p>    Redraw an overlay list onto a world canvas.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>canvas :</i> 
+    The world canvas object.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_set_canvas_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>overlay_set_canvas_attributes</b><i>    (KWorldCanvas canvas, ...)
+</i><br><p>    Set the canvas attributes for overlay list display.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas object.
+<br><li><i>... :</i> 
+    The optional list of parameter attribute-key attribute-value
+    pairs must follow. This list must be terminated with the value
+    OVERLAY_CANVAS_ATT_END. See <a href=overlay.html#overlay_CANVAS_ATTRIBUTES>overlay_CANVAS_ATTRIBUTES</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_line></a> unsigned int
+ <b>overlay_line</b><i>    (KOverlayList olist,
+			   unsigned int type0, double x0, double y0,
+			   unsigned int type1, double x1, double y1,
+			   CONST char *colourname)
+</i><br><p>    Add a line to an overlay object list. See also <a href=overlay.html#overlay_lines>overlay_lines</a>.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>type0 :</i> 
+    The type of the first co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>x0 :</i> 
+    The horizontal position of the first co-ordinate.
+<br><li><i>y0 :</i> 
+    The vertical position of the first co-ordinate.
+<br><li><i>type1 :</i> 
+    The type of the second co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>x1 :</i> 
+    The horizontal position of the second co-ordinate.
+<br><li><i>y1 :</i> 
+    The vertical position of the second co-ordinate.
+<br><li><i>colourname :</i> 
+    The colourname.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_lines></a> unsigned int
+ <b>overlay_lines</b><i>    (KOverlayList olist, unsigned int num_coords,
+			    unsigned int *types, double *x_arr, double *y_arr,
+			    CONST char *colourname)
+</i><br><p>    This routine will add a number of connected lines to an overlay
+    object list. These lines will form a single object. Using this routine is
+    far more efficient than calling <a href=overlay.html#overlay_line>overlay_line</a> repeatedly.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list.
+<br><li><i>num_coords :</i> 
+    The number of co-ordinates. The number of lines is one less
+    than this value.
+<br><li><i>types :</i> 
+    An array of co-ordinate types. If this is NULL, all co-ordinates
+    are assumed to be world co-ordinates. See <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for
+    a list of supported co-ordinate types.
+<br><li><i>x_arr :</i> 
+    The horizontal co-ordinate values.
+<br><li><i>y_arr :</i> 
+    The vertical co-ordinate values.
+<br><li><i>colourname :</i> 
+    The colourname.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_text></a> unsigned int
+ <b>overlay_text</b><i>    (KOverlayList olist, char *string, unsigned int type,
+			   double x, double y, CONST char *colourname,
+			   char *fontname, flag clear_under)
+</i><br><p>    Add a text string to an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>string :</i> 
+    The text string.
+<br><li><i>type :</i> 
+    The type of the co-ordinate. See <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a
+    list of supported co-ordinate types.
+<br><li><i>x :</i> 
+    The horizontal position of the co-ordinate.
+<br><li><i>y :</i> 
+    The vertical position of the co-ordinate.
+<br><li><i>colourname :</i> 
+    The colourname.
+<br><li><i>fontname :</i> 
+    The font name.
+<br><li><i>clear_under :</i> 
+    If TRUE, then both the foreground and background of the
+    characters will be drawn.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_ellipse></a> unsigned int
+ <b>overlay_ellipse</b><i>    (KOverlayList olist,
+			      unsigned int ctype,double cx, double cy,
+			      unsigned int rtype, double rx, double ry,
+			      CONST char *colourname, flag filled)
+</i><br><p>    Add an ellipse to an overlay list. See also <a href=overlay.html#overlay_ellipses>overlay_ellipses</a>
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>ctype :</i> 
+    The type of the centre co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>cx :</i> 
+    The horizontal position of the centre co-ordinate.
+<br><li><i>cy :</i> 
+    The vertical position of the centre co-ordinate.
+<br><li><i>rtype :</i> 
+    The type of the radius co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>rx :</i> 
+    The horizontal radius.
+<br><li><i>ry :</i> 
+    The vertical radius.
+<br><li><i>colourname :</i> 
+    The colourname.
+<br><li><i>filled :</i> 
+    If TRUE the ellipse will be filled.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_arc></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>overlay_arc</b><i>    (KOverlayList olist,
+			  unsigned int ctype, double cx, double cy,
+			  unsigned int rtype, double rx, double ry,
+			  double rotation, CONST char *colourname, flag filled)
+</i><br><p>    Add a rotated ellipse to an overlay list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>ctype :</i> 
+    The type of the centre co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>cx :</i> 
+    The horizontal position of the centre co-ordinate.
+<br><li><i>cy :</i> 
+    The vertical position of the centre co-ordinate.
+<br><li><i>rtype :</i> 
+    The type of the radius co-ordinate. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>rx :</i> 
+    The horizontal radius.
+<br><li><i>ry :</i> 
+    The vertical radius.
+<br><li><i>rotation :</i> 
+    The rotation of the ellipse in degrees. A rotation of 0 degrees
+    corresponds to (x > 0, y = 0). A rotation of 90 degrees corresponds to
+    (x = 0, y > 0). In other words, the angle increases anti-clockwise from the
+    +ve X axis (if +X is right-going).
+<br><li><i>colourname :</i> 
+    The colourname.
+<br><li><i>filled :</i> 
+    If TRUE the ellipse will be filled.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_filled_polygon></a> unsigned int
+ <b>overlay_filled_polygon</b><i>    (KOverlayList olist,
+				     unsigned int num_coords,
+				     unsigned int *types,
+				     double *x_arr, double *y_arr,
+				     CONST char *colourname)
+</i><br><p>    Add a filled polygon to an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>num_coords :</i> 
+    The number of co-ordinates (vertices).
+<br><li><i>types :</i> 
+    The array of co-ordinate type values. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>x_arr :</i> 
+    The array of horizontal co-ordinate values.
+<br><li><i>y_arr :</i> 
+    The array of vertical co-ordinate values.
+<br><li><i>colourname :</i> 
+    The colour name.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_vector></a> unsigned int
+ <b>overlay_vector</b><i>    (KOverlayList olist,
+			     unsigned int stype, double sx, double sy,
+			     unsigned int dtype, double dx, double dy,
+			     CONST char *colourname)
+</i><br><p>    This routine will add a vector (directed line) to an overlay
+    object list. See also <a href=overlay.html#overlay_vectors>overlay_vectors</a>.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>stype :</i> 
+    The type of the start co-ordinate. See <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a>
+    for a list of supported co-ordinate types.
+<br><li><i>sx :</i> 
+    The horizontal position of the start co-ordinate.
+<br><li><i>sy :</i> 
+    The vertical position of the start co-ordinate.
+<br><li><i>dtype :</i> 
+    The type of the vector direction. See <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a>
+    for a list of supported co-ordinate types.
+<br><li><i>dx :</i> 
+    The horizontal vector direction.
+<br><li><i>dy :</i> 
+    The vertical vector direction.
+<br><li><i>colourname :</i> 
+    The colour name.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_ellipses></a> unsigned int
+ <b>overlay_ellipses</b><i>    (KOverlayList olist, unsigned int num_ellipses,
+			       unsigned int *ctypes, double *cx, double *cy,
+			       unsigned int *rtypes, double *rx, double *ry,
+			       CONST char *colourname, flag filled)
+</i><br><p>    This routine will add a number of ellipses to an overlay object
+    list. These ellipses will form a single object. Using this routine is far
+    more efficient than calling <a href=overlay.html#overlay_ellipse>overlay_ellipse</a> repeatedly.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>num_ellipses :</i> 
+    The number of ellipses.
+<br><li><i>ctypes :</i> 
+    The types of the centre co-ordinates. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>cx :</i> 
+    The horizontal positions of the centre co-ordinates.
+<br><li><i>cy :</i> 
+    The vertical positions of the centre co-ordinates.
+<br><li><i>rtypes :</i> 
+    The types of the radii co-ordinates. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>rx :</i> 
+    The horizontal radii.
+<br><li><i>ry :</i> 
+    The vertical radii.
+<br><li><i>colourname :</i> 
+    The colour name.
+<br><li><i>filled :</i> 
+    If TRUE the ellipses will be filled.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_segments></a> unsigned int
+ <b>overlay_segments</b><i>    (KOverlayList olist, unsigned int num_segments,
+			       unsigned int *types0, double *x0, double *y0,
+			       unsigned int *types1, double *x1, double *y1,
+			       CONST char *colourname)
+</i><br><p>    This routine will add a number of disjoint line segments to an
+    overlay object list. These segments will form a single object. Using this
+    routine is far more efficient than calling <a href=overlay.html#overlay_line>overlay_line</a> repeatedly.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>num_segments :</i> 
+    The number of segments.
+<br><li><i>types0 :</i> 
+    The types of the start co-ordinates. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>x0 :</i> 
+    The horizontal positions of the start co-ordinates.
+<br><li><i>y0 :</i> 
+    The vertical positions of the start co-ordinates.
+<br><li><i>types1 :</i> 
+    The types of the stop co-ordinates. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>x1 :</i> 
+    The horizontal positions of the stop co-ordinates.
+<br><li><i>y1 :</i> 
+    The vertical positions of the stop co-ordinates.
+<br><li><i>colourname :</i> 
+    The colour name.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_vectors></a> unsigned int
+ <b>overlay_vectors</b><i>    (KOverlayList olist, unsigned int num_vectors,
+			      unsigned int *stypes, double *sx, double *sy,
+			      unsigned int *dtypes, double *dx, double *dy,
+			      CONST char *colourname)
+</i><br><p>    This routine will add a number of vectors (directed lines) to an
+    overlay object list. These vectors will form a single object. Using this
+    routine is far more efficient than calling <a href=overlay.html#overlay_vector>overlay_vector</a> repeatedly.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>num_vectors :</i> 
+    The number of vectors.
+<br><li><i>stypes :</i> 
+    The types of the start co-ordinates. If this is NULL, all
+    co-ordinates are assumed to be world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>sx :</i> 
+    The horizontal positions of the start co-ordinates.
+<br><li><i>sy :</i> 
+    The vertical positions of the start co-ordinates.
+<br><li><i>dtypes :</i> 
+    The types of the vector directions. If this is NULL, all
+    directions are assumed to be in world co-ordinates. See
+    <a href=overlay.html#overlay_COORDINATE_TYPES>overlay_COORDINATE_TYPES</a> for a list of supported co-ordinate types.
+<br><li><i>dx :</i> 
+    The horizontal vector directions.
+<br><li><i>dy :</i> 
+    The vertical vector directions.
+<br><li><i>colourname :</i> 
+    The colour name.
+<br></ul><b>Returns:</b>     The objectID on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_remove_objects></a> flag
+ <b>overlay_remove_objects</b><i>    (KOverlayList olist, unsigned int num_objects)
+</i><br><p>    Remove objects from the end of an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>num_objects :</i> 
+    The number of objects to remove. If this is 0, then the list
+    is emptied.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_remove_object></a> flag
+ <b>overlay_remove_object</b><i>    (KOverlayList olist, unsigned int id_in_list,
+			    unsigned int list_id)
+</i><br><p>    Remove one object from an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>id_in_list :</i> 
+    The object ID. This ID refers to an object created by a
+    particular list master or slave.
+<br><li><i>list_id :</i> 
+    The ID of the list which created the object. If this is 0, the
+    list given by <em>olist</em> is assumed.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_move_object></a> flag
+ <b>overlay_move_object</b><i>    (KOverlayList olist, unsigned int id_in_list,
+			  unsigned int list_id, double dx, double dy)
+</i><br><p>    Move a object in an overlay object list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>id_in_list :</i> 
+    The object ID. This ID refers to an object created by a
+    particular list master or slave.
+<br><li><i>list_id :</i> 
+    The ID of the list which created the object. If this is 0, the
+    list given by <em>olist</em> is assumed.
+<br><li><i>dx :</i> 
+    The horizontal distance to move. This is of the same co-ordinate type
+    as the original co-ordinates.
+<br><li><i>dy :</i> 
+    The vertical distance to move. This is of the same co-ordinate type
+    as the original co-ordinates.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_get_num_coords></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>overlay_get_num_coords</b><i>    (KOverlayList olist,
+				     unsigned int id_in_list,
+				     unsigned int list_id)
+</i><br><p>    Get the number of co-ordinates in an overlay object.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>id_in_list :</i> 
+    The object ID. This ID refers to an object created by a
+    particular list master or slave.
+<br><li><i>list_id :</i> 
+    The ID of the list which created the object. If this is 0, the
+    list given by <em>olist</em> is assumed.
+<br></ul><b>Returns:</b>     The number of co-ordinates on success, else 0.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_get_coords></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_get_coords</b><i>    (KOverlayList olist, unsigned int id_in_list,
+			 unsigned int list_id, double *x, double *y,
+			 unsigned int *types)
+</i><br><p>    Get the co-ordinates for an overlay object.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br><li><i>id_in_list :</i> 
+    The object ID. This ID refers to an object created by a
+    particular list master or slave.
+<br><li><i>list_id :</i> 
+    The ID of the list which created the object. If this is 0, the
+    list given by <em>olist</em> is assumed.
+<br><li><i>x :</i> 
+    The horizontal co-ordinates are written here. This must have enough
+    space to contain all the values that will be written. The function
+    <a href=overlay.html#overlay_get_num_coords>overlay_get_num_coords</a> may be used to determine the required space. If
+    this is NULL, nothing is written here.
+<br><li><i>y :</i> 
+    The vertical co-ordinates are written here. This must have enough
+    space to contain all the values that will be written. The function
+    <a href=overlay.html#overlay_get_num_coords>overlay_get_num_coords</a> may be used to determine the required space. If
+    this is NULL, nothing is written here.
+<br><li><i>types :</i> 
+    The co-ordinate types are written here. This must have enough
+    space to contain all the values that will be written. The function
+    <a href=overlay.html#overlay_get_num_coords>overlay_get_num_coords</a> may be used to determine the required space. If
+    this is NULL, nothing is written here.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_have_token></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_have_token</b><i>    (KOverlayList olist)
+</i><br><p>    Test if an overay list has the token.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br></ul><b>Returns:</b>     TRUE if the overlay list has the token, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_release_token></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_release_token</b><i>    (KOverlayList olist)
+</i><br><p>    Release the token to the master.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list object.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     If the list is not a slave and does not have the token, the process
+    aborts with an error message.
+</ul><p><hr> <a name=overlay_read_karma></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_read_karma</b><i>    (KOverlayList olist, CONST char *filename)
+</i><br><p>    This routine will read overlay instructions from a Karma file
+    and will add the instructions to an overlay list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The KOverlayList to add instructions to.
+<br><li><i>filename :</i> 
+    The name of the Karma file to read instructions from.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_write_karma></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_write_karma</b><i>    (KOverlayList olist, CONST char *filename)
+</i><br><p>    Write overlay instructions to a Karma file.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The KOverlayList to get instructions from.
+<br><li><i>filename :</i> 
+    The name of the Karma file to write instructions to.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=overlay_read_ascii></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>overlay_read_ascii</b><i>    (KOverlayList olist, CONST char *filename)
+</i><br><p>    This routine will read overlay instructions from an ASCII file
+    and will add the instructions to an overlay list.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The KOverlayList to add instructions to.
+<br><li><i>filename :</i> 
+    The name of the ASCII file to read instructions from.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=overlay_CANVAS_ATTRIBUTES><b>overlay_CANVAS_ATTRIBUTES</b></a> List of overlay attributes for KWorldCanvas objects
+<p> <table><tr><td>Name                         </td><td>Get Type       </td><td>Set Type      </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>OVERLAY_CANVAS_ATT_END       </td><td>               </td><td>              </td><td>End of varargs list
+</td></tr><tr><td>OVERLAY_CANVAS_ATT_CROP      </td><td>flag *         </td><td>flag          </td><td>Crop out-of-bounds objects
+</table><p><hr> <a name=overlay_COORDINATE_TYPES><b>overlay_COORDINATE_TYPES</b></a> List of co-ordinate types
+<p> <table><tr><td>Name                    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>OVERLAY_COORD_PIXEL     </td><td>Screen pixel co-ordinates
+</td></tr><tr><td>OVERLAY_COORD_RELATIVE  </td><td>Relative to a unit canvas (0,0) to (1,1)
+</td></tr><tr><td>OVERLAY_COORD_WORLD     </td><td>True world co-ordinates
+</td></tr><tr><td>OVERLAY_COORD_LAST      </td><td>Use last co-ordinate instead
+</td></tr><tr><td>OVERLAY_COORD_LINEAR    </td><td>Canvas linear co-ordinates
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,29 @@
+.TH M_SHM_DETACH 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_shm_detach \- Detach a shared memory segment from the process address space.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B flag m_shm_detach
+.sp
+(void *addr)
+.SH DESCRIPTION
+Detach a shared memory segment from the process address space.
+.IP \fIaddr\fP 1i
+The address of the segment, as returned by <-m_shm_attach->.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

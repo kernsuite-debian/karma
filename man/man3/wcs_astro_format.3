@@ -1,0 +1,39 @@
+.TH WCS_ASTRO_FORMAT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_format \- Format a value. No transformation is applied.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B void wcs_astro_format
+.sp
+(KwcsAstro ap, unsigned int spherical_format,
+CONST char *dim_name, char string[STRING_LENGTH],
+double value)
+.SH DESCRIPTION
+Format a value. No transformation is applied.
+.IP \fIap\fP 1i
+The KwcsAstro object.
+.IP \fIspherical_format\fP 1i
+The format type for a spherical axis.
+.IP \fIdim_name\fP 1i
+The name of the dimension.
+.IP \fIstring\fP 1i
+The string to write to.
+.IP \fIvalue\fP 1i
+The value.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

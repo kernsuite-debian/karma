@@ -1,0 +1,48 @@
+.TH VIEWIMG_CREATE_FROM_IARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_create_from_iarray \- Create a viewable image from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B ViewableImage viewimg_create_from_iarray
+.sp
+(KWorldCanvas canvas, iarray array,
+flag swap)
+.SH DESCRIPTION
+This routine will create a viewable image object from a
+2-dimensional Intelligent Array. At a later time, this viewable image may
+be made visible. This routine will not cause the canvas to be refreshed.
+Many viewable images may be associated with a single canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIarray\fP 1i
+The Intelligent Array. The underlying <<multi_array>> data
+structure will have its attachment count incremented upon successful
+completion.
+.IP \fIswap\fP 1i
+If TRUE the y axis will be displayed horizontally.
+.SH RETURN VALUE
+A viewable image on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The routine may produce cache data which will vastly increase the
+speed of subsequent operations on this data. Prior to process exit, a call
+MUST be made to <-viewimg_destroy->, otherwise shared memory segments could
+remain after the process exits.
+.sp
+The ViewableImage will be automatically destroyed if the canvas is
+destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

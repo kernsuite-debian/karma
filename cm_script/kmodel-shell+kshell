@@ -1,0 +1,40 @@
+#! /usr/local/karma/bin/cmshell
+
+# Blank lines and comments ('#' is the comment character) are ignored.
+
+# First the list of hosts to run on. Shell escapes allowed here
+HOSTLIST
+END
+
+# Now the list of modules to run
+MODULES
+# Format of each module line:
+# hostname  module_name  [x y] [-- args...]
+#   x  and  y  are optional icons positions used when the Connection Management
+#   tool is operating in Interactive mode.
+#   optional arguments to be passed to the module must be separated by "--"
+local kshell
+local kmodel-shell
+END	# Modules
+
+# Next the list of connections to make
+CONNECTIONS
+# client_module_num  server_module_num  protocol_name
+1 0 multi_array
+END
+
+# And the list of commands to send to modules (via their  stdin  )
+# Shell escapes allowed here
+COMMANDS	# Optional
+END
+
+# After processing all commands, the Connection Management tool will wait
+# forever in an event loop. When any module dies or connection closes,
+# all slave processes and controlled modules should finish. A number of shell
+# commands may then be processed prior to the Connection Management tool
+# terminating.
+
+SHELL_CLEANUP	# Optional Bourne shell commands
+echo "Application finished"
+
+# No "END" directive is required: EndOfFile is sufficient

@@ -1,0 +1,43 @@
+.TH KWIN_MEM_WRITE_RGB 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_mem_write_rgb \- Refresh a pixel canvas into a memory buffer.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_mem_write_rgb
+.sp
+(KPixCanvas canvas, void *red, void *green, void *blue,
+uaddr stride, unsigned int width, unsigned int height)
+.SH DESCRIPTION
+This routine will refresh a pixel canvas, redirecting output to a
+memory buffer.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIred\fP 1i
+The red buffer pointer.
+.IP \fIgreen\fP 1i
+The green buffer pointer.
+.IP \fIblue\fP 1i
+The blue buffer pointer.
+.IP \fIstride\fP 1i
+The stride in bytes between adjacent pixels.
+.IP \fIwidth\fP 1i
+The width of the memory buffer in pixels.
+.IP \fIheight\fP 1i
+The height of the memory buffer in pixels.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

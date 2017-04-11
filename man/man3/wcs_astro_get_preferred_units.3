@@ -1,0 +1,37 @@
+.TH WCS_ASTRO_GET_PREFERRED_UNITS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_get_preferred_units \- Get preferred units for data.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_astro_get_preferred_units
+.sp
+(char new_units[STRING_LENGTH],
+char format_str[STRING_LENGTH],
+double *scale, CONST char *old_units)
+.SH DESCRIPTION
+Get preferred units for data.
+.IP \fInew_units\fP 1i
+The new units string is written here.
+.IP \fIformat_str\fP 1i
+The format string is written here.
+.IP \fIscale\fP 1i
+The scale value to convert to the new units will be written here.
+.IP \fIold_units\fP 1i
+The old units string.
+.SH RETURN VALUE
+TRUE if preferred units were found, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

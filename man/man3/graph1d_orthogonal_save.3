@@ -1,0 +1,35 @@
+.TH GRAPH1D_ORTHOGONAL_SAVE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_save \- Save orthogonal profile data to a file.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B void graph1d_orthogonal_save
+.sp
+(KWorldCanvas canvas, CONST char *filename)
+.SH DESCRIPTION
+Save orthogonal profile data to a file.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIfilename\fP 1i
+The filename to save to.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If there is no orthogonal profile data, the KViewableGraph that is
+drawn last (i.e. on top) is used instead.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

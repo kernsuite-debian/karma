@@ -1,0 +1,433 @@
+<html><head><title>Package: contour</title></head> 
+<body>
+<center><h1>The "contour" Package</h1></center>    These routines are meant to provide a high level mechanism to create and
+    manipulate contour images (2-dimensional slices of Karma data structures).
+    These contour images utilise the world canvases available in the
+    <a href=canvas.html#canvas>canvas</a> package, hence the resulting code is device independent.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=contour></a></table><h4>Functions</h4><table><tr><td><a href=contour.html#contour_init>contour_init</a></td><td>Initialise the package for a particular canvas.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_group>contour_create_group</a></td><td>Create a container to hold a group of KContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_destroy_group>contour_destroy_group</a></td><td>Destroy a group of KContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_restr>contour_create_restr</a></td><td>Create contour image from 2D slice with restrictions.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_from_iarray>contour_create_from_iarray</a></td><td>Create a contour image from an Intelligent Array.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_sequence>contour_create_sequence</a></td><td>Create a sequence of contour images from a 3D slice.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_sequence_from_iarray>contour_create_sequence_from_iarray</a></td><td>Create a sequence of contour images from an Intelligent Array.
+</td></tr>
+<tr><td><a href=contour.html#contour_destroy>contour_destroy</a></td><td>Destroy contour image.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_viewable_group>contour_create_viewable_group</a></td><td>Create container to hold group of KViewableContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_destroy_viewable_group>contour_destroy_viewable_group</a></td><td>Destroy a group of KViewableContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_viewable>contour_create_viewable</a></td><td>Create viewable contour image.
+</td></tr>
+<tr><td><a href=contour.html#contour_create_viewable_sequence>contour_create_viewable_sequence</a></td><td>Create a sequence of viewable contour images.
+</td></tr>
+<tr><td><a href=contour.html#contour_destroy_viewable>contour_destroy_viewable</a></td><td>Destroy a viewable contour image.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_active>contour_set_active</a></td><td>Set active state for a viewable contour image.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_all_inactive>contour_set_all_inactive</a></td><td>Clear active state for all viewable contour images in a group.
+</td></tr>
+<tr><td><a href=contour.html#contour_register_data_change>contour_register_data_change</a></td><td>Notify data for contour image has changed.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_canvas_attributes>contour_set_canvas_attributes</a></td><td>Set the contour image attributes for a world canvas.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_levels>contour_set_levels</a></td><td>Set/update the contour levels for a KContourImage object.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_group_levels>contour_set_group_levels</a></td><td>Set/update contour levels for a group of KContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_level_styles>contour_set_level_styles</a></td><td>Set/update contour level styles for KViewableContourImage object.
+</td></tr>
+<tr><td><a href=contour.html#contour_set_group_level_styles>contour_set_group_level_styles</a></td><td>Set/update clevel styles for KViewableContourImage objects.
+</td></tr>
+<tr><td><a href=contour.html#contour_get_worldcanvas>contour_get_worldcanvas</a></td><td>Get the world canvas for a viewable contour image.
+</td></tr>
+<tr><td><a href=contour.html#contour_parse_levels>contour_parse_levels</a></td><td>Parse a textual contour level specification.
+</td></tr>
+<tr><td><a href=contour.html#contour_unscale_levels>contour_unscale_levels</a></td><td>Unscale contour levels.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=contour.html#contour_CANVAS_ATTRIBUTES>contour_CANVAS_ATTRIBUTES</a></td><td>List of canvas attributes for contourable images
+</td></tr>
+<tr><td><a href=contour.html#contour_CONTOUR_ATTRIBUTES>contour_CONTOUR_ATTRIBUTES</a></td><td>List of attributes for contourable images
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=contour_init></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_init</b><i>    (KWorldCanvas canvas, ...)
+</i><br><p>    This routine will initialise the <a href=contour.html#contour>contour</a> package for a
+    particular world canvas. Calling this routine causes a number of callback
+    routines internal to the package to be registered with the canvas (such
+    as refresh and position event callbacks). This routine must be called
+    before creating contour images.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas object.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the CONTOUR_CANVAS_ATT_END.
+    See <a href=contour.html#contour_CANVAS_ATTRIBUTES>contour_CANVAS_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_create_group></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KContourImageGroup
+ <b>contour_create_group</b><i>    ()
+</i><br><p>    Create a container to hold a group of KContourImage objects.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     The group container on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_destroy_group></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_destroy_group</b><i>    (KContourImageGroup group)
+</i><br><p>    Destroy a group of KContourImage objects.
+<p><b>Parameters:</b><ul><li><i>group :</i> 
+    The group to destroy. The group container is also destroyed.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_create_restr></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KContourImage
+ <b>contour_create_restr</b><i>    (multi_array *multi_desc,
+				    array_desc *arr_desc, char *slice,
+				    unsigned int hdim, unsigned int vdim,
+				    unsigned int elem_index,
+				    unsigned int num_restr,
+				    char **restr_names, double *restr_values,
+				    KContourImageGroup group)
+</i><br><p>    This routine will create a contour image object from a
+    2-dimensional slice of a Karma data structure. At a later time, this
+    contour image may be used to create a viewable contour image.
+<p><b>Parameters:</b><ul><li><i>multi_desc :</i> 
+    The  multi_array  descriptor which contains the Karma data
+    structure. The routine increments the attachment count on the descriptor
+    on successful completion. This may be NULL.
+<br><li><i>arr_desc :</i> 
+    The array descriptor.
+<br><li><i>slice :</i> 
+    The start of the slice data.
+<br><li><i>hdim :</i> 
+    The dimension index of the horizontal dimension.
+<br><li><i>vdim :</i> 
+    The dimension index of the vertical dimension.
+<br><li><i>elem_index :</i> 
+    The element index in the data packets.
+<br><li><i>num_restr :</i> 
+    The number of matched restrictions.
+<br><li><i>restr_names :</i> 
+    The restriction names.
+<br><li><i>restr_values :</i> 
+    The restriction values.
+<br><li><i>group :</i> 
+    The KContourImageGroup to add the new object too. If NULL, it is
+    not added to any group.
+<br></ul><b>Returns:</b>     A KContourImage object on success, NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Restriction information is automatically deallocated when
+    <a href=contour.html#contour_destroy>contour_destroy</a> is called.
+</ul><p><hr> <a name=contour_create_from_iarray></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KContourImage
+ <b>contour_create_from_iarray</b><i>    (iarray array, flag swap,
+					  KContourImageGroup group)
+</i><br><p>    This routine will create a contour image object from a
+    2-dimensional Intelligent Array. At a later time, this contour image may be
+    used to create a viewable contour image.
+<p><b>Parameters:</b><ul><li><i>array :</i> 
+    The Intelligent Array. The underlying <em>multi_array</em> data
+    structure will have its attachment count incremented upon successful
+    completion.
+<br><li><i>swap :</i> 
+    If TRUE the y axis will be displayed horizontally.
+<br><li><i>group :</i> 
+    The KContourImageGroup to add the new object too. If NULL, it is
+    not added to any group.
+<br></ul><b>Returns:</b>     A KContourImage object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_create_sequence></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KContourImage *
+ <b>contour_create_sequence</b><i>    (multi_array *multi_desc,
+					array_desc *arr_desc, char *cube,
+					unsigned int hdim, unsigned int vdim,
+					unsigned int fdim,
+					unsigned int elem_index,
+					KContourImageGroup group)
+</i><br><p>    This routine will create a sequence of contour image objects
+    from a 3-dimensional cube of a Karma data structure. At a later time, this
+    sequence of contour images may be used to create a sequence of viewable
+    contour images.
+<p><b>Parameters:</b><ul><li><i>multi_desc :</i> 
+    The  multi_array  descriptor which contains the Karma data
+    structure. The routine increments the attachment count on the descriptor
+    on successful completion. This may be NULL.
+<br><li><i>arr_desc :</i> 
+    The array descriptor.
+<br><li><i>cube :</i> 
+    The start of the cube data.
+<br><li><i>hdim :</i> 
+    The dimension index of the horizontal dimension.
+<br><li><i>vdim :</i> 
+    The dimension index of the vertical dimension.
+<br><li><i>fdim :</i> 
+    The dimension index of the frame dimension (dimension containing the
+    sequence). The number of frames is the same as the length of this
+    dimension.
+<br><li><i>elem_index :</i> 
+    The element index in the data packets.
+<br><li><i>group :</i> 
+    The KContourImageGroup to add the new objects too. If NULL, it is
+    not added to any group.
+<br></ul><b>Returns:</b>     A pointer to a dynamically allocated array of contour image
+    objects on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_create_sequence_from_iarray></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KContourImage *
+ <b>contour_create_sequence_from_iarray</b><i>    (iarray array,
+						    unsigned int hdim,
+						    unsigned int vdim,
+						    unsigned int fdim,
+						    KContourImageGroup group)
+</i><br><p>    This routine will create a sequence of contour image objects
+    from a 3-dimensional Intelligent Array. At a later time, this
+    sequence of contour images may be used to create a sequence of viewable
+    contour images.
+<p><b>Parameters:</b><ul><li><i>array :</i> 
+    The Intelligent Array. The underlying <em>multi_array</em> data
+    structure will have its attachment count incremented upon successful
+    completion.
+<br><li><i>hdim :</i> 
+    The dimension index of the horizontal dimension.
+<br><li><i>vdim :</i> 
+    The dimension index of the vertical dimension.
+<br><li><i>fdim :</i> 
+    The dimension index of the frame dimension (dimension containing the
+    sequence). The number of frames is the same as the length of this
+    dimension.
+<br><li><i>group :</i> 
+    The KContourImageGroup to add the new objects too. If NULL, it is
+    not added to any group.
+<br></ul><b>Returns:</b>     A pointer to a dynamically allocated array of contour image
+    objects on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_destroy</b><i>    (KContourImage cimage)
+</i><br><p>    This routine will destroy a contour image.
+<p><b>Parameters:</b><ul><li><i>cimage :</i> 
+    The contour image.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The associated <em>multi_array</em> descriptor is also deallocated (or
+    at least, the attachment count is decreased).
+</ul><p><hr> <a name=contour_create_viewable_group></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableContourImageGroup
+ <b>contour_create_viewable_group</b><i>    ()
+</i><br><p>    Create container to hold group of KViewableContourImage objects.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     The group container on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_destroy_viewable_group></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_destroy_viewable_group</b><i>    (KViewableContourImageGroup group)
+</i><br><p>    Destroy a group of KViewableContourImage objects.
+<p><b>Parameters:</b><ul><li><i>group :</i> 
+    The group to destroy. The group container is also destroyed.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_create_viewable></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableContourImage
+ <b>contour_create_viewable</b><i>    (KContourImage cimage,
+					      KWorldCanvas canvas,
+					      KViewableContourImageGroup group)
+</i><br><p>    This routine will create a viewable contour image object from a
+    contour image. At a later time, this viewable contour image may be made
+    visible. This routine will not cause the canvas to be refreshed.
+<p><b>Parameters:</b><ul><li><i>cimage :</i> 
+    The contour image.
+<br><li><i>canvas :</i> 
+    The world canvas onto which the viewable contour image may be
+    drawn. Many viewable contour images may be associated with a single canvas.
+<br><li><i>group :</i> 
+    The KViewableContourImageGroup to add the new object too. If NULL,
+    it is not added to any group.
+<br></ul><b>Returns:</b>     A KViewableContourImage object on success, NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KViewableContourImage will be automatically destroyed if the
+    canvas is destroyed.
+</ul><p><hr> <a name=contour_create_viewable_sequence></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableContourImage *
+ <b>contour_create_viewable_sequence</b><i>    (KContourImage *cimages, unsigned int num, KWorldCanvas canvas,
+     KViewableContourImageGroup group)
+</i><br><p>    This routine will create a sequence of viewable contour image
+    objects from a sequence of contour images. At a later time, these viewable
+    contour images may be made visible. This routine will not cause the canvas
+    to be refreshed.
+<p><b>Parameters:</b><ul><li><i>cimage :</i> 
+    The contour images.
+<br><li><i>num :</i> 
+    The number of contour images in the sequence.
+<br><li><i>canvas :</i> 
+    The world canvas onto which the viewable contour images may be
+    drawn. Many viewable contour images may be associated with a single canvas.
+<br><li><i>group :</i> 
+    The KViewableContourImageGroup to add the new objects too. If NULL,
+    it is not added to any group.
+<br></ul><b>Returns:</b>     A pointer to a dynamically allocated array of viewable contour
+    image objects on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KViewableContourImage objects will be automatically destroyed if
+    the canvas is destroyed.
+</ul><p><hr> <a name=contour_destroy_viewable></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_destroy_viewable</b><i>    (KViewableContourImage vcimage)
+</i><br><p>    This routine will destroy a viewable contour image.
+<p><b>Parameters:</b><ul><li><i>vcimage :</i> 
+    The viewable contour image.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_active></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>contour_set_active</b><i>    (KViewableContourImage vcimage, flag active,
+			 flag force_refresh, flag refresh_if_changed)
+</i><br><p>    This routine will make a viewable contour image active or
+    inactive.
+<p><b>Parameters:</b><ul><li><i>vcimage :</i> 
+    The viewable contour image.
+<br><li><i>active :</i> 
+    If TRUE, the viewable contour image is made active, else it is
+    made inactive.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the viewable
+    contour image active state changed.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_all_inactive></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>contour_set_all_inactive</b><i>    (KViewableContourImageGroup group,
+			       flag refresh_if_changed)
+</i><br><p>    This routine will make all viewable contour images in a group
+    inactive.
+<p><b>Parameters:</b><ul><li><i>group :</i> 
+    The group of viewable contour images.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, canvases are refreshed if the active state
+    of any viewable contour image changed.
+<br><li><i>key :</i> 
+    The key to use for inactivation of viewable contour images. If this
+    is 0 then all viewable contour images will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_register_data_change></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>contour_register_data_change</b><i>    (KContourImage cimage)
+</i><br><p>    This routine will register a change in the Karma data structure
+    associated with a contour image. If the contour image is active, it will
+    be immediately redrawn on its canvas.
+<p><b>Parameters:</b><ul><li><i>cimage :</i> 
+    The contour image.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_canvas_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_set_canvas_attributes</b><i>    (KWorldCanvas canvas, ...)
+</i><br><p>    Set the contour image attributes for a world canvas.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the CONTOUR_CANVAS_ATT_END.
+    See <a href=contour.html#contour_CANVAS_ATTRIBUTES>contour_CANVAS_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The canvas is not refreshed by this operation.
+</ul><p><hr> <a name=contour_set_levels></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_set_levels</b><i>    (KContourImage cimage, unsigned int num_levels,
+			 CONST double *contour_levels)
+</i><br><p>    This routine will set/update the contour levels for a
+    KContourImage object. Canvases are not refreshed by this operation.
+<p><b>Parameters:</b><ul><li><i>cimage :</i> 
+    The KContourImage object.
+<br><li><i>num_levels :</i> 
+    The number of contour levels.
+<br><li><i>contour_levels :</i> 
+    The array of contour levels. These are copied.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_group_levels></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_set_group_levels</b><i>    (KContourImageGroup group,
+			       unsigned int num_levels,
+			       CONST double *contour_levels)
+</i><br><p>    This routine will set/update the contour levels for a group of
+    KContourImage objects. Canvases are not refreshed by this operation.
+<p><b>Parameters:</b><ul><li><i>group :</i> 
+    The group of KContourImage objects.
+<br><li><i>num_levels :</i> 
+    The number of contour levels.
+<br><li><i>contour_levels :</i> 
+    The array of contour levels. These are copied.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_level_styles></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_set_level_styles</b><i>    (KViewableContourImage vcimage,
+			       CONST unsigned long *contour_pixels,
+			       CONST flag *dash,
+			       CONST double *linewidths)
+</i><br><p>    This routine will set/update the contour level tyles for a
+    KViewableContourImage object. No canvas is refreshed by this operation.
+<p><b>Parameters:</b><ul><li><i>vcimage :</i> 
+    The KViewableContourImage object.
+<br><li><i>contour_pixels :</i> 
+    The array of contour pixels. These are copied. This may be
+    NULL.
+<br><li><i>dash :</i> 
+    The array of dash flags. This may be NULL.
+<br><li><i>linewidths :</i> 
+    The array of line widths. This may be NULL.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_set_group_level_styles></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_set_group_level_styles</b><i>    (KViewableContourImageGroup group,
+				     CONST unsigned long *contour_pixels,
+				     CONST flag *dash,
+				     CONST double *linewidths)
+</i><br><p>    This routine will set/update the contour level styles for a group
+    of KViewableContourImage objects. No canvas is refreshed by this operation.
+<p><b>Parameters:</b><ul><li><i>group :</i> 
+    The group of KViewableContourImage objects.
+<br><li><i>contour_pixels :</i> 
+    The array of contour pixels. These are copied. This may be
+    NULL.
+<br><li><i>dash :</i> 
+    The array of dash flags. This may be NULL.
+<br><li><i>linewidths :</i> 
+    The array of line widths. This may be NULL.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_get_worldcanvas></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KWorldCanvas
+ <b>contour_get_worldcanvas</b><i>    (KViewableContourImage vcimage)
+</i><br><p>    Get the world canvas for a viewable contour image.
+<p><b>Parameters:</b><ul><li><i>vcimage :</i> 
+    The KViewableContourImage object.
+<br></ul><b>Returns:</b>     The KWorldCanvas object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_parse_levels></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>contour_parse_levels</b><i>    (double *contour_levels,
+				   unsigned int max_levels, CONST char *string,
+				   double min, double max)
+</i><br><p>    Parse a textual contour level specification.
+<p><b>Parameters:</b><ul><li><i>contour_levels :</i> 
+    The raw contour levels are written here.
+<br><li><i>max_levels :</i> 
+    The maximum number of levels.
+<br><li><i>string :</i> 
+    The string to parse.
+<br><li><i>min :</i> 
+    The minimum value in the data range.
+<br><li><i>max :</i> 
+    The maximum value in the data range.
+<br></ul><b>Returns:</b>     The number of levels. On error 0 is returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=contour_unscale_levels></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>contour_unscale_levels</b><i>    (double *contour_levels, flag *dash,
+			     double *linewidths, unsigned int num_levels,
+			     double scale, double offset,
+			     double neg_width, double pos_width)
+</i><br><p>    Unscale contour levels.
+<p><b>Parameters:</b><ul><li><i>contour_levels :</i> 
+    The scaled contour levels. This is updated with the raw
+    (unscaled) contour levels.
+<br><li><i>dash :</i> 
+    An array of booleans will be written here. TRUE is written if the
+    corresponding scaled contour level is negative, else FALSE is written.
+<br><li><i>linewidths :</i> 
+    An array of linewidths will be written here.
+<br><li><i>num_levels :</i> 
+    The number of levels.
+<br><li><i>scale :</i> 
+    The scale factor.
+<br><li><i>offset :</i> 
+    The offset.
+<br><li><i>neg_width :</i> 
+    The linewidth for negative contours.
+<br><li><i>pos_width :</i> 
+    The linewidth for positive contours.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     scaled = raw * <em>scale</em> + <em>offset</em>.
+</ul><p><hr><center><h2>Tables</h2></center><hr> <a name=contour_CANVAS_ATTRIBUTES><b>contour_CANVAS_ATTRIBUTES</b></a> List of canvas attributes for contourable images
+<p> <table><tr><td>Name                           </td><td>Get Type       </td><td>Set Type      </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>CONTOUR_CANVAS_ATT_END         </td><td>               </td><td>              </td><td>End of varargs list             
+</td></tr><tr><td>CONTOUR_CANVAS_ATT_COLOURNAME  </td><td>               </td><td>CONST char *  </td><td>Colour name
+
+</table><p><hr> <a name=contour_CONTOUR_ATTRIBUTES><b>contour_CONTOUR_ATTRIBUTES</b></a> List of attributes for contourable images
+<p> <table><tr><td>Name                       </td><td>Get Type       </td><td>Set Type </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>CONTOUR_CIMAGE_ATT_END     </td><td>               </td><td>         </td><td>End of varargs list
+</td></tr><tr><td>CONTOUR_CIMAGE_ATT_ACTIVE  </td><td>flag *         </td><td>flag     </td><td>Active state
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

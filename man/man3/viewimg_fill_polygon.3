@@ -1,0 +1,38 @@
+.TH VIEWIMG_FILL_POLYGON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_fill_polygon \- Draw a polygon into an array associated with a viewable image.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_fill_polygon
+.sp
+(ViewableImage vimage, edit_coord *coords,
+unsigned int num_vertices, double value[2])
+.SH DESCRIPTION
+This routine will draw a filled polygon into a 2 dimensional
+slice of data associated with a viewable image.
+.IP \fIvimage\fP 1i
+The viewable image.
+.IP \fIcoords\fP 1i
+The array of world co-ordinates of vertices of the polygon.
+.IP \fInum_vertices\fP 1i
+The number of vertices in the polygon.
+.IP \fIvalue\fP 1i
+The complex value to fill the polygon with. This must be of type
+K_DCOMPLEX.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

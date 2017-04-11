@@ -1,0 +1,42 @@
+.TH GRAPH1D_ORTHOGONAL_TRACK_COMPUTE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_track_compute \- Compute track strings.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B flag graph1d_orthogonal_track_compute
+.sp
+(KWorldCanvas canvas, double x, double y,
+double x_lin,
+char x_string[STRING_LENGTH],
+char y_string[STRING_LENGTH])
+.SH DESCRIPTION
+Compute track strings.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIx\fP 1i
+The horizontal world co-ordinate of the event.
+.IP \fIy\fP 1i
+The vertical world co-ordinate of the event.
+.IP \fIx_lin\fP 1i
+The horizontal linear co-ordinate of the event.
+.IP \fIx_string\fP 1i
+The X co-ordinate information will be written here.
+.IP \fIy_string\fP 1i
+The Y co-ordinate information will be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH CANVAS_SEQUENCE_DRESSING_REFRESH 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_sequence_dressing_refresh \- Set order in which dressing is refreshed.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_sequence_dressing_refresh
+.sp
+(KWorldCanvas canvas)
+.SH DESCRIPTION
+This routine will sequence the dressing (axes, etc.) refresh
+function for a world canvas. If this routine is not called, the dressing
+will be drawn after *all* registered refresh functions have been called
+(see <-canvas_register_refresh_func->). If this routine is called, all
+preceeding refresh functions (registered with
+<-canvas_register_refresh_func->) will be called on refresh prior to the
+dressing being drawn and all refresh functions registered after this
+routine is called will be called *after* the dressing is drawn.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

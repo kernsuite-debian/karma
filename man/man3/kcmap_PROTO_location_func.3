@@ -1,0 +1,41 @@
+.TH KCMAP_PROTO_LOCATION_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+kcmap_PROTO_location_func \- Get location of display.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_PROTO_location_func
+.sp
+(Kdisplay dpy_handle,
+unsigned long *serv_hostaddr,
+unsigned long *serv_display_num,
+unsigned long *cmap_id)
+.SH DESCRIPTION
+This routine will determine the location of the graphics
+display being used.
+.IP \fIdpy_handle\fP 1i
+The low level display handle. The meaning of this value
+depends on the lower level graphics library used.
+.IP \fIserv_hostaddr\fP 1i
+The Internet address of the host to which the display
+is connected will be written here.
+.IP \fIserv_display_num\fP 1i
+The number of the display will be written here.
+.IP \fIcmap_id\fP 1i
+The ID of the hardware colourmap is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

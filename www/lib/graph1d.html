@@ -1,0 +1,429 @@
+<html><head><title>Package: graph1d</title></head> 
+<body>
+<center><h1>The "graph1d" Package</h1></center>    These routines are meant to provide a high level mechanism to graph a
+    1-dimensional array of values.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=graph1d></a></table><h4>Functions</h4><table><tr><td><a href=graph1d.html#graph1d_init>graph1d_init</a></td><td>Initialise the package for a particular canvas.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_set_canvas_attributes>graph1d_set_canvas_attributes</a></td><td>Set attributes for a canvas.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_test_if_zoomed_horizontally>graph1d_test_if_zoomed_horizontally</a></td><td>Test if a canvas is zoomed horizontally.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_unzoom>graph1d_unzoom</a></td><td>Unzoom a canvas.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_refresh_if_needed>graph1d_refresh_if_needed</a></td><td>Refresh a canvas if needed.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_create>graph1d_create</a></td><td>Create viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_set_vgraph_attributes>graph1d_set_vgraph_attributes</a></td><td>Set attributes for a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_set_active>graph1d_set_active</a></td><td>Set active state for a viewable graph controlled refresh.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_set_all_inactive>graph1d_set_all_inactive</a></td><td>Clear active state all viewable graphs controlled refresh.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_destroy>graph1d_destroy</a></td><td>Destroy a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_register_destroy_func>graph1d_register_destroy_func</a></td><td>Register destroy callback.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_get_worldcanvas>graph1d_get_worldcanvas</a></td><td>Get the world canvas for a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_change_draw_order>graph1d_change_draw_order</a></td><td>Change the draw order for a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_get_last>graph1d_get_last</a></td><td>Get last viewable graph for a world canvas.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_allocate_coords>graph1d_allocate_coords</a></td><td>Allocate co-ordinates for a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_set_size>graph1d_set_size</a></td><td>Set the size of a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_get_size>graph1d_get_size</a></td><td>Get the size of a viewable graph.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_save_ascii>graph1d_save_ascii</a></td><td>Save the data in a viewable graph in ASCII format.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_create>graph1d_orthogonal_create</a></td><td>Create an object for later viewing of orthogonal profiles.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_destroy>graph1d_orthogonal_destroy</a></td><td>Destroy an orthogonal profile.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_register_destroy_func>graph1d_orthogonal_register_destroy_func</a></td><td>Register destroy callback.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_invalidate>graph1d_orthogonal_invalidate</a></td><td>Invalidate an orthogonal profile.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_show_trace>graph1d_orthogonal_show_trace</a></td><td>Show a trace.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_show_traces>graph1d_orthogonal_show_traces</a></td><td>Show a weighted, summed trace.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_show_boxed_trace>graph1d_orthogonal_show_boxed_trace</a></td><td>Show a boxed trace.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_configure_canvas>graph1d_orthogonal_configure_canvas</a></td><td>Configure a canvas using an orthogonal profile object.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_save>graph1d_orthogonal_save</a></td><td>Save orthogonal profile data to a file.
+</td></tr>
+<tr><td><a href=graph1d.html#graph1d_orthogonal_track_compute>graph1d_orthogonal_track_compute</a></td><td>Compute track strings.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=graph1d_init></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_init</b><i>    (KWorldCanvas canvas)
+</i><br><p>    This routine will initialise the <a href=graph1d.html#graph1d>graph1d</a> package for a
+    particular world canvas. Calling this routine causes a number of callback
+    routines internal to the package to be registered with the canvas (such
+    as refresh and position event callbacks). This routine must be called
+    before creating viewable graphs.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_set_canvas_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_set_canvas_attributes</b><i>    (KWorldCanvas canvas, ...)
+</i><br><p>    Set attributes for a canvas.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the GRAPH1D_CANVAS_ATT_END.
+    See <a href=graph1d.html#graph1d_CANVAS_ATTRIBUTES>graph1d_CANVAS_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_test_if_zoomed_horizontally></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_test_if_zoomed_horizontally</b><i>    (KWorldCanvas canvas)
+</i><br><p>    Test if a canvas is zoomed horizontally.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br></ul><b>Returns:</b>     TRUE if the canvas is zoomed, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_unzoom></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_unzoom</b><i>    (KWorldCanvas canvas, flag horizontal, flag vertical,
+		     flag auto_v)
+</i><br><p>    Unzoom a canvas.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>horizontal :</i> 
+    If TRUE, the canvas is unzoomed horizontally.
+<br><li><i>vertical :</i> 
+    If TRUE, the canvas is unzoomed vertically.
+<br><li><i>auto_v :</i> 
+    If TRUE, the canvas is auto-scaled vertically.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_refresh_if_needed></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_refresh_if_needed</b><i>    (KWorldCanvas canvas)
+</i><br><p>    Refresh a canvas if needed.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas to be refreshed.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_create></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableGraph
+ <b>graph1d_create</b><i>    (KWorldCanvas canvas, unsigned int num_points,
+			       double **x, double **y, uaddr key, ...)
+</i><br><p>    This routine will create a viewable graph object from two arrays
+    of values. At a later time, this viewable graph may be made visible. This
+    routine will not cause the canvas to be refreshed.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas onto which the viewable graph may be drawn. Many
+    viewable graphs may be associated with a single canvas.
+<br><li><i>num_points :</i> 
+    The number of points in this viewable graph.
+<br><li><i>x :</i> 
+    The pointer to the array of horizontal values is written here. The
+    space is automatically dealloated when the graph is destroyed.
+<br><li><i>y :</i> 
+    The pointer to the array of vertical values is written here. The space
+    is automatically dealloated when the graph is destroyed.
+<br><li><i>key :</i> 
+    The key to associate with this viewable graph.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the GRAPH1D_VGRAPH_ATT_END.
+    See <a href=graph1d.html#graph1d_VGRAPH_ATTRIBUTES>graph1d_VGRAPH_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     A KViewableGraph object on success, NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KViewableGraph will be automatically destroyed if the canvas is
+    destroyed.
+</ul><p><hr> <a name=graph1d_set_vgraph_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_set_vgraph_attributes</b><i>    (KViewableGraph vgraph, ...)
+</i><br><p>    Set attributes for a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the GRAPH1D_VGRAPH_ATT_END.
+    See <a href=graph1d.html#graph1d_VGRAPH_ATTRIBUTES>graph1d_VGRAPH_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_set_active></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_set_active</b><i>    (KViewableGraph vgraph, flag active,flag force_refresh,
+			 flag refresh_if_changed, flag exclusive, uaddr key)
+</i><br><p>    This routine will make a viewable graph active or inactive.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>active :</i> 
+    If TRUE, the viewable graph is made active, else it is made
+    inactive.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the viewable graph
+    active state changed.
+<br><li><i>exclusive :</i> 
+    If TRUE and <em>active</em> is TRUE, make this viewable graph the
+    only active one for this canvas. Other viewable graphs for this canvas will
+    be made inactive.
+<br><li><i>key :</i> 
+    The key to use for inactivation of other viewable graphs. If this is
+    0 then all other viewable graphs will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_set_all_inactive></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_set_all_inactive</b><i>    (KWorldCanvas canvas, flag force_refresh,
+			       flag refresh_if_changed, uaddr key)
+</i><br><p>    This routine will make all viewable graphs associated with a
+    world canvas inactive.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the active state
+    of any viewable graph changed.
+<br><li><i>key :</i> 
+    The key to use for inactivation of viewable graphs. If this is 0 then
+    all viewable graphs will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_destroy</b><i>    (KViewableGraph vgraph)
+</i><br><p>    Destroy a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_register_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>graph1d_register_destroy_func</b><i>    (KViewableGraph vgraph,
+					     void (*func) (), void *info)
+</i><br><p>    This routine will register a destroy function for a viewable
+    graph. The function will be called when the canvas is destroyed. Many
+    destroy functions may be registered per graph. The first function
+    registered is the first function called upon destruction.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>func :</i> 
+    The function that is called when the graph is destroyed. The
+    prototype function is <a href=graph1d.html#graph1d_PROTO_destroy_func>graph1d_PROTO_destroy_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_get_worldcanvas></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KWorldCanvas
+ <b>graph1d_get_worldcanvas</b><i>    (KViewableGraph vgraph)
+</i><br><p>    Get the world canvas for a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br></ul><b>Returns:</b>     The KWorldCanvas object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_change_draw_order></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_change_draw_order</b><i>    (KViewableGraph vgraph, KViewableGraph position,
+				flag before)
+</i><br><p>    Change the draw order for a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph to move in the draw order.
+<br><li><i>position :</i> 
+    The viewable graph to use as a reference point.
+<br><li><i>before :</i> 
+    If TRUE, <em>vgraph</em> will be moved just before <em>position</em> (or to
+    the start of the list if <em>position</em> is NULL). If FALSE, <em>vgraph</em> will
+    be moved just after <em>position</em> (or to the end of the list if <em>position</em>
+    is NULL).
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_get_last></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KViewableGraph
+ <b>graph1d_get_last</b><i>    (KWorldCanvas canvas)
+</i><br><p>    Get last viewable graph for a world canvas.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br></ul><b>Returns:</b>     The viewable graph if there is one, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_allocate_coords></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_allocate_coords</b><i>    (KViewableGraph vgraph, unsigned int num_coords,
+			      double **x, double **y)
+</i><br><p>    Allocate co-ordinates for a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>num_points :</i> 
+    The number of co-ordinate pairs to allocate.
+<br><li><i>x :</i> 
+    The pointer to the array of horizontal values is written here. The
+    space is automatically dealloated when the graph is destroyed.
+<br><li><i>y :</i> 
+    The pointer to the array of vertical values is written here. The space
+    is automatically dealloated when the graph is destroyed.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE, indicating an allocation error.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_set_size></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_set_size</b><i>    (KViewableGraph vgraph, unsigned int num_points)
+</i><br><p>    Set the size of a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>num_points :</i> 
+    The number of valid points in the graph.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_get_size></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>graph1d_get_size</b><i>    (KViewableGraph vgraph, double **x, double **y)
+</i><br><p>    Get the size of a viewable graph.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>num_points :</i> 
+    The number of points in the graph is written here.
+<br><li><i>x :</i> 
+    The pointer to the array of horizontal values is written here. This may
+    be NULL.
+<br><li><i>y :</i> 
+    The pointer to the array of vertical values is written here. This may
+    be NULL.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_save_ascii></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_save_ascii</b><i>    (KViewableGraph vgraph, Channel channel)
+</i><br><p>    Save the data in a viewable graph in ASCII format.
+<p><b>Parameters:</b><ul><li><i>vgraph :</i> 
+    The viewable graph.
+<br><li><i>channel :</i> 
+    The Channel object to write to.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE indicating error.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_create></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KOrthogonalProfile
+ <b>graph1d_orthogonal_create</b><i>    (KWorldCanvas canvas,iarray array,
+					      KViewableGraph *vgraph)
+</i><br><p>    Create an object for later viewing of orthogonal profiles.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas object where profiles will be drawn.
+<br><li><i>array :</i> 
+    The Intelligent Array which contains the data.
+<br><li><i>vgraph :</i> 
+    The KViewableGraph that is created is written here. This may be
+    NULL.
+<br></ul><b>Returns:</b>     A KOrthogonalProfile object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KOrthogonalProfile will be automatically destroyed if the canvas
+    or Intelligent Array are destroyed.
+</ul><p><hr> <a name=graph1d_orthogonal_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_destroy</b><i>    (KOrthogonalProfile profile)
+</i><br><p>    Destroy an orthogonal profile.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_register_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>graph1d_orthogonal_register_destroy_func</b><i>    (KOrthogonalProfile profile, void (*func) (), void *info)
+</i><br><p>    This routine will register a destroy function for an orthogonal
+    profile. Many destroy functions may be registered per profile. The first
+    function registered is the first function called upon destruction.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br><li><i>func :</i> 
+    The function that is called when the profile is destroyed. The
+    prototype function is <a href=graph1d.html#graph1d_orthogonal_PROTO_destroy_func>graph1d_orthogonal_PROTO_destroy_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_invalidate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_invalidate</b><i>    (KOrthogonalProfile profile)
+</i><br><p>    Invalidate an orthogonal profile.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_show_trace></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_show_trace</b><i>    (KOrthogonalProfile profile,
+				    CONST unsigned int *dim_indices,
+				    flag correct_aberration,
+				    CONST uaddr *coord_indices, uaddr refpos)
+</i><br><p>    Show a trace.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br><li><i>dim_indices :</i> 
+    The dimension indicies. The length of this array must be one
+    less than the number of dimensions in the array.
+<br><li><i>correct_aberration :</i> 
+    If TRUE, attempt to correct for chromatic aberration.
+<br><li><i>coord_indices :</i> 
+    The co-ordinate indices of the trace. The length of this
+    array must be one less than the number of dimensions in the array.
+<br><li><i>refpos :</i> 
+    The reference position along the profile dimension.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_show_traces></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_show_traces</b><i>    (KOrthogonalProfile profile,
+				     CONST unsigned int *dim_indices,
+				     flag correct_aberration,
+				     flag sum, float global_weight,
+				     unsigned int num_traces,
+				     CONST uaddr *coord_indices, uaddr refpos,
+				     CONST float *weights)
+</i><br><p>    Show a weighted, summed trace.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br><li><i>dim_indices :</i> 
+    The dimension indicies. The length of this array must be one
+    less than the number of dimensions in the array.
+<br><li><i>correct_aberration :</i> 
+    If TRUE, attempt to correct for chromatic aberration.
+<br><li><i>sum :</i> 
+    If TRUE, the data are summed rather than averaged.
+<br><li><i>global_weight :</i> 
+    This weight value is applied to each trace as it is
+    combined.
+<br><li><i>num_traces :</i> 
+    The number of traces to combine.
+<br><li><i>coord_indices :</i> 
+    The co-ordinate indices for the traces. This is grouped
+    into <em>num_traces</em> contiguous blocks of co-ordinate traces. Each block
+    must contain <em>num_dim</em> - 1 co-ordinate indices.
+<br><li><i>refpos :</i> 
+    The reference position along the profile dimension.
+<br><li><i>weights :</i> 
+    The weights to apply to each trace as it is combined. If this is
+    NULL no weights are applied.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_show_boxed_trace></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_show_boxed_trace</b><i>    (KOrthogonalProfile profile,
+					  CONST unsigned int *dim_indices,
+					  flag sum,
+					  CONST uaddr *start_indices,
+					  CONST uaddr *stop_indices,
+					  uaddr refpos)
+</i><br><p>    Show a boxed trace.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br><li><i>dim_indices :</i> 
+    The dimension indicies. The length of this array must be one
+    less than the number of dimensions in the array.
+<br><li><i>sum :</i> 
+    If TRUE the traces are summed, else they are averaged.
+<br><li><i>start_indices :</i> 
+    The starting co-ordinate indices of the box. The length of
+    this array must be one less than the number of dimensions in the array.
+<br><li><i>stop_indices :</i> 
+    The stopping co-ordinate indices of the box. The length of
+    this array must be one less than the number of dimensions in the array.
+<br><li><i>refpos :</i> 
+    The reference position along the profile dimension.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     This function will attempt to correct for chromatic aberration.
+</ul><p><hr> <a name=graph1d_orthogonal_configure_canvas></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_configure_canvas</b><i>    (KOrthogonalProfile profile)
+</i><br><p>    Configure a canvas using an orthogonal profile object.
+<p><b>Parameters:</b><ul><li><i>profile :</i> 
+    The orthogonal profile.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=graph1d_orthogonal_save></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>graph1d_orthogonal_save</b><i>    (KWorldCanvas canvas, CONST char *filename)
+</i><br><p>    Save orthogonal profile data to a file.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>filename :</i> 
+    The filename to save to.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     If there is no orthogonal profile data, the KViewableGraph that is
+    drawn last (i.e. on top) is used instead.
+</ul><p><hr> <a name=graph1d_orthogonal_track_compute></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>graph1d_orthogonal_track_compute</b><i>    (KWorldCanvas canvas, double x, double y,
+				       double x_lin,
+				       char x_string[STRING_LENGTH],
+				       char y_string[STRING_LENGTH])
+</i><br><p>    Compute track strings.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>x :</i> 
+    The horizontal world co-ordinate of the event.
+<br><li><i>y :</i> 
+    The vertical world co-ordinate of the event.
+<br><li><i>x_lin :</i> 
+    The horizontal linear co-ordinate of the event.
+<br><li><i>x_string :</i> 
+    The X co-ordinate information will be written here.
+<br><li><i>y_string :</i> 
+    The Y co-ordinate information will be written here.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,63 @@
+.TH PANEL_ITEM_REGISTER_CALLBACK 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+panel_item_register_callback \- Register a function to be called when a panel item changes.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B KCallbackFunc panel_item_register_callback
+.sp
+(KPanelItem item, void (*func) (),
+void *info)
+.SH DESCRIPTION
+Register a function to be called when a panel item changes.
+.IP \fIitem\fP 1i
+The panel item.
+.IP \fIfunc\fP 1i
+The function to be called when the panel item changes. The prototype
+function is <panel_PROTO_change_func>.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer to pass to <<func>>.
+.SH RETURN VALUE
+A KCallbackFunc object on success, which may be passed to
+.SH Multi-threading Level
+Unsafe.
+.IP \fIc_unregister_callback\fP 1i
+. On failure NULL is returned.
+*/
+{
+static char function_name[] = "panel_item_register_callback";
+VERIFY_PANELITEM (item);
+return c_register_callback (&item->change_list, ( flag (*) () ) func, item,
+info, TRUE, NULL, FALSE, FALSE);
+}   /*  End Function panel_item_register_callback  */
+/*  Temporary private functions follow (will probably be made public later)  */
+static flag _panel_process_command (KControlPanel panel, CONST char *cmd,
+flag (*unknown_func) (), FILE *fp)
+/*  [PURPOSE] This routine will process a command, using a given control panel.
+.IP \fIpanel\fP 1i
+The control panel.
+.IP \fIcmd\fP 1i
+The command.
+.IP \fIunknown_func\fP 1i
+The function that is called when the command is not
+understood. If this is NULL, then a message is displayed if the command is
+not understood. The prototype function is <-panel_PROTO_decode_func->.
+.IP \fIfp\fP 1i
+Output messages are directed here.
+.SH RETURN VALUE
+TRUE if more commands should be processed, else FALSE, indicating
+that the control panel's "exit" command was entered.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

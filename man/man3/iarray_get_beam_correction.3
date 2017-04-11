@@ -1,0 +1,34 @@
+.TH IARRAY_GET_BEAM_CORRECTION 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_get_beam_correction \- Get the beam correction for an area in an array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B double iarray_get_beam_correction
+.sp
+(iarray array, unsigned int dim1,
+unsigned int dim2)
+.SH DESCRIPTION
+Get the beam correction for an area in an array.
+.IP \fIarray\fP 1i
+The array.
+.IP \fIdim1\fP 1i
+One of the dimensions.
+.IP \fIdim2\fP 1i
+The other dimension.
+.SH RETURN VALUE
+The beam correction, if available, else TOOBIG.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

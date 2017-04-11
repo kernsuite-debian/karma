@@ -1,0 +1,38 @@
+.TH IARRAY_GET_DOUBLE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_double \- Get attached double float from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_get_double
+.sp
+(iarray array, CONST char *name, double *value,
+flag abort_on_error)
+.SH DESCRIPTION
+This routine will get a unique named double precision floating
+point value from the underlying Karma general data structure of an
+"Intelligent Array".
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element.
+.IP \fIvalue\fP 1i
+The value is written here.
+.IP \fIabort_on_error\fP 1i
+If TRUE, the routine aborts on error.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

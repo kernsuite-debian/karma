@@ -1,0 +1,54 @@
+.TH KWIN_QUEUE_POSITION_EVENT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_queue_position_event \- Queue a position event on a pixel canvas for possible processing.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_queue_position_event
+.sp
+(KPixCanvas canvas, int x, int y, flag clip,
+unsigned int event_code, void *event_info)
+.SH DESCRIPTION
+This function is similar to the <-kwin_process_position_event->
+function, except that non-critical events may be dropped if the system is
+too busy. This avoids application response lagging behind user input.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIx\fP 1i
+The horizontal position of the event, relative to the parent window.
+.IP \fIy\fP 1i
+The vertical position of the event, relative to the parent window.
+.IP \fIclip\fP 1i
+If this is TRUE, events outside of the canvas boundary are clipped
+to the nearest boundary and passed on to the registered position event
+consumers. If this is FALSE, events outside of the canvas boundary are not
+consumed (i.e. they are ignored).
+.IP \fIevent_code\fP 1i
+The arbitrary event code.
+.IP \fIevent_info\fP 1i
+The arbitrary event information.
+.SH RETURN VALUE
+TRUE if the event was consumed or queued, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+Only mouse move and mouse drag events are considered non-critical.
+.sp
+Older events are dropped, ensuring that the most recent event is
+always processed.
+.sp
+Events may be processed in the context of a work function (see the
+<-w-> package for information on work functions).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

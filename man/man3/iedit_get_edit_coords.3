@@ -1,0 +1,33 @@
+.TH IEDIT_GET_EDIT_COORDS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_get_edit_coords \- Get a number of editing co-ordinates from a co-ordinate list.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B flag iedit_get_edit_coords
+.sp
+(list_header *list_head, edit_coord **coords)
+.SH DESCRIPTION
+The routine will get a number of editing co-ordinates from a
+co-ordinate list. The routine will extract all co-ordinates in the list.
+.IP \fIlist_head\fP 1i
+The list header.
+.IP \fIcoords\fP 1i
+The pointer to an internally allocated array of extracted
+co-ordinates is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

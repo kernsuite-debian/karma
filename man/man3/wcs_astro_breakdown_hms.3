@@ -1,0 +1,47 @@
+.TH WCS_ASTRO_BREAKDOWN_HMS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_breakdown_hms \- Breakdown a time value into components.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_astro_breakdown_hms
+.sp
+(int *hours, int *minutes,
+double *seconds, int *whole_seconds,
+double *subseconds, double input, double offset)
+.SH DESCRIPTION
+Breakdown a time value into components.
+.IP \fIhours\fP 1i
+The hours are written here. This may be NULL.
+.IP \fIminutes\fP 1i
+The minutes are written here. This may be NULL.
+.IP \fIseconds\fP 1i
+The seconds are written here. This may be NULL.
+.IP \fIwhole_seconds\fP 1i
+The integer truncated seconds are written here. This may be
+NULL.
+.IP \fIsubseconds\fP 1i
+The fractional seconds are written here. This may be NULL.
+.IP \fIinput\fP 1i
+The time value in hours.
+.IP \fIoffset\fP 1i
+The offset (in seconds) to apply for rounding purposes.
+.SH RETURN VALUE
+TRUE if the value was legal, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+All component values are guaranteed to be positive.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,70 @@
+.TH DS_FIND_2D_STATS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_find_2D_stats \- Compute simple statistics for a 2D array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_find_2D_stats
+.sp
+(CONST char *data,
+unsigned int length1, uaddr *offsets1,
+unsigned int length2, uaddr *offsets2,
+unsigned int elem_type, unsigned int conv_type,
+double *min, double *max, double *mean,
+double *stddev, double *sum, double *sumsq,
+unsigned long *npoints)
+.SH DESCRIPTION
+This routine will find the minimum, maximum, mean, rms and sum of
+a single plane (element versus two dimensions).
+.IP \fIdata\fP 1i
+A pointer to the data.
+.IP \fIlength1\fP 1i
+The number of values to process along one of the dimensions. For
+efficiency this should be the more significant dimension.
+.IP \fIoffsets1\fP 1i
+The address offsets for data along the corresponding dimension.
+.IP \fIlength2\fP 1i
+The number of values to process along the other of the dimensions
+.IP \fIoffsets2\fP 1i
+The address offsets for data along the corresponding dimension.
+.IP \fIelem_type\fP 1i
+The type of the element.
+.IP \fIconv_type\fP 1i
+The type of conversion to use for complex numbers.
+.IP \fImin\fP 1i
+The minimum value will be written here.
+.IP \fImax\fP 1i
+The maximum value will be written here.
+.IP \fImean\fP 1i
+The mean value will be written here.
+.IP \fIstddev\fP 1i
+The standard deviation will be written here.
+.IP \fIsum\fP 1i
+The total of all values will be written here.
+.IP \fIsumsq\fP 1i
+The total of the squares of all values will be written here.
+.IP \fInpoints\fP 1i
+The number of values used to compute statistics will be written
+here. This will differ from num_values if there are blanked pixels.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH NOTE
+The minimum and maximum value must be initialised to a very large
+positive number and a very large negative number, respectively, outside of
+the routine. In other words, the routine does not initialise these values
+prior to testing for the minimum and maximum.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

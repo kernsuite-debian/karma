@@ -1,0 +1,41 @@
+.TH KCMAP_CHANGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_change \- Change active colourmap function.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B flag kcmap_change
+.sp
+(Kcolourmap cmap, CONST char *new_name,
+unsigned int num_cells, flag tolerant)
+.SH DESCRIPTION
+This routine will change the active function (algorithm) used to
+calculate the colours in a colourmap and the size of the colourmap.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fInew_name\fP 1i
+The new function name. If this is NULL then the active function
+is not changed.
+.IP \fInum_cells\fP 1i
+The number of colourcells required for the colourmap. If this
+is less then 2 the number of cells is not changed.
+.IP \fItolerant\fP 1i
+If TRUE, then the routine will try to allocate as many
+colourcells as possible (up to  num_cells  ), else it will fail if it could
+not allocatate all required colourcells.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

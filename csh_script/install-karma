@@ -1,0 +1,327 @@
+#! /bin/csh -f
+#
+# This C-shell script will download and install/upgrade a runtime Karma
+# distribution.
+#
+#   Copyright (C) 2002-2006  Richard Gooch
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#   Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+#   The postal address is:
+#     Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+
+# Written by		Richard Gooch   3-OCT-2002
+
+# Updated by		Richard Gooch   22-JUN-2003
+
+# Updated by		Richard Gooch   26-AUG-2003: Use KARMABASE if defined.
+
+# Updated by		Richard Gooch   3-SEP-2003: Use nm(1) instead of
+# reading symlink, since SuSE Linux has /lib/libc.so.6 as a real file rather
+# than a symlink. Grrr.
+
+# Updated by		Richard Gooch   9-NOV-2003: Added warning if installing
+# outside of /usr/local/karma but /usr/local/karma/lib exists.
+
+# Updated by		Richard Gooch   22-SEP-2005: Made use of improved
+# uname_to_platform script.
+
+# Updated by		Richard Gooch   23-SEP-2005: Added delay if running
+# from cron under Linux.
+
+# Updated by		Richard Gooch   24-NOV-2005: Added -verbose option and
+# made default behaviour quiet on success.
+
+# Updated by		Richard Gooch   25-NOV-2005: Added -secure option.
+
+# Updated by		Richard Gooch   26-NOV-2005: Added -rsync_host option.
+
+# Updated by		Richard Gooch   29-NOV-2005: Optimisations: added code
+# to manually hardlink files when building new tree and compare inode numbers
+# before checking signatures.
+
+# Updated by		Richard Gooch   1-DEC-2005: Added -experimental option.
+
+# Updated by		Richard Gooch   14-DEC-2005: Added csh_script to path.
+
+# Updated by		Richard Gooch   16-DEC-2005: Ignore KARMABASE.
+
+# Updated by		Richard Gooch   19-DEC-2005: Replaced foreach loop over
+# large `find` output with tricky use of sed and xargs.
+
+# Last updated by	Richard Gooch   10-AUG-2006: Only install libdl.dylib
+# on powerpc_Darwin machines, since i386_Darwin machines don't seem to need it.
+
+
+# Usage: install-karma [-experimental] [-nodelay] [-secure] [-rsync_host] [-verbose] dest-dir
+
+
+umask 022
+set path = ($path /usr/sbin /sbin)
+
+set rsync_host = rsync.ras.ucalgary.ca
+set default_destdir = /usr/local/karma
+
+while ($#argv > 0)
+    switch ("$argv[1]")
+      case "-experimental":
+	set default_destdir = /usr/local/karmaexp
+	set experimental = TRUE
+	breaksw
+      case "-nodelay":
+	set nodelay = TRUE
+	breaksw
+      case "-secure":
+	set check_sigs = TRUE
+	breaksw
+      case "-rsync_host":
+	shift
+	set rsync_host = "$argv[1]"
+	breaksw
+      case "-verbose":
+	set myverbose = TRUE
+	breaksw
+      default:
+	if ( ! -d $argv[1] ) then
+	    echo "$argv[1] is not a directory"
+	    exit 1
+	endif
+	set destdir = $argv[1]
+	breaksw
+    endsw
+    shift
+end
+
+if ($?experimental) then
+    set rsync_source = ${rsync_host}::karma/experimental
+else
+    set rsync_source = ${rsync_host}::karma
+endif
+
+if ( ! $?destdir ) then
+    set destdir = $default_destdir
+endif
+set path = ($path $destdir/csh_script $default_destdir/csh_script)
+
+if ( ("$destdir" != "$default_destdir") && (-d $default_destdir/lib) ) then
+    echo "There appears to be a Karma installation in the standard location of"
+    echo "$default_destdir but you are installing Karma elsewhere."
+    echo "THIS MAY CAUSE YOUR APPLICATIONS TO CRASH OR MISBEHAVE"
+    echo "You can try to set the LD_LIBRARY_PATH environment variable to:"
+    echo "  ${destdir}/lib"
+    echo "but that will not work on most systems."
+    echo "The solution is to install in $default_destdir or remove $default_destdir first"
+    if ($?nodelay) then
+	echo "You passed -nodelay, suffer the consequences."
+    else
+	echo -n "Waiting 10 seconds for you to abort the install..."
+	sleep 10; echo ""; echo ""
+	echo "OK, going ahead anyway. I warned you."
+    endif
+endif
+
+# Make destination directory
+if ( ! -d $destdir ) then
+    mkdir $destdir
+endif
+if ( ! -d $destdir ) then
+    echo "Could not create $destdir"
+    exit 1
+endif
+cd $destdir
+rm -rf .newtree
+if (-e .newtree) then
+    echo "Could not remove $destdir/.newtree"
+    exit 1
+endif
+mkdir .newtree
+if ( ! -d .newtree ) then
+    echo "Could not create .newtree"
+    exit 1
+endif
+
+# Unpack signatures if they are packed. No need to remove anything, as this
+# will done later by rsync.
+if ($?myverbose) echo "Unpacking old signatures"
+if (-r .signatures.tar.gz) then
+    gunzip -c .signatures.tar.gz | tar xpf -
+else if (-r .signatures.tar) then
+    tar xpf .signatures.tar
+endif
+
+# Make a hardlinked copy of the existing tree, so that a fast update can be
+# done after downloads have finished. This is also needed for signature
+# verification.
+if ($?myverbose) echo "Cloning tree"
+set rsync_args = (-aH --exclude=.newtree)
+if (`rsync -h | fgrep -c -e --link-dest` == 0) then
+    # Do it the hard way. It's slower now, but will speed things up later. This
+    # also saves space, so it's worth doing anyway
+    if ($?myverbose) echo "Manually hardlinking tree"
+    find ./* -type d | sed -e "s/^./.newtree/" | xargs -n 1 mkdir -p
+    find ./* -type f | sed -e "s@^./@@" -e "s@.*@& .newtree/&@" | xargs -n 2 ln
+else
+    set rsync_args = ($rsync_args --link-dest=$destdir)
+endif
+rsync $rsync_args $destdir/ .newtree
+if ($status != 0) then
+    echo "Error creating $destdir/.newtree"
+    exit 1
+endif
+if ( ! -d .newtree ) then
+    echo "Could not create $destdir/.newtree"
+    exit 1
+endif
+
+# If this is a cron job, add a delay to smooth out load on the server. Only
+# done for Linux, for simplicity.
+if ( ! $?OSTYPE ) set OSTYPE = "UNKNOWN"
+if ("$OSTYPE" == "linux") then
+    set ppid = `awk '{print $4}' /proc/$$/stat`
+    if (`fgrep -ic cron /proc/$ppid/cmdline` > 0) then
+	# Running from cron
+	sleep `ifconfig eth0 | fgrep "inet addr:" | tr . " " |awk '{print $5}'`
+    endif
+endif
+
+# Install/upgrade share (common) distribution
+if ($?myverbose) echo "Updating common distribution"
+rsync -az $rsync_source/common/ .newtree
+if ($status != 0) then
+    echo "Error updating common area"
+    exit 1
+endif
+
+# Find $destdir/csh_script/uname_to_platform script. Prefer the version already
+# in the tree, otherwise use what's in the path. Never use the newly downloaded
+# one because the signature hasn't been verified yet.
+set uname_script = $destdir/csh_script/uname_to_platform
+if ( ! -x $uname_script ) then
+    uname_to_platform >& /dev/null
+    if ($status != 0) then
+	echo "Could not find uname_to_platform"
+	exit 1
+    endif
+    set uname_script = uname_to_platform
+endif
+
+# Figure out what platform this is
+setenv MACHINE_OS `$uname_script -minor`
+set tmp = `echo "$MACHINE_OS" | sed -e "s/_/ /g"`
+setenv MACHINE "$tmp[1]"
+setenv OS "$tmp[2]"
+unset tmp
+if ("$MACHINE" == "UNKNOWN") then
+    echo "Unknown machine type"
+    exit 1
+endif
+if ("$OS" == "unknown") then
+    echo "Unknown OS type"
+    exit 1
+endif
+
+if ($?myverbose) echo "Updating complete distribution"
+rsync -az --delete --exclude=site $rsync_source/$MACHINE_OS/. .newtree
+if ($status != 0) then
+    echo "Error updating binary area"
+    exit 1
+endif
+
+if ($?check_sigs) then
+    if ($?myverbose) echo "Checking signatures"
+    set gpgv_args = (-q)
+    foreach i (share/signing-keys/*.gpg)
+	set gpgv_args = ($gpgv_args --keyring $i)
+    end
+    foreach i (`find .newtree -type f | sed -e 's*^.newtree/**' | egrep -v '^.signatures/' | egrep -v '^site/'`)
+	if ("$i:e" == "gpg") continue
+	if (-f $i) then
+	    set old_inum = `ls -i $i`
+	    set new_inum = `ls -i .newtree/$i`
+	    if ("$old_inum[1]" == "$new_inum[1]") continue
+	endif
+	if ( ! -r .newtree/.signatures/${i}.sig ) then
+	    echo "No signature found for file: $i"
+	    echo "Aborting. Look in $destdir/.newtree for what was downloaded"
+	    exit 1
+	endif
+	if ($?myverbose) echo "checking $i"
+	gpgv $gpgv_args .newtree/.signatures/${i}.sig .newtree/$i >& /dev/null
+	if ($status != 0) then
+	    echo "Bad signature for file: $i"
+	    echo "Aborting. Look in $destdir/.newtree for what was downloaded"
+	    exit 1
+	endif
+    end
+endif
+
+# Update original tree
+if ($?myverbose) echo "Updating original tree"
+rsync $rsync_args --delete .newtree/ .
+if ($status != 0) then
+    echo "Error updating main tree"
+    exit 1
+endif
+rm -rf .newtree
+
+# Pack signatures
+if ($?myverbose) echo "Packing signatures"
+rm -f .signatures.tar.gz .signatures.tar
+tar cf .signatures.tar .signatures >& /dev/null
+if (-r .signatures.tar) then
+    rm -rf .signatures
+    gzip .signatures.tar >& /dev/null
+endif
+
+if (-e bin/tx) then
+    if ($?myverbose) then
+	echo "Karma installation/upgrade for $MACHINE_OS appears to have completed successfully"
+    endif
+else
+    echo "Replacement bin/tx was not found"
+    exit 1
+endif
+
+# Darwin (MacOS X) needs extra installations in order to be useful
+if ( ("$MACHINE_OS" == "powerpc_Darwin") && ( ! -e /sw/lib/libdl.dylib ) ) then
+    if ("$uid" == 0) then
+	if ($?myverbose) then
+	    echo "Installing libdl"
+	endif
+	rsync ${rsync_host}::ftp/software/karma/libs/libdl.${MACHINE_OS}.tar.gz /tmp
+	cd /
+	tar xpzf /tmp/libdl.${MACHINE_OS}.tar.gz
+	if (-e /sw/lib/libdl.dylib) then
+	    if ($?myverbose) then
+		echo "Installation of libdl appears to be successful"
+	    endif
+	    rm /tmp/libdl.${MACHINE_OS}.tar.gz
+	else
+	    echo "Installation of libdl failed: do it manually"
+	endif
+    else
+	echo "You need to install libdl. Become root and re-run this script"
+    endif
+endif
+
+exit 0
+###############################################################################
+#      SAMPLE PROCMAIL CONFIGURATION SECTION. CUT AND PASTE THIS.
+
+# Karma rsync robot
+:0 fb
+* ^Subject: \[ANNOUNCE\] New version of Karma available for rsync update
+| (cat > /dev/null) | (/usr/local/karma/csh_script/install-karma | /usr/bin/mail -s "Karma update result" root@localhost rgooch@atnf.csiro.au)

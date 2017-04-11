@@ -1,0 +1,39 @@
+.TH KWIN_DRAW_LINES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_lines \- Draw multiple connected lines onto a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_lines
+.sp
+(KPixCanvas canvas, int *x_array, int *y_array,
+int num_points, unsigned long pixel_value)
+.SH DESCRIPTION
+Draw multiple connected lines onto a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIx_array\fP 1i
+The horizontal co-ordinates of the points.
+.IP \fIy_array\fP 1i
+The vertical co-ordinates of the points.
+.IP \fInum_points\fP 1i
+The number of points. The number of lines drawn is 1 less than
+this value.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

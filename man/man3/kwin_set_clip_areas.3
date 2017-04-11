@@ -1,0 +1,34 @@
+.TH KWIN_SET_CLIP_AREAS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_set_clip_areas \- Set the clip areas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_set_clip_areas
+.sp
+(KPixCanvas canvas,
+unsigned int num_areas, KPixCanvasRefreshArea *areas)
+.SH DESCRIPTION
+Set the clip areas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fInum_areas\fP 1i
+The number of clip areas. If 0, there are no clip areas.
+.IP \fIareas\fP 1i
+The array of clip areas.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

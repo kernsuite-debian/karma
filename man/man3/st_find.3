@@ -1,0 +1,39 @@
+.TH ST_FIND 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_find \- Search a list of strings for a string.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B unsigned int st_find
+.sp
+( CONST char **string_list, unsigned int list_length,
+CONST char *string, int (*function) () )
+.SH DESCRIPTION
+Search a list of strings for a string.
+.IP \fIstring_list\fP 1i
+The list of strings to search.
+.IP \fIlist_length\fP 1i
+The length of the string list.
+.IP \fIstring\fP 1i
+The string to search for.
+.IP \fIfunction\fP 1i
+The function to use for string comparisons. This has the same
+interface as the <<strcmp>> function.
+.SH RETURN VALUE
+The index of the found string in the string list. If no match is
+found, the <<list_length>> is returned. The routine returns on the first
+match.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

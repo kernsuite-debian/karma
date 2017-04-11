@@ -1,0 +1,30 @@
+.TH IEDIT_ALLOC_EDIT_COORDS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_alloc_edit_coords \- Allocate an array of edit co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B edit_coord * iedit_alloc_edit_coords
+.sp
+(unsigned int num_coords)
+.SH DESCRIPTION
+Allocate an array of edit co-ordinates.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates to allocate.
+.SH RETURN VALUE
+A pointer to a statically allocated array of co-ordinate
+structures on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

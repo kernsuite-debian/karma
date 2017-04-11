@@ -1,0 +1,47 @@
+.TH VC_SET_VISUALTYPE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vc_set_visualtype \- Set the current visual of the viewable colourmap.
+.SH SYNOPSIS
+.B #include <karma_vc.h>
+.sp
+.B void vc_set_visualtype
+.sp
+(Kdisplay dpy_handle, unsigned int visual, flag overlay)
+.SH DESCRIPTION
+Set the current visual of the viewable colourmap.
+.IP \fIdpy_handle\fP 1i
+The low level display handle.
+.IP \fIvisual\fP 1i
+The visual type for the canvas. Legal values are:
+VC_VX_VISUAL_PSEUDOCOLOUR0    8  bits deep (alpha/overlay channel)
+VC_VX_VISUAL_PSEUDOCOLOUR1    8  bits deep (blue channel)
+VC_VX_VISUAL_PSEUDOCOLOUR2    8  bits deep (green channel)
+VC_VX_VISUAL_PSEUDOCOLOUR3    8  bits deep (red channel)
+VC_VX_VISUAL_DIRECTCOLOUR     24 bits deep
+.IP \fIoverlay\fP 1i
+If TRUE and PseudoColour channel 0 is NOT selected, the overlay
+channel is displayed. A non-zero pixel in the overlay channel will override
+the PseudoColour/DirectColour pixel.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+PseudoColour channels 1, 2 and 3 occupy the same area of screen
+memory as the DirectColour channel. When viewing a PseudoColour canvas,
+the lower appropriate 8 bits are used. When viewing a DirectColour
+canvas, the lower 24 bits (big endian) are used. Bits 0-7, 8-15
+and 16-23 contain the red, green and blue components, respectively.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,50 @@
+.TH CONTOUR_CREATE_SEQUENCE_FROM_IARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_create_sequence_from_iarray \- Create a sequence of contour images from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B KContourImage * contour_create_sequence_from_iarray
+.sp
+(iarray array,
+unsigned int hdim,
+unsigned int vdim,
+unsigned int fdim,
+KContourImageGroup group)
+.SH DESCRIPTION
+This routine will create a sequence of contour image objects
+from a 3-dimensional Intelligent Array. At a later time, this
+sequence of contour images may be used to create a sequence of viewable
+contour images.
+.IP \fIarray\fP 1i
+The Intelligent Array. The underlying <<multi_array>> data
+structure will have its attachment count incremented upon successful
+completion.
+.IP \fIhdim\fP 1i
+The dimension index of the horizontal dimension.
+.IP \fIvdim\fP 1i
+The dimension index of the vertical dimension.
+.IP \fIfdim\fP 1i
+The dimension index of the frame dimension (dimension containing the
+sequence). The number of frames is the same as the length of this
+dimension.
+.IP \fIgroup\fP 1i
+The KContourImageGroup to add the new objects too. If NULL, it is
+not added to any group.
+.SH RETURN VALUE
+A pointer to a dynamically allocated array of contour image
+objects on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

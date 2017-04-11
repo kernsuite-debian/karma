@@ -1,0 +1,36 @@
+.TH KCMAP_SET_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_set_attributes \- This routine will set the attributes for a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_set_attributes
+.sp
+(Kcolourmap cmap, ...)
+.SH DESCRIPTION
+This routine will set the attributes for a colourmap.
+.IP \fIcmap\fP 1i
+The colourmap.
+.IP \fI...\fP 1i
+The optional list of parameter attribute-key attribute-value
+pairs must follow. This list must be terminated with the value
+KCMAP_ATT_END. See <-kcmap_ATTRIBUTES-> for a list of defined attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The colourmap is not recomputed: the effect is delayed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,32 @@
+.TH KCMAP_PREPARE_FOR_MASTERY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kcmap_prepare_for_mastery \- Allow colourmap to be slaved.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_prepare_for_mastery
+.sp
+(Kcolourmap cmap)
+.SH DESCRIPTION
+This routine will register a colourmap to be the choosen
+colourmap for subsequent attempts to open a slave colourmap connection. In
+order to make the colourmap a slave, a subsequent call to
+<-conn_attempt_connection-> must be made.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

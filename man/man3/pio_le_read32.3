@@ -1,0 +1,33 @@
+.TH PIO_LE_READ32 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+pio_le_read32 \- Read a 32 bit little-endian integer from a channel object.
+.SH SYNOPSIS
+.B #include <karma_pio.h>
+.sp
+.B flag pio_le_read32
+.sp
+(Channel channel, unsigned long *data)
+.SH DESCRIPTION
+Read a 32 bit little-endian integer from a channel object.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIdata\fP 1i
+The data will be written here. This will be in host natural byte
+order. The data will be converted from little-endian byte order after
+reading.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

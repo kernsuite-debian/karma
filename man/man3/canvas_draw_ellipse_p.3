@@ -1,0 +1,42 @@
+.TH CANVAS_DRAW_ELLIPSE_P 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_draw_ellipse_p \- Draw an ellipse onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_draw_ellipse_p
+.sp
+(KWorldCanvas canvas,
+double centre_x, double centre_y,
+double radius_x, double radius_y,
+unsigned long pixel_value)
+.SH DESCRIPTION
+Draw an ellipse onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIcentre_x\fP 1i
+The horizontal world co-ordinate of the centre of the ellipse.
+.IP \fIcentre_y\fP 1i
+The vertical world co-ordinate of the centre of the ellipse.
+.IP \fIradius_x\fP 1i
+The horizontal radius in world co-ordinates.
+.IP \fIradius_y\fP 1i
+The vertical radius in world co-ordinates.
+.IP \fIpixel_value\fP 1i
+The pixel value to draw the ellipse with.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

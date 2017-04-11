@@ -1,0 +1,37 @@
+.TH DSRW_FILTER_PROCESS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dsrw_filter_process \- Read in data and write in Karma format.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_filter_process
+.sp
+(Channel channel, multi_array *multi_desc,
+flag (*read_func) (), void *info)
+.SH DESCRIPTION
+Read in data and write in Karma format.
+.IP \fIchannel\fP 1i
+The channel to write the Karma data to.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor to write.
+.IP \fIfunc\fP 1i
+The function to call when new data should be read. The prototype
+function is <-dsrw_PROTO_read_func->.
+.IP \fIinfo\fP 1i
+An arbitrary pointer which will be passed to <<func>>.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

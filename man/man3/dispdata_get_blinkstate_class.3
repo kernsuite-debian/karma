@@ -1,0 +1,31 @@
+.TH DISPDATA_GET_BLINKSTATE_CLASS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_blinkstate_class \- Get the dataclass-specific object for a blink state.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataClassBlinkState dispdata_get_blinkstate_class
+.sp
+(KDisplayDataBlinkState blinkstate, KDisplayDataClass dataclass)
+.SH DESCRIPTION
+Get the dataclass-specific object for a blink state.
+.IP \fIblinkstate\fP 1i
+The KDisplayDataBlinkState object.
+.IP \fIdataclass\fP 1i
+The KDisplayDataClass object.
+.SH RETURN VALUE
+A KDisplayDataClassBlinkState object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

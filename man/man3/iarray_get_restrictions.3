@@ -1,0 +1,37 @@
+.TH IARRAY_GET_RESTRICTIONS 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_restrictions \- Get restriction information.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B unsigned int iarray_get_restrictions
+.sp
+(iarray array, char ***restr_names,
+double **restr_values)
+.SH DESCRIPTION
+This routine will get any associated restrictions for an
+Intelligent Array. The routine will dynamically allocate space for the
+restriction data, which must be externally freed.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIrestr_names\fP 1i
+The array of pointers to restrictions names will be written
+here.
+.IP \fIrestr_values\fP 1i
+The array of restriction values will be written here.
+.SH RETURN VALUE
+The number of restrictions. This may be 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html690" HREF="node3.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html688" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html682" HREF="node1.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html692" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html693" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html691" HREF="node3.html">Operating System Interface</A>
+<B>Up:</B> <A NAME="tex2html689" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html683" HREF="node1.html">Contents</A>
+<BR> <P>
+<H1><A NAME="SECTION00200000000000000000">Introduction</A></H1>
+<P>
+Karma is a general purpose programmer's toolkit and contains KarmaLib
+(the structured library and API) and a large number of modules
+(applications) to perform many standard tasks. This manual describes
+the library and gives programming examples.
+<P>
+This document is written for Karma version 
+1.7.25
+, which is
+probably my ``experimental'' version. Most of this manual will still
+be relevant to the previously released binary-only (or ``beta'')
+version, since binary releases come every few weeks or so. Full public
+releases come once or twice a year, so this document may talk about
+several new things not available in the last public release of Karma.
+<P>
+Click <A NAME="tex2html2" HREF="../index.html">here</A> to get back to the Karma
+home page.
+<P>
+The library is useful in a wide range of applications, from
+process/instrumentation control to advanced visualisation. Some of the
+major features available are:
+<P>
+<UL>
+<LI> Interprocess communcation
+<LI> Event generation and dispatch
+<LI> Device-independent data-oriented graphics library
+<LI> Xt-based widget library
+<LI> Strong encryption and authentication
+<LI> Flexible, heirarchical, portable data structure
+<P>
+</UL><H1><A NAME="SECTION00210000000000000000">History</A></H1>
+<P>
+The philosophy of Karma was developed after an afternoon discussion
+with Patrick Jordan (then with the CSIRO Division of Radiophysics) in
+April&nbsp;1992. His increasing fustrations with the networking support I
+had added to the <B>SIP</B> package (originally written by Donald
+McLean at CSIRO Radiophysics) led to my descision to abandon SIP and
+start afresh and develop a new package. The prime goal was to develop
+a philosophy which would make navigation of the library easy, with a
+structure that lent itself to expansion. Later that year while on
+holiday with some overseas relatives I had some time to sit down with
+pencil and paper (<EM>no</EM> computer access) and sketch out my
+prospective library. Upon my return (to my computer), I spent two fast
+and furious months coding. Before spring ended I had the core of my
+library implemented and could start using it.
+<P>
+The next major push forward came in the second quarter of the next
+year (once again while overseas). Until that time the library focussed
+mainly on interprocess communications and data structure
+support. There was only minimal graphics support in the library: each
+graphics application had to do a fair bit of work to manipulate the
+window system. Not surprisingly, there were not many graphics
+applications. In keeping with Patrick's general philosophy of
+programming (try to con me into doing the hard bits), he pushed for a
+graphics package which would understand the Karma data
+structures. Thus was born the graphics library.
+<P>
+A little more than a year later in mid-1994 (overseas again) came the
+next push: the move towards Xt for the user-interface toolkit. Until
+then, I was using the XView toolkit, and duplicating hundreds of lines
+code to interface XView and the graphics library. Over the course of
+the previous year Patrick had already convinced me that Xt was the way
+to go, and I agreed with him, except for the timing. It was always
+``yeah, someday''. He had already contributed various widgets (a
+fileselector and a colourmap editor, plus other goodies) to a widget
+library I was maintaining for him (again in accordance with his
+general philosophy). After several fustrating and wasted days trying
+to port XView to another platform, in time for a demonstration, I spat
+the dummy and wrote my first Xt widget: a canvas widget. When I went
+back to give another round of demonstrations a few weeks later, I had
+ported my volume rendering tool to Xt and the platform in question.
+<P>
+Over the course of the next two years bigger and better widgets were
+developed. December&nbsp;1994 saw the creation of the <EM>ImageDisplay</EM>
+widget, virtually an application in itself, the biggest widget written
+so far. In relative terms, 1995 was rather quiet, with most work being
+in improving existing library packages and enhancing the few
+visualisation applications.
+<P>
+In the second quarter of 1996 the next push came, except that here it
+was solidly in the applications area. A visiting astronomer (Vincent
+McIntyre, then of the University of Wollongong) asked me how hard it
+would be to develop an interactive ``Position-Velocity slicer''
+tool. We decided to collaborate, and after a few days apiece, we had
+our new application. The popularity of this tool resulted in a flurry
+of requests from astronomers for other tools. The next six months saw
+the development of several new tools. The efforts of the previous
+years in developing the library were really starting to pay of.
+<P>
+<H1><A NAME="SECTION00220000000000000000">Philosophy</A></H1>
+<P>
+Perhaps the most important aspect to the Karma design is that it
+should be easy to determine what package would suit your needs. This
+is important because a flexible library is layered, with more powerful
+packages built on top of simpler packages. Otherwise it is possible to
+quickly become lost amongst the various packages all appearing to
+provide the same basic functionality (i.e. communications support).
+<P>
+Another important point is that the lower-level (simpler) packages
+should still be available to the application programmer, as it is
+impossible for the library maintainer to forecast everybody's
+needs. The programmer has the ``right'' to delve into the guts of the
+library.
+<P>
+<H1><A NAME="SECTION00230000000000000000">Library Structure</A></H1>
+<P>
+One of the key design goals of Karma is to ensure the library is
+simple to navigate. It should be clear to a programmer seeking a
+certain functionality from the library where to look. This is coupled
+with the realisation that functional concepts (such as communications
+support or data structure definitions) may be repeated in the library
+when complex functional systems are implemented by using more
+primitive systems. This is because most programming libraries are
+implemented with some sort of layering of functions. The experience
+with <B>SIP</B> was that it became increasingly difficult for a
+programmer not intimately familiar with the library to determine which
+function was more appropriate to use. Often, a programmer would choose
+a function that provided a more primitive facility rather than another
+which was more powerful.
+<P>
+When the programmer is faced with several functional systems which
+appear somewhat similar, it should be immediately obvious which system
+provides the greatest flexibility, power and ease of use. The Karma
+solution employs a strict layering with defined levels inside the
+structure.
+<P>
+With few exceptions, the highest level packages are recommended for
+use, as these provide the greatest flexibility, ease of use and are
+also more highly optimised. This last point may seem to be the reverse
+of common-sense, as one might expect a simple package to be more
+efficient than a complex package. In fact, because the higher level
+package has a better knowledge of the data being dealt with, there is
+more scope for making ``assumptions'' (perfectly safe because the
+package knows when it is safe to do so), caching intermediate results
+and avoiding duplication of effort.
+<P>
+To implement these design goals, the structure as set out below was
+developed.
+<P>
+<UL>
+<LI> Functional concepts in the library are grouped into
+``packages''. An example of a functional concept is interprocess
+communications. Another example is a graphics canvas
+<LI> A package provides (where appropriate) a class and member
+functions
+<LI> The library is layered, with packages residing wholly in a
+single layer
+<LI> Each layer of the library may hold one or more packages
+<LI> Packages have no dependencies on other packages at the same or
+higher level
+<LI> Packages at higher levels of the library provide more power than
+packages providing similar functional concepts at lower levels
+<LI> The interfaces to lower level packages are published so that the
+programmer can work at a more primitive level if the higher level
+packages do not provide the required functionality or
+flexibility. This is termed ``programmer rights''
+<LI> The name of a package reflects its level: the number of
+characters in the package name must equal the level of the
+package. All functions provided by a package are prefixed by the
+package name and an underscore character.
+<P>
+</UL>
+<P>
+An example of how this works is the core communications
+infrastructure, which spans four levels. These four levels are:
+<P>
+<UL>
+<LI> Raw communications package (package name <A NAME="tex2html3" HREF="../lib/r.html"><B>r</B></A>) which
+provides a simplified mechanism to open unbuffered files, pipes,
+Unix-socket based connections and TCP/IP based connections
+<LI> Full duplex, buffered I/O package (package name <A NAME="tex2html4" HREF="../lib/ch.html"><B>ch</B></A>)
+providing the ``Channel'' class
+<LI> Event management for Channels (package name <A NAME="tex2html5" HREF="../lib/chm.html"><B>chm</B></A>) which
+allows callback functions to be called when Channels are ready for
+input or output
+<LI> Connection management package (package name <A NAME="tex2html6" HREF="../lib/conn.html"><B>conn</B></A>) which
+provides for high-level control of connections between processes and
+machines, user-defined protocols with separate callbacks for each,
+authentication and encryption.
+<P>
+</UL>
+<P>
+A programmer using the communications facilities of the Karma library
+would naturally choose to use the <A NAME="tex2html7" HREF="../lib/conn.html"><B>conn</B></A> package, since it is
+the highest level package providing generic communications support.
+<P>
+The include file needed for each package is based on the common prefix.
+For example:  karma_conn.h
+<P>
+<H1><A NAME="SECTION00240000000000000000">Features</A></H1>
+<P>
+The facilities available in the library are described in the following
+chapters. They are briefly described here:
+<P>
+<H2><A NAME="SECTION00241000000000000000">Operating System Interface</A></H2>
+<P>
+This ranges from convenience wrappers around standard operating system
+facilities (such was the <A NAME="tex2html8" HREF="../lib/dir.html"><B>dir</B></A> package which provides a
+portable and more powerful means of scanning directories), to runtime
+error detection for allocated memory blocks (with the <A NAME="tex2html9" HREF="../lib/m.html"><B>m</B></A>
+package). Other packages provide simplified signal handling (the
+<A NAME="tex2html10" HREF="../lib/s.html"><B>s</B></A> package) and default error display (the <A NAME="tex2html11" HREF="../lib/a.html"><B>a</B></A>
+package).
+<P>
+<H2><A NAME="SECTION00242000000000000000">Interprocess communcations</A></H2>
+<P>
+<A NAME="sectionconnectionmanagement">&#160;</A><A NAME="108">&#160;</A>
+The Karma communications support includes process management and a
+powerful connection package. Using a Connection Management tool, the
+applications developer can launch and connect a number of modules
+(processes) on a network with ease. A simple scripting language is
+provided which allows development of network applications launched
+from the command line.
+<P>
+The communications support in Karma forms one of the major components
+to the library. Full authentication and encryption support is
+included, making the development of secure, network-aware applications
+trivial.
+<P>
+Packages which provide high-level functionality (such as Intelligent
+Arrays and various sections of the graphics library) are able to call
+upon the communications facilities. Because a universal interface is
+provided, packages need only register their specific protocols,
+leaving the initiation of connections to another agent (such as a
+connection management tool). Packages are notified when connections
+are attempted, succeed, have incoming data and when they close.
+<P>
+<H2><A NAME="SECTION00243000000000000000">Event generation and dispatch</A></H2>
+<P>
+A generic callback mechanism to dispatch events and a portable
+mechanism to deliver regularly scheduled events at a variety of
+priorities. The latter has most application in realtime process and
+instrumentation control systems.
+<P>
+<H2><A NAME="SECTION00244000000000000000">Device-independent data-oriented graphics library</A></H2>
+<P>
+The display system both provides an abstract interface to the
+underlying graphics system (i.e. the X window system), and also
+provides much higher level functionality than many graphics
+libraries. As well as supporting simple geometric primitives and text
+display, a powerful and flexible image display system is
+included. This allows the direct mapping of application data
+structures (ie. 2-D and 3-D arrays) to display windows
+(canvases). These images may be animated at high speed (such as in a
+movie tool). The complex machinery required to handle window resize
+and refresh events, as well as other events (i.e. mouse events) is
+built into the display system.  Other facilities such as graphics
+overlay lists (which are easily networked and shared amongst
+processes), image editing (a simple painting mechanism, also network
+shareable), contour images and axes display are also supplied.
+<P>
+<H2><A NAME="SECTION00245000000000000000">Xt-based widget library</A></H2>
+<P>
+The Karma widget library does not follow the strict layered approach
+of the rest of the library. This is not to say that the widget library
+is not layered, simply that the strict dependency rules are not
+enforced (though usually followed). More relevant to the application
+programmer is the lack of package names for widgets, and hence it is
+not quite so obvious which widget amongst a group of similar widgets
+is the most appropriate/most powerful. The chapter on the widget
+library provides a quick overview which should help you navigate.
+<P>
+<H2><A NAME="SECTION00246000000000000000">Flexible, heirarchical, portable data structure</A></H2>
+<P>
+Karma provides a highly extensible, recursive, hierarchical data
+structure with extensive library support. This data structure may be
+accessed in a very portable, generic fashion by applications and may
+also be accessed directly when speed is critical. By supplying
+powerful library routines, data structures may be accessed in an
+abstract way, removing the need for the applications programmer to
+write code to deal with complex data structures while also allowing
+users to pass increasingly complex data structures to modules without
+the need for recompiliation.  The applications programmer is left to
+concentrate on processing simple sub-structures (typically 1, 2 or 3
+dimensional arrays) without incurring any processing overhead. Tiling
+of multi dimensional arrays is supported transparently, and, using
+special indexing techniques (also transparent to the application),
+incur no performance overhead.
+<P>
+The library also supplies routines to allow the programmer to transfer
+data structures as objects to and from named objects (disc files and
+network connections) without requiring the programmer to pay any
+attention to data formats, byte swapping machines, word sizes,
+etc. All data transfers are highly optimised to take advantage of the
+features of any particular platform and operating system.
+<P>
+In addition, data structures may be automatically memory
+mapped<A NAME="113">&#160;</A> from disc into the process address space,
+yielding enormous performance increases when reading large data
+structures from disc, and also saving swap space.
+<P>
+This powerful data format supports not only the simple two and
+three-dimensional datasets used in the visualisation tools, but also
+the more complex data structures require to store and distribute other
+information such as graphics overlay lists.
+<P>
+<H3><A NAME="SECTION00246100000000000000">Foreign Data</A></H3>
+<P>
+As powerful as the Karma data structure may be, real data come in (too
+many) different formats. The library provides a package for reading
+foreign data formats such as FITS and Miriad n-dimensional
+arrays. Common image formats such as PPM and Sun Rasterfile are also
+supported.
+<P>
+<H2><A NAME="SECTION00247000000000000000">Intelligent Arrays</A></H2>
+<P>
+The basic idea of ``Intelligent Arrays'' was conceived by Patrick
+Jordan of the CSIRO Division of Radiophysics. The following
+requirements were subsequently defined after discussions between
+Jordan and myself:
+<P>
+<UL>
+<LI> Intelligent Arrays are multi-dimensional arrays of a single
+atomic data type
+<LI> They are dynamically allocated at runtime
+<LI> They know their own size (unlike regular C dynamically allocated
+arrays with more than one dimension)
+<LI> They know their own type (i.e. whether floating point, integer,
+complex and so on)
+<LI> A compile-time switch chooses between efficient array indexing
+or fully bounds-checking array indexing (essential for debugging).
+<P>
+</UL>
+<P>
+Jordan's first implementation of Intelligent Arrays was limited to two
+dimensions and used the conventional indexing scheme used with
+multi-dimensional dynamically allocated arrays in C:
+<BR><IMG WIDTH=500 HEIGHT=18 ALIGN=BOTTOM ALT="equation118" SRC="img1.gif"><BR>
+where for a two-dimensional array <I>m</I> is the number of columns in the
+array, <I>j</I> is the row (vertical) position and <I>i</I> is the column
+(horizontal) position. This has the disadvantage of requiring a
+multiplication for every array access, which incurs a considerable
+performance penalty on some systems.
+<P>
+The implementation of Intelligent Arrays I developed for Karma uses
+<EM>address offset arrays</EM>, one for each dimension of the
+array. Thus, for a two-dimensional array the following C code is used
+for accessing data elements (although more elegant access macros are
+provided for aesthetic reasons):
+<BR><IMG WIDTH=500 HEIGHT=18 ALIGN=BOTTOM ALT="equation121" SRC="img2.gif"><BR>
+where <I>x</I> is an array of offsets for the horizontal dimension and <I>y</I>
+is an array of offsets for the vertical dimension. The values in these
+arrays may be calculated thus:
+<BR><IMG WIDTH=500 HEIGHT=18 ALIGN=BOTTOM ALT="equation123" SRC="img3.gif"><BR>
+This scheme is much faster than the conventional indexing scheme and
+has the remarkable feature that non-contiguous arrays may be
+implemented by <EM>simply changing the index arrays</EM>. This is
+possible when the array mapping to memory is separable for each
+dimension. Examples of non-contiguous arrays where this is true are
+tiled or toroidal arrays. In both these cases, conventional techniques
+used to access array elements can slow down access several
+times. Using address offset arrays there is <EM>no performance
+penalty</EM>.
+<P>
+<H1><A NAME="SECTION00250000000000000000">Roadmap for Application Writing</A></H1>
+<P>
+This section attempts to present a simple roadmap which you would use
+to start writing a new application. If you are new to Karma and want
+to know which parts of this manual you need to read (and more
+importantly, which parts you can ignore), this section should help. A
+variety of simple application types are described, and which parts of
+the library you are likely to use.
+<P>
+<H2><A NAME="SECTION00251000000000000000">Image Display Tool</A></H2>
+<P>
+This tool can load an image (stored as a 2-dimensional array) and
+display it. The tool includes a file browser, a magnifying window, a
+colourmap editor, zoom controls and much more, all in less than 500
+lines of code. The <A HREF="node16.html#chapterkview">Image Display Tool</A> chapter is
+devoted to this tool.
+<P>
+In order to display anything, you need to use the graphics
+library. The chapter on image display will describe the relevant parts
+of the graphics library. To bind your application together into a
+graphical user interface (GUI) you will need to use the widgets
+library, so the chapter on widgets will be helpful here. Finally, the
+chapter on <A HREF="node11.html#chapteriarray">Intelligent Arrays</A> should be read, as
+Intelligent Arrays provide a simple interface to loading data.
+<P>
+<H2><A NAME="SECTION00252000000000000000">Shared Drawing Tool</A></H2>
+<P>
+This is much the same as the previously described tool, except that
+you also need to use other parts of the graphics library (see the
+chapter on image editing). A cursory knowledge of Karma communictions
+would also be helpful (see the chapter on interprocess
+communications).
+<P>
+<H2><A NAME="SECTION00253000000000000000">Instrumentation Control Application</A></H2>
+<P>
+This requires knowledge of Karma communications (see the chapter on
+interprocess communications) and event management (see the chapter on
+event generation and dispatch). You will also find some complete
+examples in the chapter on advanced examples.
+<P>
+<H2><A NAME="SECTION00254000000000000000">Image Processing Utility</A></H2>
+<P>
+A simple programme which reads in a floating-point image, multiplies
+all the values by 2.0 and writes a new file, could be written in a
+matter of minutes. To support a variety of input file formats, the
+chapter on foreign data explains how to read and write various data
+formats. The chapter on Intelligent Arrays describes how to manipulate
+array data. You will find a worked example in the chapter on
+<A HREF="node12.html#chapterforeigndata">Foreign Data</A>. This example even
+shows you how you would manipulate a FITS-style header (Karma calls
+these ``attachments'').
+<P>
+<HR><A NAME="tex2html690" HREF="node3.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html688" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html682" HREF="node1.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html692" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html693" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html691" HREF="node3.html">Operating System Interface</A>
+<B>Up:</B> <A NAME="tex2html689" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html683" HREF="node1.html">Contents</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

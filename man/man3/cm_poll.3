@@ -1,0 +1,39 @@
+.TH CM_POLL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+cm_poll \- Poll for child process state changes.
+.SH SYNOPSIS
+.B #include <karma_cm.h>
+.sp
+.B void cm_poll
+.sp
+(flag block)
+.SH DESCRIPTION
+This routine will poll for any change in status of child
+processes. If the operating system does not support forking, the routine
+displays an error message. Those processes which have been registered using
+<-cm_manage-> will have any callback routines called. If a child has not
+been registered using <-cm_manage-> then the routine will print a warning
+message stating that the child was not managed.
+.IP \fIblock\fP 1i
+If TRUE, the routine will poll forever until a child changes status
+or a signal is caught.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the process has no children, the routine will ALWAYS return
+immediately.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,35 @@
+.TH PSW_CLOSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_close \- Close a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_close
+.sp
+(PostScriptPage pspage, flag flush, flag close)
+.SH DESCRIPTION
+This routine will write a tail to a PostScriptPage object and
+will deallocate the object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIflush\fP 1i
+If TRUE, the underlying channel obect is flushed.
+.IP \fIclose\fP 1i
+If TRUE, the underlying channel obect is closed.
+.SH RETURN VALUE
+TRUE on succes, else FALSE. In either case, the PostScriptPage
+object is deallocated (and closed if <<close>> is TRUE).
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

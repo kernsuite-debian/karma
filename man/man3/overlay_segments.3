@@ -1,0 +1,54 @@
+.TH OVERLAY_SEGMENTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_segments \- Add many segments to an overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_segments
+.sp
+(KOverlayList olist, unsigned int num_segments,
+unsigned int *types0, double *x0, double *y0,
+unsigned int *types1, double *x1, double *y1,
+CONST char *colourname)
+.SH DESCRIPTION
+This routine will add a number of disjoint line segments to an
+overlay object list. These segments will form a single object. Using this
+routine is far more efficient than calling <-overlay_line-> repeatedly.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fInum_segments\fP 1i
+The number of segments.
+.IP \fItypes0\fP 1i
+The types of the start co-ordinates. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIx0\fP 1i
+The horizontal positions of the start co-ordinates.
+.IP \fIy0\fP 1i
+The vertical positions of the start co-ordinates.
+.IP \fItypes1\fP 1i
+The types of the stop co-ordinates. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIx1\fP 1i
+The horizontal positions of the stop co-ordinates.
+.IP \fIy1\fP 1i
+The vertical positions of the stop co-ordinates.
+.IP \fIcolourname\fP 1i
+The colour name.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

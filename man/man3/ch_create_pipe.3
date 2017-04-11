@@ -1,0 +1,35 @@
+.TH CH_CREATE_PIPE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_create_pipe \- Create a pipe.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_create_pipe
+.sp
+(Channel *read_ch, Channel *write_ch)
+.SH DESCRIPTION
+This routine will create an un-named pipe (see <<pipe(2)>> for
+details on un-named pipes).
+.IP \fIread_ch\fP 1i
+The channel corresponding to the read end of the pipe will be
+written here.
+.IP \fIwrite_ch\fP 1i
+The channel corresponding to the write end of the pipe will be
+written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE and sets <<errno>> with the error
+code.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

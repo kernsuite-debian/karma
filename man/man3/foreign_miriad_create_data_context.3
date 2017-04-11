@@ -1,0 +1,40 @@
+.TH FOREIGN_MIRIAD_CREATE_DATA_CONTEXT 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_miriad_create_data_context \- Create a context suitable for reading Miriad Image data.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B KMiriadDataContext foreign_miriad_create_data_context
+.sp
+(CONST char *dirname, unsigned int mmap_option, flag writable)
+.SH DESCRIPTION
+This routine will create a context suitable for reading Miriad
+Image data. The <-foreign_miriad_read_data-> routine may be used to read
+data sequentially from the context.
+.IP \fIdirname\fP 1i
+The directory name of the Miriad dataset name.
+.IP \fImmap_option\fP 1i
+Option to control memory mapping when reading from disc. See
+<-ch_MAP_CONTROLS-> for a list of legal values.
+.IP \fIwritable\fP 1i
+If TRUE, the mapped structure will be writable. When the data
+structure data is modified these changes will be reflected in the disc
+file. The shape of the data structure cannot be changed though mapping.
+If FALSE and the structure is written to, a segmentation fault occurs.
+.SH RETURN VALUE
+A KMiriadDataContext object on success, else NULL (indicating the
+image file could not be read).
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

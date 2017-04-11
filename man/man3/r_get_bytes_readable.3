@@ -1,0 +1,30 @@
+.TH R_GET_BYTES_READABLE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_bytes_readable \- Get bytes readable on a connection.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_get_bytes_readable
+.sp
+(int connection)
+.SH DESCRIPTION
+This routine will determine the minimum number of bytes readable
+on a connection. There may be more bytes readable than indicated.
+.IP \fIconnection\fP 1i
+The connection.
+.SH RETURN VALUE
+The number of bytes readable on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

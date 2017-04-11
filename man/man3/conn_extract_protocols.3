@@ -1,0 +1,31 @@
+.TH CONN_EXTRACT_PROTOCOLS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_extract_protocols \- Get supported protocols.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B char ** conn_extract_protocols
+.sp
+()
+.SH DESCRIPTION
+This routine will extract all the supported protocols and
+produces a dynamically allocated array of strings which may be later
+displayed.
+.SH RETURN VALUE
+A pointer to a dynamically allocated array of dynamically
+allocated strings on success, else NULL. The end of the array is marked
+with a NULL string pointer.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

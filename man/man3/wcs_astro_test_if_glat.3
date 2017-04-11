@@ -1,0 +1,31 @@
+.TH WCS_ASTRO_TEST_IF_GLAT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_test_if_glat \- Test if an axis is a Galactic Latitude axis.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_astro_test_if_glat
+.sp
+(KwcsAstro ap, CONST char *axis_name)
+.SH DESCRIPTION
+Test if an axis is a Galactic Latitude axis.
+.IP \fIap\fP 1i
+The KwcsAstro object. This may be NULL.
+.IP \fIaxis_name\fP 1i
+The name of the axis.
+.SH RETURN VALUE
+TRUE the axis is a Galactic Latitude axis, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

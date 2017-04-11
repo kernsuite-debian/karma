@@ -1,0 +1,32 @@
+.TH DSRA_ARRAY_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsra_array_desc \- Read ASCII representation of an array descriptor.
+.SH SYNOPSIS
+.B #include <karma_dsra.h>
+.sp
+.B array_desc * dsra_array_desc
+.sp
+(Channel channel, unsigned int type)
+.SH DESCRIPTION
+Read ASCII representation of an array descriptor.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.IP \fItype\fP 1i
+The type of the array. Legal values for this are:
+ARRAYP    K_ARRAY
+.SH RETURN VALUE
+A pointer to the array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

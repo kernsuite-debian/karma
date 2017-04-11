@@ -1,0 +1,41 @@
+.TH RP_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+rp_create \- Create a pool of random bytes.
+.SH SYNOPSIS
+.B #include <karma_rp.h>
+.sp
+.B RandPool rp_create
+.sp
+( unsigned int size, unsigned int hash_digest_size,
+unsigned int hash_block_size, void (*hash_func) () )
+.SH DESCRIPTION
+This routine will create a random pool of bytes to which random
+data may be subsequently added or extracted. The pool is initialised with
+pseudo-random data (which is *not* cryptographically secure). When data is
+added to the pool, the pool is stirred using a supplied hash function.
+Bytes extracted from the pool should be cryptographically secure.
+.IP \fIsize\fP 1i
+The size of the pool.
+.IP \fIhash_digest_size\fP 1i
+The size of the hash buffer.
+.IP \fIhash_block_size\fP 1i
+The size of the hash block.
+.IP \fIhash_func\fP 1i
+The hash function. The prototype function is
+<-rp_PROTO_hash_func->.
+.SH RETURN VALUE
+A RandPool object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,29 @@
+.TH DS_GET_PACKET_SIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_packet_size \- Calculate size in bytes of a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_get_packet_size
+.sp
+(CONST packet_desc *pack_desc)
+.SH DESCRIPTION
+Calculate size in bytes of a packet.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.SH RETURN VALUE
+The size in bytes.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

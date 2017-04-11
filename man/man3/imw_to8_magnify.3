@@ -1,0 +1,90 @@
+.TH IMW_TO8_MAGNIFY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+imw_to8_magnify \- Convert generic image to 8 bit image, increasing size.
+.SH SYNOPSIS
+.B #include <karma_imw.h>
+.sp
+.B flag imw_to8_magnify
+.sp
+(unsigned char *out_image, flag flip,
+iaddr out_hstride, iaddr out_vstride,
+int inp_width, int inp_height, int mag_factor,
+CONST char *inp_image,
+CONST iaddr *inp_hoffsets, CONST iaddr *inp_voffsets,
+unsigned int inp_type, unsigned int conv_type,
+unsigned int num_pixels,
+CONST unsigned char *pixel_values,
+unsigned char blank_pixel,
+unsigned char min_sat_pixel, unsigned char max_sat_pixel,
+double i_min, double i_max,
+flag (*iscale_func) (), void *iscale_info)
+.SH DESCRIPTION
+This routine will convert an image from one format to an 8 bit
+image of pixels, maintaining the aspect ratio of the original image and
+magnifying. Magnification is performed by pixel replication.
+.IP \fIout_image\fP 1i
+The output image will be written here.
+.IP \fIflip\fP 1i
+If TRUE, the output image is flipped vertically relative to the
+input image.
+.IP \fIout_hstride\fP 1i
+The stride between successive horizontal pixels (in bytes).
+.IP \fIout_vstride\fP 1i
+The stride between successive vertical pixels (in bytes).
+.IP \fIinp_width\fP 1i
+The width of the input image.
+.IP \fIinp_height\fP 1i
+The height of the input image.
+.IP \fImag_factor\fP 1i
+The magnification factor. A value of 1 would yield an output
+image the same size as the input.
+.IP \fIinp_image\fP 1i
+The input image data.
+.IP \fIinp_hoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIinp_voffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIinp_type\fP 1i
+The type of the input data.
+.IP \fIconv_type\fP 1i
+The input conversion type (when the input is complex). See
+<-ds_COMPLEX_CONVERSIONS-> for the list of allowed values.
+.IP \fInum_pixels\fP 1i
+The number of pixels in the pixel array.
+.IP \fIpixel_values\fP 1i
+The array of pixel values.
+.IP \fIblank_pixel\fP 1i
+The pixel value to be used when the intensity value is an
+undefined value.
+.IP \fImin_sat_pixel\fP 1i
+The pixel value to be used when the intensity value is
+below the minimum value.
+.IP \fImax_sat_pixel\fP 1i
+The pixel value to be used when the intensity value is
+above the maximum value.
+.IP \fIi_min\fP 1i
+The minimum intensity value.
+.IP \fIi_max\fP 1i
+The maximum intensity value.
+.IP \fIiscale_func\fP 1i
+The function to be called when non-linear intensity scaling
+is required. If NULL, linear intensity scaling is used. The prototype
+function is <-imw_PROTO_iscale_func->.
+.IP \fIiscale_info\fP 1i
+A pointer to arbitrary information for <<iscale_func>>.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

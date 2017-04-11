@@ -1,0 +1,33 @@
+.TH CANVAS_GET_ATTRIBUTES 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_get_attributes \- Get canvas attributes.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_get_attributes
+.sp
+(KWorldCanvas canvas, ...)
+.SH DESCRIPTION
+Get canvas attributes.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pointer pairs. The list must be terminated with
+CANVAS_ATT_END. See <-canvas_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,40 @@
+.TH IARRAY_FORMAT_VALUE 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_format_value \- Format a data value into a string.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_format_value
+.sp
+(iarray array, char string[STRING_LENGTH],
+double value, double scale, double offset)
+.SH DESCRIPTION
+Format a data value into a string.
+.IP \fIarray\fP 1i
+The Intelligent Array the value is associated with.
+.IP \fIstring\fP 1i
+The string to write to.
+.IP \fIvalue\fP 1i
+The value to format.
+.IP \fIscale\fP 1i
+The scale value to apply to the data. If this is TOOBIG the routine
+uses the scale and offset attached to the array. See
+<-iarray_set_data_scaling-> for details.
+.IP \fIoffset\fP 1i
+The offset to apply after scaling the data.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

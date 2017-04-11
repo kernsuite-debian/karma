@@ -1,0 +1,38 @@
+.TH IARRAY_MIN_MAX 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_min_max \- Determine the minimum and maximum value of an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_min_max
+.sp
+(iarray array, unsigned int conv_type, double *min,
+double *max)
+.SH DESCRIPTION
+Determine the minimum and maximum value of an Intelligent Array.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIconv_type\fP 1i
+The conversion type to use for complex numbers. This is ignored
+if the array is not complex. See <-ds_COMPLEX_CONVERSIONS-> for legal
+values.
+.IP \fImin\fP 1i
+The routine will write the minimum value here.
+.IP \fImax\fP 1i
+The routine will write the maximum value here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

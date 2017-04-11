@@ -1,0 +1,38 @@
+.TH DS_FIND_HOLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_find_hole \- Recursively search packet for a hole.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_find_hole
+.sp
+(CONST packet_desc *inp_desc, packet_desc **out_desc,
+unsigned int *elem_num)
+.SH DESCRIPTION
+This routine will recursively search a packet descriptor for a
+hole (element type NONE or element descriptor pointer NULL).
+.IP \fIinp_desc\fP 1i
+The packet descriptor to search.
+.IP \fIout_desc\fP 1i
+A pointer to the packet descriptor which contains the hole is
+written here. If this is NULL, nothing is written here.
+.IP \fIelem_num\fP 1i
+The element number in that packet which corresponds to the hole
+is written here. If this is NULL, nothing is written here.
+.SH RETURN VALUE
+A code indicating the status of the search. See
+<-ds_IDENT_TABLE-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

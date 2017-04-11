@@ -1,0 +1,14 @@
+#! /bin/csh -f
+
+if ( ! -d $KARMABINPATH ) exit 0
+sleep 1
+
+foreach i (`ldd $KARMABINPATH/kvis | awk '{print $3}' | egrep '^/'`)
+    cp $i /dev/null
+end
+
+cd $KARMABINPATH
+cat * > /dev/null
+
+cd $KARMABASE/share
+cat * >& /dev/null

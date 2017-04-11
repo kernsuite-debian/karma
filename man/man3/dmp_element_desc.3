@@ -1,0 +1,38 @@
+.TH DMP_ELEMENT_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dmp_element_desc \- Dump an element descriptor to a file.
+.SH SYNOPSIS
+.B #include <karma_dmp.h>
+.sp
+.B void dmp_element_desc
+.sp
+(FILE *fp, unsigned int type, char *desc, flag comments)
+.SH DESCRIPTION
+This routine will dump an element descriptor to a file, writing
+in ASCII.
+.IP \fIfp\fP 1i
+The file.
+.IP \fItype\fP 1i
+The type of the element.
+.IP \fIdesc\fP 1i
+The element descriptor. If the element is an array pointer or a
+linked list pointer, that descriptor will also be dumped.
+.IP \fIcomments\fP 1i
+If TRUE, the routine will append comments to the lines written,
+else it will not.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

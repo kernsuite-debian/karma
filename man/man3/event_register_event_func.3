@@ -1,0 +1,32 @@
+.TH EVENT_REGISTER_EVENT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+event_register_event_func \- Register event callback.
+.SH SYNOPSIS
+.B #include <karma_event.h>
+.sp
+.B KCallbackFunc event_register_event_func
+.sp
+(flag (*func) (), void *f_info)
+.SH DESCRIPTION
+Register event callback.
+.IP \fIfunc\fP 1i
+The function that is called when a position event occurs. The
+prototype function is <-event_PROTO_event_func->.
+.IP \fIf_info\fP 1i
+The initial arbitrary function information pointer.
+.SH RETURN VALUE
+A handle to a KCallbackFunc object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

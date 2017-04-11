@@ -1,0 +1,54 @@
+.TH DS_DRAW_ELLIPSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_draw_ellipse \- Draw an ellipse into a 2 dimensional Karma array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_draw_ellipse
+.sp
+(char *array, unsigned int elem_type,
+dim_desc *abs_dim_desc, unsigned int abs_stride,
+dim_desc *ord_dim_desc, unsigned int ord_stride,
+double centre_abs, double centre_ord,
+double radius_abs, double radius_ord,
+double value[2])
+.SH DESCRIPTION
+Draw an ellipse into a 2 dimensional Karma array.
+.IP \fIarray\fP 1i
+The start of the array (plane) data.
+.IP \fIelem_type\fP 1i
+The type of the element to draw.
+.IP \fIabs_dim_desc\fP 1i
+The abscissa dimension descriptor.
+.IP \fIabs_stride\fP 1i
+The stride of abscissa co-ordinates in memory (in bytes).
+.IP \fIord_dim_desc\fP 1i
+The ordinate dimension descriptor.
+.IP \fIord_stride\fP 1i
+The stride of ordinate co-ordinates in memory (in bytes).
+.IP \fIcentre_abs\fP 1i
+The centre of the ellipse in abscissa real-world co-ordinates.
+.IP \fIcentre_ord\fP 1i
+The centre of the ellipse in ordinate real-world co-ordinates.
+.IP \fIradius_abs\fP 1i
+The abscissa radius. This must be greater than 0.0.
+.IP \fIradius_ord\fP 1i
+The ordinate radius. This must be greater than 0.0.
+.IP \fIvalue\fP 1i
+The value to write the ellipse into the array.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

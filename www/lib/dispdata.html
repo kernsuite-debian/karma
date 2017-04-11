@@ -1,0 +1,756 @@
+<html><head><title>Package: dispdata</title></head> 
+<body>
+<center><h1>The "dispdata" Package</h1></center>    These routines are meant to provide a high level mechanism to manage the
+    display of data.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=dispdata></a></table><h4>Functions</h4><table><tr><td><a href=dispdata.html#dispdata_array_create_dataclass>dispdata_array_create_dataclass</a></td><td>Initialise array data support for the package.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_array_clone_data>dispdata_array_clone_data</a></td><td>Clone an array dataset.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_array_register_irange_change_func>dispdata_array_register_irange_change_func</a></td><td>Register a function to be called the image itensity range changes
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_array_convert_3coord>dispdata_array_convert_3coord</a></td><td>Convert canvas co-ordinate to 3D dataset co-ordinate.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_init>dispdata_init</a></td><td>Initialise the package.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_classlist>dispdata_get_classlist</a></td><td>Get the list of supported dataclasses.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_data_create_func>dispdata_register_data_create_func</a></td><td>Register a function to be called when a dataobject is created.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_data_destroy_func>dispdata_register_data_destroy_func</a></td><td>Register a function to be called when a dataobject is destroyed.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_dataobject_destroy_func>dispdata_register_dataobject_destroy_func</a></td><td>Register a function to be called when a dataobject is destroyed.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_set_dataclass_attributes>dispdata_set_dataclass_attributes</a></td><td>Set global attributes for the a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_dataclass_attributes>dispdata_get_dataclass_attributes</a></td><td>Get global attributes for the a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_create_window>dispdata_create_window</a></td><td>Create a display data window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_destroy_window>dispdata_destroy_window</a></td><td>Destroy a display data window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_window_destroy_func>dispdata_register_window_destroy_func</a></td><td>Register destroy callback.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_set_window_attributes>dispdata_set_window_attributes</a></td><td>Set the attributes for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_window_attributes>dispdata_get_window_attributes</a></td><td>Get the attributes for a window object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_num_windows>dispdata_get_num_windows</a></td><td>Get the number of windows.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_refresh_window>dispdata_refresh_window</a></td><td>Refresh a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_num_blinkstates>dispdata_get_num_blinkstates</a></td><td>Get the number of blinkstates for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_active_blinkstate>dispdata_get_active_blinkstate</a></td><td>Get the active KDisplayDataBlinkState for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_first_window>dispdata_get_first_window</a></td><td>Get first window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_prev_window>dispdata_get_prev_window</a></td><td>Get previous window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_next_window>dispdata_get_next_window</a></td><td>Get next window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_window_index>dispdata_get_window_index</a></td><td>Get the index for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_window_renumber_func>dispdata_register_window_renumber_func</a></td><td>Register renumber callback.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_create_dataobject>dispdata_create_dataobject</a></td><td>Create a display data object (i.e. array, overlay, etc.).
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_destroy_dataobject>dispdata_destroy_dataobject</a></td><td>Destroy a display data object (i.e. array, overlay, etc.).
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_dataobject_subclass>dispdata_get_dataobject_subclass</a></td><td>Get the subclass for a KDisplayDataObject.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_set_data_attributes>dispdata_set_data_attributes</a></td><td>Set the attributes for a data object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_data_attributes>dispdata_get_data_attributes</a></td><td>Get the attributes for a data object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_associate_data_object>dispdata_associate_data_object</a></td><td>Associate a named object with a data object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_associated_data_object>dispdata_get_associated_data_object</a></td><td>Get an associated named object for a data object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_first_dataobject>dispdata_get_first_dataobject</a></td><td>Get first data object for a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_next_dataobject>dispdata_get_next_dataobject</a></td><td>Get next data object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_create_blinkstate>dispdata_create_blinkstate</a></td><td>Create a blink state object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_destroy_blinkstate>dispdata_destroy_blinkstate</a></td><td>Destroy a blink state object.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_blinkstate_class>dispdata_get_blinkstate_class</a></td><td>Get the dataclass-specific object for a blink state.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_activate_blinkstate>dispdata_activate_blinkstate</a></td><td>Make a blinkstate active (change window contents).
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_test_blinkstate_active>dispdata_test_blinkstate_active</a></td><td>Test if blinkstate is the active one for its window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_blinkstate_index>dispdata_get_blinkstate_index</a></td><td>Get the index for a blinkstate.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_copy_blinkstate>dispdata_copy_blinkstate</a></td><td>Copy blink state.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_refresh_blinkstate>dispdata_refresh_blinkstate</a></td><td>Refresh the user interface for a blink state.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_blinkstate_info>dispdata_get_blinkstate_info</a></td><td>Get the arbitrary pointer for a blinkstate.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_register_blinkstate_funcs>dispdata_register_blinkstate_funcs</a></td><td>Register callback functions for a blinkstate.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_first_blinkstate>dispdata_get_first_blinkstate</a></td><td>Get first blinkstate for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_last_blinkstate>dispdata_get_last_blinkstate</a></td><td>Get last blinkstate for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_prev_blinkstate>dispdata_get_prev_blinkstate</a></td><td>Get previous blinkstate for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_next_blinkstate>dispdata_get_next_blinkstate</a></td><td>Get next blinkstate for a window.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_window_from_blinkstate>dispdata_get_window_from_blinkstate</a></td><td>Get the windor for a blinkstate.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_namelist>dispdata_get_namelist</a></td><td>Get the list of (sorted) data names for a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_objectlist>dispdata_get_objectlist</a></td><td>Get the list of (sorted) data objects for a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_regenerate_namelist>dispdata_regenerate_namelist</a></td><td>Regenerate the list of (sorted) data names for a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_free_namelist>dispdata_free_namelist</a></td><td>Free the list of (sorted) data names for a dataclass.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_first_blinkentry>dispdata_get_first_blinkentry</a></td><td>Get the first blink entry for a blink state.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_next_blinkentry>dispdata_get_next_blinkentry</a></td><td>Get the next blink entry after a specified entry.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_blinkentry_info>dispdata_get_blinkentry_info</a></td><td>Get the application-specific information for a blink entry.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_set_blinkentry_attributes>dispdata_set_blinkentry_attributes</a></td><td>Set attributes for a blink entry.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_blinkentry_attributes>dispdata_get_blinkentry_attributes</a></td><td>Get attributes for a blink entry.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_regenerate_blinkentry_list>dispdata_regenerate_blinkentry_list</a></td><td>Regenerate a list of blink entries for a blink state.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_get_dataobject_from_blinkentry>dispdata_get_dataobject_from_blinkentry</a></td><td>Get the dataobject for a blinkentry.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_overlay_create_dataclass>dispdata_overlay_create_dataclass</a></td><td>Initialise overlay data support for the package.
+</td></tr>
+<tr><td><a href=dispdata.html#dispdata_overlay_create_dataobject>dispdata_overlay_create_dataobject</a></td><td>Create an overlay data object.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=dispdata_array_create_dataclass></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataClass
+ <b>dispdata_array_create_dataclass</b><i>    (void)
+</i><br><p>    Initialise array data support for the package.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     A KDisplayDataClass object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_array_clone_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_array_clone_data</b><i>    (KDisplayDataObject dataobject)
+</i><br><p>    Clone an array dataset.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject to clone.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_array_register_irange_change_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_array_register_irange_change_func</b><i>    (KDisplayDataObject dataobject,
+     void (*func) (KDisplayDataObject dataobject, void *info),
+     void *info)
+</i><br><p>    Register a function to be called the image itensity range changes
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject to clone.
+<br><li><i>func :</i> 
+    The function that is called when the image intensity range changes.
+<br><li><i>info :</i> 
+    An arbitrary information pointer passed to <em>func</em>.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_array_convert_3coord></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>dispdata_array_convert_3coord</b><i>    (KDisplayDataObject dataobject,
+				    KDisplayDataWindow window,
+				    double *x, double *y, double *z,
+				    double h, double v)
+</i><br><p>    Convert canvas co-ordinate to 3D dataset co-ordinate.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject to clone.
+<br><li><i>window :</i> 
+    The KDisplayDataWindow.
+<br><li><i>x :</i> 
+    The dataset X image pixel co-ordinate is written here.
+<br><li><i>y :</i> 
+    The dataset Y image pixel co-ordinate is written here.
+<br><li><i>z :</i> 
+    The dataset Z image pixel co-ordinate is written here.
+<br><li><i>h :</i> 
+    The horizontal co-ordinate on the world canvas.
+<br><li><i>v :</i> 
+    The vertical co-ordinate on the world canvas.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_init></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_init</b><i>    (void)
+</i><br><p>    Initialise the package.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_classlist></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>dispdata_get_classlist</b><i>    (KDisplayDataClass **classes,char ***names)
+</i><br><p>    Get the list of supported dataclasses.
+<p><b>Parameters:</b><ul><li><i>classes :</i> 
+    The list of KDisplayDataClass objects is written here. This may
+    be subsequently deallocated.
+<br><li><i>names :</i> 
+    The list of name pointers is written here. This may be subsequently
+    deallocated.
+<br></ul><b>Returns:</b>     The number of dataclasses. On failure the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_data_create_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_register_data_create_func</b><i>    (KDisplayDataClass dataclass,
+						  void (*func)
+						  (void *info,
+						   KDisplayDataObject data),
+						  void *info)
+</i><br><p>    Register a function to be called when a dataobject is created.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the data belong to.
+<br><li><i>func :</i> 
+    The function that is called when a new dataobject is created.
+<br><li><i>info :</i> 
+    An arbitrary information pointer passed to <em>func</em>.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_data_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_register_data_destroy_func</b><i>    (KDisplayDataClass dataclass,
+						   void (*func)
+						   (void *info),
+						   void *info)
+</i><br><p>    Register a function to be called when a dataobject is destroyed.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the data belong to.
+<br><li><i>func :</i> 
+    The function that is called when a dataobject is destroyed.
+<br><li><i>info :</i> 
+    An arbitrary information pointer passed to <em>func</em>.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_dataobject_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_register_dataobject_destroy_func</b><i>    (KDisplayDataObject dataobject, void (*func) (void *info), void *info)
+</i><br><p>    Register a function to be called when a dataobject is destroyed.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The dataobject for which the callback function is registered.
+<br><li><i>func :</i> 
+    The function that is called when the dataobject is destroyed.
+<br><li><i>info :</i> 
+    An arbitrary information pointer passed to <em>func</em>.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_set_dataclass_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_set_dataclass_attributes</b><i>    (KDisplayDataClass dataclass, ...)
+</i><br><p>    Set global attributes for the a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the attributes are destined for.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_CLASS_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Some windows may be refreshed.
+</ul><p><hr> <a name=dispdata_get_dataclass_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_get_dataclass_attributes</b><i>    (KDisplayDataClass dataclass, ...)
+</i><br><p>    Get global attributes for the a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the attributes are destined for.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_CLASS_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_create_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>dispdata_create_window</b><i>    (KDisplayDataCanvas pc,
+					   KDisplayDataCanvas rgb,
+					   void (*show_canvas)
+					   (void *info, KWorldCanvas canvas),
+					   void *info )
+</i><br><p>    Create a display data window.
+<p><b>Parameters:</b><ul><li><i>pc :</i> 
+    The PseudoColour canvas. This may contain NULL KWorldCanvas objects.
+<br><li><i>rgb :</i> 
+    The TrueColour/DirectColour canvas. This may contain NULL
+    KWorldCanvas objects.
+<br><li><i>show_canvas :</i> 
+    The function that is called when a canvas needs to be shown.
+<br><li><i>info :</i> 
+    An arbitrary information pointer passed to <em>show_canvas</em>.
+<br></ul><b>Returns:</b>     A KDisplayDataWindow object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     If either of the main canvases is destroyed, the KDisplayDataWindow
+    object is automatically destroyed.
+</ul><p><hr> <a name=dispdata_destroy_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_destroy_window</b><i>    (KDisplayDataWindow window)
+</i><br><p>    Destroy a display data window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow to destroy.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_window_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_register_window_destroy_func</b><i>    (KDisplayDataWindow window,
+						     void (*func) (),
+						     void *info)
+</i><br><p>    This routine will register a destroy function for a display data
+    window. The function will be called when the window is destroyed. Many
+    destroy functions may be registered per window. The first function
+    registered is the first function called upon destruction.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow.
+<br><li><i>func :</i> 
+    The function that is called when the window is destroyed. The
+    prototype function is <a href=dispdata.html#dispdata_PROTO_destroy_func>dispdata_PROTO_destroy_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_set_window_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_set_window_attributes</b><i>    (KDisplayDataWindow window, ...)
+</i><br><p>    Set the attributes for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_WINDOW_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Some windows may be refreshed.
+</ul><p><hr> <a name=dispdata_get_window_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_get_window_attributes</b><i>    (KDisplayDataWindow window, ...)
+</i><br><p>    Get the attributes for a window object.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_WINDOW_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_num_windows></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>dispdata_get_num_windows</b><i>    ()
+</i><br><p>    Get the number of windows.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     The number of windows.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_refresh_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_refresh_window</b><i>    (KDisplayDataWindow window, KWorldCanvas canvas)
+</i><br><p>    Refresh a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow object to refresh.
+<br><li><i>canvas :</i> 
+    The preferred KWorldCanvas to display. This may be NULL.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_num_blinkstates></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>dispdata_get_num_blinkstates</b><i>    (KDisplayDataWindow window)
+</i><br><p>    Get the number of blinkstates for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow object.
+<br></ul><b>Returns:</b>     The number of blinkstates.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_active_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_get_active_blinkstate</b><i>    (KDisplayDataWindow window, void **info)
+</i><br><p>    Get the active KDisplayDataBlinkState for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The window.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     The active blink state. NULL is returned if there is no active
+    blink state.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_first_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>dispdata_get_first_window</b><i>    (void **info)
+</i><br><p>    Get first window.
+<p><b>Parameters:</b><ul><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataWindow object. NULL is returned if there are no
+    windows.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_prev_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>dispdata_get_prev_window</b><i>    (KDisplayDataWindow window,
+					     flag circular, void **info)
+</i><br><p>    Get previous window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The current window.
+<br><li><i>circular :</i> 
+    If TRUE, the list of windows is treated as circular.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataWindow object. NULL is returned if there are no
+    more windows.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_next_window></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>dispdata_get_next_window</b><i>    (KDisplayDataWindow window,
+					     flag circular, void **info)
+</i><br><p>    Get next window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The current window.
+<br><li><i>circular :</i> 
+    If TRUE, the list of windows is treated as circular.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataWindow object. NULL is returned if there are no
+    more windows.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_window_index></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>dispdata_get_window_index</b><i>    (KDisplayDataWindow window)
+</i><br><p>    Get the index for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow object.
+<br></ul><b>Returns:</b>     The index of the window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_window_renumber_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>dispdata_register_window_renumber_func</b><i>    (KDisplayDataWindow window,
+						     void (*func) (),
+						     void *info)
+</i><br><p>    This routine will register a renumber function for a display data
+    window. The function will be called when the window index changes (due to
+    renumbering). Many renumber functions may be registered per window. The
+    first function registered is the first function called upon renumbering.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The KDisplayDataWindow.
+<br><li><i>func :</i> 
+    The function that is called when the window is renumbered. The
+    prototype function is <a href=dispdata.html#dispdata_PROTO_renumber_func>dispdata_PROTO_renumber_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_create_dataobject></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataObject
+ <b>dispdata_create_dataobject</b><i>    (KDisplayDataClass dataclass,
+					       CONST char *domain,
+					       CONST char *name,
+					       void *data)
+</i><br><p>    Create a display data object (i.e. array, overlay, etc.).
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the data belong to.
+<br><li><i>domain :</i> 
+    The domain from where data came from. The string contents are
+    copied.
+<br><li><i>name :</i> 
+    The name of the object. The string contents are copied.
+<br><li><i>data :</i> 
+    The data for the object.
+<br></ul><b>Returns:</b>     A KDisplayDataObject object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_destroy_dataobject></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_destroy_dataobject</b><i>    (KDisplayDataObject dataobject)
+</i><br><p>    Destroy a display data object (i.e. array, overlay, etc.).
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject to destroy.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_dataobject_subclass></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dispdata_get_dataobject_subclass</b><i>    (KDisplayDataObject dataobject,
+					KDisplayDataClass dataclass)
+</i><br><p>    Get the subclass for a KDisplayDataObject.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject.
+<br><li><i>dataclass :</i> 
+    The KDisplayDataClass the data belong to.
+<br></ul><b>Returns:</b>     A pointer to the subclass.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_set_data_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_set_data_attributes</b><i>    (KDisplayDataObject dataobject, ...)
+</i><br><p>    Set the attributes for a data object.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_DATA_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Some windows may be refreshed.
+</ul><p><hr> <a name=dispdata_get_data_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_get_data_attributes</b><i>    (KDisplayDataObject dataobject, ...)
+</i><br><p>    Get the attributes for a data object.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_DATA_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_associate_data_object></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_associate_data_object</b><i>    (KDisplayDataObject dataobject,
+				     CONST char *name,
+				     void (*destroy_func) (void *object),
+				     void *object)
+</i><br><p>    Associate a named object with a data object.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject.
+<br><li><i>name :</i> 
+    The name of the associated data object. The contents are copied.
+<br><li><i>destroy_func :</i> 
+    The function that is called when <a href=dataobect.html#dataobect>dataobect</a> is destroyed.
+<br><li><i>object :</i> 
+    The object pointer.
+<br></ul><b>Returns:</b>     Nothing. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_associated_data_object></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dispdata_get_associated_data_object</b><i>    (KDisplayDataObject dataobject,
+					   CONST char *name)
+</i><br><p>    Get an associated named object for a data object.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The KDisplayDataObject.
+<br><li><i>name :</i> 
+    The name of the associated data object.
+<br></ul><b>Returns:</b>     A pointer to the associated object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_first_dataobject></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataObject
+ <b>dispdata_get_first_dataobject</b><i>    (KDisplayDataClass dataclass)
+</i><br><p>    Get first data object for a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass the data belong to.
+<br></ul><b>Returns:</b>     A KDisplayDataObject object. NULL is returned if there are no
+    dataobjects.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_next_dataobject></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataObject
+ <b>dispdata_get_next_dataobject</b><i>    (KDisplayDataObject dataobject)
+</i><br><p>    Get next data object.
+<p><b>Parameters:</b><ul><li><i>dataobject :</i> 
+    The current data object.
+<br></ul><b>Returns:</b>     A KDisplayDataObject object. NULL is returned if there are no
+    more data objects.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_create_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_create_blinkstate</b><i>    (KDisplayDataWindow window,
+     void (*active_change) (void *info, flag active),
+     void *info)
+</i><br><p>    Create a blink state object.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The window the blink state is associated with.
+<br><li><i>active_change :</i> 
+    The function that is called when the blinkstate is made
+    active or inactive.
+<br><li><i>info :</i> 
+    An arbitrary information pointer.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkState object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_destroy_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_destroy_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Destroy a blink state object.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayBlinkState to destroy.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_blinkstate_class></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataClassBlinkState
+ <b>dispdata_get_blinkstate_class</b><i>    (KDisplayDataBlinkState blinkstate, KDisplayDataClass dataclass)
+</i><br><p>    Get the dataclass-specific object for a blink state.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataBlinkState object.
+<br><li><i>dataclass :</i> 
+    The KDisplayDataClass object.
+<br></ul><b>Returns:</b>     A KDisplayDataClassBlinkState object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_activate_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_activate_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Make a blinkstate active (change window contents).
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataBlinkState object to make active.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_test_blinkstate_active></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>dispdata_test_blinkstate_active</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Test if blinkstate is the active one for its window.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataBlinkState object.
+<br></ul><b>Returns:</b>     TRUE if active, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_blinkstate_index></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>dispdata_get_blinkstate_index</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Get the index for a blinkstate.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataBlinkState object.
+<br></ul><b>Returns:</b>     The index of the blinkstate.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_copy_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_copy_blinkstate</b><i>    (KDisplayDataBlinkState dest,
+			       KDisplayDataBlinkState source)
+</i><br><p>    Copy blink state.
+<p><b>Parameters:</b><ul><li><i>dest :</i> 
+    The destination KDisplayDataBlinkState object to copy to.
+<br><li><i>source :</i> 
+    The source KDisplayDataBlinkState object to copy from.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     This function does not refresh the blink state interface.
+</ul><p><hr> <a name=dispdata_refresh_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_refresh_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Refresh the user interface for a blink state.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The blink state to refresh.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_blinkstate_info></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dispdata_get_blinkstate_info</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Get the arbitrary pointer for a blinkstate.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The blinkstate.
+<br></ul><b>Returns:</b>     The arbitrary pointer.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_register_blinkstate_funcs></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_register_blinkstate_funcs</b><i>    (KDisplayDataClassBlinkState blinkstate,
+     void (*refresh_func) (void *info, KDisplayDataClass dataclass),
+     void *(*create_blinkentry) (void *info, KDisplayDataBlinkEntry be),
+     void (*destroy_blinkentry) (void *info),
+     void (*copy_blinkentry) (void *dest, void *source),
+     void *info)
+</i><br><p>    Register callback functions for a blinkstate.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataClassBlinkState object.
+<br><li><i>dataclass :</i> 
+    The dataclass for refresh events.
+<br><li><i>refresh_func :</i> 
+    The function to be called to refresh the blinkstate
+    interface.
+<br><li><i>info :</i> 
+    An arbitrary information pointer to be passed to <em>refresh_func</em>
+    and <em>create_blinkentry</em>.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_first_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_get_first_blinkstate</b><i>    (KDisplayDataWindow window,
+						     void **info)
+</i><br><p>    Get first blinkstate for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The window.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkState object. NULL is returned if there are no
+    blinkstates associated with this window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_last_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_get_last_blinkstate</b><i>    (KDisplayDataWindow window,
+						     void **info)
+</i><br><p>    Get last blinkstate for a window.
+<p><b>Parameters:</b><ul><li><i>window :</i> 
+    The window.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkState object. NULL is returned if there are no
+    blinkstates associated with this window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_prev_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_get_prev_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate, flag circular, void **info)
+</i><br><p>    Get previous blinkstate for a window.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The current blinkstate.
+<br><li><i>circular :</i> 
+    If TRUE, the list of windows is treated as circular.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkState object. NULL is returned if there are no
+    more blinkstates associated with this window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_next_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkState
+ <b>dispdata_get_next_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate, flag circular, void **info)
+</i><br><p>    Get next blinkstate for a window.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The current blinkstate.
+<br><li><i>circular :</i> 
+    If TRUE, the list of blinkstates is treated as circular.
+<br><li><i>info :</i> 
+    The arbitrary information pointer is written here. If this is NULL,
+    nothing is written here.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkState object. NULL is returned if there are no
+    more blinkstates associated with this window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_window_from_blinkstate></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>dispdata_get_window_from_blinkstate</b><i>    (KDisplayDataBlinkState blinkstate)
+</i><br><p>    Get the windor for a blinkstate.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The blinkstate.
+<br></ul><b>Returns:</b>     The window.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_namelist></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST char **
+ <b>dispdata_get_namelist</b><i>    (KDisplayDataClass dataclass,
+				    unsigned int *num_entries,
+				    unsigned int *num_chars)
+</i><br><p>    Get the list of (sorted) data names for a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass object.
+<br><li><i>num_entries :</i> 
+    The number of entries in the list is written here.
+<br><li><i>num_chars :</i> 
+    The sum of the lengths of the names is written here. This does
+    not include terminator characters.
+<br></ul><b>Returns:</b>     The array of names.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_objectlist></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST KDisplayDataObject *
+ <b>dispdata_get_objectlist</b><i>    (KDisplayDataClass dataclass,
+						   unsigned int *num_entries)
+</i><br><p>    Get the list of (sorted) data objects for a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass object.
+<br><li><i>num_entries :</i> 
+    The number of entries in the list is written here.
+<br></ul><b>Returns:</b>     The array of data objects.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_regenerate_namelist></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>char **
+ <b>dispdata_regenerate_namelist</b><i>    (KDisplayDataClass dataclass,
+				     KDisplayDataPrivateNameList *namelist_ptr,
+				     unsigned int num_reserved,
+				     unsigned int *num_entries,
+				     KDisplayDataObject **dataobjects,
+				     flag (*filter_func) (void *info,
+							  KDisplayDataObject dataobject),
+				     void *info)
+</i><br><p>    Regenerate the list of (sorted) data names for a dataclass.
+<p><b>Parameters:</b><ul><li><i>dataclass :</i> 
+    The KDisplayDataClass object.
+<br><li><i>namelist_ptr :</i> 
+    A pointer to a special buffer. This may be updated.
+<br><li><i>num_reserved :</i> 
+    The number of characters to reserve for each entry. The
+    reserved characters will be filled with ' ' (space).
+<br><li><i>num_entries :</i> 
+    The number of entries in the list is written here.
+<br><li><i>dataobjects :</i> 
+    The array of dataobjects is written here. This may be NULL.
+<br><li><i>filter_func :</i> 
+    A function to filter dataobjects. If it returns TRUE, a
+    dataobject will be included in the list, otherwise it won't. If this is
+    NULL, all dataobjects are included.
+<br><li><i>info :</i> 
+    An arbitrary pointer passed to <em>filter_func</em>.
+<br></ul><b>Returns:</b>     The array of string pointers. The string contents may be modified
+    and will persist until the next call to this function.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_free_namelist></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_free_namelist</b><i>    (KDisplayDataPrivateNameList namelist)
+</i><br><p>    Free the list of (sorted) data names for a dataclass.
+<p><b>Parameters:</b><ul><li><i>namelist :</i> 
+    The namelist buffer.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_first_blinkentry></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkEntry
+ <b>dispdata_get_first_blinkentry</b><i>    (KDisplayDataClassBlinkState class_blinkstate)
+</i><br><p>    Get the first blink entry for a blink state.
+<p><b>Parameters:</b><ul><li><i>class_blinkstate :</i> 
+    The KDisplayDataClassBlinkState object.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkEntry object. NULL may be returned if there
+    are no blink state entries (i.e. no data sets loaded for this class).
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_next_blinkentry></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataBlinkEntry
+ <b>dispdata_get_next_blinkentry</b><i>    (KDisplayDataBlinkEntry blinkentry)
+</i><br><p>    Get the next blink entry after a specified entry.
+<p><b>Parameters:</b><ul><li><i>blinkentry :</i> 
+    The KDisplayDataBlinkEntry object.
+<br></ul><b>Returns:</b>     A KDisplayDataBlinkEntry object. NULL may be returned if there
+    are no more blink state entries.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_blinkentry_info></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dispdata_get_blinkentry_info</b><i>    (KDisplayDataBlinkEntry blinkentry)
+</i><br><p>    Get the application-specific information for a blink entry.
+<p><b>Parameters:</b><ul><li><i>blinkentry :</i> 
+    The KDisplayDataBlinkEntry object.
+<br></ul><b>Returns:</b>     The application-specific information pointer.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_set_blinkentry_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_set_blinkentry_attributes</b><i>    (KDisplayDataBlinkEntry blinkentry,
+					 ...)
+</i><br><p>    Set attributes for a blink entry.
+<p><b>Parameters:</b><ul><li><i>blinkentry :</i> 
+    The KDisplayDataBlinkEntry object.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_BLINKENTRY_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Some windows may be refreshed.
+</ul><p><hr> <a name=dispdata_get_blinkentry_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dispdata_get_blinkentry_attributes</b><i>    (KDisplayDataBlinkEntry blinkentry,
+					 ...)
+</i><br><p>    Get attributes for a blink entry.
+<p><b>Parameters:</b><ul><li><i>blinkentry :</i> 
+    The KDisplayDataBlinkEntry object.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    KDISPLAYDATA_BLINKENTRY_ATT_END.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_regenerate_blinkentry_list></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST KDisplayDataBlinkEntry *
+ <b>dispdata_regenerate_blinkentry_list</b><i>    (KDisplayDataClassBlinkState blinkstate,
+     unsigned int *num_entries)
+</i><br><p>    Regenerate a list of blink entries for a blink state.
+<p><b>Parameters:</b><ul><li><i>blinkstate :</i> 
+    The KDisplayDataClassBlinkState object.
+<br><li><i>num_entries :</i> 
+    The number of entries is written here.
+<br></ul><b>Returns:</b>     The array of blink entries.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_get_dataobject_from_blinkentry></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataObject
+ <b>dispdata_get_dataobject_from_blinkentry</b><i>    (KDisplayDataBlinkEntry blinkentry)
+</i><br><p>    Get the dataobject for a blinkentry.
+<p><b>Parameters:</b><ul><li><i>blinkentry :</i> 
+    The blinkentry.
+<br></ul><b>Returns:</b>     The dataobject.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_overlay_create_dataclass></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataClass
+ <b>dispdata_overlay_create_dataclass</b><i>    (void)
+</i><br><p>    Initialise overlay data support for the package.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     A KDisplayDataClass object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dispdata_overlay_create_dataobject></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataObject
+ <b>dispdata_overlay_create_dataobject</b><i>    (KOverlayList olist,
+						       CONST char *domain,
+						       CONST char *name)
+</i><br><p>    Create an overlay data object.
+<p><b>Parameters:</b><ul><li><i>olist :</i> 
+    The overlay list.
+<br><li><i>domain :</i> 
+    The domain from where list came from. The string contents are
+    copied.
+<br><li><i>name :</i> 
+    The name of the object.
+<br></ul><b>Returns:</b>     A KDisplayDataObject on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

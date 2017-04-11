@@ -1,0 +1,31 @@
+.TH KCMAP_NOTIFY_PIXELS_CHANGED 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_notify_pixels_changed \- Notify that pixel values have been changed.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_notify_pixels_changed
+.sp
+(Kcolourmap cmap)
+.SH DESCRIPTION
+This routine posts a notification that the pixel values in a
+software colourmap have changed. The resize functions registered with
+<-kcmap_register_resize_func-> are usually called.
+.IP \fIcmap\fP 1i
+The colourmap object. This must be a software colourmap.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

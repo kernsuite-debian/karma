@@ -1,0 +1,41 @@
+.TH CANVAS_FILL_RECTANGLE_P 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_fill_rectangle_p \- Fill a single rectangle onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_fill_rectangle_p
+.sp
+(KWorldCanvas canvas, double x, double y,
+double width, double height,
+unsigned long pixel_value)
+.SH DESCRIPTION
+Fill a single rectangle onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIx\fP 1i
+The horizontal offset of the rectangle.
+.IP \fIy\fP 1i
+The vertical offset of the rectangle.
+.IP \fIwidth\fP 1i
+The width of the rectangle.
+.IP \fIheight\fP 1i
+The height of the rectangle.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

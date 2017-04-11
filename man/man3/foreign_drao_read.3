@@ -1,0 +1,38 @@
+.TH FOREIGN_DRAO_READ 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_drao_read \- Read a DRAO dataset.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_drao_read
+.sp
+(CONST char *setname, flag convert_int_to_float,
+...)
+.SH DESCRIPTION
+Read a DRAO dataset.
+.IP \fIsetname\fP 1i
+The DRAO dataset name.
+.IP \fIconvert_int_to_float\fP 1i
+If TRUE, integer data are converted to floating
+point data.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_DRAO_READ_END. See <-foreign_ATT_DRAO_READ-> for a list of defined
+attributes.
+.SH RETURN VALUE
+A multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

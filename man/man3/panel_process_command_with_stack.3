@@ -1,0 +1,38 @@
+.TH PANEL_PROCESS_COMMAND_WITH_STACK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+panel_process_command_with_stack \- Process a command.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B flag panel_process_command_with_stack
+.sp
+(CONST char *cmd,
+flag (*unknown_func) (), FILE *fp)
+.SH DESCRIPTION
+This routine will process a command, using the top control panel
+on the stack to interpret it.
+.IP \fIcmd\fP 1i
+The command.
+.IP \fIunknown_func\fP 1i
+The function that is called when the command is not
+understood. If this is NULL, then a message is displayed if the command is
+not understood. The prototype function is <-panel_PROTO_decode_func->.
+.IP \fIfp\fP 1i
+Output messages are directed here.
+.SH RETURN VALUE
+TRUE if more commands should be processed, else FALSE, indicating
+that the control panel's "exit" command was entered.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,39 @@
+.TH VRENDER_COMPUTE_CACHES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_compute_caches \- Compute cache for volume rendering context.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_compute_caches
+.sp
+(KVolumeRenderContext context, unsigned int eyes,
+flag notify)
+.SH DESCRIPTION
+This routine will compute the caches for the specified eyes. This
+speeds up subsequent rendering several times. Nothing is done if the
+cache(s) are already computed.
+.IP \fIcontext\fP 1i
+The volume render context.
+.IP \fIeyes\fP 1i
+A bitmask specifying which eye views to compute. The bitmask may be
+constructed by ORing some values. See <-vrender_EYE_MASKS-> for a list of
+masks.
+.IP \fInotify\fP 1i
+If TRUE any functions registered with
+<-vrender_cache_notify_func-> will be called.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

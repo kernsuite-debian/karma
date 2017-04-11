@@ -1,0 +1,35 @@
+.TH VIEWIMG_DESTROY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_destroy \- Destroy viewable image.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B void viewimg_destroy
+.sp
+(ViewableImage vimage)
+.SH DESCRIPTION
+This routine will destroy a viewable image. If this is not called
+prior to process exit, shared memory segments could remain after the
+process exits.
+.IP \fIvimage\fP 1i
+The viewable image.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The associated <<multi_array>> descriptor is also deallocated (or
+at least, the attachment count is decreased).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

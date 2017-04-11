@@ -1,0 +1,82 @@
+.TH DSRW 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dsrw \- Routines to read and write a data structure from/to channels
+.SH PURPOSE
+These routines are meant to provide a mechanism to read and write the
+recursive, heirarchical data structure supported in Karma from and to
+open channels.
+The use of these routines is NOT recommended. The <-dsxfr-> routines are
+the preferred means of transferring data structures.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIdsrw_filter_setup\fP 1i
+Set up a Karma data filter.
+.IP \fIdsrw_filter_process\fP 1i
+Read in data and write in Karma format.
+.IP \fIdsrw_write_multi\fP 1i
+Write a multi_array data structure.
+.IP \fIdsrw_write_multi_header\fP 1i
+Write a multi_array data structure header.
+.IP \fIdsrw_write_packet_desc\fP 1i
+Write a packet descriptor in binary format.
+.IP \fIdsrw_write_element_desc\fP 1i
+Write an element descriptor in binary format.
+.IP \fIdsrw_write_array_desc\fP 1i
+Write an array descriptor in binary format.
+.IP \fIdsrw_write_dim_desc\fP 1i
+Write a dimension descriptor in binary format.
+.IP \fIdsrw_write_history\fP 1i
+Write history information.
+.IP \fIdsrw_write_packet\fP 1i
+Write packet data in binary format.
+.IP \fIdsrw_write_element\fP 1i
+Write an element in binary format.
+.IP \fIdsrw_write_array\fP 1i
+Write an array in binary format.
+.IP \fIdsrw_write_list\fP 1i
+Write a linked list in binary format.
+.IP \fIdsrw_write_packets\fP 1i
+Write the binary representation of many data packets.
+.IP \fIdsrw_write_flag\fP 1i
+Write a boolean value in binary format to a channel object.
+.IP \fIdsrw_read_multi\fP 1i
+Read the binary representation of a multi_array structure.
+.IP \fIdsrw_read_multi_header\fP 1i
+Read the binary representation of a multi_array header.
+.IP \fIdsrw_read_packet_desc\fP 1i
+Read the binary representation of a packet descriptor.
+.IP \fIdsrw_read_array_desc\fP 1i
+Read the binary representation of an array descriptor.
+.IP \fIdsrw_read_dim_desc\fP 1i
+Read the binary representation of a dimension descriptor.
+.IP \fIdsrw_read_packet\fP 1i
+Read the binary representation of a data packet.
+.IP \fIdsrw_read_element\fP 1i
+Read the binary representation of an element.
+.IP \fIdsrw_read_array\fP 1i
+Read the binary representation of an array.
+.IP \fIdsrw_read_list\fP 1i
+Read the binary representation of a linked list.
+.IP \fIdsrw_read_packets\fP 1i
+Read the binary representation of many data packets.
+.IP \fIdsrw_read_flag\fP 1i
+Read the binary representation of a boolean.
+.IP \fIdsrw_read_type\fP 1i
+Read the binary representation of a data type.
+.IP \fIdsrw_PROTO_read_func\fP 1i
+Read data and write to a buffer.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

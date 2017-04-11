@@ -1,0 +1,33 @@
+.TH RP_PROTO_HASH_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+rp_PROTO_hash_func \- Hash callback.
+.SH SYNOPSIS
+.B #include <karma_rp.h>
+.sp
+.B void rp_PROTO_hash_func
+.sp
+(unsigned char buffer[hash_digest_size],
+CONST unsigned char block[hash_block_size];)
+.SH DESCRIPTION
+This routine is called when a hash buffer must be scrambled with
+a block of data.
+.IP \fIbuffer\fP 1i
+The hash buffer.
+.IP \fIblock\fP 1i
+The block to add to the hash buffer data.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

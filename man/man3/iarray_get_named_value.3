@@ -1,0 +1,38 @@
+.TH IARRAY_GET_NAMED_VALUE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_named_value \- Get attached data from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_get_named_value
+.sp
+(iarray array, CONST char *name,
+unsigned int *type, double value[2])
+.SH DESCRIPTION
+This routine will get a unique named value from the underlying
+Karma general data structure of an "Intelligent Array".
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element.
+.IP \fItype\fP 1i
+The type of the input data found will be written here. If this is
+NULL, nothing is written here.
+.IP \fIvalue\fP 1i
+The value of the converted data will be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

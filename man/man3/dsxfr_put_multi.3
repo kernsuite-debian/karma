@@ -1,0 +1,47 @@
+.TH DSXFR_PUT_MULTI 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsxfr_put_multi \- Write a multi_array data structure.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B flag dsxfr_put_multi
+.sp
+(CONST char *object, multi_array *multi_desc)
+.SH DESCRIPTION
+This routine will put (write to disc, transmit over connection) a
+multi_desc general data structure to a named object.
+.IP \fIobject\fP 1i
+The object name. If the object is named "connections" then the
+data will be transmitted to all available connections with the
+"multi_array" protocol. If the object is named "connections:{module_name}"
+then the data will be transmitted to all available connections to modules
+with the name {module_name} and with the "multi_array" protocol.
+If the object is named "connections:!<<module_name>>" then the data will be
+transmitted to all available connections with the "multi_array" protocol to
+all modules except those with the name <<module_name>>.
+If the object is named "connection[#]" then the data will be transmitted to
+the "multi_array" protocol connection with index:
+If the object is named "<<filename>>_connection" then the data will be
+transmitted to all available connections with the "multi_array" protocol.
+In all other cases the data will be written to a disc file. The routine
+will append a ".kf" extension if not already specified. If the disc file
+already exists, the old data file is first renamed to have a trailing '~'
+(tilde) character.
+.IP \fImulti_desc\fP 1i
+A pointer to the data structure.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

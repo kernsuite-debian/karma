@@ -1,0 +1,36 @@
+.TH CH_SEEK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_seek \- Move read/write pointer.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_seek
+.sp
+(Channel channel, unsigned long position)
+.SH DESCRIPTION
+This routine will position the read and write pointers for a
+channel.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIposition\fP 1i
+The position (relative to the start of the channel data).
+.SH RETURN VALUE
+TRUE on success, else FALSE (indicating a seek request beyond the
+channel limits)
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine cannot be used for connection channels.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

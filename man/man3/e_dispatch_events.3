@@ -1,0 +1,36 @@
+.TH E_DISPATCH_EVENTS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+e_dispatch_events \- Dispatch events for a list.
+.SH SYNOPSIS
+.B #include <karma_e.h>
+.sp
+.B void e_dispatch_events
+.sp
+(KPeriodicEventList list, unsigned int dispatch_level,
+flag timeout)
+.SH DESCRIPTION
+Dispatch events for a list.
+.IP \fIlist\fP 1i
+The event list.
+.IP \fIdispatch_level\fP 1i
+The level of events that may dispatched. Event functions
+at the same level or higher are dispatched. See <-e_DISPATCH_LEVELS-> for a
+list of legal values.
+.IP \fItimeout\fP 1i
+If TRUE, the perdiodic timer timed out.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,57 @@
+.TH CANVAS_DRAW_ARC 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_draw_arc \- Draw an arc onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_draw_arc
+.sp
+(KWorldCanvas canvas,
+double centre_x, double centre_y,
+double radius_x, double radius_y,
+double angle1, double angle2, double rotation,
+double value[2], flag fill)
+.SH DESCRIPTION
+Draw an arc onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIcentre_x\fP 1i
+The horizontal world co-ordinate of the centre of the ellipse.
+.IP \fIcentre_y\fP 1i
+The vertical world co-ordinate of the centre of the ellipse.
+.IP \fIradius_x\fP 1i
+The horizontal radius in world co-ordinates.
+.IP \fIradius_y\fP 1i
+The vertical radius in world co-ordinates.
+.IP \fIangle1\fP 1i
+The start of the arc, in units of degrees, relative to +X.
+Increasing positive values are anticlockwise.
+.IP \fIangle2\fP 1i
+The end of the arc, in units of degrees, relative to +X.
+Increasing positive values are anticlockwise.
+.IP \fIrotation\fP 1i
+The rotation of the arc, in degrees. A rotation of 0 degrees
+corresponds to (x > 0, y = 0). A rotation of 90 degrees corresponds to
+(x = 0, y > 0). In other words, the angle increases anticlockwise from the
+right.
+.IP \fIvalue\fP 1i
+The complex value to draw the ellipse with. This must be of type
+K_DCOMPLEX.
+.IP \fIfill\fP 1i
+If TRUE, the arc is filled, else only the outside is drawn.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

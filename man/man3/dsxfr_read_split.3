@@ -1,0 +1,34 @@
+.TH DSXFR_READ_SPLIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dsxfr_read_split \- Read a multi_array data structure.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B multi_array * dsxfr_read_split
+.sp
+(char *filename, flag ascii, flag guess)
+.SH DESCRIPTION
+Read a multi_array data structure.
+.IP \fIfilename\fP 1i
+The filename with some extension. This will be modified.
+.IP \fIascii\fP 1i
+If TRUE the data file is assumed to be ASCII, else binary.
+.IP \fIguess\fP 1i
+If TRUE the function attempts to guess whether the data file is
+ASCII or binary (and ignores the value of <<ascii>>).
+.SH RETURN VALUE
+A pointer to the data structure on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

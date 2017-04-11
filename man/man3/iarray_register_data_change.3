@@ -1,0 +1,31 @@
+.TH IARRAY_REGISTER_DATA_CHANGE 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_register_data_change \- Notify data for Intelligent Array has changed.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_register_data_change
+.sp
+(iarray array, void *call_data)
+.SH DESCRIPTION
+Notify data for Intelligent Array has changed.
+.IP \fIarray\fP 1i
+The array.
+.IP \fIcall_data\fP 1i
+The call data.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

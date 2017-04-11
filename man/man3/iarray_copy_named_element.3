@@ -1,0 +1,44 @@
+.TH IARRAY_COPY_NAMED_ELEMENT 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_copy_named_element \- Copy a named element from one Intelligent Array to another.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_copy_named_element
+.sp
+(iarray out, iarray in, CONST char *name,
+flag fail_if_not_found,
+flag fail_on_duplicate, flag replace)
+.SH DESCRIPTION
+Copy a named element from one Intelligent Array to another.
+.IP \fIout\fP 1i
+The output Intelligent Array.
+.IP \fIin\fP 1i
+The input Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element to copy.
+.IP \fIfail_if_not_found\fP 1i
+If TRUE, the routine will fail if the element does not
+exist in the input packet.
+.IP \fIfail_on_duplicate\fP 1i
+If TRUE, the routine will fail if the element already
+exists in the output packet.
+.IP \fIreplace\fP 1i
+If TRUE and the element already exists in the output packet, it
+is replaced.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

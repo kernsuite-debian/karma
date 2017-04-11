@@ -1,0 +1,29 @@
+.TH CH_ATTACH_TO_ASYNCHRONOUS_DESCRIPTOR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_attach_to_asynchronous_descriptor \- Create a channel object from an asynchronous descriptor.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_attach_to_asynchronous_descriptor
+.sp
+(int fd)
+.SH DESCRIPTION
+Create a channel object from an asynchronous descriptor.
+.IP \fIfd\fP 1i
+The descriptor.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

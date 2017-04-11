@@ -1,0 +1,37 @@
+.TH DSPROC_PROTO_PROCESS_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dsproc_PROTO_process_array \- Process a general data structure into an output structure.
+.SH SYNOPSIS
+.B #include <karma_dsproc.h>
+.sp
+.B flag dsproc_PROTO_process_array
+.sp
+(CONST packet_desc *inp_desc,
+CONST char *inp_data,
+packet_desc **out_desc, char **out_data)
+.SH DESCRIPTION
+Process a general data structure into an output structure.
+.IP \fIinp_desc\fP 1i
+The input descriptor.
+.IP \fIinp_data\fP 1i
+The input data.
+.IP \fIout_desc\fP 1i
+The output descriptor should be written here.
+.IP \fIout_data\fP 1i
+The output data pointer should be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

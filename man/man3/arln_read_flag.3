@@ -1,0 +1,32 @@
+.TH ARLN_READ_FLAG 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+arln_read_flag \- Read a boolean value from the user.
+.SH SYNOPSIS
+.B #include <karma_arln.h>
+.sp
+.B flag arln_read_flag
+.sp
+(CONST char *prompt, flag default_value)
+.SH DESCRIPTION
+This routine will prompt the user for a single boolean value.
+If no input is given, the routine returns a default value.
+.IP \fIprompt\fP 1i
+The prompt.
+.IP \fIdefault_value\fP 1i
+The default value.
+.SH RETURN VALUE
+TRUE if "yes" was typed in, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,34 @@
+.TH PGP_DECRYPT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+pgp_decrypt \- Decrypt a block of data using PGP and PGPdaemon.
+.SH SYNOPSIS
+.B #include <karma_pgp.h>
+.sp
+.B char * pgp_decrypt
+.sp
+(CONST char *ciphertext, unsigned int ciphertext_length,
+unsigned int *plaintext_length)
+.SH DESCRIPTION
+Decrypt a block of data using PGP and PGPdaemon.
+.IP \fIciphertext\fP 1i
+The input ciphertext data.
+.IP \fIciphertext_length\fP 1i
+The length of the input ciphertext data.
+.IP \fIplaintext_length\fP 1i
+The length of the decrypted data is written here.
+.SH RETURN VALUE
+A pointer to the plaintext data on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,37 @@
+.TH DSRW_WRITE_ELEMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_write_element \- Write an element in binary format.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_write_element
+.sp
+(Channel channel, unsigned int type, CONST char *desc,
+CONST char *element)
+.SH DESCRIPTION
+This routine will write the binary representation of an element
+to a channel object.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fItype\fP 1i
+The type of the element.
+.IP \fIdesc\fP 1i
+The descriptor for the element.
+.IP \fIelement\fP 1i
+A pointer to the element data.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

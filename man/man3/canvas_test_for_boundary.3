@@ -1,0 +1,36 @@
+.TH CANVAS_TEST_FOR_BOUNDARY 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_test_for_boundary \- Test if co-ordinates lie within the canvas boundary.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_test_for_boundary
+.sp
+(KWorldCanvas canvas, unsigned int num_coords,
+CONST double *x, CONST double *y)
+.SH DESCRIPTION
+Test if co-ordinates lie within the canvas boundary.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIx\fP 1i
+The array of horizontal world co-ordinates.
+.IP \fIy\fP 1i
+The array of vertical world co-ordinates.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates to test.
+.SH RETURN VALUE
+TRUE if any co-ordinates lie within the boundary, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

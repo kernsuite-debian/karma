@@ -1,0 +1,31 @@
+.TH ST_CMP_WILD 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_cmp_wild \- Compare strings with wildcard support.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B int st_cmp_wild
+.sp
+(CONST char *a, CONST char *b)
+.SH DESCRIPTION
+Compare strings with wildcard support.
+.IP \fIa\fP 1i
+One of the strings. Wildcards are permitted.
+.IP \fIb\fP 1i
+The other string. Wildcards are not permitted.
+.SH RETURN VALUE
+The difference between the strings.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

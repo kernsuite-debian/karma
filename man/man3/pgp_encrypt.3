@@ -1,0 +1,42 @@
+.TH PGP_ENCRYPT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+pgp_encrypt \- Encrypt a block of data using PGP.
+.SH SYNOPSIS
+.B #include <karma_pgp.h>
+.sp
+.B char * pgp_encrypt
+.sp
+(CONST char *plaintext, unsigned int plaintext_length,
+CONST char **recipients, unsigned int num_recipients,
+unsigned int *ciphertext_length, flag ascii_armour)
+.SH DESCRIPTION
+Encrypt a block of data using PGP.
+.IP \fIplaintext\fP 1i
+The input plaintext data.
+.IP \fIplaintext_length\fP 1i
+The length of the input plaintext data.
+.IP \fIrecipients\fP 1i
+The list of recipients to encrypt for.
+.IP \fInum_recipients\fP 1i
+The number of recipients in the recipient list.
+.IP \fIciphertext_length\fP 1i
+The length of the encrypted data is written here.
+.IP \fIascii_armour\fP 1i
+If TRUE, the ciphertext is ASCII armoured, suitable for
+transmitting through Email.
+.SH RETURN VALUE
+A pointer to the ciphertext data on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

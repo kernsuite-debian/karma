@@ -1,0 +1,34 @@
+.TH DSXFR_PROTO_READ_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dsxfr_PROTO_read_func \- New "multi_array" data callback.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B void dsxfr_PROTO_read_func
+.sp
+(flag first_time_data, unsigned int connection_num)
+.SH DESCRIPTION
+This routine is called when new data arrives on any "multi_array"
+connection.
+.IP \fIfirst_time_data\fP 1i
+If data appears on a connection for the first time, this
+will be TRUE. Any subsqeuent data that appears on a connection will not set
+this flag.
+.IP \fIconnection_num\fP 1i
+The index number of the connection.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

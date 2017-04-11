@@ -1,0 +1,65 @@
+.TH W 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+w \- Routines to support work functions
+.SH PURPOSE
+These routines are meant to provide support for work functions. Work
+functions are similar to threads in that they allow background processing
+to be done, but require no threading support from the Operating System.
+Work functions are only executed while the application would otherwise be
+idle.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIw_test_supported\fP 1i
+Test if application supports work functions.
+.IP \fIw_register_support\fP 1i
+Register support for work functions.
+.IP \fIw_unregister_support\fP 1i
+Unregister support for work functions.
+.IP \fIw_register_notify_func\fP 1i
+Register new work function callback.
+.IP \fIw_work_to_be_done\fP 1i
+Test for pending work functions waiting to be called.
+.IP \fIw_do_work\fP 1i
+Do some work.
+.IP \fIw_register_func\fP 1i
+Register a work function.
+.IP \fIw_unregister_func\fP 1i
+Unregister a work function.
+.IP \fIw_PROTO_new_func\fP 1i
+New work function callback.
+.IP \fIw_PROTO_work_func\fP 1i
+Work function.
+.SH TABLE w_PRIORITIES
+List work function priorities
+
+.TS
+l l
+_ _
+l l.
+Name                    Meaning
+
+KWF_PRIORITY_HIGHEST    Place function at top of list, any work
+                        functions registered while this one is running
+                        will be placed second in the list
+KWF_PRIORITY_HIGH       Place function at top of list, any work
+                        functions registered while this one is running
+                        will be placed at the top of the list
+KWF_PRIORITY_LOWEST     Place function at bottom of the list
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

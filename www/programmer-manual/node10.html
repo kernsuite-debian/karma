@@ -1,0 +1,369 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Colourmaps</TITLE>
+<META NAME="description" CONTENT="Colourmaps">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html786" HREF="node11.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html784" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html778" HREF="node9.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html788" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html789" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html787" HREF="node11.html">Intelligent Arrays</A>
+<B>Up:</B> <A NAME="tex2html785" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html779" HREF="node9.html">Image Editing</A>
+<BR> <P>
+<H1><A NAME="SECTION001000000000000000000">Colourmaps</A></H1>
+<A NAME="567">&#160;</A>
+<P>
+<H1><A NAME="SECTION001010000000000000000">Purpose</A></H1>
+<P>
+The dynamic pseudo colourmap control is intended to provide simple,
+elegant and device independent control of colourmaps. Integrated into
+the colourmap support is the ability to &quot;share&quot; colourmaps between
+graphics applications on the same screen and between different
+screens. For same-screen operation, this allows the user to
+dynamically change the colourmap in one window, and have that appear
+in another window at the same time. This is essential for image
+comparison. With different screen operation, two or more users may be
+viewing images on different consoles (perhaps across the planet), and
+yet when one user changes the image colourmap, the other user(s) sees
+this change as well. Any combination of same-screen and
+different-screen operation may be employed. To make use of these
+advanced facilities requires no extra code by the application
+programmer: all this functionality is gained for free. Other features
+of the colourmap support include the ability to register functions
+which are called if a colourmap is resized, simple interfaces to
+change colourmap parameters and colour palettes and the ability to
+read and write colourmaps from/ to disc.
+<P>
+A wide variety of standard colourmaps are available through the
+provision of colourmap functions. These functions compute continuously
+varying colours, so they work irrespective of the number of colours
+available on your screen.
+<P>
+The colourmap support provided in the Karma library can save several
+hundreds of lines of messy, intricate code.
+<P>
+<H1><A NAME="SECTION001020000000000000000">Related documents</A></H1>
+<P>
+The documentation on image display and communications support are
+highly recommended.
+<P>
+<H1><A NAME="SECTION001030000000000000000">Architecture</A></H1>
+<P>
+The colourmap support in Karma is built on a layered approach, as with
+many other sections of the library. The various packages in the Karma
+library which provide colourmap support are listed below.
+<P>
+<H2><A NAME="SECTION001031000000000000000">``cf'' package</A></H2>
+<P>
+The <A NAME="tex2html139" HREF="../lib/cf.html"><B>cf</B></A> package provides a large number of colourmap types
+(or palettes) which support the colourmap selection facility at a
+higher level in the library. These routines have a very simple defined
+interface, hence writing new colourmap functions is trivial.
+<P>
+<H2><A NAME="SECTION001032000000000000000">``xc'' package</A></H2>
+<P>
+The <A NAME="tex2html140" HREF="../lib/xc.html"><B>xc</B></A> package provides X11 colourmap support for higher
+levels of the library.
+<P>
+<H2><A NAME="SECTION001033000000000000000">``vc'' package</A></H2>
+<P>
+The <A NAME="tex2html141" HREF="../lib/vc.html"><B>vc</B></A> package provides colourmap support for the Vicom VX
+board (a Sun/VME board with an i860 and a 32 bit frame buffer).
+<P>
+<H2><A NAME="SECTION001034000000000000000">``conn'' package</A></H2>
+<P>
+The network support for colourmaps utilises the <A NAME="tex2html142" HREF="../lib/conn.html"><B>conn</B></A>
+communications package. This means that connection management
+facilities are applicable to the colourmap support.
+<P>
+<H2><A NAME="SECTION001035000000000000000">``kcmap'' package</A></H2>
+<P>
+The actual colourmap support is provided by the <A NAME="tex2html143" HREF="../lib/kcmap.html"><B>kcmap</B></A>
+package. This package allows the programmer to create and manipulate
+dynamic pseudo colourmaps using a generic interface. If network
+connections are set up (using either the <A NAME="tex2html144" HREF="../lib/conn.html"><B>conn</B></A> package or the
+Connection Management tool), manipulation of colourmaps is
+automatically transmitted across the network. In addition to these
+features, colourmaps may be copied to standard Karma data structures,
+and hence tranferred from/ to disc.  New colourmap functions are
+easily added. A large number of colourmap functions are automatically
+available by default.
+<P>
+The <A NAME="tex2html145" HREF="../lib/kcmap.html"><B>kcmap</B></A> package registers support for two comminications
+protocols: ``colourmap_indices'' for the sharing of colourmaps on the
+same screen, ``full_colourmap&quot; for the sharing of colourmaps on
+different screens.
+<P>
+<H1><A NAME="SECTION001040000000000000000">Tutorial</A></H1>
+<P>
+Although the simple use of colourmaps is shown in the tutorials for
+the image display support in Karma, it is worthwhile just pointing out
+the ease with which colourmap support may be migrated from an X11
+environment to, say, a VX display.
+<P>
+<H2><A NAME="SECTION001041000000000000000">Example 1</A></H2>
+<P>
+This example shows how to initialise the colourmap system for X11
+support, and then create a colourmap.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Colourmap creation sample programme: X11 interface      */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+#include &lt;karma_kcmap.h&gt;
+#include &lt;karma_xc.h&gt;
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+
+
+#define DEFAULT_COLOURMAP_NAME &quot;Greyscale1&quot;
+#define MAX_COLOURS (unsigned int) 200
+
+Kcolourmap setup_cmap (dpy, window)
+/*  This routine will create a Kcolourmap object from an X11 display.
+    The X display must be given by  dpy  .
+    The X window must be given by  window  .
+    The routine returns a Kcolourmap object.
+*/
+Display *display;
+Window window;
+{
+    /*  Declare variables  */
+    Kdisplay dpy_handle;
+    XWindowAttributes window_attributes;
+    Kcolourmap cmap;
+
+    /*  Get X colourmap ID  */
+    XGetWindowAttributes (display, win, &amp;window_attributes);
+    /*  Initialise colourmap system  */
+    dpy_handle = xc_get_dpy_handle (display, window_attributes.colormap);
+    /*  Create Kcolourmap object  */
+    cmap = kcmap_va_create (DEFAULT_COLOURMAP_NAME, MAX_COLOURS, TRUE,
+                            dpy_handle, xc_alloc_colours, xc_free_colours,
+                            xc_store_colours, xc_get_location,
+                            KCMAP_ATT_END);
+    return (cmap);
+}   /*  End Function setup_cmap  */</PRE>
+<P>
+<H2><A NAME="SECTION001042000000000000000">Example 2</A></H2>
+<P>
+This example shows how to initialise the colourmap system for a VX
+display, and then create a colourmap.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Colourmap creation sample programme: VX interface       */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+#include &lt;karma_kcmap.h&gt;
+#include &lt;karma_vc.h&gt;
+
+
+#define DEFAULT_COLOURMAP_NAME &quot;Greyscale1&quot;
+#define MAX_COLOURS (unsigned int) 200
+
+Kcolourmap setup_cmap ()
+/*  This routine will create a Kcolourmap object from a VX display.
+    The routine returns a Kcolourmap object.
+*/
+{
+    /*  Declare variables  */
+    Kdisplay dpy_handle;
+    Kcolourmap cmap;
+
+    /*  Initialise colourmap system  */
+    dpy_handle = vc_get_dpy_handle ();
+    /*  Create Kcolourmap object  */
+    cmap = kcmap_va_create (DEFAULT_COLOURMAP_NAME, MAX_COLOURS, TRUE,
+                            dpy_handle, vc_alloc_colours, vc_free_colours,
+                            vc_store_colours, vc_get_location,
+                            KCMAP_ATT_END);
+    return (cmap);
+}   /*  End Function setup_cmap  */</PRE>
+<P>
+<H2><A NAME="SECTION001043000000000000000">Example 3</A></H2>
+<P>
+This example shows how to save a colourmap to a file.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Colourmap save routine:                                 */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+#include &lt;karma_kcmap.h&gt;
+#include &lt;karma_ds.h&gt;
+
+
+flag write_cmap (cmap, file)
+/*  This routine will write a Kcolourmap object to a file.
+    The colourmap must be given by  cmap  .
+    The filename must be pointed to by  file  .
+    The routine returns TRUE on success, else it returns FALSE.
+*/
+Kcolourmap cmap;
+char *file;
+{
+    flag ok;
+    multi_array *multi_desc;
+
+    multi_desc = ds_alloc_multi (1);
+    if ( !kcmap_copy_to_struct (cmap, multi_desc-&gt;headers,
+                                multi_desc-&gt;data) ) return (FALSE);
+    ok = dsxfr_put_multi (multi_desc, file);
+    multi_desc-&gt;headers[0] = NULL;
+    multi_desc-&gt;data[0] = NULL;
+    ds_dealloc_multi (multi_desc);
+    return (ok);
+}   /*  End Function write_cmap  */</PRE>
+<P>
+<H2><A NAME="SECTION001044000000000000000">Example 4</A></H2>
+<P>
+This example shows how to create a software colourmap (i.e. a
+colourmap which is not associated with a display device, but still has
+colours and pixels associated with it). This software colourmap is a
+convenient way to manage an array of pixel values or colour component
+values. The advantage of using a software colourmap rather than
+maintaining your own array of pixel values is that the software
+colourmap may be used with parts of the Karma graphics library (such
+as creating a world canvas and displaying images).  This example also
+shows how the pixel values in a colourmap may be modifed and the
+changes registered. If the Kcolourmap object is used by a world
+canvas, refresh events are automatically generated when changes to the
+pixel values are registered. See the tutorial on image display for
+information on world canvases.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Colourmap creation sample programme: software colourmap */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+#include &lt;karma_kcmap.h&gt;
+
+
+#define MAX_COLOURS (unsigned int) 200
+
+Kcolourmap setup_cmap ()
+/*  This routine will create a software Kcolourmap object.
+    The routine returns a Kcolourmap object.
+*/
+{
+    /*  Declare variables  */
+    Kcolourmap cmap;
+
+    /*  Create Kcolourmap object  */
+    cmap = kcmap_va_create (NULL, MAX_COLOURS, TRUE,
+                            NULL, ( unsigned int (*) () ) NULL,
+                            ( void (*) () ) NULL, ( void (*) () ) NULL,
+                            ( void (*) () ) NULL,
+                            KCMAP_ATT_END);
+    return (cmap);
+}   /*  End Function setup_cmap  */
+
+void set_pixels (Kcolourmap cmap,
+                 unsigned long first_pixel, unsigned long last_pixel)
+/*  [SUMMARY] Change the first and last pixel values in a colourmap.
+    &lt;cmap&gt; The Kcolourmap object.
+    &lt;first_pixel&gt; The first pixel value.
+    &lt;last_pixel&gt; The last pixel value.
+    [RETURNS] Nothing.
+*/
+{
+    unsigned int size;
+    unsigned long *pixel_values;
+
+    size = kcmap_get_pixels (cmap, &amp;pixel_values);
+    pixel_values[0] = first_pixel;
+    pixel_values[size - 1] = last_pixel;
+    /*  If any world canvases were created with this colourmap, refresh events
+        would be automatically generated for them
+        */
+    kcmap_notify_pixels_changed (cmap);
+}   /*  End Function set_pixels  */</PRE>
+<P>
+<H2><A NAME="SECTION001045000000000000000">Example 5</A></H2>
+<P>
+This example shows how to create your own colourmap function and
+register it with the <A NAME="tex2html146" HREF="../lib/kcmap.html"><B>kcmap</B></A> package. The colourmap function
+shown here is a simple greyscale, and allows the user to vary the way
+the colours are squeezed, stretched and moved.
+<P>
+The section below shows the colourmap function.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Colourmap function example: greyscale                   */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+#include &lt;karma_kcmap.h&gt;
+#include &lt;karma_a.h&gt;
+
+#define MAX_INTENSITY 65535
+
+void cf_greyscale1 (unsigned int num_cells, unsigned short *reds,
+                    unsigned short *greens, unsigned short *blues,
+                    unsigned int stride, double x, double y, void *var_param)
+/*  [SUMMARY] Compute a greyscale colourmap.
+    &lt;num_cells&gt; The number of colour cells to modify.
+    &lt;reds&gt; The array of red intensity values. This may be NULL.
+    &lt;greens&gt; The array of green intensity values. This may be NULL.
+    &lt;blues&gt; The array of blue intensity values. This may be NULL.
+    &lt;stride&gt; The stride (in unsigned shorts) between intensity values in the
+    array.
+    &lt;x&gt; A parameter used to compute the colour values.
+    &lt;y&gt; A parameter used to compute the colour values.
+    &lt;var_param&gt; A parameter used to compute the colour values.
+    [RETURNS] Nothing.
+*/
+{
+    unsigned int pixel_count;
+    double slope, offset, factor, intensity;
+    static char function_name[] = &quot;cf_greyscale1&quot;;
+
+    if ( (x &lt; 0.0) || (x &gt; 1.0) || (y &lt; 0.0) || (y &gt; 1.0) )
+    {
+        fprintf (stderr, &quot;x or y out of range\n&quot;);
+        a_prog_bug (function_name);
+    }
+    /*  Invert y  */
+    y = 1.0 - y;
+    if (y &lt; 1e-3) slope = 1e3;
+    else slope = (1.0 - y) / y;
+    offset = 0.5 - slope * x;
+    factor = 1.0 / (double) (num_cells - 1);
+    /*  Now compute the colours  */
+    for (pixel_count = 0; pixel_count &lt; num_cells; ++pixel_count)
+    {
+        intensity = slope * (double) pixel_count * factor + offset;
+        if (intensity &lt; 0.0) intensity = 0.0;
+        else if (intensity &gt; 1.0) intensity = 1.0;
+        intensity *= MAX_INTENSITY;
+        if (reds != NULL) reds[pixel_count * stride] = intensity;
+        if (greens != NULL) greens[pixel_count * stride] = intensity;
+        if (blues != NULL) blues[pixel_count * stride] = intensity;
+    }
+}   /*  End Function cf_greyscale1  */</PRE>
+<P>
+The section below hows how to register the colourmap function.
+<P>
+<PRE>    kcmap_add_grey_func (&quot;Greyscale1&quot;, cf_greyscale1, 0, 0);</PRE>
+<P>
+You would call the <A NAME="tex2html147" HREF="../lib/kcmap.html#kcmap_add_RGB_func"><B>kcmap_add_RGB_func</B></A> function
+instead of <A NAME="tex2html148" HREF="../lib/kcmap.html#kcmap_add_grey_func"><B>kcmap_add_grey_func</B></A> if the colourmap
+produced an RGB output rather than a greyscale colourmap.
+<P>
+<HR><A NAME="tex2html786" HREF="node11.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html784" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html778" HREF="node9.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html788" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html789" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html787" HREF="node11.html">Intelligent Arrays</A>
+<B>Up:</B> <A NAME="tex2html785" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html779" HREF="node9.html">Image Editing</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

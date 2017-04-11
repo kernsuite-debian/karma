@@ -1,0 +1,34 @@
+.TH R_ACCEPT_CONNECTION_ON_DOCK 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_accept_connection_on_dock \- Accept a connection on a dock.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_accept_connection_on_dock
+.sp
+(int dock, unsigned long *addr, flag *local)
+.SH DESCRIPTION
+Accept a connection on a dock.
+.IP \fIdock\fP 1i
+The dock.
+.IP \fIaddr\fP 1i
+The address of the host connecting to the dock will be written here.
+.IP \fIlocal\fP 1i
+If the connection is a local connection, then the routine will
+write the value TRUE here, else it will write the value FALSE.
+.SH RETURN VALUE
+A connection on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

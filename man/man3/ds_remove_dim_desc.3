@@ -1,0 +1,34 @@
+.TH DS_REMOVE_DIM_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_remove_dim_desc \- Remove dimension from an array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_remove_dim_desc
+.sp
+(array_desc *arr_desc, CONST char *dim_name)
+.SH DESCRIPTION
+This routine will remove a dimension descriptor from an array
+descriptor. Tiling information is preserved, however, any address offset
+information is removed. With the exception of the dimension to be removed,
+the order of the dimensions is unaffected.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIname\fP 1i
+The name of the dimension to be removed.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,38 @@
+.TH M_FILL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_fill \- Fill memory blocks with a specified value.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_fill
+.sp
+(void *dest, uaddr stride, CONST void *source,
+uaddr size, unsigned int num)
+.SH DESCRIPTION
+Fill memory blocks with a specified value.
+.IP \fIdest\fP 1i
+The destination.
+.IP \fIstride\fP 1i
+The stride (in bytes) of destination blocks.
+.IP \fIsource\fP 1i
+The fill block.
+.IP \fIsize\fP 1i
+The size (in bytes) of the fill value block.
+.IP \fInum\fP 1i
+The number of destination blocks to fill.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

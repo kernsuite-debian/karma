@@ -1,0 +1,33 @@
+.TH HI_READ 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+hi_read \- Read history information for a module.
+.SH SYNOPSIS
+.B #include <karma_hi.h>
+.sp
+.B void hi_read
+.sp
+(CONST char *module_name,
+flag (*command_decode) (CONST char *command, FILE *fp) )
+.SH DESCRIPTION
+This routine will read any available history information for a
+module and process accordingly.
+.IP \fImodule_name\fP 1i
+The name of the module.
+.IP \fIcommand_decode\fP 1i
+The function used to decode history lines.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

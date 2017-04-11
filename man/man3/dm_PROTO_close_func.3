@@ -1,0 +1,41 @@
+.TH DM_PROTO_CLOSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dm_PROTO_close_func \- Close event callback.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B void dm_PROTO_close_func
+.sp
+(int fd, void *info)
+.SH DESCRIPTION
+This routine is called when a descriptor closes.
+.IP \fIfd\fP 1i
+The file descriptor. The descriptor MUST be capable of detecting
+closure if this routine is supplied (i.e. this routine cannot be
+supplied for docks).
+.IP \fIinfo\fP 1i
+The arbitrary pointer for the managed descriptor.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+This routine MUST NOT unmanage the descriptor. The descriptor
+will be automatically unmanaged and deleted upon closure (even if no
+<<close_func>> is specified).
+.sp
+Any unread data in the descriptor will be lost upon closure. The
+call to this function is the last chance to read this data.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

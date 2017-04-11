@@ -1,0 +1,38 @@
+.TH DS_ALLOC_ARRAY_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_array_desc \- Allocate array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B array_desc * ds_alloc_array_desc
+.sp
+(unsigned int num_dimensions,
+unsigned int num_levels)
+.SH DESCRIPTION
+This function will allocate a header for a multi-dimensional
+tiled array of data packets.
+.IP \fInum_dimensions\fP 1i
+The number of dimensions in the array.
+.IP \fInum_levels\fP 1i
+The number of levels of tiling. If this is 0, the array is not
+tiled.
+.SH RETURN VALUE
+A pointer to the descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Note that the dimension descriptors are not allocated, however, the
+array of pointers for them is allocated.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

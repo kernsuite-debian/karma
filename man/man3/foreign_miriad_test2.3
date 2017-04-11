@@ -1,0 +1,32 @@
+.TH FOREIGN_MIRIAD_TEST2 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_miriad_test2 \- Test if a directory is a Miriad Image file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_miriad_test2
+.sp
+(CONST char *dirname, flag test_dir)
+.SH DESCRIPTION
+Test if a directory is a Miriad Image file.
+.IP \fIdirname\fP 1i
+The directory name of the Miriad dataset name.
+.IP \fItest_dir\fP 1i
+If TRUE will first test if the dataset name is a directory. Set
+this to FALSE only if you know the dataset name is a directory.
+.SH RETURN VALUE
+TRUE if the directory is a Miriad Image file, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

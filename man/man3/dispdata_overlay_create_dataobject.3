@@ -1,0 +1,36 @@
+.TH DISPDATA_OVERLAY_CREATE_DATAOBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_overlay_create_dataobject \- Create an overlay data object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataObject dispdata_overlay_create_dataobject
+.sp
+(KOverlayList olist,
+CONST char *domain,
+CONST char *name)
+.SH DESCRIPTION
+Create an overlay data object.
+.IP \fIolist\fP 1i
+The overlay list.
+.IP \fIdomain\fP 1i
+The domain from where list came from. The string contents are
+copied.
+.IP \fIname\fP 1i
+The name of the object.
+.SH RETURN VALUE
+A KDisplayDataObject on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

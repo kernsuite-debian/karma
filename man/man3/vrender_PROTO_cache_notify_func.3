@@ -1,0 +1,37 @@
+.TH VRENDER_PROTO_CACHE_NOTIFY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+vrender_PROTO_cache_notify_func \- Cache computed callback.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_PROTO_cache_notify_func
+.sp
+(KVolumeRenderContext context,
+void **info, uaddr eyes)
+.SH DESCRIPTION
+This routine is called when the cache for one or more eye
+views is computed.
+.IP \fIcontext\fP 1i
+The volume render context.
+.IP \fIinfo\fP 1i
+A pointer to the arbitrary information pointer.
+.IP \fIeyes\fP 1i
+A bitmask specifying which eye views to compute. The bitmask may be
+constructed by ORing some values. See <-vrender_EYE_MASKS-> for a list of
+masks.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH R_CLOSE_DOCK 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_close_dock \- Close a dock.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_close_dock
+.sp
+(int dock)
+.SH DESCRIPTION
+This routine will close a dock. If the dock was the last open
+dock for the port, then the entire port is closed and a new port may be
+allocated.
+.IP \fIdock\fP 1i
+The dock to close.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

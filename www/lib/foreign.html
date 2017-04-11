@@ -1,0 +1,1523 @@
+<html><head><title>Package: foreign</title></head> 
+<body>
+<center><h1>The "foreign" Package</h1></center>    These routines convert between the Karma data format and foreign data
+    formats.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=foreign></a></table><h4>Functions</h4><table><tr><td><a href=foreign.html#foreign_aips1_read_dataset_names>foreign_aips1_read_dataset_names</a></td><td>Get the names of AIPS1 datasets in the directory catalogue.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips1_read>foreign_aips1_read</a></td><td>Read an AIPS dataset.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips1_read_header>foreign_aips1_read_header</a></td><td>Read an AIPS dataset header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips1_read_data>foreign_aips1_read_data</a></td><td>Read data in an AIPS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips1_read_history>foreign_aips1_read_history</a></td><td>Read history for an AIPS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips1_close_data_context>foreign_aips1_close_data_context</a></td><td>Close a KAIPS1DataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips2_test>foreign_aips2_test</a></td><td>Test if a directory is an AIPS++ Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_aips2_run>foreign_aips2_run</a></td><td>Fork and execute a programme.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_read_dataset_names>foreign_drao_read_dataset_names</a></td><td>Get the names of DRAO datasets in the directory catalogue.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_read>foreign_drao_read</a></td><td>Read a DRAO dataset.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_read_header>foreign_drao_read_header</a></td><td>Read a DRAO dataset header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_read_data>foreign_drao_read_data</a></td><td>Read data in a DRAO file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_rewind_data_context>foreign_drao_rewind_data_context</a></td><td>Rewind a KDRAODataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_drao_close_data_context>foreign_drao_close_data_context</a></td><td>Close a KDRAODataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_filter_get_format>foreign_filter_get_format</a></td><td>Get the filter format
+</td></tr>
+<tr><td><a href=foreign.html#foreign_filter_test_directory_dataset>foreign_filter_test_directory_dataset</a></td><td>Test if a directory is a dataset.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_filter_get_channel>foreign_filter_get_channel</a></td><td>Get the channel for a filtered file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_filter_read>foreign_filter_read</a></td><td>Read a filtered file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_filter_register>foreign_filter_register</a></td><td>Register a filter.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_read_header>foreign_fits_read_header</a></td><td>Read a FITS header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_read>foreign_fits_read</a></td><td>Read a FITS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_read_data>foreign_fits_read_data</a></td><td>Read data in a FITS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_write>foreign_fits_write</a></td><td>Write a FITS file to a channel.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_write_iarray>foreign_fits_write_iarray</a></td><td>Write a FITS file to a channel.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_write_header>foreign_fits_write_header</a></td><td>Write a FITS header to a channel object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_write_data>foreign_fits_write_data</a></td><td>Write data to a FITS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_fits_write_padding>foreign_fits_write_padding</a></td><td>Write trailing pad bytes up to the card end.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gildas_read>foreign_gildas_read</a></td><td>Read a GILDAS dataset.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gildas_read_header>foreign_gildas_read_header</a></td><td>Read a GILDAS dataset header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gildas_read_data>foreign_gildas_read_data</a></td><td>Read data in a GILDAS file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gildas_close_data_context>foreign_gildas_close_data_context</a></td><td>Close a KGILDASDataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_test>foreign_gipsy_test</a></td><td>Test if a file is part of a GIPSY file set.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_read_header>foreign_gipsy_read_header</a></td><td>Read a GIPSY file header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_read_data>foreign_gipsy_read_data</a></td><td>Read data in a GIPSY image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_read>foreign_gipsy_read</a></td><td>Read a GIPSY file set.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_write>foreign_gipsy_write</a></td><td>Write a GIPSY file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_write_iarray>foreign_gipsy_write_iarray</a></td><td>Write a GIPSY file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_gipsy_write_header>foreign_gipsy_write_header</a></td><td>Write a GIPSY header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_guess_and_read>foreign_guess_and_read</a></td><td>Guess file type and read.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_read_and_setup>foreign_read_and_setup</a></td><td>Read a file and perform some setup.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_guess_write>foreign_guess_write</a></td><td>Write a data structure, guessing the output format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_idf_test>foreign_idf_test</a></td><td>Test if a file is part of an IDF file set.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_idf_read_header>foreign_idf_read_header</a></td><td>Read an IDF file header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_idf_read_data>foreign_idf_read_data</a></td><td>Read data in an IDF image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_idf_read>foreign_idf_read</a></td><td>Read an IDF file set.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_iraf_read>foreign_iraf_read</a></td><td>Read an IRAF dataset.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_iraf_read_header>foreign_iraf_read_header</a></td><td>Read an IRAF dataset header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_iraf_read_data>foreign_iraf_read_data</a></td><td>Read data in an IRAF file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_iraf_close_data_context>foreign_iraf_close_data_context</a></td><td>Close a KIRAFDataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_test2>foreign_miriad_test2</a></td><td>Test if a directory is a Miriad Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_read_header2>foreign_miriad_read_header2</a></td><td>Read a Miriad Image or Visibility file header.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_read>foreign_miriad_read</a></td><td>Read a Miriad image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_create_data_context>foreign_miriad_create_data_context</a></td><td>Create a context suitable for reading Miriad Image data.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_read_data>foreign_miriad_read_data</a></td><td>Read data in a Miriad Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_close_data_context>foreign_miriad_close_data_context</a></td><td>Close a KMiriadDataContext object.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_read_history>foreign_miriad_read_history</a></td><td>Read the history component of a Miriad Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_read_get_alignment_padding>foreign_miriad_read_get_alignment_padding</a></td><td>Compute padding to align to a word boundary.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_write>foreign_miriad_write</a></td><td>Write a Miriad Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_write_iarray>foreign_miriad_write_iarray</a></td><td>Write a Miriad Image file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_miriad_write_header_entry>foreign_miriad_write_header_entry</a></td><td>Write a Miriad header entry.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_guess_format_from_filename>foreign_guess_format_from_filename</a></td><td>Attempt to guess the format of a file by examining its filename.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_pgm_read>foreign_pgm_read</a></td><td>Read a colour image in PGM format from a channel.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_pnm_read_type>foreign_pnm_read_type</a></td><td>Read the type of a PNM file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_pnm_read>foreign_pnm_read</a></td><td>Read a PNM file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_pnm_read2>foreign_pnm_read2</a></td><td>Read a PNM file.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ppm_read>foreign_ppm_read</a></td><td>Read a colour image in PPM format from a channel.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ppm_write>foreign_ppm_write</a></td><td>Write a colour image to a channel in PPM format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ppm_write_pseudo>foreign_ppm_write_pseudo</a></td><td>Write a PseudoColor image to a channel in PPM format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ppm_write_rgb>foreign_ppm_write_rgb</a></td><td>Write a TrueColor image to a channel in PPM format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_sunras_read>foreign_sunras_read</a></td><td>Read an image in Sun rasterfile format from a channel.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_sunras_write>foreign_sunras_write</a></td><td>Write a colour image to a channel in Sun rasterfile format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_sunras_write_pseudo>foreign_sunras_write_pseudo</a></td><td>Write a PseudoColor image to a channel in Sun rasterfile format.
+</td></tr>
+<tr><td><a href=foreign.html#foreign_sunras_write_rgb>foreign_sunras_write_rgb</a></td><td>Write a TrueColor image to a channel in Sun rasterfile format.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=foreign.html#foreign_ATT_FITS_READ_HEADER>foreign_ATT_FITS_READ_HEADER</a></td><td>List of attributes for reading FITS headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_FITS_READ_DATA>foreign_ATT_FITS_READ_DATA</a></td><td>List of attributes for reading FITS data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_FITS_READ>foreign_ATT_FITS_READ</a></td><td>List of attributes for reading FITS files (header+data)
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_FITS_WRITE>foreign_ATT_FITS_WRITE</a></td><td>List of attributes for writing FITS files (header+data)
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_FITS_WRITE_DATA>foreign_ATT_FITS_WRITE_DATA</a></td><td>List of attributes for writing FITS data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GUESS_READ>foreign_ATT_GUESS_READ</a></td><td>List of attributes for guessing and reading data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GUESS_WRITE>foreign_ATT_GUESS_WRITE</a></td><td>List of attributes for guessing and writing data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_MIRIAD_READ_HEADER>foreign_ATT_MIRIAD_READ_HEADER</a></td><td>List of attributes for reading Miriad Image headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_MIRIAD_READ_DATA>foreign_ATT_MIRIAD_READ_DATA</a></td><td>List of attributes for reading Miriad Image data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_MIRIAD_READ>foreign_ATT_MIRIAD_READ</a></td><td>List of attributes for reading Miriad Image files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_MIRIAD_WRITE>foreign_ATT_MIRIAD_WRITE</a></td><td>List of attributes for writing Miriad Image files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GIPSY_READ_HEADER>foreign_ATT_GIPSY_READ_HEADER</a></td><td>List of attributes for reading GIPSY Image headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GIPSY_READ_DATA>foreign_ATT_GIPSY_READ_DATA</a></td><td>List of attributes for reading GIPSY Image data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GIPSY_READ>foreign_ATT_GIPSY_READ</a></td><td>List of attributes for reading GIPSY Image files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GIPSY_WRITE>foreign_ATT_GIPSY_WRITE</a></td><td>List of attributes for writing GIPSY Image files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_GIPSY_WRITE_HEADER>foreign_ATT_GIPSY_WRITE_HEADER</a></td><td>List of attributes for writing GIPSY Image file headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_TYPES>foreign_TYPES</a></td><td>List of foreign file types
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_PPM_WRITE>foreign_ATT_PPM_WRITE</a></td><td>List of attributes for writing PPM files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_PPM_READ>foreign_ATT_PPM_READ</a></td><td>List of attributes for reading PPM files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_PGM_READ>foreign_ATT_PGM_READ</a></td><td>List of attributes for reading PGM files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_SUNRAS_READ>foreign_ATT_SUNRAS_READ</a></td><td>List of attributes for reading Sun Rasterfile files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_SUNRAS_WRITE>foreign_ATT_SUNRAS_WRITE</a></td><td>List of attributes for writing Sun Rasterfile files
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_IDF_READ_HEADER>foreign_ATT_IDF_READ_HEADER</a></td><td>List of attributes for reading IDF headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_IDF_READ_DATA>foreign_ATT_IDF_READ_DATA</a></td><td>List of attributes for reading IDF data
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_IDF_READ>foreign_ATT_IDF_READ</a></td><td>List of attributes for reading IDF files (header+data)
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_DRAO_READ_HEADER>foreign_ATT_DRAO_READ_HEADER</a></td><td>List of attributes for reading DRAO headers
+</td></tr>
+<tr><td><a href=foreign.html#foreign_ATT_DRAO_READ>foreign_ATT_DRAO_READ</a></td><td>List of attributes for reading DRAO files (header+data)
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=foreign_aips1_read_dataset_names></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST char *
+ <b>foreign_aips1_read_dataset_names</b><i>    (CONST char *dirname,
+					      unsigned int *num_datasets)
+</i><br><p>    This routine will read the "CA*.???;*" catalogue file in
+    the specified directory and extracts the names of the datasets. The
+    "AIPS_ID" environment variable should be set to your AIPS user ID.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory containing the catalogue file.
+<br><li><i>num_datasets :</i> 
+    The number of datasets found is written here.
+<br></ul><b>Returns:</b>     A pointer to a buffer packed with dataset names. Each dataset
+    name is separated by a '\0' character. The buffer is internally allocated
+    and must not be freed. If no datasets are found NULL is returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips1_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_aips1_read</b><i>    (CONST char *setname)
+</i><br><p>    Read an AIPS dataset.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The AIPS dataset name.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips1_read_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_aips1_read_header</b><i>    (CONST char *setname, flag data_alloc,
+					KAIPS1DataContext *context)
+</i><br><p>    Read an AIPS dataset header.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The AIPS dataset name.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>context :</i> 
+    The data reading context is written here, to be used in
+    subsequent calls to <a href=foreign.html#foreign_aips1_read_data>foreign_aips1_read_data</a>. This may be NULL.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips1_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_aips1_read_data</b><i>    (KAIPS1DataContext context, char *data,
+			      uaddr num_values)
+</i><br><p>    This routine will read the data of an AIPS dataset from a
+    KAIPS1DataContext object. The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>data :</i> 
+    The array to write the data into. If this is NULL, input data are
+    skipped and nothing is written.
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips1_read_history></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_aips1_read_history</b><i>    (KAIPS1DataContext context,
+				 multi_array *multi_desc)
+</i><br><p>    Read history for an AIPS file.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>multi_desc :</i> 
+    The multi_array object to write the history to.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips1_close_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_aips1_close_data_context</b><i>    (KAIPS1DataContext context)
+</i><br><p>    Close a KAIPS1DataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips2_test></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_aips2_test</b><i>    (CONST char *dirname, flag test_dir)
+</i><br><p>    Test if a directory is an AIPS++ Image file.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the AIPS++ dataset name.
+<br><li><i>test_dir :</i> 
+    If TRUE will first test if the dataset name is a directory. Set
+    this to FALSE only if you know the dataset name is a directory.
+<br></ul><b>Returns:</b>     TRUE if the directory is a AIPS++ Image file, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_aips2_run></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>pid_t
+ <b>foreign_aips2_run</b><i>    (CONST char *filename, int stdout_fd, int close_fd,
+			 int *waitflags)
+</i><br><p>    Fork and execute a programme.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The input filename for the programme.
+<br><li><i>stdout_fd :</i> 
+    The output file descriptor.
+<br><li><i>close_fd :</i> 
+    The file descriptor to close.
+<br><li><i>waitflags :</i> 
+    Special flags to pass to waitpid(2) are written here.
+<br></ul><b>Returns:</b>     The child process ID on success, else -1.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_read_dataset_names></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST char *
+ <b>foreign_drao_read_dataset_names</b><i>    (CONST char *dirname,
+					     unsigned int *num_datasets,
+					     unsigned int *max_width)
+</i><br><p>    This routine will read the "deffil.mad" catalogue file in the
+    specified directory and extracts the names of the datasets.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory containing the catalogue file.
+<br><li><i>num_datasets :</i> 
+    The number of datasets found is written here.
+<br><li><i>max_width :</i> 
+    The width of the longest dataset name is written here. This
+    may be NULL.
+<br></ul><b>Returns:</b>     A pointer to a buffer packed with dataset names. Each dataset
+    name is separated by a '\0' character. The buffer is internally allocated
+    and must not be freed. If no datasets are found NULL is returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_drao_read</b><i>    (CONST char *setname, flag convert_int_to_float,
+				...)
+</i><br><p>    Read a DRAO dataset.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The DRAO dataset name.
+<br><li><i>convert_int_to_float :</i> 
+    If TRUE, integer data are converted to floating
+    point data.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_DRAO_READ_END. See <a href=foreign.html#foreign_ATT_DRAO_READ>foreign_ATT_DRAO_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_read_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_drao_read_header</b><i>    (CONST char *setname, flag data_alloc,
+				       flag convert_int_to_float,
+				       KDRAODataContext *context, ...)
+</i><br><p>    Read a DRAO dataset header.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The DRAO dataset name.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>convert_int_to_float :</i> 
+    If TRUE, integer data are converted to floating
+    point data.
+<br><li><i>context :</i> 
+    The data reading context is written here, to be used in
+    subsequent calls to <a href=foreign.html#foreign_drao_read_data>foreign_drao_read_data</a>. This may be NULL.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_DRAO_READ_HEADER_END. See <a href=foreign.html#foreign_ATT_DRAO_READ_HEADER>foreign_ATT_DRAO_READ_HEADER</a> for a
+    list of defined attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_drao_read_data</b><i>    (KDRAODataContext context, char *data,
+			     uaddr num_values)
+</i><br><p>    This routine will read the data of a DRAO dataset from a
+    KDRAODataContext object. The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>data :</i> 
+    The array to write the data into. If this is NULL, input data is
+    skipped and nothing is written.
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_rewind_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_drao_rewind_data_context</b><i>    (KDRAODataContext context)
+</i><br><p>    Rewind a KDRAODataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_drao_close_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_drao_close_data_context</b><i>    (KDRAODataContext context)
+</i><br><p>    Close a KDRAODataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_filter_get_format></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>foreign_filter_get_format</b><i>    (CONST char *filename)
+</i><br><p>    Get the filter format
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the file.
+<br></ul><b>Returns:</b>     A value indicating the format of the file. The value
+    FOREIGN_FILE_FORMAT_FILTER_KARMA is returned if a data filter to Karma for
+    the file exists. The value FOREIGN_FILE_FORMAT_FILTER_FITS is returned if a
+    data filter to FITS exists. Otherwise FOREIGN_FILE_FORMAT_UNKNOWN is
+    returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_filter_test_directory_dataset></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_filter_test_directory_dataset</b><i>    (CONST char *dirname)
+</i><br><p>    Test if a directory is a dataset.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The name of the directory.
+<br></ul><b>Returns:</b>     TRUE if the directory is a dataset, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_filter_get_channel></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>Channel
+ <b>foreign_filter_get_channel</b><i>    (CONST char *filename)
+</i><br><p>    Get the channel for a filtered file.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The filename to read.
+<br></ul><b>Returns:</b>     A channel object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_filter_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_filter_read</b><i>    (CONST char *filename)
+</i><br><p>    Read a filtered file.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The filename to read.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_filter_register></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_filter_register</b><i>    (CONST char *extension,CONST char *converter_prog,
+			      pid_t (*run) (CONST char *filename,
+					    int stdout_fd, int close_fd,
+					    int *waitflags),
+			      CONST char *tester_prog,
+			      flag (*tester_func) (CONST char *dirname,
+						   flag test_dir),
+			      unsigned int output_type, CONST char *name)
+</i><br><p>    Register a filter.
+<p><b>Parameters:</b><ul><li><i>extension :</i> 
+    The filename extension. If NULL, the file format is a directory
+    dataset.
+<br><li><i>converter_prog :</i> 
+    The programme used to convert data.
+<br><li><i>run :</i> 
+    The function used to run a new programme.
+<br><li><i>tester_prog :</i> 
+    The programme used to test the data.
+<br><li><i>tester_func :</i> 
+    The function used to test the data.
+<br><li><i>output_type :</i> 
+    The output type of the converter.
+<br><li><i>name :</i> 
+    The name of the data format.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_read_header></a> multi_array *
+ <b>foreign_fits_read_header</b><i>    (Channel channel, flag data_alloc,
+				       flag convert_int_to_float,
+				       flag sanitise, ...)
+</i><br><p>    This routine will read the header of a FITS file from a channel.
+    The data section is NOT read.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>convert_int_to_float :</i> 
+    If TRUE, integer FITS data is converted to floating
+    point data.
+<br><li><i>sanitise :</i> 
+    If TRUE, FITS axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_FITS_READ_HEADER_END. See <a href=foreign.html#foreign_ATT_FITS_READ_HEADER>foreign_ATT_FITS_READ_HEADER</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_fits_read</b><i>    (CONST char *filename,
+				flag convert_int_to_float, flag sanitise,
+				...)
+</i><br><p>    Read a FITS file.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the file.
+<br><li><i>convert_int_to_float :</i> 
+    If TRUE, integer FITS data is converted to floating
+    point data.
+<br><li><i>sanitise :</i> 
+    If TRUE, FITS axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_FITS_READ_END. See <a href=foreign.html#foreign_ATT_FITS_READ>foreign_ATT_FITS_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_read_data></a> flag
+ <b>foreign_fits_read_data</b><i>    (Channel channel, multi_array *multi_desc,
+			     char *data, uaddr num_values, ...)
+</i><br><p>    This routine will read the data of a FITS file from a channel.
+    The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>multi_desc :</i> 
+    The Karma data structure to write the data into.
+<br><li><i>data :</i> 
+    An alternate data array to write the FITS data into. If this is
+    NULL, the routine will write the data into the Karma data structure.
+<br><li><i>num_values :</i> 
+    The number of values to write into the data array. This is
+    used when data is not NULL or skipping is requested.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_FITS_READ_DATA_END. See <a href=foreign.html#foreign_ATT_FITS_READ_DATA>foreign_ATT_FITS_READ_DATA</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_write></a> flag
+ <b>foreign_fits_write</b><i>    (Channel channel, multi_array *multi_desc, ...)
+</i><br><p>    This routine will write a Karma data structure to a FITS file.
+    The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn", "BITPIX",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    n-dimensional array within the data structure.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_FITS_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_FITS_WRITE>foreign_ATT_FITS_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_write_iarray></a> flag
+ <b>foreign_fits_write_iarray</b><i>    (Channel channel, iarray array, ...)
+</i><br><p>    This routine will write an Intelligent Array to a FITS file.
+    The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn", "BITPIX",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>array :</i> 
+    The Intelligent Array.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_FITS_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_FITS_WRITE>foreign_ATT_FITS_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_write_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_fits_write_header</b><i>    (Channel channel,
+				CONST multi_array *multi_desc,
+				CONST history *first_hist)
+</i><br><p>    Write a FITS header to a channel object.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>multi_desc :</i> 
+    The new header descriptor.
+<br><li><i>first_hist :</i> 
+    The first history string. This may be NULL. After this history
+    is appended, any history from <em>multi_desc</em> is appended.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_write_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_fits_write_data</b><i>    (Channel channel, multi_array *multi_desc,
+			      CONST packet_desc *header_pack_desc,
+			      CONST char *header_packet,
+			      char *data, uaddr num_values, ...)
+</i><br><p>    This routine will write the data section of a FITS file to a
+    channel. The header section is NOT written.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to.
+<br><li><i>multi_desc :</i> 
+    The Karma data structure containing the data.
+<br><li><i>header_pack_desc :</i> 
+    The header packet descriptor.
+<br><li><i>header_packet :</i> 
+    The header packet data.
+<br><li><i>data :</i> 
+    An alternate data array to read the data from. If this is
+    NULL, the routine will read the data from the Karma data structure.
+<br><li><i>num_values :</i> 
+    The number of values to write to the FITS file. This is
+    only used when data is not NULL.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_FITS_WRITE_DATA_END. See <a href=foreign.html#foreign_ATT_FITS_WRITE_DATA>foreign_ATT_FITS_WRITE_DATA</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_fits_write_padding></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_fits_write_padding</b><i>    (Channel channel)
+</i><br><p>    Write trailing pad bytes up to the card end.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gildas_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_gildas_read</b><i>    (CONST char *setname,unsigned int mmap_option,
+				  flag writable)
+</i><br><p>    Read a GILDAS dataset.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The GILDAS dataset name.
+<br><li><i>mmap_option :</i> 
+    Control value which determines whether the channel is opened
+    as an ordinary disc file or is mapped. See <a href=ch.html#ch_MAP_CONTROLS>ch_MAP_CONTROLS</a> for legal
+    values. If the file is not mapped then the routine will attempt to open an
+    ordinary disc channel. If the file is opened as a disc channel the access
+    mode is: "rz".
+<br><li><i>writable :</i> 
+    If the mapped pages are to be writable, this must be TRUE. If
+    this is FALSE and the memory pages are written to, a segmentation fault
+    occurs.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gildas_read_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_gildas_read_header</b><i>    (CONST char *setname, flag data_alloc,
+					 unsigned int mmap_option,
+					 flag writable,
+					 KGILDASDataContext *context)
+</i><br><p>    Read a GILDAS dataset header.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The GILDAS dataset name.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>mmap_option :</i> 
+    Control value which determines whether the channel is opened
+    as an ordinary disc file or is mapped. See <a href=ch.html#ch_MAP_CONTROLS>ch_MAP_CONTROLS</a> for legal
+    values. If the file is not mapped then the routine will attempt to open an
+    ordinary disc channel. If the file is opened as a disc channel the access
+    mode is: "rz".
+<br><li><i>writable :</i> 
+    If the mapped pages are to be writable, this must be TRUE. If
+    this is FALSE and the memory pages are written to, a segmentation fault
+    occurs.
+<br><li><i>context :</i> 
+    The data reading context is written here, to be used in
+    subsequent calls to <a href=foreign.html#foreign_gildas_read_data>foreign_gildas_read_data</a>. This may be NULL.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gildas_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_gildas_read_data</b><i>    (KGILDASDataContext context, char *data,
+			       uaddr num_values)
+</i><br><p>    This routine will read the data of a GILDAS dataset from a
+    KGILDASDataContext object. The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>data :</i> 
+    The array to write the data into. If this is NULL, input data are
+    skipped and nothing is written.
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gildas_close_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_gildas_close_data_context</b><i>    (KGILDASDataContext context)
+</i><br><p>    Close a KGILDASDataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_test></a> flag
+ <b>foreign_gipsy_test</b><i>    (CONST char *filename)
+</i><br><p>    Test if a file is part of a GIPSY file set.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of any file in the GIPSY file set.
+<br></ul><b>Returns:</b>     TRUE if the file is part of a GIPSY file set, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_read_header></a> multi_array *
+ <b>foreign_gipsy_read_header</b><i>    (Channel channel, flag data_alloc,
+					flag sanitise, ...)
+</i><br><p>    This routine will read the header of a GIPSY file from a channel.
+    The data section is NOT read.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>sanitise :</i> 
+    If TRUE, GIPSY axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_READ_HEADER_END. See <a href=foreign.html#foreign_ATT_GIPSY_READ_HEADER>foreign_ATT_GIPSY_READ_HEADER</a> for a
+    list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_read_data></a> flag
+ <b>foreign_gipsy_read_data</b><i>    (Channel channel, multi_array *multi_desc,
+			      char *data, uaddr num_values, ...)
+</i><br><p>    This routine will read the data of a GIPSY image file from a
+    channel.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>multi_desc :</i> 
+    The Karma data structure to write the data into.
+<br><li><i>data :</i> 
+    An alternate data array to write the FITS data into. If this is
+    NULL, the routine will write the data into the Karma data structure.
+<br><li><i>num_values :</i> 
+    The number of values to write into the data array. This is
+    used when data is not NULL or skipping is requested.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_READ_DATA_END. See <a href=foreign.html#foreign_ATT_GIPSY_READ_DATA>foreign_ATT_GIPSY_READ_DATA</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_read></a> multi_array *
+ <b>foreign_gipsy_read</b><i>    (CONST char *filename, flag sanitise, ...)
+</i><br><p>    Read a GIPSY file set.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of any file in the GIPSY file set.
+<br><li><i>sanitise :</i> 
+    If TRUE, GIPSY axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_READ_END. See <a href=foreign.html#foreign_ATT_GIPSY_READ>foreign_ATT_GIPSY_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_write></a> flag
+ <b>foreign_gipsy_write</b><i>    (CONST char *basename, multi_array *multi_desc, ...)
+</i><br><p>    This routine will write a Karma data structure to a GIPSY
+    file. The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>basename :</i> 
+    The base filename of the GIPSY file. The ".descr" and ".image"
+    extensions are added automatically.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    n-dimensional array within the data structure.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_GIPSY_WRITE>foreign_ATT_GIPSY_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_write_iarray></a> flag
+ <b>foreign_gipsy_write_iarray</b><i>    (CONST char *basename, iarray array, ...)
+</i><br><p>    This routine will write an Intelligent Array to a GIPSY
+    file. The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn", "BITPIX",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>basename :</i> 
+    The base filename of the GIPSY file. The ".descr" and ".image"
+    extensions are added automatically.
+<br><li><i>array :</i> 
+    The Intelligent Array.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_GIPSY_WRITE>foreign_ATT_GIPSY_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_gipsy_write_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_gipsy_write_header</b><i>    (Channel channel,
+				 CONST packet_desc *header_pack_desc,
+				 CONST char *header_packet, ...)
+</i><br><p>    Write a GIPSY header.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel object to write the header to.
+<br><li><i>header_desc :</i> 
+    The FITS-style header packet descriptor.
+<br><li><i>header_packet :</i> 
+    The FITS-style header packet data.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_GIPSY_WRITE_HEADER_END.
+    See <a href=foreign.html#foreign_ATT_GIPSY_WRITE_HEADER>foreign_ATT_GIPSY_WRITE_HEADER</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_guess_and_read></a> multi_array *
+ <b>foreign_guess_and_read</b><i>    (CONST char *filename,
+				     unsigned int mmap_option, flag writable,
+				     unsigned int *ftype, ...)
+</i><br><p>    This routine will attempt to guess the filetype of a file and
+    in the file, converting to the Karma data format if possible.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the file to read.
+<br><li><i>mmap_option :</i> 
+    This has the same meaning as for the <dsxfr_get_multi>
+    routine.
+<br><li><i>writable :</i> 
+    This has the same meaning as for the <dsxfr_get_multi> routine.
+<br><li><i>ftype :</i> 
+    The type of the file that was read in is written here. This may be
+    NULL.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must terminated with FA_GUESS_READ_END.
+    See <a href=foreign.html#foreign_ATT_GUESS_READ>foreign_ATT_GUESS_READ</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_read_and_setup></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_read_and_setup</b><i>    (CONST char *filename, unsigned int mmap_option,
+			     flag writable, unsigned int *ftype, flag inform,
+			     unsigned int num_dim,
+			     unsigned int preferred_type, flag force_type,
+			     iarray *array, double *min, double *max,
+			     flag discard_zero_range, KwcsAstro *ap)
+</i><br><p>    This routine will attempt to guess the filetype of a file and
+    in the file, converting to an Intelligent Array if possible. The routine
+    then performs some simple checks and some other convenience functions.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the file to read.
+<br><li><i>mmap_option :</i> 
+    This has the same meaning as for the <dsxfr_get_multi>
+    routine.
+<br><li><i>writable :</i> 
+    This has the same meaning as for the <dsxfr_get_multi> routine.
+<br><li><i>ftype :</i> 
+    The type of the file that was read in is written here. This may be
+    NULL.
+<br><li><i>inform :</i> 
+    If TRUE, the routine displays some informative messages.
+<br><li><i>num_dim :</i> 
+    The number of dimensions required. If this is 0, any number of
+    dimensions is allowed.
+<br><li><i>preferred_type :</i> 
+    The preferred data type. If this is NONE, then no type is
+    preferred.
+<br><li><i>force_type :</i> 
+    If TRUE, the routine fails if the preferred data type was not
+    available.
+<br><li><i>array :</i> 
+    The Intelligent Array is written here. An existing array pointed to
+    by this is deallocated.
+<br><li><i>min :</i> 
+    The minimum data value in the array is written here. If this is NULL
+    nothing is written here.
+<br><li><i>max :</i> 
+    The maximum data value in the array is written here. If this is NULL
+    nothing is written here.
+<br><li><i>discard_zero_range :</i> 
+    If TRUE, and the range of the data is zero, the
+    routine fails.
+<br><li><i>ap :</i> 
+    The KwcsAstro object is written here. This may be NULL.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_guess_write></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_guess_write</b><i>    (CONST char *filename, multi_array *multi_desc, ...)
+</i><br><p>    Write a data structure, guessing the output format.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the dataset to write.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    n-dimensional array within the data structure.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_FITS_GUESS_END.
+    See <a href=foreign.html#foreign_ATT_GUESS_WRITE>foreign_ATT_GUESS_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_idf_test></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_idf_test</b><i>    (CONST char *filename)
+</i><br><p>    Test if a file is part of an IDF file set.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the ".idf" header file in the IDF file set.
+<br></ul><b>Returns:</b>     TRUE if the file is part of an IDF file set, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_idf_read_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_idf_read_header</b><i>    (Channel channel, flag data_alloc,
+				      flag sanitise, ...)
+</i><br><p>    This routine will read the header of an IDF file from a channel.
+    The data section is NOT read.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>sanitise :</i> 
+    If TRUE, IDF axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_IDF_READ_HEADER_END. See <a href=foreign.html#foreign_ATT_IDF_READ_HEADER>foreign_ATT_IDF_READ_HEADER</a> for a
+    list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_idf_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_idf_read_data</b><i>    (Channel channel, multi_array *multi_desc,
+			    char *data, uaddr num_values, ...)
+</i><br><p>    This routine will read the data of an IDF image file from a
+    channel.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>multi_desc :</i> 
+    The Karma data structure to write the data into.
+<br><li><i>data :</i> 
+    An alternate data array to write the FITS data into. If this is
+    NULL, the routine will write the data into the Karma data structure.
+<br><li><i>num_values :</i> 
+    The number of values to write into the data array. This is
+    used when data is not NULL or skipping is requested.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_IDF_READ_DATA_END. See <a href=foreign.html#foreign_ATT_IDF_READ_DATA>foreign_ATT_IDF_READ_DATA</a> for a list of
+    defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_idf_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_idf_read</b><i>    (CONST char *filename, flag sanitise, ...)
+</i><br><p>    Read an IDF file set.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the ".idf" header file in the IDF file set.
+<br><li><i>sanitise :</i> 
+    If TRUE, IDF axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_IDF_READ_END. See <a href=foreign.html#foreign_ATT_IDF_READ>foreign_ATT_IDF_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_iraf_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_iraf_read</b><i>    (CONST char *setname)
+</i><br><p>    Read an IRAF dataset.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The IRAF dataset name.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_iraf_read_header></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_iraf_read_header</b><i>    (CONST char *setname, flag data_alloc,
+				       KIRAFDataContext *context)
+</i><br><p>    Read an IRAF dataset header.
+<p><b>Parameters:</b><ul><li><i>setname :</i> 
+    The IRAF dataset name.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>context :</i> 
+    The data reading context is written here, to be used in
+    subsequent calls to <a href=foreign.html#foreign_iraf_read_data>foreign_iraf_read_data</a>. This may be NULL.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_iraf_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_iraf_read_data</b><i>    (KIRAFDataContext context, char *data,
+			      uaddr num_values)
+</i><br><p>    This routine will read the data of an IRAF dataset from a
+    KIRAFDataContext object. The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>data :</i> 
+    The array to write the data into. If this is NULL, input data is
+    skipped and nothing is written.
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_iraf_close_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_iraf_close_data_context</b><i>    (KIRAFDataContext context)
+</i><br><p>    Close a KIRAFDataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_test2></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_miriad_test2</b><i>    (CONST char *dirname, flag test_dir)
+</i><br><p>    Test if a directory is a Miriad Image file.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad dataset name.
+<br><li><i>test_dir :</i> 
+    If TRUE will first test if the dataset name is a directory. Set
+    this to FALSE only if you know the dataset name is a directory.
+<br></ul><b>Returns:</b>     TRUE if the directory is a Miriad Image file, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_read_header2></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_miriad_read_header2</b><i>    (CONST char *dirname, flag data_alloc,
+					  flag sanitise, ...)
+</i><br><p>    This routine will read the header of a Miriad Image file from a
+    channel. The data section is NOT read.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad dataset name.
+<br><li><i>data_alloc :</i> 
+    If TRUE, the data space is allocated.
+<br><li><i>sanitise :</i> 
+    If TRUE, Miriad axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_MIRIAD_READ_HEADER_END. See <a href=foreign.html#foreign_ATT_MIRIAD_READ_HEADER>foreign_ATT_MIRIAD_READ_HEADER</a> for a
+    list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_read></a> multi_array *
+ <b>foreign_miriad_read</b><i>    (CONST char *dirname, flag sanitise, ...)
+</i><br><p>    Read a Miriad image file.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad dataset name.
+<br><li><i>sanitise :</i> 
+    If TRUE, Miriad axes with length 1 are ignored. This is highly
+    recommended.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_MIRIAD_READ_END. See <a href=foreign.html#foreign_ATT_MIRIAD_READ>foreign_ATT_MIRIAD_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A multi_array descriptor on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_create_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KMiriadDataContext
+ <b>foreign_miriad_create_data_context</b><i>    (CONST char *dirname, unsigned int mmap_option, flag writable)
+</i><br><p>    This routine will create a context suitable for reading Miriad
+    Image data. The <a href=foreign.html#foreign_miriad_read_data>foreign_miriad_read_data</a> routine may be used to read
+    data sequentially from the context.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad dataset name.
+<br><li><i>mmap_option :</i> 
+    Option to control memory mapping when reading from disc. See
+    <a href=ch.html#ch_MAP_CONTROLS>ch_MAP_CONTROLS</a> for a list of legal values.
+<br><li><i>writable :</i> 
+    If TRUE, the mapped structure will be writable. When the data
+    structure data is modified these changes will be reflected in the disc
+    file. The shape of the data structure cannot be changed though mapping.
+    If FALSE and the structure is written to, a segmentation fault occurs.
+<br></ul><b>Returns:</b>     A KMiriadDataContext object on success, else NULL (indicating the
+    image file could not be read).
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_read_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_miriad_read_data</b><i>    (KMiriadDataContext context,
+			       multi_array *multi_desc,
+			       char *data, uaddr num_values, ...)
+</i><br><p>    This routine will read the data of a Miriad Image file from a
+    KMiradDataContext object. The header section is NOT read.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context to read from.
+<br><li><i>multi_desc :</i> 
+    The Karma data structure to write the data into.
+<br><li><i>data :</i> 
+    An alternate data array to write the data into. If this is NULL,
+    the routine will write the data into the Karma data structure.
+<br><li><i>num_values :</i> 
+    The number of values to write into the data array. This is
+    used when data is not NULL or skipping is requested.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_MIRIAD_READ_DATA_END. See <a href=foreign.html#foreign_ATT_MIRIAD_READ_DATA>foreign_ATT_MIRIAD_READ_DATA</a> for a list
+    of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_close_data_context></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>foreign_miriad_close_data_context</b><i>    (KMiriadDataContext context)
+</i><br><p>    Close a KMiriadDataContext object.
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_read_history></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_miriad_read_history</b><i>    (CONST char *dirname, multi_array *multi_desc)
+</i><br><p>    Read the history component of a Miriad Image file.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad dataset name.
+<br><li><i>multi_desc :</i> 
+    The multi_array header the history will be written to.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_read_get_alignment_padding></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>foreign_miriad_read_get_alignment_padding</b><i>    (uaddr position,
+							uaddr size)
+</i><br><p>    Compute padding to align to a word boundary.
+<p><b>Parameters:</b><ul><li><i>position :</i> 
+    The current position.
+<br><li><i>size :</i> 
+    The size of the word in bytes.
+<br></ul><b>Returns:</b>     The number of padding bytes required.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_write></a> flag
+ <b>foreign_miriad_write</b><i>    (CONST char *dirname, multi_array *multi_desc, ...)
+</i><br><p>    This routine will write a Karma data structure to a Miriad Image
+    file. The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad Image file.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    n-dimensional array within the data structure.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_MIRIAD_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_MIRIAD_WRITE>foreign_ATT_MIRIAD_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_write_iarray></a> flag
+ <b>foreign_miriad_write_iarray</b><i>    (CONST char *dirname, iarray array, ...)
+</i><br><p>    This routine will write an Intelligent Array to a Miriad Image
+    file. The routine will automatically generate essential keywords such as:
+    "NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn", "BITPIX",
+    "BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+    structure which do not conflict with the generated keywords are copied.
+<p><b>Parameters:</b><ul><li><i>dirname :</i> 
+    The directory name of the Miriad Image file.
+<br><li><i>array :</i> 
+    The Intelligent Array.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_MIRIAD_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_MIRIAD_WRITE>foreign_ATT_MIRIAD_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_miriad_write_header_entry></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_miriad_write_header_entry</b><i>    (Channel channel, CONST char *name,
+					unsigned int type,
+					unsigned int num_values,
+					CONST char *data)
+</i><br><p>    Write a Miriad header entry.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to.
+<br><li><i>name :</i> 
+    The name of the header entry.
+<br><li><i>type :</i> 
+    The type of the data.
+<br><li><i>num_values :</i> 
+    The number of data values to write.
+<br><li><i>data :</i> 
+    The data values.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_guess_format_from_filename></a> unsigned int
+ <b>foreign_guess_format_from_filename</b><i>    (CONST char *filename)
+</i><br><p>    Attempt to guess the format of a file by examining its filename.
+<p><b>Parameters:</b><ul><li><i>filename :</i> 
+    The name of the file.
+<br></ul><b>Returns:</b>     A value indicating the format of the file. The value
+    FOREIGN_FILE_FORMAT_KARMA is returned if the extension is ".kf". See
+    <a href=foreign.html#foreign_TYPES>foreign_TYPES</a> for a list of possible values.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_pgm_read></a> multi_array *
+ <b>foreign_pgm_read</b><i>    (Channel channel, ...)
+</i><br><p>    Read a colour image in PGM format from a channel.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_PGM_READ_END.
+    See <a href=foreign.html#foreign_ATT_PGM_READ>foreign_ATT_PGM_READ</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else NULL
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_pnm_read_type></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>foreign_pnm_read_type</b><i>    (Channel channel, flag *binary)
+</i><br><p>    Read the type of a PNM file.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>binary :</i> 
+    The value TRUE is written here if the file is in binary format,
+    else FALSE is written here.
+<br></ul><b>Returns:</b>     The type of PNM file.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_pnm_read></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_pnm_read</b><i>    (Channel channel)
+</i><br><p>    Read a PNM file.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_pnm_read2></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>multi_array *
+ <b>foreign_pnm_read2</b><i>    (CONST char *filename, unsigned int mmap_option,
+				flag writable)
+</i><br><p>    Read a PNM file.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>mmap_option :</i> 
+    This has the same meaning as for the <dsxfr_get_multi>
+    routine.
+<br><li><i>writable :</i> 
+    This has the same meaning as for the <dsxfr_get_multi> routine.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else
+    NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_ppm_read></a> multi_array *
+ <b>foreign_ppm_read</b><i>    (Channel channel, ...)
+</i><br><p>    Read a colour image in PPM format from a channel.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_PPM_READ_END.
+    See <a href=foreign.html#foreign_ATT_PPM_READ>foreign_ATT_PPM_READ</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else NULL
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_ppm_write></a> flag
+ <b>foreign_ppm_write</b><i>    (Channel channel, multi_array *multi_desc, flag binary,
+			...)
+</i><br><p>    Write a colour image to a channel in PPM format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    TrueColour image or a PseudoColour image within the data structure.
+<br><li><i>binary :</i> 
+    If TRUE, the pixels will be written in binary mode.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with FA_PPM_WRITE_END.
+    See <a href=foreign.html#foreign_ATT_PPM_WRITE>foreign_ATT_PPM_WRITE</a> for a list of defined attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_ppm_write_pseudo></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_ppm_write_pseudo</b><i>    (Channel channel, flag binary,
+			       CONST char *image, unsigned int type,
+			       uaddr *hoffsets, uaddr *voffsets,
+			       unsigned int inp_width, unsigned int inp_height,
+			       unsigned int out_width, unsigned int out_height,
+			       CONST unsigned short *cmap_reds,
+			       CONST unsigned short *cmap_greens,
+			       CONST unsigned short *cmap_blues,
+			       unsigned int cmap_size,
+			       unsigned int min_sat_index,
+			       unsigned int max_sat_index,
+			       unsigned int blank_index,
+			       unsigned int cmap_stride,
+			       double i_min, double i_max,
+			       flag (*iscale_func) (), void *iscale_info)
+</i><br><p>    Write a PseudoColor image to a channel in PPM format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>binary :</i> 
+    If TRUE, the pixels will be written in binary mode.
+<br><li><i>image :</i> 
+    The image data.
+<br><li><i>type :</i> 
+    The type of the image data.
+<br><li><i>hoffsets :</i> 
+    The array of horizontal byte offsets.
+<br><li><i>voffsets :</i> 
+    The array of vertical byte offsets.
+<br><li><i>inp_width :</i> 
+    The width of the input image.
+<br><li><i>inp_height :</i> 
+    The height of the input image.
+<br><li><i>out_width :</i> 
+    The width of the output image. If the input image is
+    smaller than this, then the image will be centred with blank-filling. If
+    the input image is larger than this, the image will be truncated. If this
+    is 0, the output image will be the same width as the input image.
+<br><li><i>out_height :</i> 
+    The height of the output image. If the input image is smaller
+    than this, then the image will be centred with blank-filling. If the input
+    image is larger than this, the image will be truncated. If this is 0, the
+    output image will be the same height as the input image.
+<br><li><i>cmap_reds :</i> 
+    The red colourmap values.
+<br><li><i>cmap_greens :</i> 
+    The green colourmap values.
+<br><li><i>cmap_blues :</i> 
+    The blue colourmap values.
+<br><li><i>cmap_size :</i> 
+    The number of colourmap entries.
+<br><li><i>min_sat_index :</i> 
+    The index into the colourmap for the colour to use when
+    data values are below <em>i_min</em>.
+<br><li><i>max_sat_index :</i> 
+    The index into the colourmap for the colour to use when
+    data values are above <em>i_max</em>.
+<br><li><i>blank_index :</i> 
+    The index into the colourmap for the colour to use when
+    data values are blank.
+<br><li><i>cmap_stride :</i> 
+    The stride (in unsigned shorts) between colourmap values.
+<br><li><i>i_min :</i> 
+    The minimum image value. Image values below this will be clipped.
+<br><li><i>i_max :</i> 
+    The maximum image value. Image values above this will be clipped.
+<br><li><i>iscale_func :</i> 
+    The function to be called when non-linear intensity scaling
+    is required. If NULL, linear intensity scaling is used. The prototype
+    function is <a href=imw.html#imw_PROTO_iscale_func>imw_PROTO_iscale_func</a>.
+<br><li><i>iscale_info :</i> 
+    A pointer to arbitrary information for <em>iscale_func</em>.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe.
+<br><p><hr> <a name=foreign_ppm_write_rgb></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_ppm_write_rgb</b><i>    (Channel channel, flag binary,
+			    CONST unsigned char *image_red,
+			    CONST unsigned char *image_green,
+			    CONST unsigned char *image_blue,
+			    uaddr *hoffsets, uaddr *voffsets,
+			    unsigned int inp_width, unsigned int inp_height,
+			    unsigned int out_width, unsigned int out_height,
+			    CONST unsigned short *cmap_red,
+			    CONST unsigned short *cmap_green,
+			    CONST unsigned short *cmap_blue,
+			    unsigned int cmap_stride)
+</i><br><p>    Write a TrueColor image to a channel in PPM format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>binary :</i> 
+    If TRUE, the pixels will be written in binary mode.
+<br><li><i>red_image :</i> 
+    The red image data.
+<br><li><i>green_image :</i> 
+    The green image data.
+<br><li><i>blue_image :</i> 
+    The blue image data.
+<br><li><i>hoffsets :</i> 
+    The array of horizontal byte offsets.
+<br><li><i>voffsets :</i> 
+    The array of vertical byte offsets.
+<br><li><i>inp_width :</i> 
+    The width of the input image.
+<br><li><i>inp_height :</i> 
+    The height of the input image.
+<br><li><i>out_width :</i> 
+    The width of the output image. If the input image is
+    smaller than this, then the image will be centred with blank-filling. If
+    the input image is larger than this, the image will be truncated. If this
+    is 0, the output image will be the same width as the input image.
+<br><li><i>out_height :</i> 
+    The height of the output image. If the input image is smaller
+    than this, then the image will be centred with blank-filling. If the input
+    image is larger than this, the image will be truncated. If this is 0, the
+    output image will be the same height as the input image.
+<br><li><i>cmap_red :</i> 
+    The red component colourmap entries. 256 entries required. If
+    this is NULL a linear mapping is assumed.
+<br><li><i>cmap_green :</i> 
+    The green component colourmap entries. 256 entries required.
+    If this is NULL a linear mapping is assumed.
+<br><li><i>cmap_blue :</i> 
+    The blue component colourmap entries. 256 entries required. If
+    this is NULL a linear mapping is assumed.
+<br><li><i>cmap_stride :</i> 
+    The stride (in unsigned shorts) between colourmap values.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe.
+<br><p><hr> <a name=foreign_sunras_read></a> multi_array *
+ <b>foreign_sunras_read</b><i>    (Channel channel, ...)
+</i><br><p>    Read an image in Sun rasterfile format from a channel.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to read from.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_SUNRAS_READ_END. See <a href=foreign.html#foreign_ATT_SUNRAS_READ>foreign_ATT_SUNRAS_READ</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     A pointer to the multi_array data structure on success, else NULL
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=foreign_sunras_write></a> flag
+ <b>foreign_sunras_write</b><i>    (Channel channel, multi_array *multi_desc, ...)
+</i><br><p>    Write a colour image to a channel in Sun rasterfile format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>multi_desc :</i> 
+    The multi_array descriptor pointer. The routine will find a
+    TrueColour image or a PseudoColour image within the data structure.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. This list must be terminated with
+    FA_SUNRAS_WRITE_END. See <a href=foreign.html#foreign_ATT_SUNRAS_WRITE>foreign_ATT_SUNRAS_WRITE</a> for a list of defined
+    attributes.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe.
+<br><p><hr> <a name=foreign_sunras_write_pseudo></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_sunras_write_pseudo</b><i>    (Channel channel,
+				  CONST char *image, unsigned int type,
+				  uaddr *hoffsets, uaddr *voffsets,
+				  unsigned int width, unsigned int height,
+				  CONST unsigned short *cmap_reds,
+				  CONST unsigned short *cmap_greens,
+				  CONST unsigned short *cmap_blues,
+				  unsigned int cmap_size,
+				  unsigned int cmap_stride,
+				  double i_min, double i_max)
+</i><br><p>    Write a PseudoColor image to a channel in Sun rasterfile format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>image :</i> 
+    The image data.
+<br><li><i>type :</i> 
+    The type of the image data.
+<br><li><i>hoffsets :</i> 
+    The array of horizontal byte offsets.
+<br><li><i>voffsets :</i> 
+    The array of vertical byte offsets.
+<br><li><i>width :</i> 
+    The width of the image.
+<br><li><i>height :</i> 
+    The height of the image.
+<br><li><i>cmap_reds :</i> 
+    The red colourmap values.
+<br><li><i>cmap_greens :</i> 
+    The green colourmap values.
+<br><li><i>cmap_blues :</i> 
+    The blue colourmap values.
+<br><li><i>cmap_size :</i> 
+    The number of colourmap entries.
+<br><li><i>cmap_stride :</i> 
+    The stride (in unsigned shorts) between colourmap values.
+<br><li><i>i_min :</i> 
+    The minimum image value. Image values below this will be clipped.
+<br><li><i>i_max :</i> 
+    The maximum image value. Image values above this will be clipped.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe.
+<br><p><hr> <a name=foreign_sunras_write_rgb></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>foreign_sunras_write_rgb</b><i>    (Channel channel,
+			       CONST unsigned char *image_red,
+			       CONST unsigned char *image_green,
+			       CONST unsigned char *image_blue,
+			       uaddr *hoffsets, uaddr *voffsets,
+			       unsigned int width, unsigned int height,
+			       CONST unsigned short *cmap_red,
+			       CONST unsigned short *cmap_green,
+			       CONST unsigned short *cmap_blue,
+			       unsigned int cmap_stride)
+</i><br><p>    Write a TrueColor image to a channel in Sun rasterfile format.
+<p><b>Parameters:</b><ul><li><i>channel :</i> 
+    The channel to write to. The channel is not flushed.
+<br><li><i>red_image :</i> 
+    The red image data.
+<br><li><i>green_image :</i> 
+    The green image data.
+<br><li><i>blue_image :</i> 
+    The blue image data.
+<br><li><i>hoffsets :</i> 
+    The array of horizontal byte offsets.
+<br><li><i>voffsets :</i> 
+    The array of vertical byte offsets.
+<br><li><i>width :</i> 
+    The width of the image.
+<br><li><i>height :</i> 
+    The height of the image.
+<br><li><i>cmap_red :</i> 
+    The red component colourmap entries. 256 entries required. If
+    this is NULL a linear mapping is assumed.
+<br><li><i>cmap_green :</i> 
+    The green component colourmap entries. 256 entries required.
+    If this is NULL a linear mapping is assumed.
+<br><li><i>cmap_blue :</i> 
+    The blue component colourmap entries. 256 entries required. If
+    this is NULL a linear mapping is assumed.
+<br><li><i>cmap_stride :</i> 
+    The stride (in unsigned shorts) between colourmap values.
+<br></ul><b>Returns:</b>     TRUE on succes, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe.
+<br><p><hr><center><h2>Tables</h2></center><hr> <a name=foreign_ATT_FITS_READ_HEADER><b>foreign_ATT_FITS_READ_HEADER</b></a> List of attributes for reading FITS headers
+<p> <table><tr><td>Name                            </td><td>Type  </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_FITS_READ_HEADER_END         </td><td>      </td><td>End of varargs list
+</td></tr><tr><td>FA_FITS_READ_HEADER_ALLOC_TRUNC </td><td>flag  </td><td>Allow truncated headers
+</table><p><hr> <a name=foreign_ATT_FITS_READ_DATA><b>foreign_ATT_FITS_READ_DATA</b></a> List of attributes for reading FITS data
+<p> <table><tr><td>Name                         </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_FITS_READ_DATA_END        </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_FITS_READ_DATA_NUM_BLANKS </td><td>unsigned long * </td><td>Number of blank values found
+</td></tr><tr><td>FA_FITS_READ_DATA_SKIP_BLOCKS</td><td>flag            </td><td>Skip blocks
+</table><p><hr> <a name=foreign_ATT_FITS_READ><b>foreign_ATT_FITS_READ</b></a> List of attributes for reading FITS files (header+data)
+<p> <table><tr><td>Name                     </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_FITS_READ_END         </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_FITS_READ_NUM_BLANKS  </td><td>unsigned long * </td><td>Number of blank values found
+</td></tr><tr><td>FA_FITS_READ_MMAP_OPTION </td><td>unsigned int    </td><td>See <a href=ch.html#ch_MAP_CONTROLS>ch_MAP_CONTROLS</a>
+</td></tr><tr><td>FA_FITS_READ_WRITABLE    </td><td>flag            </td><td>If TRUE array may be written to
+</td></tr><tr><td>FA_FITS_READ_SIMPLE      </td><td>flag            </td><td>If TRUE read a ".sfits" file
+</table><p><hr> <a name=foreign_ATT_FITS_WRITE><b>foreign_ATT_FITS_WRITE</b></a> List of attributes for writing FITS files (header+data)
+<p> <table><tr><td>Name                      </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_FITS_WRITE_END         </td><td>                </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_FITS_WRITE_DATA><b>foreign_ATT_FITS_WRITE_DATA</b></a> List of attributes for writing FITS data
+<p> <table><tr><td>Name                           </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_FITS_WRITE_DATA_END         </td><td>                </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_GUESS_READ><b>foreign_ATT_GUESS_READ</b></a> List of attributes for guessing and reading data
+<p> <table><tr><td>Name                         </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GUESS_READ_END            </td><td>        </td><td>End of varargs list
+</td></tr><tr><td>FA_GUESS_READ_FITS_TO_FLOAT  </td><td>flag    </td><td>Convert FITS data to floating point
+</table><p><hr> <a name=foreign_ATT_GUESS_WRITE><b>foreign_ATT_GUESS_WRITE</b></a> List of attributes for guessing and writing data
+<p> <table><tr><td>Name                         </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GUESS_WRITE_END           </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_MIRIAD_READ_HEADER><b>foreign_ATT_MIRIAD_READ_HEADER</b></a> List of attributes for reading Miriad Image headers
+<p> <table><tr><td>Name                         </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_MIRIAD_READ_HEADER_END    </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_MIRIAD_READ_DATA><b>foreign_ATT_MIRIAD_READ_DATA</b></a> List of attributes for reading Miriad Image data
+<p> <table><tr><td>Name                           </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_MIRIAD_READ_DATA_END        </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_MIRIAD_READ_DATA_NUM_BLANKS </td><td>unsigned long * </td><td>Number of blank values
+                                               (includes masked values)
+</td></tr><tr><td>FA_MIRIAD_READ_DATA_NUM_MASKED </td><td>unsigned long * </td><td>Number of masked values
+</td></tr><tr><td>FA_MIRIAD_READ_DATA_SKIP_BLOCKS</td><td>flag            </td><td>Skip blocks
+</table><p><hr> <a name=foreign_ATT_MIRIAD_READ><b>foreign_ATT_MIRIAD_READ</b></a> List of attributes for reading Miriad Image files
+<p> <table><tr><td>Name                      </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_MIRIAD_READ_END        </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_MIRIAD_READ_NUM_BLANKS </td><td>unsigned long * </td><td>Number of blank values
+                                          (includes masked values)
+</td></tr><tr><td>FA_MIRIAD_READ_NUM_MASKED </td><td>unsigned long * </td><td>Number of masked values
+</table><p><hr> <a name=foreign_ATT_MIRIAD_WRITE><b>foreign_ATT_MIRIAD_WRITE</b></a> List of attributes for writing Miriad Image files
+<p> <table><tr><td>Name                          </td><td>Type         </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_MIRIAD_WRITE_END           </td><td>             </td><td>End of varargs list
+</td></tr><tr><td>FA_MIRIAD_WRITE_EXTRA_HISTORY </td><td>flag         </td><td>Generate extra history
+</table><p><hr> <a name=foreign_ATT_GIPSY_READ_HEADER><b>foreign_ATT_GIPSY_READ_HEADER</b></a> List of attributes for reading GIPSY Image headers
+<p> <table><tr><td>Name                        </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GIPSY_READ_HEADER_END    </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_GIPSY_READ_DATA><b>foreign_ATT_GIPSY_READ_DATA</b></a> List of attributes for reading GIPSY Image data
+<p> <table><tr><td>Name                          </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GIPSY_READ_DATA_END        </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_GIPSY_READ_DATA_NUM_BLANKS </td><td>unsigned long * </td><td>Number of blank values
+</td></tr><tr><td>FA_GIPSY_READ_DATA_SKIP_BLOCKS</td><td>flag            </td><td>Skip blocks
+</table><p><hr> <a name=foreign_ATT_GIPSY_READ><b>foreign_ATT_GIPSY_READ</b></a> List of attributes for reading GIPSY Image files
+<p> <table><tr><td>Name                     </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GIPSY_READ_END        </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_GIPSY_READ_NUM_BLANKS </td><td>unsigned long * </td><td>Number of blank values
+</table><p><hr> <a name=foreign_ATT_GIPSY_WRITE><b>foreign_ATT_GIPSY_WRITE</b></a> List of attributes for writing GIPSY Image files
+<p> <table><tr><td>Name                      </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GIPSY_WRITE_END        </td><td>                </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_GIPSY_WRITE_HEADER><b>foreign_ATT_GIPSY_WRITE_HEADER</b></a> List of attributes for writing GIPSY Image file headers
+<p> <table><tr><td>Name                             </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_GIPSY_WRITE_HEADER_END        </td><td>                </td><td>End of varargs list
+</table><p><hr> <a name=foreign_TYPES><b>foreign_TYPES</b></a> List of foreign file types
+<p> <table><tr><td>Name                           </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_KARMA      </td><td>Karma file (native format)
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_UNKNOWN    </td><td>Unknown format
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_PPM        </td><td>Portable PixMap format (PPM)
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_FITS       </td><td>Flexible Image Transport System (FITS)
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_SUNRAS     </td><td>Sun Rasterfile
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_MIRIAD     </td><td>Miriad Image file
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_GIPSY      </td><td>GIPSY file
+</td></tr><tr><td>FOREIGN_FILE_FORMAT_PGM        </td><td>Portable Grey Map (PGM) file
+</table><p><hr> <a name=foreign_ATT_PPM_WRITE><b>foreign_ATT_PPM_WRITE</b></a> List of attributes for writing PPM files
+<p> <table><tr><td>Name                </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_PPM_WRITE_END    </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_PPM_READ><b>foreign_ATT_PPM_READ</b></a> List of attributes for reading PPM files
+<p> <table><tr><td>Name               </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_PPM_READ_END    </td><td>        </td><td>End of varargs list
+</td></tr><tr><td>FA_PPM_READ_BINARY </td><td>flag    </td><td>If provided, do not read first line and use
+                           flag value
+</table><p><hr> <a name=foreign_ATT_PGM_READ><b>foreign_ATT_PGM_READ</b></a> List of attributes for reading PGM files
+<p> <table><tr><td>Name               </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_PGM_READ_END    </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_SUNRAS_READ><b>foreign_ATT_SUNRAS_READ</b></a> List of attributes for reading Sun Rasterfile files
+<p> <table><tr><td>Name                  </td><td>Type    </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_SUNRAS_READ_END    </td><td>        </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_SUNRAS_WRITE><b>foreign_ATT_SUNRAS_WRITE</b></a> List of attributes for writing Sun Rasterfile files
+<p> <table><tr><td>Name                      </td><td>Type      </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_SUNRAS_WRITE_END       </td><td>          </td><td>End of varargs list
+</td></tr><tr><td>FA_SUNRAS_WRITE_NO_IMAGE  </td><td>flag *    </td><td>No image found in data structure
+</table><p><hr> <a name=foreign_ATT_IDF_READ_HEADER><b>foreign_ATT_IDF_READ_HEADER</b></a> List of attributes for reading IDF headers
+<p> <table><tr><td>Name                            </td><td>Type  </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_IDF_READ_HEADER_END          </td><td>      </td><td>End of varargs list
+</table><p><hr> <a name=foreign_ATT_IDF_READ_DATA><b>foreign_ATT_IDF_READ_DATA</b></a> List of attributes for reading IDF data
+<p> <table><tr><td>Name                         </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_IDF_READ_DATA_END         </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_IDF_READ_DATA_NUM_BLANKS  </td><td>unsigned long * </td><td>Number of blank values found
+</td></tr><tr><td>FA_IDF_READ_DATA_SKIP_BLOCKS </td><td>flag            </td><td>Skip blocks
+</table><p><hr> <a name=foreign_ATT_IDF_READ><b>foreign_ATT_IDF_READ</b></a> List of attributes for reading IDF files (header+data)
+<p> <table><tr><td>Name                     </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_IDF_READ_END          </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_IDF_READ_NUM_BLANKS   </td><td>unsigned long * </td><td>Number of blank values found
+</table><p><hr> <a name=foreign_ATT_DRAO_READ_HEADER><b>foreign_ATT_DRAO_READ_HEADER</b></a> List of attributes for reading DRAO headers
+<p> <table><tr><td>Name                            </td><td>Type  </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_DRAO_READ_HEADER_END         </td><td>      </td><td>End of varargs list
+</td></tr><tr><td>FA_DRAO_READ_HEADER_PARTIAL     </td><td>flag  </td><td>Enable reading of partial data
+</table><p><hr> <a name=foreign_ATT_DRAO_READ><b>foreign_ATT_DRAO_READ</b></a> List of attributes for reading DRAO files (header+data)
+<p> <table><tr><td>Name                     </td><td>Type            </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>FA_DRAO_READ_END         </td><td>                </td><td>End of varargs list
+</td></tr><tr><td>FA_DRAO_READ_PARTIAL     </td><td>flag            </td><td>Enable reading of partial data
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

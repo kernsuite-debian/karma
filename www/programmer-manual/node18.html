@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Graphics without Widgets</TITLE>
+<META NAME="description" CONTENT="Graphics without Widgets">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html882" HREF="node19.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html880" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html874" HREF="node17.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html884" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html885" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html883" HREF="node19.html">Internals of the Karma </A>
+<B>Up:</B> <A NAME="tex2html881" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html875" HREF="node17.html">Dynamic Extensions</A>
+<BR> <P>
+<H1><A NAME="SECTION001800000000000000000">Graphics without Widgets</A></H1>
+<P>
+This appendix shows you how you might interface the graphics library
+to your window system (say X) if you are not using a widget
+library. This is mainly of historical interest now.
+<P>
+Some examples are provided below. Note that these are not complete
+applications: merely code extracts. These examples are targetted
+towards applications which will not use the Xt Intrinsics and widget
+libraries: some other X toolkit is assumed (i.e. XView). Please refer
+to the documentation on the Karma widget library for how to do things
+the easy way. An entire chapter is devoted to a simple image display
+tool (this uses Karma widgets and is less then 500 lines long). Unless
+you are doing something unusual, the following examples are probably
+not of much interest to you.
+<P>
+These examples are legacy examples which date from the time XView was
+still heavily used, and life was hard. Use Xt Intrinsics and Karma
+widgets instead. (Think I'm trying to tell you something?)
+<P>
+<H2><A NAME="SECTION001801000000000000000">Example 1</A></H2>
+<P>
+A code extract is given below which shows how the image display system
+is initialised, and X refresh/ resize events are handled. See the
+documentation on ``Intelligent Arrays'' on how you would create and
+fill a 2-D iarray.
+<P>
+If you are using the Xt toolkit, the creation, geometry management and
+event translation is all done within the CanvasWidget, hence the code
+below may not be relevant to you. The more powerful MultiCanvasWidget
+supports multiple visual types and the ImageDisplayWidget provides a
+very featureful and flexible user interface.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Image display sample programme: display only            */
+/*----------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+/*  Need to define this if using X. Can use -DX11 as an alternative. Must be
+    done before including the  karma_viewimg.h  header.  */
+#define X11
+#include &lt;karma_viewimg.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_xc.h&gt;
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+
+
+#define DEFAULT_COLOURMAP_NAME &quot;Greyscale1&quot;
+#define MAX_COLOURS (unsigned int) 200
+
+void setup_window (dpy, window, gc, win_width, win_height, array)
+/*  This routine will create a viewable image for an X window from an
+    &quot;Intelligent Array&quot;.
+    The X display must be given by  dpy  .
+    The X window must be given by  window  .
+    The X Graphics Context must be given by  gc  .
+    The window width must be given by  win_width  .
+    The window height must be given by  win_height  .
+    The Intelligent Array must be given by  array  .
+    The routine returns nothing.
+*/
+Display *display;
+Window window;
+GC gc;
+int win_width;
+int win_height;
+iarray array;
+{
+    /*  Declare variables  */
+    Kdisplay dpy_handle;
+    ViewableImage vimage;
+    XWindowAttributes window_attributes;
+    struct win_scale_type win_scale;
+    extern KPixCanvas pixcanvas;
+    extern KWorldCanvas worldcanvas;
+    extern Kcolourmap cmap;
+
+    /*  Initialise colourmap  */
+    XGetWindowAttributes (display, win, &amp;window_attributes);
+    dpy_handle = xc_get_dpy_handle (display, window_attributes.colormap);
+    cmap = kcmap_va_create (DEFAULT_COLOURMAP_NAME, MAX_COLOURS, TRUE,
+                            dpy_handle, xc_alloc_colours, xc_free_colours,
+                            xc_store_colours, xc_get_location,
+                            KCMAP_ATT_END);
+    /*  Create the pixel canvas  */
+    pixcanvas = kwin_create_x (display, window, gc,
+                               0, 0, win_width, win_height);
+    /*  Create the world canvas  */
+    /*  Initialise the  win_scale  structure  */
+    canvas_init_win_scale (&amp;win_scale, K_WIN_SCALE_MAGIC_NUMBER);
+    /*  Specify colour to use for out of bounds values  */
+    win_scale.min_sat_pixel = BlackPixel (display, DefaultScreen (display));
+    win_scale.max_sat_pixel = WhitePixel (display, DefaultScreen (display));
+    win_scale.blank_pixel = BlackPixel (display, DefaultScreen (display));
+    worldcanvas = canvas_create (pixcanvas, cmap, &amp;win_scale);
+    /*  Create the viewable image from the Intelligent Array  */
+    viewimg_init (worldcanvas);
+    vimage = viewimg_create_from_iarray (worldcanvas, array, FALSE);
+    /*  Make this viewable image active (or else we see nothing)  */
+    viewimg_make_active (vimage);
+}   /*  End Function setup_window  */
+
+void process_refresh (win_width, win_height)
+/*  This routine will process a refresh/ resize event on an X window and will
+    refresh the associated pixel canvas.
+    The window width must be given by  win_width  .
+    The window height must be given by  win_height  .
+    The routine returns nothing.
+*/
+int win_width;
+int win_height;
+{
+    extern KPixCanvas pixcanvas;
+
+    /*  Cause the pixel canvas to be refreshed  */
+    kwin_resize (pixcanvas, FALSE, 0, 0, win_width, win_height);
+}   /*  End Function process_refresh  */</PRE>
+<P>
+<H2><A NAME="SECTION001802000000000000000">Example 2</A></H2>
+<P>
+The following example expands on the previous one by adding mouse
+tracking (i.e. the position of the pointer is displayed, as well as
+the value of the image data at that point) and dynamic colourmap
+control.
+<P>
+<PRE>/*------------------------------------------------------------------------*/
+/*  Image display sample programme: mouse tracking and colourmap control  */
+/*------------------------------------------------------------------------*/
+
+#include &lt;karma.h&gt;
+/*  Need to define this if using X. Can use -DX11 as an alternative. Must be
+    done before including the  karma_viewimg.h  header.  */
+#define X11
+#include &lt;karma_viewimg.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_xc.h&gt;
+#include &lt;k_event_codes.h&gt;
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+
+
+#define DEFAULT_COLOURMAP_NAME &quot;Greyscale1&quot;
+#define MAX_COLOURS (unsigned int) 200
+
+flag track_canvas_event (/* vimage, x, y, value, event_code, e_info,f_info */);
+flag unit_canvas_position_func (/* canvas, x, y, event_code, e_info,f_info */);
+
+void setup_window (dpy, window, gc, win_width, win_height, array)
+/*  This routine will create a viewable image for an X window from an
+    &quot;Intelligent Array&quot;.
+    The X display must be given by  dpy  .
+    The X window must be given by  window  .
+    The X Graphics Context must be given by  gc  .
+    The window width must be given by  win_width  .
+    The window height must be given by  win_height  .
+    The Intelligent Array must be given by  array  .
+    The routine returns nothing.
+*/
+Display *display;
+Window window;
+GC gc;
+int win_width;
+int win_height;
+iarray array;
+{
+    /*  Declare variables  */
+    Kdisplay dpy_handle;
+    ViewableImage vimage;
+    XWindowAttributes window_attributes;
+    KWorldCanvas unit_worldcanvas;
+    KWorldCanvas image_worldcanvas;
+    struct win_scale_type win_scale;
+    extern KPixCanvas pixcanvas;
+    extern Kcolourmap cmap;
+
+    /*  Initialise colourmap  */
+    XGetWindowAttributes (display, win, &amp;window_attributes);
+    dpy_handle = xc_get_dpy_handle (display, window_attributes.colormap);
+    cmap = kcmap_va_create (DEFAULT_COLOURMAP_NAME, MAX_COLOURS, TRUE,
+                            dpy_handle, xc_alloc_colours, xc_free_colours,
+                            xc_store_colours, xc_get_location,
+                            KCMAP_ATT_END);
+    /*  Create the pixel canvas  */
+    pixcanvas = kwin_create_x (display, window, gc, 0, 0,win_width,win_height);
+    /*  Create the unit world canvas (for colourmap change events)  */
+    /*  Initialise the  win_scale  structure  */
+    canvas_init_win_scale (&amp;win_scale, K_WIN_SCALE_MAGIC_NUMBER);
+    unit_worldcanvas = canvas_create (image_pixcanvas, image_cmap, &amp;win_scale);
+    /*  Register event handler which allows user to change colourmap  */
+    canvas_register_position_event_func (unit_worldcanvas,
+                                         unit_canvas_position_func,
+                                         (void *) cmap);
+    /*  Create the image world canvas  */
+    /*  Specify colour to use for out of bounds values  */
+    win_scale.min_sat_pixel = BlackPixel (display, DefaultScreen (display));
+    win_scale.max_sat_pixel = WhitePixel (display, DefaultScreen (display));
+    win_scale.blank_pixel = BlackPixel (display, DefaultScreen (display));
+    image_worldcanvas = canvas_create (pixcanvas, cmap, &amp;win_scale);
+    /*  Create the viewable image from the Intelligent Array  */
+    viewimg_init (image_worldcanvas);
+    vimage = viewimg_create_from_iarray (worldcanvas, array, FALSE);
+    /*  Register event handler which allows user to see image values  */
+    viewimg_register_position_event_func (image_worldcanvas,
+                                          track_canvas_event,
+                                          (void *) image_worldcanvas);
+    /*  Make this viewable image active (or else we see nothing)  */
+    viewimg_make_active (vimage);
+}   /*  End Function setup_window  */
+
+void process_refresh (win_width, win_height)
+/*  This routine will process a refresh/ resize event on an X window and will
+    refresh the associated pixel canvas.
+    The window width must be given by  win_width  .
+    The window height must be given by  win_height  .
+    The routine returns nothing.
+*/
+int win_width;
+int win_height;
+{
+    extern KPixCanvas pixcanvas;
+
+    /*  Cause the pixel canvas to be refreshed  */
+    kwin_resize (pixcanvas, FALSE, 0, 0, win_width, win_height);
+}   /*  End Function process_refresh  */
+
+void process_x_event (event, x, y)
+/*  This routine is called whenever a mouse event occurs on the underlying
+    X window for the pixel canvas. This is the routine that &quot;injects&quot; events
+    into the Karma image display system.
+    The event information is given by  event  .This is given for example only.
+    The event co-ordinate is given by  x  and  y  .
+    The routine returns nothing.
+*/
+int event;
+int x;
+int y;
+{
+    unsigned int event_code;
+    extern KPixCanvas pixcanvas;
+
+    switch (event_action)
+    {
+      case MiddleMouseClick:
+        event_code = K_CANVAS_EVENT_MIDDLE_MOUSE_CLICK;
+        break;
+      case MiddleMouseDrag:
+        event_code = K_CANVAS_EVENT_MIDDLE_MOUSE_DRAG;
+        break;
+      case MouseMove:
+        event_code = K_CANVAS_EVENT_POINTER_MOVE;
+        break;
+      default:
+        return;
+    }
+    if ( !kwin_process_position_event (pixcanvas, x, y, TRUE, event_code,
+                                       (void *) NULL) )
+    {
+        (void) fprintf (stderr, &quot;Paint window event not consumed\n&quot;);
+    }
+}   /*  End Function process_x_event  */
+
+flag unit_canvas_position_func (canvas, x, y, event_code, e_info, f_info)
+/*  This routine is a position event consumer for a world canvas. This routine
+    will process mouse click and drag events for dynamic colourmap control.
+    The canvas is given by  canvas  .
+    The horizontal world co-ordinate of the event will be given by  x  .
+    The vertical world co-ordinate of the event will be given by  y  .
+    The arbitrary event code is given by  event_code  .
+    The arbitrary event information is pointed to by  e_info  .
+    The arbitrary function information pointer is pointed to by  f_info  .
+    The routine returns TRUE if the event was consumed, else it return
+    FALSE indicating that the event is still to be processed.
+*/
+KWorldCanvas canvas;
+double x;
+double y;
+unsigned int event_code;
+void *e_info;
+void **f_info;
+{
+    Kcolourmap cmap;
+
+    if ( (cmap = (Kcolourmap) *f_info) == NULL )
+    {
+        (void) fprintf (stderr, &quot;NULL Kcolourmap\n&quot;);
+        exit (1);
+    }
+    if ( (event_code != K_CANVAS_EVENT_MIDDLE_MOUSE_CLICK) &amp;&amp;
+        (event_code != K_CANVAS_EVENT_MIDDLE_MOUSE_DRAG) ) return (FALSE);
+    kcmap_modify (cmap, x, y, (void *) NULL);
+    return (TRUE);
+}   /*  End Function unit_canvas_position_func  */
+
+flag track_canvas_event (vimage, x, y, value, event_code, e_info,f_info)
+/*  This routine is a position event consumer for a viewable image canvas. This
+    routine will process mouse movement events for a tracking display.
+    The viewable image is given by  vimage  .
+    The horizontal position of the event, relative to the canvas origin,
+    will be given by  x  .
+    The vertical position of the event, relative to the canvas origin,
+    will be given by  y  .
+    The value in the viewable image at the co-ordinates is given by  value.
+    The arbitrary event code is given by  event_code  .
+    The arbitrary event information is pointed to by  e_info  .
+    The arbitrary function information pointer is pointed to by  f_info  .
+    The routine returns TRUE if the event was consumed, else it returns
+    FALSE indicating that the event is still to be processed.
+*/
+ViewableImage vimage;
+double x;
+double y;
+double value[2];
+unsigned int event_code;
+void *e_info;
+void **f_info;
+{
+    if (event_code != K_CANVAS_EVENT_POINTER_MOVE) return (FALSE);
+    (void) fprintf (stderr, &quot;abs: %e  ord: %e    value: %e\n&quot;, x, y, value[0]);
+    return (TRUE);
+}   /*  End Function track_canvas_event  */</PRE>
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

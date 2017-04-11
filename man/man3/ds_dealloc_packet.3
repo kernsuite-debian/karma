@@ -1,0 +1,35 @@
+.TH DS_DEALLOC_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_dealloc_packet \- Recursively deallocate a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_dealloc_packet
+.sp
+(packet_desc *pack_desc, char *data)
+.SH DESCRIPTION
+This routine will deallocate all memory associated with a data
+packet. This includes all the descriptors and data arrays and lists
+associated with the packet.
+The routine is quite robust, deallocating in the correct order and cleanly
+bypassing missing sections in the hierarchy.
+.IP \fIpack_desc\fP 1i
+The descriptor for the packet.
+.IP \fIdata\fP 1i
+The data for the packet.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

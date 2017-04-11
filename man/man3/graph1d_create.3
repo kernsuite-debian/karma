@@ -1,0 +1,51 @@
+.TH GRAPH1D_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_create \- Create viewable graph.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B KViewableGraph graph1d_create
+.sp
+(KWorldCanvas canvas, unsigned int num_points,
+double **x, double **y, uaddr key, ...)
+.SH DESCRIPTION
+This routine will create a viewable graph object from two arrays
+of values. At a later time, this viewable graph may be made visible. This
+routine will not cause the canvas to be refreshed.
+.IP \fIcanvas\fP 1i
+The world canvas onto which the viewable graph may be drawn. Many
+viewable graphs may be associated with a single canvas.
+.IP \fInum_points\fP 1i
+The number of points in this viewable graph.
+.IP \fIx\fP 1i
+The pointer to the array of horizontal values is written here. The
+space is automatically dealloated when the graph is destroyed.
+.IP \fIy\fP 1i
+The pointer to the array of vertical values is written here. The space
+is automatically dealloated when the graph is destroyed.
+.IP \fIkey\fP 1i
+The key to associate with this viewable graph.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value-ptr pairs
+must follow. This list must be terminated with the GRAPH1D_VGRAPH_ATT_END.
+See <-graph1d_VGRAPH_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+A KViewableGraph object on success, NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The KViewableGraph will be automatically destroyed if the canvas is
+destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

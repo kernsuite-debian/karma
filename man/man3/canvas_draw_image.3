@@ -1,0 +1,49 @@
+.TH CANVAS_DRAW_IMAGE 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_draw_image \- Draw a PseudoColour image onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_draw_image
+.sp
+(KWorldCanvas canvas, array_desc *arr_desc, char *slice,
+unsigned int hdim, unsigned int vdim,
+unsigned int elem_index,
+KPixCanvasImageCache *cache_ptr)
+.SH DESCRIPTION
+This routine will draw a 2-dimensional PseudoColour slice of a
+Karma array onto a world canvas. This slice may be tiled.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIarr_desc\fP 1i
+The array descriptor for the image.
+.IP \fIslice\fP 1i
+The start of the slice (image) data.
+.IP \fIhdim\fP 1i
+The dimension index of the horizontal dimension.
+.IP \fIvdim\fP 1i
+The dimension index of the vertical dimension.
+.IP \fIelem_index\fP 1i
+The element index of the data packets.
+.IP \fIcache_ptr\fP 1i
+The routine may produce cache data which will vastly increase
+the speed of subsequent operations on this data. The routine will write a
+pointer to this data here. Prior to process exit, a call MUST be made to
+<-kwin_free_cache_data->, otherwise shared memory segments could remain
+after the process exits.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

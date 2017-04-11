@@ -1,0 +1,41 @@
+.TH KWIN_GET_COLOUR_HARDER 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_get_colour_harder \- Get (possibly allocate) a colourcell for a canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_get_colour_harder
+.sp
+(KPixCanvas canvas, CONST char *colourname,
+unsigned long *pixel_value)
+.SH DESCRIPTION
+This function will get a colourcell for a canvas. It is similar
+to the <-kwin_get_colour-> function, except that tries harder for
+TrueColour and DirectColour visuals, by using the pixel masks.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIcolourname\fP 1i
+The name of the colour to get.
+.IP \fIpixel_value\fP 1i
+The pixel value will be written here.
+.SH RETURN VALUE
+TRUE if the colourcell was allocated, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The pixel value is valid ONLY for this canvas. ALSO: the pixel value
+becomes invalid EVERY time the canvas is refreshed/ resized. If the canvas
+is refreshed/ resized, this routine MUST be called again.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH IARRAY_GET_WORLD_COORDS 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_world_coords \- Get the world co-ordinates of an Intelligent Array dimension.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_get_world_coords
+.sp
+(iarray array, unsigned int index,
+double *first, double *last)
+.SH DESCRIPTION
+Get the world co-ordinates of an Intelligent Array dimension.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIindex\fP 1i
+The index of the dimension.
+.IP \fIfirst\fP 1i
+The first real world co-ordinate is written here.
+.IP \fIlast\fP 1i
+The last real world co-ordinate is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

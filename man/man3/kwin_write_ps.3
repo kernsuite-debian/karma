@@ -1,0 +1,32 @@
+.TH KWIN_WRITE_PS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_write_ps \- Refresh a pixel canvas onto a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_write_ps
+.sp
+(KPixCanvas canvas, PostScriptPage pspage)
+.SH DESCRIPTION
+This routine will refresh a pixel canvas, redirecting output to a
+PostScriptPage object.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

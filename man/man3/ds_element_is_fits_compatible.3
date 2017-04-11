@@ -1,0 +1,35 @@
+.TH DS_ELEMENT_IS_FITS_COMPATIBLE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_element_is_fits_compatible \- Test if an element is FITS-compatible.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_element_is_fits_compatible
+.sp
+(CONST char *elem_name,
+CONST packet_desc *pack_desc,
+CONST char *packet)
+.SH DESCRIPTION
+Test if an element is FITS-compatible.
+.IP \fIelem_name\fP 1i
+The name of the element.
+.IP \fIpack_desc\fP 1i
+The top-level packet descriptor.
+.IP \fIpacket\fP 1i
+The top-level packet data.
+.SH RETURN VALUE
+TRUE if the element is FITS-compatible, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

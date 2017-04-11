@@ -1,0 +1,29 @@
+.TH KWIN_OPEN_GL_TEST_AVAILABLE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_open_gl_test_available \- Test if the GLX extension is supported for a display.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_open_gl_test_available
+.sp
+(Display *display)
+.SH DESCRIPTION
+Test if the GLX extension is supported for a display.
+.IP \fIdisplay\fP 1i
+The X11 display handle.
+.SH RETURN VALUE
+TRUE if the GLX extension is supported, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

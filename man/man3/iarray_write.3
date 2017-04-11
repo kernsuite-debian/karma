@@ -1,0 +1,33 @@
+.TH IARRAY_WRITE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_write \- Write an "Intelligent Array" in the Karma data format.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_write
+.sp
+(iarray array, CONST char *arrayfile)
+.SH DESCRIPTION
+Write an "Intelligent Array" in the Karma data format.
+.IP \fIarray\fP 1i
+The "Intelligent Array".
+.IP \fIarrayfile\fP 1i
+The name of the arrayfile to write. See <-dsxfr_put_multi-> for
+details on the interpretation of this.
+.SH RETURN VALUE
+TRUE on success, else an error message is printed to the standard
+output and FALSE is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

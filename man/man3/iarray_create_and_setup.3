@@ -1,0 +1,58 @@
+.TH IARRAY_CREATE_AND_SETUP 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_create_and_setup \- Create an Intelligent Array and setup.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_create_and_setup
+.sp
+(iarray *array, multi_array *multi_desc,
+flag inform, unsigned int num_dim,
+unsigned int required_type,
+double *min, double *max,
+flag discard_zero_range, KwcsAstro *ap)
+.SH DESCRIPTION
+This routine will attempt to guess the filetype of a file and
+in the file, converting to an Intelligent Array if possible. The routine
+then performs some simple checks and some other convenience functions.
+.IP \fIarray\fP 1i
+The Intelligent Array is written here. An existing array pointed to
+by this is deallocated.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor. If this is NULL, any existing data
+is deallocated and no further action is taken.
+.IP \fIinform\fP 1i
+If TRUE, the routine displays some informative messages.
+.IP \fInum_dim\fP 1i
+The number of dimensions required. If this is 0, any number of
+dimensions is allowed.
+.IP \fIrequired_type\fP 1i
+The required data type. If this is NONE, then no type is
+required.
+.IP \fImin\fP 1i
+The minimum data value in the array is written here. If this is NULL
+nothing is written here.
+.IP \fImax\fP 1i
+The maximum data value in the array is written here. If this is NULL
+nothing is written here.
+.IP \fIdiscard_zero_range\fP 1i
+If TRUE, and the range of the data is zero, the
+routine fails.
+.IP \fIap\fP 1i
+The KwcsAstro object is written here. This may be NULL.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

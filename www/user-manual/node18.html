@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>E Making Videos</TITLE>
+<META NAME="description" CONTENT="E Making Videos">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html493" HREF="node19.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html491" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html485" HREF="node17.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html495" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html496" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html494" HREF="node19.html">F Acknowledgements</A>
+<B>Up:</B> <A NAME="tex2html492" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html486" HREF="node17.html">D Annotation File Format</A>
+<BR> <P>
+<H1><A NAME="SECTION001800000000000000000">E Making Videos</A></H1>
+<A NAME="chaptermakingvideos">&#160;</A>
+<A NAME="2202">&#160;</A>
+<P>
+Sometimes you will want to prepare a video for presentation. The
+procedure to do this depends on the equipment you have available and
+the desired quality of the production. This appendex discusses some
+options.
+<P>
+<H1><A NAME="SECTION001810000000000000000">E.1 Basic Facilities at the ATNF</A></H1>
+<P>
+The ATNF has video recording equipment connected to the workstation
+<B>phoenix</B>. This equipment is not capable of producing
+high-quality (i.e. broadcast standard) videos, but it has the
+advantage of being located at the ATNF, and so is convient to use.
+<P>
+Once you have produced your movie, you need to purchase a VHS video
+cassette and use the video recorders supplied. When playing the
+movies, it is advisable to use the <TT>-fullscreen</TT> command-line
+option for the <A HREF="node4.html#chapterkvis">kvis</A> and <A HREF="node6.html#chapterxray">xray</A>
+tools. This will make the image display window take up the entire
+screen. You should see a button labelled <B>Raise</B> somewhere which
+allows you to place the displayed image above all other windows. By
+clicking the right mouse button you can lower this window again, and
+get back your control panels.
+<P>
+<H1><A NAME="SECTION001820000000000000000">E.2 Using Sydney University VisLab Facilities</A></H1>
+<P>
+The University of Sydney has created a commercial visualisation
+laboratory. They are able to make high-quality broadcast standard VFS
+and Betacam videos. All you need to do is provide them with a sequence
+of numbered images in a supported format.
+<P>
+VisLab also have facilities to convert from many popular image formats
+to a format their machinery requires, but this will cost real
+money. Instead, you should produce files in ``Targa TrueVision''
+format, which they will be able to use directly. The
+<A HREF="node13.html#sectionkarma2ppm">karma2ppm</A> command-line utility may be used to
+produce this format.
+<P>
+The image size required by VisLab is 720 pixels horizontal and 576
+pixels vertical. Note that you need to leave a border of <IMG WIDTH=30 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline5280" SRC="img22.gif"> inside
+this otherwise some television screens will chop the outer parts of
+your movie.
+<P>
+You would need to use the following parameters for
+<B>&lt;karma2ppm&gt;</B>:
+<P>
+<PRE>converter           &quot;ppmtotga&quot;
+extension           &quot;tga&quot;
+out_height          576
+out_width           720</PRE>
+<P>
+You would then type something like:<BR> 
+<TT>karma2ppm mymovie image</TT>
+<P>
+and you would get a sequence of numbered images starting from 1, such
+as:
+<PRE>image_01.tga
+image_02.tga
+image_03.tga
+image_04.tga
+image_05.tga
+image_06.tga
+image_07.tga
+image_08.tga
+image_09.tga
+image_10.tga
+image_11.tga
+image_12.tga
+image_13.tga
+image_14.tga</PRE>
+<P>
+Try to keep the filenames to 8.3 lengths (i.e. 8 characters for the
+first part and 3 characters for the extension). This avoids any
+potential problems with some (broken) operating systems.
+<P>
+These files are already compressed, so further compression is probably
+not worthwhile. Write these images onto a tape or CD-ROM and take it
+to VisLab. It is recommended that you attend the video recording
+session in person, in case there are problems. You may find that the
+colour balance, intensity or contrast is different on your workstation
+screen than on the television screen. Aborting the process early if
+there are problems will save you money.
+<P>
+Rememember: it's <EM>your</EM> video. Nobody knows exactly how you want
+it to appear except you.
+<P>
+<HR><A NAME="tex2html493" HREF="node19.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html491" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html485" HREF="node17.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html495" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html496" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html494" HREF="node19.html">F Acknowledgements</A>
+<B>Up:</B> <A NAME="tex2html492" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html486" HREF="node17.html">D Annotation File Format</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

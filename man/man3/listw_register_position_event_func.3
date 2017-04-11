@@ -1,0 +1,40 @@
+.TH LISTW_REGISTER_POSITION_EVENT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+listw_register_position_event_func \- Register position event callback.
+.SH SYNOPSIS
+.B #include <karma_listw.h>
+.sp
+.B KCallbackFunc listw_register_position_event_func
+.sp
+(KListWidget list,
+flag (*func) (),
+void *f_info)
+.SH DESCRIPTION
+This routine will register a position event function for a list
+widget. The position event function will be called whenever a position
+event on the list widget has not been consumed. Many position event
+functions may be registered per list widget. The first function registered
+is the first function called upon a position event.
+.IP \fIlist\fP 1i
+The list widget.
+.IP \fIfunc\fP 1i
+The function that is called when a position event occurs. The
+prototype function is <-listw_PROTO_position_func->.
+.IP \fIf_info\fP 1i
+The initial arbitrary function information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

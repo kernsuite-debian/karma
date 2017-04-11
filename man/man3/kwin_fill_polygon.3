@@ -1,0 +1,41 @@
+.TH KWIN_FILL_POLYGON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_fill_polygon \- Draw a filled polygon onto a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_fill_polygon
+.sp
+(KPixCanvas canvas, int *point_x, int *point_y,
+unsigned int num_vertices, unsigned long pixel_value,
+flag convex)
+.SH DESCRIPTION
+Draw a filled polygon onto a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIpoint_x\fP 1i
+The array of x co-ordinates of vertices of the polygon.
+.IP \fIpoint_y\fP 1i
+The array of y co-ordinates of vertices of the polygon.
+.IP \fInum_vertices\fP 1i
+The number of vertices in the polygon.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.IP \fIconvex\fP 1i
+If TRUE, then the points must form a convex polygon.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

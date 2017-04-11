@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Channels: the basic Input/Output Mechanism</TITLE>
+<META NAME="description" CONTENT="Channels: the basic Input/Output Mechanism">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html714" HREF="node5.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html712" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html706" HREF="node3.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html716" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html717" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html715" HREF="node5.html">Interprocess Communications</A>
+<B>Up:</B> <A NAME="tex2html713" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html707" HREF="node3.html">Operating System Interface</A>
+<BR> <P>
+<H1><A NAME="SECTION00400000000000000000">Channels: the basic Input/Output Mechanism</A></H1>
+<P>
+<A NAME="chapterchannels">&#160;</A><A NAME="151">&#160;</A><A NAME="152">&#160;</A>
+<P>
+<H1><A NAME="SECTION00410000000000000000">Purpose</A></H1>
+<P>
+The basic Input/Output class in Karma is the ``channel''. This is
+provided by the <A NAME="tex2html16" HREF="../lib/ch.html"><B>ch</B></A> package. A channel is a (possibly) full
+duplex buffered stream of data.
+<P>
+A channel may be associated with a file (disc file, named FIFO, tty,
+etc.), a connection to another process, a memory object, and others.
+A single interface for reading and writing is presented by the
+<A NAME="tex2html17" HREF="../lib/ch.html"><B>ch</B></A> package.
+<P>
+<H1><A NAME="SECTION00420000000000000000">Advantages over FILE * streams</A></H1>
+<P>
+Channels are similar to the standard C library FILE * streams, but fix
+a number of serious deficiencies in FILE * streams, such as:
+<P>
+<UL>
+<LI> separate read and write buffers which give you proper
+full-duplex operation. FILE * streams require painful rewind and flush
+operations whenever you wish to change between reading and writing
+over bi-directional connections. Excessive flushing reduces the
+efficiency of FILE * streams to the point where you may as well not
+use them at all
+<LI> recovery from signals rather than failure. This means the
+application does not have to clean up after a signal is delivered
+which interrupted an I/O transfer. The library automatically restarts
+the remaining transfer
+<P>
+</UL>
+<P>
+Besides these changes, a number of powerful enhancements are available
+with Channels:
+<P>
+<UL>
+<LI> query routines (methods) to determine what type of channel
+subclass a particular channel object is
+<LI> simple syntax for making a full-duplex connection to a Unix or
+TCP/IP socket
+<LI> support for automatic decompression of disc-based channels
+<LI> the ability to push a stack of filter functions (termed
+``converters'') onto a Channel. Examples of useful converters include
+encryption and compression filters. These converters do not change the
+interface to Channels, hence their effect is transparent to the
+application
+<LI> support for memory-mapping disc files. This means that the
+entire file contents are mapped into the process virtual memory
+space. This is especially useful if you wish to ``read'' a large data
+file into memory: with a suitable file format like the Karma format
+the data file can be mapped without any need to read the contents: the
+array data is directly available in the mapped region. Not having to
+read the file contents can save an enormous amount of time of you only
+need to access a small part of the data. Conventional techniques for
+accessing small parts of a file have the disadvantage of requiring the
+application explicitely read in the part of the data it requires: this
+makes the application more complex. Memory mapping places that burden
+on the operating system
+<LI> memory-based Channels which do not require any file
+storage. This is useful when it is easier to write some data into a
+``temporary file'' and read it back later, but you would rather avoid
+the performance penalty of creating and manipulating a disc-based
+channel. Memory channels consume virtual memory space and are far more
+efficient than disc channels unless they take a significant proportion
+of physical memory (RAM), in which case their benefit is marginal
+<LI> various optimised convenience routines to drain, copy and pad
+to/from channels and between channels, read and write with byte
+swapping
+<LI> virtual channels such as data sinks (similar to <TT>/dev/null</TT>
+but more efficient)
+<P>
+</UL><H1><A NAME="SECTION00430000000000000000">Using Channels</A></H1>
+<P>
+The interface to channel objects is designed to be similar to the
+standard C library FILE * streams interface, however there a few
+subtle differences:
+<P>
+<UL>
+<LI> the <A NAME="tex2html18" HREF="../lib/ch.html#ch_read"><B>ch_read</B></A> and <A NAME="tex2html19" HREF="../lib/ch.html#ch_write"><B>ch_write</B></A>
+functions take a buffer of bytes rather than a buffer of elements and
+similarly require only one size parameter rather than two. Some FILE *
+stream implementations may get confused when partial elements are
+written (due to interrupted system calls, EndOfFile or other failure),
+with no way to report to the application how many bytes were actually
+transferred. In addition, with Channel objects it makes no sense to
+split a single concept into two parameters
+<LI> there is no equivalent to the <TT>rewind</TT> function, as the
+<A NAME="tex2html20" HREF="../lib/ch.html#ch_seek"><B>ch_seek</B></A> function provides the desired functionality
+<P>
+</UL><H2><A NAME="SECTION00431000000000000000">Tutorials</A></H2>
+<P>
+Below are a few simple examples which show how to use Channels.
+<P>
+<H3><A NAME="SECTION00431100000000000000">Simple ASCII File Reader</A></H3>
+<P>
+This example shows a simple ASCII file reader for a 2-dimensional data
+format. The first line contains the horizontal and vertical
+lengths. The remaining lines contain the array data.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_ch.h&gt;
+#include &lt;karma_m.h&gt;
+
+int main (int argc, char **argv)
+{
+    Channel channel;
+    int xlen, ylen, x, y;
+    float *array;
+    extern char *sys_errlist[];
+    static char usage_string[] = &quot;readfile infile&quot;;
+
+    if (argc != 2)
+    {
+        fprintf (stderr, &quot;Usage:\t%s\n&quot;, usage_string);
+        exit (RV_BAD_PARAM);
+    }
+    /*  Open the input file (this is a simple 2D format)  */
+    if ( ( channel = ch_open_file (argv[1], &quot;r&quot;) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error opening file: \"%s\"\t%s\n&quot;,
+                 argv[1], sys_errlist[errno]);
+        exit (RV_CANNOT_OPEN);
+    }
+    /*  Read the array size  */
+    ch_scanf (channel, &quot;%d %d&quot;, &amp;xlen, &amp;ylen);
+    /*  Create 2D float array  */
+    if ( ( array = (float *) m_alloc (sizeof *array * xlen * ylen) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error allocating image\n&quot;);
+        exit (RV_MEM_ERROR);
+    }
+    /*  Now read data values in from the input file and write to the array  */
+    for (y = 0; y &lt; naxis2; ++y) for (x = 0; x &lt; naxis1; ++x)
+    {
+        ch_scanf (channel, &quot;%e&quot;, array + x + y * xlen);
+    }
+    ch_close (channel);
+    /*  Now do something with the array. Since the point of this example is to
+        show how to use channels, let's not bother with being really useful  */
+    return (RV_OK);
+}   /*  End Function main  */</PRE>
+<P>
+If you wanted to add support for automatic uncompression of the input
+file you would only need to change the call to
+<A NAME="tex2html21" HREF="../lib/ch.html#ch_open_file"><B>ch_open_file</B></A> to:
+<P>
+<PRE>channel = ch_open_file (argv[1], &quot;rz&quot;);</PRE>
+<P>
+If the file has the extension <TT>.gz</TT> then the input file is
+automatically uncompressed. Note that you must have the
+<B>&lt;gzip&gt;</B> (GNU zip) programme in your <TT>PATH</TT>.
+<P>
+<H3><A NAME="SECTION00431200000000000000">Loading a simple Memory-Mapped Binary File</A></H3>
+<P>
+This example shows how to ``load'' a simple 2-dimensional data file
+which is stored in binary format. The first two words contain the size
+of the array and the rest of the file contains the binary single
+precision floating point data. The first and last values in the array
+are multiplied by 2.0 and ``written'' back. Note that this file format
+is machine-dependant: if you were to read the same file on a
+big-endian and little-endian machines, the results would be quite
+different. So one would not use such a file format in real life. The
+point of this example is to show how to use memory-mapping to avoid
+slow reading.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_ch.h&gt;
+
+int main (int argc, char **argv)
+{
+    Channel channel;
+    char *ptr;
+    int xlen, ylen;
+    float *array;
+    extern char *sys_errlist[];
+    static char usage_string[] = &quot;modfile infile&quot;;
+
+    if (argc != 2)
+    {
+        fprintf (stderr, &quot;Usage:\t%s\n&quot;, usage_string);
+        exit (RV_BAD_PARAM);
+    }
+    /*  Map the input file (this is a simple 2D format)  */
+    if ( ( channel = ch_map_disc (argv[1], K_CH_MAP_ALWAYS, TRUE, TRUE) )
+         == NULL )
+    {
+        fprintf (stderr, &quot;Error opening file: \"%s\"\t%s\n&quot;,
+                 argv[1], sys_errlist[errno]);
+        exit (RV_CANNOT_OPEN);
+    }
+    /*  Get the mapped file  */
+    ptr = ch_get_mmap_addr (channel);
+    /*  Get the array size  */
+    xlen = *(int *) ptr;
+    ptr += sizeof xlen;
+    ylen = *(int *) ptr;
+    ptr += sizeof ylen;
+    array = (float *) ptr;
+    /*  Now multiply the first and last elements in the array by 2.0  */
+    array[0] *= 2.0;
+    array[xlen - 1 + (ylen - 1) * xlen] *= 2.0;
+    /*  Close the channel: this also causes the modified data to be written  */
+    ch_close (channel);
+    return (RV_OK);
+}   /*  End Function main  */</PRE>
+<P>
+Notice how the call to <A NAME="tex2html22" HREF="../lib/ch.html#ch_map_disc"><B>ch_map_disc</B></A> specifies that
+the file should be mapped so the memory region is writable and changes
+made to the region are written back to disc. An application that did
+not want to modify the file would instead ask for a read-only mapping
+(an example application would be one that displays the first and last
+values in the array).
+<P>
+<HR><A NAME="tex2html714" HREF="node5.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html712" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html706" HREF="node3.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html716" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html717" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html715" HREF="node5.html">Interprocess Communications</A>
+<B>Up:</B> <A NAME="tex2html713" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html707" HREF="node3.html">Operating System Interface</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

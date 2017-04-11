@@ -1,0 +1,37 @@
+.TH CHS_GET_LINE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+chs_get_line \- Scan a channel object for a line.
+.SH SYNOPSIS
+.B #include <karma_chs.h>
+.sp
+.B flag chs_get_line
+.sp
+(Channel channel, char *buffer, unsigned int length)
+.SH DESCRIPTION
+This routine will read a line from a channel, stripping all
+comments, leading and trailing whitespace. The comment character is '#'.
+The comment character is ignored if between quotes. Blank or commented
+lines are ignored.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.IP \fIbuffer\fP 1i
+The buffer to write the line into.
+.IP \fIlength\fP 1i
+The size of the buffer.
+.SH RETURN VALUE
+TRUE on success, else FALSE (indicating End-Of-File). Data is
+still written to the buffer and NULL terminated on EOF.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

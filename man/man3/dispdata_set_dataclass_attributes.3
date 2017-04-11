@@ -1,0 +1,36 @@
+.TH DISPDATA_SET_DATACLASS_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_set_dataclass_attributes \- Set global attributes for the a dataclass.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_set_dataclass_attributes
+.sp
+(KDisplayDataClass dataclass, ...)
+.SH DESCRIPTION
+Set global attributes for the a dataclass.
+.IP \fIdataclass\fP 1i
+The KDisplayDataClass the attributes are destined for.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+KDISPLAYDATA_CLASS_ATT_END.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Some windows may be refreshed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

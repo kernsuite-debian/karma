@@ -1,0 +1,35 @@
+.TH VIEWIMG_SET_ACTIVE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_set_active \- Make viewable image active with controlled refresh.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_set_active
+.sp
+(ViewableImage vimage, flag refresh)
+.SH DESCRIPTION
+This routine will make a viewable image the active image for its
+associated world canvas.
+.IP \fIvimage\fP 1i
+The viewable image.
+.IP \fIrefresh\fP 1i
+If TRUE, the canvas is always refreshed, if FALSE, the canvas is
+not refreshed.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH SEE ALSO
+<-viewimg_make_active->.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

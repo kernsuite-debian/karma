@@ -1,0 +1,40 @@
+.TH KWIN_DRAW_LINE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_line \- Draw a single line onto a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_line
+.sp
+(KPixCanvas canvas, double x0, double y0,
+double x1, double y1, unsigned long pixel_value)
+.SH DESCRIPTION
+Draw a single line onto a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIx0\fP 1i
+The horizontal offset of the first point.
+.IP \fIy0\fP 1i
+The vertical offset of the first point.
+.IP \fIx1\fP 1i
+The horizontal offset of the second point.
+.IP \fIy1\fP 1i
+The vertical offset of the second point.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

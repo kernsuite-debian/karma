@@ -1,0 +1,43 @@
+.TH CANVAS_RESIZE 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_resize \- Resize a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_resize
+.sp
+(KWorldCanvas canvas, struct win_scale_type *win_scale,
+flag always_clear)
+.SH DESCRIPTION
+This routine will register a resize in the world canvas size.
+This will cause any refresh routines registered for the canvas to be
+called. The associated pixel canvas is refreshed, hence, refresh routines
+registered for the pixel canvas will also be called.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIwin_scale\fP 1i
+The new window scaling information. If this is NULL no change
+is made to the window scaling information, and a simple refresh occurs.
+.IP \fIalways_clear\fP 1i
+If FALSE, <<win_scale>> is NULL and there is a size
+control function registered for the world canvas, then if that function
+does not change the values of the <<x_offset>>, <<x_pixels>>, <<y_offset>>
+or <<y_pixels>> fields in the window scaling information, the associated
+pixel canvas is NOT cleared. Under all other circumstances, the pixel
+canvas is cleared prior to calling any refresh functions.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

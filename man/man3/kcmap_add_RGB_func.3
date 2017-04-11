@@ -1,0 +1,41 @@
+.TH KCMAP_ADD_RGB_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_add_RGB_func \- Register a new colourmap function.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_add_RGB_func
+.sp
+(CONST char *name, void (*func) (),
+unsigned int min_cells, unsigned int max_cells)
+.SH DESCRIPTION
+This routine will register a named function which will compute
+RGB intensity values for a colourmap. This function is typically called in
+response to a call to <-kcmap_modify->.
+.IP \fIname\fP 1i
+The name of the colourmap function.
+.IP \fIfunc\fP 1i
+The function which is used to compute the RGB values. The prototype
+function is <-kcmap_PROTO_colour_func->.
+.IP \fImin_cells\fP 1i
+The minimum number of colourcells that must be allocated for
+this function to work. If this is less than 2, no minimum is defined.
+.IP \fImax_cells\fP 1i
+The maximum number of colourcells that may be allocated for
+this function to work. If this is less than 2, no maximum is defined.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

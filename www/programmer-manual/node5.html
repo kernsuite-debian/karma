@@ -1,0 +1,840 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Interprocess Communications</TITLE>
+<META NAME="description" CONTENT="Interprocess Communications">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html726" HREF="node6.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html724" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html718" HREF="node4.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html728" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html729" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html727" HREF="node6.html">Security</A>
+<B>Up:</B> <A NAME="tex2html725" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html719" HREF="node4.html">Channels: the basic Input/Output </A>
+<BR> <P>
+<H1><A NAME="SECTION00500000000000000000">Interprocess Communications</A></H1>
+<P>
+<A NAME="chapterinterprocesscommunications">&#160;</A>
+<P>
+<H1><A NAME="SECTION00510000000000000000">Purpose</A></H1>
+<P>
+Communications are useful when writing applications which are
+comprised of many modules (processes). Using communications, one can
+even write applications to perform parallel processing on a
+heterogeneous network.
+<P>
+<H1><A NAME="SECTION00520000000000000000">Architecture</A></H1>
+<P>
+The communications support in Karma is built on a layered approach. In
+fact, one of the original motivations for the layered approach to the
+Karma library was the need to provide communications at a high level
+of abstraction for most needs, but not to preclude access to more
+basic communications when required. Also, in order to leave the future
+of the communications open-ended, a layered approach, with increasing
+levels of abstraction, was also seen to be useful.  The various
+packages in the Karma library which provide communications support are
+listed below.
+<P>
+<H2><A NAME="SECTION00521000000000000000">``r'' package</A></H2>
+<P>
+The lowest level (most primitive) communications routines are in the
+<A NAME="tex2html23" HREF="../lib/r.html"><B>r</B></A> package in the Karma library. These routines provide a very low
+level interface to Unix sockets (on Unix systems). Routines exist for
+allocating ports and making connections to ports.  These routines are
+<EM>not</EM> recommended for use, as they are inherently non-portable
+(outside of Unix, say) in their interactions, and too primitive.
+<P>
+The <A NAME="tex2html24" HREF="../lib/r.html"><B>r</B></A> package also provides other miscellaneous functions to
+manipulate the process environment, determining the hostname of a
+machine, computing port numbers, etc. These routines provide some OS
+independent functions, and hence are preferred over the vendor
+supplied routines.  The <A NAME="tex2html25" HREF="../lib/r.html"><B>r</B></A> package is a key package in
+providing OS abstraction.
+<P>
+<H2><A NAME="SECTION00522000000000000000">``ch'' package</A></H2>
+<P>
+The basic Input/Output class in Karma is the ``channel''. This is
+provided by the <A NAME="tex2html26" HREF="../lib/ch.html"><B>ch</B></A> package. A channel is a (possibly) full
+duplex buffered stream of data. These are similar to the standard C
+library FILE * streams, but fix a number of deficiencies in FILE
+streams. See the chapter on <A HREF="node4.html#chapterchannels">f</A>or more details.
+<P>
+<H2><A NAME="SECTION00523000000000000000">``dm'' package</A></H2>
+<P>
+When a process uses communication channels, it must have some way of
+responding to incoming data and events. Because the underlying I/O
+support is provided by ``file descriptors'' (in POSIX environments), a
+mechanism is required to respond to events on file descriptors.  This
+is called ``descriptor management''. In Unix, there are two ways of
+doing this. One way is to install signal handlers. Unfortunately,
+becauses most code is not re-entrant, there are inherent dangers in
+using signals. The other alternative is to using a polling loop to
+watch for communication events. The <A NAME="tex2html27" HREF="../lib/dm.html"><B>dm</B></A> package provides the
+means (when running under a plain Unix environment) to register event
+callback functions to process communications events. The <A NAME="tex2html28" HREF="../lib/dm.html"><B>dm</B></A>
+package also provides the <A NAME="tex2html29" HREF="../lib/dm.html#dm_native_poll"><B>dm_native_poll</B></A> routine
+which does the actual polling for events. On Unix systems, this can
+effectively place a process in hibernation until an event occurs.
+<P>
+When running under a different environment, say using the Xt toolkit,
+the <A NAME="tex2html30" HREF="../lib/dmx.html"><B>dmx</B></A> package provides the callback registration
+functions. This package does not provide a polling routine, as the
+toolkit choosen supplies this function.
+<P>
+<H2><A NAME="SECTION00524000000000000000">``chm'' package</A></H2>
+<P>
+This is simply a layer built on top of the <A NAME="tex2html31" HREF="../lib/dm.html"><B>dm</B></A> package so
+that channel objects may be managed. This is generally a more useful
+interface than that provided by the <A NAME="tex2html32" HREF="../lib/dm.html"><B>dm</B></A> package.
+<P>
+<H2><A NAME="SECTION00525000000000000000">``pio'' package</A></H2>
+<P>
+The <A NAME="tex2html33" HREF="../lib/pio.html"><B>pio</B></A> package provides a simple means to transfer binary
+data between a unified ``network'' format and local (host)
+format. These routines write to/ read from channels. These routines
+are handy for simple communications.
+<P>
+<H2><A NAME="SECTION00526000000000000000">``conn'' package</A></H2>
+<P>
+The real power in the communications support in Karma comes from the
+<A NAME="tex2html34" HREF="../lib/conn.html"><B>conn</B></A> package. This provides sequenced, reliable full-duplex
+data streams.
+<P>
+This is the recommended interface for all user-level communications
+(and most library communications too). The <A NAME="tex2html35" HREF="../lib/conn.html"><B>conn</B></A> package is
+initialised with the <A NAME="tex2html36" HREF="../lib/conn.html#conn_initialise"><B>conn_initialise</B></A> routine. This
+initialises the package. Note that the <A NAME="tex2html37" HREF="../lib/dm.html"><B>dm</B></A> package should be
+setup prior to this. The <A NAME="tex2html38" HREF="../lib/conn.html"><B>conn</B></A> package provides support for
+modules (processes) to connect to each other, using agreed upon
+&quot;protocols&quot;. The <A NAME="tex2html39" HREF="../lib/conn.html"><B>conn</B></A> package does not enforce the
+definition of a &quot;protocol&quot;, it just provides a means for modules to
+differentiate between the various connections they may have. It is the
+responsibility of the code implementing the protocol to determine the
+format of data which may pass down a connection of a particular
+protocol.
+<P>
+Each client module client that wishes to make connections with a
+particular protocol to another server module must register the
+callback routines which will process events on connections of this
+protocol. If the client does not register support for this protocol,
+it cannot make connections with that protocol.
+<P>
+Each server module which wishes to receive connections of a particular
+protocol from other client modules must register the callback routines
+which will process events on connections of this protocol. If the
+server does not register support for this protocol, it cannot accept
+connections with that protocol.
+<P>
+Each module may have both client and server support for zero, one or
+more protocols. Also, each module may be operating both as a client
+and a server for different connections. The difference between a
+client and server (as far as the <A NAME="tex2html40" HREF="../lib/conn.html"><B>conn</B></A> package is concerned)
+is that a client initiates a connection while the server accepts (or
+rejects) the connection. See the section on security below which
+details how access may be restricted.
+<P>
+In order to transfer data over a Connection, one must call the
+<A NAME="tex2html41" HREF="../lib/conn.html#conn_get_channel"><B>conn_get_channel</B></A> routine to obtain the underlying
+Channel, since all I/O is based on the Channel.
+<P>
+The <A NAME="tex2html42" HREF="../lib/conn.html"><B>conn</B></A> package, in conjunction with the <A NAME="tex2html43" HREF="../lib/ch.html"><B>ch</B></A>
+package provides complete abstraction of communications. Higher level
+library code and user code has no knowledge of the underlying
+transport mechanisms used. This allows the library to choose the most
+efficient transport available.  It is worth pointing out that the
+communications abstraction does not come at the cost of speed or
+efficiency, both in terms of raw throughput and turnaround times.
+<P>
+<H2><A NAME="SECTION00527000000000000000">``arln'' package</A></H2>
+<P>
+The <A NAME="tex2html44" HREF="../lib/arln.html"><B>arln</B></A> package allows the reading (with blocking: waiting
+for input) from the standard input of lines, while still polling for
+other events. This package uses the <A NAME="tex2html45" HREF="../lib/chm.html"><B>chm</B></A> package for channel
+management, hence is not applicable to Xt or XView toolkit based
+modules.
+<P>
+<H2><A NAME="SECTION00528000000000000000">``dsxfr'' package</A></H2>
+<P>
+Another fundamental part of the Karma library is the Karma Data
+Structure. This flexible, heirarchical data structure can be simply
+transferred between modules by using the <A NAME="tex2html46" HREF="../lib/dsxfr.html"><B>dsxfr</B></A> package. This
+package defines the ``multi_array'' protocol, and provides simple
+routines to read or write an entire data structure from/ to another
+modules (or disc file).  Part of the definition of the
+``multi_array'' protocol is that data always flows from the client to
+the server, never the other way around.
+<P>
+<H2><A NAME="SECTION00529000000000000000">``kcmap'' package</A></H2>
+<P>
+Another package in the Karma library is the <A NAME="tex2html47" HREF="../lib/kcmap.html"><B>kcmap</B></A>
+package. This package defines an opaque dynamic pseudocolourmap
+class. This provides a graphics system independent means to modify
+colourmaps. In addition, it provides for dynamic changes to colourmaps
+to be shared between modules by using the <A NAME="tex2html48" HREF="../lib/conn.html"><B>conn</B></A> package to
+define the ``colourmap_indices'' and ``full_colourmap''
+protocols. This allows processes attached to the same graphics display
+and separate graphics displays (i.e. separate X displays) to
+dynamically share colourmaps.
+<P>
+<H2><A NAME="SECTION005210000000000000000">``iedit'' package</A></H2>
+<P>
+The <A NAME="tex2html49" HREF="../lib/iedit.html"><B>iedit</B></A> package defines an opaque image edit instruction
+class.  This is designed for simple image painting operations. The
+<A NAME="tex2html50" HREF="../lib/iedit.html"><B>iedit</B></A> package also uses the <A NAME="tex2html51" HREF="../lib/conn.html"><B>conn</B></A> package to define
+the ``2D_edit'' protocol which allows changes to an edit list to be
+propagated to co-operating modules. Using this package, it is trivial
+to implement a &quot;shared paintboard&quot; application for several users,
+where each user sees what every other user is painting, in real time.
+<P>
+<H2><A NAME="SECTION005211000000000000000">``iarray'' package</A></H2>
+<P>
+The Karma library provides a simplified interface to the general Karma
+Data Structure in the <A NAME="tex2html52" HREF="../lib/iarray.html"><B>iarray</B></A> package. This package defines
+the ``Intelligent Array'' class.  As with the <A NAME="tex2html53" HREF="../lib/dsxfr.html"><B>dsxfr</B></A> package,
+the <A NAME="tex2html54" HREF="../lib/iarray.html"><B>iarray</B></A> package provides similar routines to transfer
+data between modules and to/from disc files.
+<P>
+<H1><A NAME="SECTION00530000000000000000">Addressing and Network Layers</A></H1>
+<P>
+To make a connection from a Karma client to a Karma server, the<BR> 
+<A NAME="tex2html55" HREF="../lib/conn.html#conn_attempt_connection"><B>conn_attempt_connection</B></A> function is given a <EM>
+hostname</EM> parameter which specifies which computer the Karma server is
+running on. This may be a standard Internet address. The special names
+<TT>unix</TT> and <TT>localhost</TT> refer to the same computer as where the
+client is running. The special name <TT>local-slow</TT> is the same,
+except that a slower transport mechanism is used instead.
+<P>
+By default the best reliable network protocol is used, which usually
+means that TCP/IP or Unix domain sockets are used. You can specify
+alternative network protocols by appending a protocol name after the
+<EM>hostname</EM>, with a colon character in between. Currently supported
+protocol names are:
+<P>
+<UL>
+<LI> <TT>stream</TT> use the best reliable protocol available (the
+default)
+<A NAME="244">&#160;</A><A NAME="245">&#160;</A>
+<LI> <TT>udp</TT> use UDP (User Datagram Protocol) to send datagrams
+<A NAME="247">&#160;</A><A NAME="248">&#160;</A>
+<LI> <TT>atmsvc</TT> use a native ATM (Asynchronous Transfer Mechanism)
+SVC (Switched Virtual Circuit) connection, with AAL5, to send
+datagrams.
+</UL>
+<P>
+Note that when you ask for a datagram protocol, you may end up with an
+unreliable connection. This means that datagrams (packets) may be
+corrupted or lost, which means you may need to send them again. The
+normal, reliable communication channel is still available as the
+default channel, but you get an extra communication channel for the
+datagram protocol. You can use the
+<A NAME="tex2html56" HREF="../lib/conn.html#conn_get_datagram_channel"><B>conn_get_datagram_channel</B></A> function to yield the
+datagram channel. The <A NAME="tex2html57" HREF="../lib/conn.html#conn_get_channel"><B>conn_get_channel</B></A> function
+will return the normal, reliable channel. This channel allows you to
+send data reliably, and use the datagram channel for less critical,
+high-bandwidth data.
+<P>
+If you specify a <EM>hostname</EM> of <TT>my.host:stream</TT> this is the
+same as <TT>my.host</TT> which will yield a reliable
+connection. Specifying <TT>my.host:atmsvc</TT> will make a connection
+with an ATM SVC AAL5 datagram channel.
+<P>
+<H2><A NAME="SECTION00531000000000000000">Quality of Service Parameters</A></H2>
+<P>
+<A NAME="260">&#160;</A><A NAME="261">&#160;</A>
+<P>
+Some network protocols (such as ATM) allow you to specify quality of
+service parameters. This means you can negotiate with the network the
+sustained, minimum and maximum speed and other quality of service
+parameters such as delay variation, and your connection will not
+degrade in performance for its duration. Obviously, if the network
+does not have sufficient resources to meet your demands, the
+connection attempt will fail, in which case you may elect to try again
+later or try for a connection with lesser quality. In the future,
+networks will allow you to trade off service quality versus
+cost. During peak usage periods, the cost of a connection of a
+particular quality would be higher than during periods of low network
+activity (such as late at night).
+<P>
+Karma provides the mechanism to specify desired quality of service
+parameters. You specify these in the <EM>hostname</EM> string, by
+including <TT>name=value</TT> pairs after the connection protocol, using
+a comma character as a separator. The currently supported QOS
+parameters are:
+<P>
+<UL>
+<LI> <TT>class</TT> the traffic class, either <TT>ubr</TT> (unassigned bit
+rate: i.e. ``best-effort'', which is the default) or <TT>cbr</TT>
+(constant bit rate)
+<LI> <TT>txmin</TT> minimum peak transmit rate (bandwidth). This only
+applies to <TT>class=cbr</TT>
+<LI> <TT>txtyp</TT> the sustained peak transmit rate (bandwidth). This
+only applies to <TT>class=cbr</TT>
+<LI> <TT>txmax</TT> maximum peak transmit rate (bandwidth). This only
+applies to <TT>class=cbr</TT>
+<LI> <TT>txsdu</TT> the maximum transmit service data unit (packet size)
+in bytes
+<LI> <TT>txdvmax</TT> the maximum transmit per byte delay variation, in
+nanoseconds. This only applies to <TT>class=cbr</TT>
+<LI> <TT>rxmin</TT> minimum peak receive rate (bandwidth). This only
+applies to <TT>class=cbr</TT>
+<LI> <TT>rxtyp</TT> the sustained peak receive rate (bandwidth). This
+only applies to <TT>class=cbr</TT>
+<LI> <TT>rxmax</TT> maximum peak receive rate (bandwidth). This only
+applies to <TT>class=cbr</TT>
+<LI> <TT>rxsdu</TT> the maximum receive service data unit (packet size)
+in bytes
+<LI> <TT>rxdvmax</TT> the maximum receive per byte delay variation, in
+nanoseconds. This only applies to <TT>class=cbr</TT>.
+<P>
+</UL>
+<P>
+Note that bandwidth parameters are given in bytes per second. The
+following units are recognised:
+<P>
+<UL>
+<LI> <TT>b</TT> bits per second
+<LI> <TT>B</TT> bytes per second
+<LI> <TT>kb</TT> kilo (1000) bits per second
+<LI> <TT>kB</TT> kilo (1000) bytes per second
+<LI> <TT>Mb</TT> mega (1000000) bits per second
+<LI> <TT>MB</TT> mega (1000000) bytes per second
+</UL>
+<P>
+and may be used as a suffix for the numerical value.
+<P>
+Thus, if you wanted an ATM SVC AAL5 CBR connection with a sustained
+transmit rate of 1000000 bits per second to host <TT>my.host</TT>, you
+would specify<BR> <TT>my.host:atmsvc,class=cbr,txtyp=1Mb</TT> for the <EM>
+hostname</EM>.
+<P>
+Note that the syntax for QOS parameters is experimental and may change
+in future releases.
+<P>
+<H1><A NAME="SECTION00540000000000000000">Tutorials</A></H1>
+<P>
+In a simple module, the following sequence should be followed if
+communications are required:
+<P>
+<UL>
+<LI> Register the channel management package applicable
+<LI> Register any client or server protocols
+<LI> Optionally allocate a server port
+<LI> Enter the polling loop
+</UL>
+<P>
+In the case where a module only wishes to transmit data, and is not
+interested in input (or closure) events on connections, it can omit
+the stage where the polling loop is entered.
+<P>
+Some examples follow.
+<P>
+<H2><A NAME="SECTION00541000000000000000">Example 1</A></H2>
+<P>
+This simple example is a module which generates some data (a 2
+dimensional Intelligent Array) and then wishes to transmit this to a
+module (name ``receiver'') on another machine (with name
+``localhost'').
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Communications sample program: multi_array transmitter  */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_dsxfr.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+
+main ()
+{
+    /*  Declare variables  */
+    int i, j;
+    iarray a;
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register &quot;multi_array&quot; client protocol support  */
+    dsxfr_register_connection_limits (-1, 1);
+    /*  Attempt connection to module  */
+    if ( !conn_attempt_connection (&quot;localhost&quot;,
+                                   r_get_def_port (&quot;receiver&quot;, NULL),
+                                   &quot;multi_array&quot;) )
+    {
+        fprintf (stderr, &quot;Error connecting\n&quot;);
+        exit (1);
+    }
+    /*  Create a 10x10 integer 2D iarray  */
+    a = iarray_create_2D (10, 10, K_INT);
+
+    /*  Fill  a  with data  */
+    for (i = 0; i &lt; 10; i++)
+    {
+        for (j = 0; j &lt; 10; j++)
+        {
+            I2 (a, i, j) = i * j;
+        }
+    }
+
+    /*  Send  a  to module  */
+    iarray_write (a, &quot;connections&quot;);
+
+    /*  Deallocate array  */
+    iarray_dealloc (a);
+}</PRE>
+<P>
+<H2><A NAME="SECTION00542000000000000000">Example 2</A></H2>
+<P>
+This simple example is a module which receives some data (an
+N-dimensional Intelligent Array) and writes it to a disc file
+``out.kf''.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Communications sample program: multi_array receiver     */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_dsxfr.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+
+void read_func (/* first_time_data */);
+
+main ()
+{
+    unsigned int port_number;
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register &quot;multi_array&quot; server protocol support  */
+    dsxfr_register_connection_limits (1, -1);
+    /*  Register callback for new data  */
+    dsxfr_register_read_func (read_func);
+    /*  Allocate a port  */
+    port_number = r_get_def_port (&quot;receiver&quot;, NULL);
+    if ( !conn_become_server (&amp;port_number, 0) )
+    {
+        fprintf (stderr, &quot;Could not become a server\n&quot;);
+        exit (1);
+    }
+
+    /*  Enter polling loop (forever)  */
+    while (TRUE) dm_native_poll (-1);
+}
+
+void read_func (first_time_data)
+/*  This routine will be called whenever new data arrives on a &quot;multi_array&quot;
+    connection.
+    Note that by the time this routine is called, the data structure has
+    already been read and cached in the library.
+    If data appears on a connection for the first time, the value of
+    first_time_data  will be TRUE. Any subsqeuent data that appears on a
+    connection will not set this flag.
+    The routine returns nothing.
+*/
+flag first_time_data;
+{
+    iarray a;
+
+    /*  Read (non-blocking) from connection  */
+    if ( ( a = iarray_read_nD (&quot;connection&quot;, TRUE, NULL, 0, (char **) NULL,
+                               NULL, K_CH_MMAP_NEVER) )
+        == NULL )
+    {
+        fprintf (stderr, &quot;Error getting Intelligent Array\n&quot;);
+        exit (1);
+    }
+    /*  Write &quot;out.kf&quot;  */
+    iarray_write (a, &quot;out&quot;);
+    /*  Exit module now that data has been read  */
+    exit (0);
+}</PRE>
+<P>
+<H2><A NAME="SECTION00543000000000000000">Example 3</A></H2>
+<P>
+This simple example is a module which reads lines from the standard
+input and transmits the lines to all modules connected with the
+``experimental'' protocol.  The module will attempt a connection to a
+module (name ``receiver'') on another machine (with name
+``localhost'').
+<P>
+<PRE>/*-----------------------------------------------------------*/
+/*  Communications sample program: experimental transmitter  */
+/*-----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma_arln.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+
+main ()
+{
+    /*  Declare variables  */
+    Connection conn;
+    Channel channel;
+    unsigned int num_conn;
+    unsigned int count;
+    char buffer[256];
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register &quot;experimental&quot; client protocol support  */
+    /*  No callbacks registered because client will never receive data  */
+    conn_register_client_protocol (&quot;experimental&quot;, 0, 1, ( flag (*) () ) NULL,
+                                   ( flag (*) () ) NULL, ( flag (*) () ) NULL,
+                                   ( void (*) () ) NULL);
+    /*  Attempt connection to module  */
+    if ( !conn_attempt_connection (&quot;localhost&quot;,
+                                   r_get_def_port (&quot;receiver&quot;, NULL),
+                                   &quot;experimental&quot;) )
+    {
+        fprintf (stderr, &quot;Error connecting\n&quot;);
+        exit (1);
+    }
+
+    /*  Loop waiting for input and transmit each line  */
+    while ( arln_read_line (buffer, 256, &quot;Hurry up&gt; &quot;) )
+    {
+        /*  Have line of data: transmit to all &quot;experimental&quot; servers  */
+        /*  Get number of connections made (should be 1 in this example)  */
+        num_conn = conn_get_num_client_connections (&quot;experimental&quot;);
+        for (count = 0; count &lt; num_conn; ++count)
+        {
+            /*  Get a particular connection  */
+            if ( ( conn = conn_get_client_connection (&quot;experimental&quot;, count) )
+                == NULL )
+            {
+                fprintf (stderr,
+                            &quot;Error getting \"experimental\" connection: %u\n&quot;,
+                                count);
+                exit (1);
+            }
+            /*  Get the channel  */
+            channel = conn_get_channel (conn);
+            /*  Write and flush  */
+            ch_puts (channel, buffer, TRUE);
+            ch_flush (channel);
+        }
+    }
+}</PRE>
+<P>
+<H2><A NAME="SECTION00544000000000000000">Example 4</A></H2>
+<P>
+This simple example is a module which reads lines from modules
+connected with the ``experimental'' protocol and displays the lines.
+<P>
+<PRE>/*--------------------------------------------------------*/
+/*  Communications sample program: experimental receiver  */
+/*--------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma_arln.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_r.h&gt;
+
+flag read_func (/* connection, info */);
+
+main ()
+{
+   unsigned int port_number;
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register &quot;experimental&quot; server protocol support  */
+    conn_register_server_protocol (&quot;experimental&quot;, 0, 1, ( flag (*) () ) NULL,
+                                   read_func, ( void (*) () ) NULL);
+    /*  Allocate a port  */
+    port_number = r_get_def_port (&quot;receiver&quot;, NULL);
+    if ( !conn_become_server (&amp;port_number, 0) )
+    {
+        fprintf (stderr, &quot;Could not become a server\n&quot;);
+        exit (1);
+    }
+
+    /*  Wait forever for events  */
+    while (TRUE) dm_native_poll (-1);
+}
+
+flag read_func (connection, info)
+/*  This routine will read in data from the connection given by  connection
+    and will write any appropriate information to the pointer pointed to by
+    info  .
+    The routine returns TRUE on successful reading,
+    else it returns FALSE (indicating the connection should be closed).
+    Note that the  close_func  will be called if this routine returns FALSE
+*/
+Connection connection;
+void **info;
+{
+    Channel channel;
+    char buffer[256];
+
+    /*  Get channel  */
+    channel = conn_get_channel (connection);
+    if ( !ch_gets (channel, buffer, 256) )
+    {
+        fprintf (stderr, &quot;Error reading line\n&quot;);
+        return (FALSE);
+    }
+    fprintf (stderr, &quot;Incoming line: \"%s\"\n&quot;, buffer);
+    return (TRUE);
+}</PRE>
+<P>
+<H1><A NAME="SECTION00550000000000000000">Connection Management</A></H1>
+connection management
+<P>
+When developing a complex application comprised of many communicating
+modules, the establishment of connections (and even the starting of
+modules) can become rather difficult to manage, with connection
+attempts (calls to <A NAME="tex2html58" HREF="../lib/conn.html#conn_attempt_connection"><B>conn_attempt_connection</B></A>) in many
+different modules. To streamline this, there exists the Connection
+Management shell, an interpreter which reads a script file. The script
+file specifies which hosts modules will run on, which modules should
+be run and the connections between all the modules.  This script
+allows the application designer to centralise the startup of modules
+and connections: making the application somewhat self-documenting.
+<P>
+Modules started locally have the same working directory as the script,
+whereas modules started on other hosts have an undefined working
+directory.
+<P>
+Modules started with the Connection Management Shell have their output
+redirected to logfiles in /tmp
+<P>
+<H2><A NAME="SECTION00551000000000000000">Script Syntax</A></H2>
+<A NAME="310">&#160;</A>
+<P>
+The syntax for Connection Management Shell scripts is processed in
+order, and consists of 5 sections. Each section is prefixed with a
+keyword and postfixed with ``<B>END</B>''. In between the prefix and
+postfix is the body of the section, which contains zero or more
+configuration line. The section keywords and their contents are:
+<P>
+<UL>
+<LI> <B>HOSTLIST</B> each line contains a hostname where modules will
+be run on, and zero or more optional arguments. The format is as
+follows:<BR> 
+<TT>hostname [KARMABASE] [-manual] [- args...]</TT><BR> 
+where <TT>hostname</TT> is the remote host where you may want to run
+modules. You can supply an optional <TT>KARMABASE</TT> which specifies
+the value of the <TT>KARMABASE</TT> environment variable for modules run
+on the remote host. The <TT>-manual</TT> switch is required if the host
+where the script runs cannot execute remote shell commands on the
+remote host. Any arguments following the <TT>-</TT> are passed to the
+slave programme run on the remote host
+<LI> <B>MODULES</B> each line contains a module to be run. The format
+is as follows:<BR> 
+<TT>hostname  module_name  [x y] [- args...]</TT><BR> 
+where <TT>hostname</TT> is the host on which to run the module, <TT>
+module_name</TT> is the name of the module to run. You can optionally
+specify the position of the module icon in the Connection Management
+Tool with <TT>x y</TT>. Further module-specific arguments may be
+specified after the <TT>-</TT>. The first module started is given the
+index number zero, each subsequent module is given an index number one
+higher than the previous one
+<LI> <B>CONNECTIONS</B> each line specifies a connection to make
+between two modules. The format is:<BR> 
+<TT>client_module_num  server_module_num  protocol_name
+[transport]</TT><BR> 
+where <TT>client_module</TT> is the index number of the module which is
+making the connection (the client) and <TT>server_module_num</TT> is
+the index number of the module to which the connection is made (the
+server). You specify the protocol name for the connection with <TT>
+protocol_name</TT> and an optional transport layer specification with
+<TT>transport</TT> (this may be used to specify UDP or ATM SVC
+connections)
+<LI> <B>COMMANDS</B> this section is optional. Each line contains a
+string command to send to the command line parser of a module. The
+format is:<BR> 
+<TT>module_num  delay  command</TT><BR> 
+where <TT>module_num</TT> is the index number of the module to which to
+send the command to, <TT>delay</TT> is the number of milliseconds to wait
+after the command is sent and <TT>command</TT> is the command string to
+send
+<LI> <B>SHELL_CLEANUP</B> this section is optional. Each line
+contains a Bourne Shell command to execute. This section requires no
+``<B>END</B>'' postfix.
+<P>
+</UL>
+<P>
+<PRE>#! /usr/local/karma/bin/cmshell
+
+# This file is a sample script (executable) which runs the Connection
+# Management tool in batch mode.
+# Karma modules may be started on many hosts, connected together and then made
+# to perform some function.
+# Blank lines and comments ('#' is the comment character) are ignored.
+
+# First the list of hosts to run on. Shell escapes allowed here
+HOSTLIST
+# hostname [KARMABASE] [-manual] [-- args...]
+# hostname &quot;local[host]&quot; is always defined
+lynx
+!echo &quot;Executing a Bourne shell command&quot;  # Note the '!' shell escape character
+asterix /usr/local/karma
+phoenix:vx -- -stereo1152x900
+obelix -manual # Wait for the user to manually make a CM slave connection
+END
+
+# Now the list of modules to run
+MODULES
+# Format of each module line:
+# hostname  module_name  [x y] [-- args...]
+#   x  and  y  are optional icons positions used when the Connection Management
+#   tool is operating in Interactive mode.
+#   optional arguments to be passed to the module must be separated by &quot;--&quot;
+local kvis -- -bg black
+asterix tx 15 15
+  DEFAULTS	# Optional
+    animate off
+    num_iterations 5
+  END	# Defaults
+END	# Modules
+
+# Next the list of connections to make
+CONNECTIONS
+# client_module_num  server_module_num  protocol_name [transport]
+1 0 multi_array
+END
+
+# And the list of commands to send to modules (via their  stdin  )
+# Shell escapes allowed here
+COMMANDS	# Optional
+# module_num  delay (milliseconds)  command
+1 5000 girl
+1 1000 animate on
+!echo &quot;Executing a Bourne shell command&quot;  # Note the '!' shell escape character
+1 10 script
+1 1 abort
+END
+
+# After processing all commands, the Connection Management tool will wait
+# forever in an event loop. When any module dies or connection closes,
+# all slave processes and controlled modules should finish. A number of shell
+# commands may then be processed prior to the Connection Management tool
+# terminating.
+
+SHELL_CLEANUP	# Optional Bourne shell commands
+echo &quot;Application finished&quot;
+
+# No &quot;END&quot; directive is required: EndOfFile is sufficient</PRE>
+<P>
+<H2><A NAME="SECTION00552000000000000000">Security (authentication and encryption)</A></H2>
+<P>
+<H3><A NAME="SECTION00552100000000000000">Authentication</A></H3>
+<P>
+In a networked environment, any client module is able to make a
+connection to a server module. On the Internet, this means every
+machine with Internet access can potentially connect to your server
+module. In many (most) cases, this is not a concern since your server
+module will only be running a short time. However, there may be
+circumstances which require a more prudent approach. The Karma
+communications infrastructure provides multiple levels of
+authentication verification to support your needs.
+<P>
+<H3><A NAME="SECTION00552200000000000000">Encryption</A></H3>
+<P>
+Distinct from authentication is the issue of privacy. Since the Karma
+communications infrastructure utilises the network transport
+facilities provided by the operating system, the level of privacy is
+the same as that provided by the network layer. On a local area
+network (LAN), you can expect that every machine on that network is
+capable of spying on your data as it passes over the network. For most
+people, this is probably not a serious concern since their data files
+are also transferred over this network. Of greater concern is the
+possibility of information to be captured as it passes between two
+machines, each on a different LAN. If you are transferring data
+between two machines across the Internet, you really have no idea of
+who might be spying on your data. Karma provides strong encryption to
+assure your privacy.
+<P>
+<H3><A NAME="SECTION00552300000000000000">Purpose</A></H3>
+<P>
+The Karma communcations security support is aimed at:
+<P>
+<UL>
+<LI> Individual users who want to secure their communications
+<LI> Application developers who want to write secure, network-aware
+applications without worrying about the implemtation details
+<LI> Commercial service providers on the Internet who wish to ensure
+their own security and that of their customers.
+<P>
+</UL><H3><A NAME="SECTION00552400000000000000">Details</A></H3>
+<P>
+All connections maintained by the <A NAME="tex2html59" HREF="../lib/conn.html"><B>conn</B></A> package may be both
+authenticated and encrypted. The configuration of this is centralised
+in your &nbsp;/.KARMAauthority file (this file should bar all access except
+for the owner). You may set a uniform authentication/encryption
+requirement for all Karma protocols, or you may selectively protect
+some protocols. If a protocol is not specified in your authority file,
+the default authentication/encryption is used.  The format of this
+file is a follows (one line per protocol):
+<P>
+<TT>protocol_name  security_type  [extra information]</TT>
+<P>
+The &lt;protocol_name&gt; may be any protocol name (a specific module
+need not support a protocol). The name ``RAW_PROTOCOL'' designates
+the raw Karma protocol used by the <A NAME="tex2html60" HREF="../lib/conn.html"><B>conn</B></A> package prior to
+negotiating a specific application protocol.
+<P>
+&lt;security_type&gt; may be any of the following:
+<P>
+<UL>
+<LI> <TT>key-only</TT> IDEA used to verify authentication. Data unencrypted
+<LI> <TT>IDEA</TT> IDEA used to verify authentication and data encrypted
+<LI> <TT>PGPuserID-IDEA</TT> PGP used for session key transfer, then use
+IDEA mode
+<LI> <TT>drop-encryption</TT> drop data encryption for a specific
+protocol
+</UL>
+<P>
+For both the <TT>key-only</TT> and <TT>IDEA</TT> modes, the security type
+field must be followed by a 24 byte IDEA session key and CFB
+initialisation vector. This data must be in ASCII hexadecimal
+format. Both these modes require the secure transfer of the authority
+file.
+<P>
+The <TT>PGPuserID-IDEA</TT> mode is the most secure: the server module
+uses PGP (Philip R. Zimmermann's Pretty Good Privacy) to encrypt a
+random IDEA session key which is sent the the client module. The
+client module uses PGPdaemon (part of the PGPsendmail/Unix Suite
+available from:<BR> 
+<A NAME="tex2html61" HREF="ftp://ftp.atnf.csiro.au/pub/people/rgooch/">ftp://ftp.atnf.csiro.au/pub/people/rgooch/</A>)
+to decode this session key.  The security type field must be followed
+by the authorised PGP userID.  You must have PGP and PGPsendmail/Unix
+1.4.1 or later installed.
+<P>
+The <TT>drop-encryption</TT> mode allows you to drop encryption for a
+specified protocol. This is useful when you have specified an
+encryption mode for all protocols (using <TT>RAW_PROTOCOL</TT>) and you
+are concerned about the performance degradation of encrypting data.
+<P>
+Note that in all cases, encryption is automatically dropped after
+protocol authentication if the connection is local (i.e. a connection
+to the same machine).
+<P>
+<H3><A NAME="SECTION00552500000000000000">Restrictions</A></H3>
+<P>
+See the Karma security guide on information regarding restrictions.
+<P>
+<HR><A NAME="tex2html726" HREF="node6.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html724" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html718" HREF="node4.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html728" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html729" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html727" HREF="node6.html">Security</A>
+<B>Up:</B> <A NAME="tex2html725" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html719" HREF="node4.html">Channels: the basic Input/Output </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

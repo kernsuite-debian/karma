@@ -1,0 +1,57 @@
+.TH DS_CMAP_GET_ALL_COLOURMAPS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_cmap_get_all_colourmaps \- Search an array of Karma data structures for colourmaps.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int * ds_cmap_get_all_colourmaps
+.sp
+(multi_array *multi_desc,
+unsigned int *num_found,
+flag *reordering_done,
+CONST char *restr_names[],
+double *restr_values,
+unsigned int num_restr)
+.SH DESCRIPTION
+This routine will search an array of Karma general data
+structures for instances of a colourmap.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor.
+.IP \fInum_found\fP 1i
+The number of general data structures which contain a
+colourmap will be written here.
+.IP \fIreordering_done\fP 1i
+The routine is tolerant of incorrect ordering of the
+intensity elements. If they are ordered incorrectly, the data will be
+re-ordered, and the value TRUE will be written here, else the value FALSE
+will be written here. If this is NULL, nothing is written here.
+.IP \fIrestr_names\fP 1i
+The array of pointers to restrictions names.
+.IP \fIrestr_values\fP 1i
+The array of restriction values.
+.IP \fInum_restr\fP 1i
+The number of restriction values.
+.SH RETURN VALUE
+A pointer to an array of general data structure indices on
+success, else NULL. This array is dynamically allocated, and should be
+freed when no longer needed.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+NULL pointers may be passed for <<restr_names>> and <<restr_values>>
+and <<num_restr>> set to zero. In this case, the routine will only return a
+colourmap if there is only one instance of a colourmap in the entire data
+structure.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

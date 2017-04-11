@@ -1,0 +1,77 @@
+.TH IMW_SCMAP_16TO24_LOSSY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+imw_scmap_16to24_lossy \- Write 16bit image to a 24bit image using a software colourmap.
+.SH SYNOPSIS
+.B #include <karma_imw.h>
+.sp
+.B flag imw_scmap_16to24_lossy
+.sp
+(unsigned char *out_red_image,
+unsigned char *out_green_image,
+unsigned char *out_blue_image, flag preserve_pad,
+iaddr out_hstride, iaddr out_vstride,
+int out_width, int out_height,
+CONST unsigned short *inp_image,
+int inp_width, int inp_height,
+CONST iaddr *inp_hoffsets,
+CONST iaddr *inp_voffsets,
+CONST unsigned char *cmap_red,
+CONST unsigned char *cmap_green,
+CONST unsigned char *cmap_blue, iaddr cmap_stride)
+.SH DESCRIPTION
+This routine will write a 16bit PseudoColour image into a 24bit
+TrueColour image using a software colourmap to convert 16bit values to
+24bit RGB values. The input and output sizes may be different. The output
+image is flipped vertically relative to the input image.
+.IP \fIout_red_image\fP 1i
+The output red image components will be written here.
+.IP \fIout_green_image\fP 1i
+The output green image components will be written here.
+.IP \fIout_blue_image\fP 1i
+The output blue image components will be written here.
+.IP \fIpreserve_pad\fP 1i
+If TRUE, padding bytes between output pixels will be
+preserved, else they may be overwritten for efficiency.
+.IP \fIout_hstride\fP 1i
+The horizontal stride in bytes between output pixels.
+.IP \fIout_vstride\fP 1i
+The vertical stride in bytes between output lines.
+.IP \fIout_width\fP 1i
+The width of the output image.
+.IP \fIout_height\fP 1i
+The height of the output image.
+.IP \fIinp_image\fP 1i
+The input 16bit PseudoColour image.
+.IP \fIinp_hoffsets\fP 1i
+The array of horizontal input byte offsets.
+.IP \fIinp_voffsets\fP 1i
+The array of vertical input byte offsets.
+.IP \fIinp_width\fP 1i
+The width of the input image.
+.IP \fIinp_height\fP 1i
+The height of the input image.
+.IP \fIcmap_red\fP 1i
+The red component virtual colourmap.
+.IP \fIcmap_green\fP 1i
+The green component virtual colourmap.
+.IP \fIcmap_blue\fP 1i
+The blue component virtual colourmap.
+.IP \fIcmap_stride\fP 1i
+The stride in bytes between colourmap entries. The number of
+entries must be 65536 (16bit addressing).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

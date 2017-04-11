@@ -1,0 +1,43 @@
+.TH KWIN_DRAW_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_string \- Draw a string onto a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_string
+.sp
+(KPixCanvas canvas, double x, double y,
+CONST char *string, unsigned long pixel_value,
+flag clear_under)
+.SH DESCRIPTION
+This routine will draw a NULL terminated string onto a pixel
+canvas, using the default font for the canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIx\fP 1i
+The horizontal offset of the string origin.
+.IP \fIy\fP 1i
+The vertical offset of the string origin.
+.IP \fIstring\fP 1i
+The string.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.IP \fIclear_under\fP 1i
+If TRUE, then the routine will draw both the foreground and
+background of the characters.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,30 @@
+.TH VA 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+va \- Routines to perform optimised vector arithmetic operations
+.SH PURPOSE
+These routines are meant to provide a suite of arithmetic operations on
+vectors (arrays) of data.
+These routines are highly optimised, with many inner loops coded in
+assembler to achieve sustained performance approaching (and in some cases
+equalling) the rated peak performance of the hardware.
+On some platforms, a speed improvment of over 30 times has been attained by
+coding in assembler.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIva_scale_float\fP 1i
+Scale and offset an array of floats.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

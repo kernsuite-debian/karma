@@ -1,0 +1,37 @@
+.TH DS_F_ELEM_IN_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_f_elem_in_packet \- Search for a named element in a packet, without recursion.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_f_elem_in_packet
+.sp
+(CONST packet_desc *pack_desc,
+CONST char *name)
+.SH DESCRIPTION
+Search for a named element in a packet, without recursion.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIname\fP 1i
+The element name to search for. If this is NULL, then the routine
+will not find anything.
+.SH RETURN VALUE
+The number of the element in the packet if it was found, else the
+number of elements in the packet.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the specified name occurs twice, the program aborts.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

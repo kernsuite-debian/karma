@@ -1,0 +1,37 @@
+.TH IARRAY_PUT_NAMED_VALUE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_put_named_value \- Attach a data value to an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_put_named_value
+.sp
+(iarray array, CONST char *name, unsigned int type,
+double value[2])
+.SH DESCRIPTION
+This routine will add a unique named value to the underlying
+Karma general data structure of an "Intelligent Array".
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element to add.
+.IP \fItype\fP 1i
+The type of the data which is to be written.
+.IP \fIvalue\fP 1i
+The value of the data.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,47 @@
+.TH DS_COPY_DATA 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_data \- Copy data between Karma data structures.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_copy_data
+.sp
+(CONST packet_desc *inp_desc, CONST char *inp_data,
+packet_desc *out_desc, char *out_data)
+.SH DESCRIPTION
+This routine will copy data from one data structure to another,
+provided the two data structures have the same format. If there are any
+variations in the two formats, the copying process is stopped at that level
+If one or more elements are different, they are not copied, however, the
+other elements are copied. This also applies to array and linked list
+pointer elements. This condition only holds for packets with the same
+number of elements, otherwise no elements are copied. The ordering of
+elements must also be the same.
+The names of elements and dimensions must be the same, as well as the
+data types. For information on array and linked list copying, see
+The routine recursively copies data in arrays and linked lists.
+<-ds_copy_array-> and <-ds_copy_list->.
+.IP \fIinp_desc\fP 1i
+The input data structure descriptor.
+.IP \fIinp_data\fP 1i
+The input data.
+.IP \fIout_desc\fP 1i
+The output data structure descriptor.
+.IP \fIout_data\fP 1i
+The output data memory allocation.
+.SH RETURN VALUE
+TRUE if the two packet descriptors are identical, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

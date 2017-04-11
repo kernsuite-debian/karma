@@ -1,0 +1,42 @@
+.TH CANVAS_REGISTER_TRANSFORMS_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_register_transforms_func \- Register non-linear co-ordinate transformation function.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_register_transforms_func
+.sp
+(KWorldCanvas canvas,
+void (*coord_transform_func) (),
+void *info)
+.SH DESCRIPTION
+This routine will register the co-ordinate transform function
+for a world canvas. The co-ordinate transform function transforms the
+linear world co-ordinates used internally by the world canvas to be
+transformed into non-linear co-ordinates for external use. Only one
+co-ordinate transform function is permitted per canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIcoord_transform_func\fP 1i
+The function that is called when co-ordinates are to
+be transformed. The prototype function is
+<-canvas_PROTO_coord_transform_func->. If an existing transformation
+function is registered, it is overwritten.
+.IP \fIinfo\fP 1i
+The initial arbitrary transform information pointer.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

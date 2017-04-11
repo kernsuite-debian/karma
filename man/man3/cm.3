@@ -1,0 +1,37 @@
+.TH CM 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+cm \- Routines to manage child processes
+.SH PURPOSE
+These routines are meant to provide a generic and simple to use child
+process management facility.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIcm_manage\fP 1i
+Register a function to manage a child process.
+.IP \fIcm_unmanage\fP 1i
+Terminate the management of a child process for state changes.
+.IP \fIcm_poll\fP 1i
+Poll for child process state changes.
+.IP \fIcm_poll_silent\fP 1i
+Poll for child process state changes.
+.IP \fIcm_PROTO_stop_func\fP 1i
+This routine is called when a child process is stopped.
+.IP \fIcm_PROTO_term_func\fP 1i
+This routine is called when a child process is killed.
+.IP \fIcm_PROTO_exit_func\fP 1i
+This routine is called when a child process exits.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

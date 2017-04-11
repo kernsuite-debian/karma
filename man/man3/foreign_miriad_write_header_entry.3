@@ -1,0 +1,40 @@
+.TH FOREIGN_MIRIAD_WRITE_HEADER_ENTRY 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_miriad_write_header_entry \- Write a Miriad header entry.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_miriad_write_header_entry
+.sp
+(Channel channel, CONST char *name,
+unsigned int type,
+unsigned int num_values,
+CONST char *data)
+.SH DESCRIPTION
+Write a Miriad header entry.
+.IP \fIchannel\fP 1i
+The channel to write to.
+.IP \fIname\fP 1i
+The name of the header entry.
+.IP \fItype\fP 1i
+The type of the data.
+.IP \fInum_values\fP 1i
+The number of data values to write.
+.IP \fIdata\fP 1i
+The data values.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

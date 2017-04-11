@@ -1,0 +1,32 @@
+.TH DISPDATA_REGENERATE_BLINKENTRY_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_regenerate_blinkentry_list \- Regenerate a list of blink entries for a blink state.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B CONST KDisplayDataBlinkEntry * dispdata_regenerate_blinkentry_list
+.sp
+(KDisplayDataClassBlinkState blinkstate,
+unsigned int *num_entries)
+.SH DESCRIPTION
+Regenerate a list of blink entries for a blink state.
+.IP \fIblinkstate\fP 1i
+The KDisplayDataClassBlinkState object.
+.IP \fInum_entries\fP 1i
+The number of entries is written here.
+.SH RETURN VALUE
+The array of blink entries.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

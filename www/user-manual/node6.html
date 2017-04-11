@@ -1,0 +1,759 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>5 Volume Rendering a Cube</TITLE>
+<META NAME="description" CONTENT="5 Volume Rendering a Cube">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html349" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html347" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html341" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html351" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html352" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html350" HREF="node7.html">kpvslice: interactive position-velocity slicing</A>
+<B>Up:</B> <A NAME="tex2html348" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html342" HREF="node5.html">4 Viewing Images and </A>
+<BR> <P>
+<H1><A NAME="SECTION00600000000000000000">5 Volume Rendering a Cube</A></H1>
+<P>
+<A NAME="chapterxray">&#160;</A><A NAME="pubxray">&#160;</A><A NAME="1382">&#160;</A><A NAME="1383">&#160;</A>
+<P>
+The <B>&lt;xray&gt;</B> programme is used to volume render cubes.
+<P>
+<A NAME="1385">&#160;</A>
+<H1><A NAME="SECTION00610000000000000000">5.1 How the rendering is done</A></H1>
+<P>
+You can think of the way a data cube is rendered as lines of sight
+going from every pixel of the display through the data cube and the
+<EM>voxels</EM> (visualisation speak for volume element of the data cube)
+on a line of sight contribute in some way to the colour and intensity
+of the display pixel. To decide how every voxel contributes, a number
+of algorithms (called <B>shaders</B>) are available.
+<P>
+<H2><A NAME="SECTION00611000000000000000">5.1.1 Shaders</A></H2>
+<A NAME="sectionxrayshaders">&#160;</A>
+<P>
+Below are two lists with the shaders available. The first list
+contains simple shaders. The <B>Voxel sum</B> and the <B>Maximum
+voxel</B> shaders are useful for exploring the data cube, because they
+are relatively fast and give a reasonable display of the data.
+<P>
+<UL><A NAME="1394">&#160;</A>
+<LI> <B>Voxel sum</B>
+The value of the display pixel is the sum of all voxel values along
+the line of sight.  This is a fast and quite useful way of
+representing the data.  With this shader, one gets a good global view
+of the emission.  It is less useful for looking at small details
+<P>
+<A NAME="1396">&#160;</A>
+<LI> <B>Minimum voxel</B>
+The pixel value is the minimum voxel along the line of sight
+<P>
+<A NAME="1398">&#160;</A>
+<LI> <B>Maximum voxel</B>
+The pixel value is the maximum voxel along the line of sight.  This is
+a fast way of getting a reasonable image.  It also allows, depending
+on your data, to have a view of the `inside' of your data, the object
+looks more transparent than with the <B>Voxel sum</B> shader
+<P>
+<A NAME="1401">&#160;</A>
+<LI> <B>Front voxel</B>
+The pixel gets the value of the first voxel along the line of sight
+above a specified threshold (not usually useful, the image is very
+blocky and has many holes). You get a control window where you can
+change the threshold value by clicking the left mouse button
+<P>
+</UL>
+<P>
+The second kind of shaders uses an equation of radiative transfer to
+compute the images. These are called <B>hot gas</B>
+shaders. <A NAME="sectionhotgas">&#160;</A>
+<P>
+The contribution of a voxel to the pixel on the display is calculated
+using a simple equation of radiative transfer, where a voxel is partly
+absorbed by voxels that are in front of it:
+<P>
+<BR><A NAME="eqnhotgas">&#160;</A><IMG WIDTH=500 HEIGHT=17 ALIGN=BOTTOM ALT="equation1406" SRC="img2.gif"><BR>
+<P>
+where <IMG WIDTH=11 HEIGHT=17 ALIGN=MIDDLE ALT="tex2html_wrap_inline4790" SRC="img3.gif"> is the intensity along a line of sight after adding the
+<IMG WIDTH=17 HEIGHT=15 ALIGN=BOTTOM ALT="tex2html_wrap_inline4792" SRC="img4.gif"> voxel in front, <IMG WIDTH=11 HEIGHT=17 ALIGN=MIDDLE ALT="tex2html_wrap_inline4794" SRC="img5.gif"> the intensity of the voxel added,
+<IMG WIDTH=28 HEIGHT=15 ALIGN=MIDDLE ALT="tex2html_wrap_inline4796" SRC="img6.gif"> the intensity along the line of sight that is behind the
+<IMG WIDTH=17 HEIGHT=15 ALIGN=BOTTOM ALT="tex2html_wrap_inline4792" SRC="img4.gif"> voxel, and <IMG WIDTH=12 HEIGHT=17 ALIGN=MIDDLE ALT="tex2html_wrap_inline4800" SRC="img7.gif"> the opacity of the voxel <I>i</I>.  This
+calculation is done `back-to-front', so voxels in the back of the cube
+are partly obscured by voxels in the front part of the cube.
+<P>
+If the opacity for a voxel is zero, that voxel becomes completely
+transparent <EM>but also invisible</EM>. This closely resembles the
+behaviour of a self-radiating cloud of hot gas, where gas particles
+both emit and absorb radiation. Regions with high gas particle density
+will have a higher surface brightness, but will also have a higher
+cross-sectional area of absorption.
+<P>
+The resulting rendered image appears like a cloud of glowing gas,
+which shows both internal and external structure.
+<P>
+You can use this to make features disappear (eg. noise).  The
+disadvantage is that in order to make the data that you want to see
+transparent, you also make it barely visible.  Consequently, the
+opacity of data you want to see has to be not too low and as a result
+one will tend to see only the surface of the emission regions.
+<P>
+There are a few versions of this implemented, differing in whether
+they do the rendering monochromatically or in colour.
+<P>
+<UL><A NAME="1416">&#160;</A><A NAME="1417">&#160;</A>
+<LI> <B>Hot Gas: substances</B>
+This works as follows: the value range [-127, 127] of the voxels is
+divided into a number of subranges (typically eight).  Each subrange
+has a colour and an opacity associated to it and is called a <B>
+substance</B>.  <A NAME="sectionhotgassubstances">&#160;</A> Like every colour in
+computer displays, a colour consists of red, green and blue.
+<P>
+The contribution of a voxel to the colour of the pixel on the display
+is calculated using the radiative transfer, but for each colour (red,
+green or blue) separately. This means that if a blue voxel is behind a
+red one, the blue is still visible.  This makes the data appear more
+transparent. It also means that this shader produces images that are
+24-bit deep (one byte for every colour) and to change colours on the
+display, you will have to manipulate the substances. It also means
+that to play movies made with this shader, you may want to convert
+the images to 8 bit using the
+<A HREF="#sectionconv24to8">conv24to8 programme</A>.
+<P>
+A practical disadvantage of this shader is that it is difficult to set
+the colours and the opacities of the substances exactly as you want,
+there are many many parameters to set. It takes quite some time to
+produce reasonable images with this shader. You can save time by only
+defining a small number of substances (say the default eight), but
+then the representation of the data is somewhat schematic. If you
+define the maximum number of substances, you can set up a substance
+table with a smoother colour transition, but of course it takes more
+time for you to set up the table.
+<P>
+A strong advantage of this shader is it can be useful to display both
+absorption and emission in a datacube.
+<P>
+<A NAME="1423">&#160;</A>
+<LI> <B>Hot Gas Mono</B><A NAME="sectionhotgasmono">&#160;</A>
+This shader also uses opacities, but the control is much simpler.
+This shader takes
+<P>
+<BR><A NAME="eqnhot_gas_mono_opacity">&#160;</A><IMG WIDTH=500 HEIGHT=17 ALIGN=BOTTOM ALT="equation1426" SRC="img8.gif"><BR>
+<P>
+where <I>o</I> is again the opacity, <I>v</I> the value of the voxel.
+By setting <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4806" SRC="img9.gif"> you can control which parts of the data are
+visible/opaque.  A small value of <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4806" SRC="img9.gif"> makes low-level emission
+already quite opaque, while a large value will show only the brighter
+voxels.  Also, the computation is done on the floating point data, not
+on colours (hence the <B>mono</B>).  This increases the dynamic
+range of the image very much.  Images produced by this shaders are
+floating point.
+<P>
+An option offered with this shader that the intensity can be
+transformed before rendering, according to a similar function as
+above:
+<P>
+<BR><A NAME="eqnhot_gas_mono_intensity">&#160;</A><IMG WIDTH=500 HEIGHT=20 ALIGN=BOTTOM ALT="equation1431" SRC="img10.gif"><BR>
+<P>
+where <I>s</I> is the value used for the voxel in the radiative
+transfer and <I>v</I> is the value of the voxel.
+<A NAME="1435">&#160;</A>
+<P>
+<A NAME="sectionhotgascontinuous">&#160;</A><A NAME="1437">&#160;</A>
+<LI> <B>Hot Gas Continuous</B> this shader is a mix between the <B>
+Hot Gas Substances</B> and the <B>Hot Gas Mono</B> shaders.  There are now
+254 substances, but the opacity is defined in the same way as in <B>
+Hot Gas Mono</B>.  The user interface of this shader is much better than
+that of <B>hot gas substances</B>.  Also this shader produces 24bit
+images and to play movies made with this shader, you will have to
+convert the images to 8 bit using the
+<A HREF="#sectionconv24to8">conv24to8 programme</A>.
+<P>
+</UL><H1><A NAME="SECTION00620000000000000000">5.2 Starting up the Volume Rendering Tool</A></H1>
+<P>
+To start the rendering software on any workstation type
+<P>
+<TT><code>xray </code></TT>
+<P>
+<H2><A NAME="SECTION00621000000000000000">5.2.1 Options</A></H2>
+<P>
+<B>&lt;xray&gt;</B> supports several command line options which are all
+documented in the manual page. The options of general interest are:
+<P>
+<UL>
+<LI> <B>-private_cmap</B> This option will force <B>&lt;xray&gt;</B> to
+use a private colourmap for its PseudoColour window. Otherwise,
+<B>&lt;xray&gt;</B> trys to allocate colours from the default colourmap
+<LI> <B>-num_colours</B> This option specifies the number of colour
+cells that <B>&lt;xray&gt;</B> will try to allocate for its PsuedoColour
+window upon startup. If less colours are available it allocates as
+many as possible (minimum 2).
+<LI> <B>-fullscreen</B> This option will make the image display
+window take up the entire screen. This is useful if you wish to make a
+video of the data. You will need to configure your window manager to
+cycle the window stacking order when a special key is pressed (e.g.
+the &quot;Back&quot; key with the Open Look window manager). See also the
+appendix on <A HREF="node18.html#chaptermakingvideos">making videos</A>.
+<LI> <B>-no_slice_win</B> This option will disable the 3D slicing
+window similar to what you get in <A HREF="node8.html#chapterkslice3d">kslice_3d</A>
+<P>
+</UL>
+<P>
+After starting up, many windows will appear:
+<P>
+<UL>
+<LI> the control window, with which of course you control the rendering
+program
+<LI> a slice window.  This shows the data cube along the three principle
+planes: <I>XY, ZY</I> and <I>XZ</I>.  By moving the mouse (press left),
+the windows will be updated.  To make things run smoothly, click on
+<B>Precompute</B>. This is also available as a stand-alone program
+<A HREF="node8.html#chapterkslice3d">kslice_3d</A> and is quite useful for inspecting
+your data. This window will appear after you have loaded a cube (and
+possibly converted to bytes)
+<P>
+</UL>
+<P>
+Another window that you will see (after the first time you render the
+cube) is the image display. This window is similar to the display
+window in many of the other tools (see section <A HREF="node3.html#ImageDisplay">2.15</A>).
+<P>
+<H1><A NAME="SECTION00630000000000000000">5.3 Loading Data into xray</A></H1>
+<P>
+<B>&lt;xray&gt;</B> supports many data formats like any other <B>Karma</B>
+programme. For reasons of memory use and speed, the preferred data
+format used by <B>&lt;xray&gt;</B> is that the data is stored as bytes,
+with values ranging from -127 to 127 (the value -128 is used for
+blank or missing data). The values in your data cube will have to be
+scaled into this range.
+<P>
+If you load a non-byte data cube, <B>&lt;xray&gt;</B> will display a
+window showing the histogram of the data values in the cube. If you
+want to use the full range of values in the cube (good for a first
+look at the data), click (left) on the <B>Full Range</B> button. If
+you want to select a sub-range of the data, click (left) in the
+histogram window to define the lower bound and click (right) to define
+the upper bound. You then click (left) on <B>Apply</B> to tell
+<B>&lt;xray&gt;</B> to compress the cube to a byte cube. You will then be
+able to click (left) on the <B>Save</B> button, to save the compressed
+data cube. The default filename is ``scaled'', but you can change this
+prior to saving. Once you have saved a compressed cube, the next time
+you load it in <B>&lt;xray&gt;</B> it will load much faster.
+<P>
+The proper values for the scaling range of course depend on the data
+in the cube and on what you want to see in the data, but here are some
+hints.  Normally, the histogram has a large peak around zero (The
+Noise).  Unless you want to have a look at the noise in your data cube
+(eg. because you want to look at subtle calibration errors or errors
+in the continuum subtraction, errors that show up quite well with the
+rendering software), it may be a good idea to take the minimum such
+that most of this peak is excluded.  Depending on which voxel
+algorithm you use in the rendering (see later), if you include data at
+the noise level, your rendered data cube will have a lot of noise `in
+front' of your object of interest and it may just be in the way.
+There are however also other ways (see below) to hide the noise.
+<P>
+Consider that with the rendering software you may see faint structures
+in your data that you were not aware of.  So you may not want the
+minimum to be too high either otherwise you may miss interesting
+features in your data.  Of course, when there is absorption in the
+data, the noise will have to be included.
+<P>
+Also consider that the because the data is scaled into [-127, 127],
+the dynamic range is limited, so in some cases it may be a good idea
+to choose the maximum not too high.  You will be able to see more
+detail in the fainter emission.
+<P>
+<H1><A NAME="SECTION00640000000000000000">5.4 The main control window</A></H1>
+<P>
+A screen snapshot is available
+<a href="../tool-snapshots/xray/main.gif" target=image_window>here</a>.
+<P>
+The following controls are available:
+<P>
+<UL>
+<LI> <B>Files</B> this pops up a standard <A NAME="tex2html65" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget
+(section <A HREF="node3.html#Filepopup">2.1</A>) with which you can load your cube
+<LI> <B>Show Orientation</B> this pops up a window which shows a
+wireframe of the cube. As you change the cube rotations this is
+updated immediately. This should give you a feel for which way the
+cube will rotate before you press <B>Compute</B>
+<LI> <B>Make Movie</B> this pops up a movie control panel. This is
+descibed in section <A HREF="node6.html#sectionmakingmovies">5.5</A>
+<LI> <B>Rescale</B> if you loaded a non-byte cube then you can bring
+up the histogram display using this button and then you can set the
+data scaling again
+<LI> <B>Filter</B> this pops up a filtering control panel described in
+section <A HREF="node6.html#sectionfilterpanel">5.6</A>
+<LI> <B>Quit</B> this will quit the application
+<LI> <B>Hide Wireframe</B> if disabled, a wireframe showing the
+visible edges of the cube is displayed over the rendered data, to show
+how the data cube is rotated. It also helps the brain to perceive the
+data as three dimensional. If you don't like the wireframe, you should
+enable this toggle
+<LI> <B>Stereo</B> if your are sitting in front of <B>phoenix</B> and
+you started the window system in stereo mode, clicking on <B>Stereo</B>
+will enable stereo display. The way this works is that slightly
+different images are displayed in your left and right eyes, mimicking
+the way you see depth normally. You will hopefully see the rendered
+cube as a three-dimensional object with depth. To make use of this you
+need to wear a pair of ``Crystal Eyes'' glasses (these fit over most
+prescription glasses). If you want to use this feature please ask the
+system administrator who will lend you the glasses. These things are
+rather expensive so we don't just leave them lying around.
+<P>
+Because of a problem with the vendors graphics library it is best to
+use the stereo option when rendering to 24bit images (i.e. when using
+the ``Hot Gas Substances'' or ``Hot Gas Continuous'' shaders)
+<LI> <B>2-D Cursor Menu</B>
+<P>
+This menu allows you to switch from the default cursor to an
+experimental 2-dimensional ``active'' cursor. The default (or
+``dumb'') cursor will allow you to read image values and positions in
+the display window in the conventional way. The ``active'' cursor
+allows you to point at a feature (say a blob) on your volume rendered
+cube and obtain the 3-dimensional position of that feature. The
+horizontal and vertical position information is accurate, however the
+depth position is computed using a heuristic and is less accurate. In
+another window you will see a plot of the cube values versus the
+position along the line of sight, drawn in white. A yellow vertical
+line shows the depth of the feature you are pointing at (really the
+depth the algorithm thinks the feature is at). Both the 3-dimensional
+position information and the plot window are dynamically updated as
+you move the cursor in the image display window.
+<LI> <B>Shader Menu</B> this allows you to select which shader to
+use. See section <A HREF="node6.html#sectionxrayshaders">5.1.1</A>
+<LI> <B>Projection Menu</B> this allows you to select a prjection. Two
+projections are available: <B>Orthogonal</B> and <B>Perspective</B>. If
+you select the perspective projection, you can control the distance of
+the cube (i.e. the amount of perspective) with the <B>Distance</B>
+slider in the control window.  The main reason that the <B>
+Perspective</B> projection is there is that this is quite useful for
+stereo display. Even if you are not using stereo mode, you may want to
+try it anyway. It helps for the 3D perception of the images
+<LI> <B>Mode Menu</B> this allows you to choose the rendering
+mode. The process of projecting rays into the data volume and
+collecting the data along each ray can be quite involved, and there
+are speed/quality tradeoffs. The <B>Mode Menu</B> allows you to choose
+between these tradeoffs.
+<LI> <B>3-D Cursor Menu</B> this allows you to choose the kind of
+3-dimensional cursor available. This code is currently in development,
+so things may change rapidly. An overlay cursor is available (the
+cursor is drawn over the rendered volume), so the cursor will not
+dissappear behind a feature in the data. A proper translucent cursor
+is also available. You can move the position of the 3-D cursor by
+pressing the left mouse button in any of the three slice windows (the
+ones with the red crosshairs) and dragging the mouse
+<LI> <B>Compute</B> this will cause the cube to be rendered using all
+the current parameters
+<LI> <B>Reset Orientation</B> this will reset the view and then
+renderer the cube
+<P>
+<A NAME="sectionxraysegments">&#160;</A><A NAME="1512">&#160;</A><A NAME="1513">&#160;</A>
+<LI> <B>Load Segments</B> this will bring up a file browser which
+allows you to load files with extension <TT>.seg</TT>. These files
+contain pairs of three-dimensional co-ordinates, each pair defining a
+line in the world co-ordinate system of the volume. These 3D lines are
+drawn through the volume and are obscured by opaque structure in the
+volume data. The files are simple ASCII format, where each line
+defines one pair of 3D points. Note that the endpoints are projected
+from 3D to screen co-ordinates, and then the points are joined by a
+straight line on the screen. For best results your lines in 3D space
+should be short
+<LI> <B>Roll Slider</B> this controls the roll angle. Think of an
+airplane rotating about it's long axis
+<LI> <B>Pitch Slider</B> this controls the pitch angle. The nose of
+the airplane dips up and down
+<LI> <B>Yaw Slider</B> this controls the yaw angle. The nose of the
+airplane swings left and right
+<LI> <B>Start X Slider</B> this controls the starting X position of
+the subcube to render
+<LI> <B>Start Y Slider</B> this controls the starting Y position of
+the subcube to render
+<LI> <B>Start Z Slider</B> this controls the starting Z position of
+the subcube to render
+<LI> <B>End X Slider</B> this controls the end X position of the
+subcube to render
+<LI> <B>End Y Slider</B> this controls the end Y position of the
+subcube to render
+<LI> <B>End Z Slider</B> this controls the end Z position of the
+subcube to render
+<LI> <B>Distance</B> this changes the distance your viewpoint is from
+the cube. This only has effect when using the <B>Perspective</B>
+projection
+<LI> <B>Image Expansion</B> Often, the image generated by the volume
+redering software is rather small (this is because the original cube
+was small).  The software automatically expands the image so that it
+fills as much as possible the display window, using simple pixel
+replication.  This results in blocky images, which may be
+undesirable. Setting the expansion factor to a value greater than 1
+uses an anti-aliasing image expansion algorithm which maintains the
+original smoothness of the image. (See <A NAME="tex2html66" HREF="ftp://ftp.atnf.csiro.au/pub/software/sutra/alias.ps.gz">note on
+anti-alising</A>
+for more information). Setting this to too large a value will result
+in very large movies, which is undesirable. Try a vlaue of 2 to start
+with
+<LI> <B>Eye Separation</B> When viewing the cube in stereo mode, it is
+useful to enhance or diminish the stereo separation. The lower the
+value, the closer the left and right eye viewpoints, and hence the
+lesser the stereo effect.
+<P>
+</UL><H2><A NAME="SECTION00641000000000000000">5.4.1 Rendering Modes</A></H2>
+<P>
+The following rendering modes are defined:
+<P>
+<UL>
+<LI> <B>normal</B> this is the default mode. Because rays through
+the volume will not fall exactly on grid points, some approximation of
+the value has to be made. In this mode the ray is snapped to a grid
+point. This can result in aliasing problems, but is the fastest
+mode. In most cases the aliasing is not a problem. In addition, this
+mode computes a rotated version of the cube in a cache in the
+background while you are not doing anything (the background processing
+does not slow down normal rendering operations). The cube is rotated
+using the same grid snapping technique, so has the same aliasing
+problems. However, provided you do not keep changing the view (or the
+cube), subsequent render operations (such as changing the shader) are
+four to ten times faster. Whenever you rotate the cube (or change it)
+the cache is automatically built up again. <B>&lt;xray&gt;</B> always uses
+as much of the cache as it can
+<LI> <B>smooth cache</B> will build up the cache using a better
+algorithm when a ray falls between grid points. The value computed
+uses a distance weighted contribution from each of the nearest
+surrounding values; in effect an interpolation. This algorithm does
+not suffer from aliasing. The cache takes about four times longer to
+build up than in <B>normal</B> mode, but once it's done rendering is as
+fast as using the cache that <B>normal</B> mode produces. In fact, it
+doesn't matter how complex the cache building process is, once it's
+built rendering times are the same (for the same shader, of
+course). If the cache is not completed, part of the rendering uses the
+<B>normal</B> mode when you request an update. This can lead to the
+interesting side-effect that the lower part of the rendered volume is
+smoother whilst the upper part is rougher (and possibly shows aliasing
+artefacts)
+<LI> <B>always smooth</B> will always render using the
+interpolation algorithm. It does this by waiting for the cache to be
+built using the interpolation algorithm and then rendering. If you
+don't change your view or cube, subsequent rendering operations are
+still at maximum speed. If you find that you are having aliasing
+problems, you should use this option when making a movie (otherwise
+the movie generation process will not wait for the cache to be built
+up)
+<LI> <B>smooth delayed</B> will first render using the
+<B>normal</B> mode and will then build up the cache using the
+interpolation algorithm in the background. Provided you don't change
+the view or cube parameters, once the cache is computed the cube will
+be rendered again and you will see a refined image. Note that if you
+render the cube (with <B>normal</B> mode) and then idly change the view
+or cube parameters and sit back, a little while later the cube will
+suddenly rotate, even though you haven't clicked on <B>Apply
+Orientation</B>
+<P>
+</UL><H2><A NAME="SECTION00642000000000000000">5.4.2 Rotating the cube</A></H2>
+<P>
+With the sliders <B>Roll</B>, <B>Pitch</B> and <B>Yaw</B> you
+can rotate the data cube by hand.  The coordinate axes are defined
+such that the <I>X</I>-axis is horizontal, the <I>Y</I>-axis vertical
+and the <I>Z</I>-axis pointing into the display.  The <B>Roll</B>
+rotation is around the <I>X</I>-axis, <B>Pitch</B> around the <I>
+Y</I>-axis and <B>Yaw</B> around the <I>Z</I>-axis.  Since rotations do
+not commute, it is important to know that the order of the rotations
+is <B>Roll</B> first, then <B>Pitch</B> and then <B>Yaw</B>.
+<P>
+To see the cube in the orientation you specify, click (left) on <B>
+Compute</B>. <B>Reset Orientation</B> resets the orientation to face-on.
+<P>
+<H1><A NAME="SECTION00650000000000000000">5.5 Making a Movie</A></H1>
+<A NAME="sectionmakingmovies">&#160;</A>
+<P>
+The main problem with volume rendering data cubes is that one does not
+really get a three dimensional perception of the rendered cube.  One
+can display a scene from daily life in a very crude way and still
+perceive it as a 3D scene.  But this apparently is not true for data
+cubes.  The brain does not recognize the object in the image and
+therefore it does not make a three dimensional perception.  One way to
+get a three dimensional perception of the data is to make a movie in
+which the data cube is rotated while it is rendered.
+<P>
+For making such a movie, click (left) on <B>Make Movie</B>, and the
+movie control window will pop up.  This window allows you to make a
+series of images where the data cube is rotated in steps.  Use the
+sliders to set the increment in <B>Roll, Pitch</B> and <B>Yaw</B>, and
+the number of images you want.  <B>Start Movie</B> then starts
+computing this sequence.  To save a movie, type in a filename and
+click <B>Save Movie</B>.  Once the movie has been generated an
+animation control window will appear, allowing you to view the movie.
+<P>
+One consideration is the size of the movie.  If this is too large
+(i.e.&nbsp;larger than about 40 Mbyte on <B>phoenix</B>), playing the movie
+will be slow.  An estimate of the size of a movie is
+<P>
+ <BR><IMG WIDTH=364 HEIGHT=21 ALIGN=BOTTOM ALT="displaymath4854" SRC="img11.gif"><BR>
+<P>
+where <I>x, y</I> and <I>z</I> are the size of the axes of the data cube
+in pixels and <IMG WIDTH=44 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4856" SRC="img12.gif"> the zoom factor.  My experience is that
+rotating the cube in steps of 10 degrees (so the movie is 36 frames)
+is in general sufficient to get a smooth movie.
+<P>
+It may not be a good idea to make a movie of images with a large <B>
+Image Expand Factor</B>, depending on the sizes of the axes of the cube.
+You will find that when you play such a movie, it will be slow because
+it has to swap images in and out.  You can always zoom afterwards when
+you play the movie by resizing the window, although the result may not
+be as good.
+<P>
+<H1><A NAME="SECTION00660000000000000000">5.6 Filtering your data</A></H1>
+<A NAME="sectionfilterpanel">&#160;</A>
+<P>
+Often, there will be problems with the data (too noisy, confusing or
+bright continuum sources) which make it difficult to see your data. To
+help, there are a few filtering alogorithms implemented which should
+help. Click on <B>Filter</B> in the main control window and a filtering
+control panel will pop up.
+<P>
+The following filtering algorithms are available:
+<P>
+<UL>
+<LI> <B>simple</B> one of the adaptive filtering algorithms
+<LI> <B>slow median mask</B> one of the adaptive filtering algorithms
+<LI> <B>fast median mask</B> one of the adaptive filtering algorithms
+<LI> <B>3D</B> one of the adaptive filtering algorithms
+<LI> <B>subtract continuum</B> the continuum-subtraction algorithm
+<P>
+</UL>
+<P>
+<A NAME="sectionadaptivefiltering">&#160;</A><A NAME="1589">&#160;</A>
+<H2><A NAME="SECTION00661000000000000000">5.6.1 Adaptive Filtering</A></H2>
+<P>
+One problem with volume rendering is that in order to see faint
+structures in the data cube, one has to set the opacities, intensity
+transformation and clips such that also the noise becomes bright. As a
+consequence, the emission is visible only through a thick fog of noise
+and this noise hides a lot of information.
+<P>
+One solution is to apply adaptive filtering to the data cube: the data
+is smoothed where the emission is faint and extended (or absent),
+while the data is left intact if it is stronger or more pointlike.
+There are several techniques to do this.  At the moment two algorithms
+are implemented, but we are working on other filters.
+<P>
+The filters are based on work of J.-L.  Starck, F.  Murtagh and A.
+Bijaoui with a few extentions of our own. They consists of making a
+wavelet transform of each channel in the cube. This allows to consider
+the data locally at different resolutions and modify it such that the
+signal-to-noise is improved.
+For more information, have a look at
+<A NAME="tex2html67" HREF="http://www.atnf.csiro.au/sutra/nice/"><B>Adaptive Filtering and Masking of HI Data
+Cubes</B></A>, Tom Oosterloo, ESF workshop on
+Vision Modeling and Information Coding', Nice, 4-6 October 1995
+Note that the wavelet transforms can be 3D and 2D (channel by channel).
+<P>
+The adaptive filtering algorithms available are:
+<P>
+<UL>
+<LI> <B>Simple</B> this is a very simple filter.  It is a bit crude,
+but it has the advantage that it is fast, the other filters are quite
+a bit slower.  It gets rid of most of the noise.  This filter makes a
+wavelet transform and in each wavelet plane, it clips the wavelet
+coefficients that are below the noise level (defined by the parameter
+<A HREF="node6.html#sectionfilterclip">filter clip</A>), to zero.  This filter is only
+slighty more complicated than simple clipping the data below a certain
+level.  The fact that it looks at the data with different resolutions
+makes it more efficient
+<LI> <B>Median mask (fast) &amp; (slow)</B> the first step of this filter is
+identical to the <B>simple</B> filter. This filter also makes a wavelet
+transform of the data, and makes a logical mask for each wavelet plane
+defining where there is significant signal for every resolution, and
+inverse transforms only the significant wavelet coefficients. Now an
+iteration cycle begins. It transforms the difference between the
+original data and the filtered data, retains only the coefficients of
+the transform of the differnece for those positions and resolutions
+where there is significant signal in the data using the logical
+mask. It inverse transforms this masked difference and adds this
+filtered difference to the filtered data. For the second iteration
+cycle, it again defines a mask, takes the difference between the
+original data and this second filtered data, masks the wavelet
+coefficients and adds the masked difference to the filtered
+data. etc. etc. The iteration cycle ensures that the wavelet
+coefficients of the filtered data are identical to those of the
+original data for those resolutions and positions where there is
+significant signal.
+<P>
+An important element of this filter is that it does a median filtering
+on the logical mask.  This makes isolated noise peaks disappear and
+makes the data look more 'consistent'.
+<P>
+The difference between the <B>fast</B> and <B>slow</B> version of this
+filter is that in the <B>fast</B> version 2 iterations are done,
+compared to 6 iterations in the <B>slow</B> version.  The <B>fast</B>
+filter still leaves some noise blobs in the data, but fewer than the
+<B>simple</B> filter. The <B>slow</B> filter gets rid of almost all of
+them
+<P>
+</UL>
+<P>
+There are two parameters to set for this filtering:
+<P>
+<UL>
+<LI> <B>levels</B> this specifies the number of wavelet planes to be
+computed. The best values to are either 1 or 2. Using more than 2
+planes produces artifacts for the <B>simple</B> filter. Usually it is
+also not necessary to consider more than 2 planes.
+<P>
+Specifying <B>Levels</B> to 0 the original unfiltered data cube is rendered,
+but with noise clipping applied
+<LI><B>filter clip</B> <A NAME="sectionfilterclip">&#160;</A> this specifies the clip
+level to be applied to the wavelet planes, in units of the noise
+level. Recommended values are 3 for the <B>simple</B> filter. For the
+<B>median mask</B> filter use 2 or 3. <A NAME="1615">&#160;</A>
+<P>
+</UL><H2><A NAME="SECTION00662000000000000000">5.6.2 Contintuum Subtraction</A></H2>
+<P>
+Often when you observe a spectral-line source you may have a confusing
+continuum source in the field. Your data reduction package should have
+a programme to subtract the continuum (e.g. ``uvlin'' in <B>
+Miriad</B>). The problem with some of these programmes is that in order
+to compute a fit to the spectrum of the continuum source, you first
+have to tell the programme which channels contain the spectral-line
+emission so that it can ignore those channels when computing the
+fit. The problem is how to find out which channels contain the line
+emission?
+<P>
+An effective technique is to invert your UV data into a cube <EM>
+before</EM> subtracting the continuum and then using <B>&lt;xray&gt;</B> to
+render it. Of course, if the continuum source is brighter than your
+spectral-line source (it usually is), the spectral-line source will be
+washed out. This is where you can use the <B>subtract continuum</B>
+filter. This will subtract the average flux in a spectral profile, for
+every point on the sky image. This is a good continuum-subtraction
+algorithm, to first order: it should filter out more than 90% of the
+continuum source.
+<P>
+Once you have your first order continuum-subtracted cube, you can use
+<B>&lt;xray&gt;</B> to find the spectral-line emission. In particular,
+you should find the 3D slicing window very handy, since it will give
+you the 3D co-ordinates of a point. Be warned that <B>Karma</B>
+programmes count from 0, whereas most astronomical reduction packages
+count from 1. If you take a channel index from <B>Karma</B> and put it
+into <B>Miriad</B>, remember to add the value 1.
+<P>
+Now that you have identified the spectral-line emission, you can run a
+programme like ``uvlin'' to do a better job of subtracting the
+continuum.
+<P>
+<H2><A NAME="SECTION00663000000000000000">5.6.3 Other Controls</A></H2>
+<P>
+To apply the filtering. click on <B>Do Filter</B>.  The cube is
+rendered automatically.
+<P>
+To get back the original data without any filtering, click on <B>
+Undo Filter</B>.
+<P>
+You may also <B>Save</B> the filtered cube for later use.
+<P>
+<H1><A NAME="SECTION00670000000000000000">5.7 Hot Gas Substances control panel</A></H1>
+<P>
+A screen snapshot is available
+<a href="../tool-snapshots/xray/hg_subs.gif" target=image_window>here</a>.
+<P>
+This controls the settings for the
+<A HREF="node6.html#sectionhotgassubstances">Hot Gas Substances</A>. You should see a
+window with a histogram of the data values in the cube (actually the
+logarithm of the distribution), and in the bottom part you will see
+space for the colours of the substances. Each colour has a horizontal
+line on it. This is an indicator for the opacity of the substance.
+<P>
+To change the colour of a substances you have to click (left) on the
+space on the bottom of the window that is reserved for the substance.
+This selects the substance.  To change the colour, move the mouse in
+the upper part of the window and drag (middle, not left!!) the mouse
+around until you have the colour you want.  The saturation of the
+colour can be changed by moving the mouse around while you drag with
+the right button.  To change the opacity, put the mouse on the
+substance and drag with the middle mouse button vertically.
+<P>
+To change the value ranges for the substances, drag (left) the mouse
+in the upper part of the window.  In the upper part, there are a few
+symbols that help to orient yourself.  The <B>+</B> is the setting for
+the value ranges, the <B>O</B> the setting for the substance you have
+selected, and the horizontal line on the left of the window is the
+saturation of that substance.  With this window, one is only able to
+change the value ranges in a way similar to a normal colour table
+control.
+<P>
+To use the settings you have made, click (left) on <B>Apply</B> and a
+new image will be calculated.
+<P>
+The button <B>Save</B> brings up a window to save substances.
+<P>
+To load a substance table click on <B>Load</B> and select your file.
+<P>
+<H1><A NAME="SECTION00680000000000000000">5.8 Hot Gas Mono control panel</A></H1>
+<P>
+A screen snapshot is available
+<a href="../tool-snapshots/xray/hg_mono.gif" target=image_window>here</a>.
+<P>
+The control window for this allows you to set the opacity law of the
+<A HREF="node6.html#sectionhotgasmono">Hot Gas Mono</A> shader, as well as the
+exponent for the intensity transformation. One can also set the range
+of voxel values that are set to blank.
+<P>
+The following controls are available:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Compute</B> this will render the cube
+<LI> <B>Intensity Alpha</B> this controls the value of <IMG WIDTH=11 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline4866" SRC="img13.gif"> in
+equation <A HREF="node6.html#eqnhot_gas_mono_intensity">5.3</A>
+<LI> <B>Opacity Alpha</B> this controls the value of <IMG WIDTH=11 HEIGHT=8 ALIGN=BOTTOM ALT="tex2html_wrap_inline4806" SRC="img9.gif"> in
+equation <A HREF="node6.html#eqnhot_gas_mono_opacity">5.2</A>
+<LI> <B>Blank Start Slider</B> this controls the start of a region of
+data values which will be blanked
+<LI> <B>Blank End Slider</B> this controls the end of a region of
+data values which will be blanked. If this value is greater than that
+of <B>Blank Start Slider</B> then some range of data will be
+blanked. The blanking is implemented by setting the opacities for that
+range to 0
+<P>
+</UL>
+<P>
+In the display canvas under the controls you will see a log-histogram
+of your data (in white) as well as a red curve showing the transfer
+function between data value and intensity (see equation
+<A HREF="node6.html#eqnhot_gas_mono_intensity">5.3</A>) and a yellow curve showing the
+transfer function between data value and intensity (see equation
+<A HREF="node6.html#eqnhot_gas_mono_opacity">5.2</A>. The opacity curve also reflects the
+blanked range of values.
+<P>
+<H1><A NAME="SECTION00690000000000000000">5.9 Hot Gas Continuous control panel</A></H1>
+<P>
+This shader is a cross between <B>Hot Gas Substances</B> and <B>Hot
+Gas Mono</B>. It has a similar control as the <B>Hot Gas Mono</B> shader
+in <B>&lt;xray&gt;</B>. Also here the exponent of the opacity law can be
+set, as well as the values range for valid data. The difference is
+that one can set the connection between voxel value and colour using a
+colourtable-like interface.
+<P>
+<H1><A NAME="SECTION006100000000000000000">5.10 Hot Gas Three Colour control panel</A></H1>
+<P>
+This shader is an extension of the <B>Hot Gas Continuous</B> shader. It
+allows you to divide the data range into three regions, with
+independant opacity and colour transfer functions for each
+region. This shader is a little esoteric, and is designed for
+rendering data with two or three distinct populations of data
+values. This kind of data does not occur in radio astronomy. You may
+generate this data by combining two datacubes together. This shader
+would allow you to render one dataset in one colour and another
+dataset in another colour.
+<P>
+<HR><A NAME="tex2html349" HREF="node7.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html347" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html341" HREF="node5.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html351" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html352" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html350" HREF="node7.html">kpvslice: interactive position-velocity slicing</A>
+<B>Up:</B> <A NAME="tex2html348" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html342" HREF="node5.html">4 Viewing Images and </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

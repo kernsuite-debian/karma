@@ -1,0 +1,33 @@
+.TH CONN_GET_CLIENT_CONNECTION 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_get_client_connection \- Get a numbered client connection.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B Connection conn_get_client_connection
+.sp
+(CONST char *protocol_name,
+unsigned int number)
+.SH DESCRIPTION
+This routine will get Nth connection from this client with a
+specified protocol. The first connection is numbered 0.
+.IP \fIprotocol_name\fP 1i
+The protocol name.
+.IP \fInumber\fP 1i
+The number of the connection to get.
+.SH RETURN VALUE
+The connection object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

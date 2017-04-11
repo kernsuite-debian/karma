@@ -1,0 +1,29 @@
+.TH W_REGISTER_SUPPORT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+w_register_support \- Register support for work functions.
+.SH SYNOPSIS
+.B #include <karma_w.h>
+.sp
+.B void w_register_support
+.sp
+()
+.SH DESCRIPTION
+This routine will inform the package that the application will
+support work functions. This routine may only be called once unless an
+intervening call to <w_unregister_support> is made.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

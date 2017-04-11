@@ -1,0 +1,59 @@
+.TH DSXFR_GET_MULTI 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsxfr_get_multi \- Read a multi_array data structure.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B multi_array * dsxfr_get_multi
+.sp
+(CONST char *object, flag cache,
+unsigned int mmap_option, flag writable)
+.SH DESCRIPTION
+This routine will get (read from disc, read from connection) a
+multi_desc general data structure from a named object.
+.IP \fIobject\fP 1i
+The object name. If the object is named "connection[#]" then
+whatever data has been previously sent over the "multi_array" protocol
+connection with index:
+In all other cases the data will be read from a disc file. The routine will
+append a ".kf" extension if not already specified.
+.IP \fIcache\fP 1i
+If TRUE and the data is read from a disc, the data structure and
+filename relationship is cached. This means that a subsequent attempt to
+read the data will not require the disc to be accessed. This relationship
+is lost if the data structure is destroyed. Also, in both this case and the
+case where the data structure is "read" from a connection, the attachment
+count for the data structure is incremented *every time* this routine is
+called. Read the documentation for the <ds_dealloc_multi> routine for
+information on attachment counts. The attachment count is *not* incremented
+when reading a disc file without adding it to the cache list.
+.IP \fImmap_option\fP 1i
+Option to control memory mapping when reading from disc. See
+<-ch_MAP_CONTROLS-> for a list of legal values.
+.IP \fIwritable\fP 1i
+If TRUE, the mapped structure will be writable. When the data
+structure data is modified these changes will be reflected in the disc
+file. The shape of the data structure cannot be changed though mapping.
+If FALSE and the structure is written to, a segmentation fault occurs.
+.SH RETURN VALUE
+A pointer to the data structure on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Reading from a connection with this routine does *not* block, if no
+prior data was transmitted, the routine returns NULL. Multiple calls to
+this routine will return the same data structure *until* new data is
+received over the connection.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

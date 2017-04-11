@@ -1,0 +1,39 @@
+.TH EN_IDEA_INIT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+en_idea_init \- Create stream for IDEA encryption.
+.SH SYNOPSIS
+.B #include <karma_en.h>
+.sp
+.B idea_status en_idea_init
+.sp
+(char key[EN_IDEA_KEY_SIZE], flag decrypt,
+char init_vector[EN_IDEA_BLOCK_SIZE], flag clear)
+.SH DESCRIPTION
+This routine will initialise the IDEA cipher in Cipher Feed Back
+mode for a stream of data. The stream is uni-directional.
+.IP \fIkey\fP 1i
+The 16 byte IDEA key.
+.IP \fIdecrypt\fP 1i
+If TRUE the stream is to be decrypted.
+.IP \fIinit_vector\fP 1i
+The 8 byte initialisation vector.
+.IP \fIclear\fP 1i
+If TRUE the key and initialisation vector will be cleared after use
+(highly recommended if they will not be needed again).
+.SH RETURN VALUE
+An IDEA cipher status which may be sebsequently used by
+<-en_idea_cfb-> on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

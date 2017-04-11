@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Glossary</TITLE>
+<META NAME="description" CONTENT="Glossary">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html906" HREF="node21.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html904" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html898" HREF="node19.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html908" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html909" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html907" HREF="node21.html">Index</A>
+<B>Up:</B> <A NAME="tex2html905" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html899" HREF="node19.html">Internals of the Karma </A>
+<BR> <P>
+<H1><A NAME="SECTION002000000000000000000">Glossary</A></H1>
+<P>
+Some of the terms used in this manual may be new to some
+programmers. It is hoped that this appendix sheds some light on these
+terms.
+<P>
+<DL ><DT><STRONG>bitmapped image</STRONG>
+<DD>
+An image that is stored as 2-dimensional array of bits (hence bit-map)
+or pixels. This image may be written directly to the screen/canvas.
+<P>
+<DT><STRONG>callback</STRONG>
+<DD>
+A function which should be called when something happens. This
+function is registered ahead of time. The use of callbacks makes
+<B>event-driven</B> programming much more simple and robust.
+<P>
+<DT><STRONG>canvas</STRONG>
+<DD>
+A region on the screen or in a window into which you can draw things.
+<P>
+<DT><STRONG>event-driven</STRONG>
+<DD>
+A term for a programming methodology which is based on waiting for
+<B>events</B>, and processing each as it occurs.
+<P>
+<DT><STRONG>event</STRONG>
+<DD>
+A thing which happens, like a button is pressed. Events can by
+low-level (such as button or keyboard events), or they can be high
+level (such as when a new dataset is available for processing).
+<P>
+<DT><STRONG>graphics primitive</STRONG>
+<DD>
+A fundamental object that may be drawn onto a canvas, such as a point,
+a line, an ellipse and so forth. A <B>bitmapped image</B> may also be
+considered a primitive.
+<P>
+<DT><STRONG>intelligent array</STRONG>
+<DD>
+An array object that knows its own size, dimensionality and its type.
+<P>
+<DT><STRONG>memory mapping</STRONG>
+<DD>
+A technique that avoids reading in an entire file into virtual memory,
+by ``mapping'' the contents of the file somewhere into your virtual
+memory space. Once mapped, you can access any portion of the file just
+as you would when accessing normal memory. The operating system will
+automatically read into physical memory the section of the mapped file
+that you access. This allows you to access data at the end of the file
+without having to read the whole file in. It also means that you don't
+have to allocate virtual memory (swap space) in order to be able to
+access all parts of the file.
+<P>
+<DT><STRONG>pixel</STRONG>
+<DD>
+All <B>graphics primitives</B> are drawn to a <B>canvas</B> by writing
+pixels to specific locations. Pixels may be 8 bits (typical for
+PseudoColour displays) or 24 bits (for TrueColour and DirectColour
+displays). Other sizes are possible, but not common.
+<P>
+<DT><STRONG>pixel canvas</STRONG>
+<DD>
+A <B>canvas</B> onto which may be drawn <B>pixel</B> values, in a pixel
+co-ordinate system.
+<P>
+<DT><STRONG>restriction information</STRONG>
+<DD>
+A way of describing the location of an m-dimensional slice of data in
+a higher dimensional dataset.
+<P>
+<DT><STRONG>tiled array</STRONG>
+<DD>
+A way of ordering the data in an array so that values which are close
+to each other in n-dimensional space are also close to each other in
+memory. The advantage of this storage scheme is that most ways of
+accessing data become much faster.
+<P>
+<DT><STRONG>window refresh</STRONG>
+<DD>
+The act of redrawing the contents of a window, because something has
+erased the contents of the window.
+<P>
+<DT><STRONG>world canvas</STRONG>
+<DD>
+A <B>canvas</B> onto which may be drawn <B>pixel</B> values or data
+values, in a world co-ordinate system. World co-ordinates are possibly
+non-linear and may even be curvilinear, with some interaction between
+the two co-ordinate axes.
+<P>
+</DL>
+<P>
+<HR><A NAME="tex2html906" HREF="node21.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html904" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html898" HREF="node19.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html908" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html909" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html907" HREF="node21.html">Index</A>
+<B>Up:</B> <A NAME="tex2html905" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html899" HREF="node19.html">Internals of the Karma </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

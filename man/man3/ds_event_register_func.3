@@ -1,0 +1,32 @@
+.TH DS_EVENT_REGISTER_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_event_register_func \- Register a multi_array event function.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B KCallbackFunc ds_event_register_func
+.sp
+(flag (*func) (), void *object)
+.SH DESCRIPTION
+Register a multi_array event function.
+.IP \fIfunc\fP 1i
+The function which is called to process an event. The prototype
+function is <-ds_PROTO_event_func->.
+.IP \fIobject\fP 1i
+The object.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,402 @@
+.TH DS 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+ds \- Routines to manipulate the general data structure
+.SH PURPOSE
+These routines provide the base functionality for the recursive,
+heirarchical data structure supported in Karma.
+This package both defines the (transparent) data structure and the various
+allocation, deallocation and manipulation routines.
+Transfer of data structures to/ from disc/ connections is supplied by the
+<-dsxfr-> routines.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIds_alloc_multi\fP 1i
+Allocate a multi_array descriptor.
+.IP \fIds_alloc_packet_desc\fP 1i
+Allocate a packet descriptor.
+.IP \fIds_alloc_data\fP 1i
+Allocate packet data recursively.
+.IP \fIds_alloc_packet_subdata\fP 1i
+Allocate packet sub-data.
+.IP \fIds_alloc_packet\fP 1i
+Allocate packet.
+.IP \fIds_alloc_array_desc\fP 1i
+Allocate array descriptor.
+.IP \fIds_alloc_tiling_info\fP 1i
+Allocate array tiling information.
+.IP \fIds_alloc_dim_desc\fP 1i
+Allocate a dimension descriptor.
+.IP \fIds_alloc_list_head\fP 1i
+Allocate a linked list header.
+.IP \fIds_alloc_list_entry\fP 1i
+Allocate a linked list entry.
+.IP \fIds_alloc_array\fP 1i
+Allocate an array.
+.IP \fIds_alloc_contiguous_list\fP 1i
+Allocate a contiguous list of linked list entries.
+.IP \fIds_find_1D_extremes\fP 1i
+Find the minimum and maximum of a 1D array.
+.IP \fIds_find_2D_extremes\fP 1i
+Find the minimum and maximum of a 2D array.
+.IP \fIds_find_contiguous_extremes\fP 1i
+Find the minimum and maximum of a contiguous array.
+.IP \fIds_find_single_histogram\fP 1i
+Find the histogram of a 1D array.
+.IP \fIds_complex_to_real_1D\fP 1i
+Convert a 1 dimensional array of complex values to real values.
+.IP \fIds_find_1D_sum\fP 1i
+Find the sum of a 1D array.
+.IP \fIds_find_1D_stats\fP 1i
+Compute simple statistics for a 1D array.
+.IP \fIds_find_2D_stats\fP 1i
+Compute simple statistics for a 2D array.
+.IP \fIds_put_unique_named_value\fP 1i
+Add a unique named value to a Karma general data structure.
+.IP \fIds_put_unique_named_string\fP 1i
+Add a unique named string to a Karma general data structure.
+.IP \fIds_get_unique_named_value\fP 1i
+Get a unique named value from a Karma general data structure.
+.IP \fIds_get_unique_named_string\fP 1i
+Get a unique named string from a Karma general data structure.
+.IP \fIds_copy_unique_named_element\fP 1i
+Copy a unique named element from one packet to another.
+.IP \fIds_get_fits_axis\fP 1i
+Get the FITS axis number of a dimension.
+.IP \fIds_element_is_fits_compatible\fP 1i
+Test if an element is FITS-compatible.
+.IP \fIds_get_data_scaling\fP 1i
+Get the scale and offset for a data element in a packet.
+.IP \fIds_set_data_scaling\fP 1i
+Set the data scale and offset for a data element in a packet.
+.IP \fIds_get_data_range\fP 1i
+Get the data range for a data element in a packet.
+.IP \fIds_set_data_range\fP 1i
+Set the data range for a data element in a packet.
+.IP \fIds_remove_unique_named_element\fP 1i
+Remove a unique named element from a Karma general data structure
+.IP \fIds_find_centroid\fP 1i
+Find the centroid inside an ellipse.
+.IP \fIds_cmap_alloc_colourmap\fP 1i
+Allocate a Karma data structure to hold a colourmap.
+.IP \fIds_cmap_find_colourmap\fP 1i
+Search a Karma data structure for an instance of a colourmap.
+.IP \fIds_cmap_get_all_colourmaps\fP 1i
+Search an array of Karma data structures for colourmaps.
+.IP \fIds_compare_packet_desc\fP 1i
+Recursively compare two packet descriptors.
+.IP \fIds_compare_array_desc\fP 1i
+Recursively compare two array descriptors.
+.IP \fIds_compare_dim_desc\fP 1i
+Compare two dimension descriptors.
+.IP \fIds_contour\fP 1i
+Extract contours from a 2-dimensional array.
+.IP \fIds_copy_packet\fP 1i
+Copy a packet.
+.IP \fIds_copy_desc_until\fP 1i
+Recursively copy a packet descriptor.
+.IP \fIds_copy_array_desc_until\fP 1i
+Recursively copy an array descriptor.
+.IP \fIds_copy_dim_desc\fP 1i
+Copy a dimension descriptor.
+.IP \fIds_copy_data\fP 1i
+Copy data between Karma data structures.
+.IP \fIds_copy_array\fP 1i
+Recursively copy array data.
+.IP \fIds_copy_list\fP 1i
+Recursively copy linked lists.
+.IP \fIds_select_arrays\fP 1i
+Select data structures in a multi_array descriptor.
+.IP \fIds_dealloc_multi\fP 1i
+Deallocate a multi_array data structure.
+.IP \fIds_dealloc_packet\fP 1i
+Recursively deallocate a packet.
+.IP \fIds_dealloc_data\fP 1i
+Recursively deallocate packet data.
+.IP \fIds_dealloc_packet_subdata\fP 1i
+Recursively deallocate packet data.
+.IP \fIds_dealloc_array_desc\fP 1i
+Recursively deallocate an array.
+.IP \fIds_dealloc_list\fP 1i
+Recursively deallocate a linked list.
+.IP \fIds_dealloc_list_entries\fP 1i
+Recursively deallocate list entries.
+.IP \fIds_dealloc2_list\fP 1i
+Deallocate linked list entries.
+.IP \fIds_dealloc_array\fP 1i
+Recursively deallocate array.
+.IP \fIds_draw_ellipse\fP 1i
+Draw an ellipse into a 2 dimensional Karma array.
+.IP \fIds_draw_polygon\fP 1i
+Draw a polygon into a 2 dimensional array.
+.IP \fIds_easy_alloc_array\fP 1i
+Allocate a data structure with a simple array.
+.IP \fIds_easy_alloc_n_element_array\fP 1i
+Allocate a data structure with a simple, multi element array.
+.IP \fIds_wrap_preallocated_n_element_array\fP 1i
+Wrap a data structure around an array.
+.IP \fIds_easy_alloc_array_desc\fP 1i
+Allocate a simple array descriptor.
+.IP \fIds_easy_alloc_array_from_array_desc\fP 1i
+Wrap a data structure around an array.
+.IP \fIds_alloc_vm_array\fP 1i
+Allocate storage for an array using ordinary virtual memory.
+.IP \fIds_alloc_shm_array\fP 1i
+Allocate storage for an array using shared memory.
+.IP \fIds_alloc_mmap_array\fP 1i
+Allocate storage for an array using shared anon mmap.
+.IP \fIds_event_register_func\fP 1i
+Register a multi_array event function.
+.IP \fIds_event_dispatch\fP 1i
+Dispatch a multi_array event.
+.IP \fIds_identify_name\fP 1i
+Search a data structure for a name.
+.IP \fIds_f_array_name\fP 1i
+Search a the top level of a data structure for a name.
+.IP \fIds_f_name_in_packet\fP 1i
+Recursively search for named item under a packet.
+.IP \fIds_f_name_in_array\fP 1i
+Recursively search for named item under an array.
+.IP \fIds_f_elem_in_packet\fP 1i
+Search for a named element in a packet, without recursion.
+.IP \fIds_find_hole\fP 1i
+Recursively search packet for a hole.
+.IP \fIds_f_dim_in_array\fP 1i
+Find dimension in array.
+.IP \fIds_check_for_descriptor\fP 1i
+Check if descriptor pointer lies in data structure.
+.IP \fIds_find_descriptor_parent\fP 1i
+Find the index of the data structure containing a descriptor.
+.IP \fIds_fitgauss_list\fP 1i
+Fit a gaussian to a list of points.
+.IP \fIds_fitgauss_profile\fP 1i
+Fit a gaussian to a 1-dimensional profile.
+.IP \fIds_gausscurve\fP 1i
+Write gaussian curve to an array.
+.IP \fIds_convert_atomic\fP 1i
+Convert an atomic datum to a double precision value.
+.IP \fIds_get_coordinate\fP 1i
+Get a co-ordinate along a dimension.
+.IP \fIds_convert_coordinates\fP 1i
+Convert co-ordinate values for a dimension.
+.IP \fIds_get_element_offset\fP 1i
+Calculate the offset of the start of a data element in a packet.
+.IP \fIds_get_packet_size\fP 1i
+Calculate size in bytes of a packet.
+.IP \fIds_get_array_size\fP 1i
+Calculate the number of co-ordinate points in an array.
+.IP \fIds_check_array_can_fit\fP 1i
+Check if the array data can fit in the machine.
+.IP \fIds_packet_all_data\fP 1i
+Test if packet contains only atomic data elements.
+.IP \fIds_element_is_atomic\fP 1i
+Test if an element is atomic.
+.IP \fIds_element_is_named\fP 1i
+Test if an element is a named data type.
+.IP \fIds_element_is_legal\fP 1i
+Test if an element is legal.
+.IP \fIds_get_array_offset\fP 1i
+Compute offset of a co-ordinate in an array.
+.IP \fIds_get_coord_num\fP 1i
+Get index of a co-ordinate along a dimension.
+.IP \fIds_get_element\fP 1i
+Convert an atomic datum to a double precision complex value.
+.IP \fIds_get_elements\fP 1i
+Convert atomic data values to double precision complex values.
+.IP \fIds_get_coordinate_array\fP 1i
+Get co-ordinate array for a dimension.
+.IP \fIds_element_is_complex\fP 1i
+Test if the type of an element is complex or not.
+.IP \fIds_get_scattered_elements\fP 1i
+Convert scattered atomic data to double precision complex values.
+.IP \fIds_can_transfer_element_as_block\fP 1i
+Test if an element can be transferred in one block.
+.IP \fIds_can_transfer_packet_as_block\fP 1i
+Test if a packet can be transferred in one block.
+.IP \fIds_can_swaptransfer_element\fP 1i
+Test if an element can be swapped and transferred in one block.
+.IP \fIds_get_handle_in_packet\fP 1i
+Find sub-structure in a general data structure.
+.IP \fIds_get_handle_in_array\fP 1i
+Find sub-structure in a multi-dimensional array.
+.IP \fIds_get_handle_in_list\fP 1i
+Find sub-structure in a linked list.
+.IP \fIds_history_append_string\fP 1i
+Add a history string to a Karma data structure.
+.IP \fIds_history_copy\fP 1i
+Copy history information.
+.IP \fIds_list_insert\fP 1i
+Insert an entry into the fragmented section of a linked list.
+.IP \fIds_list_append\fP 1i
+Append an entry to a linked list.
+.IP \fIds_list_delete\fP 1i
+Delete an entry from the fragmented section of a linked list.
+.IP \fIds_list_unfragment\fP 1i
+Unfragment a linked list.
+.IP \fIds_list_fragment\fP 1i
+Fragment a linked list.
+.IP \fIds_format_unit\fP 1i
+Format a unit string.
+.IP \fIds_format_value\fP 1i
+Format a data value into a string.
+.IP \fIds_remove_named_elements\fP 1i
+Remove a list of named elements from a packet.
+.IP \fIds_remove_dim_desc\fP 1i
+Remove dimension from an array.
+.IP \fIds_append_dim_desc\fP 1i
+Append a dimension to an array.
+.IP \fIds_prepend_dim_desc\fP 1i
+Prepend a dimension to an array.
+.IP \fIds_compute_array_offsets\fP 1i
+Compute array address offsets for each dimension in an array.
+.IP \fIds_remove_tiling_info\fP 1i
+Remove any tiling information from an array descriptor.
+.IP \fIds_append_gen_struct\fP 1i
+Append a general data structure to a multi_array structure.
+.IP \fIds_autotile_array\fP 1i
+Choose tiling scheme automatically.
+.IP \fIds_put_element\fP 1i
+Write out an element of data.
+.IP \fIds_put_elements\fP 1i
+Convert array of double precision complex data to atomic data.
+.IP \fIds_put_element_many_times\fP 1i
+Write a double precision complex value to atomic data many times.
+.IP \fIds_put_named_element\fP 1i
+Update a named element in a specified packet.
+.IP \fIds_reorder_array\fP 1i
+Re-order a multi-dimensional array.
+.IP \fIds_foreach_occurrence\fP 1i
+Recursively traverse a data structure, searching for an item.
+.IP \fIds_foreach_in_array\fP 1i
+Recursively traverse an array, searching for an item.
+.IP \fIds_foreach_in_list\fP 1i
+Recursively traverse a linked list, searching for an item.
+.IP \fIds_traverse_and_process\fP 1i
+Recursively traverse a pair of data structures.
+.IP \fIds_traverse_array\fP 1i
+Recursively traverse a pair of arrays.
+.IP \fIds_traverse_list\fP 1i
+Recursively traverse a pair of linked lists.
+.IP \fIds_PROTO_foreach_func\fP 1i
+Process an occurrence of an item in a data structure.
+.IP \fIds_PROTO_traverse_func\fP 1i
+Process an occurrence of a divergence between two data structures
+.IP \fIds_PROTO_event_func\fP 1i
+Process an event.
+.SH TABLE ds_COMPLEX_CONVERSIONS
+List of complex conversion types
+
+.TS
+l l
+_ _
+l l.
+Name                         Meaning
+
+CONV_CtoR_REAL               Take the real component
+CONV_CtoR_IMAG               Take the imaginary component
+CONV_CtoR_ABS                Take the absolute value
+CONV_CtoR_SQUARE_ABS         Take the square of the absolute value
+CONV_CtoR_PHASE              Take the phase
+CONV_CtoR_CONT_PHASE         Take the continuous phase
+CONV_CtoR_ENVELOPE           Use the positive and negative of the
+absolute value
+.TE
+.SH TABLE ds_KARMA_DATA_TYPES
+List of Karma data types
+
+.TS
+l l l
+_ _ _
+l l l.
+Name         Meaning                              C data type
+
+K_FLOAT      Single precision floating point      float
+K_DOUBLE     Double precision floating point      double
+K_BYTE       Signed byte (character)              signed char
+K_INT        Signed integer                       signed int
+K_SHORT      Signed short integer                 signed short
+K_COMPLEX    Complex float                        float[2]
+K_DCOMPLEX   Complex double                       double[2]
+K_BCOMPLEX   Complex signed byte                  signed char[2]
+K_ICOMPLEX   Complex signed integer               signed int[2]
+K_SCOMPLEX   Complex signed short integer         signed short[2]
+K_LONG       Signed long integer                  signed long
+K_LCOMPLEX   Complex signed long integer          signed long[2]
+K_UBYTE      Unsigned byte                        unsigned char
+K_UINT       Unsigned integer                     unsigned int
+K_USHORT     Unsigned short integer               unsigned short
+K_ULONG      Unsigned long integer                unsigned long
+K_UBCOMPLEX  Complex unsigned byte                unsigned char[2]
+K_UICOMPLEX  Complex unsigned integer             unsigned int[2]
+K_USCOMPLEX  Complex unsigned short integer       unsigned short[2]
+K_ULCOMPLEX  Complex unsigned long integer        unsigned long[2]
+.TE
+.SH TABLE ds_IDENT_TABLE
+List of identification codes
+
+.TS
+l l
+_ _
+l l.
+Name              Meaning
+
+IDENT_NOT_FOUND   Name not found
+IDENT_GEN_STRUCT  Name of general data structure
+IDENT_DIMENSION   Name of dimension
+IDENT_ELEMENT     Name of atomic data element
+IDENT_MULTIPLE    Name has multiple occurrences
+.TE
+.SH TABLE ds_SEARCH_BIASES
+List of co-ordinate search biases
+
+.TS
+l l
+_ _
+l l.
+Name                   Meaning
+
+SEARCH_BIAS_LOWER      Pick lower co-ordinate
+SEARCH_BIAS_CLOSEST    Pick closest co-ordinate
+SEARCH_BIAS_UPPER      Pick upper co-ordinate
+.TE
+.SH TABLE ds_HANDLE_TYPES
+List of handle types
+
+.TS
+l l
+_ _
+l l.
+Name                   Meaning
+
+NONE                   if the item's parent is a packet.
+K_ARRAY                if the item's parent is an array.
+LISTP                  if the item's parent is a linked list header.
+.TE
+.SH TABLE ds_PARENT_TYPES
+List of parent descriptor types
+
+.TS
+l l
+_ _
+l l.
+Name              Meaning
+
+NONE              parent is a packet descriptor
+IDENT_DIMENSION   parent is a dimension descriptor
+K_ARRAY           parent is an array descriptor
+LISTP             parent is a linked list descriptor
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

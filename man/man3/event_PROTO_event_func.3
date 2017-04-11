@@ -1,0 +1,34 @@
+.TH EVENT_PROTO_EVENT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+event_PROTO_event_func \- Generic event callback.
+.SH SYNOPSIS
+.B #include <karma_event.h>
+.sp
+.B flag event_PROTO_event_func
+.sp
+(KEvent event, Connection connection,void **f_info)
+.SH DESCRIPTION
+Generic event callback.
+.IP \fIevent\fP 1i
+The event data. This becomes invalid when the callback returns.
+.IP \fIconnection\fP 1i
+The connection over which the event came.
+.IP \fIf_info\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+TRUE if the event was consumed, else FALSE indicating that
+the event is still to be processed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

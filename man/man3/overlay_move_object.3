@@ -1,0 +1,42 @@
+.TH OVERLAY_MOVE_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_move_object \- Move a object in an overlay object list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_move_object
+.sp
+(KOverlayList olist, unsigned int id_in_list,
+unsigned int list_id, double dx, double dy)
+.SH DESCRIPTION
+Move a object in an overlay object list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIid_in_list\fP 1i
+The object ID. This ID refers to an object created by a
+particular list master or slave.
+.IP \fIlist_id\fP 1i
+The ID of the list which created the object. If this is 0, the
+list given by <<olist>> is assumed.
+.IP \fIdx\fP 1i
+The horizontal distance to move. This is of the same co-ordinate type
+as the original co-ordinates.
+.IP \fIdy\fP 1i
+The vertical distance to move. This is of the same co-ordinate type
+as the original co-ordinates.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

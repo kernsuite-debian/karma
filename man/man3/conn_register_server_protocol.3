@@ -1,0 +1,53 @@
+.TH CONN_REGISTER_SERVER_PROTOCOL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_register_server_protocol \- Register server protocol support.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B void conn_register_server_protocol
+.sp
+( CONST char *protocol_name,
+unsigned int version,
+unsigned int max_connections,
+flag (*open_func) (),
+flag (*read_func) (),
+void (*close_func) () )
+.SH DESCRIPTION
+This routine will register the support of a new Karma protocol
+for the Karma ports which are being managed by the various routines in the
+<-conn-> package. This routine may be called at any time.
+.IP \fIprotocol_name\fP 1i
+The name of the new protocol to support. Note that this is
+only for incoming connections.
+.IP \fIversion\fP 1i
+The version number for the protocol. When any changes to the
+protocol are made, this should be increased.
+.IP \fImax_connections\fP 1i
+The maximum number of incoming connections to this server
+If this is 0, an unlimited number of connections is permitted.
+.IP \fIopen_func\fP 1i
+The routine which is called when a new connection is opened.
+The prototype function is <-conn_PROTO_open_func->.
+.IP \fIread_func\fP 1i
+The function which will be called when data is ready to be read
+data from the connection. The prototype function is
+<-conn_PROTO_read_func->.
+.IP \fIclose_func\fP 1i
+The function which will be called prior to closure of a
+connection. The prototype function is <-conn_PROTO_close_func->.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

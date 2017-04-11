@@ -1,0 +1,31 @@
+.TH S_BLOCK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+s_block \- Block a signal.
+.SH SYNOPSIS
+.B #include <karma_s.h>
+.sp
+.B void s_block
+.sp
+(int signal)
+.SH DESCRIPTION
+This routine will cause a signal to be blocked until a subsequent
+call to <-s_unblock-> or <-s_unblock_all->. If the signal is already
+blocked, no action is taken.
+.IP \fIsignal\fP 1i
+The signal to block.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

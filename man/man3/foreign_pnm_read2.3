@@ -1,0 +1,36 @@
+.TH FOREIGN_PNM_READ2 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_pnm_read2 \- Read a PNM file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_pnm_read2
+.sp
+(CONST char *filename, unsigned int mmap_option,
+flag writable)
+.SH DESCRIPTION
+Read a PNM file.
+.IP \fIchannel\fP 1i
+The channel to read from.
+.IP \fImmap_option\fP 1i
+This has the same meaning as for the <dsxfr_get_multi>
+routine.
+.IP \fIwritable\fP 1i
+This has the same meaning as for the <dsxfr_get_multi> routine.
+.SH RETURN VALUE
+A pointer to the multi_array data structure on success, else
+NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

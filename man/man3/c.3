@@ -1,0 +1,49 @@
+.TH C 3 "07 Aug 2006" "Karma Distribution"
+.SH PACKAGE
+c \- Routines to manage callback lists
+.SH PURPOSE
+These routines are meant to provide a general purpose callback management
+framework. Library packages and applications may use this package to
+implement their own callback mechanisms. This package removes the need for
+external code to maintain and traverse callback lists.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIc_register_callback\fP 1i
+Register a callback function with a list.
+.IP \fIc_unregister_callback\fP 1i
+Unregister a callback function.
+.IP \fIc_call_callbacks\fP 1i
+Call all registered callbacks for an object.
+.IP \fIc_destroy_list\fP 1i
+Destroy a callback list.
+.IP \fIc_move_callback\fP 1i
+Move a callback function.
+.IP \fIc_list_dispatching\fP 1i
+Test if a callback list is currently dispatching events.
+.IP \fIc_list_dispatching2\fP 1i
+Test if a callback list is currently dispatching events.
+.IP \fIc_list_test_empty\fP 1i
+Test if a callback list has any callbacks registered with it.
+.IP \fIc_write_null_func\fP 1i
+Write NULL to a pointer.
+.IP \fIc_write_2nulls_func\fP 1i
+Write NULL values to a structure containing two pointers.
+.IP \fIc_unregister_callback2\fP 1i
+Unregister a callback function.
+.IP \fIc_PROTO_callback\fP 1i
+Generic callback.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

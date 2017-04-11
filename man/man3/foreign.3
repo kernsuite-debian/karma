@@ -1,0 +1,500 @@
+.TH FOREIGN 3 "24 Dec 2005" "Karma Distribution"
+.SH PACKAGE
+foreign \- Routines to convert between Karma and other data formats
+.SH PURPOSE
+These routines convert between the Karma data format and foreign data
+formats.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIforeign_aips1_read_dataset_names\fP 1i
+Get the names of AIPS1 datasets in the directory catalogue.
+.IP \fIforeign_aips1_read\fP 1i
+Read an AIPS dataset.
+.IP \fIforeign_aips1_read_header\fP 1i
+Read an AIPS dataset header.
+.IP \fIforeign_aips1_read_data\fP 1i
+Read data in an AIPS file.
+.IP \fIforeign_aips1_read_history\fP 1i
+Read history for an AIPS file.
+.IP \fIforeign_aips1_close_data_context\fP 1i
+Close a KAIPS1DataContext object.
+.IP \fIforeign_aips2_test\fP 1i
+Test if a directory is an AIPS++ Image file.
+.IP \fIforeign_aips2_run\fP 1i
+Fork and execute a programme.
+.IP \fIforeign_drao_read_dataset_names\fP 1i
+Get the names of DRAO datasets in the directory catalogue.
+.IP \fIforeign_drao_read\fP 1i
+Read a DRAO dataset.
+.IP \fIforeign_drao_read_header\fP 1i
+Read a DRAO dataset header.
+.IP \fIforeign_drao_read_data\fP 1i
+Read data in a DRAO file.
+.IP \fIforeign_drao_rewind_data_context\fP 1i
+Rewind a KDRAODataContext object.
+.IP \fIforeign_drao_close_data_context\fP 1i
+Close a KDRAODataContext object.
+.IP \fIforeign_filter_get_format\fP 1i
+Get the filter format
+.IP \fIforeign_filter_test_directory_dataset\fP 1i
+Test if a directory is a dataset.
+.IP \fIforeign_filter_get_channel\fP 1i
+Get the channel for a filtered file.
+.IP \fIforeign_filter_read\fP 1i
+Read a filtered file.
+.IP \fIforeign_filter_register\fP 1i
+Register a filter.
+.IP \fIforeign_fits_read_header\fP 1i
+Read a FITS header.
+.IP \fIforeign_fits_read\fP 1i
+Read a FITS file.
+.IP \fIforeign_fits_read_data\fP 1i
+Read data in a FITS file.
+.IP \fIforeign_fits_write\fP 1i
+Write a FITS file to a channel.
+.IP \fIforeign_fits_write_iarray\fP 1i
+Write a FITS file to a channel.
+.IP \fIforeign_fits_write_header\fP 1i
+Write a FITS header to a channel object.
+.IP \fIforeign_fits_write_data\fP 1i
+Write data to a FITS file.
+.IP \fIforeign_fits_write_padding\fP 1i
+Write trailing pad bytes up to the card end.
+.IP \fIforeign_gildas_read\fP 1i
+Read a GILDAS dataset.
+.IP \fIforeign_gildas_read_header\fP 1i
+Read a GILDAS dataset header.
+.IP \fIforeign_gildas_read_data\fP 1i
+Read data in a GILDAS file.
+.IP \fIforeign_gildas_close_data_context\fP 1i
+Close a KGILDASDataContext object.
+.IP \fIforeign_gipsy_test\fP 1i
+Test if a file is part of a GIPSY file set.
+.IP \fIforeign_gipsy_read_header\fP 1i
+Read a GIPSY file header.
+.IP \fIforeign_gipsy_read_data\fP 1i
+Read data in a GIPSY image file.
+.IP \fIforeign_gipsy_read\fP 1i
+Read a GIPSY file set.
+.IP \fIforeign_gipsy_write\fP 1i
+Write a GIPSY file.
+.IP \fIforeign_gipsy_write_iarray\fP 1i
+Write a GIPSY file.
+.IP \fIforeign_gipsy_write_header\fP 1i
+Write a GIPSY header.
+.IP \fIforeign_guess_and_read\fP 1i
+Guess file type and read.
+.IP \fIforeign_read_and_setup\fP 1i
+Read a file and perform some setup.
+.IP \fIforeign_guess_write\fP 1i
+Write a data structure, guessing the output format.
+.IP \fIforeign_idf_test\fP 1i
+Test if a file is part of an IDF file set.
+.IP \fIforeign_idf_read_header\fP 1i
+Read an IDF file header.
+.IP \fIforeign_idf_read_data\fP 1i
+Read data in an IDF image file.
+.IP \fIforeign_idf_read\fP 1i
+Read an IDF file set.
+.IP \fIforeign_iraf_read\fP 1i
+Read an IRAF dataset.
+.IP \fIforeign_iraf_read_header\fP 1i
+Read an IRAF dataset header.
+.IP \fIforeign_iraf_read_data\fP 1i
+Read data in an IRAF file.
+.IP \fIforeign_iraf_close_data_context\fP 1i
+Close a KIRAFDataContext object.
+.IP \fIforeign_miriad_test2\fP 1i
+Test if a directory is a Miriad Image file.
+.IP \fIforeign_miriad_read_header2\fP 1i
+Read a Miriad Image or Visibility file header.
+.IP \fIforeign_miriad_read\fP 1i
+Read a Miriad image file.
+.IP \fIforeign_miriad_create_data_context\fP 1i
+Create a context suitable for reading Miriad Image data.
+.IP \fIforeign_miriad_read_data\fP 1i
+Read data in a Miriad Image file.
+.IP \fIforeign_miriad_close_data_context\fP 1i
+Close a KMiriadDataContext object.
+.IP \fIforeign_miriad_read_history\fP 1i
+Read the history component of a Miriad Image file.
+.IP \fIforeign_miriad_read_get_alignment_padding\fP 1i
+Compute padding to align to a word boundary.
+.IP \fIforeign_miriad_write\fP 1i
+Write a Miriad Image file.
+.IP \fIforeign_miriad_write_iarray\fP 1i
+Write a Miriad Image file.
+.IP \fIforeign_miriad_write_header_entry\fP 1i
+Write a Miriad header entry.
+.IP \fIforeign_guess_format_from_filename\fP 1i
+Attempt to guess the format of a file by examining its filename.
+.IP \fIforeign_pgm_read\fP 1i
+Read a colour image in PGM format from a channel.
+.IP \fIforeign_pnm_read_type\fP 1i
+Read the type of a PNM file.
+.IP \fIforeign_pnm_read\fP 1i
+Read a PNM file.
+.IP \fIforeign_pnm_read2\fP 1i
+Read a PNM file.
+.IP \fIforeign_ppm_read\fP 1i
+Read a colour image in PPM format from a channel.
+.IP \fIforeign_ppm_write\fP 1i
+Write a colour image to a channel in PPM format.
+.IP \fIforeign_ppm_write_pseudo\fP 1i
+Write a PseudoColor image to a channel in PPM format.
+.IP \fIforeign_ppm_write_rgb\fP 1i
+Write a TrueColor image to a channel in PPM format.
+.IP \fIforeign_sunras_read\fP 1i
+Read an image in Sun rasterfile format from a channel.
+.IP \fIforeign_sunras_write\fP 1i
+Write a colour image to a channel in Sun rasterfile format.
+.IP \fIforeign_sunras_write_pseudo\fP 1i
+Write a PseudoColor image to a channel in Sun rasterfile format.
+.IP \fIforeign_sunras_write_rgb\fP 1i
+Write a TrueColor image to a channel in Sun rasterfile format.
+.SH TABLE foreign_ATT_FITS_READ_HEADER
+List of attributes for reading FITS headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                            Type  Meaning
+
+FA_FITS_READ_HEADER_END               End of varargs list
+FA_FITS_READ_HEADER_ALLOC_TRUNC flag  Allow truncated headers
+.TE
+.SH TABLE foreign_ATT_FITS_READ_DATA
+List of attributes for reading FITS data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                         Type            Meaning
+
+FA_FITS_READ_DATA_END                        End of varargs list
+FA_FITS_READ_DATA_NUM_BLANKS unsigned long * Number of blank values found
+FA_FITS_READ_DATA_SKIP_BLOCKSflag            Skip blocks
+.TE
+.SH TABLE foreign_ATT_FITS_READ
+List of attributes for reading FITS files (header+data)
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                     Type            Meaning
+
+FA_FITS_READ_END                         End of varargs list
+FA_FITS_READ_NUM_BLANKS  unsigned long * Number of blank values found
+FA_FITS_READ_MMAP_OPTION unsigned int    See <-ch_MAP_CONTROLS->
+FA_FITS_READ_WRITABLE    flag            If TRUE array may be written to
+FA_FITS_READ_SIMPLE      flag            If TRUE read a ".sfits" file
+.TE
+.SH TABLE foreign_ATT_FITS_WRITE
+List of attributes for writing FITS files (header+data)
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                      Type            Meaning
+
+FA_FITS_WRITE_END                         End of varargs list
+.TE
+.SH TABLE foreign_ATT_FITS_WRITE_DATA
+List of attributes for writing FITS data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                           Type            Meaning
+
+FA_FITS_WRITE_DATA_END                         End of varargs list
+.TE
+.SH TABLE foreign_ATT_GUESS_READ
+List of attributes for guessing and reading data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                         Type    Meaning
+
+FA_GUESS_READ_END                    End of varargs list
+FA_GUESS_READ_FITS_TO_FLOAT  flag    Convert FITS data to floating point
+.TE
+.SH TABLE foreign_ATT_GUESS_WRITE
+List of attributes for guessing and writing data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                         Type    Meaning
+
+FA_GUESS_WRITE_END                   End of varargs list
+.TE
+.SH TABLE foreign_ATT_MIRIAD_READ_HEADER
+List of attributes for reading Miriad Image headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                         Type    Meaning
+
+FA_MIRIAD_READ_HEADER_END            End of varargs list
+.TE
+.SH TABLE foreign_ATT_MIRIAD_READ_DATA
+List of attributes for reading Miriad Image data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                           Type            Meaning
+
+FA_MIRIAD_READ_DATA_END                        End of varargs list
+FA_MIRIAD_READ_DATA_NUM_BLANKS unsigned long * Number of blank values
+                                               (includes masked values)
+FA_MIRIAD_READ_DATA_NUM_MASKED unsigned long * Number of masked values
+FA_MIRIAD_READ_DATA_SKIP_BLOCKSflag            Skip blocks
+.TE
+.SH TABLE foreign_ATT_MIRIAD_READ
+List of attributes for reading Miriad Image files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                      Type            Meaning
+
+FA_MIRIAD_READ_END                        End of varargs list
+FA_MIRIAD_READ_NUM_BLANKS unsigned long * Number of blank values
+                                          (includes masked values)
+FA_MIRIAD_READ_NUM_MASKED unsigned long * Number of masked values
+.TE
+.SH TABLE foreign_ATT_MIRIAD_WRITE
+List of attributes for writing Miriad Image files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                          Type         Meaning
+
+FA_MIRIAD_WRITE_END                        End of varargs list
+FA_MIRIAD_WRITE_EXTRA_HISTORY flag         Generate extra history
+.TE
+.SH TABLE foreign_ATT_GIPSY_READ_HEADER
+List of attributes for reading GIPSY Image headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                        Type    Meaning
+
+FA_GIPSY_READ_HEADER_END            End of varargs list
+.TE
+.SH TABLE foreign_ATT_GIPSY_READ_DATA
+List of attributes for reading GIPSY Image data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                          Type            Meaning
+
+FA_GIPSY_READ_DATA_END                        End of varargs list
+FA_GIPSY_READ_DATA_NUM_BLANKS unsigned long * Number of blank values
+FA_GIPSY_READ_DATA_SKIP_BLOCKSflag            Skip blocks
+.TE
+.SH TABLE foreign_ATT_GIPSY_READ
+List of attributes for reading GIPSY Image files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                     Type            Meaning
+
+FA_GIPSY_READ_END                        End of varargs list
+FA_GIPSY_READ_NUM_BLANKS unsigned long * Number of blank values
+.TE
+.SH TABLE foreign_ATT_GIPSY_WRITE
+List of attributes for writing GIPSY Image files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                      Type            Meaning
+
+FA_GIPSY_WRITE_END                        End of varargs list
+.TE
+.SH TABLE foreign_ATT_GIPSY_WRITE_HEADER
+List of attributes for writing GIPSY Image file headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                             Type            Meaning
+
+FA_GIPSY_WRITE_HEADER_END                        End of varargs list
+.TE
+.SH TABLE foreign_TYPES
+List of foreign file types
+
+.TS
+l l
+_ _
+l l.
+Name                           Meaning
+
+FOREIGN_FILE_FORMAT_KARMA      Karma file (native format)
+FOREIGN_FILE_FORMAT_UNKNOWN    Unknown format
+FOREIGN_FILE_FORMAT_PPM        Portable PixMap format (PPM)
+FOREIGN_FILE_FORMAT_FITS       Flexible Image Transport System (FITS)
+FOREIGN_FILE_FORMAT_SUNRAS     Sun Rasterfile
+FOREIGN_FILE_FORMAT_MIRIAD     Miriad Image file
+FOREIGN_FILE_FORMAT_GIPSY      GIPSY file
+FOREIGN_FILE_FORMAT_PGM        Portable Grey Map (PGM) file
+.TE
+.SH TABLE foreign_ATT_PPM_WRITE
+List of attributes for writing PPM files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                Type    Meaning
+
+FA_PPM_WRITE_END            End of varargs list
+.TE
+.SH TABLE foreign_ATT_PPM_READ
+List of attributes for reading PPM files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name               Type    Meaning
+
+FA_PPM_READ_END            End of varargs list
+FA_PPM_READ_BINARY flag    If provided, do not read first line and use
+                           flag value
+.TE
+.SH TABLE foreign_ATT_PGM_READ
+List of attributes for reading PGM files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name               Type    Meaning
+
+FA_PGM_READ_END            End of varargs list
+.TE
+.SH TABLE foreign_ATT_SUNRAS_READ
+List of attributes for reading Sun Rasterfile files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                  Type    Meaning
+
+FA_SUNRAS_READ_END            End of varargs list
+.TE
+.SH TABLE foreign_ATT_SUNRAS_WRITE
+List of attributes for writing Sun Rasterfile files
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                      Type      Meaning
+
+FA_SUNRAS_WRITE_END                 End of varargs list
+FA_SUNRAS_WRITE_NO_IMAGE  flag *    No image found in data structure
+.TE
+.SH TABLE foreign_ATT_IDF_READ_HEADER
+List of attributes for reading IDF headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                            Type  Meaning
+
+FA_IDF_READ_HEADER_END                End of varargs list
+.TE
+.SH TABLE foreign_ATT_IDF_READ_DATA
+List of attributes for reading IDF data
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                         Type            Meaning
+
+FA_IDF_READ_DATA_END                         End of varargs list
+FA_IDF_READ_DATA_NUM_BLANKS  unsigned long * Number of blank values found
+FA_IDF_READ_DATA_SKIP_BLOCKS flag            Skip blocks
+.TE
+.SH TABLE foreign_ATT_IDF_READ
+List of attributes for reading IDF files (header+data)
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                     Type            Meaning
+
+FA_IDF_READ_END                          End of varargs list
+FA_IDF_READ_NUM_BLANKS   unsigned long * Number of blank values found
+.TE
+.SH TABLE foreign_ATT_DRAO_READ_HEADER
+List of attributes for reading DRAO headers
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                            Type  Meaning
+
+FA_DRAO_READ_HEADER_END               End of varargs list
+FA_DRAO_READ_HEADER_PARTIAL     flag  Enable reading of partial data
+.TE
+.SH TABLE foreign_ATT_DRAO_READ
+List of attributes for reading DRAO files (header+data)
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                     Type            Meaning
+
+FA_DRAO_READ_END                         End of varargs list
+FA_DRAO_READ_PARTIAL     flag            Enable reading of partial data
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

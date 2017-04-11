@@ -1,0 +1,33 @@
+.TH DISPDATA_REGISTER_DATAOBJECT_DESTROY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_register_dataobject_destroy_func \- Register a function to be called when a dataobject is destroyed.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KCallbackFunc dispdata_register_dataobject_destroy_func
+.sp
+(KDisplayDataObject dataobject, void (*func) (void *info), void *info)
+.SH DESCRIPTION
+Register a function to be called when a dataobject is destroyed.
+.IP \fIdataobject\fP 1i
+The dataobject for which the callback function is registered.
+.IP \fIfunc\fP 1i
+The function that is called when the dataobject is destroyed.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer passed to <<func>>.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

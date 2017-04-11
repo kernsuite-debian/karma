@@ -1,0 +1,68 @@
+.TH WCS_ASTRO_TRANSFORM3 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_transform3 \- Transform between linear and projected co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_astro_transform3
+.sp
+(KwcsAstro ap, flag thread, unsigned int num_coords,
+CONST char *name0, double *coords0, flag to_lin0,
+CONST char *name1, double *coords1, flag to_lin1,
+CONST char *name2, double *coords2, flag to_lin2,
+unsigned int num_restr, CONST char **restr_names,
+CONST double *restr_values)
+.SH DESCRIPTION
+This routine will convert up to three arrays of co-ordinates
+using an astronomical projection system. The co-ordinate arrays are named.
+If a co-ordinate array is not defined the co-ordinates are unchanged.
+.IP \fIap\fP 1i
+The KwcsAstro object.
+.IP \fIthread\fP 1i
+If TRUE, the operation may be threaded, else it will not be.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates to transform.
+.IP \fIname0\fP 1i
+The name of co-ordinate array 0.
+.IP \fIcoords0\fP 1i
+Co-ordinate array 0.
+.IP \fIto_lin0\fP 1i
+If TRUE the co-ordinate 0 values are transformed to linear
+co-ordinates, else they are transformed to non-linear co-ordinates.
+.IP \fIname1\fP 1i
+The name of co-ordinate array 1.
+.IP \fIcoords1\fP 1i
+Co-ordinate array 1.
+.IP \fIto_lin1\fP 1i
+If TRUE the co-ordinate 1 values are transformed to linear
+co-ordinates, else they are transformed to non-linear co-ordinates.
+.IP \fIname2\fP 1i
+The name of co-ordinate array 2.
+.IP \fIcoords2\fP 1i
+Co-ordinate array 2.
+.IP \fIto_lin2\fP 1i
+If TRUE the co-ordinate 2 values are transformed to linear
+co-ordinates, else they are transformed to non-linear co-ordinates.
+.IP \fInum_restr\fP 1i
+The number of restrictions.
+.IP \fIrestr_names\fP 1i
+The array of restriction names.
+.IP \fIrestr_values\fP 1i
+The restriction values.
+.SH RETURN VALUE
+TRUE on success, else FALSE. If nothing is to be transformed,
+TRUE is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

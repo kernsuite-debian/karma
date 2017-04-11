@@ -1,0 +1,43 @@
+.TH CANVAS_GET_MARGINS 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_get_margins \- Get margin space for a canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_get_margins
+.sp
+(KWorldCanvas canvas,
+int *left_margin, int *right_margin,
+int *bottom_margin, int *top_margin)
+.SH DESCRIPTION
+Get margin space for a canvas.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIleft_margin\fP 1i
+The number of pixels required for the left margin is written
+here.
+.IP \fIright_margin\fP 1i
+The number of pixels required for the right margin is
+written here.
+.IP \fIbottom_margin\fP 1i
+The number of pixels required for the bottom margin is
+written here.
+.IP \fItop_margin\fP 1i
+The number of pixels required for the top margin is written
+here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

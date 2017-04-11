@@ -1,0 +1,35 @@
+.TH DISPDATA_ARRAY_REGISTER_IRANGE_CHANGE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_array_register_irange_change_func \- Register a function to be called the image itensity range changes
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KCallbackFunc dispdata_array_register_irange_change_func
+.sp
+(KDisplayDataObject dataobject,
+void (*func) (KDisplayDataObject dataobject, void *info),
+void *info)
+.SH DESCRIPTION
+Register a function to be called the image itensity range changes
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject to clone.
+.IP \fIfunc\fP 1i
+The function that is called when the image intensity range changes.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer passed to <<func>>.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

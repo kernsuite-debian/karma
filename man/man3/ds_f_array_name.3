@@ -1,0 +1,43 @@
+.TH DS_F_ARRAY_NAME 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_f_array_name \- Search a the top level of a data structure for a name.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_f_array_name
+.sp
+(CONST multi_array *multi_desc, CONST char *name,
+char **encls_desc, unsigned int *index)
+.SH DESCRIPTION
+This routine will search a multi array general data structure
+header for an occurrence of an array name.
+.IP \fImulti_desc\fP 1i
+The multi_array data structure.
+.IP \fIname\fP 1i
+The array name.
+.IP \fIencls_desc\fP 1i
+If the array name is found, the pointer to the multi array
+header will be written here. If this is NULL, nothing is written here.
+.IP \fIindex\fP 1i
+The index number of the general data structure with will be written
+here. If this is NULL, nothing is written here.
+.SH RETURN VALUE
+A code based on the number of matches found. See
+<-ds_IDENT_TABLE-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine will not search the packet descriptors for name matches.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

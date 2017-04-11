@@ -1,0 +1,31 @@
+.TH M_ERROR_NOTIFY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_error_notify \- Print memory error notification message.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_error_notify
+.sp
+(char *function_name, char *purpose)
+.SH DESCRIPTION
+Print memory error notification message.
+.IP \fIfunction_name\fP 1i
+The name of the function requesting the memory.
+.IP \fIpurpose\fP 1i
+The purpose for the memory allocation.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

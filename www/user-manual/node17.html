@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>D Annotation File Format</TITLE>
+<META NAME="description" CONTENT="D Annotation File Format">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html481" HREF="node18.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html479" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html473" HREF="node16.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html483" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html484" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html482" HREF="node18.html">E Making Videos</A>
+<B>Up:</B> <A NAME="tex2html480" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html474" HREF="node16.html">C Resources</A>
+<BR> <P>
+<H1><A NAME="SECTION001700000000000000000">D Annotation File Format</A></H1>
+<P>
+<A NAME="chapterannotationformat">&#160;</A>
+<A NAME="2111">&#160;</A><A NAME="2112">&#160;</A>
+<P>
+<H1><A NAME="SECTION001710000000000000000">D.1 Usage</A></H1>
+<P>
+Karma has a facility to annotate 2-D images with lines, boxes, and
+other simple figures, as well as strings of text.  Commands to draw
+these various things are stored in text files which are read in by
+selecting the ``Load Annotations'' option from the ``Overlays'' button
+menu (see &#167;<A HREF="node3.html#sectionloadingoverlays">2.20</A>).  The names of annotation
+files must have the extension ``.ann'' or ``.ANN'' for Karma to
+recognize them.  Annotations read from a file can be removed from the
+image with the ``Remove'' buttons in the Annotation File Loader.
+Often the best way to produce a good set of annotations for a
+particular image is to see what an annotation file produces on the
+screen, then modify the file contents, remove the annotations, and
+reload the file, until everything appears satisfactory.
+<P>
+Note the annotations descibed here only work with 2-D images, or 2-D
+slices of 3-D images.  For information on marking rendered 3-D images
+with line segments in <B>&lt;xray&gt;</B>, see
+&#167;<A HREF="node6.html#sectionxraysegments">5.4</A>.
+<P>
+<H1><A NAME="SECTION001720000000000000000">D.2 Fundamental Syntax</A></H1>
+<P>
+Annotation file syntax is very simple.  Commands are listed in the
+order they are to be performed, separated by carriage returns.  Each
+command is followed by one or more arguments, which may be separated
+with commas, spaces, or tabs.  Comments may be placed in the
+annotation file by using a comment character (#).  All text occuring
+after a comment character on the same line is ignored.  Blank lines
+are also ignored.  The syntax is case-insensitive: UPPER, lower or
+MiXeD cases are all valid.  Commands can be extended over more than
+one line of text by placing a continuation character (<IMG WIDTH=7 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline5012" SRC="img17.gif">) at
+the end of each line to be continued.  Any text appearing after the
+continuation character on the same line is ignored.  Continuation
+characters do not continue comments, only command strings; therefore,
+any (<IMG WIDTH=7 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline5012" SRC="img17.gif">) following a (#) is ignored.  If the line following
+a continued line is blank or a comment line, the continuation is
+terminated.
+<P>
+<B>Note:</B> The parser ignores any spaces, tabs, or commas preceding
+``useful'' text on a command line.  Consequently, a space should be
+placed prior to the continuation character if the text beginning on
+the following line is not to be considered part of the last argument
+on the current (continued) line.  The reason for this is to allow a
+long argument (<I>e.g.,</I> a really long font name) to be broken up
+if necessary without being treated as two separate arguments.
+<P>
+<H1><A NAME="SECTION001730000000000000000">D.3 Annotation Commands</A></H1>
+<P>
+There are three types of commands: those which draw objects, those
+which change attributes of objects, and non-graphical commands.  A
+complete list of currently implemented commands is given below, with
+syntaxes and brief descriptions.  In the syntax lists, the command is
+given in <TT>CAPS</TT> (with occasional synonyms in parentheses).
+Required arguments follow in <TT>&lt;angle brackets&gt;</TT>, and optional
+arguments or argument groups in <TT>[square brackets]</TT>.  The brackets
+are for illustration only and should not be typed.
+<P>
+<H2><A NAME="SECTION001731000000000000000">Non-Graphical Commands</A></H2>
+<P>
+At present there is only one of these, but it is quite useful.
+<P>
+<UL>
+<LI> <TT>INCLUDE &lt;name of file&gt;</TT> <BR> 
+Includes the contents of another annotation file in the current one.
+The parser acts on the instructions it finds in the included file
+before moving to the next command in the present one.  Thus one can
+include the same file's worth of annotations in several different
+files without having to maintain multiple copies.  Furthermore, by
+specifying attributes such as color in the parent file instead of the
+included file, the attributes can be changed from one inclusion to the
+next.
+<P>
+The filename can include the ``<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">'' notation, as well as other
+simple Borne Shell-like expansions of environment variables using the<BR> 
+<TT>$variable</TT>, <TT>${variable}</TT> and <TT>${variable:-word}</TT>
+notations.
+<P>
+<B>Note:</B> Filenames are case-sensitive on many operating systems
+(<I>e.g.</I>, Unix).  Also, when using multi-level inclusion (including
+files which include other files, etc.), be careful with relative
+pathnames.  The parser's working directory remains that of the
+original file; thus, if <TT>file1.ann</TT> has <TT>INCLUDE
+subdir/file2.ann</TT> and that file has <TT>INCLUDE file3.ann</TT>, Karma
+will look for <TT>file3.ann</TT> in the directory containing <TT>
+file1.ann</TT>, not in <TT>subdir/</TT>.  Unless all the files are in the
+same directory, it's probably safer to use absolute pathnames or
+environment variables.
+<P>
+</UL><H2><A NAME="SECTION001732000000000000000">D.3.2 Attribute Commands</A></H2>
+<P>
+Attributes are general properties of objects.  An attribute command
+sets one of these properties for all objects drawn after, until the
+attribute is changed by another attribute command.  Each has an initial
+value it is assigned when the application first starts.
+<P>
+<UL>
+<LI> <TT>COLOR (or COLOUR) &lt;name of color&gt;</TT> <BR> 
+Sets the color of subsequent objects.  The color name is a standard
+system color, a list of which can be found for X-Windows systems in
+the file /usr/lib/X11/rgb.txt.  Basic color names include ``red'',
+``green'', ``yellow'', ``white'', etc.  The default color is green.
+<LI> <TT>FONT &lt;name of font&gt;</TT> <BR> 
+Sets the font of subsequent text objects.  The font name is a standard
+system font, a list of which can be found for X-Windows systems with
+the command ``xlsfonts''.  The name of the default font is
+``hershey14''. <I>Note: font names are case-sensitive!</I>
+<LI> <TT>COORD &lt;default coordinate type (W, R, or P)&gt;</TT> <BR> 
+Sets the default coordinate type of subsequent objects.  This will
+apply to any objects which do not have a coordinate type given in
+their command string.  Any coordinate type in an object command
+string takes precedence over the default coordinate type, but only
+applies to that particular object.  Some objects allow multiple
+coordinate type arguments; in this case, each coordinate type given
+applies only to vertices following it in the argument list, until
+superceded by another coordinate type specification.  See below for
+descriptions of the different coordinate types.  The initial setting
+of <TT>COORD</TT> is <TT>W</TT>.
+<LI> <TT>PA &lt;position angle convention (STANDARD or SKY)&gt;</TT> <BR> 
+Sets the position angle convention for subsequent objects.  Unlike
+coordinate type, position angle convention cannot be specified inside
+an object command, but must be set with this attribute command.  See
+below for descriptions of the two position angle conventions.  The
+initial setting of <TT>PA</TT> is <TT>STANDARD</TT>.
+<P>
+</UL><H2><A NAME="SECTION001733000000000000000">D.3.3 Object Commands</A></H2>
+<P>
+Object commands draw specific objects over a displayed image.  These
+include text strings as well as figures made up of dots and lines.
+<P>
+The locations of drawn objects can be specified in three types of
+coordinates: world (<TT>W</TT>), relative (<TT>R</TT>), and pixel (<TT>P</TT>).
+World coordinates are those indicated by axis labeling, e.g., right
+ascension and declination (or velocity, in a position-velocity map)
+-- but be careful about coordinate units, since annotations use the
+units specified by the image header (e.g., the FITS standard default
+units for right ascension are degrees, not hours, and for velocity are
+m/s, not km/s!).  Relative coordinates range from 0 to 1 inside region
+bounded by the image axes, increasing from the lower left corner of
+the image.  Pixel coordinates count screen pixels explicitly in the
+entire display region (including outside any labeled axes), beginning
+in the <I>upper</I> left corner; note these are <I>not</I> image
+pixels, but rather the physical pixels of the computer monitor screen.
+Image pixel coordinates are not a usable coordinate type here, unless
+no world coordinates are defined for the image, in which case Karma
+will use the image pixel coordinates in place of world coordinates.
+For most purposes involving the marking of image features, world
+coordinates are the best choice, though relative coordinates are
+occasionally good for marking a particular part of the display region
+regardless of image projection.  Pixel coordinates, by their
+inflexible nature, are as a rule not very useful.  The three
+coordinate types are specified in an argument list with the letters
+<TT>W</TT>, <TT>R</TT>, and <TT>P</TT>.
+<P>
+In several of the object commands below (<TT>DOTS, LINE, CLINES,
+DLINES, VECTOR</TT>), different geometric parameters of the object can be
+specified in different coordinate types, and so a coordinate type
+argument may precede more than one coordinate pair in the argument
+list.  However all coordinate type arguments are optional; they are
+only necessary to override the current value -- either one specified
+earlier in the argument list, or the default coordinate type selected
+with the <TT>COORD</TT> attribute command.
+<P>
+<UL>
+<LI> <TT>DOT (or POINT) [coord_type] &lt;x_coord&gt; &lt;y_coord&gt;</TT> <BR> 
+Draw a single point.
+<LI> <TT>DOTS (or POINTS) [coord_type] &lt;x1&gt; &lt;y1&gt;
+[[coord_type] &lt;x2&gt; <BR> &lt;y2&gt;] ...</TT> <BR> 
+Draw a collection of points.
+<LI> <TT>LINE [coord_type] &lt;x1&gt; &lt;y1&gt; [coord_type] &lt;x2&gt;
+&lt;y2&gt;</TT> <BR> 
+Draw a line between two points.
+<LI> <TT>CLINES [coord_type] &lt;x1&gt; &lt;y1&gt; [coord_type]
+&lt;x2&gt; &lt;y2&gt; <BR> [[coord_type] &lt;x3&gt; &lt;y3&gt;] ...</TT> <BR> 
+Draw a series of connected lines (``connect the dots'').
+<LI> <TT>DLINES [coord_type] &lt;x1&gt; &lt;y1&gt; [coord_type]
+&lt;x2&gt; &lt;y2&gt; <BR> [[coord_type] &lt;x3&gt; &lt;y3&gt; [coord_type]
+&lt;x4&gt; &lt;y4&gt;] ...</TT> <BR> 
+Draw a collection of disconnected lines.
+<LI> <TT>VECTOR [coord_type] &lt;x_base&gt; &lt;y_base&gt;
+[coord_type] &lt;x_comp&gt; <BR> &lt;y_comp&gt;</TT> <BR> 
+Draw a vector with specified components at a given location.  At
+present this is just a line, with no arrowhead drawn.  However, unlike
+the <TT>LINE</TT> command, which specifies coordinates of both endpoints,
+the arguments for <TT>VECTOR</TT> are the position of the base and the
+components of the vector which get added to the base to determine the
+other endpoint.
+<LI> <TT>BOX [coord_type] &lt;x1&gt; &lt;y1&gt; &lt;x2&gt; &lt;y2&gt;</TT> <BR> 
+Draw a rectangular box, given coordinates of two opposed corners.
+<LI> <TT>CBOX [coord_type] &lt;x_cent&gt; &lt;y_cent&gt;
+&lt;x_width&gt; &lt;y_height&gt; <BR> [angle] </TT> <BR> 
+Draw a rotatable, rectangular box, given center coordinates, width,
+and height, and an optional position angle in degrees.
+<LI> <TT>CROSS [coord_type] &lt;x_cent&gt; &lt;y_cent&gt;
+&lt;x_width&gt; &lt;y_height&gt; <BR> [angle] </TT> <BR> 
+Draw a rotatable cross, given center coordinates, width, and height,
+and an optional position angle in degrees.
+<LI> <TT>CIRCLE [coord_type] &lt;x_cent&gt; &lt;y_cent&gt;
+&lt;radius&gt; </TT> <BR> 
+Draw a circle, given center coordinates and radius.
+<LI> <TT>ELLIPSE [coord_type] &lt;x_cent&gt; &lt;y_cent&gt; &lt;a&gt;
+&lt;b&gt; [angle] </TT> <BR> 
+Draw a rotatable ellipse, given center coords, semimajor and semiminor
+axes, and an optional position angle in degrees.  The semimajor axis
+must be given before the semiminor axis if adherence to the standard
+definition of ellipse position angle is desired.  In order to maintain
+consistency with the <TT>CBOX</TT> and <TT>CROSS</TT> commands, the first
+axis is the one oriented by the position angle, regardless of whether
+it is the largest.
+<LI> <TT>TEXT [coord_type] &lt;x_left&gt; &lt;y_left&gt;
+&lt;string&gt;</TT> <BR> 
+Draw a text string left-justified at the given coordinates (more
+precisely, these specify the lower left corner of text).  The string
+to be used is whatever follows the third argument, e.g., several words
+separated by spaces, and ends with the line of text, unless continued
+onto another line.  Comment (#) and continuation (<IMG WIDTH=7 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline5012" SRC="img17.gif">)
+characters cannot be included in a text string, but are acted upon in
+the usual fashion if found -- thus text commands can also be extended
+to multiple lines.
+<P>
+</UL>
+<P>
+WARNING: At present, rotatable figures (boxes, crosses, and
+ellipses) have a tendency to appear distorted from their ``real''
+appearance in curved world coordinates, e.g., maps of the sky.  Proper
+projection of geometric objects into world coordinates is a nontrivial
+exercise and has been deferred.
+<P>
+<H2><A NAME="SECTION001734000000000000000">D.3.4 Position Angle Conventions</A></H2>
+<P>
+<B>Standard Postition Angles</B> are generally defined in the Cartesian
+sense where <IMG WIDTH=52 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline5262" SRC="img18.gif"> specifies {<IMG WIDTH=89 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline5264" SRC="img19.gif">},
+<IMG WIDTH=67 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline5266" SRC="img20.gif"> specifies {<IMG WIDTH=89 HEIGHT=25 ALIGN=MIDDLE ALT="tex2html_wrap_inline5268" SRC="img21.gif">}, and so forth.
+In a coordinate system where X increases from left to right, and Y
+increases from bottom to top, <I>PA</I> will increase in a
+counter-clockwise direction.  However this will be reversed if the X
+increases from right to left, or Y from top to bottom (though not
+both).  So be careful!  To summarize: <I>PA</I> is measured CCW from right
+in <TT>R</TT> coords, and CW from right in <TT>P</TT> coords.  How it is
+measured in <TT>W</TT> coords depends on the coordinate system: in many
+cases, it will be the same as <TT>R</TT> coords, but this is not always
+true!  For example, most astronomical maps of the sky have the X
+coordinate increasing toward the left, in which case, <I>PA</I> will be
+measured CW from left!
+<P>
+<B>Sky Position Angles</B> are for the astronomers.  Usage of this
+convention in annotations assumes two things: (1) a map of the sky is
+being displayed, with the X coordinate increasing from right to left,
+and the Y coordinate increasing from bottom to top, i.e., north = up,
+south = down, east = left, west = right; and (2)&nbsp;position angle is
+measured from north through east (up through left).  The convention is
+followed regardless of whether the coordinate type is <TT>W</TT>, <TT>
+R</TT>, or <TT>P</TT>.  So unlike <TT>STANDARD</TT> position angles, <TT>SKY</TT>
+PAs retain their appearance regardless of coordinate type.  This same
+system can be used with Ecliptic and Galactic coordinates as well as
+Equatorial, though the <IMG WIDTH=52 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline5262" SRC="img18.gif"> referent points up in all cases,
+toward the grid's north pole.  <I>However</I> unless the image
+projection is flat, <IMG WIDTH=52 HEIGHT=14 ALIGN=BOTTOM ALT="tex2html_wrap_inline5262" SRC="img18.gif"> will only point exactly north at the
+image projection center (but if the image covers a small piece of the
+sky and is not close to a coordinate pole, the error will be small).
+Generalizing this to be correct in all parts of the image is a future
+project.
+<P>
+<H1><A NAME="SECTION001740000000000000000">D.4 Example Annotation File</A></H1>
+<P>
+Two sample annotation files, <TT>m42.ann</TT> and <TT>m42_include.ann</TT>,
+have been provided to illustrate the functions and concepts outlined
+above.  To use these example files properly in Karma, it is necessary
+to load the FITS image m42_ha.fits to set the world coordinates.  For
+best image appearance, select a square root intensity scale from the
+Intensity Policy popup, and a 99.99% intensity range from the IScale
+popup.
+<P>
+These example files and some image data may be found at:<BR> 
+<A NAME="tex2html93" HREF="ftp://ftp.atnf.csiro.au/software/karma/data/annotations/">ftp://ftp.atnf.csiro.au/software/karma/data/annotations/</A>
+<P>
+<PRE>####################################################################
+#
+#          SAMPLE KARMA ANNOTATION FILE M42.ANN
+#
+#        *** to be used with M42_*.FITS images ***
+#
+####################################################################
+
+# Comments are preceded by a ``#'' character
+#
+# All of the commands names below are given in CAPS for readability,
+# but they could just as easily be lower case.  
+#
+# World coordinates here are decimal degrees of Right Ascension and 
+# Declination (in accordance with the FITS standard).
+
+COORD W           # These are the attribute settings at startup time.
+PA STANDARD       # If no annotation files loaded prior to this one 
+COLOR GREEN       # have changed any attributes, then these commands 
+FONT hershey14    # are reduntant.
+
+# Label the image near the top.  Use relative coordinates to fix 
+# the position regardless of image zoom.  
+#
+COLOR WHITE
+TEXT R 0.1 0.9 THE ORION NEBULA
+
+# Change font to something a little smaller for other labels.
+FONT hershey12
+
+# Mark the four Trapezium stars with blue circles, and connect them.
+# Use world coordinates for these markers and name label.
+# Since COORD is currently set to W, specifying W coords in the 
+# argument lists of the objects below is not necessary.
+#
+# Note W coords are in degrees for consistency with coordinate
+# information in the FITS image header, even though RA is labeled
+# in hours by Karma.  Note also the TEXT string is continued onto
+# another line.  The leading space is ignored, but a trailing space
+# after &quot;Trap&quot; would not be.  The commas in the CLINES command 
+# string are not necessary, but make it easier for a human to read.
+# 
+COLOR BLUE
+DOT 83.81613 -5.38706             # Theta 1A Orionis; HD 37020
+DOT 83.81738 -5.38494             # Theta 1B Orionis; HD 37021
+DOT 83.81875 -5.38972             # Theta 1C Orionis; HD 37022
+DOT 83.82208 -5.38778             # Theta 1D Orionis; HD 37023
+CIRCLE 83.81613 -5.38706 0.0005   # Theta 1A Orionis; HD 37020
+CIRCLE 83.81738 -5.38494 0.0005   # Theta 1B Orionis; HD 37021
+CIRCLE 83.81875 -5.38972 0.0005   # Theta 1C Orionis; HD 37022
+CIRCLE 83.82208 -5.38778 0.0005   # Theta 1D Orionis; HD 37023
+CLINES 83.81613 -5.38706, 83.81738 -5.38494, 83.82208 -5.38778, \
+                83.81875 -5.38972, 83.81613 -5.38706
+TEXT 83.84 -5.38 ``Trap\
+        ezium''
+
+# Indicate the star Theta 1C Orionis, source of much of the UV flux
+# ionizing the gas in the nebula.  Use a mixture of world and 
+# relative coordinates to fix the label on the screen when zooming.
+#
+COLOR YELLOW
+LINE W 83.81875 -5.38972 R 0.6 0.1
+TEXT R 0.6 0.10 Theta 1C
+
+# Mark the region imaged by the HST mosaic released in 1995 
+# (http://oposite.stsci.edu/pubinfo/pr/95/45.html).
+#
+COLOR RED
+BOX  83.86867 -5.44977 83.74646 -5.31922
+TEXT 83.86867 -5.31922 HST
+
+# One transverse light year at a distance of 1500 ly subtends 0.038
+# degrees.  At a declination of -5.39 degrees, this is 0.0382 Right
+# Ascension degrees.
+#
+COLOR GREEN
+CBOX  83.91196 -5.49598 0.0382 0.038
+CROSS 83.91196 -5.49598 0.0382 0.038
+TEXT  83.88 -5.49598 1 ly^2
+
+# Here is a series of disconnected lines, for no very good 
+# reason.  The last continuation character is ignored because
+# the following line is empty.  
+#
+COLOR LIGHT GRAY
+DLINES R \
+  0.96 0.05 0.99 0.05, 0.96 0.10 0.99 0.10, 0.96 0.15 0.99 0.15, \
+  0.96 0.20 0.99 0.20, 0.96 0.25 0.99 0.25, 0.96 0.30 0.99 0.30, \
+  0.96 0.35 0.99 0.35, 0.96 0.40 0.99 0.40, 0.96 0.45 0.99 0.45, \
+  0.96 0.50 0.99 0.50, 0.96 0.55 0.99 0.55, 0.96 0.60 0.99 0.60, \
+  0.96 0.65 0.99 0.65, 0.96 0.70 0.99 0.70, 0.96 0.75 0.99 0.75, \
+  0.96 0.80 0.99 0.80, 0.96 0.85 0.99 0.85, 0.96 0.90 0.99 0.90, \
+  0.96 0.95 0.99 0.95, \
+
+# Change default coordinates to relative.  In the DLINES command 
+# above, the default was world coordinates, so the R was necessary 
+# to specify something else.
+#
+COORD R
+
+# Here are a of couple vectors.
+#
+COLOR CYAN
+VECTOR 0.1 0.25, 0.05 0.05
+VECTOR 0.1 0.30, 0.05 0.05
+
+COORD W     # Change back to world coordinates as the default.
+
+# Here are three plain, adjacent ellipses.  No position angle
+# parameter is given, so PA=0.  However this applies to the first
+# semiaxis given, not necessarily the larger of the two.  With the
+# semiminor axis listed first, these ellipses have an effective
+# position angle of 90 degrees (in the ``standard'' system -- see
+# below).
+#
+COLOR ORANGE
+ELLIPSE 83.9151 -5.3978 0.002 0.005
+ELLIPSE 83.9111 -5.3978 0.002 0.005
+ELLIPSE 83.9071 -5.3978 0.002 0.005
+
+# Put a dot in the center of all three orange ellipses, using a 
+# single command.
+#
+DOTS 83.9151 -5.3978, 83.9111 -5.3978, 83.9071 -5.3978
+
+# Include another annotation file, which has examples of some 
+# rotatable objects.
+#
+INCLUDE m42_include.ann
+
+####################################################################
+#
+#          END OF SAMPLE KARMA ANNOTATION FILE M42.ANN
+#
+####################################################################
+
+####################################################################
+#
+#        SAMPLE KARMA ANNOTATION FILE M42_INCLUDE.ANN
+#
+#         *** to be used with M42_*.FITS images ***
+#
+####################################################################
+
+# Draw rotated crosses, cboxes, and ellipses with standard PAs.
+
+PA STANDARD
+
+# (The W's aren't actually necessary since COORD is still set to W.)
+
+COLOR AQUAMARINE
+CBOX    W 83.72204 -5.45408 0.02 0.008 10
+CROSS   W 83.72204 -5.45408 0.02 0.008 10
+ELLIPSE W 83.72204 -5.45408 0.01 0.004 10
+
+COLOR MAGENTA
+CBOX    R 0.8 0.15 0.05 0.03 10.0
+CROSS   R 0.8 0.15 0.05 0.03 10.0
+CBOX    R 0.8 0.15 0.10 0.06 10.0
+ELLIPSE R 0.8 0.15 0.05 0.03 10.0
+
+COLOR VIOLET
+CBOX    P  75 200 50 20 10
+CROSS   P  75 200 50 20 10
+ELLIPSE P  75 200 25 10 10
+
+# Draw rotated crosses, cboxes, and ellipses with ``sky'' PAs.
+
+PA SKY
+
+COLOR TAN
+CBOX    W 83.7147 -5.3007 0.02 0.01  10
+CROSS   W 83.7147 -5.3007 0.02 0.01  10
+ELLIPSE W 83.7147 -5.3007 0.01 0.005 10
+
+COLOR KHAKI
+CBOX    R 0.88 0.70 0.08 0.04 10
+CROSS   R 0.88 0.70 0.08 0.04 10
+ELLIPSE R 0.88 0.70 0.04 0.02 10
+
+COLOR GOLD
+CBOX    P 450 220 44 22 10
+CROSS   P 450 220 44 22 10
+ELLIPSE P 450 220 22 11 10
+
+####################################################################
+#
+#       END OF SAMPLE KARMA ANNOTATION FILE M42_INCLUDE.ANN
+#
+####################################################################</PRE>
+<P>
+<HR><A NAME="tex2html481" HREF="node18.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html479" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html473" HREF="node16.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html483" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html484" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html482" HREF="node18.html">E Making Videos</A>
+<B>Up:</B> <A NAME="tex2html480" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html474" HREF="node16.html">C Resources</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,69 @@
+.TH DS_EASY_ALLOC_ARRAY_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_easy_alloc_array_desc \- Allocate a simple array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B array_desc * ds_easy_alloc_array_desc
+.sp
+(unsigned int num_dim,
+CONST uaddr *lengths,
+CONST double *first_arr,
+CONST double *last_arr,
+CONST double **coordinates,
+CONST char **names,
+unsigned int num_elements,
+CONST unsigned int *data_types,
+CONST char **data_names)
+.SH DESCRIPTION
+This routine will allocate an array descriptor and its
+associated packet descriptor.
+.IP \fInum_dim\fP 1i
+The number of dimensions in the array.
+.IP \fIlengths\fP 1i
+An array of lengths for each dimension (axis).
+.IP \fIfirst_arr\fP 1i
+An array of first co-ordinate values for each dimension.
+.IP \fIlast_arr\fP 1i
+An array of last co-ordinate values for each dimension.
+If either of these pointers is NULL, the range of the co-ordinates will be
+the lengths of the dimensions minus 1. If one of the pointers is NULL, the
+other array is used to tie one end of the range for each dimension. If both
+pointers are NULL,the minima are 0.0 and the maxima are the lengths minus 1
+.IP \fIcoordinates\fP 1i
+The array of co-ordinate array pointers. If this is NULL,
+all dimensions are assumed to be regularly spaced. If any co-ordinate array
+pointer is NULL, the corresponding dimension is assumed to be regularly
+spaced.
+.IP \fInames\fP 1i
+An array of string pointers to the names of each dimension. If this
+is NULL, the names "Axis 0", "Axis 1", ...etc will be used. Note: the
+character arrays are copied, so the arrays of characters and the array of
+pointers may be subsequently deallocated.
+.IP \fInum_elements\fP 1i
+The number of atomic elements in the array packet. If this
+is 0, no packet descriptor is allocated.
+.IP \fIdata_types\fP 1i
+The types of the elements in the array. See
+<-ds_KARMA_DATA_TYPES-> for a list of legal values. This may be NULL if
+<<num_elements>> is 0.
+.IP \fIdata_names\fP 1i
+The array of element names. The name strings are copied, thus
+the memory used for the input strings may be subsequently deallocated. This
+may be NULL if <<num_elements>> is 0.
+.SH RETURN VALUE
+An array descriptor pointer on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

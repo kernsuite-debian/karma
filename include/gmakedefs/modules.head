@@ -1,0 +1,97 @@
+# Input variables:
+#	MACHINE_OS	  The platform type (usually taken from environment)
+#	OS		  The operating system (usually taken from environment)
+#	MACHINE		  The CPU type (usually taken from environment)
+#	MODULE_CFLAGS	  Optional module-specific C compiler flags
+#	KARMALIBS	  Karma libraries
+#	XLIBS		  Optional X11 libraries
+#	X_OS_LIBS	  Extra OS-specific X11 libraries
+#	MODULELIBS	  Optional module-specific libraries
+#	XLIBPATH	  Optional colon-separated list of directories
+#			  containing the X11 libraries
+#	MODULE_LIBDIRS	  Optional colon-separated list of directories
+#			  containing the module-specific library directories
+#	KINSTALL	  Optional name of BSD-style install programme. Default
+#			  is "install"
+
+# Output variables:
+#	CC LD CCpp LDpp	  See $KARMAINCLUDEPATH/gmakedefs/general.h1
+#	CFLAGS		  Various C compiler flags
+#	LDFLAGS		  Various C linker flags
+#	CLIBS		  Libraries and directories needed for linking
+
+# Default rules are defined for compiling C and C++ code
+
+#########################No user servicable parts below########################
+
+LDFLAGS = $(KOPTIMISE)
+
+VPATH = source
+
+# Rules for compiling C++ files
+%.o : %.cc
+	$(CCpp) $(CFLAGS) -c source/$*.cc
+
+ifndef KINSTALL
+KINSTALL = install
+endif
+
+
+ifndef KARMALIBS
+KARMALIBS = -lkarma
+endif
+
+# Add X stuff if needed
+ifdef XLIBS
+x_os_libs = $(X_OS_LIBS)
+ifdef XLIBPATH
+xlibpath = $(XLIBPATH)
+endif
+ifdef XINCLUDEPATH
+cflags1 = -I$(XINCLUDEPATH)
+else
+cflags1 =
+endif
+endif
+
+# Add module-specific library directories if needed
+ifdef MODULE_LIBDIRS
+ifdef xlibpath
+LIBDIRS = $(xlibpath):$(MODULE_LIBDIRS)
+else
+LIBDIRS = $(MODULE_LIBDIRS)
+endif
+else
+ifdef xlibpath
+LIBDIRS = $(xlibpath)
+endif
+endif
+
+# This has to come after LIBDIRS is set up
+include $(KARMAINCLUDEPATH)/gmakedefs/general.h1
+
+# Add module-specific C Compiler flags
+CFLAGS = $(MODULE_CFLAGS) $(cflags1)
+
+# Bring the libraries together
+LIBS  = $(KARMALIBS) $(XLIBS) $(x_os_libs) $(MODULELIBS) -lm
+
+# OS_LIBS is needed for static libraries, for dynamic libraries it is not
+# needed since libkarma.so will have them linked already
+ifdef LDso
+ifdef USE_STATIC_KLIBS
+CLIBS =	$(LIBS) $(OS_LIBS) $(OS_IMPLICIT_LIBS) $(expdyn_switch)
+FLIBS = $(LIBS) $(OS_LIBS) $(OS_IMPLICIT_LIBS) $(expdyn_switch) -lc
+else
+CLIBS =	$(LIBS) $(OS_LIBS)
+FLIBS = $(LIBS) $(OS_LIBS) -lc
+endif
+else
+CLIBS =	$(LIBS) $(OS_LIBS) $(OS_IMPLICIT_LIBS)
+FLIBS = $(LIBS) $(OS_LIBS) $(OS_IMPLICIT_LIBS) -lc
+endif
+
+sources = $(notdir $(wildcard source/*.c))
+objects = $(subst .c,.o,$(sources))
+
+.PHONY: depend

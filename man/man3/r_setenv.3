@@ -1,0 +1,34 @@
+.TH R_SETENV 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_setenv \- Set an environment variable.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_setenv
+.sp
+(CONST char *env_name, CONST char *env_value)
+.SH DESCRIPTION
+This routine will provide a consistent interface to set
+environment variables. This is necessary because the "standard" C library
+routines: <<putenv>> or <<setenv>> (depending on the particular standard
+C library supplied with the operating system) are in fact not standard.
+.IP \fIenv_name\fP 1i
+The environment variable to create or change.
+.IP \fIenv_value\fP 1i
+The string value to set the variable to.
+.SH RETURN VALUE
+0 on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

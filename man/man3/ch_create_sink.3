@@ -1,0 +1,30 @@
+.TH CH_CREATE_SINK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_create_sink \- Create data sink.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_create_sink
+.sp
+()
+.SH DESCRIPTION
+This routine will create a data sink channel. All writes to the
+channel are discarded (and reported as having succeeded) and all reads
+return an End-Of-File condition. Read and write operations modify the
+absolute read and write pointers (obtainable with <-ch_tell->) as expected.
+.SH RETURN VALUE
+The channel object on succes, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

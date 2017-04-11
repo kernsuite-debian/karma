@@ -1,0 +1,46 @@
+.TH KWIN_PROCESS_POSITION_EVENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_process_position_event \- Process position event on a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_process_position_event
+.sp
+(KPixCanvas canvas, int x, int y, flag clip,
+unsigned int event_code, void *event_info)
+.SH DESCRIPTION
+This routine will process (inject) a position event on the lower
+level object (parent: i.e. X window) for a pixel canvas. This event is
+processed with all position event consumer routines until one successfully
+consumes the event.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIx\fP 1i
+The horizontal position of the event, relative to the parent window.
+.IP \fIy\fP 1i
+The vertical position of the event, relative to the parent window.
+.IP \fIclip\fP 1i
+If this is TRUE, events outside of the canvas boundary are clipped
+to the nearest boundary and passed on to the registered position event
+consumers. If this is FALSE, events outside of the canvas boundary are not
+consumed (i.e. they are ignored).
+.IP \fIevent_code\fP 1i
+The arbitrary event code.
+.IP \fIevent_info\fP 1i
+The arbitrary event information.
+.SH RETURN VALUE
+TRUE if the event was consumed, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

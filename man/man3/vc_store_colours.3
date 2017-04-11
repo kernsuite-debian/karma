@@ -1,0 +1,46 @@
+.TH VC_STORE_COLOURS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vc_store_colours \- Store colours into a low level colourmap.
+.SH SYNOPSIS
+.B #include <karma_vc.h>
+.sp
+.B void vc_store_colours
+.sp
+(unsigned int num_cells, unsigned long *pixel_values,
+unsigned short *reds, unsigned short *greens,
+unsigned short *blues, unsigned int stride,
+Kdisplay dpy_handle)
+.SH DESCRIPTION
+Store colours into a low level colourmap.
+.IP \fInum_cells\fP 1i
+The number of colourcells to store.
+.IP \fIpixel_values\fP 1i
+The array of pixel values.
+.IP \fIreds\fP 1i
+The array of red intensity values.
+.IP \fIgreens\fP 1i
+The array of green intensity values.
+.IP \fIblues\fP 1i
+The array of blue intensity values.
+.IP \fIstride\fP 1i
+The stride (in unsigned shorts) between intensity values in each
+array.
+.IP \fIdpy_handle\fP 1i
+The low level display handle. The meaning of this value
+depends on the lower level graphics library used.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

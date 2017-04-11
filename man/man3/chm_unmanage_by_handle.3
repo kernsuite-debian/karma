@@ -1,0 +1,32 @@
+.TH CHM_UNMANAGE_BY_HANDLE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+chm_unmanage_by_handle \- Terminate the management of a channel for activity.
+.SH SYNOPSIS
+.B #include <karma_chm.h>
+.sp
+.B void chm_unmanage_by_handle
+.sp
+(KManagedChannel mch)
+.SH DESCRIPTION
+Terminate the management of a channel for activity.
+.IP \fImch\fP 1i
+The KManagedChannel object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine will NOT close the channel.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

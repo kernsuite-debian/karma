@@ -1,0 +1,32 @@
+.TH CH_GET_BYTES_REMAINING_IN_DISC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_get_bytes_remaining_in_disc \- Return the number of bytes remaining in a disc file.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_get_bytes_remaining_in_disc
+.sp
+(Channel channel, uaddr *length)
+.SH DESCRIPTION
+Return the number of bytes remaining in a disc file.
+.IP \fIchannel\fP 1i
+The channel to test.
+.IP \fIlength\fP 1i
+The number of bytes readable is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE indicating a non-disc channel or a
+converter is registered.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

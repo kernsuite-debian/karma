@@ -1,0 +1,46 @@
+.TH CONTOUR_CREATE_VIEWABLE_SEQUENCE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_create_viewable_sequence \- Create a sequence of viewable contour images.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B KViewableContourImage * contour_create_viewable_sequence
+.sp
+(KContourImage *cimages, unsigned int num, KWorldCanvas canvas,
+KViewableContourImageGroup group)
+.SH DESCRIPTION
+This routine will create a sequence of viewable contour image
+objects from a sequence of contour images. At a later time, these viewable
+contour images may be made visible. This routine will not cause the canvas
+to be refreshed.
+.IP \fIcimage\fP 1i
+The contour images.
+.IP \fInum\fP 1i
+The number of contour images in the sequence.
+.IP \fIcanvas\fP 1i
+The world canvas onto which the viewable contour images may be
+drawn. Many viewable contour images may be associated with a single canvas.
+.IP \fIgroup\fP 1i
+The KViewableContourImageGroup to add the new objects too. If NULL,
+it is not added to any group.
+.SH RETURN VALUE
+A pointer to a dynamically allocated array of viewable contour
+image objects on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The KViewableContourImage objects will be automatically destroyed if
+the canvas is destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

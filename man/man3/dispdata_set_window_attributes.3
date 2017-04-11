@@ -1,0 +1,36 @@
+.TH DISPDATA_SET_WINDOW_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_set_window_attributes \- Set the attributes for a window.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_set_window_attributes
+.sp
+(KDisplayDataWindow window, ...)
+.SH DESCRIPTION
+Set the attributes for a window.
+.IP \fIwindow\fP 1i
+The KDisplayDataWindow.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+KDISPLAYDATA_WINDOW_ATT_END.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Some windows may be refreshed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

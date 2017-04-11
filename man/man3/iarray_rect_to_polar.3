@@ -1,0 +1,53 @@
+.TH IARRAY_RECT_TO_POLAR 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_rect_to_polar \- Transform an image from rectangular to polar co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_rect_to_polar
+.sp
+(iarray out, iarray in,
+double centre_x, double centre_y,
+double radius_major, double radius_minor,
+double rotation)
+.SH DESCRIPTION
+This routine will transform an input image with a rectangular
+co-ordinate system to an output image with a polar co-ordinate system.
+Lines of constant radius in the output image correspond to the points
+around an ellipse in the input image. The X axis in the output image will
+correspond to different radii bins, while the Y axis will correspond to
+different angle bins. The last X axis index will correspond to the outer
+ellipse.
+.IP \fIout\fP 1i
+The output 2D Intelligent Array of type K_FLOAT. The polar image is
+written here. This must be externally allocated.
+.IP \fIin\fP 1i
+The input 2D Intelligent Array of type K_FLOAT. This must contain the
+input rectangular image.
+.IP \fIcentre_x\fP 1i
+The X centre of the new polar co-ordinate system in the input.
+.IP \fIcentre_y\fP 1i
+The Y centre of the new polar co-ordinate system in the input.
+.IP \fIradius_major\fP 1i
+The radius of the major axis of the outer ellipse.
+.IP \fIradius_minor\fP 1i
+The radius of the minor axis of the outer ellipse.
+.IP \fIrotation\fP 1i
+The rotation of the ellipse, in degrees. An angle of 0 would
+mean the major axis is parallel to the input image X axis.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

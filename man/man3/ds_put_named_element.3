@@ -1,0 +1,36 @@
+.TH DS_PUT_NAMED_ELEMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_put_named_element \- Update a named element in a specified packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_put_named_element
+.sp
+(CONST packet_desc *pack_desc, char *packet,
+CONST char *name, double value[2])
+.SH DESCRIPTION
+Update a named element in a specified packet.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet.
+.IP \fIname\fP 1i
+The name of the element to update.
+.IP \fIvalue\fP 1i
+The value of the data.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

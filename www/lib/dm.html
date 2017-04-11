@@ -1,0 +1,201 @@
+<html><head><title>Package: dm</title></head> 
+<body>
+<center><h1>The "dm" Package</h1></center>    These routines are meant to provide a generic and simple to use descriptor
+    management facility (ie. event processing on pipes, connections and
+    terminals).
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=dm></a></table><h4>Functions</h4><table><tr><td><a href=dm.html#dm_register_managers>dm_register_managers</a></td><td>Register the managers.
+</td></tr>
+<tr><td><a href=dm.html#dm_manage>dm_manage</a></td><td>Manage a file descriptor for events.
+</td></tr>
+<tr><td><a href=dm.html#dm_unmanage>dm_unmanage</a></td><td>Terminate the management of a file descriptor for activity.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_setup>dm_native_setup</a></td><td>Setup descriptor management using native implementation.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_poll>dm_native_poll</a></td><td>Poll all managed descriptors for any activity.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_clear_activity_counter>dm_native_clear_activity_counter</a></td><td>Clear the idle counter.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_get_activity_count>dm_native_get_activity_count</a></td><td>Get the current activity count.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_clear_idle_timer>dm_native_clear_idle_timer</a></td><td>Clear the idle timer.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_get_idle_time>dm_native_get_idle_time</a></td><td>Get the idle time in microseconds.
+</td></tr>
+<tr><td><a href=dm.html#dm_native_wait_input>dm_native_wait_input</a></td><td>Block waiting for input on a file descriptor.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=dm.html#dm_PROTO_input_func>dm_PROTO_input_func</a></td><td>Input event callback.
+</td></tr>
+<tr><td><a href=dm.html#dm_PROTO_close_func>dm_PROTO_close_func</a></td><td>Close event callback.
+</td></tr>
+<tr><td><a href=dm.html#dm_PROTO_output_func>dm_PROTO_output_func</a></td><td>Output event callback.
+</td></tr>
+<tr><td><a href=dm.html#dm_PROTO_exception_func>dm_PROTO_exception_func</a></td><td>Exception event callback.
+</td></tr>
+<tr><td><a href=dm.html#dm_PROTO_inode_write_func>dm_PROTO_inode_write_func</a></td><td>Inode write event callback.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=dm.html#dm_EVENTS>dm_EVENTS</a></td><td>List of event types
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=dm_register_managers></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dm_register_managers</b><i>    ( KManagedDescriptor (*manage_func)
+			    (int fd, void *info, flag auto_close,va_list argp),
+			    void *(*unmanage_func)
+			    (int fd, KManagedDescriptor md) )
+</i><br><p>    Register the managers.
+<p><b>Parameters:</b><ul><li><i>manage_func :</i> 
+    The function which will be called to manage descriptors. The
+    interface to this function is the same as <a href=dm.html#dm_manage>dm_manage</a>.
+<br><li><i>unmanage_func :</i> 
+    The function which will be called to manage descriptors.
+    The interface to this function is the same as <a href=dm.html#dm_unmanage>dm_unmanage</a>.
+<br></ul><b>Returns:</b>     Nothing. On failure the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_manage></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KManagedDescriptor
+ <b>dm_manage</b><i>    (int fd, void *info, flag auto_close, ...)
+</i><br><p>    This routine will manage a file descriptor for activity by
+    registering callback routines. Only one set of callbacks may be registered
+    per file descriptor.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor to manage.
+<br><li><i>info :</i> 
+    The initial value of the arbitrary pointer associated with the
+    managed descriptor. This pointer may be modified by the callback routines.
+<br><li><i>auto_close :</i> 
+    If TRUE, the descriptor is automatically closed upon a closure
+    event.
+<br><li><i>... :</i> 
+    The optional list of parameter event-key event-function pairs
+    must follow. This list must be terminated with the value
+    KARMA_FD_EVENT_END. See <a href=dm.html#dm_EVENTS>dm_EVENTS</a> for the list of attributes.
+<br></ul><b>Returns:</b>     A KManagedDescriptor object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_unmanage></a> void *
+ <b>dm_unmanage</b><i>    (int fd, KManagedDescriptor md)
+</i><br><p>    Terminate the management of a file descriptor for activity.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The descriptor to unmanage. This must always be valid.
+<br><li><i>md :</i> 
+    The entry to unmanage. If this is NULL then <em>fd</em> is used.
+<br></ul><b>Returns:</b>     The arbitrary pointer passed when the descriptor was managed.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The routine will NOT close the descriptor (nor does it assume the
+    descriptor is open).
+</ul><p><hr> <a name=dm_native_setup></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dm_native_setup</b><i>    ()
+</i><br><p>    Setup descriptor management using native implementation.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_poll></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dm_native_poll</b><i>    (long timeout_ms)
+</i><br><p>    Poll all managed descriptors for any activity.
+<p><b>Parameters:</b><ul><li><i>timeout_ms :</i> 
+    The time (in milliseconds) to poll. If this is less than 0
+    the routine will poll forever (until some activity occurs or a signal is
+    caught).
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_clear_activity_counter></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dm_native_clear_activity_counter</b><i>    ()
+</i><br><p>    Clear the idle counter.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_get_activity_count></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned long
+ <b>dm_native_get_activity_count</b><i>    ()
+</i><br><p>    This function will get the current activity count. This is the
+    count of the number of times the OS has detected activity on one or more
+    file descriptors.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     The activity count.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_clear_idle_timer></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>dm_native_clear_idle_timer</b><i>    ()
+</i><br><p>    Clear the idle timer.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_get_idle_time></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned long
+ <b>dm_native_get_idle_time</b><i>    ()
+</i><br><p>    Get the idle time in microseconds.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     The idle time.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dm_native_wait_input></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>dm_native_wait_input</b><i>    (int fd, int timeout)
+</i><br><p>    Block waiting for input on a file descriptor.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor.
+<br><li><i>timeout :</i> 
+    The time to wait for (in milliseconds). If this is less than 0
+    the function waits indefinately.
+<br></ul><b>Returns:</b>     TRUE on activity, else FALSE on error/timeout.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=dm_PROTO_input_func></a> flag
+ <b>dm_PROTO_input_func</b><i>    (int fd, void **info)
+</i><br><p>    This routine is called when new input occurs on a descriptor.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor.
+<br><li><i>info :</i> 
+    A pointer to the arbitrary information pointer. The pointer
+    written here will persist until the descriptor is unmanaged (or a
+    subsequent callback routine changes it).
+<br></ul><b>Returns:</b>     TRUE if the descriptor is to remain managed and open, else it
+    returns FALSE (indicating that the descriptor is to be unmanaged and
+    closed). This routine MUST NOT unmanage or close the descriptor.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The <em>close_func</em> will be called if this routine returns FALSE.
+</ul><p><hr> <a name=dm_PROTO_close_func></a> void
+ <b>dm_PROTO_close_func</b><i>    (int fd, void *info)
+</i><br><p>    This routine is called when a descriptor closes.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor. The descriptor MUST be capable of detecting
+    closure if this routine is supplied (i.e. this routine cannot be
+    supplied for docks).
+<br><li><i>info :</i> 
+    The arbitrary pointer for the managed descriptor.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     This routine MUST NOT unmanage the descriptor. The descriptor
+    will be automatically unmanaged and deleted upon closure (even if no
+    <em>close_func</em> is specified).
+<li>     Any unread data in the descriptor will be lost upon closure. The
+    call to this function is the last chance to read this data.
+</ul><p><hr> <a name=dm_PROTO_output_func></a> flag
+ <b>dm_PROTO_output_func</b><i>    (int fd, void **info)
+</i><br><p>    This routine is called when a descriptor becomes ready for
+    writing.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor.
+<br><li><i>info :</i> 
+    A pointer to the arbitrary information pointer. The pointer
+    written here will persist until the descriptor is unmanaged (or a
+    subsequent callback routine changes it).
+<br></ul><b>Returns:</b>     TRUE if the descriptor is to remain managed and open, else it
+    returns FALSE (indicating that the descriptor is to be unmanaged and
+    closed). This routine MUST NOT unmanage or close the descriptor.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The <em>close_func</em> will be called if this routine returns FALSE.
+</ul><p><hr> <a name=dm_PROTO_exception_func></a> flag
+ <b>dm_PROTO_exception_func</b><i>    (int fd, void **info)
+</i><br><p>    This routine is called when an exception occurs on a descriptor.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor.
+<br><li><i>info :</i> 
+    A pointer to the arbitrary information pointer. The pointer
+    written here will persist until the descriptor is unmanaged (or a
+    subsequent callback routine changes it).
+<br></ul><b>Returns:</b>     TRUE if the descriptor is to remain managed and open, else it
+    returns FALSE (indicating that the descriptor is to be unmanaged and
+    closed). This routine MUST NOT unmanage or close the descriptor.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The <em>close_func</em> will be called if this routine returns FALSE.
+</ul><p><hr> <a name=dm_PROTO_inode_write_func></a> flag
+ <b>dm_PROTO_inode_write_func</b><i>    (int fd, void **info)
+</i><br><p>    This routine is called when an inode is written to.
+<p><b>Parameters:</b><ul><li><i>fd :</i> 
+    The file descriptor.
+<br><li><i>info :</i> 
+    A pointer to the arbitrary information pointer. The pointer
+    written here will persist until the descriptor is unmanaged (or a
+    subsequent callback routine changes it).
+<br></ul><b>Returns:</b>     TRUE if the descriptor is to remain managed and open, else it
+    returns FALSE (indicating that the descriptor is to be unmanaged and
+    closed). This routine MUST NOT unmanage or close the descriptor.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The <em>close_func</em> will be called if this routine returns FALSE.
+</ul><p><hr><center><h2>Tables</h2></center><hr> <a name=dm_EVENTS><b>dm_EVENTS</b></a> List of event types
+<p> <table><tr><td>Name                         </td><td>Function Prototype             </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>KARMA_FD_EVENT_END           </td><td>                               </td><td>End of varargs list
+</td></tr><tr><td>KARMA_FD_EVENT_INPUT         </td><td><a href=dm.html#dm_PROTO_input_func>dm_PROTO_input_func</a>        </td><td>
+</td></tr><tr><td>KARMA_FD_EVENT_OUTPUT        </td><td><a href=dm.html#dm_PROTO_output_func>dm_PROTO_output_func</a>       </td><td>
+</td></tr><tr><td>KARMA_FD_EVENT_EXCEPTION     </td><td><a href=dm.html#dm_PROTO_exception_func>dm_PROTO_exception_func</a>    </td><td>
+</td></tr><tr><td>KARMA_FD_EVENT_CLOSE         </td><td><a href=dm.html#dm_PROTO_close_func>dm_PROTO_close_func</a>        </td><td>
+</td></tr><tr><td>KARMA_FD_EVENT_INODE_WRITE   </td><td><a href=dm.html#dm_PROTO_inode_write_func>dm_PROTO_inode_write_func</a>  </td><td>
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

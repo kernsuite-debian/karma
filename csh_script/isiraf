@@ -1,0 +1,13 @@
+#! /bin/csh -f
+
+# If the first two characters contain "..", it's a backup header. Ignore
+if (`echo $argv[1]:t | cut -c1-2` == "..") then
+    exit 16
+endif
+
+# If IRAF isn't in the PATH, ignore
+if (`which cl | fgrep -c "Command not found"` > "0") then
+    exit 16
+endif
+
+exit 0

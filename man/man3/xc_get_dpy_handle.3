@@ -1,0 +1,31 @@
+.TH XC_GET_DPY_HANDLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xc_get_dpy_handle \- Generate a display handle for later use.
+.SH SYNOPSIS
+.B #include <karma_xc.h>
+.sp
+.B Kdisplay xc_get_dpy_handle
+.sp
+(Display *display, Colormap cmap)
+.SH DESCRIPTION
+Generate a display handle for later use.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIcmap\fP 1i
+The X colourmap ID.
+.SH RETURN VALUE
+A pointer to the display handle on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH WCS_ASTRO_GET_INCREMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_get_increment \- Get increment value for an axis.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B double wcs_astro_get_increment
+.sp
+(KwcsAstro ap, CONST char *name)
+.SH DESCRIPTION
+Get increment value for an axis.
+.IP \fIap\fP 1i
+The KwcsAstro object.
+.IP \fIname\fP 1i
+The axis name.
+.SH RETURN VALUE
+The increment along the axis. This is prior to projection.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

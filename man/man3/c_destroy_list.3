@@ -1,0 +1,30 @@
+.TH C_DESTROY_LIST 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+c_destroy_list \- Destroy a callback list.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B void c_destroy_list
+.sp
+(KCallbackList list)
+.SH DESCRIPTION
+This routine will unregister all callbacks in a callback list and
+then destroys the list.
+.IP \fIlist\fP 1i
+The callback list. This may be NULL (indicating an empty list).
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

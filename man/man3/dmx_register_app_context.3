@@ -1,0 +1,31 @@
+.TH DMX_REGISTER_APP_CONTEXT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dmx_register_app_context \- Register Xt application context for event management.
+.SH SYNOPSIS
+.B #include <karma_dmx.h>
+.sp
+.B void dmx_register_app_context
+.sp
+(XtAppContext context)
+.SH DESCRIPTION
+This routine will register the application context to use for
+descriptor management with the Xt toolkit. Once this is called the
+application may then call routines such as <-dm_manage-> and <-chm_manage->
+.IP \fIcontext\fP 1i
+The application context.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

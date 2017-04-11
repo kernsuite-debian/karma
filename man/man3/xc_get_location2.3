@@ -1,0 +1,38 @@
+.TH XC_GET_LOCATION2 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+xc_get_location2 \- Determine the location of the graphics display being used.
+.SH SYNOPSIS
+.B #include <karma_xc.h>
+.sp
+.B void xc_get_location2
+.sp
+(Kdisplay dpy_handle, unsigned long *serv_hostaddr,
+unsigned long *serv_display_num, unsigned long *cmap_id)
+.SH DESCRIPTION
+Determine the location of the graphics display being used.
+.IP \fIdpy_handle\fP 1i
+The low level display handle. The meaning of this value
+depends on the lower level graphics library used.
+.IP \fIserv_hostaddr\fP 1i
+The Internet address of the host on which the display is
+running will be written here.
+.IP \fIserv_display_num\fP 1i
+The number of the display will be written here.
+.IP \fIcmap_id\fP 1i
+The ID of the hardware colourmap is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

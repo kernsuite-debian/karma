@@ -1,0 +1,31 @@
+.TH MD_MD5_FINAL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+md_md5_final \- Close an MD5 context.
+.SH SYNOPSIS
+.B #include <karma_md.h>
+.sp
+.B void md_md5_final
+.sp
+(MD5Context ctx, unsigned char digest[16])
+.SH DESCRIPTION
+Close an MD5 context.
+.IP \fIctx\fP 1i
+The MD5 context.
+.IP \fIdigest\fP 1i
+The message digest is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH DM_REGISTER_MANAGERS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dm_register_managers \- Register the managers.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B void dm_register_managers
+.sp
+( KManagedDescriptor (*manage_func)
+(int fd, void *info, flag auto_close,va_list argp),
+void *(*unmanage_func)
+(int fd, KManagedDescriptor md) )
+.SH DESCRIPTION
+Register the managers.
+.IP \fImanage_func\fP 1i
+The function which will be called to manage descriptors. The
+interface to this function is the same as <-dm_manage->.
+.IP \fIunmanage_func\fP 1i
+The function which will be called to manage descriptors.
+The interface to this function is the same as <-dm_unmanage->.
+.SH RETURN VALUE
+Nothing. On failure the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,58 @@
+.TH PSW_VA_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_va_create \- Create a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B PostScriptPage psw_va_create
+.sp
+(Channel channel, double hoffset, double voffset,
+double hsize, double vsize, flag portrait,
+flag eps, ...)
+.SH DESCRIPTION
+This routine will create a PostScriptPage object ready for
+writing PostScript commands to. The routine automatically writes the
+PostScript header.
+.IP \fIchannel\fP 1i
+The channel to write to.
+.IP \fIhoffset\fP 1i
+The horizontal offset (in centimeters) of the co-ordinate origin.
+.IP \fIvoffset\fP 1i
+The vertical offset (in centimeters) of the co-ordinate origin.
+.IP \fIhsize\fP 1i
+The desired horizontal size of the co-ordinate system (in
+centimeters).
+.IP \fIvsize\fP 1i
+The desired vertical size of the co-ordinate system (in
+centimeters).
+.IP \fIportrait\fP 1i
+If TRUE, objects will be drawn in portrait mode (i.e. the x-axis
+will be horizontal), else they will be drawn in landscape mode (i.e. the
+x-axis will be vertical).
+.IP \fIeps\fP 1i
+If TRUE the file format will be Encapsulated PostScript, else
+regular PostScript is written.
+.IP \fI...\fP 1i
+The optional list of parameter attribute-key attribute-value
+pairs must follow. This list must be terminated with the value
+PSW_ATT_END. See <-psw_ATTRIBUTES-> for a list of defined attributes.
+.SH RETURN VALUE
+A PostScriptPage object on success, else NULL
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+All subsequent objects drawn must lie in the range (0.0, 0.0) to
+(1.0, 1.0)
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

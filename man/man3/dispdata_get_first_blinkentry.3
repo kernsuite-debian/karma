@@ -1,0 +1,30 @@
+.TH DISPDATA_GET_FIRST_BLINKENTRY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_first_blinkentry \- Get the first blink entry for a blink state.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataBlinkEntry dispdata_get_first_blinkentry
+.sp
+(KDisplayDataClassBlinkState class_blinkstate)
+.SH DESCRIPTION
+Get the first blink entry for a blink state.
+.IP \fIclass_blinkstate\fP 1i
+The KDisplayDataClassBlinkState object.
+.SH RETURN VALUE
+A KDisplayDataBlinkEntry object. NULL may be returned if there
+are no blink state entries (i.e. no data sets loaded for this class).
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,32 @@
+.TH ST_CHR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_chr \- Search a string for the first occurrence of a character.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B CONST char * st_chr
+.sp
+(CONST char *string, char c)
+.SH DESCRIPTION
+Search a string for the first occurrence of a character.
+.IP \fIstring\fP 1i
+The string to search.
+.IP \fIc\fP 1i
+The character to search for.
+.SH RETURN VALUE
+A pointer to the found character in the string. If no match is
+found, NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

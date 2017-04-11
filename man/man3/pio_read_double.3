@@ -1,0 +1,33 @@
+.TH PIO_READ_DOUBLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+pio_read_double \- Read double precision floating point data from a channel object.
+.SH SYNOPSIS
+.B #include <karma_pio.h>
+.sp
+.B flag pio_read_double
+.sp
+(Channel channel, double *data)
+.SH DESCRIPTION
+Read double precision floating point data from a channel object.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIdata\fP 1i
+The data will be written here. This will be written in host natural
+format. The data will be converted from IEEE network format prior to
+writing.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

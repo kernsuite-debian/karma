@@ -1,0 +1,44 @@
+.TH DS_ALLOC_PACKET_SUBDATA 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_packet_subdata \- Allocate packet sub-data.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_packet_subdata
+.sp
+(CONST packet_desc *pack_desc, char *packet,
+flag clear, flag array_alloc)
+.SH DESCRIPTION
+This routine will recursively allocate space for sub arrays of
+packets and linked list headers for a packet. The data space for the packet
+is NOT allocated, it must be supplied.
+The routine is quite robust, cleanly bypassing missing sections of the
+descriptor hierarchy, and deallocating any memory allocated after an
+error occurs.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet data.
+.IP \fIclear\fP 1i
+If TRUE, then the routine will initialise (set to zero) all the
+sub-structure data.
+.IP \fIarray_alloc\fP 1i
+If FALSE, and an array is an atomic array, then instances of
+that array will NOT be allocated, and a NULL pointer will be written into
+the parent element, else the array will be allocated.
+.SH RETURN VALUE
+TRUE if all memory could be allocated, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

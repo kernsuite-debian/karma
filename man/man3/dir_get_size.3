@@ -1,0 +1,36 @@
+.TH DIR_GET_SIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dir_get_size \- Find number of entries in a directory.
+.SH SYNOPSIS
+.B #include <karma_dir.h>
+.sp
+.B unsigned long dir_get_size
+.sp
+(KDir dir, unsigned int skip_control,
+unsigned long *max_width)
+.SH DESCRIPTION
+Find number of entries in a directory.
+.IP \fIdir\fP 1i
+The directory object. This is automatically rewound.
+.IP \fIskip_control\fP 1i
+Determines whether or not to skip the special files: "."
+and "..". See <-dir_SKIP_VALUES-> for a list of legal values.
+.IP \fImax_width\fP 1i
+The maximum width of the entries is written here. This may be
+NULL.
+.SH RETURN VALUE
+The number of entries in the directory.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

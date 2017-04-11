@@ -1,0 +1,36 @@
+.TH KWIN_ASSOCIATE_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_associate_object \- Associate an object with a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_associate_object
+.sp
+(KPixCanvas canvas, CONST void *key,
+CONST void *object, flag replace)
+.SH DESCRIPTION
+Associate an object with a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIkey\fP 1i
+The key for the associated data object.
+.IP \fIobject\fP 1i
+The object pointer.
+.IP \fIflag\fP 1i
+If TRUE, an existing object with the same key is replaced.
+.SH RETURN VALUE
+Nothing. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,55 @@
+.TH OVERLAY_ARC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_arc \- Add a rotated ellipse to an overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_arc
+.sp
+(KOverlayList olist,
+unsigned int ctype, double cx, double cy,
+unsigned int rtype, double rx, double ry,
+double rotation, CONST char *colourname, flag filled)
+.SH DESCRIPTION
+Add a rotated ellipse to an overlay list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIctype\fP 1i
+The type of the centre co-ordinate. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIcx\fP 1i
+The horizontal position of the centre co-ordinate.
+.IP \fIcy\fP 1i
+The vertical position of the centre co-ordinate.
+.IP \fIrtype\fP 1i
+The type of the radius co-ordinate. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIrx\fP 1i
+The horizontal radius.
+.IP \fIry\fP 1i
+The vertical radius.
+.IP \fIrotation\fP 1i
+The rotation of the ellipse in degrees. A rotation of 0 degrees
+corresponds to (x > 0, y = 0). A rotation of 90 degrees corresponds to
+(x = 0, y > 0). In other words, the angle increases anti-clockwise from the
++ve X axis (if +X is right-going).
+.IP \fIcolourname\fP 1i
+The colourname.
+.IP \fIfilled\fP 1i
+If TRUE the ellipse will be filled.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

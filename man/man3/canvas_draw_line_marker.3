@@ -1,0 +1,39 @@
+.TH CANVAS_DRAW_LINE_MARKER 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_draw_line_marker \- Draw a line marker.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_draw_line_marker
+.sp
+(KWorldCanvas canvas,
+KPixCanvasRefreshArea *area,
+double lpos, flag pos_is_vertical)
+.SH DESCRIPTION
+Draw a line marker.
+.IP \fIcanvas\fP 1i
+The world canvas to draw to.
+.IP \fIarea\fP 1i
+State information for undrawing the old marker. This is updated.
+.IP \fIlpos\fP 1i
+The linear co-ordinate of the marker.
+.IP \fIpos_is_vertical\fP 1i
+If TRUE, the position is a vertical co-ordinate and thus
+the marker will be horizontal, else the position is a horizontal
+co-ordinate and the marker will be vertical.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

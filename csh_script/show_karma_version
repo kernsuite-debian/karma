@@ -1,0 +1,14 @@
+#! /bin/csh -f
+
+echo "Karma version from KARMA_VERSION environment variable:   $KARMA_VERSION"
+
+set _versionfile = $KARMAINCLUDEPATH/k_version.h
+set tmp = `fgrep KARMA_VERSION $_versionfile | tr '"' ' '`
+set karma_version = "$tmp[$#tmp]"
+
+echo "Karma version from $KARMAINCLUDEPATH/k_version.h: $karma_version"
+
+if ("$KARMA_VERSION" != "$karma_version") then
+    echo "WARNING: these should be the same. Use the update_karma_version"
+    echo "programme to fix this"
+endif

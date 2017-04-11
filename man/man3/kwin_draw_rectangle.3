@@ -1,0 +1,41 @@
+.TH KWIN_DRAW_RECTANGLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_rectangle \- Draw a single rectangle onto a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_rectangle
+.sp
+(KPixCanvas canvas, double x, double y,
+double width, double height,
+unsigned long pixel_value)
+.SH DESCRIPTION
+Draw a single rectangle onto a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIx\fP 1i
+The horizontal offset of the rectangle.
+.IP \fIy\fP 1i
+The vertical offset of the rectangle.
+.IP \fIwidth\fP 1i
+The width of the rectangle. The point <<x + width>> is a vertex.
+.IP \fIheight\fP 1i
+The height of the rectangle. The point <<y + height>> is a vertex.
+.IP \fIpixel_value\fP 1i
+The pixel value to use.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

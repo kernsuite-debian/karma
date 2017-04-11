@@ -1,0 +1,29 @@
+.TH XI_CHECK_SHARED_IMAGES_AVAILABLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xi_check_shared_images_available \- Test if shared memory XImages may be use with an X server.
+.SH SYNOPSIS
+.B #include <karma_xi.h>
+.sp
+.B flag xi_check_shared_images_available
+.sp
+(Display *display)
+.SH DESCRIPTION
+Test if shared memory XImages may be use with an X server.
+.IP \fIdisplay\fP 1i
+The X server.
+.SH RETURN VALUE
+TRUE if shared images are available, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

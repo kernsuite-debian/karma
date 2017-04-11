@@ -1,0 +1,45 @@
+.TH XV_GET_VINFOS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xv_get_vinfos \- Get supported visuals available on a screen.
+.SH SYNOPSIS
+.B #include <karma_xv.h>
+.sp
+.B void xv_get_vinfos
+.sp
+(Screen *screen, XVisualInfo **pseudocolour,
+XVisualInfo **truecolour, XVisualInfo **directcolour)
+.SH DESCRIPTION
+Get supported visuals available on a screen.
+.IP \fIscreen\fP 1i
+The X Window screen.
+.IP \fIpseudocolour\fP 1i
+A PseudoColour XVisualInfo pointer will be written here. If
+this is NULL, nothing is written here. If no PseudoColour visual is
+supported, NULL is written here.
+.IP \fItruecolour\fP 1i
+A TrueColour XVisualInfo pointer will be written here. If this
+is NULL, nothing is written here. If no TrueColour visual is supported,
+NULL is written here.
+.IP \fIdirectcolour\fP 1i
+A DirectColour XVisualInfo pointer will be written here. If
+this is NULL, nothing is written here. If no DirectColour visual is
+supported, NULL is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The XVisualInfo structures returned must be freed by XFree()
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

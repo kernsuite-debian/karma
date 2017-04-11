@@ -1,0 +1,32 @@
+.TH IARRAY_DIM_INDEX 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_dim_index \- This routine will find the index of a named dimension.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B unsigned int iarray_dim_index
+.sp
+(iarray array, CONST char *name)
+.SH DESCRIPTION
+This routine will find the index of a named dimension.
+.IP \fIarray\fP 1i
+The array.
+.IP \fIname\fP 1i
+The name of the dimension.
+.SH RETURN VALUE
+The dimension index if found, else the number of dimension in the
+array is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

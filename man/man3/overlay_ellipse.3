@@ -1,0 +1,50 @@
+.TH OVERLAY_ELLIPSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_ellipse \- Add an ellipse to an overlay list. See also <-overlay_ellipses->
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_ellipse
+.sp
+(KOverlayList olist,
+unsigned int ctype,double cx, double cy,
+unsigned int rtype, double rx, double ry,
+CONST char *colourname, flag filled)
+.SH DESCRIPTION
+Add an ellipse to an overlay list. See also <-overlay_ellipses->
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIctype\fP 1i
+The type of the centre co-ordinate. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIcx\fP 1i
+The horizontal position of the centre co-ordinate.
+.IP \fIcy\fP 1i
+The vertical position of the centre co-ordinate.
+.IP \fIrtype\fP 1i
+The type of the radius co-ordinate. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIrx\fP 1i
+The horizontal radius.
+.IP \fIry\fP 1i
+The vertical radius.
+.IP \fIcolourname\fP 1i
+The colourname.
+.IP \fIfilled\fP 1i
+If TRUE the ellipse will be filled.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH M_ABORT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_abort \- Print memory error notification message and abort.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_abort
+.sp
+(char *name, char *reason)
+.SH DESCRIPTION
+Print memory error notification message and abort.
+.IP \fIfunction_name\fP 1i
+The name of the function requesting the memory.
+.IP \fIreason\fP 1i
+The reason for the memory allocation.
+.SH RETURN VALUE
+Nothing. The process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

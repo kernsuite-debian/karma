@@ -1,0 +1,50 @@
+.TH IARRAY_ADD_AND_SCALE2 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_add_and_scale2 \- Add Intelligent Arrays and scale.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_add_and_scale2
+.sp
+(iarray out, iarray inp1, iarray inp2,
+double scale[2], double offset[2], flag magnitude)
+.SH DESCRIPTION
+This routine will add two "Intelligent Array" to each other and
+scales the result. The sizes of the two input arrays and the output must be
+identical.
+The routine performs the following computation:
+OUT = INP1 + INP2 * scale + offset
+The routine will automatically perform type conversions if necessary.
+.IP \fIout\fP 1i
+The output Intelligent Array.
+.IP \fIinp1\fP 1i
+The first input Intelligent Array.
+.IP \fIinp2\fP 1i
+The second input Intelligent Array.
+.IP \fIscale\fP 1i
+The complex scale value.
+.IP \fIoffset\fP 1i
+The complex offset value.
+.IP \fImagnitude\fP 1i
+If TRUE then when converting from a complex to a real data
+type, the magnitude is taken, else the real component is copied.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+When converting from a real to a complex data type, the imaginary
+component is set to zero.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

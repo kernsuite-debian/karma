@@ -1,0 +1,31 @@
+.TH CH_GET_QOS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_get_qos \- Get the Quality of Service parameters for a connection.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B void ch_get_qos
+.sp
+(Channel channel, struct karma_qos *qos)
+.SH DESCRIPTION
+Get the Quality of Service parameters for a connection.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIqos\fP 1i
+The QoS parameters will be written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,67 @@
+.TH DS_EASY_ALLOC_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_easy_alloc_array \- Allocate a data structure with a simple array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B char * ds_easy_alloc_array
+.sp
+(multi_array **multi_desc, unsigned int num_dim,
+CONST uaddr *lengths, CONST double *first_arr,
+CONST double *last_arr,
+CONST char **names, unsigned int data_type,
+CONST char *data_name)
+.SH DESCRIPTION
+This routine will allocate memory for a multi-dimensional,
+regular array, and the required headers and the multi-array header. The
+array is NOT tiled nor are any address offsets computed. The data packet
+that may be stored in the array is a single, atomic datum.
+.IP \fImulti_desc\fP 1i
+The multi-array structure pointer to the created structure is
+written here.
+.IP \fInum_dim\fP 1i
+The number of dimensions of the array.
+.IP \fIlengths\fP 1i
+The array of dimension lengths.
+.IP \fIfirst_arr\fP 1i
+An array of first co-ordinate values for each dimension.
+.IP \fIlast_arr\fP 1i
+An array of last co-ordinate values for each dimension.
+.IP \fInames\fP 1i
+The array of dimension names. If this is NULL, the names "Axis 0",
+"Axis 1", ...etc will be used. The character arrays are copied, so the
+arrays of characters and the array of pointers may be subsequently
+deallocated.
+.IP \fIdata_type\fP 1i
+The type of the elements in the array. See
+<-ds_KARMA_DATA_TYPES-> for a list of legal values.
+.IP \fIdata_name\fP 1i
+The name of the data type. If this is NULL, then the name
+"Data Value" will be used. The name string is copied, thus the memory used
+for the input string may be subsequently deallocated.
+.SH RETURN VALUE
+A pointer to the start of the array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+This routine does NOT create a Karma arrayfile. This must be done
+with a call to <-dsxfr_put_multi->.
+.sp
+If either of <<first_arr>> or <<last_arr>> is NULL, the range of the
+co-ordinates will be the lengths of the dimensions minus 1. If one of the
+pointers is NULL, the other array is used to tie one end of the range for
+each dimension. If both pointers are NULL,the minima are 0.0 and the maxima
+are the lengths minus 1.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

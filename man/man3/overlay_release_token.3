@@ -1,0 +1,33 @@
+.TH OVERLAY_RELEASE_TOKEN 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_release_token \- Release the token to the master.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_release_token
+.sp
+(KOverlayList olist)
+.SH DESCRIPTION
+Release the token to the master.
+.IP \fIolist\fP 1i
+The overlay list object.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the list is not a slave and does not have the token, the process
+aborts with an error message.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

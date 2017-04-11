@@ -1,0 +1,32 @@
+.TH FOREIGN_PNM_READ_TYPE 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_pnm_read_type \- Read the type of a PNM file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B unsigned int foreign_pnm_read_type
+.sp
+(Channel channel, flag *binary)
+.SH DESCRIPTION
+Read the type of a PNM file.
+.IP \fIchannel\fP 1i
+The channel to read from.
+.IP \fIbinary\fP 1i
+The value TRUE is written here if the file is in binary format,
+else FALSE is written here.
+.SH RETURN VALUE
+The type of PNM file.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

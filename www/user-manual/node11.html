@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>kpolar: regridding to polar co-ordinates</TITLE>
+<META NAME="description" CONTENT="kpolar: regridding to polar co-ordinates">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html409" HREF="node12.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html407" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html401" HREF="node10.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html411" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html412" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html410" HREF="node12.html">11 Superimposing Images</A>
+<B>Up:</B> <A NAME="tex2html408" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html402" HREF="node10.html">koords: interactive co-ordinate fitting</A>
+<BR> <P>
+<H1><A NAME="SECTION001100000000000000000">kpolar: regridding to polar co-ordinates</A></H1>
+<P>
+<A NAME="chapterkpolar">&#160;</A><A NAME="1758">&#160;</A>
+<P>
+This tool allows you to regrid an image using a rectangular to polar
+transformation. It allows you to see the azimuthal variation of
+intensity around a given centre. This can be useful for looking at the
+(optical) structure of galaxies, or doing close inspection of a dirty
+beam (quite useful when doing radio astronomy).
+<P>
+To use this programme, all you need is an image file, which you load
+with the Files button. Once your image is loaded, you need to define
+an ellipse:
+<UL>
+<LI> Press the right mouse button to define the centre, then drag the
+mouse while keeping the button pressed, to define the size and shape
+of the ellipse
+<LI> If you press and release the 'r' key (still keeping the mouse
+button down) this will toggle on `rotation mode' so that now when you
+drag the mouse the  ellipse will rotate. Press 'r' again to turn off
+rotation mode so you  can continue changing the size and shape of the
+ellipse
+<LI> Once you are happy with your ellipse, release the mouse button
+and the polar image will be computed and displayed in the Polar
+Window. The vertical axis is azimuth (angle) and the horizontal axis
+is radius
+<P>
+</UL>
+<P>
+Please note: this is an experimental programme that (at present) does
+this transformation in a simpleminded way. It works by binning the
+input image in radius and azimuth directions using a set of concentric
+elliptical annuli.  Each annulus has a width of one pixel.  Some
+points that you may wish to consider when using this task are listed
+below:
+<P>
+<UL>
+<LI> The programme does simple nearest-neighbour interpolation to
+produce the output intensities; the absolute flux scale will probably
+not be perfectly preserved
+<LI> No 'world' (i.e. angle in degrees, radius in arcseconds)
+co-ordinate system is attached to the image. No allowance is made for
+images which have different scales on their x and y axes
+<LI> The centre position of the ellipses is not fitted in any way, it
+is exactly where you place it
+<P>
+</UL>
+<P>
+Feedback on improvements to this task (including code!) is welcome.
+<P>
+<HR><A NAME="tex2html409" HREF="node12.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html407" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html401" HREF="node10.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html411" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html412" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html410" HREF="node12.html">11 Superimposing Images</A>
+<B>Up:</B> <A NAME="tex2html408" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html402" HREF="node10.html">koords: interactive co-ordinate fitting</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

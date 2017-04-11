@@ -1,0 +1,33 @@
+.TH CONTOUR_DESTROY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_destroy \- Destroy contour image.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B void contour_destroy
+.sp
+(KContourImage cimage)
+.SH DESCRIPTION
+This routine will destroy a contour image.
+.IP \fIcimage\fP 1i
+The contour image.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The associated <<multi_array>> descriptor is also deallocated (or
+at least, the attachment count is decreased).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

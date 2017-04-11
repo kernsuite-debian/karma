@@ -1,0 +1,38 @@
+.TH DSRW_READ_PACKETS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_read_packets \- Read the binary representation of many data packets.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_read_packets
+.sp
+(Channel channel, CONST packet_desc *descriptor,
+char *dest, unsigned long num_packets)
+.SH DESCRIPTION
+This routine will read the binary representation many data
+packets from a channel object. The routine will recursively read in sub
+arrays and linked lists.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIdescriptor\fP 1i
+The descriptor for the packets.
+.IP \fIdest\fP 1i
+The packet data will be written here.
+.IP \fInum_packets\fP 1i
+The number of packets to read.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH IC_WRITE_DATAFILTER_ICON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ic_write_datafilter_icon \- Write the icon pixmap required for generic data filter modules.
+.SH SYNOPSIS
+.B #include <karma_ic.h>
+.sp
+.B void ic_write_datafilter_icon
+.sp
+(Display *display, Pixmap pixmap,
+int width, int height)
+.SH DESCRIPTION
+Write the icon pixmap required for generic data filter modules.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIpixmap\fP 1i
+The pixmap to write to.
+.IP \fIwidth\fP 1i
+The width of the icon.
+.IP \fIheight\fP 1i
+The height of the icon.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

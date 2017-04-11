@@ -1,0 +1,30 @@
+.TH DISPDATA_GET_NEXT_DATAOBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_next_dataobject \- Get next data object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataObject dispdata_get_next_dataobject
+.sp
+(KDisplayDataObject dataobject)
+.SH DESCRIPTION
+Get next data object.
+.IP \fIdataobject\fP 1i
+The current data object.
+.SH RETURN VALUE
+A KDisplayDataObject object. NULL is returned if there are no
+more data objects.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

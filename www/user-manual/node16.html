@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>C Resources</TITLE>
+<META NAME="description" CONTENT="C Resources">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html469" HREF="node17.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html467" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html461" HREF="node15.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html471" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html472" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html470" HREF="node17.html">D Annotation File Format</A>
+<B>Up:</B> <A NAME="tex2html468" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html462" HREF="node15.html">B Setting up</A>
+<BR> <P>
+<H1><A NAME="SECTION001600000000000000000">C Resources</A></H1>
+<P>
+<A NAME="resources">&#160;</A><A NAME="1989">&#160;</A>
+<P>
+All the GUI visualisation tools define a number of <EM>resources</EM>
+which control the appearance and functionality of the tools. Many of
+these resources are common to other non-visualisation programmes for
+the X Window system, such as the <B>&lt;xterm&gt;</B> programme. Listed
+below are those resources which are specific to Karma visualisation
+tools. These resources may be set in your <TT><IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">/.Xdefaults</TT>
+file, which is the standard file into which to put your personal
+resources. Some systems use the non-standard <TT><IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">/.Xresources</TT>
+file instead, although the format is the same. On SGI systems you may
+need to put your Karma resources in a separate file and run:<BR> <TT>
+xrdb -merge &lt;filename&gt;</TT><BR> in your window system startup script. You
+may also/instead (on SGI systems) need to set resources in your <TT>
+<IMG WIDTH=12 HEIGHT=5 ALIGN=BOTTOM ALT="tex2html_wrap_inline4628" SRC="img1.gif">/.Sgiresources</TT> file.
+<P>
+In some cases you will need to prepend the application classname
+(i.e. <TT>Kvis</TT>) to the resource name. First try specifying the
+particular resource as shown and if that doesn't work prepend the
+application classname.
+<P>
+<UL>
+<LI> <B>*ZoomPolicy.fixAspect</B> this controls whether the
+aspect ratio will be fixed (<B>True</B>) or not (<B>False</B>)
+<LI> <B>*ZoomPolicy*integerXZoomToggle.state</B> this controls whether
+horizontal zooming will be forced to integer multiples (<B>True</B>)
+or not (<B>False</B>)
+<LI> <B>*ZoomPolicy*integerYZoomToggle.state</B> this controls whether
+vertical zooming will be forced to integer multiples (<B>True</B>) or
+not (<B>False</B>)
+<LI> <B>*IntensityPolicy*resetIntensityToggle.state</B> this controls
+whether the intensity range will be reset upon loading of a new file
+(<B>True</B>) or not (<B>False</B>)
+<LI> <B>*iscaleMenu*setChoice</B> this controls the default
+intensity transformation. The folowing are supported:
+<UL>
+<LI> <TT>linear</TT> the screen intensity is proportional to the input
+data values
+<LI> <TT>log(val-min)</TT> the screen intensity is proportional to the
+logarithm of the input data values
+<LI> <TT>log(max-val)</TT> the screen intensity is proportional to the
+logarithm of the negative input data values
+<LI> <TT>sqrt(val-min)</TT> the screen intensity is proportional to the
+square root of the input data values
+</UL>
+<LI> <B>*MagnifierPopup.fastPanner</B> this controls whether the
+magnifier window will use a fast, large-memory mode (<B>True</B>) or
+not (<B>False</B>) panner. The default is to use the slower,
+small-memory panner. In most cases the default mode is quite fast
+enough, unless you enlarge the magnifier window so it nearly fills
+your screen. The reason the default is to use the small-memory mode is
+that if you have a large image (say 2k*2k) then the fast mode would
+require 64&nbsp;MBytes of RAM just to store one copy of the image! Unless
+you have lots of RAM in your computer, you will be forced to wait a
+long time while your machine swaps to disc, hence the default
+<LI> <B>*ImageDisplay.fastPanner</B> as above, but applies to the main
+image window. The default is to use the fast, large-memory
+panner. This is only of significance when you use panning mode
+(i.e. select ``Panner'' from the ``Zoom'' menu)
+<LI> <B>*MagnifierPopup.showCrosshair</B> this controls whether
+magnifier windows should show a crosshair (<B>True</B>) or not (<B>
+False</B>)
+<LI> <B>*displayAxisLabelsToggle.state</B> if this is <B>True</B> then
+most windows which support axis labels will have enabled them by
+default. You also need to set the <B>*OverlayMenu.createAtInit</B>
+resource to <B>True</B> (see below)
+<LI> <B>*OverlayMenu.createAtInit</B> if this is <B>True</B> then
+creation of certain control panels is performed at programme startup,
+rather than being delayed until if (and when) required. Normally,
+delayed creation is preferred, since it speeds application startup,
+but this prevents some resource specifications from taking effect
+until sometime later. Some programmes provide the shorthand ``<TT>
+-create_at_init</TT>'' option
+<LI> <B>*transient</B> if <B>True</B> all popup windows will be
+iconified if the main window is iconified
+<LI> <B>*AnimateControl*pinToggle.state</B> this controls
+whether the animation control will be stay popped up when an image is
+displayed (<B>True</B>) or will be popped down (<B>False</B>)
+<LI> <B>*AnimateControl.transient</B> as above but specifically only
+for the <A NAME="tex2html73" HREF="../lib/AnimateControl.html"><B>AnimateControl</B></A> widget (section <A HREF="node3.html#AnimateControl">2.3</A>)
+<LI> <B>*Cmapwinpopup.transient</B> as above for the
+<A NAME="tex2html74" HREF="../lib/Cmapwinpopup.html"><B>Cmapwinpopup</B></A> widget (section <A HREF="node3.html#Cmapwinpopup">2.2</A>)
+<LI> <B>*Dataclip.transient</B> as above for the
+<A NAME="tex2html75" HREF="../lib/Dataclip.html"><B>Dataclip</B></A> widget (section <A HREF="node3.html#Dataclip">2.2</A>)
+<LI> <B>*Dataclip*subsetToggle.state</B> this controls whether a
+subset of the input data will be used to compute a histogram for the
+<A NAME="tex2html76" HREF="../lib/Dataclip.html"><B>Dataclip</B></A> widget (section <A HREF="node3.html#Dataclip">2.2</A>)
+<LI> <B>*Dialogpopup.transient</B> as above for the
+<A NAME="tex2html77" HREF="../lib/Dialogpopup.html"><B>Dialogpopup</B></A> widget
+<LI> <B>*DressingControl.transient</B> as above for the
+<A NAME="tex2html78" HREF="../lib/DressingControl.html"><B>DressingControl</B></A> widget (section <A HREF="node3.html#DressingControl">2.8</A>)
+<LI> <B>*Filepopup.transient</B> as above for the
+<A NAME="tex2html79" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node3.html#Filepopup">2.1</A>)
+<LI> <B>*Filepopup*dotsToggle.state</B> control whether (<B>True</B>)
+or not (<B>False</B>) hidden files and directories are shown by default
+in the <A NAME="tex2html80" HREF="../lib/Filepopup.html"><B>Filepopup</B></A> widget (section <A HREF="node3.html#Filepopup">2.1</A>)
+<LI> <B>*Filewin.numLines</B> the desired size of the directory
+browser (in lines). The default is that the browser size is
+automatically configured
+<LI> <B>*Filewin*list.translations</B> may be used to change the file
+browser mouse behaviour. The default is to highlight the entry under
+the current mouse pointer position. If you specify <B><TT>
+&lt;Btn1Down&gt;:Set()<IMG WIDTH=7 HEIGHT=27 ALIGN=MIDDLE ALT="tex2html_wrap_inline5012" SRC="img17.gif">n&lt;Btn1Up&gt;:Notify()</B></TT> then highlighting only
+occurs when an entry has been selected. The only advantage of this
+behaviour is that it leaves the last selected entry highlighted
+(i.e. moving the mouse won't highlight a different entry)
+<LI> <B>*IntensityPolicy.transient</B> as above for the
+<A NAME="tex2html81" HREF="../lib/IntensityPolicy.html"><B>IntensityPolicy</B></A> widget (section <A HREF="node3.html#IntensityPolicy">2.2</A>)
+<LI> <B>*LoadAndDecimate.transient</B> as above for the
+<A NAME="tex2html82" HREF="../lib/LoadAndDecimate.html"><B>LoadAndDecimate</B></A> widget (section <A HREF="node3.html#LoadAndDecimate">2.1.1</A>)
+<LI> <B>*MagnifierPopup.transient</B> as above for the
+<A NAME="tex2html83" HREF="../lib/MagnifierPopup.html"><B>MagnifierPopup</B></A> widget (section <A HREF="node3.html#MagnifierPopup">2.9</A>)
+<LI> <B>*MomentGenerator.transient</B> as above for the
+<A NAME="tex2html84" HREF="../lib/MomentGenerator.html"><B>MomentGenerator</B></A> widget (section <A HREF="node3.html#MomentGenerator">2.16</A>)
+<LI> <B>*OverlayEditorControl.transient</B> as above for the
+<A NAME="tex2html85" HREF="../lib/OverlayEditorControl.html"><B>OverlayEditorControl</B></A> widget (section
+<A HREF="node3.html#OverlayEditorControl">2.19</A>)
+<LI> <B>*PannerPopup.transient</B> as above for the
+<A NAME="tex2html86" HREF="../lib/PannerPopup.html"><B>PannerPopup</B></A> widget (section <A HREF="node3.html#PannerPopup">2.10</A>)
+<LI> <B>*Postscript.transient</B> as above for the
+<A NAME="tex2html87" HREF="../lib/Postscript.html"><B>Postscript</B></A> widget (section <A HREF="node3.html#Postscript">2.4</A>)
+<LI> <B>*SlaveImageDisplayPopup.transient</B> as above for the
+<A NAME="tex2html88" HREF="../lib/SlaveImageDisplayPopup.html"><B>SlaveImageDisplayPopup</B></A> widget
+<LI> <B>*TracePopup.transient</B> as above for the
+<A NAME="tex2html89" HREF="../lib/TracePopup.html"><B>TracePopup</B></A> widget (section <A HREF="node3.html#TracePopup">2.11</A>)
+<LI> <B>*View2Datasets.transient</B> as above for the
+<A NAME="tex2html90" HREF="../lib/View2Datasets.html"><B>View2Datasets</B></A> widget (section <A HREF="node5.html#View2Datasets">4</A>)
+<LI> <B>*ZoomPolicy.transient</B> as above for the
+<A NAME="tex2html91" HREF="../lib/ZoomPolicy.html"><B>ZoomPolicy</B></A> widget (section <A HREF="node3.html#ZoomPolicy">2.7</A>)
+<LI> <B>Kvis.geometry</B> the size and placement of the main display
+window for <B>&lt;kvis&gt;</B>. The default is <TT>+0+0</TT> (top left)
+<LI> <B>Kvis*firstDataBrowserShell.geometry</B> the size and placement
+of the first data browser window for <B>&lt;kvis&gt;</B>. The default is
+<TT>+540-0</TT> (to the right of the main display window and at the
+bottom of the screen)
+<LI> <B>Kvis*imageDisplayShell1.geometry</B> the size and placement
+of the second display window for <B>&lt;kvis&gt;</B>. The default is
+<TT>-0+0</TT> (top right)
+<LI> <B>*Postscript*nameDialog*font</B> the name of the font to use in
+the text-entry dialog for the output filename in the
+<A NAME="tex2html92" HREF="../lib/Postscript.html"><B>Postscript</B></A> widget (section <A HREF="node3.html#Postscript">2.4</A>)
+<P>
+</UL><HR><A NAME="tex2html469" HREF="node17.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html467" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html461" HREF="node15.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html471" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html472" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html470" HREF="node17.html">D Annotation File Format</A>
+<B>Up:</B> <A NAME="tex2html468" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html462" HREF="node15.html">B Setting up</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,61 @@
+.TH IARRAY_GET_FROM_MULTI_ARRAY 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_from_multi_array \- Create an Intelligent Array from a Karma data structure.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_get_from_multi_array
+.sp
+(multi_array *multi_desc,
+CONST char *arrayname,
+unsigned int num_dim,
+CONST char **dim_names,
+CONST char *elem_name)
+.SH DESCRIPTION
+This routine will yield an "Intelligent Array" from a multi array
+Karma general data structure. The routine searches for a n-dimensional
+array with a single atomic element at each point in multi-dimensional space
+.IP \fImulti_desc\fP 1i
+The multi array header pointer. The attachment count is
+incremented on successful completion of this routine.
+.IP \fIarrayname\fP 1i
+The name of the general data structure in the arrayfile to
+search for. If this is NULL, the routine searches for the default name
+"Intelligent Array", and if that is not found, the first general data
+structure is used. If the arrayfile has only one general data structure,
+then this parameter is ignored.
+.IP \fInum_dim\fP 1i
+If greater than 0, the routine will only return an array with
+this many dimensions. If 0, then the routine will return an n-dimensional
+array.
+.IP \fIdim_names\fP 1i
+If <<num_dim>> is not 0, then if this NULL, the routine will
+search for and return an array with the default dimension names (see
+<<iarray_create>> for a list of these) if more than one n-dimensional,
+single element array exists in the general data structure, or the only
+n-dimensional array with the specified number of dimensions. If the routine
+can't find an adequate default, it will not return an array. If <<num_dim>>
+is not 0, and this points to an array of strings, then the routine will
+only return an array which matches the specified dimension names. The first
+name in the array of strings must be the highest order dimension.
+.IP \fIelem_name\fP 1i
+If NULL, the routine will ignore the element name of the array
+which is located, else it will insist on the array element name matching
+this name.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else an
+error message is printed to the standard output and NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

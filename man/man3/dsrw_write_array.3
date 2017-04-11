@@ -1,0 +1,39 @@
+.TH DSRW_WRITE_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_write_array \- Write an array in binary format.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_write_array
+.sp
+(Channel channel, CONST array_desc *arr_desc,
+CONST char *element, flag pad)
+.SH DESCRIPTION
+This routine will write the binary representation of an array to
+a channel object. The routine will recursively write any sub arrays or
+linked lists of packets.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIelement\fP 1i
+The element to write the array pointer to.
+.IP \fIpad\fP 1i
+If TRUE the array will be padded on a selected boundary (this is the
+case when writing .kf files).
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

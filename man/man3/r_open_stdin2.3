@@ -1,0 +1,29 @@
+.TH R_OPEN_STDIN2 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_open_stdin2 \- Open the standard input.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_open_stdin2
+.sp
+(unsigned int *type)
+.SH DESCRIPTION
+Open the standard input.
+.IP \fIdisc\fP 1i
+The routine will write the type of the file here.
+.SH RETURN VALUE
+The descriptor on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

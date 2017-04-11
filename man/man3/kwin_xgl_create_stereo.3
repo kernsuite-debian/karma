@@ -1,0 +1,51 @@
+.TH KWIN_XGL_CREATE_STEREO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_xgl_create_stereo \- Create a stereo pixel canvas using XGL.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_xgl_create_stereo
+.sp
+(Display *display, Window window,
+int xoff, int yoff, int width, int height,
+KPixCanvas *mono,
+KPixCanvas *left, KPixCanvas *right)
+.SH DESCRIPTION
+This routine will create a stereo pixel canvas, ready for
+drawing, from an X window, using the XGL library. Note that the origin of
+a KPixCanvas is the upper-left corner.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIwindow\fP 1i
+The window ID in which the canvas lies.
+.IP \fIgc\fP 1i
+The graphics context.
+.IP \fIxoff\fP 1i
+The horizontal offset of the canvas origin (upper-left corner)
+relative to the parent window.
+.IP \fIyoff\fP 1i
+The vertical offset of the canvas origin (upper-left corner)
+relative to the parent window.
+.IP \fIwidth\fP 1i
+The width (vertical extent) of the canvas.
+.IP \fIheight\fP 1i
+The height (horizontal extent) of the canvas.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine is only available with the X window system.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

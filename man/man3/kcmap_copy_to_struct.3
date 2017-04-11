@@ -1,0 +1,38 @@
+.TH KCMAP_COPY_TO_STRUCT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_copy_to_struct \- Copy colour data from a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B flag kcmap_copy_to_struct
+.sp
+(Kcolourmap cmap, packet_desc **top_pack_desc,
+char **top_packet)
+.SH DESCRIPTION
+This routine will copy the colour data in a colourmap into a
+newly allocated Karma data structure. This data structure may be
+subsequently deallocated.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fItop_pack_desc\fP 1i
+The pointer to the top level packet descriptor that is
+allocated will be written here.
+.IP \fItop_packet\fP 1i
+The pointer to the top level packet that is allocated will be
+written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,43 @@
+.TH KCMAP_WRITE_RGB_VALUES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kcmap_write_rgb_values \- Write RGB values to a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B flag kcmap_write_rgb_values
+.sp
+(Kcolourmap cmap, unsigned int num_values,
+CONST unsigned short *reds,
+CONST unsigned short *greens,
+CONST unsigned short *blues, unsigned int stride)
+.SH DESCRIPTION
+This routine will write ther data into a colourmap. If the
+colourmap changes size, then the <<resize_func>> registered is called.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fInum_values\fP 1i
+The maximum number of colours to write.
+.IP \fIred\fP 1i
+The red values.
+.IP \fIgreen\fP 1i
+The green values.
+.IP \fIblue\fP 1i
+The blue values.
+.IP \fIstride\fP 1i
+The stride (in shorts) between values in the arrays.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

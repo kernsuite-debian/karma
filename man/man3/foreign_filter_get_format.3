@@ -1,0 +1,33 @@
+.TH FOREIGN_FILTER_GET_FORMAT 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_filter_get_format \- Get the filter format
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B unsigned int foreign_filter_get_format
+.sp
+(CONST char *filename)
+.SH DESCRIPTION
+Get the filter format
+.IP \fIfilename\fP 1i
+The name of the file.
+.SH RETURN VALUE
+A value indicating the format of the file. The value
+FOREIGN_FILE_FORMAT_FILTER_KARMA is returned if a data filter to Karma for
+the file exists. The value FOREIGN_FILE_FORMAT_FILTER_FITS is returned if a
+data filter to FITS exists. Otherwise FOREIGN_FILE_FORMAT_UNKNOWN is
+returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

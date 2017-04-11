@@ -1,0 +1,42 @@
+.TH IEDIT_ADD_INSTRUCTION 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_add_instruction \- Add an image edit instruction to a list.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B flag iedit_add_instruction
+.sp
+(KImageEditList ilist,
+unsigned int instruction_code, edit_coord *coords,
+unsigned int num_coords, double intensity[2])
+.SH DESCRIPTION
+This routine will add a single edit instruction to a managed
+image edit instruction list. The <<add_func>> function registered for this
+instruction list will be called at a future time with a copy of the
+instruction to be added.
+.IP \fIilist\fP 1i
+The instruction list.
+.IP \fIinstruction_code\fP 1i
+The instruction code.
+.IP \fIcoords\fP 1i
+The instruction co-ordinates.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates.
+.IP \fIintensity\fP 1i
+The intensity value of the instruction.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

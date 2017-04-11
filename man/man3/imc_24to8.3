@@ -1,0 +1,62 @@
+.TH IMC_24TO8 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+imc_24to8 \- Convert a 24 bit truecolour image to an 8 bit pseudocolour image.
+.SH SYNOPSIS
+.B #include <karma_imc.h>
+.sp
+.B flag imc_24to8
+.sp
+(unsigned int image_size, unsigned char *image_reds,
+unsigned char *image_greens, unsigned char *image_blues,
+int stride24, unsigned char *out_image, int stride8,
+unsigned int max_colours, unsigned int speed,
+packet_desc **pack_desc, char **packet)
+.SH DESCRIPTION
+Convert a 24 bit truecolour image to an 8 bit pseudocolour image.
+.IP \fIimage_size\fP 1i
+The size of the image (in pixels).
+.IP \fIimage_reds\fP 1i
+The red component data of the truecolour image.
+.IP \fIimage_greens\fP 1i
+The green component data of the truecolour image.
+.IP \fIimage_blues\fP 1i
+The blue component data of the truecolour image.
+.IP \fIstride24\fP 1i
+The stride (in bytes) between adjacent pixels in the truecolour
+image.
+.IP \fIout_image\fP 1i
+The output (8 bit pseudocolour) image data.
+.IP \fIstride8\fP 1i
+The stride (in bytes) between adjacent pixels in the pseudocolour
+image.
+.IP \fImax_colours\fP 1i
+The maximum number of unique colours permitted (i.e. the
+maximum colour palette size that can be supported).
+.IP \fIspeed\fP 1i
+The desired speed of the routine. This value may range from 0 to 9.
+A value of 0 will result in the slowest but highest quality conversion
+(i.e. the routine tries very hard to choose the best colour palette). A
+value of 9 will result in the fastest conversion, at the expense of image
+quality.
+.IP \fIpack_desc\fP 1i
+The pointer to the top level packet descriptor of the general
+data structure which contains the colourmap will be written here.
+.IP \fIpacket\fP 1i
+The pointer to the top level packet of the general data structure
+which contains the colourmap will be written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

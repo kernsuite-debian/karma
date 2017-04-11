@@ -1,0 +1,32 @@
+.TH C_CALL_CALLBACKS 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+c_call_callbacks \- Call all registered callbacks for an object.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B flag c_call_callbacks
+.sp
+(KCallbackList list, void *call_data)
+.SH DESCRIPTION
+Call all registered callbacks for an object.
+.IP \fIlist\fP 1i
+The callback list.
+.IP \fIcall_data\fP 1i
+The arbitrary call information pointer.
+.SH RETURN VALUE
+TRUE if one of the callbacks quenched the further delivery of
+callbacks, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

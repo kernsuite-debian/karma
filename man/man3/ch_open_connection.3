@@ -1,0 +1,39 @@
+.TH CH_OPEN_CONNECTION 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_open_connection \- Open a connection to a Karma server.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_open_connection
+.sp
+(unsigned long host_addr, unsigned int port_number)
+.SH DESCRIPTION
+This routine will open a full-duplex connection channel to a
+Karma server running on another host machine.
+.IP \fIhost_addr\fP 1i
+The Internet address of the host machine. If this is 0 the
+connection is made to a server running on the same machine using the most
+efficient transport available.
+.IP \fIport_number\fP 1i
+The Karma port number to connect to. This should not be
+confused with Internet port numbers.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The use of this routine is not recommended, see the <-conn->
+package for more powerful functionality.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,45 @@
+<html><head><title>Package: dl</title></head> 
+<body>
+<center><h1>The "dl" Package</h1></center>    These routines are meant to support loading of shared objects.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=dl></a></table><h4>Functions</h4><table><tr><td><a href=dl.html#dl_load_object>dl_load_object</a></td><td>Load shared object.
+</td></tr>
+<tr><td><a href=dl.html#dl_symbol>dl_symbol</a></td><td>Lookup a symbol in loaded object.
+</td></tr>
+<tr><td><a href=dl.html#dl_close>dl_close</a></td><td>Close a loaded object.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=dl_load_object></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dl_load_object</b><i>    (CONST char *name, CONST char *dirs,
+		      char failed_object[STRING_LENGTH])
+</i><br><p>    Load shared object.
+<p><b>Parameters:</b><ul><li><i>name :</i> 
+    The name of the shared object to load (without the ".so" extension).
+<br><li><i>dirs :</i> 
+    An optional list of colon-separated directories in which to search
+    for the shared object, and any other shared objects depended upon. This may
+    be NULL.
+<br><li><i>failed_object :</i> 
+    The name of the object which failed to load is written here
+    (without the ".so" extension).
+<br></ul><b>Returns:</b>     A handle to the loaded object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dl_symbol></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void *
+ <b>dl_symbol</b><i>    (void *handle, CONST char *symbol)
+</i><br><p>    Lookup a symbol in loaded object.
+<p><b>Parameters:</b><ul><li><i>handle :</i> 
+    A handle to the loaded object.
+<br><li><i>symbol :</i> 
+    The symbol to lookup.
+<br></ul><b>Returns:</b>     The address where the symbol is loaded, else NULL if it is not
+    found.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=dl_close></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>int
+ <b>dl_close</b><i>    (void *handle)
+</i><br><p>    Close a loaded object.
+<p><b>Parameters:</b><ul><li><i>handle :</i> 
+    A handle to the loaded object.
+<br></ul><b>Returns:</b>     0 on success, else non-zero on error.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

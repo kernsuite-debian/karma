@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Advanced Examples</TITLE>
+<META NAME="description" CONTENT="Advanced Examples">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html846" HREF="node16.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html844" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html838" HREF="node14.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html848" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html849" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html847" HREF="node16.html">Image Display Tool</A>
+<B>Up:</B> <A NAME="tex2html845" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html839" HREF="node14.html">Widget Library</A>
+<BR> <P>
+<H1><A NAME="SECTION001500000000000000000">Advanced Examples</A></H1>
+<P>
+This chapter takes you through some more advanced examples, which tie
+together some of the concepts introduced in previous chapters.
+<P>
+<H1><A NAME="SECTION001510000000000000000">Instrument Control</A></H1>
+<P>
+This example contains three separate programmes, one is a server and
+the other two are clients of the server. The server needs to
+periodically inform one type of client of it's current status, and
+also respond to requests from the other type of client with the
+current status. To do all this, the server needs to make use of the
+event dispatch facilities as well as the communications support, so
+this is a nice way to demonstrate how these facilities operate in
+harmony.
+<P>
+The client which receives periodic updates is called the ``wait''
+client. The client which requests updates from the server is called
+the ``query'' client.
+<P>
+While the connections are managed by the <A NAME="tex2html269" HREF="../lib/conn.html"><B>conn</B></A> package, when
+the time comes to actually transfer data, the <A NAME="tex2html270" HREF="../lib/ch.html"><B>ch</B></A> package is
+used to do the transfers. Each connection has a channel object
+associated with it. Calling <A NAME="tex2html271" HREF="../lib/conn.html#conn_get_channel"><B>conn_get_channel</B></A>
+returns the channel object.
+<P>
+<H2><A NAME="SECTION001511000000000000000">Server</A></H2>
+<P>
+The server defines two communications protocols.
+<P>
+The ``periodic_data'' protocol is for clients who wish to receive
+periodic updates: in other words, the server decides when to send the
+data. Since the clients will not be sending any data to the server,
+there is no need to register any callback functions. Because the
+server needs to periodically send data, the <A NAME="tex2html272" HREF="../lib/e.html"><B>e</B></A> package is
+used to periodically run an event function
+(<TT>periodic_func</TT>). This function is called when the
+server wants to send data. It simply loops over the ``periodic_data''
+connections, sending data to each in turn.
+<P>
+The other protocol is the ``query_data'' protocol. Here the server
+resonds to a request from a client and sends the status information
+back; the client decides when data should be sent. Since the server is
+responding to client queries, a read callback needs to be registered
+for this protocol. This is the <TT>read_func</TT>.
+<P>
+Note that the server does not have to worry about the mechanics of
+waiting for connections, or detecting when they are closed. The server
+can run indefinately, with clients connecting and disconnecting at
+will, with no extra effort required. All the boring bits are handled
+by the library.
+<P>
+<PRE>/*-----------------------------------------------------------*/
+/*  Communications sample program: instrument control server */
+/*-----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_ch.h&gt;
+#include &lt;karma_r.h&gt;
+#include &lt;karma_e.h&gt;
+
+
+#define PORT_NUMBER 10000
+
+
+STATIC_FUNCTION (flag periodic_func, (KPeriodicEventFunc func, void *info) );
+STATIC_FUNCTION (flag read_func, (Connection connection, void **info) );
+
+
+void main ()
+{
+    KPeriodicEventList event_list;
+    unsigned int port_number = PORT_NUMBER;
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register server protocols  */
+    conn_register_server_protocol (&quot;periodic_data&quot;, 0, 0,
+                                   ( flag (*) () ) NULL, ( flag (*) () ) NULL,
+                                   ( void (*) () ) NULL);
+    conn_register_server_protocol (&quot;query_data&quot;, 0, 0,
+                                   ( flag (*) () ) NULL, read_func,
+                                   ( void (*) () ) NULL);
+    /*  Allocate a port  */
+    if ( !conn_become_server (&amp;port_number, 0) )
+    {
+        fprintf (stderr, &quot;Could not become a server\n&quot;);
+        exit (1);
+    }
+    fprintf (stderr, &quot;Port number: %u\n&quot;, port_number);
+    event_list = e_unix_create_list (0, 1, NULL);
+    e_register_func (event_list, periodic_func, NULL, 1, DISPATCH_SYNCHRONOUS);
+    /*  Enter polling loop (forever)  */
+    while (TRUE) dm_native_poll (-1);
+}   /*  End Function main  */
+
+
+/*  Private functions follow  */
+
+static flag periodic_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    Connection conn;
+    Channel ch;
+    char dummy;
+    unsigned int count, num_conn;
+
+    num_conn = conn_get_num_serv_connections (&quot;periodic_data&quot;);
+    for (count = 0; count &lt; num_conn; ++count)
+    {
+        conn = conn_get_serv_connection (&quot;periodic_data&quot;, count);
+        ch = conn_get_channel (conn);
+        ch_write (ch, &amp;dummy, 1);
+        ch_flush (ch);
+    }
+    return (TRUE);
+}   /*  End Function periodic_func  */
+
+static flag read_func (Connection connection, void **info)
+/*  [SUMMARY] Connection read event callback.
+    [PURPOSE] This routine is called when data is ready to be read from a
+    connection.
+    &lt;connection&gt; The connection object.
+    &lt;info&gt; A pointer to the arbitrary information pointer. This may be modified
+    [RETURNS] TRUE on successful reading, else FALSE (indicating the connection
+    should be closed).
+    [NOTE] The &lt;&lt;close_func&gt;&gt; will be called if this routine returns FALSE.
+*/
+{
+    Channel ch;
+    char dummy;
+
+    ch = conn_get_channel (connection);
+    ch_read (ch, &amp;dummy, 1);
+    ch_write (ch, &amp;dummy, 1);
+    ch_flush (ch);
+    return (TRUE);
+}   /*  End Function read_func  */</PRE>
+<P>
+Note how calls are made to <A NAME="tex2html273" HREF="../lib/ch.html#ch_flush"><B>ch_flush</B></A>. If this is not
+called, data is not actually sent until the channel buffer fills, and
+that could be a long time later (especially in this simple example
+where the ``status data'' being sent to the clients is just 1 byte).
+<P>
+<H2><A NAME="SECTION001512000000000000000">Wait Client</A></H2>
+<P>
+This programme only needs to register support for the
+``periodic_data'' protocol, supplying a read callback (the
+<TT>read_func</TT> function) which is called when the server
+has sent some new data. Apart from reading the data from the server,
+the <TT>read_func</TT> function also prints the time elapsed
+since the first piece of data was received from the server. Since this
+should occur every second, the delay relative to the nearest integer
+second is also displayed.
+<P>
+The programme is run with the first argument being the host where the
+server is running.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Communications sample program:  wait client             */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;sys/times.h&gt;
+#include &lt;sys/resource.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_ch.h&gt;
+#include &lt;karma_r.h&gt;
+
+
+#define PORT_NUMBER 10000
+
+
+STATIC_FUNCTION (flag read_func, (Connection connection, void **info) );
+
+
+void main (int argc, char **argv)
+{
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register server protocols  */
+    conn_register_client_protocol (&quot;periodic_data&quot;, 0, 0,
+                                   ( flag (*) () ) NULL, ( flag (*) () ) NULL,
+                                   read_func, ( void (*) () ) NULL);
+    /*  Connect to server  */
+    if ( !conn_attempt_connection (argv[1], PORT_NUMBER, &quot;periodic_data&quot;) )
+    {
+        fprintf (stderr, &quot;Could not connect to server\n&quot;);
+        exit (1);
+    }
+    /*  Enter polling loop (forever)  */
+    while (TRUE) dm_native_poll (-1);
+}   /*  End Function main  */
+
+
+/*  Private functions follow  */
+
+static flag read_func (Connection connection, void **info)
+/*  [SUMMARY] Connection read event callback.
+    [PURPOSE] This routine is called when data is ready to be read from a
+    connection.
+    &lt;connection&gt; The connection object.
+    &lt;info&gt; A pointer to the arbitrary information pointer. This may be modified
+    [RETURNS] TRUE on successful reading, else FALSE (indicating the connection
+    should be closed).
+    [NOTE] The &lt;&lt;close_func&gt;&gt; will be called if this routine returns FALSE.
+*/
+{
+    Channel ch;
+    char dummy;
+    double d_time;
+    struct timeval curr_time;
+    static double old_time = 0.0;
+    static struct timezone tz = {0, 0};
+
+    ch = conn_get_channel (connection);
+    ch_read (ch, &amp;dummy, 1);
+    gettimeofday (&amp;curr_time, &amp;tz);
+    d_time = curr_time.tv_sec;
+    d_time += (double) curr_time.tv_usec * 1e-6;
+    if (old_time &lt; 1e-6) old_time = d_time;
+    d_time -= old_time;
+    fprintf (stderr, &quot;%f s\t%f.2 us\n&quot;,
+             d_time, ( d_time - rint (d_time) ) * 1e6);
+    return (TRUE);
+}   /*  End Function read_func  */</PRE>
+<P>
+<H2><A NAME="SECTION001513000000000000000">Query Client</A></H2>
+<P>
+This programme only needs to register support for the
+``query_data'' protocol. Since the programme has nothing else to do
+while it's waiting for the server to respond to a request, no
+callbacks are needed. Instead, a request is sent to the server and the
+programme reads (and blocks), waiting for the response from the
+server. To make it a bit more interesting, this sequence is repeated
+in a simple loop. As with the wait client, the times are also
+displayed.
+<P>
+The programme is run with the first argument being the host where the
+server is running. The second argument is the number of iterations in
+the loop.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Communications sample program:  query client            */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;sys/times.h&gt;
+#include &lt;sys/resource.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_ch.h&gt;
+#include &lt;karma_r.h&gt;
+
+
+#define PORT_NUMBER 10000
+
+
+void main (int argc, char **argv)
+{
+    Connection connection;
+    Channel ch;
+    char dummy;
+    unsigned int num_iter, count;
+    double d_time, reltime;
+    static struct timezone tz = {0, 0};
+    struct timeval curr_time;
+    struct timeval old_time;
+
+    /*  Initialise communications package  */
+    dm_native_setup ();
+    conn_initialise ( ( void (*) () ) NULL );
+    /*  Register server protocols  */
+    conn_register_client_protocol (&quot;query_data&quot;, 0, 0,
+                                   ( flag (*) () ) NULL, ( flag (*) () ) NULL,
+                                   ( flag (*) () ) NULL, ( void (*) () ) NULL);
+    gettimeofday (&amp;old_time, &amp;tz);
+    /*  Connect to server  */
+    if ( !conn_attempt_connection (argv[1], PORT_NUMBER, &quot;query_data&quot;) )
+    {
+        fprintf (stderr, &quot;Could not connect to server\n&quot;);
+        exit (1);
+    }
+    connection = conn_get_client_connection (&quot;query_data&quot;, 0);
+    ch = conn_get_channel (connection);
+    num_iter = atoi (argv[2]);
+    for (count = 0; count &lt; num_iter; ++count)
+    {
+        ch_write (ch, &amp;dummy, 1);
+        ch_flush (ch);
+        ch_read (ch, &amp;dummy, 1);
+        gettimeofday (&amp;curr_time, &amp;tz);
+        d_time = curr_time.tv_sec;
+        d_time += (double) curr_time.tv_usec * 1e-6;
+        reltime = (double) (curr_time.tv_sec - old_time.tv_sec) * 1e3;
+        reltime += (double) (curr_time.tv_usec - old_time.tv_usec) * 1e-3;
+        fprintf (stderr, &quot;%f s\t%.2f ms\n&quot;, d_time, reltime);
+    }
+}   /*  End Function main  */</PRE>
+<P>
+<HR><A NAME="tex2html846" HREF="node16.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html844" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html838" HREF="node14.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html848" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html849" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html847" HREF="node16.html">Image Display Tool</A>
+<B>Up:</B> <A NAME="tex2html845" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html839" HREF="node14.html">Widget Library</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

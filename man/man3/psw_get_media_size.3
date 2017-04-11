@@ -1,0 +1,34 @@
+.TH PSW_GET_MEDIA_SIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+psw_get_media_size \- Get size of a known media type.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_get_media_size
+.sp
+(CONST char *name,
+double *horizontal_mm, double *vertical_mm)
+.SH DESCRIPTION
+Get size of a known media type.
+.IP \fIname\fP 1i
+The name of the media size type.
+.IP \fIhorizontal_mm\fP 1i
+The horizontal size in millimeters is written here.
+.IP \fIvertical_mm\fP 1i
+The vertical size in millimeters is written here.
+.SH RETURN VALUE
+TRUE if the media size is known, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

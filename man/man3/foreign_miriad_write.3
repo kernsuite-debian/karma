@@ -1,0 +1,41 @@
+.TH FOREIGN_MIRIAD_WRITE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_miriad_write \- Write a Miriad Image file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_miriad_write
+.sp
+(CONST char *dirname, multi_array *multi_desc, ...)
+.SH DESCRIPTION
+This routine will write a Karma data structure to a Miriad Image
+file. The routine will automatically generate essential keywords such as:
+"NAXIS", "NAXISn", "CTYPEn", "CRVALn", "CRPIXn", "CDELTn",
+"BUNIT", "BSCALE" and "BZERO". Also, existing keywords in the data
+structure which do not conflict with the generated keywords are copied.
+.IP \fIdirname\fP 1i
+The directory name of the Miriad Image file.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor pointer. The routine will find a
+n-dimensional array within the data structure.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_MIRIAD_WRITE_END.
+See <-foreign_ATT_MIRIAD_WRITE-> for a list of defined attributes.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

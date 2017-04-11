@@ -1,0 +1,32 @@
+.TH DISPDATA_GET_DATAOBJECT_SUBCLASS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_dataobject_subclass \- Get the subclass for a KDisplayDataObject.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void * dispdata_get_dataobject_subclass
+.sp
+(KDisplayDataObject dataobject,
+KDisplayDataClass dataclass)
+.SH DESCRIPTION
+Get the subclass for a KDisplayDataObject.
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject.
+.IP \fIdataclass\fP 1i
+The KDisplayDataClass the data belong to.
+.SH RETURN VALUE
+A pointer to the subclass.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

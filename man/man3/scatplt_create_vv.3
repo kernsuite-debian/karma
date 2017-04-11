@@ -1,0 +1,111 @@
+.TH SCATPLT_CREATE_VV 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+scatplt_create_vv \- Create a value-value scatter plot from two 2D sub-arrays.
+.SH SYNOPSIS
+.B #include <karma_scatplt.h>
+.sp
+.B KScatterPlot scatplt_create_vv
+.sp
+(KWorldCanvas canvas,
+CONST char *array1,CONST array_desc *arr_desc1,
+unsigned int xdim1, unsigned int ydim1,
+unsigned int type1,
+double scale1, double offset1, KwcsAstro ap1,
+unsigned int num_restr1,
+CONST char **restr_names1,
+CONST double *restr_values1,
+double *min1, double *max1,
+uaddr xstart, uaddr xlen,
+uaddr ystart, uaddr ylen,
+CONST char *array2,CONST array_desc *arr_desc2,
+unsigned int xdim2, unsigned int ydim2,
+unsigned int type2,
+double scale2, double offset2, KwcsAstro ap2,
+unsigned int num_restr2,
+CONST char **restr_names2,
+CONST double *restr_values2,
+double *min2, double *max2)
+.SH DESCRIPTION
+Create a value-value scatter plot from two 2D sub-arrays.
+.IP \fIcanvas\fP 1i
+The world canvas onto which the scatter plot may be drawn.
+.IP \fIarray1\fP 1i
+The data for the first array.
+.IP \fIarr_desc1\fP 1i
+The array descriptor for the first array.
+.IP \fIxdim1\fP 1i
+The X dimension index for the first array.
+.IP \fIydim1\fP 1i
+The Y dimension index for the first array.
+.IP \fItype1\fP 1i
+The data type for the first array.
+.IP \fIscale1\fP 1i
+The data scaling for the first array.
+.IP \fIoffset1\fP 1i
+The data offset for the first array.
+.IP \fIap1\fP 1i
+The KwcsAstro object for the first array.
+.IP \fInum_restr1\fP 1i
+The number of restrictions for the first array.
+.IP \fIrestr_names1\fP 1i
+The array of restriction names for the first array.
+.IP \fIrestr_values1\fP 1i
+The restriction values for the first array.
+.IP \fImin1\fP 1i
+The minimum value from the first array. This is updated.
+.IP \fImax1\fP 1i
+The maximum value from the first array. This is updated.
+.IP \fIxstart\fP 1i
+The X dimension start of the sub-array in the first array.
+.IP \fIxlen\fP 1i
+The X dimension length of the sub-array in the first array.
+.IP \fIystart\fP 1i
+The Y dimension start of the sub-array in the first array.
+.IP \fIylen\fP 1i
+The Y dimension length of the sub-array in the first array.
+.IP \fIarray2\fP 1i
+The data for the second array.
+.IP \fIarr_desc2\fP 1i
+The array descriptor for the second array.
+.IP \fIxdim2\fP 1i
+The X dimension index for the second array.
+.IP \fIydim2\fP 1i
+The Y dimension index for the second array.
+.IP \fItype2\fP 1i
+The data type for the second array.
+.IP \fIscale2\fP 1i
+The data scaling for the second array.
+.IP \fIoffset2\fP 1i
+The data offset for the second array.
+.IP \fIap2\fP 1i
+The KwcsAstro object for the second array.
+.IP \fInum_restr\fP 1i
+The number of restrictions for the second array.
+.IP \fIrestr_names\fP 1i
+The array of restriction names for the second array.
+.IP \fIrestr_values\fP 1i
+The restriction values for the second array.
+.IP \fImin2\fP 1i
+The minimum value from the second array. This is updated.
+.IP \fImax2\fP 1i
+The maximum value from the second array. This is updated.
+.SH RETURN VALUE
+A KScatterPlot object on success, NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The KScatterPlot will be automatically destroyed if the canvas is
+destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,53 @@
+.TH SCATPLT_FIND_CLOSEST_ALL 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+scatplt_find_closest_all \- Find the closest point to a specified position.
+.SH SYNOPSIS
+.B #include <karma_scatplt.h>
+.sp
+.B flag scatplt_find_closest_all
+.sp
+(KWorldCanvas canvas, double xin, double yin,
+double *xout, double *yout, uaddr *index,
+KScatterPlot *plot,
+flag subpixel, double search_radius)
+.SH DESCRIPTION
+Find the closest point to a specified position.
+.IP \fIcanvas\fP 1i
+The canvas to search. All active scatter plots are searched.
+.IP \fIxin\fP 1i
+The X world co-ordinate to search from.
+.IP \fIyin\fP 1i
+The Y world co-ordinate to search from.
+.IP \fIxout\fP 1i
+The exact X co-ordinate of the point found is written here.
+.IP \fIyout\fP 1i
+The exact Y co-ordinate of the point found is written here.
+.IP \fIindex\fP 1i
+The index of the point is written here.
+.IP \fIplot\fP 1i
+The KScatterPlot the point was found in is written here.
+.IP \fIsubpixel\fP 1i
+If TRUE, search with subpixel resolution so that multiple points
+lying on the same screen pixel will be searched to find the closest point.
+If FALSE, the search will terminate early on the first point which lies on
+the same screen pixel. It is highly recommended that subpixel resolution is
+not used, as it may be orders of magnitude slower.
+.IP \fIsearch_radius\fP 1i
+The maximum search radius. Points further from the search
+position will be ignored.
+.SH RETURN VALUE
+TRUE if a close point was found, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

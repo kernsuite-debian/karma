@@ -1,0 +1,29 @@
+.TH DSXFR_TEST_SPLIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dsxfr_test_split \- Test if a file is part of a split Karma file.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B flag dsxfr_test_split
+.sp
+(CONST char *filename)
+.SH DESCRIPTION
+Test if a file is part of a split Karma file.
+.IP \fIfilename\fP 1i
+The name of any file in the Karma file set.
+.SH RETURN VALUE
+TRUE if the file is part of a Karma file set, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

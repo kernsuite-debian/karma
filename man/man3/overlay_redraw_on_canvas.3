@@ -1,0 +1,31 @@
+.TH OVERLAY_REDRAW_ON_CANVAS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_redraw_on_canvas \- Redraw an overlay list onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_redraw_on_canvas
+.sp
+(KOverlayList olist, KWorldCanvas canvas)
+.SH DESCRIPTION
+Redraw an overlay list onto a world canvas.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

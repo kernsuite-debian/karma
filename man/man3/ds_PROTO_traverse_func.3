@@ -1,0 +1,42 @@
+.TH DS_PROTO_TRAVERSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+ds_PROTO_traverse_func \- Process an occurrence of a divergence between two data structures
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_PROTO_traverse_func
+.sp
+(char *desc1, unsigned int type1, char *data1,
+char *desc2, unsigned int type2, char *data2)
+.SH DESCRIPTION
+Process an occurrence of a divergence between two data structures
+.IP \fIdesc1\fP 1i
+One of the descriptors where the divergence occurred.
+.IP \fItype1\fP 1i
+The type of the first descriptor. See <-ds_PARENT_TYPES-> for a
+list of possible values. The value IDENT_DIMENSION is not possible.
+.IP \fIdata\fP 1i
+The data for the first descriptor.
+.IP \fIdesc2\fP 1i
+The other descriptor where the divergence occurred.
+.IP \fItype2\fP 1i
+The type of the other descriptor. See <-ds_PARENT_TYPES-> for a
+list of possible values. The value IDENT_DIMENSION is not possible.
+.IP \fIdata2\fP 1i
+The data for the other descriptor.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

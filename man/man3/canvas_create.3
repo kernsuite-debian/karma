@@ -1,0 +1,47 @@
+.TH CANVAS_CREATE 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_create \- Create world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B KWorldCanvas canvas_create
+.sp
+(KPixCanvas pixcanvas, Kcolourmap cmap,
+struct win_scale_type *win_scale)
+.SH DESCRIPTION
+This routine will create a world canvas, ready for drawing, from
+a KPixCanvas (pixel canvas) object. The origin of a KWorldCanvas is the
+lower-left corner.
+.IP \fIpixcanvas\fP 1i
+The pixel canvas object.
+.IP \fIcmap\fP 1i
+The colourmap. If this is NULL, the canvas will only permit drawing
+using pixel values. This precludes the use of drawing PseudoColour images
+and drawing geometric primitives using data values.
+.IP \fIwin_scale\fP 1i
+The window scaling information. The <<x_offset>> <<x_pixels>>
+<<y_offset>> and <<y_pixels>> fields are determined internally. If this is
+NULL a default scale is choosen.
+.SH RETURN VALUE
+A world canvas object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+Resize events on the colourmap will cause the canvas to be
+refreshed.
+.sp
+The world canvas will be automatically destroyed if the pixel canvas
+is destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

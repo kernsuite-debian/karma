@@ -1,0 +1,64 @@
+<html><head><title>Widget: ThreeDeeSlice</title></head> 
+<body>
+<center><h1>The "ThreeDeeSlice" Widget</h1></center>    This widget provides a three-dimensional slice control.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=ThreeDeeSlice></a></table><h4>Tables</h4><table><tr><td><a href=ThreeDeeSlice.html#ThreeDeeSlice_ResourceNames>ThreeDeeSlice_ResourceNames</a></td><td>List of resource names for ThreeDeeSlice widget
+</td></tr>
+<tr><td><a href=ThreeDeeSlice.html#ThreeDeeSlice_Resources>ThreeDeeSlice_Resources</a></td><td>List of resources for ThreeDeeSlice widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=ThreeDeeSlice.html#XkwThreeDeeSlicePrecompute>XkwThreeDeeSlicePrecompute</a></td><td>Precompute all viewable images.
+</td></tr>
+<tr><td><a href=ThreeDeeSlice.html#XkwThreeDeeSliceSetCursor>XkwThreeDeeSliceSetCursor</a></td><td>Set the 3D cursor position.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=ThreeDeeSlice_ResourceNames><b>ThreeDeeSlice_ResourceNames</b></a> List of resource names for ThreeDeeSlice widget
+<p> <table><tr><td>Name                    </td><td>Purpose
+</td></tr><tr><td>XkwNiarray              </td><td>The Intelligent Array to display
+</td></tr><tr><td>XkwNkarmaColourmap      </td><td>The Karma colourmap
+</td></tr><tr><td>XkwNminPtr              </td><td>A pointer to the minimum array value
+</td></tr><tr><td>XkwNmaxPtr              </td><td>A pointer to the maximum array value
+</td></tr><tr><td>XkwNcanvasVisual        </td><td>The visual for the canvas
+</td></tr><tr><td>XkwNcanvasColourmap     </td><td>The X colourmap for the canvas
+</td></tr><tr><td>XkwNcursorCallback      </td><td>Callbacks when the 3D cursor position changes
+</td></tr><tr><td>XkwNverbose             </td><td>If TRUE verbose output is displayed
+</table><p><hr> <a name=ThreeDeeSlice_Resources><b>ThreeDeeSlice_Resources</b></a> List of resources for ThreeDeeSlice widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNiarray	</td><td>XkwCIarray	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNkarmaColourmap	</td><td>XkwCKarmaColourmap	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNminPtr	</td><td>XkwCMinPtr	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNmaxPtr	</td><td>XkwCMaxPtr	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNcanvasVisual	</td><td>XtCVisual	</td><td>XtRVisual	</td><td>CopyFromParent
+</td></tr><tr><td>XkwNcanvasColourmap	</td><td>XtCColormap	</td><td>XtRColormap	</td><td>None
+</td></tr><tr><td>XkwNcursorCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNverbose	</td><td>XkwCVerbose	</td><td>XtRBool	</td><td>False
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwThreeDeeSlicePrecompute></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwThreeDeeSlicePrecompute</b><i>    (Widget w, XtPointer client_data,
+				 XtPointer call_data)
+</i><br><p>    This routine will precompute all ViewableImages. This routine may
+    be used as a regular callback with the ThreeDeeSlice widget passed as the
+    client data.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    Ignored.
+<br><li><i>client_data :</i> 
+    The ThreeDeeSlice widget.
+<br><li><i>call_data :</i> 
+    Ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwThreeDeeSliceSetCursor></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwThreeDeeSliceSetCursor</b><i>    (Widget W, unsigned int type,
+				double x, double y, double z)
+</i><br><p>    Set the 3D cursor position.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The ThreeDeeSlice widget.
+<br><li><i>type :</i> 
+    The type of the supplied co-ordinates.
+<br><li><i>x :</i> 
+    The x co-ordinate.
+<br><li><i>y :</i> 
+    The y co-ordinate.
+<br><li><i>z :</i> 
+    The z co-ordinate.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

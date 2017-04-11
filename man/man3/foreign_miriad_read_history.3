@@ -1,0 +1,31 @@
+.TH FOREIGN_MIRIAD_READ_HISTORY 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_miriad_read_history \- Read the history component of a Miriad Image file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_miriad_read_history
+.sp
+(CONST char *dirname, multi_array *multi_desc)
+.SH DESCRIPTION
+Read the history component of a Miriad Image file.
+.IP \fIdirname\fP 1i
+The directory name of the Miriad dataset name.
+.IP \fImulti_desc\fP 1i
+The multi_array header the history will be written to.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

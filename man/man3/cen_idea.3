@@ -1,0 +1,45 @@
+.TH CEN_IDEA 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+cen_idea \- Add IDEA encryption to a channel object.
+.SH SYNOPSIS
+.B #include <karma_cen.h>
+.sp
+.B ChConverter cen_idea
+.sp
+(Channel channel, char read_key[EN_IDEA_KEY_SIZE],
+char read_init_vector[EN_IDEA_BLOCK_SIZE],
+char write_key[EN_IDEA_KEY_SIZE],
+char write_init_vector[EN_IDEA_BLOCK_SIZE], flag clear)
+.SH DESCRIPTION
+This routine will register converter functions for a channel so
+that all IO will be encrypted using the IDEA cipher in Cipher Feed Back
+mode.
+.IP \fIread_key\fP 1i
+The 16 byte IDEA key used when reading.
+.IP \fIread_init_vector\fP 1i
+The 8 byte initialisation vector used when reading.
+.IP \fIwrite_key\fP 1i
+The 16 byte IDEA key used when writing.
+.IP \fIwrite_init_vector\fP 1i
+The 8 byte initialisation vector used when writing.
+.IP \fIclear\fP 1i
+If TRUE the keys and initialisation vectors will be cleared after
+use (highly recommended if they will not be needed again), irrespective of
+whether the routine fails.
+.SH RETURN VALUE
+A ChConverter object on success (which may be used in a call to
+ch_unregister_converter), else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

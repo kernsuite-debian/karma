@@ -1,0 +1,107 @@
+#! /bin/csh -f
+
+#   This C shell script will create the requisite symbolic links in the
+#   $KARMALIBPATH  directory, needed for the shared library implementations
+#   on some platforms.
+
+#   Copyright (C) 1994-2005  Richard Gooch
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#   Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+#   The postal address is:
+#     Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+
+switch ("$OS")
+    case "ConvexOS":
+    case "ULTRIX":
+    case "VXMVX":
+	# Machines which don't support shared libraries go above
+	exit 0
+	breaksw
+    case "SunOS":
+    case "Linux":
+    case "Solaris":
+	# Machines which support library version numbers go above
+	breaksw
+    case "IRIX5":
+    case "IRIX6":
+    case "OSF1":
+    case "HPUX":
+    case "AIX":
+	# Machines which don't support library version numbers go above
+	exit 0
+	breaksw
+    default:
+	# Default is library version numbers supported
+	breaksw
+endsw
+
+if (-d $KARMABASE/build/lib) then
+    cd $KARMABASE/build/lib
+endif
+if ("$#argv" > "0") then
+    set libraries = ($argv)
+else
+    set libraries = (karma*)
+endif
+
+cd $KARMALIBPATH
+
+set nonomatch
+# First remove all old versions of shared libraries
+foreach lib ($libraries)
+    foreach file (lib${lib}.so.*)
+	if ("$file" != "lib${lib}.so.$KARMA_VERSION") then
+	    echo "Removing: $file"
+	    rm -f $file
+	    set _safile = `echo "$file"|sed -e "s/.so./.sa./"`
+	    if (-f $_safile) then
+		echo "Removing: $_safile"
+		rm $_safile
+	    endif
+	    unset _safile
+	endif
+    end
+end
+
+switch ("$OS")
+    case "SunOS":
+	# Machines where a .so symbolic link is not required go above
+	exit 0
+	breaksw
+    case "Linux":
+    case "Solaris":
+    case "IRIX5":
+    case "OSF1":
+    case "HPUX":
+    case "AIX":
+	# Machines where a .so symbolic link is required go above
+	breaksw
+    default:
+	# Default is a .so symbolic link is required
+	breaksw
+endsw
+# Now make sure symbolic link points to the current (only) version
+set soname_extension = ""
+foreach lib ($libraries)
+    if ( ! -r lib${lib}.so${soname_extension} ) then
+	rm -f lib${lib}.so${soname_extension}
+	echo ln -s lib${lib}.so.$KARMA_VERSION lib${lib}.so${soname_extension}
+	ln -s lib${lib}.so.$KARMA_VERSION lib${lib}.so${soname_extension}
+    endif
+end
+
+exit 0

@@ -1,0 +1,52 @@
+.TH IARRAY_GET_MOVIE_FROM_MULTI 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_movie_from_multi \- Get a movie from a Karma data structure.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_get_movie_from_multi
+.sp
+(multi_array *multi_desc, iarray *pseudo,
+iarray *red, iarray *green, iarray *blue,
+unsigned int *cmap_index)
+.SH DESCRIPTION
+This routine will find a movie embedded in a Karma data
+structure. The movie may be single-channel (PseudoColour) or it may be a
+TrueColour movie (red, green and blue components).
+.IP \fImulti_desc\fP 1i
+The Karma data structure.
+.IP \fIpseudo\fP 1i
+If a single-channel movie is found, the corresponding Intelligent
+Array is written here. If no single-channel movie is found, NULL is written
+here.
+.IP \fIred\fP 1i
+If a TrueColour movie is found, the red component Intelligent Array
+is written here. If no TrueColour movie is found, NULL is written here.
+.IP \fIgreen\fP 1i
+If a TrueColour movie is found, the green component Intelligent
+Array is written here. If no TrueColour movie is found, NULL is written
+here.
+.IP \fIblue\fP 1i
+If a TrueColour movie is found, the blue component Intelligent Array
+is written here. If no TrueColour movie is found, NULL is written here.
+.IP \fIcmap_index\fP 1i
+If the movie found is a single-channel movie and the data
+structure has an associated RGBcolourmap, the index to the colourmap
+structure is written here. If no colourmap is found, the value written here
+is set to the number of general data structures in multi_desc.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

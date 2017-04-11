@@ -1,0 +1,46 @@
+.TH DIR 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dir \- Routines to scan directories
+.SH PURPOSE
+These routines are meant to provide an enhanced, portable method for
+scanning directories and automatically obtaining file status information.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIdir_open\fP 1i
+Open a directory for reading (scanning).
+.IP \fIdir_read\fP 1i
+Read (scan) a directory for files.
+.IP \fIdir_get_size\fP 1i
+Find number of entries in a directory.
+.IP \fIdir_close\fP 1i
+Close a directory.
+.IP \fIdir_rewind\fP 1i
+Rewind a directory.
+.SH TABLE dir_SKIP_VALUES
+List of defined skip control values
+
+.TS
+l l
+_ _
+l l.
+Mode                      Meaning
+KDIR_DOT                  Pass ".", skip ".."
+KDIR_DOTDOT               Pass "..", skip "."
+KDIR_DOT_AND_DOTDOT       Pass "." and ".."
+KDIR_NO_DOTS              Skip "." and ".."
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,12 @@
+# Extension     Converter       Tester		Output  Format Name
+sdf		sdf2karma	-		Karma	Starlink Image
+tga		tgatoppm	-		PNM	Targa TrueVision
+gif		giftopnm	-		PNM	GIF Image
+tiff		tifftopnm	-		PNM	TIFF Image
+tif		tifftopnm	-		PNM	TIFF Image
+xbm		xbmtopbm	-		PNM	X bitmap
+imh		iraf2fits	isiraf		FITS	IRAF Image
+hhh		iraf2fits	-		FITS	HST IRAF Image
+jpg		jpegtopnm	-		PNM	JPEG Image
+JPG		jpegtopnm	-		PNM	JPEG Image
+png		pngtopnm	-		PNM	Portable Net. Graphics

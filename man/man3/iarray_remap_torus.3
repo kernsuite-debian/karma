@@ -1,0 +1,33 @@
+.TH IARRAY_REMAP_TORUS 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_remap_torus \- Remap Intelligent Array into a torus.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_remap_torus
+.sp
+(iarray array, unsigned int boundary_width)
+.SH DESCRIPTION
+This routine will remap an N-dimensional "Intelligent Array" to a
+pseudo-toroidal array.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIboundary_width\fP 1i
+The width of the array boundary within which the array
+appears to be toroidal.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

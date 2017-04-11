@@ -1,0 +1,76 @@
+.TH XTMISC 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+xtmisc \- Routines to provide miscellaneous Xt support
+.SH PURPOSE
+These routines are meant to provide miscellaneuos Xt support.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmaXt
+.SH LINK WITH
+-lkarmaXt
+.SH FUNCTIONS
+.IP \fIxtmisc_destroy_cbk\fP 1i
+Destroy a popup widget.
+.IP \fIxtmisc_event_init\fP 1i
+Initialise periodic event management support under Xt.
+.IP \fIxtmisc_ext_call\fP 1i
+Call an extension function.
+.IP \fIxtmisc_set_icon\fP 1i
+Create an icon for an application's top level widget.
+.IP \fIxtmisc_init_app_initialise\fP 1i
+Initialise an application for Xt.
+.IP \fIxtmisc_init_post_realise_arg_process\fP 1i
+Process and remove arguments after main widget realisation.
+.IP \fIxtmisc_init_get_pc_colourmap\fP 1i
+Get PseudoColour colourmap with a minimum of free colourcells.
+.IP \fIxtmisc_popup_cbk\fP 1i
+Pop up a popup widget.
+.IP \fIxtmisc_exclusive_popup_cbk\fP 1i
+Pop up a popup widget with exclusive grab.
+.IP \fIxtmisc_popdown_cbk\fP 1i
+Pop down a popup widget.
+.IP \fIxtmisc_sensitive_cbk\fP 1i
+Make a widget sensitive.
+.IP \fIxtmisc_insensitive_cbk\fP 1i
+Make a widget insensitive.
+.IP \fIxtmisc_toggle_cbk\fP 1i
+Default toggle callback.
+.IP \fIxtmisc_support_work_funcs\fP 1i
+Register support for work functions within an Xt application.
+.IP \fIxtmisc_PROTO_icon_func\fP 1i
+Write an icon pixmap.
+.SH TABLE xtmisc_INIT_ATTRIBUTES
+List of attributes for <-xtmisc_init_app_initialise->
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                          Type         Meaning
+
+XTMISC_INIT_ATT_END                        End of varargs list
+XTMISC_INIT_ATT_MIN_CCELLS    unsigned int The min. number of colourcells
+                                           that the application will want
+                                           to allocate.
+XTMISC_INIT_ATT_COMMS_SETUP   flag         If TRUE, communications setting
+                                           up is performed
+XTMISC_INIT_ATT_CONTROLLED    flag *       TRUE is written here if an
+                                           external agent is controlling
+XTMISC_INIT_ATT_VERBOSE       flag *       TRUE is written here if the
+                                           "-verbose" flag is given by user
+XTMISC_INIT_ATT_BECOME_SERVER flag         If TRUE, become a server
+XTMISC_INIT_ATT_TITLE         char *       Title string is written here
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

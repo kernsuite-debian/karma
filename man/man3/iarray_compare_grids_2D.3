@@ -1,0 +1,46 @@
+.TH IARRAY_COMPARE_GRIDS_2D 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_compare_grids_2D \- Compare if two image slices have the same world co-ordinate grid.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_compare_grids_2D
+.sp
+(iarray array1,
+unsigned int hdim1, unsigned int vdim1,
+iarray array2,
+unsigned int hdim2, unsigned int vdim2,
+flag *same)
+.SH DESCRIPTION
+Compare if two image slices have the same world co-ordinate grid.
+.IP \fIarray1\fP 1i
+The array containing the first image slice.
+.IP \fIhdim1\fP 1i
+The horizontal dimension of the first image slice.
+.IP \fIvdim1\fP 1i
+The vertical dimension of the first image slice.
+.IP \fIarray2\fP 1i
+The array containing the second image slice.
+.IP \fIhdim2\fP 1i
+The horizontal dimension of the second image slice.
+.IP \fIvdim2\fP 1i
+The vertical dimension of the second image slice.
+.IP \fIsame\fP 1i
+TRUE is written here if the grids are the same, else FALSE is
+written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE, indicating that comparison failed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

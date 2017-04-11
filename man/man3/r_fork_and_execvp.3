@@ -1,0 +1,57 @@
+.TH R_FORK_AND_EXECVP 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_fork_and_execvp \- Fork and exec a process in a virtual memory efficient way.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B pid_t r_fork_and_execvp
+.sp
+(int stdin_fd, int stdout_fd, int stderr_fd,
+unsigned int num_close_fds, int *close_fds,
+CONST char *file, char *CONST *argv, int *waitflags)
+.SH DESCRIPTION
+This function will fork and exec a new process in such as way as
+to minimise virtual memory consumption. The traditional use of fork(2) can
+consume large amounts of virtual memory under many operating systems (such
+as Solaris and IRIX), especially when the calling process has large arrays
+allocated. Some operating systems provide the vfork(2) call to work around
+this, but vfork(2) is not always available and may in fact not provide the
+Berkely vfork(2) semantics which preserved virtual memory. This function
+will make use of whatever Operating System specific functions are available
+in order to obtain the desired effect.
+.IP \fIstdin_fd\fP 1i
+The file descriptor which should become the standard input for
+the child process.
+.IP \fIstdout_fd\fP 1i
+The file descriptor which should become the standard output for
+the child process.
+.IP \fIstderr_fd\fP 1i
+The file descriptor which should become the standard error
+output for the child process.
+.IP \fInum_close_fds\fP 1i
+The number of file descriptors to close in the child.
+.IP \fIclose_fds\fP 1i
+The array of file descriptors to close in the child.
+.IP \fIfile\fP 1i
+The file to execvp(3).
+.IP \fIargv\fP 1i
+The command-line arguments to pass to execvp(3).
+.IP \fIwaitflags\fP 1i
+Special flags to pass to waitpid(2) are written here. If this
+is NULL, the function will wait for the child process to terminate.
+.SH RETURN VALUE
+The child process ID on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

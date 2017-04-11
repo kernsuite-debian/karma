@@ -1,0 +1,52 @@
+.TH DS_GAUSSCURVE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_gausscurve \- Write gaussian curve to an array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_gausscurve
+.sp
+(double *array, CONST uaddr *offsets,
+unsigned int num_points, double xcentre,
+double peak_height, double fwhm,
+double background, flag inverted)
+.SH DESCRIPTION
+This routine will a gaussian curve to a 1-dimensional array. This
+array may be used for plotting over real data to which a gaussian has been
+fitted with <-ds_fitgauss->.
+.IP \fIarray\fP 1i
+The 1-dimensional array of data.
+.IP \fIoffsets\fP 1i
+The array of byte offsets for the array data. If this is NULL,
+the array is assumed to be contiguous.
+.IP \fInum_points\fP 1i
+The length of the array.
+.IP \fIxcentre\fP 1i
+The centre of the profile. If this is 0 it is assumed the profile
+is radial (i.e. the centre is at 0).
+.IP \fIpeak_height\fP 1i
+The height of the fitted peak (without background
+subtraction).
+.IP \fIfwhm\fP 1i
+The Full Width Half Maximum of the fit.
+.IP \fIbackground\fP 1i
+The background level.
+.IP \fIinverted\fP 1i
+If TRUE the object values are inverted (i.e. is negative) else
+the object is positive.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

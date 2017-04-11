@@ -1,0 +1,29 @@
+.TH FOREIGN_GIPSY_TEST 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_gipsy_test \- Test if a file is part of a GIPSY file set.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_gipsy_test
+.sp
+(CONST char *filename)
+.SH DESCRIPTION
+Test if a file is part of a GIPSY file set.
+.IP \fIfilename\fP 1i
+The name of any file in the GIPSY file set.
+.SH RETURN VALUE
+TRUE if the file is part of a GIPSY file set, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

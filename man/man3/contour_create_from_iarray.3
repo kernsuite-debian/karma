@@ -1,0 +1,39 @@
+.TH CONTOUR_CREATE_FROM_IARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_create_from_iarray \- Create a contour image from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B KContourImage contour_create_from_iarray
+.sp
+(iarray array, flag swap,
+KContourImageGroup group)
+.SH DESCRIPTION
+This routine will create a contour image object from a
+2-dimensional Intelligent Array. At a later time, this contour image may be
+used to create a viewable contour image.
+.IP \fIarray\fP 1i
+The Intelligent Array. The underlying <<multi_array>> data
+structure will have its attachment count incremented upon successful
+completion.
+.IP \fIswap\fP 1i
+If TRUE the y axis will be displayed horizontally.
+.IP \fIgroup\fP 1i
+The KContourImageGroup to add the new object too. If NULL, it is
+not added to any group.
+.SH RETURN VALUE
+A KContourImage object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH PIO_WRITE_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+pio_write_string \- Write a string to a channel object.
+.SH SYNOPSIS
+.B #include <karma_pio.h>
+.sp
+.B flag pio_write_string
+.sp
+(Channel channel, CONST char *string)
+.SH DESCRIPTION
+Write a string to a channel object.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIstring\fP 1i
+The string. If this is NULL, a zero length string is written.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

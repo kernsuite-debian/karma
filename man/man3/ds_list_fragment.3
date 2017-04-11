@@ -1,0 +1,43 @@
+.TH DS_LIST_FRAGMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_list_fragment \- Fragment a linked list.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_list_fragment
+.sp
+(packet_desc *list_desc, list_header *list_head)
+.SH DESCRIPTION
+This routine will fragment a linked list (i.e. all the contiguous
+data packets in the linked list will be separately allocated and linked
+together by new <<list_entry>> structures. This decreases the storage
+efficiency (now <<list_entry>> structures are needed to link the data
+packets) rather than arbitrary indexing. However, it does provide for easy
+insertion of new entries into any part of the list.
+If the routine is not successful in allocating the required memory, then
+no change is effected (and the <<contiguous_length>> value in the list
+header is not changed). I.e. data is not lost.
+.IP \fIlist_desc\fP 1i
+The packet descriptor for the list.
+.IP \fIlist_head\fP 1i
+The list header.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The <<contiguous_length>> value in the linked list header will be
+set to 0.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,33 @@
+.TH ST_NICMP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_nicmp \- Compare strings, ignoring case, up to a specified length.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B int st_nicmp
+.sp
+(CONST char *string1, CONST char *string2, int str_len)
+.SH DESCRIPTION
+Compare strings, ignoring case, up to a specified length.
+.IP \fIstring1\fP 1i
+One of the strings.
+.IP \fIstring2\fP 1i
+The other string.
+.IP \fIstr_len\fP 1i
+The maximum number of characters to compare.
+.SH RETURN VALUE
+The comparison value. 0 indicates equality.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

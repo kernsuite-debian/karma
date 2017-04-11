@@ -1,0 +1,29 @@
+.TH C_LIST_DISPATCHING 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+c_list_dispatching \- Test if a callback list is currently dispatching events.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B flag c_list_dispatching
+.sp
+(KCallbackList list)
+.SH DESCRIPTION
+Test if a callback list is currently dispatching events.
+.IP \fIlist\fP 1i
+The callback list.
+.SH RETURN VALUE
+TRUE if the list is dispatching, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

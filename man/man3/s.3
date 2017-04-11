@@ -1,0 +1,42 @@
+.TH S 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+s \- Signal handling routines
+.SH PURPOSE
+These routines are meant to provide a simplified interface to the Unix
+signal management routines. These routines allow blocking and unblocking
+of signals without the dangers of deadlock (common on multi-threaded
+machines).
+A few "standard" signal handlers are also provided.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIs_block\fP 1i
+Block a signal.
+.IP \fIs_unblock\fP 1i
+Unblock a signal.
+.IP \fIs_unblock_all\fP 1i
+Unblock all signals.
+.IP \fIs_ignore\fP 1i
+Cause a signal to be ignored.
+.IP \fIs_int_handler\fP 1i
+Recommended SIGINT handler.
+.IP \fIs_term_handler\fP 1i
+Recommended SIGTERM handler.
+.IP \fIs_check_for_int\fP 1i
+Check for queued SIGINTs.
+.IP \fIs_install_handlers\fP 1i
+Install recommended signal handlers for SIGINT and SIGTERM.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

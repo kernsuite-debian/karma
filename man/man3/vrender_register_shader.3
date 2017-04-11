@@ -1,0 +1,47 @@
+.TH VRENDER_REGISTER_SHADER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_register_shader \- Register a shader function.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_register_shader
+.sp
+(void (*slow_func) (), void (*fast_func) (),
+CONST char *name,
+packet_desc *pack_desc, CONST char *blank_packet,
+void *info, flag front)
+.SH DESCRIPTION
+Register a shader function.
+.IP \fIslow_func\fP 1i
+The slow shader function.
+.IP \fIfast_func\fP 1i
+The fast shader function. If this is NULL the slow function
+will always be used.
+.IP \fIname\fP 1i
+The name of the shader function.
+.IP \fIpack_desc\fP 1i
+The packet descriptor describing the output image pixels. A
+copy is made, hence the original may be deallocated.
+.IP \fIblank_packet\fP 1i
+A pointer to a sample packet containing blank data.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer associated with the shader.
+.IP \fIfront\fP 1i
+If TRUE, the new shader is placed at the front of the list, else
+it is placed at the back of the list.
+.SH RETURN VALUE
+Nothing. The process aborts on error.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

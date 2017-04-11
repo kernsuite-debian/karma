@@ -1,0 +1,29 @@
+.TH CH_GET_DESCRIPTOR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_get_descriptor \- Get the file descriptor associated with a channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B int ch_get_descriptor
+.sp
+(Channel channel)
+.SH DESCRIPTION
+Get the file descriptor associated with a channel.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+The file descriptor on success, else -1 indicating error.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

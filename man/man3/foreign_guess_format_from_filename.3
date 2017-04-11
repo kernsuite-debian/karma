@@ -1,0 +1,31 @@
+.TH FOREIGN_GUESS_FORMAT_FROM_FILENAME 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_guess_format_from_filename \- Attempt to guess the format of a file by examining its filename.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B unsigned int foreign_guess_format_from_filename
+.sp
+(CONST char *filename)
+.SH DESCRIPTION
+Attempt to guess the format of a file by examining its filename.
+.IP \fIfilename\fP 1i
+The name of the file.
+.SH RETURN VALUE
+A value indicating the format of the file. The value
+FOREIGN_FILE_FORMAT_KARMA is returned if the extension is ".kf". See
+<-foreign_TYPES-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

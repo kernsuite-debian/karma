@@ -1,0 +1,37 @@
+.TH IARRAY_CREATE_FROM_ARRAY_DESC 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_create_from_array_desc \- Create an Intelligent Array from a preallocated nD array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_create_from_array_desc
+.sp
+(array_desc *arr_desc,
+CONST array_pointer *arrayp,
+unsigned int elem_index)
+.SH DESCRIPTION
+Create an Intelligent Array from a preallocated nD array.
+.IP \fIarr_desc\fP 1i
+The array descriptor. This may be modified.
+.IP \fIarrayp\fP 1i
+The array data pointer. If this is NULL the array data is
+internally allocated.
+.IP \fIelem_index\fP 1i
+The index of the element in the array packet descriptor.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else an
+error message is printed to the standard output and NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

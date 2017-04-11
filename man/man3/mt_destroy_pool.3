@@ -1,0 +1,33 @@
+.TH MT_DESTROY_POOL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_destroy_pool \- This routine will destroy a thread pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void mt_destroy_pool
+.sp
+(KThreadPool pool, flag interrupt)
+.SH DESCRIPTION
+This routine will destroy a thread pool.
+.IP \fIpool\fP 1i
+The thread pool.
+.IP \fIinterrupt\fP 1i
+If TRUE, any jobs not yet completed will be killed, else the
+function will wait for uncompleted jobs to finish prior to destroying the
+pool.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

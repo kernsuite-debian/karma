@@ -1,0 +1,34 @@
+.TH IARRAY_IS_FULL_ARRAY 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_is_full_array \- Test if iarray is the same size as the underlying array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_is_full_array
+.sp
+(iarray array, flag *all_contiguous)
+.SH DESCRIPTION
+This routine will test if an Intelligent Array is the same size
+and dimensionality as the underlying array descriptor.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIall_contiguous\fP 1i
+TRUE is written here if all dimensions are contiguous,
+else FALSE is written here. This may be NULL. Nothing is written here if
+the array is not full size.
+.SH RETURN VALUE
+TRUE if the Intelligent Array is the same size, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

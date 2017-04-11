@@ -1,0 +1,32 @@
+.TH CH_OPEN_STDIN 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_open_stdin \- Create starndard input channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B void ch_open_stdin
+.sp
+()
+.SH DESCRIPTION
+This routine will create a channel object for the standard input
+descriptor (typically 0 on Unix systems).
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The standard input channel will be written to the external variable
+<<ch_stdin>>.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

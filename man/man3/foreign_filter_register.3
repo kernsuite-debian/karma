@@ -1,0 +1,49 @@
+.TH FOREIGN_FILTER_REGISTER 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_filter_register \- Register a filter.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_filter_register
+.sp
+(CONST char *extension,CONST char *converter_prog,
+pid_t (*run) (CONST char *filename,
+int stdout_fd, int close_fd,
+int *waitflags),
+CONST char *tester_prog,
+flag (*tester_func) (CONST char *dirname,
+flag test_dir),
+unsigned int output_type, CONST char *name)
+.SH DESCRIPTION
+Register a filter.
+.IP \fIextension\fP 1i
+The filename extension. If NULL, the file format is a directory
+dataset.
+.IP \fIconverter_prog\fP 1i
+The programme used to convert data.
+.IP \fIrun\fP 1i
+The function used to run a new programme.
+.IP \fItester_prog\fP 1i
+The programme used to test the data.
+.IP \fItester_func\fP 1i
+The function used to test the data.
+.IP \fIoutput_type\fP 1i
+The output type of the converter.
+.IP \fIname\fP 1i
+The name of the data format.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

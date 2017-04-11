@@ -1,0 +1,31 @@
+.TH CM_PROTO_STOP_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+cm_PROTO_stop_func \- This routine is called when a child process is stopped.
+.SH SYNOPSIS
+.B #include <karma_cm.h>
+.sp
+.B void cm_PROTO_stop_func
+.sp
+(int pid, int sig)
+.SH DESCRIPTION
+This routine is called when a child process is stopped.
+.IP \fIpid\fP 1i
+The process ID.
+.IP \fIsig\fP 1i
+The signal which stopped the process.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,37 @@
+.TH IARRAY_REGISTER_DESTROY_FUNC 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_register_destroy_func \- Register destroy function for an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B KCallbackFunc iarray_register_destroy_func
+.sp
+(iarray array,
+void (*destroy_func) (iarray array,
+void *info),
+void *info)
+.SH DESCRIPTION
+Register destroy function for an Intelligent Array.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIdestroy_func\fP 1i
+The routine that is called when the array is destroyed. The
+prototype function is <-iarray_PROTO_destroy_func->.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

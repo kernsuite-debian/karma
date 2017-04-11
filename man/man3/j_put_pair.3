@@ -1,0 +1,62 @@
+.TH J_PUT_PAIR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+j_put_pair \- Add a key-value pair to an associative array.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B KJoinedPair j_put_pair
+.sp
+(KJoinedPairList list,
+CONST void *key, uaddr key_length,
+CONST void *value, uaddr value_length,
+void *(*value_copy_func) (CONST void *value,
+uaddr length, flag *ok),
+void (*value_destroy_func) (void *value),
+unsigned int replacement_policy, flag front)
+.SH DESCRIPTION
+Add a key-value pair to an associative array.
+.IP \fIlist\fP 1i
+The associative array.
+.IP \fIkey\fP 1i
+The key.
+.IP \fIkey_length\fP 1i
+The length of the key, in bytes. If this is 0 and the
+<<key_copy_func>> is NULL, the key pointer is copied directly. If this is
+greater than zero and the <<key_copy_func>> is NULL, the specified number
+of bytes are copied.
+.IP \fIvalue\fP 1i
+The value.
+.IP \fIvalue_length\fP 1i
+The length of the value, in bytes. If this is 0 and the
+<<value_copy_func>> is NULL, the value pointer is copied directly. If this
+is greater than zero and the <<value_copy_func>> is NULL, the specified
+number of bytes are copied.
+.IP \fIvalue_copy_func\fP 1i
+The function used to copy values. The prototype function
+is <-j_PROTO_value_copy_func->.
+.IP \fIvalue_destroy_func\fP 1i
+The function used to destroy values. The prototype
+function is <-j_PROTO_value_destroy_func->.
+.IP \fIreplacement_policy\fP 1i
+The policy to use when adding the pair. See
+<-j_REPLACEMENT_POLICIES-> for a list of legal values.
+.IP \fIfront\fP 1i
+If TRUE and the key is new, place the pair at the front of the
+array. If FALSE and the key is new, place the pair at the end of the
+array.
+.SH RETURN VALUE
+A KJoinedPair object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

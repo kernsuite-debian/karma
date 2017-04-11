@@ -1,0 +1,30 @@
+.TH MT_NUM_THREADS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_num_threads \- Get the number of threads in a thread pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B unsigned int mt_num_threads
+.sp
+(KThreadPool pool)
+.SH DESCRIPTION
+This function will determine the number of threads that may be
+run concurrently in a thread pool.
+.IP \fIpool\fP 1i
+The thread pool.
+.SH RETURN VALUE
+The number of concurrent threads.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

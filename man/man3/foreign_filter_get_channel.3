@@ -1,0 +1,29 @@
+.TH FOREIGN_FILTER_GET_CHANNEL 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_filter_get_channel \- Get the channel for a filtered file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B Channel foreign_filter_get_channel
+.sp
+(CONST char *filename)
+.SH DESCRIPTION
+Get the channel for a filtered file.
+.IP \fIfilename\fP 1i
+The filename to read.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

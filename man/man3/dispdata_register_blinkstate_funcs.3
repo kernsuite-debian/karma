@@ -1,0 +1,42 @@
+.TH DISPDATA_REGISTER_BLINKSTATE_FUNCS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_register_blinkstate_funcs \- Register callback functions for a blinkstate.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_register_blinkstate_funcs
+.sp
+(KDisplayDataClassBlinkState blinkstate,
+void (*refresh_func) (void *info, KDisplayDataClass dataclass),
+void *(*create_blinkentry) (void *info, KDisplayDataBlinkEntry be),
+void (*destroy_blinkentry) (void *info),
+void (*copy_blinkentry) (void *dest, void *source),
+void *info)
+.SH DESCRIPTION
+Register callback functions for a blinkstate.
+.IP \fIblinkstate\fP 1i
+The KDisplayDataClassBlinkState object.
+.IP \fIdataclass\fP 1i
+The dataclass for refresh events.
+.IP \fIrefresh_func\fP 1i
+The function to be called to refresh the blinkstate
+interface.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer to be passed to <<refresh_func>>
+and <<create_blinkentry>>.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

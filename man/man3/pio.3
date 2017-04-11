@@ -1,0 +1,93 @@
+.TH PIO 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+pio \- Routines to convert and transfer host data to channel objects
+.SH PURPOSE
+These routines are meant to provide a high level means of converting C data
+types to the "network" data format (ie. big endian, IEEE 754).
+These routines transfer data between host memory and files/ connections.
+These routines are NOT recommended as a means to transfer the recursive,
+heirarchical data structure supported in Karma, use the <-dsxfr-> routines
+instead.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIpio_write64\fP 1i
+Write a 64 bit integer to a channel object.
+.IP \fIpio_read64\fP 1i
+Read a 64 bit integer from a channel object.
+.IP \fIpio_le_read64\fP 1i
+Read a 64 bit little-endian integer from a channel object.
+.IP \fIpio_write32\fP 1i
+Write a 32 bit integer to a channel object.
+.IP \fIpio_read32\fP 1i
+Read a 32 bit integer from a channel object.
+.IP \fIpio_le_read32\fP 1i
+Read a 32 bit little-endian integer from a channel object.
+.IP \fIpio_write16\fP 1i
+Write a 16 bit integer to a channel object.
+.IP \fIpio_read16\fP 1i
+Read a 16 bit integer from a channel object.
+.IP \fIpio_le_read16\fP 1i
+Read a 16 bit little-endian integer from a channel object.
+.IP \fIpio_write_float\fP 1i
+Write a floating point number to a channel object.
+.IP \fIpio_write_float_trap\fP 1i
+Write a floating point data to a channel object, trapping blanks.
+.IP \fIpio_read_float\fP 1i
+Read a floating point number from a channel object.
+.IP \fIpio_le_read_float\fP 1i
+Read a little-endian floating point number from a channel object.
+.IP \fIpio_read_float_nantrap\fP 1i
+Read floating point data from a channel object, trapping NaNs.
+.IP \fIpio_read_floats\fP 1i
+Read floating point data from a channel object, trapping NaNs.
+.IP \fIpio_le_read_floats\fP 1i
+Read floating point data from a channel object, trapping NaNs.
+.IP \fIpio_write_double\fP 1i
+Write double precision floating point data to a channel object.
+.IP \fIpio_write_double_trap\fP 1i
+Write double precision floating point data to a channel object.
+.IP \fIpio_read_double\fP 1i
+Read double precision floating point data from a channel object.
+.IP \fIpio_le_read_double\fP 1i
+Read double precision floating point data from a channel object.
+.IP \fIpio_read_double_nantrap\fP 1i
+Read floating point data from a channel object, trapping NaNs.
+.IP \fIpio_read_doubles\fP 1i
+Read double float data from a channel object, trapping NaNs.
+.IP \fIpio_le_read_doubles\fP 1i
+Read double float data from a channel object, trapping NaNs.
+.IP \fIpio_write32s\fP 1i
+Write a 32 bit signed integer to a channel object.
+.IP \fIpio_read32s\fP 1i
+Read a 32 bit signed integer from a channel object.
+.IP \fIpio_le_read32s\fP 1i
+Read a 32 bit little-endian signed integer from a channel object.
+.IP \fIpio_write16s\fP 1i
+Write a 16 bit signed integer to a channel object.
+.IP \fIpio_read16s\fP 1i
+Read a 16 bit signed integer from a channel object.
+.IP \fIpio_le_read16s\fP 1i
+Read a 16 bit little-endian signed integer from a channel object.
+.IP \fIpio_write_swap\fP 1i
+Swap and write bytes to a channel object.
+.IP \fIpio_read_swap\fP 1i
+Read from a channel object and swap bytes.
+.IP \fIpio_write_string\fP 1i
+Write a string to a channel object.
+.IP \fIpio_read_string\fP 1i
+Read a string from a channel object.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

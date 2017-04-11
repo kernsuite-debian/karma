@@ -1,0 +1,37 @@
+.TH CONN_PROTO_CLOSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+conn_PROTO_close_func \- Connection close event callback.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B void conn_PROTO_close_func
+.sp
+(Connection connection, void *info, Channel channel)
+.SH DESCRIPTION
+This routine is called when a connection is closed.
+When this routine is called, this is the last chance to read any
+buffered data from the channel associated with the connection object.
+.IP \fIconnection\fP 1i
+The connection object.
+.IP \fIinfo\fP 1i
+The arbitrary connection information pointer.
+.IP \fIchannel\fP 1i
+The channel that was remotely closed, causing the connection to
+be closed. This may be NULL, indicating that the connection was closed
+locally.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

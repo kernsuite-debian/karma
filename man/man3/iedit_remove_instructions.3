@@ -1,0 +1,35 @@
+.TH IEDIT_REMOVE_INSTRUCTIONS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_remove_instructions \- Remove instructions from an image edit list.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B flag iedit_remove_instructions
+.sp
+(KImageEditList ilist,
+unsigned int num_to_remove)
+.SH DESCRIPTION
+This routine will remove a number of edit instructions from a
+managed image edit instruction list. The <<loss_func>> function registered
+for this instruction list will be called at a future time.
+.IP \fIilist\fP 1i
+The instruction list.
+.IP \fInum_to_remove\fP 1i
+The number of instructions to remove. If this is 0, all
+instructions are removed.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

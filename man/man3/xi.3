@@ -1,0 +1,35 @@
+.TH XI 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+xi \- Routines to manipulate XImage structures
+.SH PURPOSE
+These routines are meant to provide a more generic interface to the X
+Windows System XImage structures.
+These routines allow simple creation of standard and shared-memory XImage
+data structures, as well as the transmission of these to the X server.
+.SH LIBRARY
+karmaX11
+.SH LINK WITH
+-lkarmaX11
+.SH FUNCTIONS
+.IP \fIxi_check_shared_images_available\fP 1i
+Test if shared memory XImages may be use with an X server.
+.IP \fIxi_create_image\fP 1i
+Create an XImage structure for a window.
+.IP \fIxi_create_shm_image\fP 1i
+Create a shared-memory XImage structure.
+.IP \fIxi_destroy_image\fP 1i
+Destroy all the memory allocated for an XImage structure.
+.IP \fIxi_put_image\fP 1i
+Write an XImage structure to a drawable.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

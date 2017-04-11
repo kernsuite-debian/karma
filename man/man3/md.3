@@ -1,0 +1,31 @@
+.TH MD 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+md \- Routines to produce message digests (secure hash functions)
+.SH PURPOSE
+These routines are meant to provide message digests (secure hash functions)
+These have application in message authentication/verification.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fImd_md5_init\fP 1i
+Initialise MD5 context.
+.IP \fImd_md5_update\fP 1i
+Add data to an MD5 context.
+.IP \fImd_md5_final\fP 1i
+Close an MD5 context.
+.IP \fImd_md5_transform\fP 1i
+Run the core MD5 transform over a block of data.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

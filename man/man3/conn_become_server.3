@@ -1,0 +1,36 @@
+.TH CONN_BECOME_SERVER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_become_server \- Become a Karma server.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B flag conn_become_server
+.sp
+(unsigned int *port_number, unsigned int retries)
+.SH DESCRIPTION
+This routine will allocate a Karma port for the module so that it
+can operate as a server (able to receive network connections).
+.IP \fIport_number\fP 1i
+The port number to allocate. The routine will write the
+actual port number allocated to this address. This must point to an address
+which lies on an <<int>> boundary.
+.IP \fIretries\fP 1i
+The number of succsessive port numbers to attempt to allocate
+before giving up. If this is 0, then the routine will give up immediately
+if the specified port number is in use.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

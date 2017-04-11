@@ -1,0 +1,149 @@
+.TH DISPDATA 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dispdata \- Routines to manage display-able data
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to manage the
+display of data.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIdispdata_array_create_dataclass\fP 1i
+Initialise array data support for the package.
+.IP \fIdispdata_array_clone_data\fP 1i
+Clone an array dataset.
+.IP \fIdispdata_array_register_irange_change_func\fP 1i
+Register a function to be called the image itensity range changes
+.IP \fIdispdata_array_convert_3coord\fP 1i
+Convert canvas co-ordinate to 3D dataset co-ordinate.
+.IP \fIdispdata_init\fP 1i
+Initialise the package.
+.IP \fIdispdata_get_classlist\fP 1i
+Get the list of supported dataclasses.
+.IP \fIdispdata_register_data_create_func\fP 1i
+Register a function to be called when a dataobject is created.
+.IP \fIdispdata_register_data_destroy_func\fP 1i
+Register a function to be called when a dataobject is destroyed.
+.IP \fIdispdata_register_dataobject_destroy_func\fP 1i
+Register a function to be called when a dataobject is destroyed.
+.IP \fIdispdata_set_dataclass_attributes\fP 1i
+Set global attributes for the a dataclass.
+.IP \fIdispdata_get_dataclass_attributes\fP 1i
+Get global attributes for the a dataclass.
+.IP \fIdispdata_create_window\fP 1i
+Create a display data window.
+.IP \fIdispdata_destroy_window\fP 1i
+Destroy a display data window.
+.IP \fIdispdata_register_window_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIdispdata_set_window_attributes\fP 1i
+Set the attributes for a window.
+.IP \fIdispdata_get_window_attributes\fP 1i
+Get the attributes for a window object.
+.IP \fIdispdata_get_num_windows\fP 1i
+Get the number of windows.
+.IP \fIdispdata_refresh_window\fP 1i
+Refresh a window.
+.IP \fIdispdata_get_num_blinkstates\fP 1i
+Get the number of blinkstates for a window.
+.IP \fIdispdata_get_active_blinkstate\fP 1i
+Get the active KDisplayDataBlinkState for a window.
+.IP \fIdispdata_get_first_window\fP 1i
+Get first window.
+.IP \fIdispdata_get_prev_window\fP 1i
+Get previous window.
+.IP \fIdispdata_get_next_window\fP 1i
+Get next window.
+.IP \fIdispdata_get_window_index\fP 1i
+Get the index for a window.
+.IP \fIdispdata_register_window_renumber_func\fP 1i
+Register renumber callback.
+.IP \fIdispdata_create_dataobject\fP 1i
+Create a display data object (i.e. array, overlay, etc.).
+.IP \fIdispdata_destroy_dataobject\fP 1i
+Destroy a display data object (i.e. array, overlay, etc.).
+.IP \fIdispdata_get_dataobject_subclass\fP 1i
+Get the subclass for a KDisplayDataObject.
+.IP \fIdispdata_set_data_attributes\fP 1i
+Set the attributes for a data object.
+.IP \fIdispdata_get_data_attributes\fP 1i
+Get the attributes for a data object.
+.IP \fIdispdata_associate_data_object\fP 1i
+Associate a named object with a data object.
+.IP \fIdispdata_get_associated_data_object\fP 1i
+Get an associated named object for a data object.
+.IP \fIdispdata_get_first_dataobject\fP 1i
+Get first data object for a dataclass.
+.IP \fIdispdata_get_next_dataobject\fP 1i
+Get next data object.
+.IP \fIdispdata_create_blinkstate\fP 1i
+Create a blink state object.
+.IP \fIdispdata_destroy_blinkstate\fP 1i
+Destroy a blink state object.
+.IP \fIdispdata_get_blinkstate_class\fP 1i
+Get the dataclass-specific object for a blink state.
+.IP \fIdispdata_activate_blinkstate\fP 1i
+Make a blinkstate active (change window contents).
+.IP \fIdispdata_test_blinkstate_active\fP 1i
+Test if blinkstate is the active one for its window.
+.IP \fIdispdata_get_blinkstate_index\fP 1i
+Get the index for a blinkstate.
+.IP \fIdispdata_copy_blinkstate\fP 1i
+Copy blink state.
+.IP \fIdispdata_refresh_blinkstate\fP 1i
+Refresh the user interface for a blink state.
+.IP \fIdispdata_get_blinkstate_info\fP 1i
+Get the arbitrary pointer for a blinkstate.
+.IP \fIdispdata_register_blinkstate_funcs\fP 1i
+Register callback functions for a blinkstate.
+.IP \fIdispdata_get_first_blinkstate\fP 1i
+Get first blinkstate for a window.
+.IP \fIdispdata_get_last_blinkstate\fP 1i
+Get last blinkstate for a window.
+.IP \fIdispdata_get_prev_blinkstate\fP 1i
+Get previous blinkstate for a window.
+.IP \fIdispdata_get_next_blinkstate\fP 1i
+Get next blinkstate for a window.
+.IP \fIdispdata_get_window_from_blinkstate\fP 1i
+Get the windor for a blinkstate.
+.IP \fIdispdata_get_namelist\fP 1i
+Get the list of (sorted) data names for a dataclass.
+.IP \fIdispdata_get_objectlist\fP 1i
+Get the list of (sorted) data objects for a dataclass.
+.IP \fIdispdata_regenerate_namelist\fP 1i
+Regenerate the list of (sorted) data names for a dataclass.
+.IP \fIdispdata_free_namelist\fP 1i
+Free the list of (sorted) data names for a dataclass.
+.IP \fIdispdata_get_first_blinkentry\fP 1i
+Get the first blink entry for a blink state.
+.IP \fIdispdata_get_next_blinkentry\fP 1i
+Get the next blink entry after a specified entry.
+.IP \fIdispdata_get_blinkentry_info\fP 1i
+Get the application-specific information for a blink entry.
+.IP \fIdispdata_set_blinkentry_attributes\fP 1i
+Set attributes for a blink entry.
+.IP \fIdispdata_get_blinkentry_attributes\fP 1i
+Get attributes for a blink entry.
+.IP \fIdispdata_regenerate_blinkentry_list\fP 1i
+Regenerate a list of blink entries for a blink state.
+.IP \fIdispdata_get_dataobject_from_blinkentry\fP 1i
+Get the dataobject for a blinkentry.
+.IP \fIdispdata_overlay_create_dataclass\fP 1i
+Initialise overlay data support for the package.
+.IP \fIdispdata_overlay_create_dataobject\fP 1i
+Create an overlay data object.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

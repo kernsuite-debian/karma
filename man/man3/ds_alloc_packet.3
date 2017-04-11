@@ -1,0 +1,31 @@
+.TH DS_ALLOC_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_packet \- Allocate packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B char * ds_alloc_packet
+.sp
+(packet_desc *pack_desc)
+.SH DESCRIPTION
+This routine will allocate memory for a packet. This routine is
+NOT recursive (i.e. sub arrays and linked lists are not allocated).
+The elements of the packet will be set to zero (for all types).
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.SH RETURN VALUE
+A pointer to the packet on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,35 @@
+.TH CH_COPY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_copy \- Copy bytes from one channel to another in an optimal way.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B uaddr ch_copy
+.sp
+(Channel out, Channel in, uaddr num_bytes)
+.SH DESCRIPTION
+Copy bytes from one channel to another in an optimal way.
+.IP \fIout\fP 1i
+The output channel.
+.IP \fIin\fP 1i
+The input channel.
+.IP \fInum_bytes\fP 1i
+The number of bytes to copy. If this is 0, the remaining unread
+contents of <<in>> are copied.
+.SH RETURN VALUE
+The number of bytes copied. On error a message is generated and
+the number of bytes successfully copied is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

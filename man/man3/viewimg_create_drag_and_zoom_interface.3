@@ -1,0 +1,35 @@
+.TH VIEWIMG_CREATE_DRAG_AND_ZOOM_INTERFACE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+viewimg_create_drag_and_zoom_interface \- Create a drag and zoom user interface for a canvas.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B KPixCanvasEditorContext viewimg_create_drag_and_zoom_interface
+.sp
+(KWorldCanvas canvas)
+.SH DESCRIPTION
+This routine will create a drag and zoom user interface for a
+world canvas. When the user presses the left mouse button in the canvas and
+moves the mouse with the button still pressed a rubber-band box will be
+drawn on the canvas. When the left mouse button is released the image in
+the rubber-banded box is zoomed to fill as much of the canvas as is
+possible, depending on the zoom policy.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+The KPixCanvasEditorContext created for rubber-banding. Extra key
+bindings may be added to this context.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

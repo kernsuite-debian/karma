@@ -1,0 +1,36 @@
+.TH CH_SKIP_TO_BOUNDARY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_skip_to_boundary \- Skip bytes from a channel until a specified boundary.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_skip_to_boundary
+.sp
+(Channel channel, uaddr size)
+.SH DESCRIPTION
+This routine will skip bytes in a channel until the current
+read position is aligned with a boundary.
+.IP \fIchannel\fP 1i
+The Channel object.
+.IP \fIsize\fP 1i
+The size to align to.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This may change the write pointer. Use <-ch_drain_to_boundary->
+instead if the write pointer must be left untouched.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

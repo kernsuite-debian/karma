@@ -1,0 +1,36 @@
+.TH GRAPH1D_ORTHOGONAL_REGISTER_DESTROY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_register_destroy_func \- Register destroy callback.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B KCallbackFunc graph1d_orthogonal_register_destroy_func
+.sp
+(KOrthogonalProfile profile, void (*func) (), void *info)
+.SH DESCRIPTION
+This routine will register a destroy function for an orthogonal
+profile. Many destroy functions may be registered per profile. The first
+function registered is the first function called upon destruction.
+.IP \fIprofile\fP 1i
+The orthogonal profile.
+.IP \fIfunc\fP 1i
+The function that is called when the profile is destroyed. The
+prototype function is <-graph1d_orthogonal_PROTO_destroy_func->.
+.IP \fIinfo\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

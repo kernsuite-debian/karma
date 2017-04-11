@@ -1,0 +1,81 @@
+.TH GRAPH1D 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+graph1d \- Routines to manipulate graph 1-dimensional data
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to graph a
+1-dimensional array of values.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIgraph1d_init\fP 1i
+Initialise the package for a particular canvas.
+.IP \fIgraph1d_set_canvas_attributes\fP 1i
+Set attributes for a canvas.
+.IP \fIgraph1d_test_if_zoomed_horizontally\fP 1i
+Test if a canvas is zoomed horizontally.
+.IP \fIgraph1d_unzoom\fP 1i
+Unzoom a canvas.
+.IP \fIgraph1d_refresh_if_needed\fP 1i
+Refresh a canvas if needed.
+.IP \fIgraph1d_create\fP 1i
+Create viewable graph.
+.IP \fIgraph1d_set_vgraph_attributes\fP 1i
+Set attributes for a viewable graph.
+.IP \fIgraph1d_set_active\fP 1i
+Set active state for a viewable graph controlled refresh.
+.IP \fIgraph1d_set_all_inactive\fP 1i
+Clear active state all viewable graphs controlled refresh.
+.IP \fIgraph1d_destroy\fP 1i
+Destroy a viewable graph.
+.IP \fIgraph1d_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIgraph1d_get_worldcanvas\fP 1i
+Get the world canvas for a viewable graph.
+.IP \fIgraph1d_change_draw_order\fP 1i
+Change the draw order for a viewable graph.
+.IP \fIgraph1d_get_last\fP 1i
+Get last viewable graph for a world canvas.
+.IP \fIgraph1d_allocate_coords\fP 1i
+Allocate co-ordinates for a viewable graph.
+.IP \fIgraph1d_set_size\fP 1i
+Set the size of a viewable graph.
+.IP \fIgraph1d_get_size\fP 1i
+Get the size of a viewable graph.
+.IP \fIgraph1d_save_ascii\fP 1i
+Save the data in a viewable graph in ASCII format.
+.IP \fIgraph1d_orthogonal_create\fP 1i
+Create an object for later viewing of orthogonal profiles.
+.IP \fIgraph1d_orthogonal_destroy\fP 1i
+Destroy an orthogonal profile.
+.IP \fIgraph1d_orthogonal_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIgraph1d_orthogonal_invalidate\fP 1i
+Invalidate an orthogonal profile.
+.IP \fIgraph1d_orthogonal_show_trace\fP 1i
+Show a trace.
+.IP \fIgraph1d_orthogonal_show_traces\fP 1i
+Show a weighted, summed trace.
+.IP \fIgraph1d_orthogonal_show_boxed_trace\fP 1i
+Show a boxed trace.
+.IP \fIgraph1d_orthogonal_configure_canvas\fP 1i
+Configure a canvas using an orthogonal profile object.
+.IP \fIgraph1d_orthogonal_save\fP 1i
+Save orthogonal profile data to a file.
+.IP \fIgraph1d_orthogonal_track_compute\fP 1i
+Compute track strings.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

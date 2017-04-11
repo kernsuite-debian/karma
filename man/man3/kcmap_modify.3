@@ -1,0 +1,40 @@
+.TH KCMAP_MODIFY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_modify \- Change colours in a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_modify
+.sp
+(Kcolourmap cmap, double x, double y, void *var_param)
+.SH DESCRIPTION
+This routine will call the active colour compute function to
+change the colourmap colours in a colourmap.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fIx\fP 1i
+A parameter used to compute the colour values.
+.IP \fIy\fP 1i
+A parameter used to compute the colour values.
+.IP \fIvar_param\fP 1i
+A parameter used to compute the colour values.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the REVERSE attribute for the colourmap is set, the colourmap is
+reversed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

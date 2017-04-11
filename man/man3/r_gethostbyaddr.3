@@ -1,0 +1,33 @@
+.TH R_GETHOSTBYADDR 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_gethostbyaddr \- Get hostname from Internet Address.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_gethostbyaddr
+.sp
+(char *name, unsigned int length, unsigned long addr)
+.SH DESCRIPTION
+Get hostname from Internet Address.
+.IP \fIname\fP 1i
+The hostname is written here.
+.IP \fIlength\fP 1i
+The length of the hostname buffer.
+.IP \fIaddr\fP 1i
+The Internet Address. If this is 0 the local hostname is given.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

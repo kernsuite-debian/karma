@@ -1,0 +1,53 @@
+.TH DS_CONVERT_COORDINATES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_convert_coordinates \- Convert co-ordinate values for a dimension.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_convert_coordinates
+.sp
+(CONST dim_desc *dim, unsigned int num_coords,
+double *coords, flag to_indices, flag blank,
+flag add_half)
+.SH DESCRIPTION
+This function will convert between co-ordinates indices (index
+positions along a dimension) and co-ordinate values. The co-ordinate values
+may be regularly or irregularly spaced, either case is catered for. Note
+that for co-ordinate systems which have a dependency between different axes
+(such as RA-DEC co-ordinates used in astronomy), the co-ordinate values
+this function manipulates are <<linear>> co-ordinates. The <-wcs-> package
+provides for conversion between linear and non-linear co-ordinates (proper
+world co-ordinates).
+.IP \fIdim\fP 1i
+The dimension descriptor.
+.IP \fInum_coords\fP 1i
+The number of co-ordinate values to convert.
+.IP \fIcoords\fP 1i
+The array of co-ordinate values to convert.
+.IP \fIto_indices\fP 1i
+If TRUE, the co-ordinate values are converted to index
+positions along the dimension, else they are converted to co-ordinate
+values.
+.IP \fIblank\fP 1i
+If TRUE, all out-of-bounds values are set to TOOBIG, else
+out-of-bounds values may or may not be set to TOOBIG. If you know all your
+values are within bounds, setting this to FALSE may save time.
+.IP \fIadd_half\fP 1i
+If TRUE and <<to_indices>> is TRUE, the value 0.5 will be added
+to all in-bounds values as they are written.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

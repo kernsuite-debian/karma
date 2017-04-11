@@ -1,0 +1,44 @@
+.TH KWIN_GET_PIXEL_RGB_VALUES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_get_pixel_RGB_values \- Get RGB components of pixel values.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_get_pixel_RGB_values
+.sp
+(KPixCanvas canvas, unsigned long *pixels,
+unsigned short *reds,
+unsigned short *greens,
+unsigned short *blues,
+unsigned int num_colours)
+.SH DESCRIPTION
+This routine will determine the RGB components of an array of
+colourmap entries.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIpixels\fP 1i
+The array of colourmap indices.
+.IP \fIreds\fP 1i
+The red components will be written to this array.
+.IP \fIgreens\fP 1i
+The green components will be written to this array.
+.IP \fIblues\fP 1i
+The blue components will be written to this array.
+.IP \fInum_colours\fP 1i
+The number of colours in the arrays.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

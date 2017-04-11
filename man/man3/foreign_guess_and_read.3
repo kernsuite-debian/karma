@@ -1,0 +1,45 @@
+.TH FOREIGN_GUESS_AND_READ 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_guess_and_read \- Guess file type and read.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_guess_and_read
+.sp
+(CONST char *filename,
+unsigned int mmap_option, flag writable,
+unsigned int *ftype, ...)
+.SH DESCRIPTION
+This routine will attempt to guess the filetype of a file and
+in the file, converting to the Karma data format if possible.
+.IP \fIfilename\fP 1i
+The name of the file to read.
+.IP \fImmap_option\fP 1i
+This has the same meaning as for the <dsxfr_get_multi>
+routine.
+.IP \fIwritable\fP 1i
+This has the same meaning as for the <dsxfr_get_multi> routine.
+.IP \fIftype\fP 1i
+The type of the file that was read in is written here. This may be
+NULL.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must terminated with FA_GUESS_READ_END.
+See <-foreign_ATT_GUESS_READ-> for a list of defined attributes.
+.SH RETURN VALUE
+A pointer to the multi_array data structure on success, else
+NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

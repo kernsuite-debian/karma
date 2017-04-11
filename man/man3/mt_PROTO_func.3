@@ -1,0 +1,41 @@
+.TH MT_PROTO_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+mt_PROTO_func \- Perform a job.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void mt_PROTO_func
+.sp
+(void *pool_info, void *call_info1, void *call_info2,
+void *call_info3, void *call_info4, void *thread_info)
+.SH DESCRIPTION
+Perform a job.
+.IP \fIpool_info\fP 1i
+The arbitrary pool information pointer.
+.IP \fIcall_info1\fP 1i
+The first arbitrary call information pointer.
+.IP \fIcall_info2\fP 1i
+The second arbitrary call information pointer.
+.IP \fIcall_info3\fP 1i
+The third arbitrary call information pointer.
+.IP \fIcall_info4\fP 1i
+The fourth arbitrary call information pointer.
+.IP \fIthread_info\fP 1i
+A pointer to arbitrary, per thread, information. This
+information is private to the thread.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,64 @@
+.TH SCATPLT 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+scatplt \- Routines to manipulate scatter plots
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate scatter plots (2-dimensional slices of Karma data structures).
+These scatter plots utilise the world canvases available in the
+<-canvas-> package, hence the resulting code is device independent.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIscatplt_init\fP 1i
+Initialise the package for a particular canvas.
+.IP \fIscatplt_create\fP 1i
+Create scatter plot.
+.IP \fIscatplt_set_active\fP 1i
+Set active state for a scatter plot controlled refresh.
+.IP \fIscatplt_set_all_inactive\fP 1i
+Clear active state all scatter plots controlled refresh.
+.IP \fIscatplt_destroy\fP 1i
+Destroy scatter plot.
+.IP \fIscatplt_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIscatplt_get_worldcanvas\fP 1i
+Get the world canvas for a scatter plot.
+.IP \fIscatplt_find_closest\fP 1i
+Find the closest point to a specified position.
+.IP \fIscatplt_find_closest_all\fP 1i
+Find the closest point to a specified position.
+.IP \fIscatplt_create_vv\fP 1i
+Create a value-value scatter plot from two 2D sub-arrays.
+.IP \fIscatplt_create_smart_cursor\fP 1i
+Create a smart cursor.
+.IP \fIscatplt_PROTO_destroy_func\fP 1i
+Process a destroy event on a scatter plot.
+.IP \fIscatplt_PROTO_cursor_func\fP 1i
+Process a smart cursor event on a scatter plot.
+.SH TABLE scatplt_CANVAS_ATTRIBUTES
+List of canvas attributes for scatter plots
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                           Get Type       Set Type      Meaning
+
+SCATPLT_CANVAS_ATT_END                                      End of varargs list
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

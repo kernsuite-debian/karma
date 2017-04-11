@@ -1,0 +1,32 @@
+.TH KWIN_LOAD_FONT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_load_font \- Load a font for later use.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B KPixCanvasFont kwin_load_font
+.sp
+(KPixCanvas canvas, CONST char *fontname)
+.SH DESCRIPTION
+This routine will load a font which may be then used to draw text
+onto a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas for which the font is valid.
+.IP \fIfontname\fP 1i
+The name of the font.
+.SH RETURN VALUE
+A pixel font on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

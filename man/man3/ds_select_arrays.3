@@ -1,0 +1,48 @@
+.TH DS_SELECT_ARRAYS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_select_arrays \- Select data structures in a multi_array descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B multi_array * ds_select_arrays
+.sp
+(char **array_list, unsigned int num_in_list,
+CONST multi_array *multi_desc, flag save_unproc,
+unsigned int **index_list)
+.SH DESCRIPTION
+This routine will create a multi array descriptor which contains
+a selected number of array names.
+.IP \fIarray_list\fP 1i
+The array of array names that are to be copied.
+.IP \fInum_in_list\fP 1i
+The number of array names in <<array_list>>. If this is 0,
+all array names are copied.
+.IP \fImulti_desc\fP 1i
+The input data structure.
+.IP \fIsave_unproc\fP 1i
+If TRUE, all array names are copied.
+.IP \fIindex_list\fP 1i
+An array of unsigned ints will be allocated by the routine and
+the pointer written here. The length of this array is equal to the number
+of arrays in the input multi_array descriptor. This array contains the
+index of the array name in the input multi array descriptor for each array
+name in the output multi_array descriptor. If there is no name match for an
+array, the index value is equal to the number of arrays in the input
+multi_array descriptor.
+.SH RETURN VALUE
+A pointer to the created multi array descriptor on success,
+else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

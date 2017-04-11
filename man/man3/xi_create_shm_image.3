@@ -1,0 +1,42 @@
+.TH XI_CREATE_SHM_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xi_create_shm_image \- Create a shared-memory XImage structure.
+.SH SYNOPSIS
+.B #include <karma_xi.h>
+.sp
+.B XImage * xi_create_shm_image
+.sp
+(Display *display, Visual *visual, int depth,
+unsigned int width, unsigned int height,
+flag quiet)
+.SH DESCRIPTION
+Create a shared-memory XImage structure.
+.IP \fIdisplay\fP 1i
+The X11 display handle.
+.IP \fIvisual\fP 1i
+The Visual pointer.
+.IP \fIdepth\fP 1i
+The depth.
+.IP \fIwidth\fP 1i
+The width of the image.
+.IP \fIheight\fP 1i
+The height of the image.
+.IP \fIquiet\fP 1i
+If TRUE, no error messages are displayed if no shared memory XImage
+could be created.
+.SH RETURN VALUE
+An XImage pointer on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

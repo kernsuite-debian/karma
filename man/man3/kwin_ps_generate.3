@@ -1,0 +1,64 @@
+.TH KWIN_PS_GENERATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_ps_generate \- Generate PostScript output.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_ps_generate
+.sp
+(KPixCanvas canvas, CONST char *destination, flag queue,
+double hoffset, double voffset,
+double hsize, double vsize, unsigned int orientation,
+flag eps, double thin_linewidth, unsigned int tray,
+flag preserve_aspect, CONST char *media_size)
+.SH DESCRIPTION
+Generate PostScript output.
+.IP \fIcanvas\fP 1i
+The pixel canvas to generate PostScript for.
+.IP \fIdestination\fP 1i
+The name of the file or printer queue to send the output.
+.IP \fIqueue\fP 1i
+If TRUE, send to a printer queue, else write to a file.
+.IP \fIhoffset\fP 1i
+The horizontal offset (in centimeters) of the co-ordinate origin.
+.IP \fIvoffset\fP 1i
+The vertical offset (in centimeters) of the co-ordinate origin.
+.IP \fIhsize\fP 1i
+The desired horizontal size of the co-ordinate system (in
+centimeters).
+.IP \fIvsize\fP 1i
+The desired vertical size of the co-ordinate system (in
+centimeters).
+.IP \fIportrait\fP 1i
+If TRUE, objects will be drawn in portrait mode (i.e. the x-axis
+will be horizontal), else they will be drawn in landscape mode (i.e. the
+x-axis will be vertical).
+.IP \fIeps\fP 1i
+If TRUE the file format will be Encapsulated PostScript, else
+regular PostScript is written.
+.IP \fIthin_linewidth\fP 1i
+The width (in mm) of thin lines.
+.IP \fItray\fP 1i
+The tray to print to. See <-psw_TRAY_TYPES-> for a list of trays.
+.IP \fIpreserve_aspect\fP 1i
+If TRUE, the aspect ratio of the canvas is preserved in
+the PostScript output (i.e. screen pixels will be square in the PostScript
+output), else the canvas is stretched to fill the specified area.
+.IP \fImedia_size\fP 1i
+The size of the media.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

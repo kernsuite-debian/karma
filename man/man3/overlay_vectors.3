@@ -1,0 +1,54 @@
+.TH OVERLAY_VECTORS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_vectors \- Add many vectors to an overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_vectors
+.sp
+(KOverlayList olist, unsigned int num_vectors,
+unsigned int *stypes, double *sx, double *sy,
+unsigned int *dtypes, double *dx, double *dy,
+CONST char *colourname)
+.SH DESCRIPTION
+This routine will add a number of vectors (directed lines) to an
+overlay object list. These vectors will form a single object. Using this
+routine is far more efficient than calling <-overlay_vector-> repeatedly.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fInum_vectors\fP 1i
+The number of vectors.
+.IP \fIstypes\fP 1i
+The types of the start co-ordinates. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIsx\fP 1i
+The horizontal positions of the start co-ordinates.
+.IP \fIsy\fP 1i
+The vertical positions of the start co-ordinates.
+.IP \fIdtypes\fP 1i
+The types of the vector directions. If this is NULL, all
+directions are assumed to be in world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIdx\fP 1i
+The horizontal vector directions.
+.IP \fIdy\fP 1i
+The vertical vector directions.
+.IP \fIcolourname\fP 1i
+The colour name.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

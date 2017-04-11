@@ -1,0 +1,39 @@
+.TH DS_REMOVE_UNIQUE_NAMED_ELEMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_remove_unique_named_element \- Remove a unique named element from a Karma general data structure
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_remove_unique_named_element
+.sp
+(packet_desc *pack_desc, char **packet,
+CONST char *name, flag tolerant)
+.SH DESCRIPTION
+Remove a unique named element from a Karma general data structure
+.IP \fIpack_desc\fP 1i
+The packet descriptor to remove the name from. This descriptor
+will be modified.
+.IP \fIpacket\fP 1i
+The pointer to the unique packet. Note that the existing packet
+data is copied to a new packet, and a pointer to this packet is written
+back here.
+.IP \fIname\fP 1i
+The name of the element.
+.IP \fItolerant\fP 1i
+If TRUE, no error is generated if the element is missing.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

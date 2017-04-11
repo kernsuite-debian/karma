@@ -1,0 +1,34 @@
+.TH VRENDER_GET_CONTEXT_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_get_context_attributes \- Get the attributes for a volume rendering context.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B flag vrender_get_context_attributes
+.sp
+(KVolumeRenderContext context, ...)
+.SH DESCRIPTION
+Get the attributes for a volume rendering context.
+.IP \fIcontext\fP 1i
+The volume rendering context.
+.IP \fI...\fP 1i
+The optional list of parameter attribute-key attribute-value-ptr
+pairs must follow. This list must be terminated with the value
+VRENDER_CONTEXT_ATT_END. See <-vrender_ATTRIBUTES-> for a list of defined
+attributes.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,44 @@
+.TH DS_PUT_UNIQUE_NAMED_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_put_unique_named_string \- Add a unique named string to a Karma general data structure.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_put_unique_named_string
+.sp
+(packet_desc *pack_desc, char **packet,
+CONST char *name, CONST char *string,
+flag update)
+.SH DESCRIPTION
+Add a unique named string to a Karma general data structure.
+.IP \fIpack_desc\fP 1i
+The packet descriptor to add the name to. This descriptor will
+be modified.
+.IP \fIpacket\fP 1i
+The pointer to the unique packet. Note that the existing packet
+data is copied to a new packet, and a pointer to this packet is written
+back here.
+.IP \fIname\fP 1i
+The name of the element.
+.IP \fIstring\fP 1i
+The string value.
+.IP \fIupdate\fP 1i
+If TRUE, then the routine will allow an existing named string to
+be updated, otherwise the routine will fail if an update (rather than a
+create) is attempted.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

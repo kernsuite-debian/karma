@@ -1,0 +1,22 @@
+<html><head><title>Package: dmx</title></head> 
+<body>
+<center><h1>The "dmx" Package</h1></center>    These routines provide an interface between the descriptor management
+    facility (ie. event processing on pipes, connections and terminals)
+    available with the <a href=dm.html#dm>dm</a> package and the Xt toolkit event handler.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmaXt
+<br><b>Link With:</b> -lkarmaXt
+<br><p><a name=dmx></a></table><h4>Functions</h4><table><tr><td><a href=dmx.html#dmx_register_app_context>dmx_register_app_context</a></td><td>Register Xt application context for event management.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=dmx_register_app_context></a> void
+ <b>dmx_register_app_context</b><i>    (XtAppContext context)
+</i><br><p>    This routine will register the application context to use for
+    descriptor management with the Xt toolkit. Once this is called the
+    application may then call routines such as <a href=dm.html#dm_manage>dm_manage</a> and <a href=chm.html#chm_manage>chm_manage</a>
+<p><b>Parameters:</b><ul><li><i>context :</i> 
+    The application context.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,53 @@
+.TH CH_MAP_FD 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_map_fd \- Map a disc file.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_map_fd
+.sp
+(int fd, uaddr size, flag writable, flag update_on_write)
+.SH DESCRIPTION
+This routine will open a memory channel with the memory pages
+being mapped from a disc file. The disc file must already exist.
+.IP \fIfd\fP 1i
+The file descriptor to map. This will be closed on error or when the
+channel closes.
+.IP \fIsize\fP 1i
+The size of the region to map.
+.IP \fIwritable\fP 1i
+If the mapped pages are to be writable, this must be TRUE. If
+this is FALSE and the memory pages are written to, a segmentation fault
+occurs.
+.IP \fIupdate_on_write\fP 1i
+If the disc file should be updated when the memory pages
+are written to, this must be TRUE. If this is FALSE, then a write to a
+memory page causes the page to be copied into swap space and the process
+retains a private copy of the page from this point on.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+If <<update_on_write>> is FALSE and <<writable>> is TRUE, then some
+systems require the allocation of normal virtual memory equal to the size
+of the disc file at the time of mapping, while others will dynamically
+allocate memory from swap space as pages are written into. In the latter
+case, some systems will cause a segmentation fault if swap space is
+exhausted, while other systems wait for space to be freed.
+.sp
+The channel may be queried to determine if it has been memory mapped
+using the call <<ch_test_for_mmap>>.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

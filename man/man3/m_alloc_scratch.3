@@ -1,0 +1,35 @@
+.TH M_ALLOC_SCRATCH 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_alloc_scratch \- Allocate a block of scratch memory.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void * m_alloc_scratch
+.sp
+(uaddr size, char *function_name)
+.SH DESCRIPTION
+This routine will allocate a block of scratch memory, which may
+be re-used by many different routines. The block is reserved until a call
+is made to <-m_free_scratch->.
+.IP \fIsize\fP 1i
+The minimum size in bytes of the scratch block.
+.IP \fIfunction_name\fP 1i
+If this is not NULL and a failure occurs, the string is
+printed and the process aborts.
+.SH RETURN VALUE
+A pointer on success to a dynamically allocated block of memory
+which is valid until the next call to this routine, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

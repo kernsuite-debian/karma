@@ -1,0 +1,49 @@
+.TH PSW_RGB_ELLIPSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_rgb_ellipse \- Write a colour ellipse to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_rgb_ellipse
+.sp
+(PostScriptPage pspage,
+double red, double green, double blue,
+double cx, double cy, double rx, double ry, flag fill)
+.SH DESCRIPTION
+Write a colour ellipse to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIred\fP 1i
+The red component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIgreen\fP 1i
+The green component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIblue\fP 1i
+The blue component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIcx\fP 1i
+The x centre. This is scaled from 0.0 to 1.0
+.IP \fIcy\fP 1i
+The y centre. This is scaled from 0.0 to 1.0
+.IP \fIrx\fP 1i
+The x radius. This is scaled from 0.0 to 1.0. If this is 0.0, then
+half of the thin linewidth value is used instead.
+.IP \fIry\fP 1i
+The y radius. This is scaled from 0.0 to 1.0. If this is 0.0, then
+half of the thin linewidth value is used instead.
+.IP \fIfill\fP 1i
+If TRUE, the ellipse is filled.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

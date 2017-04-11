@@ -1,0 +1,45 @@
+.TH OVERLAY_FILLED_POLYGON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_filled_polygon \- Add a filled polygon to an overlay object list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_filled_polygon
+.sp
+(KOverlayList olist,
+unsigned int num_coords,
+unsigned int *types,
+double *x_arr, double *y_arr,
+CONST char *colourname)
+.SH DESCRIPTION
+Add a filled polygon to an overlay object list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates (vertices).
+.IP \fItypes\fP 1i
+The array of co-ordinate type values. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIx_arr\fP 1i
+The array of horizontal co-ordinate values.
+.IP \fIy_arr\fP 1i
+The array of vertical co-ordinate values.
+.IP \fIcolourname\fP 1i
+The colour name.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

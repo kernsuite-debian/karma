@@ -1,0 +1,33 @@
+.TH DS_GET_ELEMENT_OFFSET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_element_offset \- Calculate the offset of the start of a data element in a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_get_element_offset
+.sp
+(CONST packet_desc *pack_desc,
+unsigned int elem_num)
+.SH DESCRIPTION
+Calculate the offset of the start of a data element in a packet.
+.IP \fIpack_desc\fP 1i
+The descriptor for the data packet.
+.IP \fIelem_num\fP 1i
+The number of the element.
+.SH RETURN VALUE
+The byte offset of the element in the packet on success, else the
+length of the packet is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

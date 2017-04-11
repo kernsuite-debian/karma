@@ -1,0 +1,56 @@
+.TH EXT_CALL 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ext_call \- Call an extension function.
+.SH SYNOPSIS
+.B #include <karma_ext.h>
+.sp
+.B unsigned int ext_call
+.sp
+(CONST char *service, CONST char *function,
+unsigned int max_func, unsigned int *num_ok,
+flag allow_consumption, void *arg1, void *arg2,
+void *arg3, void *arg4, void *arg5, void *arg6)
+.SH DESCRIPTION
+Call an extension function.
+.IP \fIservice\fP 1i
+The service name for the extension.
+.IP \fIfunction\fP 1i
+The function to call.
+.IP \fImax_func\fP 1i
+The maximum number of functions to call. If this is 0 there is
+no limit.
+.IP \fInum_ok\fP 1i
+The number of functions which returned TRUE is written here. This
+may be NULL.
+.IP \fIallow_consumption\fP 1i
+If TRUE, the first function that returns TRUE will
+consume the event, preventing further functions from being called.
+.IP \fIarg1\fP 1i
+An optional argument.
+.IP \fIarg2\fP 1i
+An optional argument.
+.IP \fIarg3\fP 1i
+An optional argument.
+.IP \fIarg4\fP 1i
+An optional argument.
+.IP \fIarg5\fP 1i
+An optional argument.
+.IP \fIarg6\fP 1i
+An optional argument.
+.SH RETURN VALUE
+The number of functions called. The value 0 is returned if no
+functions were called.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

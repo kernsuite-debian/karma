@@ -1,0 +1,43 @@
+.TH DS_ALLOC_DIM_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_dim_desc \- Allocate a dimension descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B dim_desc * ds_alloc_dim_desc
+.sp
+(CONST char *dim_name, uaddr length,
+double first, double last, flag regular)
+.SH DESCRIPTION
+Allocate a dimension descriptor.
+.IP \fIdim_name\fP 1i
+The name of the dimension. The name is copied, thus the input
+character string may be subsequently deallocated.
+.IP \fIlength\fP 1i
+The length (number of co-ordinates) of the dimension.
+.IP \fIfirst\fP 1i
+The first dimension co-ordinate.
+.IP \fIlast\fP 1i
+The last dimension co-ordinate.
+.IP \fIregular\fP 1i
+If TRUE the co-ordinates of the dimension are regularly spaced,
+else the co-ordinates are not regularly spaced. If the co-ordinates are
+regularly spaced the <<coordinates>> field of the array descriptor will be
+set to NULL, else it will point to an array of doubles of length <<length>>
+These co-ordinates will be set to 0.0.
+.SH RETURN VALUE
+A pointer to the descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

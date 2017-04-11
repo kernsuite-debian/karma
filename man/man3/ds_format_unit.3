@@ -1,0 +1,39 @@
+.TH DS_FORMAT_UNIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_format_unit \- Format a unit string.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_format_unit
+.sp
+(char unit[STRING_LENGTH], char format[STRING_LENGTH],
+double *scale, CONST char *value_name, double value)
+.SH DESCRIPTION
+Format a unit string.
+.IP \fIunit\fP 1i
+The unit string will be written here.
+.IP \fIformat\fP 1i
+The formatting string is written here.
+.IP \fIscale\fP 1i
+The scale value to apply to data to convert to displayed units will
+be written here. If this is NULL nothing is written here.
+.IP \fIvalue_name\fP 1i
+The name of the value to format.
+.IP \fIvalue\fP 1i
+The (scaled) value. Used for beautifying the unit name.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

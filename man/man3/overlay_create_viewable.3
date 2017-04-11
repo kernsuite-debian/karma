@@ -1,0 +1,34 @@
+.TH OVERLAY_CREATE_VIEWABLE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_create_viewable \- Create a viewable overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B KViewableOverlayList overlay_create_viewable
+.sp
+(KOverlayList olist,
+KWorldCanvas canvas)
+.SH DESCRIPTION
+Create a viewable overlay list.
+.IP \fIolist\fP 1i
+The overlay list to create the viewable object from.
+.IP \fIcanvas\fP 1i
+The world canvas that the overlay list is viewable on.
+.SH RETURN VALUE
+A KViewableOverlayList object on success, else NULL. This is
+automatically destroyed when either the overlay list or the world canvas
+are destroyed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

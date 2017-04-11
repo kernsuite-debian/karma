@@ -1,0 +1,41 @@
+.TH R_CONNECT_TO_PORT 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_connect_to_port \- Make a connection to a Karma port on some machine.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_connect_to_port
+.sp
+(unsigned long addr, unsigned int port_number,
+flag *local)
+.SH DESCRIPTION
+Make a connection to a Karma port on some machine.
+.IP \fIaddr\fP 1i
+The address of the machine to connect to. If the value of 0 is
+supplied for the address, the connection is made to a Karma server running
+on the local machine.
+.IP \fIport_number\fP 1i
+The port number to connect to.
+.IP \fIlocal\fP 1i
+If the connection is made to a port on the local host, then the
+value TRUE will be written here, else the value FALSE will be written here.
+.SH RETURN VALUE
+The file descriptor of the opened connection on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The close-on-exec flags of the socket is set such that the socket
+will close on a call to execve(2V).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

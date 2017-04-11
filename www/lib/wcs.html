@@ -1,0 +1,512 @@
+<html><head><title>Package: wcs</title></head> 
+<body>
+<center><h1>The "wcs" Package</h1></center>    These routines are meant to provide support for Astronomical
+    sky-projections.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=wcs></a></table><h4>Functions</h4><table><tr><td><a href=wcs.html#wcs_astro_get_associated>wcs_astro_get_associated</a></td><td>Create/get associated Astronomical Sky Co-ordinate projections.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_setup>wcs_astro_setup</a></td><td>Setup for Astronomical Sky Co-ordinate projections.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_destroy>wcs_astro_destroy</a></td><td>Destroy KwcsAstro object.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_radec>wcs_astro_test_radec</a></td><td>Test if a KwcsAstro object has RA/GLON and DEC/GLAT defined.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_velocity>wcs_astro_test_velocity</a></td><td>Test if a KwcsAstro object has velocity or frequency defined.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_ra>wcs_astro_test_if_ra</a></td><td>Test if an axis is a Right Ascension axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_dec>wcs_astro_test_if_dec</a></td><td>Test if an axis is a Declination axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_glon>wcs_astro_test_if_glon</a></td><td>Test if an axis is a Galactic Longitude axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_glat>wcs_astro_test_if_glat</a></td><td>Test if an axis is a Galactic Latitude axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_lon>wcs_astro_test_if_lon</a></td><td>Test if an axis is a longitude axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_lat>wcs_astro_test_if_lat</a></td><td>Test if an axis is a latitude axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_test_if_velocity>wcs_astro_test_if_velocity</a></td><td>Test if an axis is a velocity axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_transform>wcs_astro_transform</a></td><td>Transform between linear and projected co-ordinates.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_transform3>wcs_astro_transform3</a></td><td>Transform between linear and projected co-ordinates.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_breakdown_hms>wcs_astro_breakdown_hms</a></td><td>Breakdown a time value into components.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format_hms>wcs_astro_format_hms</a></td><td>Format a time value into a string.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_breakdown_dms>wcs_astro_breakdown_dms</a></td><td>Break down an angular value into degrees, minutes and seconds.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format_dms>wcs_astro_format_dms</a></td><td>Format an angle value into a string.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format_vel>wcs_astro_format_vel</a></td><td>Format a velocity value into a string.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_breakdown_time>wcs_astro_breakdown_time</a></td><td>Breakdown a time value into components.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format_time>wcs_astro_format_time</a></td><td>Format a time value into a string.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format>wcs_astro_format</a></td><td>Format a value. No transformation is applied.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_format_all>wcs_astro_format_all</a></td><td>Transform and format all available information.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_get_preferred_units>wcs_astro_get_preferred_units</a></td><td>Get preferred units for data.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_get_equinox>wcs_astro_get_equinox</a></td><td>Get the Equinox.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_get_reference>wcs_astro_get_reference</a></td><td>Get reference value for an axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_get_increment>wcs_astro_get_increment</a></td><td>Get increment value for an axis.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_update_location>wcs_astro_update_location</a></td><td>Update the location ("CRVALn" and "CRPIXn") values.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_compare_axes>wcs_astro_compare_axes</a></td><td>Compare axis names.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_astro_has_chromatic_aberration>wcs_astro_has_chromatic_aberration</a></td><td>Test if a co-ordinate system has chromatic aberration.
+</td></tr>
+<tr><td><a href=wcs.html#wcs_compare_grids_2D>wcs_compare_grids_2D</a></td><td>Compare if two images have the same world co-ordinate grid.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=wcs_astro_get_associated></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KwcsAstro
+ <b>wcs_astro_get_associated</b><i>    (multi_array *multi_desc,unsigned int index)
+</i><br><p>    This routine will attempt create/get the associated Astronomical
+    Sky Co-ordinate projection information for a general data structure. If the
+    projection information is found, it is associated with the general data
+    structure in the multi_array descriptor, to speed subsequent accesses.
+<p><b>Parameters:</b><ul><li><i>multi_desc :</i> 
+    The multi_array descriptor.
+<br><li><i>index :</i> 
+    The index of the general data structure in the descriptor.
+<br></ul><b>Returns:</b>     A KwcsAstro object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_setup></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KwcsAstro
+ <b>wcs_astro_setup</b><i>    (CONST packet_desc *pack_desc, CONST char *packet)
+</i><br><p>    Setup for Astronomical Sky Co-ordinate projections.
+<p><b>Parameters:</b><ul><li><i>pack_desc :</i> 
+    The packet descriptor containing the FITS-style keywords.
+<br><li><i>packet :</i> 
+    The packet data containing the FITS-stype keyword data.
+<br></ul><b>Returns:</b>     A KwcsAstro object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_destroy</b><i>    (KwcsAstro ap)
+</i><br><p>    Destroy KwcsAstro object.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_radec></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_radec</b><i>    (KwcsAstro ap)
+</i><br><p>    Test if a KwcsAstro object has RA/GLON and DEC/GLAT defined.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br></ul><b>Returns:</b>     TRUE if the KwcsAstro object has RA and DEC defined, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_velocity></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_velocity</b><i>    (KwcsAstro ap)
+</i><br><p>    Test if a KwcsAstro object has velocity or frequency defined.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br></ul><b>Returns:</b>     TRUE if the KwcsAstro object has velocity or frequency defined,
+    else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_ra></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_ra</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a Right Ascension axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a Right Ascension axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_dec></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_dec</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a Declination axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a Declination axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_glon></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_glon</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a Galactic Longitude axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a Galactic Longitude axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_glat></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_glat</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a Galactic Latitude axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a Galactic Latitude axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_lon></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_lon</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a longitude axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a longitude axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_lat></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_lat</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a latitude axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a latitude axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_test_if_velocity></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_test_if_velocity</b><i>    (KwcsAstro ap, CONST char *axis_name)
+</i><br><p>    Test if an axis is a velocity axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object. This may be NULL.
+<br><li><i>axis_name :</i> 
+    The name of the axis.
+<br></ul><b>Returns:</b>     TRUE the axis is a velocity axis, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_transform></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_transform</b><i>    (KwcsAstro ap, flag thread, unsigned int num_coords,
+			  double *ra, flag ra_to_linear,
+			  double *dec, flag dec_to_linear,
+			  double *vel, flag vel_to_linear,
+			  unsigned int num_restr, CONST char **restr_names,
+			  CONST double *restr_values)
+</i><br><p>    Transform between linear and projected co-ordinates.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>thread :</i> 
+    If TRUE, the operation may be threaded, else it will not be.
+<br><li><i>num_coords :</i> 
+    The number of co-ordinates to transform.
+<br><li><i>ra :</i> 
+    A pointer to the right ascension values. These will be modified.
+<br><li><i>ra_to_linear :</i> 
+    If TRUE the right ascension values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>dec :</i> 
+    A pointer to the declination values. These will be modified.
+<br><li><i>dec_to_linear :</i> 
+    If TRUE the declination values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>vel :</i> 
+    A pointer to the velocity values. These will be modified.
+<br><li><i>vel_to_linear :</i> 
+    If TRUE the velocity values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>num_restr :</i> 
+    The number of restrictions.
+<br><li><i>restr_names :</i> 
+    The array of restriction names.
+<br><li><i>restr_values :</i> 
+    The restriction values.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE. If nothing is to be transformed,
+    TRUE is returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_transform3></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_transform3</b><i>    (KwcsAstro ap, flag thread, unsigned int num_coords,
+			   CONST char *name0, double *coords0, flag to_lin0,
+			   CONST char *name1, double *coords1, flag to_lin1,
+			   CONST char *name2, double *coords2, flag to_lin2,
+			   unsigned int num_restr, CONST char **restr_names,
+			   CONST double *restr_values)
+</i><br><p>    This routine will convert up to three arrays of co-ordinates
+    using an astronomical projection system. The co-ordinate arrays are named.
+    If a co-ordinate array is not defined the co-ordinates are unchanged.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>thread :</i> 
+    If TRUE, the operation may be threaded, else it will not be.
+<br><li><i>num_coords :</i> 
+    The number of co-ordinates to transform.
+<br><li><i>name0 :</i> 
+    The name of co-ordinate array 0.
+<br><li><i>coords0 :</i> 
+    Co-ordinate array 0.
+<br><li><i>to_lin0 :</i> 
+    If TRUE the co-ordinate 0 values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>name1 :</i> 
+    The name of co-ordinate array 1.
+<br><li><i>coords1 :</i> 
+    Co-ordinate array 1.
+<br><li><i>to_lin1 :</i> 
+    If TRUE the co-ordinate 1 values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>name2 :</i> 
+    The name of co-ordinate array 2.
+<br><li><i>coords2 :</i> 
+    Co-ordinate array 2.
+<br><li><i>to_lin2 :</i> 
+    If TRUE the co-ordinate 2 values are transformed to linear
+    co-ordinates, else they are transformed to non-linear co-ordinates.
+<br><li><i>num_restr :</i> 
+    The number of restrictions.
+<br><li><i>restr_names :</i> 
+    The array of restriction names.
+<br><li><i>restr_values :</i> 
+    The restriction values.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE. If nothing is to be transformed,
+    TRUE is returned.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_breakdown_hms></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_breakdown_hms</b><i>    (int *hours, int *minutes,
+			      double *seconds, int *whole_seconds,
+			      double *subseconds, double input, double offset)
+</i><br><p>    Breakdown a time value into components.
+<p><b>Parameters:</b><ul><li><i>hours :</i> 
+    The hours are written here. This may be NULL.
+<br><li><i>minutes :</i> 
+    The minutes are written here. This may be NULL.
+<br><li><i>seconds :</i> 
+    The seconds are written here. This may be NULL.
+<br><li><i>whole_seconds :</i> 
+    The integer truncated seconds are written here. This may be
+    NULL.
+<br><li><i>subseconds :</i> 
+    The fractional seconds are written here. This may be NULL.
+<br><li><i>input :</i> 
+    The time value in hours.
+<br><li><i>offset :</i> 
+    The offset (in seconds) to apply for rounding purposes.
+<br></ul><b>Returns:</b>     TRUE if the value was legal, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     All component values are guaranteed to be positive.
+</ul><p><hr> <a name=wcs_astro_format_hms></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format_hms</b><i>    (char *string, double hours)
+</i><br><p>    Format a time value into a string.
+<p><b>Parameters:</b><ul><li><i>string :</i> 
+    The string to write to. Sufficient storage must be available.
+<br><li><i>hours :</i> 
+    The time value in hours.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_breakdown_dms></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_breakdown_dms</b><i>    (flag *negative, int *degrees, int *minutes,
+			      double *seconds, int *whole_seconds,
+			      double *subseconds, double input, double offset)
+</i><br><p>    Break down an angular value into degrees, minutes and seconds.
+<p><b>Parameters:</b><ul><li><i>negative :</i> 
+    If the value is negative the value TRUE is written here, else
+    FALSE is written here. This may be NULL.
+<br><li><i>degrees :</i> 
+    The degrees are written here. This may be NULL.
+<br><li><i>minutes :</i> 
+    The minutes are written here. This may be NULL.
+<br><li><i>seconds :</i> 
+    The seconds are written here. This may be NULL.
+<br><li><i>whole_seconds :</i> 
+    The integer truncated seconds are written here. This may be
+    NULL.
+<br><li><i>subseconds :</i> 
+    The fractional seconds are written here. This may be NULL.
+<br><li><i>input :</i> 
+    The input value in degrees.
+<br><li><i>offset :</i> 
+    The offset (in arcseconds) to apply for rounding purposes.
+<br></ul><b>Returns:</b>     TRUE if the value was legal, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     All component values are guaranteed to be positive.
+</ul><p><hr> <a name=wcs_astro_format_dms></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format_dms</b><i>    (char *string, double deg)
+</i><br><p>    Format an angle value into a string.
+<p><b>Parameters:</b><ul><li><i>string :</i> 
+    The string to write to. Sufficient storage must be available.
+<br><li><i>deg :</i> 
+    The input value in degrees.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_format_vel></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format_vel</b><i>    (KwcsAstro ap, char *string, double vel)
+</i><br><p>    Format a velocity value into a string.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>string :</i> 
+    The string to write to. Sufficient storage must be available.
+<br><li><i>vel :</i> 
+    The velocity value.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_breakdown_time></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_breakdown_time</b><i>    (unsigned int *year, unsigned int *month,
+			       unsigned int *day_of_month,
+			       unsigned int *day_of_year,
+			       unsigned int *hours, unsigned int *minutes,
+			       double *seconds, unsigned int *whole_seconds,
+			       double *subseconds, double time_val)
+</i><br><p>    Breakdown a time value into components.
+<p><b>Parameters:</b><ul><li><i>time_val :</i> 
+    The time in Modified Julian Date (units of seconds).
+<br><li><i>year :</i> 
+    The year is written here.
+<br><li><i>month :</i> 
+    The month is written here.
+<br><li><i>day_of_month :</i> 
+    The day of the month is written here.
+<br><li><i>hours :</i> 
+    The hours are written here. This may be NULL.
+<br><li><i>minutes :</i> 
+    The minutes are written here. This may be NULL.
+<br><li><i>seconds :</i> 
+    The seconds are written here. This may be NULL.
+<br><li><i>whole_seconds :</i> 
+    The integer truncated seconds are written here. This may be
+    NULL.
+<br><li><i>subseconds :</i> 
+    The fractional seconds are written here. This may be NULL.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_format_time></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format_time</b><i>    (char *string, double time_val)
+</i><br><p>    Format a time value into a string.
+<p><b>Parameters:</b><ul><li><i>string :</i> 
+    The string to write to. Sufficient storage must be available.
+<br><li><i>time_val :</i> 
+    The time in Modified Julian Date (units of seconds).
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_format></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format</b><i>    (KwcsAstro ap, unsigned int spherical_format,
+		       CONST char *dim_name, char string[STRING_LENGTH],
+		       double value)
+</i><br><p>    Format a value. No transformation is applied.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>spherical_format :</i> 
+    The format type for a spherical axis.
+<br><li><i>dim_name :</i> 
+    The name of the dimension.
+<br><li><i>string :</i> 
+    The string to write to.
+<br><li><i>value :</i> 
+    The value.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_format_all></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_format_all</b><i>    (KwcsAstro ap, unsigned int spherical_format,
+			   char coord_string[STRING_LENGTH],
+			   CONST char *name0, double coord0,
+			   CONST char *name1, double coord1,
+			   CONST char *name2, double coord2,
+			   unsigned int num_restr, CONST char **restr_names,
+			   CONST double *restr_values,
+			   char other_string[STRING_LENGTH])
+</i><br><p>    This routine will transform and format all available information.
+    The data are transformed from linear to non-linear values.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>spherical_format :</i> 
+    The format type for a spherical axis.
+<br><li><i>coord_string :</i> 
+    Formatted co-ordinate information is written here.
+<br><li><i>name0 :</i> 
+    The name of co-ordinate 0.
+<br><li><i>coord0 :</i> 
+    Co-ordinate 0.
+<br><li><i>name1 :</i> 
+    The name of co-ordinate 1. If this is NULL, it is ignored.
+<br><li><i>coord1 :</i> 
+    Co-ordinate 1.
+<br><li><i>name2 :</i> 
+    The name of co-ordinate 2. If this is NULL, it is ignored.
+<br><li><i>coord2 :</i> 
+    Co-ordinate 2.
+<br><li><i>num_restr :</i> 
+    The number of restrictions.
+<br><li><i>restr_names :</i> 
+    The array of restriction names.
+<br><li><i>restr_values :</i> 
+    The restriction values.
+<br><li><i>other_string :</i> 
+    Formatted extra information is written here.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_get_preferred_units></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_get_preferred_units</b><i>    (char new_units[STRING_LENGTH],
+				    char format_str[STRING_LENGTH],
+				    double *scale, CONST char *old_units)
+</i><br><p>    Get preferred units for data.
+<p><b>Parameters:</b><ul><li><i>new_units :</i> 
+    The new units string is written here.
+<br><li><i>format_str :</i> 
+    The format string is written here.
+<br><li><i>scale :</i> 
+    The scale value to convert to the new units will be written here.
+<br><li><i>old_units :</i> 
+    The old units string.
+<br></ul><b>Returns:</b>     TRUE if preferred units were found, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_get_equinox></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>wcs_astro_get_equinox</b><i>    (KwcsAstro ap)
+</i><br><p>    Get the Equinox.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br></ul><b>Returns:</b>     The year of the Equinox (typically 1950 or 2000).
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_get_reference></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>double
+ <b>wcs_astro_get_reference</b><i>    (KwcsAstro ap, CONST char *name, flag linear)
+</i><br><p>    Get reference value for an axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>name :</i> 
+    The axis name.
+<br><li><i>linear :</i> 
+    If TRUE, the linear reference position is given, else the
+    non-linear reference value is given.
+<br></ul><b>Returns:</b>     The reference value.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_get_increment></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>double
+ <b>wcs_astro_get_increment</b><i>    (KwcsAstro ap, CONST char *name)
+</i><br><p>    Get increment value for an axis.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br><li><i>name :</i> 
+    The axis name.
+<br></ul><b>Returns:</b>     The increment along the axis. This is prior to projection.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_update_location></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>wcs_astro_update_location</b><i>    (KwcsAstro ap, unsigned int axis_number,
+				CONST packet_desc *pack_desc,
+				CONST char *packet)
+</i><br><p>    Update the location ("CRVALn" and "CRPIXn") values.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object to update.
+<br><li><i>axis_number :</i> 
+    The FITS axis number to update.
+<br><li><i>pack_desc :</i> 
+    The packet descriptor to extract the new values from.
+<br><li><i>packet :</i> 
+    The packet to extract the new values from.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_compare_axes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_compare_axes</b><i>    (KwcsAstro ap1, CONST char *name1,
+			     KwcsAstro ap2, CONST char *name2)
+</i><br><p>    This function will compare axis name to see if they are the same.
+    Different reference frames and equinoxes will prevent a match.
+<p><b>Parameters:</b><ul><li><i>ap1 :</i> 
+    The KwcsAstro object for one axis name. This may be NULL.
+<br><li><i>name1 :</i> 
+    One of the axis names.
+<br><li><i>ap2 :</i> 
+    The KwcsAstro object for the other axis name. This may be NULL.
+<br><li><i>name2 :</i> 
+    The other axis name.
+<br></ul><b>Returns:</b>     TRUE if the axes are the same, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_astro_has_chromatic_aberration></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_astro_has_chromatic_aberration</b><i>    (KwcsAstro ap)
+</i><br><p>    Test if a co-ordinate system has chromatic aberration.
+<p><b>Parameters:</b><ul><li><i>ap :</i> 
+    The KwcsAstro object.
+<br></ul><b>Returns:</b>     TRUE if chromatic aberration is present, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=wcs_compare_grids_2D></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>wcs_compare_grids_2D</b><i>    (KwcsAstro ap1,
+			   CONST dim_desc *hd1, CONST dim_desc *vd1,
+			   unsigned int num_restr1, CONST char **restr_names1,
+			   CONST double *restr_values1,
+			   KwcsAstro ap2,
+			   CONST dim_desc *hd2, CONST dim_desc *vd2,
+			   unsigned int num_restr2, CONST char **restr_names2,
+			   CONST double *restr_values2,
+			   flag *same)
+</i><br><p>    Compare if two images have the same world co-ordinate grid.
+<p><b>Parameters:</b><ul><li><i>ap1 :</i> 
+    The KwcsAstro object for the first image.
+<br><li><i>hd1 :</i> 
+    The horizontal dimension of the first image.
+<br><li><i>vd1 :</i> 
+    The vertical dimension of the first image.
+<br><li><i>ap2 :</i> 
+    The KwcsAstro object for the second image.
+<br><li><i>hd2 :</i> 
+    The horizontal dimension of the second image.
+<br><li><i>vd2 :</i> 
+    The vertical dimension of the second image.
+<br><li><i>same :</i> 
+    TRUE is written here if the grids are the same, else FALSE is
+    written here.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE, indicating that comparison failed.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,38 @@
+.TH VIEWIMG_STATISTICS_COMPUTE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+viewimg_statistics_compute \- Compute and display statistics for a subimage.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_statistics_compute
+.sp
+(ViewableImage vimage,
+double lx0, double ly0, double lx1,double ly1)
+.SH DESCRIPTION
+Compute and display statistics for a subimage.
+.IP \fIvimage\fP 1i
+The active viewable image.
+.IP \fIlx0\fP 1i
+The first horizontal linear world co-ordinate.
+.IP \fIly0\fP 1i
+The first vertical linear world co-ordinate.
+.IP \fIlx1\fP 1i
+The second horizontal linear world co-ordinate.
+.IP \fIly1\fP 1i
+The second vertical linear world co-ordinate.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,65 @@
+.TH J 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+j \- Routines to manipulate associative arrays of joined pairs
+.SH PURPOSE
+These routines are meant to provide general purpose associative array
+support (also know as lists of joined pairs). This can save a lot of code
+when you maintain lists of pairs of items (e.g. pairs of names and objects)
+$NOTE
+THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIj_create\fP 1i
+Create a general purpose associative array of key-value pairs.
+.IP \fIj_destroy\fP 1i
+Destroy an associative array.
+.IP \fIj_get_info\fP 1i
+Get information attached to associative array.
+.IP \fIj_put_pair\fP 1i
+Add a key-value pair to an associative array.
+.IP \fIj_get_pair\fP 1i
+Find a key-value pair in an associative array.
+.IP \fIj_destroy_pair\fP 1i
+Remove a key-value pair from an associative array.
+.IP \fIj_get_all_pairs\fP 1i
+Get all the key-value pairs on an associative array.
+.IP \fIj_get_pair_info\fP 1i
+Get key and value information for a key-value pair.
+.IP \fIj_PROTO_key_compare_func\fP 1i
+This routine will compare two keys.
+.IP \fIj_PROTO_key_copy_func\fP 1i
+This routine will copy a key.
+.IP \fIj_PROTO_key_destroy_func\fP 1i
+This routine will destroy keys.
+.IP \fIj_PROTO_value_copy_func\fP 1i
+This routine will copy a value.
+.IP \fIj_PROTO_value_destroy_func\fP 1i
+This routine will destroy values.
+.SH TABLE j_REPLACEMENT_POLICIES
+List of replacement policies when adding keys
+
+.TS
+l l
+_ _
+l l.
+Policy Name                           Meaning
+KJ_REPLACEMENT_POLICY_NEW            Fail if existing key found
+KJ_REPLACEMENT_POLICY_UPDATE         Fail if no existing key found
+KJ_REPLACEMENT_POLICY_PUT            Add pair, remove old key if exists
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH M_CMP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_cmp \- Compare two blocks of memory.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B flag m_cmp
+.sp
+(CONST void *block1, CONST void *block2, uaddr length)
+.SH DESCRIPTION
+Compare two blocks of memory.
+.IP \fIblock1\fP 1i
+The first memory block.
+.IP \fIblock2\fP 1i
+The second memory block.
+.IP \fIlength\fP 1i
+The number of bytes to compare.
+.SH RETURN VALUE
+TRUE if the blocks are equal, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine compares long integers and chars.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

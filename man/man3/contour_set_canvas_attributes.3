@@ -1,0 +1,36 @@
+.TH CONTOUR_SET_CANVAS_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_set_canvas_attributes \- Set the contour image attributes for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B void contour_set_canvas_attributes
+.sp
+(KWorldCanvas canvas, ...)
+.SH DESCRIPTION
+Set the contour image attributes for a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value-ptr pairs
+must follow. This list must be terminated with the CONTOUR_CANVAS_ATT_END.
+See <-contour_CANVAS_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The canvas is not refreshed by this operation.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

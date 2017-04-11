@@ -1,0 +1,37 @@
+.TH J_GET_ALL_PAIRS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+j_get_all_pairs \- Get all the key-value pairs on an associative array.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B KJoinedPair * j_get_all_pairs
+.sp
+(KJoinedPairList list, unsigned int *num_pairs)
+.SH DESCRIPTION
+Get all the key-value pairs on an associative array.
+.IP \fIlist\fP 1i
+The associative array.
+.IP \fInum_pairs\fP 1i
+The number of pairs found is written here. If no pairs are
+found NULL is written here.
+.SH RETURN VALUE
+An array of key-value pairs on success, else NULL. If
+<<num_pairs>> is non-zero, an error occurred.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The return value must be freed with the <<free>> function, not the
+<-m_free-> function.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

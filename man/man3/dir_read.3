@@ -1,0 +1,34 @@
+.TH DIR_READ 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dir_read \- Read (scan) a directory for files.
+.SH SYNOPSIS
+.B #include <karma_dir.h>
+.sp
+.B KFileInfo * dir_read
+.sp
+(KDir dir, unsigned int skip_control)
+.SH DESCRIPTION
+Read (scan) a directory for files.
+.IP \fIdir\fP 1i
+The directory object.
+.IP \fIskip_control\fP 1i
+Determines whether or not to skip the special files: "."
+and "..". See <-dir_SKIP_VALUES-> for a list of legal values.
+.SH RETURN VALUE
+A pointer to a <<KFileInfo>> structure on success, else NULL.
+The data in this structure is valid until the next call to <-dir_read-> or
+<-dir_close-> with this directory object.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

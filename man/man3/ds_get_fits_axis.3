@@ -1,0 +1,34 @@
+.TH DS_GET_FITS_AXIS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_fits_axis \- Get the FITS axis number of a dimension.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_get_fits_axis
+.sp
+(CONST packet_desc *top_pack_desc,
+CONST char *top_packet, CONST char *dim_name)
+.SH DESCRIPTION
+Get the FITS axis number of a dimension.
+.IP \fItop_pack_desc\fP 1i
+The top-level packet descriptor.
+.IP \fItop_packet\fP 1i
+The top-level packet.
+.IP \fIdim_name\fP 1i
+The name of the dimension.
+.SH RETURN VALUE
+The FITS axis number on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

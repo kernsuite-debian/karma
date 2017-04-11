@@ -1,0 +1,41 @@
+.TH DM_MANAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dm_manage \- Manage a file descriptor for events.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B KManagedDescriptor dm_manage
+.sp
+(int fd, void *info, flag auto_close, ...)
+.SH DESCRIPTION
+This routine will manage a file descriptor for activity by
+registering callback routines. Only one set of callbacks may be registered
+per file descriptor.
+.IP \fIfd\fP 1i
+The file descriptor to manage.
+.IP \fIinfo\fP 1i
+The initial value of the arbitrary pointer associated with the
+managed descriptor. This pointer may be modified by the callback routines.
+.IP \fIauto_close\fP 1i
+If TRUE, the descriptor is automatically closed upon a closure
+event.
+.IP \fI...\fP 1i
+The optional list of parameter event-key event-function pairs
+must follow. This list must be terminated with the value
+KARMA_FD_EVENT_END. See <-dm_EVENTS-> for the list of attributes.
+.SH RETURN VALUE
+A KManagedDescriptor object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

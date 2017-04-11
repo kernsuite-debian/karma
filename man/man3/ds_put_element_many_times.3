@@ -1,0 +1,40 @@
+.TH DS_PUT_ELEMENT_MANY_TIMES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_put_element_many_times \- Write a double precision complex value to atomic data many times.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_put_element_many_times
+.sp
+(char *data, unsigned int data_type,
+unsigned int data_stride, double value[2],
+unsigned int num_elem)
+.SH DESCRIPTION
+This routine will convert and write a double precision complex
+value to an array of atomic data elements.
+.IP \fIdata\fP 1i
+The array of output data.
+.IP \fIdata_type\fP 1i
+The type of the data.
+.IP \fIdata_stride\fP 1i
+The stride of data elements in memory (in bytes).
+.IP \fIvalue\fP 1i
+The data value will be read from here.
+.IP \fInum_elem\fP 1i
+The number of data elements to write.
+.SH RETURN VALUE
+TRUE if the data was successfully converted, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

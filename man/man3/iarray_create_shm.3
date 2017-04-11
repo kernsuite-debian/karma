@@ -1,0 +1,48 @@
+.TH IARRAY_CREATE_SHM 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_create_shm \- Create an n-dimensional Intelligent Array in shared memory.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_create_shm
+.sp
+(unsigned int type, unsigned int num_dim,
+CONST char **dim_names, CONST uaddr *dim_lengths,
+CONST char *elem_name, flag force)
+.SH DESCRIPTION
+Create an n-dimensional Intelligent Array in shared memory.
+.IP \fItype\fP 1i
+The desired type of the data elements. See <-ds_KARMA_DATA_TYPES->
+for a list of defined data types.
+.IP \fInum_dim\fP 1i
+The number of dimensions the array must have.
+.IP \fIdim_names\fP 1i
+The names of the dimensions. If this is NULL, the default names
+"Axis 0", "Axis 1", etc. are used.
+.IP \fIdim_lengths\fP 1i
+The lengths of the dimensions. The first entry in this array
+and the <<dim_names>> array refers to the most significant dimension
+(i.e. the dimension with the greatest stride in memory).
+.IP \fIelem_name\fP 1i
+The name of the element. If this is NULL, the default name
+"Data Value" is choosen.
+.IP \fIforce\fP 1i
+If TRUE the routine will fail if shared memory could not be
+allocated or is not available, otherwise the routine falls back to
+ordinary memory if shared memory could not be allocated.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

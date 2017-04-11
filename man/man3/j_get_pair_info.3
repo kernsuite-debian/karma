@@ -1,0 +1,40 @@
+.TH J_GET_PAIR_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+j_get_pair_info \- Get key and value information for a key-value pair.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B void j_get_pair_info
+.sp
+(KJoinedPair pair,
+void **key, uaddr *key_length,
+void **value, uaddr *value_length)
+.SH DESCRIPTION
+This routine will get the key and value information for a
+key-value pair in an associative array.
+.IP \fIpair\fP 1i
+The key-value pair.
+.IP \fIkey\fP 1i
+The key will be written here.
+.IP \fIkey_length\fP 1i
+The length of the key will be written here.
+.IP \fIvalue\fP 1i
+The value will be written here.
+.IP \fIvalue_length\fP 1i
+The length of the value will be written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

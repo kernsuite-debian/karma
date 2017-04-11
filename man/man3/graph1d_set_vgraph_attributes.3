@@ -1,0 +1,33 @@
+.TH GRAPH1D_SET_VGRAPH_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_set_vgraph_attributes \- Set attributes for a viewable graph.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B void graph1d_set_vgraph_attributes
+.sp
+(KViewableGraph vgraph, ...)
+.SH DESCRIPTION
+Set attributes for a viewable graph.
+.IP \fIvgraph\fP 1i
+The viewable graph.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value-ptr pairs
+must follow. This list must be terminated with the GRAPH1D_VGRAPH_ATT_END.
+See <-graph1d_VGRAPH_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

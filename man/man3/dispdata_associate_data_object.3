@@ -1,0 +1,38 @@
+.TH DISPDATA_ASSOCIATE_DATA_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_associate_data_object \- Associate a named object with a data object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_associate_data_object
+.sp
+(KDisplayDataObject dataobject,
+CONST char *name,
+void (*destroy_func) (void *object),
+void *object)
+.SH DESCRIPTION
+Associate a named object with a data object.
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject.
+.IP \fIname\fP 1i
+The name of the associated data object. The contents are copied.
+.IP \fIdestroy_func\fP 1i
+The function that is called when <-dataobect-> is destroyed.
+.IP \fIobject\fP 1i
+The object pointer.
+.SH RETURN VALUE
+Nothing. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

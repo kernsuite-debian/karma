@@ -1,0 +1,32 @@
+.TH DS_AUTOTILE_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_autotile_array \- Choose tiling scheme automatically.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_autotile_array
+.sp
+(array_desc *arr_desc, flag allow_truncate)
+.SH DESCRIPTION
+This routine will choose an optimum tiling scheme for an array.
+.IP \fIarr_desc\fP 1i
+The array descriptor. This is modified.
+.IP \fIallow_truncate\fP 1i
+If TRUE, the routine will shorten the lengths of
+dimensions to allow tiling.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

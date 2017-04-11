@@ -1,0 +1,33 @@
+.TH KWIN_GET_SIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_get_size \- Get the size of a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_get_size
+.sp
+(KPixCanvas canvas, int *width, int *height)
+.SH DESCRIPTION
+Get the size of a pixel canvas.
+.IP \fIwidth\fP 1i
+The number of horizontal pixels will be written here. This may be
+NULL.
+.IP \fIheight\fP 1i
+The number of vertical pixels will be written here. This may be
+NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

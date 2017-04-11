@@ -1,0 +1,55 @@
+.TH DS_DRAW_POLYGON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_draw_polygon \- Draw a polygon into a 2 dimensional array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_draw_polygon
+.sp
+(char *array, unsigned int elem_type,
+dim_desc *abs_dim_desc, unsigned int abs_stride,
+dim_desc *ord_dim_desc, unsigned int ord_stride,
+edit_coord *coords, unsigned int num_points,
+double value[2])
+.SH DESCRIPTION
+This routine will draw a concave non-simple polygon into a 2
+dimensional Karma array. The polygon can be clockwise or anti-clockwise.
+Inside-outside test done by Jordan's rule: a point is considered inside if
+an emanating ray intersects the polygon an odd number of times.
+The algorithm is modified from the  Concave Polygon Scan Conversion
+by Paul Heckbert from "Graphics Gems", Academic Press, 1990.
+.IP \fIarray\fP 1i
+The start of the array (plane) data.
+.IP \fIelem_type\fP 1i
+The type of the element to draw.
+.IP \fIabs_dim_desc\fP 1i
+The abscissa dimension descriptor.
+.IP \fIabs_stride\fP 1i
+The stride of abscissa co-ordinates in memory (in bytes).
+.IP \fIord_dim_desc\fP 1i
+The ordinate dimension descriptor.
+.IP \fIord_stride\fP 1i
+The stride of ordinate co-ordinates in memory (in bytes).
+.IP \fIcoords\fP 1i
+The co-ordinate array for the vertices. The co-ordinates must be
+stored in clockwise rotation order (any point to start).
+.IP \fInum_points\fP 1i
+The number of vertices.
+.IP \fIvalue\fP 1i
+The value to write the polygon into the array.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

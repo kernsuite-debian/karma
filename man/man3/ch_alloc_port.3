@@ -1,0 +1,48 @@
+.TH CH_ALLOC_PORT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_alloc_port \- Allocate a port.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel * ch_alloc_port
+.sp
+(unsigned int *port_number, unsigned int retries,
+unsigned int *num_docks)
+.SH DESCRIPTION
+This routine will allocate a Karma port for the module so that it
+can operate as a server (able to receive network connections).
+.IP \fIport_number\fP 1i
+A pointer to the port number to allocate. The routine will
+write the actual port number allocated to this address. This must point to
+an address which lies on an <<int>> boundary.
+.IP \fIretries\fP 1i
+The number of succsessive port numbers to attempt to allocate
+before giving up. If this is 0, then the routine will give up immediately
+if the specified port number is in use.
+.IP \fInum_docks\fP 1i
+The routine will create a number of docks for one port. Each
+dock is an alternative access point for other modules to connect to this
+port. The number of docks allocated will be written here. This must point
+to an address which lies on an <<int>> boundary.
+.SH RETURN VALUE
+A pointer to an array of channel docks on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The close-on-exec flags of the docks are set such that the docks
+will close on a call to execve(2V).
+.sp
+The docks are placed into blocking mode.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,51 @@
+<html><head><title>Package: ext</title></head> 
+<body>
+<center><h1>The "ext" Package</h1></center>    These routines are meant to support loading of shared object extensions.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=ext></a></table><h4>Functions</h4><table><tr><td><a href=ext.html#ext_call>ext_call</a></td><td>Call an extension function.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=ext.html#ext_ENVIRONMENT>ext_ENVIRONMENT</a></td><td>List of environment variables
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=ext_call></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>unsigned int
+ <b>ext_call</b><i>    (CONST char *service, CONST char *function,
+		       unsigned int max_func, unsigned int *num_ok,
+		       flag allow_consumption, void *arg1, void *arg2,
+		       void *arg3, void *arg4, void *arg5, void *arg6)
+</i><br><p>    Call an extension function.
+<p><b>Parameters:</b><ul><li><i>service :</i> 
+    The service name for the extension.
+<br><li><i>function :</i> 
+    The function to call.
+<br><li><i>max_func :</i> 
+    The maximum number of functions to call. If this is 0 there is
+    no limit.
+<br><li><i>num_ok :</i> 
+    The number of functions which returned TRUE is written here. This
+    may be NULL.
+<br><li><i>allow_consumption :</i> 
+    If TRUE, the first function that returns TRUE will
+    consume the event, preventing further functions from being called.
+<br><li><i>arg1 :</i> 
+    An optional argument.
+<br><li><i>arg2 :</i> 
+    An optional argument.
+<br><li><i>arg3 :</i> 
+    An optional argument.
+<br><li><i>arg4 :</i> 
+    An optional argument.
+<br><li><i>arg5 :</i> 
+    An optional argument.
+<br><li><i>arg6 :</i> 
+    An optional argument.
+<br></ul><b>Returns:</b>     The number of functions called. The value 0 is returned if no
+    functions were called.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=ext_ENVIRONMENT><b>ext_ENVIRONMENT</b></a> List of environment variables
+<p> <table><tr><td>Variable                     </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>EXT_VERBOSE                  </td><td>Enable verbose output if defined
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

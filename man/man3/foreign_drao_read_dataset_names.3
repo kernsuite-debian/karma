@@ -1,0 +1,39 @@
+.TH FOREIGN_DRAO_READ_DATASET_NAMES 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_drao_read_dataset_names \- Get the names of DRAO datasets in the directory catalogue.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B CONST char * foreign_drao_read_dataset_names
+.sp
+(CONST char *dirname,
+unsigned int *num_datasets,
+unsigned int *max_width)
+.SH DESCRIPTION
+This routine will read the "deffil.mad" catalogue file in the
+specified directory and extracts the names of the datasets.
+.IP \fIdirname\fP 1i
+The directory containing the catalogue file.
+.IP \fInum_datasets\fP 1i
+The number of datasets found is written here.
+.IP \fImax_width\fP 1i
+The width of the longest dataset name is written here. This
+may be NULL.
+.SH RETURN VALUE
+A pointer to a buffer packed with dataset names. Each dataset
+name is separated by a '\0' character. The buffer is internally allocated
+and must not be freed. If no datasets are found NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

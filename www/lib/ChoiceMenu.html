@@ -1,0 +1,37 @@
+<html><head><title>Widget: ChoiceMenu</title></head> 
+<body>
+<center><h1>The "ChoiceMenu" Widget</h1></center>    This widget provides a choice menu.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=ChoiceMenu></a></table><h4>Tables</h4><table><tr><td><a href=ChoiceMenu.html#ChoiceMenu_ResourceNames>ChoiceMenu_ResourceNames</a></td><td>List of resource names for ChoiceMenu widget
+</td></tr>
+<tr><td><a href=ChoiceMenu.html#ChoiceMenu_Resources>ChoiceMenu_Resources</a></td><td>List of resources for ChoiceMenu widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=ChoiceMenu.html#XkwChoiceMenuSetEntrySensitivity>XkwChoiceMenuSetEntrySensitivity</a></td><td>Set the sensitivity on a menu entry.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=ChoiceMenu_ResourceNames><b>ChoiceMenu_ResourceNames</b></a> List of resource names for ChoiceMenu widget
+<p> <table><tr><td>Name                  </td><td>Purpose
+</td></tr><tr><td>XkwNmenuTitle         </td><td>The title to appear above the menu
+</td></tr><tr><td>XkwNitemStrings       </td><td>The array of menu item strings (the choices)
+</td></tr><tr><td>XkwNnumItems          </td><td>The number of items (choices) in the menu
+</td></tr><tr><td>XkwNselectCallback    </td><td>The callback when a choice is selected
+</table><p><hr> <a name=ChoiceMenu_Resources><b>ChoiceMenu_Resources</b></a> List of resources for ChoiceMenu widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNmenuTitle	</td><td>XkwCMenuTitle	</td><td>XtRString	</td><td>NULL
+</td></tr><tr><td>XkwNitemStrings	</td><td>XkwCItemStrings	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNnumItems	</td><td>XkwCNumItems	</td><td>XtRInt	</td><td>0
+</td></tr><tr><td>XkwNselectCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwChoiceMenuSetEntrySensitivity></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwChoiceMenuSetEntrySensitivity</b><i>    (Widget W, unsigned int index,
+				       flag sensitive)
+</i><br><p>    Set the sensitivity on a menu entry.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The ChoiceMenu widget.
+<br><li><i>index :</i> 
+    The index number of the entry.
+<br><li><i>sensitive :</i> 
+    The sensitivity. If TRUE, the widget is sensitive.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

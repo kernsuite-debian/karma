@@ -1,0 +1,55 @@
+.TH IARRAY_CREATE2 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_create2 \- Create an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_create2
+.sp
+(unsigned int type, unsigned int num_dim,
+CONST char **dim_names,CONST unsigned long *dim_lengths,
+CONST char *elem_name, iarray old_array, flag clear)
+.SH DESCRIPTION
+This routine will create an "Intelligent Array", using the Karma
+general data structure format as the underlying data format.
+If the environment variable "IARRAY_ALLOC_DEBUG" is set to "TRUE" then the
+routine will print allocation debugging information.
+.IP \fItype\fP 1i
+The desired type of the data elements. See <-ds_KARMA_DATA_TYPES->
+for a list of defined data types.
+.IP \fInum_dim\fP 1i
+The number of dimensions the array must have.
+.IP \fIdim_names\fP 1i
+The names of the dimensions. If this is NULL, the default names
+"Axis 0", "Axis 1", etc. are used.
+.IP \fIdim_lengths\fP 1i
+The lengths of the dimensions. The first entry in this array
+and the <<dim_names>> array refers to the most significant dimension
+(i.e. the dimension with the greatest stride in memory).
+.IP \fIelem_name\fP 1i
+The name of the element. If this is NULL, the default name
+"Data Value" is choosen.
+.IP \fIold_array\fP 1i
+Any auxilary information not representable with "Intelligent
+Arrays" which is to be included in the Karma data format is copied from
+here. If this is NULL, no auxilary information is copied.
+.IP \fIclear\fP 1i
+If TRUE, the array is filled with zeros, otherwise the contents
+will be random.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else an
+error message is printed to the standard output and NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

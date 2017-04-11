@@ -1,0 +1,31 @@
+.TH CONN_GET_CHANNEL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_get_channel \- Extract the channel object associated with a connection.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B Channel conn_get_channel
+.sp
+(Connection connection)
+.SH DESCRIPTION
+Extract the channel object associated with a connection.
+.IP \fIconnection\fP 1i
+The connection object.
+.SH RETURN VALUE
+The channel object.
+.SH Multi-threading Level
+Unsafe.
+.SH SEE ALSO
+<-conn_get_datagram_channel->.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

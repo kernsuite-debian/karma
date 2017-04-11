@@ -1,0 +1,29 @@
+.TH R_GETENV 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_getenv \- Get the value of an environment variable.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B CONST char * r_getenv
+.sp
+(CONST char *name)
+.SH DESCRIPTION
+Get the value of an environment variable.
+.IP \fIname\fP 1i
+The name of the environment variable.
+.SH RETURN VALUE
+A pointer to the value string if present, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

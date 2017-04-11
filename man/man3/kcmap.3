@@ -1,0 +1,122 @@
+.TH KCMAP 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+kcmap \- Routines to manipulate colourmaps
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate colourmaps, complete with colourmap sharing, dynamic allocation
+and event management.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIkcmap_initialise\fP 1i
+This routine will initialise the package.
+.IP \fIkcmap_va_create\fP 1i
+Create a high level colourmap.
+.IP \fIkcmap_destroy\fP 1i
+Destroy a colourmap.
+.IP \fIkcmap_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIkcmap_add_RGB_func\fP 1i
+Register a new colourmap function.
+.IP \fIkcmap_add_grey_func\fP 1i
+Register a new colourmap function.
+.IP \fIkcmap_register_resize_func\fP 1i
+Register a colourmap resize function.
+.IP \fIkcmap_register_modify_func\fP 1i
+Register a colourmap modify function.
+.IP \fIkcmap_change\fP 1i
+Change active colourmap function.
+.IP \fIkcmap_modify\fP 1i
+Change colours in a colourmap.
+.IP \fIkcmap_modify_direct_type\fP 1i
+Change colours in a colourmap.
+.IP \fIkcmap_list_funcs\fP 1i
+Get list of colourmap functions.
+.IP \fIkcmap_get_funcs_for_cmap\fP 1i
+Get list of colourmap functions compatible with a colourmap.
+.IP \fIkcmap_get_active_func\fP 1i
+Get active colourmap function.
+.IP \fIkcmap_get_pixels\fP 1i
+Get pixel values in a colourmap.
+.IP \fIkcmap_notify_pixels_changed\fP 1i
+Notify that pixel values have been changed.
+.IP \fIkcmap_get_pixel\fP 1i
+This routine will get a numbered pixel value from a colourmap.
+.IP \fIkcmap_prepare_for_slavery\fP 1i
+Allow colourmap to be slaved.
+.IP \fIkcmap_prepare_for_mastery\fP 1i
+Allow colourmap to be slaved.
+.IP \fIkcmap_copy_to_struct\fP 1i
+Copy colour data from a colourmap.
+.IP \fIkcmap_copy_from_struct\fP 1i
+Copy colour data into a colourmap.
+.IP \fIkcmap_get_rgb_value\fP 1i
+Get colour data from a colourmap.
+.IP \fIkcmap_get_rgb_values\fP 1i
+Get colour data from a colourmap.
+.IP \fIkcmap_read_rgb_values\fP 1i
+Get RGB values in a colourmap.
+.IP \fIkcmap_write_rgb_values\fP 1i
+Write RGB values to a colourmap.
+.IP \fIkcmap_get_attributes\fP 1i
+This routine will get the attributes for a colourmap.
+.IP \fIkcmap_set_attributes\fP 1i
+This routine will set the attributes for a colourmap.
+.IP \fIkcmap_register_att_notify_func\fP 1i
+Register an attribute change function.
+.IP \fIkcmap_get_dpy_handle\fP 1i
+Get the Kdisplay object for a colourmap.
+.IP \fIkcmap_PROTO_alloc_func\fP 1i
+Allocate colourcells.
+.IP \fIkcmap_PROTO_free_func\fP 1i
+Free colourcells.
+.IP \fIkcmap_PROTO_store_func\fP 1i
+This routine will store colours into a low level colourmap.
+.IP \fIkcmap_PROTO_location_func\fP 1i
+Get location of display.
+.IP \fIkcmap_PROTO_colour_func\fP 1i
+Modify colour values.
+.IP \fIkcmap_PROTO_grey_func\fP 1i
+Modify greyscale colour values.
+.IP \fIkcmap_PROTO_destroy_func\fP 1i
+Process a destroy event for an object.
+.IP \fIkcmap_PROTO_modify_func\fP 1i
+This routine registers a change in the colourmap values.
+.IP \fIkcmap_PROTO_att_notify_func\fP 1i
+This routine registers a change in the attributes of a colourmap.
+.SH TABLE kcmap_ATTRIBUTES
+List of attributes for Kcolourmap objects
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                         Get Type       Set Type     Meaning
+
+KCMAP_ATT_END                                            End of varargs list
+KCMAP_ATT_REVERSE            flag *         flag         Reverse pixel order
+KCMAP_ATT_INVERT             flag *         flag         Invert intensities
+KCMAP_ATT_SOFTWARE           flag *                      Test if software
+                                                         colourmap
+KCMAP_ATT_DPY_HANDLE         Kdisplay *                  Get display handle
+KCMAP_ATT_DIRECT_VISUAL      flag *         flag         Handle colourmap as for
+                                                         a direct visual type
+KCMAP_ATT_RED_SCALE          unsigned int * unsigned int Red scale
+KCMAP_ATT_GREEN_SCALE        unsigned int * unsigned int Green scale
+KCMAP_ATT_BLUE_SCALE         unsigned int * unsigned int Blue scale
+KCMAP_ATT_STEAL_COLOURS_FROM unsigned int * unsigned int Colourmap to steal colours from
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,54 @@
+.TH EVENT 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+event \- Routines to dispatch events to other programmes
+.SH PURPOSE
+These routines are meant to provide a general pupose event dispatching
+mechanism for communicating programmes.
+$NOTE
+THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIevent_initialise\fP 1i
+Initialise the package.
+.IP \fIevent_dispatch\fP 1i
+Dispatch an event.
+.IP \fIevent_register_event_func\fP 1i
+Register event callback.
+.IP \fIevent_set_mask\fP 1i
+Set the event mask
+.IP \fIevent_wait\fP 1i
+Wait for an event.
+.IP \fIevent_PROTO_event_func\fP 1i
+Generic event callback.
+.SH TABLE event_MASKS
+List of event bitmasks
+
+.TS
+l l
+_ _
+l l.
+Value                       Meaning
+
+K_EVENT_MASK_MOUSE_CLICK    Mouse button click down
+K_EVENT_MASK_MOUSE_RELEASE  Mouse button release
+K_EVENT_MASK_MOUSE_DRAG     Mouse move while button down
+K_EVENT_MASK_POINTER_MOVE   Mouse move
+K_EVENT_MASK_KEYPRESS       Keyboard press
+K_EVENT_MASK_POINTER_WARP   Mouse warp
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

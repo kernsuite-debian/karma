@@ -1,0 +1,51 @@
+.TH CONTOUR_UNSCALE_LEVELS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_unscale_levels \- Unscale contour levels.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B void contour_unscale_levels
+.sp
+(double *contour_levels, flag *dash,
+double *linewidths, unsigned int num_levels,
+double scale, double offset,
+double neg_width, double pos_width)
+.SH DESCRIPTION
+Unscale contour levels.
+.IP \fIcontour_levels\fP 1i
+The scaled contour levels. This is updated with the raw
+(unscaled) contour levels.
+.IP \fIdash\fP 1i
+An array of booleans will be written here. TRUE is written if the
+corresponding scaled contour level is negative, else FALSE is written.
+.IP \fIlinewidths\fP 1i
+An array of linewidths will be written here.
+.IP \fInum_levels\fP 1i
+The number of levels.
+.IP \fIscale\fP 1i
+The scale factor.
+.IP \fIoffset\fP 1i
+The offset.
+.IP \fIneg_width\fP 1i
+The linewidth for negative contours.
+.IP \fIpos_width\fP 1i
+The linewidth for positive contours.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+scaled = raw * <<scale>> + <<offset>>.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

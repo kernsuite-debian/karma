@@ -1,0 +1,114 @@
+<html><head><title>Widget: Filewin</title></head> 
+<body>
+<center><h1>The "Filewin" Widget</h1></center>    This widget provides a file selector (browser).
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=Filewin></a></table><h4>Tables</h4><table><tr><td><a href=Filewin.html#Filewin_ResourceNames>Filewin_ResourceNames</a></td><td>List of resource names for Filewin widget
+</td></tr>
+<tr><td><a href=Filewin.html#Filewin_Resources>Filewin_Resources</a></td><td>List of resources for Filewin widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=Filewin.html#XkwFilewinRescan>XkwFilewinRescan</a></td><td>Force a directory rescan in a Filewin widget.
+</td></tr>
+<tr><td><a href=Filewin.html#XkwFilewinCurrentDirectory>XkwFilewinCurrentDirectory</a></td><td>Get the current directory in a Filewin widget.
+</td></tr>
+<tr><td><a href=Filewin.html#XkwFilewinRegisterDirCbk>XkwFilewinRegisterDirCbk</a></td><td>Register a callback to capture directory selection events.
+</td></tr>
+<tr><td><a href=Filewin.html#XkwFilewinStandardFileTester_nD>XkwFilewinStandardFileTester_nD</a></td><td>Standard file tester.
+</td></tr>
+<tr><td><a href=Filewin.html#XkwFilewinStandardFileTester_3D>XkwFilewinStandardFileTester_3D</a></td><td>Standard file tester for cube files.
+</td></tr>
+<tr><td><a href=Filewin.html#XkwFilewinChangeDirectory>XkwFilewinChangeDirectory</a></td><td>Change the current directory for a Filewin widget.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=Filewin.html#Filewin_PROTO_dir_cbk>Filewin_PROTO_dir_cbk</a></td><td>Callback for directory selection.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=Filewin_ResourceNames><b>Filewin_ResourceNames</b></a> List of resource names for Filewin widget
+<p> <table><tr><td>Name                       </td><td>Purpose
+</td></tr><tr><td>XkwNfileSelectCallback     </td><td>Callbacks for file selection
+</td></tr><tr><td>XkwNfilenameTester         </td><td>Callbacks to test filenames
+</td></tr><tr><td>XtNforeground              </td><td>The foreground pixel
+</td></tr><tr><td>XkwNforwardSyntheticEvents </td><td>Forward synthetic events
+</td></tr><tr><td>XkwNtrapDirectoryDatasets  </td><td>Trap directories which are known dataset types
+</table><p><hr> <a name=Filewin_Resources><b>Filewin_Resources</b></a> List of resources for Filewin widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNfileSelectCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNdirectoryChangeCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNfilenameTester	</td><td>XtCCallback	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XtNforeground	</td><td>XtCForeground	</td><td>XtRPixel	</td><td>XtDefaultForeground
+</td></tr><tr><td>XkwNnumLines	</td><td>XkwCNumLines	</td><td>XtRInt	</td><td>0
+</td></tr><tr><td>XkwNforwardSyntheticEvents	</td><td>XkwCForwardSyntheticEvents	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNtrapDirectoryDatasets	</td><td>XkwCTrapDirectoryDatasets	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNshowDotsToggleWidget	</td><td>XkwCShowDotsToggleWidget	</td><td>XtRWidget	</td><td>NULL
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwFilewinRescan></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwFilewinRescan</b><i>    (Widget W)
+</i><br><p>    Force a directory rescan in a Filewin widget.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwFilewinCurrentDirectory></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>char *
+ <b>XkwFilewinCurrentDirectory</b><i>    (Widget W)
+</i><br><p>    Get the current directory in a Filewin widget.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br></ul><b>Returns:</b>     A pointer to a dynamically allocated string containing the
+    current directory for the widget. This must be freed with <a href=m.html#m_free>m_free</a>.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwFilewinRegisterDirCbk></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>XkwFilewinRegisterDirCbk</b><i>    (Widget w,
+					flag (*callback) (Widget w,
+							  void *info,
+							  CONST char *dirname),
+					void *info)
+</i><br><p>    This routine will register a callback to capture directory
+    selection events prior to the Filewin widget changing directory.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The Filewin widget.
+<br><li><i>callback :</i> 
+    The routine which will be called when directories are selected.
+    The prototype function is <a href=Filewin.html#Filewin_PROTO_dir_cbk>Filewin_PROTO_dir_cbk</a>.
+<br><li><i>info :</i> 
+    A pointer to arbitrary information.
+<br></ul><b>Returns:</b>     A KCallbackFunc object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwFilewinStandardFileTester_nD></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>XkwFilewinStandardFileTester_nD</b><i>    (KFileInfo finfo)
+</i><br><p>    This routine may be passed as the value for the
+    XkwNfilenameTester resource on a FilewinWidget or FilepopupWidget. The
+    routine will accept all known filetypes.
+<p><b>Parameters:</b><ul><li><i>finfo :</i> 
+    The file information.
+<br></ul><b>Returns:</b>     TRUE if the file is to be displayed, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwFilewinStandardFileTester_3D></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>XkwFilewinStandardFileTester_3D</b><i>    (KFileInfo finfo)
+</i><br><p>    This routine may be passed as the value for the
+    XkwNfilenameTester resource on a FilewinWidget or FilepopupWidget. The
+    routine will accept all known filetypes which are capable of containing a
+    3-dimensional array of data.
+<p><b>Parameters:</b><ul><li><i>finfo :</i> 
+    The file information.
+<br></ul><b>Returns:</b>     TRUE if the file is to be displayed, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwFilewinChangeDirectory></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>XkwFilewinChangeDirectory</b><i>    (Widget W, CONST char *dirname)
+</i><br><p>    Change the current directory for a Filewin widget.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br><li><i>dirname :</i> 
+    The pathname to the directory.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE. On error the directory is unchanged.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=Filewin_PROTO_dir_cbk></a> flag
+ <b>Filewin_PROTO_dir_cbk</b><i>    (Widget w, void *info, CONST char *dirname)
+</i><br><p>    This routine is called when the user selects a directory in
+    the file selector. Normally the directory is descended and another
+    group of files is visible. This callback makes it to possible to
+    "capture" a directory if required. This can be useful when a
+    conceptual "data file" is in fact implemented as a directory or files,
+    such as with Miriad.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The Filewin widget on which the selection occurred.
+<br><li><i>info :</i> 
+    A pointer to arbitrary information.
+<br><li><i>dirname :</i> 
+    The name of the directory.
+<br></ul><b>Returns:</b>     TRUE if the selection event is to be consumed, else FALSE
+    (meaning the event should be passed on to other callbacks, or, if none
+    consume the event, the widget will change it's active directory).
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

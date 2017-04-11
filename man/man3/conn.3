@@ -1,0 +1,74 @@
+.TH CONN 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+conn \- Routines to manipulate connections
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+accept connections, complete with protocols, callback functions and
+security mechanisms.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIconn_initialise\fP 1i
+Initialise the package.
+.IP \fIconn_register_server_protocol\fP 1i
+Register server protocol support.
+.IP \fIconn_register_client_protocol\fP 1i
+Register client protocol support.
+.IP \fIconn_get_channel\fP 1i
+Extract the channel object associated with a connection.
+.IP \fIconn_get_datagram_channel\fP 1i
+Extract the datagram channel associated with a connection.
+.IP \fIconn_attempt_connection\fP 1i
+Attempt connection.
+.IP \fIconn_close\fP 1i
+Close connection.
+.IP \fIconn_become_server\fP 1i
+Become a Karma server.
+.IP \fIconn_get_num_serv_connections\fP 1i
+Get number of server connections.
+.IP \fIconn_get_num_client_connections\fP 1i
+Get number of client connections.
+.IP \fIconn_get_serv_connection\fP 1i
+Get a numbered server connection.
+.IP \fIconn_get_client_connection\fP 1i
+Get a numbered client connection.
+.IP \fIconn_get_connection_info\fP 1i
+Get the arbitrary information for a connection.
+.IP \fIconn_controlled_by_cm_tool\fP 1i
+Check if controlled by CM tool.
+.IP \fIconn_get_connection_module_name\fP 1i
+Get the name of the module at the other end of a connection.
+.IP \fIconn_get_connection_remote_addr\fP 1i
+Get the address of the machine at the other end of a connection.
+.IP \fIconn_register_cm_quiescent_func\fP 1i
+Register callback for quiescence.
+.IP \fIconn_extract_protocols\fP 1i
+Get supported protocols.
+.IP \fIconn_show_connections\fP 1i
+Show all connections.
+.IP \fIconn_PROTO_exit_schedule_func\fP 1i
+Exit schedule function.
+.IP \fIconn_PROTO_client_validate_func\fP 1i
+Client connection validate event callback.
+.IP \fIconn_PROTO_open_func\fP 1i
+Connection open event callback.
+.IP \fIconn_PROTO_read_func\fP 1i
+Connection read event callback.
+.IP \fIconn_PROTO_close_func\fP 1i
+Connection close event callback.
+.IP \fIconn_PROTO_quiescent_func\fP 1i
+Quiescence callback.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

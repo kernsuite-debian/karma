@@ -1,0 +1,37 @@
+.TH DS_ALLOC_VM_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_alloc_vm_array \- Allocate storage for an array using ordinary virtual memory.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_vm_array
+.sp
+(array_pointer *arrayp, CONST array_desc *arr_desc,
+flag clear, flag warn)
+.SH DESCRIPTION
+Allocate storage for an array using ordinary virtual memory.
+.IP \fIarrayp\fP 1i
+Information describing the shared memory region is written here.
+.IP \fIarr_desc\fP 1i
+The array descriptor describing the array data. This is used to
+determine the amount of memory require to store the array.
+.IP \fIclear\fP 1i
+If TRUE the array data is initialised to zero.
+.IP \fIwarn\fP 1i
+If TRUE, warning messages are displayed if there are any problems.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

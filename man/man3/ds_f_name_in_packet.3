@@ -1,0 +1,41 @@
+.TH DS_F_NAME_IN_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_f_name_in_packet \- Recursively search for named item under a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_f_name_in_packet
+.sp
+(CONST packet_desc *pack_desc,
+CONST char *name,
+char **encls_desc, unsigned int *index)
+.SH DESCRIPTION
+Recursively search for named item under a packet.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIname\fP 1i
+The name of the item to search form. If NULL, then the routine will
+not find anything.
+.IP \fIencls_desc\fP 1i
+The pointer to the enclosing structure of the named item will
+be written here. If this is NULL, nothing is written here.
+.IP \fIindex\fP 1i
+The index (dimension number or element number) of the item will be
+written here. If this is NULL, nothing is written here.
+.SH RETURN VALUE
+A code based on the type of the item with the same name. See
+<-ds_IDENT_TABLE-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

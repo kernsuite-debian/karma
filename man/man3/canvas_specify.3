@@ -1,0 +1,51 @@
+.TH CANVAS_SPECIFY 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_specify \- Set specification information for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_specify
+.sp
+(KWorldCanvas canvas,
+CONST char *xlabel, CONST char *ylabel,
+unsigned int num_restr, CONST char **restr_names,
+CONST double *restr_values)
+.SH DESCRIPTION
+This routine will change the specifications for a canvas. This
+includes the horizontal and vertical dimension labels and any restrictions.
+The entire specification is copied (i.e. the inputs may be freed).
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIxlabel\fP 1i
+The horizontal dimension label.
+.IP \fIylabel\fP 1i
+The vertical dimension label.
+.IP \fInum_restr\fP 1i
+The number of restrictions.
+.IP \fIrestr_names\fP 1i
+The array of restriction names.
+.IP \fIrestr_values\fP 1i
+The restriction values.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+This routine DOES NOT cause the canvas to be refreshed. It is highly
+recommended that the canvas is refreshed after this routine, as higher
+level packages may depend on the specification information.
+.sp
+All string values are copied.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

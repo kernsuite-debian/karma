@@ -1,0 +1,55 @@
+.TH DS_CMAP_ALLOC_COLOURMAP 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_cmap_alloc_colourmap \- Allocate a Karma data structure to hold a colourmap.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned short * ds_cmap_alloc_colourmap
+.sp
+(unsigned int size,
+multi_array **multi_desc,
+packet_desc **pack_desc,char **packet)
+.SH DESCRIPTION
+This routine will allocate a colourmap which comforms to the
+Karma general data structure format. Note that this does NOT allocate a
+colourmap on an X Windows server. This routine is intended to enable an
+application to write colourmap data to a file, maintaining a flexible
+format.
+The general data structure that is created will contain a 1 dimensional
+array with dimension name "Colour Number" and length equal to  size  .
+The array will contain packets with 3 elements, each of type  K_USHORT  and
+with the names "Red Intensity", "Green Intensity" and "Blue Intensity", in
+that order. For compatibility with the X Window system, it is recommended
+that these values lie in the range 0 to 65535.
+.IP \fIsize\fP 1i
+The size (number of colours) of the colourmap to allocate.
+.IP \fImulti_desc\fP 1i
+The pointer to the multi array header which is allocated will
+be written here. If this is NULL, then no multi array header is allocated
+and nothing is written here.
+.IP \fIpack_desc\fP 1i
+The pointer to the top level packet descriptor of the general
+data structure which contains the colourmap will be written here. If this
+is NULL, nothing is written here. Note, however, that the top level packet
+descriptor is nevertheless allocated.
+.IP \fIpacket\fP 1i
+The pointer to the top level packet of the general data structure
+which contains the colourmap will be written here. If this is NULL, nothing
+is written here. Note, however, that the top level packet is nevertheless
+allocated.
+.SH RETURN VALUE
+A pointer to the allocated colourmap on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

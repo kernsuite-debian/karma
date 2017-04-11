@@ -1,0 +1,52 @@
+.TH OVERLAY_GET_COORDS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+overlay_get_coords \- Get the co-ordinates for an overlay object.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_get_coords
+.sp
+(KOverlayList olist, unsigned int id_in_list,
+unsigned int list_id, double *x, double *y,
+unsigned int *types)
+.SH DESCRIPTION
+Get the co-ordinates for an overlay object.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIid_in_list\fP 1i
+The object ID. This ID refers to an object created by a
+particular list master or slave.
+.IP \fIlist_id\fP 1i
+The ID of the list which created the object. If this is 0, the
+list given by <<olist>> is assumed.
+.IP \fIx\fP 1i
+The horizontal co-ordinates are written here. This must have enough
+space to contain all the values that will be written. The function
+<-overlay_get_num_coords-> may be used to determine the required space. If
+this is NULL, nothing is written here.
+.IP \fIy\fP 1i
+The vertical co-ordinates are written here. This must have enough
+space to contain all the values that will be written. The function
+<-overlay_get_num_coords-> may be used to determine the required space. If
+this is NULL, nothing is written here.
+.IP \fItypes\fP 1i
+The co-ordinate types are written here. This must have enough
+space to contain all the values that will be written. The function
+<-overlay_get_num_coords-> may be used to determine the required space. If
+this is NULL, nothing is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

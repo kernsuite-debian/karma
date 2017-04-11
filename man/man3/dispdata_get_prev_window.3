@@ -1,0 +1,36 @@
+.TH DISPDATA_GET_PREV_WINDOW 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_prev_window \- Get previous window.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataWindow dispdata_get_prev_window
+.sp
+(KDisplayDataWindow window,
+flag circular, void **info)
+.SH DESCRIPTION
+Get previous window.
+.IP \fIwindow\fP 1i
+The current window.
+.IP \fIcircular\fP 1i
+If TRUE, the list of windows is treated as circular.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer is written here. If this is NULL,
+nothing is written here.
+.SH RETURN VALUE
+A KDisplayDataWindow object. NULL is returned if there are no
+more windows.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

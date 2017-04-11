@@ -1,0 +1,38 @@
+.TH DS_ALLOC_LIST_ENTRY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_list_entry \- Allocate a linked list entry.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B list_entry * ds_alloc_list_entry
+.sp
+(packet_desc *list_desc, flag array_alloc)
+.SH DESCRIPTION
+This routine will allocate an entry in a linked list (it will
+NOT insert it in the list: see <-ds_list_insert->).
+The list pointers will be set to NULL.
+The routine will initialise (set to zero) the data in the entry.
+The routine will recursively allocate memory for sub arrays and linked
+lists.
+.IP \fIlist_desc\fP 1i
+The descriptor for the linked list.
+.IP \fIarray_alloc\fP 1i
+If FALSE, and an array is an atomic array, then instances of
+that array will NOT be allocated, and a NULL pointer will be written into
+the parent element, else the array will be allocated.
+.SH RETURN VALUE
+A pointer to the entry on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

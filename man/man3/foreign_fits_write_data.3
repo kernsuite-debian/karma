@@ -1,0 +1,50 @@
+.TH FOREIGN_FITS_WRITE_DATA 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_fits_write_data \- Write data to a FITS file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_fits_write_data
+.sp
+(Channel channel, multi_array *multi_desc,
+CONST packet_desc *header_pack_desc,
+CONST char *header_packet,
+char *data, uaddr num_values, ...)
+.SH DESCRIPTION
+This routine will write the data section of a FITS file to a
+channel. The header section is NOT written.
+.IP \fIchannel\fP 1i
+The channel to write to.
+.IP \fImulti_desc\fP 1i
+The Karma data structure containing the data.
+.IP \fIheader_pack_desc\fP 1i
+The header packet descriptor.
+.IP \fIheader_packet\fP 1i
+The header packet data.
+.IP \fIdata\fP 1i
+An alternate data array to read the data from. If this is
+NULL, the routine will read the data from the Karma data structure.
+.IP \fInum_values\fP 1i
+The number of values to write to the FITS file. This is
+only used when data is not NULL.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_FITS_WRITE_DATA_END. See <-foreign_ATT_FITS_WRITE_DATA-> for a list of
+defined attributes.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

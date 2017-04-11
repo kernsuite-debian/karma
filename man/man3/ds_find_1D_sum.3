@@ -1,0 +1,45 @@
+.TH DS_FIND_1D_SUM 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_find_1D_sum \- Find the sum of a 1D array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_find_1D_sum
+.sp
+(CONST char *data, unsigned int elem_type,
+unsigned int num_values, CONST uaddr *offsets,
+unsigned int stride, double sum[2])
+.SH DESCRIPTION
+This routine will find the sum of a single trace (element
+versus a dimension). This routine may be called repeatedly with multiple
+traces in order to build an aggregate sum of all traces.
+.IP \fIdata\fP 1i
+A pointer to the data. Misaligned data will cause bus errors on some
+platforms.
+.IP \fIelem_type\fP 1i
+The type of the element.
+.IP \fInum_values\fP 1i
+The length of the dimension.
+.IP \fIoffsets\fP 1i
+The address offsets for data along the dimension.
+.IP \fIstride\fP 1i
+If the value of  offsets  is NULL, this gives the stride (in
+bytes) between consecutive values along the dimension.
+.IP \fIsum\fP 1i
+The sum is written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH CONTOUR_REGISTER_DATA_CHANGE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_register_data_change \- Notify data for contour image has changed.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B flag contour_register_data_change
+.sp
+(KContourImage cimage)
+.SH DESCRIPTION
+This routine will register a change in the Karma data structure
+associated with a contour image. If the contour image is active, it will
+be immediately redrawn on its canvas.
+.IP \fIcimage\fP 1i
+The contour image.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

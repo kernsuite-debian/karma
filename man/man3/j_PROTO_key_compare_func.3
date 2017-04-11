@@ -1,0 +1,32 @@
+.TH J_PROTO_KEY_COMPARE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+j_PROTO_key_compare_func \- This routine will compare two keys.
+.SH SYNOPSIS
+.B #include <karma_j.h>
+.sp
+.B int j_PROTO_key_compare_func
+.sp
+(void *key1, void *key2)
+.SH DESCRIPTION
+This routine will compare two keys.
+.IP \fIkey1\fP 1i
+The first key.
+.IP \fIkey2\fP 1i
+The second key.
+.SH RETURN VALUE
+0 if the keys match, a negative number if <<key1>> is less
+than <<key2>>, a positive number if <<key1>> is greater than <<key2>>.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

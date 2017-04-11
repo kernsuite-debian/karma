@@ -1,0 +1,50 @@
+.TH DS_ALLOC_CONTIGUOUS_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_contiguous_list \- Allocate a contiguous list of linked list entries.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_contiguous_list
+.sp
+(CONST packet_desc *list_desc,
+list_header *list_head, unsigned int length,
+flag clear, flag array_alloc)
+.SH DESCRIPTION
+This routine will allocate a contiguous block of linked list
+entry data  packets. No <<list_entry>> structures are allocated, they are
+implied. The routine will recursively allocate memory for sub arrays and
+linked lists. The list must be empty.
+The <<contiguous_length>> value in the list header will be set to the list
+length.
+.IP \fIlist_desc\fP 1i
+The packet descriptor for the linked list.
+.IP \fIlist_head\fP 1i
+The list header.
+.IP \fIlength\fP 1i
+The number of list entries to allocate.
+.IP \fIclear\fP 1i
+If TRUE, then the routine will initialise (set to zero) all the
+data.
+.IP \fIarray_alloc\fP 1i
+If FALSE, and an array is an atomic array, then instances of
+that array will NOT be allocated, and a NULL pointer will be written into
+the parent element, else the array will be allocated.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+On failure, the list header is deallocated.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,68 @@
+.TH KWIN_DRAW_RGB_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_draw_rgb_image \- Draw TrueColour image to a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_rgb_image
+.sp
+(KPixCanvas canvas, int x_off, int y_off,
+int x_pixels, int y_pixels,
+CONST unsigned char *red_slice,
+CONST unsigned char *green_slice,
+CONST unsigned char *blue_slice,
+CONST uaddr *hoffsets, CONST uaddr *voffsets,
+unsigned int width, unsigned int height,
+KPixCanvasImageCache *cache_ptr)
+.SH DESCRIPTION
+This routine will draw a 2-dimensional slice of a Karma array
+onto a pixel canvas. This slice may be tiled. The slice is a RGB image.
+.IP \fIcanvas\fP 1i
+The pixel canvas.
+.IP \fIx_off\fP 1i
+The horizontal offset, relative to the top-left corner of the
+canvas.
+.IP \fIy_off\fP 1i
+The vertical offset, relative to the top-left corner of the canvas.
+.IP \fIx_pixels\fP 1i
+The number of horizontal pixels to draw.
+.IP \fIy_pixels\fP 1i
+The number of vertical pixels to draw.
+.IP \fIred_slice\fP 1i
+The start of the red slice data.
+.IP \fIgreen_slice\fP 1i
+The start of the green slice data.
+.IP \fIblue_slice\fP 1i
+The start of the blue slice data.
+.IP \fIhoffsets\fP 1i
+The array of horizontal byte offsets.
+.IP \fIvoffsets\fP 1i
+The array of vertical byte offsets.
+.IP \fIwidth\fP 1i
+The width of the input image (in values).
+.IP \fIheight\fP 1i
+The height of the input image (in values).
+.IP \fIcache_ptr\fP 1i
+Cache data is written here. The routine may produce cache data
+which will vastly increase the speed of subsequent operations on this data.
+Prior to process exit, a call MUST be made to <-kwin_free_cache_data->,
+otherwise shared memory segments could remain after the process exits.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The 3 colour components must be of type  K_UBYTE  .
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

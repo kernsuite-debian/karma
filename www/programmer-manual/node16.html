@@ -1,0 +1,1029 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Image Display Tool</TITLE>
+<META NAME="description" CONTENT="Image Display Tool">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html858" HREF="node17.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html856" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html850" HREF="node15.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html860" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html861" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html859" HREF="node17.html">Dynamic Extensions</A>
+<B>Up:</B> <A NAME="tex2html857" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html851" HREF="node15.html">Advanced Examples</A>
+<BR> <P>
+<H1><A NAME="SECTION001600000000000000000">Image Display Tool</A></H1>
+<P>
+<A NAME="chapterkview">&#160;</A>
+<P>
+This chapter takes you through a complete visualisation application,
+describing the various sections in the programme. Finally, the entire
+application souce code is presented at the end of the chapter.
+<P>
+This tool can load an image (stored as a 2-dimensional array) and
+display it. The tool includes a file browser, a magnifying window, a
+colourmap editor, zoom controls and much more, all in less than 500
+lines of code. This tool (called ``kview-small'') is in fact a
+stripped-down version of the <B>&lt;kvis&gt;</B> programme. The
+<B>&lt;kvis&gt;</B> programme can also display TrueColour images and
+movies. In addition, it can display a profile window when a
+3-dimensional array is loaded (you simply point at the displayed image
+and the corresponding array of values down the third axis is drawn in
+another window).
+<P>
+<H1><A NAME="SECTION001610000000000000000">Include Files</A></H1>
+<P>
+This section shows all the include files that this application will
+need.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;X11/Xatom.h&gt;
+#include &lt;X11/Intrinsic.h&gt;
+#include &lt;X11/StringDefs.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;k_version.h&gt;
+#define NEW_WIN_SCALE
+#include &lt;k_event_codes.h&gt;
+#include &lt;karma_foreign.h&gt;
+#include &lt;karma_viewimg.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_xtmisc.h&gt;
+#include &lt;karma_dsxfr.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_wcs.h&gt;
+#include &lt;karma_ds.h&gt;
+#include &lt;karma_im.h&gt;
+#include &lt;karma_hi.h&gt;
+#include &lt;karma_ic.h&gt;
+#include &lt;karma_r.h&gt;
+#include &lt;Xkw/ImageDisplay.h&gt;
+#include &lt;Xkw/Filewin.h&gt;
+#include &lt;Xkw/Dataclip.h&gt;</PRE>
+<P>
+<H1><A NAME="SECTION001620000000000000000">Function and Variable Declarations</A></H1>
+<P>
+This section shows all the variables required by the application. The
+various functions are also declared prior to their use. Note the use
+of the ``EXTERN_FUNCTION'' and ``STATIC_FUNCTION'' macros, which are
+portable to K&amp;R C, ANSI C, and C++.
+<P>
+<PRE>#define VERSION &quot;1.2.0&quot;
+
+
+/*  Local functions  */
+EXTERN_FUNCTION (void setup_comms, (Display *display) );
+EXTERN_FUNCTION (flag process_image,
+                 (multi_array *multi_desc, iarray *image_arr,
+                  double *min, double *max,
+                  KWorldCanvas pseudo_canvas, KWorldCanvas mag_pseudo_canvas,
+                  ViewableImage *image, ViewableImage *magnified_image) );
+
+/*  Public data  */
+char title_name[STRING_LENGTH] = &quot;Unknown&quot;;
+
+/*  Private data  */
+static Widget main_shell = NULL;
+static Widget image_display = NULL;
+static ViewableImage image = NULL;
+static ViewableImage magnified_image = NULL;
+static iarray pseudo_arr = NULL;
+static double pseudo_scale = 1.0;
+static double pseudo_offset = 0.0;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag data_event_func,
+                 (void *object, multi_array *multi_desc,
+                  CONST char *domain, CONST char *name) );
+STATIC_FUNCTION (flag track_canvas_event,
+                 (ViewableImage vimage, double x, double y,
+                  void *value, unsigned int event_code,
+                  void *e_info, void **f_info,
+                  double x_lin, double y_lin, unsigned int value_type,
+                  double x_im, double y_im, int x_pix, int y_pix) );</PRE>
+<P>
+<H1><A NAME="SECTION001630000000000000000">Resources and Options</A></H1>
+<P>
+This section shows the list of resources (such as default colours and
+fonts) used for the application. These are stored in the
+``fallback_resources'' variable.
+<P>
+The ``Options'' variable stores a list of command-line options. The
+X Intrinsics toolkit uses this variable to parse the command line.
+<P>
+<PRE>String fallback_resources[] =
+{
+    &quot;Kview-small*pseudoColourCanvas*background:            black&quot;,
+    &quot;Kview-small*pseudoColourCanvas*foreground:            white&quot;,
+    &quot;Kview-small*Command*background:                       grey70&quot;,
+    &quot;Kview-small*Repeater*background:                      grey70&quot;,
+    &quot;Kview-small*Ktoggle*background:                       grey80&quot;,
+    &quot;Kview-small*closeButton*background:                   grey90&quot;,
+    &quot;Kview-small*ChoiceMenu.background:                    turquoise&quot;,
+    &quot;Kview-small*ExclusiveMenu.background:                 turquoise&quot;,
+    &quot;Kview-small*Value*background:                         #d0a0a0&quot;,
+    &quot;Kview-small*ImageDisplay*quit*background:             orange&quot;,
+    &quot;Kview-small*SimpleSlider.foreground:                  Sea Green&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel0*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel1*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel2*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*zoomMenu*font:               10x20&quot;,
+    &quot;Kview-small*ImageDisplay*crosshairMenu*font:          10x20&quot;,
+    &quot;Kview-small*ImageDisplay*exportMenu*theMenu*font:     10x20&quot;,
+    &quot;Kview-small*ImageDisplay*theMenu*font:                10x20&quot;,
+    &quot;Kview-small*ImageDisplay.overlayMenu.menuButton.font: 7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.Command.font:                7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.Ktoggle.font:                7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.ChoiceMenu.font:             7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.exportMenu.menuButton.font:  7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*zoomMenu*Unzoom*foreground:  red&quot;,
+    &quot;Kview-small*SimpleSlider.borderWidth:                 0&quot;,
+    &quot;Kview-small*ZoomPolicy*showIntensityReset:            True&quot;,
+    &quot;Kview-small*ZoomPolicy*resetIntensityToggle.state:    True&quot;,
+    &quot;Kview-small*ZoomPolicy*autoIntensityScale:            False&quot;,
+    &quot;Kview-small*font:                                     9x15bold&quot;,
+    &quot;Kview-small*borderColor:                              black&quot;,
+    &quot;Kview-small*background:                               aquamarine&quot;,
+    &quot;Kview-small*foreground:                               black&quot;,
+    NULL
+};
+static XrmOptionDescRec Options[] =
+{
+    {&quot;-private_cmap&quot;, &quot;.topForm.multiCanvas.pseudoColourCanvas.forceNewCmap&quot;,
+     XrmoptionNoArg, (XPointer) &quot;True&quot;},
+    {&quot;-num_colours&quot;, &quot;.topForm.cmapSize&quot;, XrmoptionSepArg, (XPointer) NULL},
+    {&quot;-cmap_master&quot;, &quot;.topForm.cmapMaster&quot;, XrmoptionSepArg, (XPointer) NULL},
+    {&quot;-fullscreen&quot;, &quot;.topForm.fullscreen&quot;, XrmoptionNoArg, (XPointer) &quot;True&quot;},
+    {&quot;-verbose&quot;, &quot;*verbose&quot;, XrmoptionNoArg, (XPointer) &quot;True&quot;},
+};</PRE>
+<P>
+<H1><A NAME="SECTION001640000000000000000">Main function and initialisation</A></H1>
+<P>
+This section shows the <TT>main</TT> function and the
+<TT>setup_comms</TT> function. Together, these two functions
+initialise the application.
+<P>
+The first thing the <TT>main</TT> function does is to use the
+<A NAME="tex2html274" HREF="../lib/im.html"><B>im</B></A> package to initialise a few basic things like the name of
+the module (application), the version of the module and the version of
+the library.
+<P>
+<PRE>int main (int argc, char **argv)
+{
+    KWorldCanvas wc_pseudo;
+    flag controlled;
+    XtAppContext app_context;
+    Widget filewin, filepopup;
+    Display *dpy;
+
+    /*  Initialise module  */
+    im_register_module_name (&quot;kview-small&quot;);
+    im_register_module_version_date (VERSION);
+    im_register_lib_version (KARMA_VERSION);</PRE>
+<P>
+Next <TT>main</TT> calls the
+<A NAME="tex2html275" HREF="../lib/xtmisc.html#xtmisc_init_app_initialise"><B>xtmisc_init_app_initialise</B></A> function which is a
+variant of the <TT>XtAppInitialize</TT> function in the X
+Intrinsics (Xt) library. <TT>XtAppInitialize</TT> will
+initialise Xt, create an application context, open and initialise a
+display and create the initial application shell instance (these words
+are taken from the ``X Toolkit Intrinsics Reference Manual (volume 5
+of the O'Reilly X manuals). What the
+<A NAME="tex2html276" HREF="../lib/xtmisc.html#xtmisc_init_app_initialise"><B>xtmisc_init_app_initialise</B></A> function does beyond
+this is some basic initialisation of Karma event management. The other
+important thing it does is to determine if there are enough
+colourcells available in the default colourmap. If not, the
+application is given it's own colourmap: this is very handy when there
+is another application running that takes a lot of colourcells (like a
+WWW browser).
+<P>
+<PRE>    /*  Start up Xt  */
+    main_shell = xtmisc_init_app_initialise (&amp;app_context, &quot;Kview-small&quot;,
+                                             Options, XtNumber (Options),
+                                             &amp;argc, argv, fallback_resources,
+                                             XTMISC_INIT_ATT_MIN_CCELLS, 100,
+                                             XTMISC_INIT_ATT_COMMS_SETUP, TRUE,
+                                             XTMISC_INIT_ATT_CONTROLLED,
+                                             &amp;controlled,
+                                             XTMISC_INIT_ATT_END,
+                                             NULL);
+    xtmisc_set_icon (main_shell, ic_write_kimage_icon);
+    dpy = XtDisplay (main_shell);
+    setup_comms (dpy);
+    XtVaSetValues (main_shell,
+                   XtNtitle, title_name,
+                   NULL);</PRE>
+<P>
+The next interesting thing that <TT>main</TT> does is to create
+an ``ImageDisplay'' widget. This widget does most of the hard work in
+the application. It creates a file browser, colourmap editor, zoom
+controls, display canvas and much more. All you have to worry about is
+what to do when a file is selected by the user, and how you want to
+display data.
+<P>
+<PRE>    image_display = XtVaCreateManagedWidget (&quot;topForm&quot;,
+                                             imageDisplayWidgetClass,
+                                             main_shell,
+                                             XtNborderWidth, 0,
+                                             XkwNenableAnimation, FALSE,
+                                             XkwNnumTrackLabels, 3,
+                                             NULL);</PRE>
+<P>
+Now <TT>main</TT> manipulates the file browser widget to
+register a callback function for file selection. Ordinarily, the file
+browser will handle directory selection internally and change
+directory, so there is no need to register a callback for directory
+selection. In this application, however we need to trap the directory
+selection before the browser changes directory, because the directory
+may in fact be a ``Miriad'' image file (Miriad is an astronomical data
+reduction package). Miriad datasets are in fact directories with
+several files therein. We can turn the <TT>XkwNtrapDirectoryDatasets</TT>
+resource on to do this for us.
+<P>
+<PRE>    filepopup = XtNameToWidget (image_display, &quot;filewinPopup&quot;);
+    filewin = XtNameToWidget (filepopup, &quot;form.selector&quot;);
+    XtVaSetValues (filewin,
+                   XkwNforwardSyntheticEvents, True,
+                   XkwNtrapDirectoryDatasets, True,
+                   NULL);</PRE>
+<P>
+Next <TT>main</TT> registers the function that should be called
+when new data is available for processing/displaying, using the
+<A NAME="tex2html277" HREF="../lib/ds.html#ds_event_register_func"><B>ds_event_register_func</B></A> function. The data may come
+from a disc file, or it may come from a network connection. In either
+case, a single callback mechanism is available.
+<P>
+<PRE>    ds_event_register_func (data_event_func, NULL);</PRE>
+<P>
+The <TT>main</TT> function now ``realises'' the main image
+display widget and attempts to get the PseudoColour world canvas the
+widget has created. The
+<A NAME="tex2html278" HREF="../lib/viewimg.html#viewimg_register_position_event_func"><B>viewimg_register_position_event_func</B></A> function is
+used to register a callback function which is called whenever events
+occurr on the PseudoColour canvas.
+<P>
+Finally <TT>main</TT> might popup the file browser. It then
+goes into the Xt event loop, never to return therefrom.
+<P>
+<PRE>    XtRealizeWidget (main_shell);
+    XtVaGetValues (image_display,
+                   XkwNpseudoColourCanvas, &amp;wc_pseudo,
+                   NULL);
+    if (wc_pseudo == NULL)
+    {
+        fprintf (stderr, &quot;No PseudoColour visual available\n&quot;);
+        exit (RV_UNDEF_ERROR);
+    }
+    viewimg_register_position_event_func (wc_pseudo,
+                                          ( flag (*) () ) track_canvas_event,
+                                          (void *) image_display);
+    if (!controlled) XtPopup (filepopup, XtGrabNone);
+    XtAppMainLoop (app_context);
+    return (RV_OK);
+}   /*  End Function main  */</PRE>
+<P>
+The <TT>setup_comms</TT> function will try to make the module
+run as a Karma server (able to receive network connections), and will
+construct an appropriate title-bar string.
+<P>
+<PRE>void setup_comms (Display *display)
+/*  This routine will initialise the communications system.
+    The display the module is connected to must be pointed to by  display  .
+    NOTE:  conn_initialise  MUST be called first.
+    The routine returns nothing.
+*/
+{
+    int def_port_number;
+    unsigned int server_port_number;
+    char hostname[STRING_LENGTH];
+    extern char module_name[STRING_LENGTH + 1];
+    extern char module_version_date[STRING_LENGTH + 1];
+
+    /*  Get default port number  */
+    if ( ( def_port_number = r_get_def_port ( module_name,
+                                              DisplayString (display) ) ) &lt; 0 )
+    {
+        fprintf (stderr, &quot;Could not get default port number\n&quot;);
+        return;
+    }
+    r_gethostname (hostname, STRING_LENGTH);
+    server_port_number = def_port_number;
+    if ( !conn_become_server (&amp;server_port_number, CONN_MAX_INSTANCES) )
+    {
+        fprintf (stderr, &quot;Module not operating as Karma server\n&quot;);
+        sprintf (title_name, &quot;%s v%s @%s&quot;, module_name, module_version_date,
+                 hostname);
+    }
+    else
+    {
+        fprintf (stderr, &quot;Port allocated: %d\n&quot;, server_port_number);
+        /*  Register the protocols  */
+        dsxfr_register_connection_limits (1, -1);
+        sprintf (title_name, &quot;%s v%s @%s:%u&quot;,
+                 module_name, module_version_date, hostname,
+                 server_port_number);
+    }
+}   /*  End Function setup_comms  */</PRE>
+<P>
+<H1><A NAME="SECTION001650000000000000000">Data Event handers</A></H1>
+<P>
+Some of the hard work is done in the <TT>data_event_func</TT>
+function. The function obtains the PseudoColour main and magnifier
+canvases from the Image Display widget and passes this information, as
+well as the data structure and other information to the
+<TT>process_image</TT> function. The function then does a few
+cosmetic things like changing the title-bar and telling the Image
+Display widget the name of the file that was loaded (if the data came
+from a network connection, a fake name is given). A few more
+housekeeping operations to inform the intensity control widget of the
+new array, setting which canvas is visible and registering the data
+scaling information with the <A NAME="tex2html279" HREF="../lib/viewimg.html"><B>viewimg</B></A> package are then
+performed.
+<P>
+<PRE>static flag data_event_func (void *object, multi_array *multi_desc,
+                             CONST char *domain, CONST char *name)
+/*  [SUMMARY] Process an event.
+    &lt;object&gt; The object information pointer.
+    &lt;multi_desc&gt; The multi_array descriptor.
+    &lt;domain&gt; The domain from where the event was generated.
+    &lt;name&gt; The name of the event in its domain.
+    [RETURNS] TRUE if further callbacks should not be called, else FALSE.
+*/
+{
+    KWorldCanvas pseudo_canvas, mag_pseudo_canvas;
+    double min, max;
+    Widget izoomwinpopup, magnifier;
+    char *ptr;
+    char filename[STRING_LENGTH], stripped_filename[STRING_LENGTH];
+    char title[STRING_LENGTH];
+
+    if (strcmp (domain, &quot;FILE&quot;) == 0) filename[0] = '\0';
+    else
+    {
+        strcpy (filename, domain);
+        strcat (filename, &quot;::&quot;);
+    }
+    strcat (filename, name);
+    strcpy (stripped_filename, filename);
+    if ( ( ptr = strrchr (stripped_filename, '.') ) != NULL )
+    {
+        if (strcmp (ptr, &quot;.kf&quot;) == 0) *ptr = '\0';
+    }
+    XtVaGetValues (image_display,
+                   XkwNpseudoColourCanvas, &amp;pseudo_canvas,
+                   XkwNmagnifier, &amp;magnifier,
+                   NULL);
+    XtVaGetValues (magnifier, XkwNvisibleCanvas, &amp;mag_pseudo_canvas, NULL);
+    izoomwinpopup = XtNameToWidget (image_display, &quot;izoomwinpopup&quot;);
+    if ( !process_image (multi_desc, &amp;pseudo_arr, &amp;min, &amp;max,
+                         pseudo_canvas, mag_pseudo_canvas,
+                         &amp;image, &amp;magnified_image) ) return (FALSE);
+    sprintf (title, &quot;%s  file: %s\n&quot;, title_name, filename);
+    XtVaSetValues (main_shell,
+                   XtNtitle, title,
+                   NULL);
+    XtVaSetValues (image_display,
+                   XkwNimageName, stripped_filename,
+                   NULL);
+    XkwDataclipNewArray (izoomwinpopup, pseudo_arr, min, max, TRUE);
+    XtVaSetValues (image_display,
+                   XkwNvisibleCanvas, pseudo_canvas,
+                   NULL);
+    iarray_get_data_scaling (pseudo_arr, &amp;pseudo_scale, &amp;pseudo_offset);
+    viewimg_set_attributes (image,
+                            VIEWIMG_VATT_DATA_SCALE, pseudo_scale,
+                            VIEWIMG_VATT_DATA_OFFSET, pseudo_offset,
+                            VIEWIMG_VATT_END);
+    viewimg_set_attributes (magnified_image,
+                            VIEWIMG_VATT_DATA_SCALE, pseudo_scale,
+                            VIEWIMG_VATT_DATA_OFFSET, pseudo_offset,
+                            VIEWIMG_VATT_END);
+    return (TRUE);
+}   /*  End Function data_event_func  */</PRE>
+<P>
+The rest of the work is done in the <TT>process_image</TT>
+function, which first tries to create an ``Intelligent Array'' using
+the <A NAME="tex2html280" HREF="../lib/iarray.html#iarray_create_and_setup"><B>iarray_create_and_setup</B></A> function. This
+function will also find any astronomical projection information,
+compute the minumum and maximum, and reject data of the wrong type or
+dimensionality. If it succeeds, the
+<A NAME="tex2html281" HREF="../lib/canvas.html#canvas_use_astro_transform"><B>canvas_use_astro_transform</B></A> is used to tell the
+<A NAME="tex2html282" HREF="../lib/canvas.html"><B>canvas</B></A> package that the ``astro_transform'' variable may
+contain astronomical co-ordinate transformation information. If this
+variable is not NULL, co-ordinate transformations are performed
+automatically. After cleaning up old data, the function tries to
+create ViewableImage objects from the Intelligent Array. If this
+succeeds, then the function will update the value range attributes
+(the <A NAME="tex2html283" HREF="../lib/viewimg.html"><B>viewimg</B></A> package can compute these automatically, but a
+little time is saved if the ranges are computed only once). Finally,
+the ViewableImage objects are made active so that they may be seen.
+<P>
+<PRE>flag process_image (multi_array *multi_desc, iarray *image_arr,
+                    double *min, double *max,
+                    KWorldCanvas pseudo_canvas, KWorldCanvas mag_pseudo_canvas,
+                    ViewableImage *image, ViewableImage *magnified_image)
+/*  [PURPOSE] This routine will process an image and display it.
+    &lt;multi_desc&gt; The multi_array descriptor.
+    &lt;image_arr&gt; The image array is written here.
+    &lt;min&gt; The minimum image value is written here.
+    &lt;max&gt; The maximum image value is written here.
+    &lt;pseudo_canvas&gt; The PseudoColour canvas.
+    &lt;image&gt; If an image is loaded the ViewableImage is written here. If no
+    image is loaded, NULL is written here. The value written here must be
+    preserved between calls.
+    &lt;magnified_image&gt; If an image is loaded the magnified ViewableImage is
+    written here. If no image is loaded, NULL is written here. The value
+    written here must be preserved between calls.
+    [RETURNS] TRUE on success, else FALSE.
+*/
+{
+    KwcsAstro astro_projection;
+    /*static char function_name[] = &quot;process_image&quot;;*/
+
+    if ( !iarray_create_and_setup (image_arr, multi_desc, TRUE, 2, NONE,
+                                   min, max, TRUE, &amp;astro_projection) )
+    {
+        return (FALSE);
+    }
+    if (*image != NULL) viewimg_destroy (*image);
+    *image = NULL;
+    if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+    *magnified_image = NULL;
+    canvas_use_astro_transform (pseudo_canvas, NULL);
+    if ( ( *image = viewimg_create_from_iarray (pseudo_canvas, *image_arr,
+                                                FALSE) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error getting ViewableImage from Iarray\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        return (FALSE);
+    }
+    if ( ( *magnified_image =
+           viewimg_create_from_iarray (mag_pseudo_canvas, *image_arr,
+                                       FALSE) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error getting ViewableImage from Iarray\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        if (*image != NULL) viewimg_destroy (*image);
+        *image = NULL;
+        if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+        *magnified_image = NULL;
+        return (FALSE);
+    }
+    viewimg_set_attributes (*image,
+                            VIEWIMG_VATT_VALUE_MIN, *min,
+                            VIEWIMG_VATT_VALUE_MAX, *max,
+                            VIEWIMG_ATT_END);
+    viewimg_set_attributes (*magnified_image,
+                            VIEWIMG_VATT_VALUE_MIN, *min,
+                            VIEWIMG_VATT_VALUE_MAX, *max,
+                            VIEWIMG_ATT_END);
+    if ( !viewimg_make_active (*image) ||
+         !viewimg_make_active (*magnified_image) )
+    {
+        fprintf (stderr, &quot;Error making ViewableImage(s) active\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        if (*image != NULL) viewimg_destroy (*image);
+        *image = NULL;
+        if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+        *magnified_image = NULL;
+        return (FALSE);
+    }
+    canvas_use_astro_transform (pseudo_canvas, astro_projection);
+    return (TRUE);
+}   /*  End Function process_image  */</PRE>
+<P>
+<H1><A NAME="SECTION001660000000000000000">Canvas Event hander</A></H1>
+<P>
+This section shows the function which handles canvas events. This
+function rejects all events except pointer (mouse) moves. The
+convenience function <A NAME="tex2html284" HREF="../lib/viewimg.html#viewimg_track_compute"><B>viewimg_track_compute</B></A> is used
+to compute strings that should be displayed above the image. These
+strings are then dutifully displayed in their corresponding label
+widgets. Finally, the mouse position is used to update the magnifier
+pan position.
+<P>
+<PRE>static flag track_canvas_event (ViewableImage vimage, double x, double y,
+                                void *value, unsigned int event_code,
+                                void *e_info, void **f_info,
+                                double x_lin, double y_lin,
+                                unsigned int value_type,
+                                double x_im, double y_im, int x_pix, int y_pix)
+/*  [SUMMARY] Position event callback.
+    [PURPOSE] This routine is a position event consumer for a world canvas
+    which has a number of ViewableImage objects associated with it. Most
+    co-ordinate values are quantised to the nearest image pixel centre.
+    &lt;viewimg&gt; The active viewable image.
+    &lt;x&gt; The quantised horizontal world co-ordinate of the event.
+    &lt;y&gt; The quantised vertical world co-ordinate of the event.
+    &lt;value&gt; A pointer to the data value in the viewable image corresponding
+    to the event co-ordinates.
+    &lt;event_code&gt; The arbitrary event code.
+    &lt;e_info&gt; The arbitrary event information.
+    &lt;f_info&gt; The arbitrary function information pointer.
+    &lt;x_lin&gt; The quantised linear horizontal world co-ordinate (the co-ordinate
+    prior to the transform function being called).
+    &lt;y_lin&gt; The quantised linear vertical world co-ordinate (the co-ordinate
+    prior to the transform function being called).
+    &lt;value_type&gt; The type of the data value. This may be K_DCOMPLEX or
+    K_UB_RGB.
+    &lt;x_im&gt; The quantised horizontal image pixel co-ordinate. 0.0 is the pixel
+    centre.
+    &lt;y_im&gt; The quantised vertical image pixel co-ordinate. 0.0 is the pixel
+    centre.
+    &lt;x_pix&gt; The horizontal screen pixel co-ordinate.
+    &lt;y_pix&gt; The vertical screen pixel co-ordinate.
+    [NOTE] All co-ordinates are clipped to pixel boundaries.
+    [RETURNS] TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+*/
+{
+    KWorldCanvas magnifier_canvas;
+    Widget image_display = (Widget) *f_info;
+    Widget first_track_label, second_track_label, third_track_label, magnifier;
+    char pix_string[STRING_LENGTH];
+    char world_string[STRING_LENGTH], extra_string[STRING_LENGTH];
+    /*static char function_name[] = &quot;track_canvas_event&quot;;*/
+
+    if (event_code != K_CANVAS_EVENT_POINTER_MOVE) return (FALSE);
+    viewimg_track_compute (vimage, value, value_type, x, y, x_im, y_im,
+                           pix_string, world_string, extra_string);
+    first_track_label = XtNameToWidget (image_display, &quot;trackLabel0&quot;);
+    second_track_label = XtNameToWidget (image_display, &quot;trackLabel1&quot;);
+    third_track_label = XtNameToWidget (image_display, &quot;trackLabel2&quot;);
+    XtVaSetValues (first_track_label, XtNlabel, pix_string, NULL);
+    XtVaSetValues (second_track_label, XtNlabel, world_string, NULL);
+    XtVaSetValues (third_track_label, XtNlabel, extra_string, NULL);
+    XtVaGetValues (image_display, XkwNmagnifier, &amp;magnifier, NULL);
+    XtVaGetValues (magnifier, XkwNvisibleCanvas, &amp;magnifier_canvas, NULL);
+    viewimg_set_canvas_attributes (magnifier_canvas,
+                                   VIEWIMG_ATT_PAN_CENTRE_X,
+                                       (unsigned long) (x_im + 0.5),
+                                   VIEWIMG_ATT_PAN_CENTRE_Y,
+                                       (unsigned long) (y_im + 0.5),
+                                   VIEWIMG_ATT_END);
+    kwin_refresh_if_visible (canvas_get_pixcanvas (magnifier_canvas), FALSE);
+    return (TRUE);
+}   /*  End Function track_canvas_event  */</PRE>
+<P>
+<H1><A NAME="SECTION001670000000000000000">The entire application</A></H1>
+<P>
+Here is the entire application source code.
+<P>
+<PRE>/*  kview-small.c
+
+    Main file for  kview-small  (X11 image display tool for Karma).
+
+    Copyright (C) 1997-2005  Richard Gooch
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+    Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+    The postal address is:
+      Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+*/
+
+/*
+    This Karma module will enable on-screen display of images.
+    This module runs on an X11 server.
+
+
+    Written by      Richard Gooch   11-JAN-1997: Copied from &lt;kview&gt;.
+
+    Last updated by Richard Gooch   3-AUG-2005: Added #include &lt;k_version.h&gt;
+  and took account of API changes.
+
+
+*/
+#include &lt;stdio.h&gt;
+#include &lt;X11/Xatom.h&gt;
+#include &lt;X11/Intrinsic.h&gt;
+#include &lt;X11/StringDefs.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;k_version.h&gt;
+#define NEW_WIN_SCALE
+#include &lt;k_event_codes.h&gt;
+#include &lt;karma_foreign.h&gt;
+#include &lt;karma_viewimg.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_xtmisc.h&gt;
+#include &lt;karma_dsxfr.h&gt;
+#include &lt;karma_conn.h&gt;
+#include &lt;karma_wcs.h&gt;
+#include &lt;karma_ds.h&gt;
+#include &lt;karma_im.h&gt;
+#include &lt;karma_hi.h&gt;
+#include &lt;karma_ic.h&gt;
+#include &lt;karma_r.h&gt;
+#include &lt;Xkw/ImageDisplay.h&gt;
+#include &lt;Xkw/Filewin.h&gt;
+#include &lt;Xkw/Dataclip.h&gt;
+
+#define VERSION &quot;1.2.0&quot;
+
+
+/*  Local functions  */
+EXTERN_FUNCTION (void setup_comms, (Display *display) );
+EXTERN_FUNCTION (flag process_image,
+                 (multi_array *multi_desc, iarray *image_arr,
+                  double *min, double *max,
+                  KWorldCanvas pseudo_canvas, KWorldCanvas mag_pseudo_canvas,
+                  ViewableImage *image, ViewableImage *magnified_image) );
+
+/*  Public data  */
+char title_name[STRING_LENGTH] = &quot;Unknown&quot;;
+
+/*  Private data  */
+static Widget main_shell = NULL;
+static Widget image_display = NULL;
+static ViewableImage image = NULL;
+static ViewableImage magnified_image = NULL;
+static iarray pseudo_arr = NULL;
+static double pseudo_scale = 1.0;
+static double pseudo_offset = 0.0;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag data_event_func,
+                 (void *object, multi_array *multi_desc,
+                  CONST char *domain, CONST char *name) );
+STATIC_FUNCTION (flag track_canvas_event,
+                 (ViewableImage vimage, double x, double y,
+                  void *value, unsigned int event_code,
+                  void *e_info, void **f_info,
+                  double x_lin, double y_lin, unsigned int value_type,
+                  double x_im, double y_im, int x_pix, int y_pix) );
+
+
+String fallback_resources[] =
+{
+    &quot;Kview-small*pseudoColourCanvas*background:            black&quot;,
+    &quot;Kview-small*pseudoColourCanvas*foreground:            white&quot;,
+    &quot;Kview-small*Command*background:                       grey70&quot;,
+    &quot;Kview-small*Repeater*background:                      grey70&quot;,
+    &quot;Kview-small*Ktoggle*background:                       grey80&quot;,
+    &quot;Kview-small*closeButton*background:                   grey90&quot;,
+    &quot;Kview-small*ChoiceMenu.background:                    turquoise&quot;,
+    &quot;Kview-small*ExclusiveMenu.background:                 turquoise&quot;,
+    &quot;Kview-small*Value*background:                         #d0a0a0&quot;,
+    &quot;Kview-small*ImageDisplay*quit*background:             orange&quot;,
+    &quot;Kview-small*SimpleSlider.foreground:                  Sea Green&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel0*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel1*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*trackLabel2*font:            8x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*zoomMenu*font:               10x20&quot;,
+    &quot;Kview-small*ImageDisplay*crosshairMenu*font:          10x20&quot;,
+    &quot;Kview-small*ImageDisplay*exportMenu*theMenu*font:     10x20&quot;,
+    &quot;Kview-small*ImageDisplay*theMenu*font:                10x20&quot;,
+    &quot;Kview-small*ImageDisplay.overlayMenu.menuButton.font: 7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.Command.font:                7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.Ktoggle.font:                7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.ChoiceMenu.font:             7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay.exportMenu.menuButton.font:  7x13bold&quot;,
+    &quot;Kview-small*ImageDisplay*zoomMenu*Unzoom*foreground:  red&quot;,
+    &quot;Kview-small*SimpleSlider.borderWidth:                 0&quot;,
+    &quot;Kview-small*ZoomPolicy*showIntensityReset:            True&quot;,
+    &quot;Kview-small*ZoomPolicy*resetIntensityToggle.state:    True&quot;,
+    &quot;Kview-small*ZoomPolicy*autoIntensityScale:            False&quot;,
+    &quot;Kview-small*font:                                     9x15bold&quot;,
+    &quot;Kview-small*borderColor:                              black&quot;,
+    &quot;Kview-small*background:                               aquamarine&quot;,
+    &quot;Kview-small*foreground:                               black&quot;,
+    NULL
+};
+static XrmOptionDescRec Options[] =
+{
+    {&quot;-private_cmap&quot;, &quot;.topForm.multiCanvas.pseudoColourCanvas.forceNewCmap&quot;,
+     XrmoptionNoArg, (XPointer) &quot;True&quot;},
+    {&quot;-num_colours&quot;, &quot;.topForm.cmapSize&quot;, XrmoptionSepArg, (XPointer) NULL},
+    {&quot;-cmap_master&quot;, &quot;.topForm.cmapMaster&quot;, XrmoptionSepArg, (XPointer) NULL},
+    {&quot;-fullscreen&quot;, &quot;.topForm.fullscreen&quot;, XrmoptionNoArg, (XPointer) &quot;True&quot;},
+    {&quot;-verbose&quot;, &quot;*verbose&quot;, XrmoptionNoArg, (XPointer) &quot;True&quot;},
+};
+
+int main (int argc, char **argv)
+{
+    KWorldCanvas wc_pseudo;
+    flag controlled;
+    XtAppContext app_context;
+    Widget filewin, filepopup;
+    Display *dpy;
+
+    /*  Initialise module  */
+    im_register_module_name (&quot;kview-small&quot;);
+    im_register_module_version_date (VERSION);
+    im_register_lib_version (KARMA_VERSION);
+    /*  Start up Xt  */
+    main_shell = xtmisc_init_app_initialise (&amp;app_context, &quot;Kview-small&quot;,
+                                             Options, XtNumber (Options),
+                                             &amp;argc, argv, fallback_resources,
+                                             XTMISC_INIT_ATT_MIN_CCELLS, 100,
+                                             XTMISC_INIT_ATT_COMMS_SETUP, TRUE,
+                                             XTMISC_INIT_ATT_CONTROLLED,
+                                             &amp;controlled,
+                                             XTMISC_INIT_ATT_END,
+                                             NULL);
+    xtmisc_set_icon (main_shell, ic_write_kimage_icon);
+    dpy = XtDisplay (main_shell);
+    setup_comms (dpy);
+    XtVaSetValues (main_shell,
+                   XtNtitle, title_name,
+                   NULL);
+    image_display = XtVaCreateManagedWidget (&quot;topForm&quot;,
+                                             imageDisplayWidgetClass,
+                                             main_shell,
+                                             XtNborderWidth, 0,
+                                             XkwNenableAnimation, FALSE,
+                                             XkwNnumTrackLabels, 3,
+                                             NULL);
+    filepopup = XtNameToWidget (image_display, &quot;filewinPopup&quot;);
+    filewin = XtNameToWidget (filepopup, &quot;form.selector&quot;);
+    XtVaSetValues (filewin,
+                   XkwNforwardSyntheticEvents, True,
+                   XkwNtrapDirectoryDatasets, True,
+                   NULL);
+    ds_event_register_func (data_event_func, NULL);
+    XtRealizeWidget (main_shell);
+    XtVaGetValues (image_display,
+                   XkwNpseudoColourCanvas, &amp;wc_pseudo,
+                   NULL);
+    if (wc_pseudo == NULL)
+    {
+        fprintf (stderr, &quot;No PseudoColour visual available\n&quot;);
+        exit (RV_UNDEF_ERROR);
+    }
+    viewimg_register_position_event_func (wc_pseudo,
+                                          ( flag (*) () ) track_canvas_event,
+                                          (void *) image_display);
+    if (!controlled) XtPopup (filepopup, XtGrabNone);
+    XtAppMainLoop (app_context);
+    return (RV_OK);
+}   /*  End Function main  */
+
+void setup_comms (Display *display)
+/*  This routine will initialise the communications system.
+    The display the module is connected to must be pointed to by  display  .
+    NOTE:  conn_initialise  MUST be called first.
+    The routine returns nothing.
+*/
+{
+    int def_port_number;
+    unsigned int server_port_number;
+    char hostname[STRING_LENGTH];
+    extern char module_name[STRING_LENGTH + 1];
+    extern char module_version_date[STRING_LENGTH + 1];
+
+    /*  Get default port number  */
+    if ( ( def_port_number = r_get_def_port ( module_name,
+                                              DisplayString (display) ) ) &lt; 0 )
+    {
+        fprintf (stderr, &quot;Could not get default port number\n&quot;);
+        return;
+    }
+    r_gethostname (hostname, STRING_LENGTH);
+    server_port_number = def_port_number;
+    if ( !conn_become_server (&amp;server_port_number, CONN_MAX_INSTANCES) )
+    {
+        fprintf (stderr, &quot;Module not operating as Karma server\n&quot;);
+        sprintf (title_name, &quot;%s v%s @%s&quot;, module_name, module_version_date,
+                 hostname);
+    }
+    else
+    {
+        fprintf (stderr, &quot;Port allocated: %d\n&quot;, server_port_number);
+        /*  Register the protocols  */
+        dsxfr_register_connection_limits (1, -1);
+        sprintf (title_name, &quot;%s v%s @%s:%u&quot;,
+                 module_name, module_version_date, hostname,
+                 server_port_number);
+    }
+}   /*  End Function setup_comms  */
+
+static flag data_event_func (void *object, multi_array *multi_desc,
+                             CONST char *domain, CONST char *name)
+/*  [SUMMARY] Process an event.
+    &lt;object&gt; The object information pointer.
+    &lt;multi_desc&gt; The multi_array descriptor.
+    &lt;domain&gt; The domain from where the event was generated.
+    &lt;name&gt; The name of the event in its domain.
+    [RETURNS] TRUE if further callbacks should not be called, else FALSE.
+*/
+{
+    KWorldCanvas pseudo_canvas, mag_pseudo_canvas;
+    double min, max;
+    Widget izoomwinpopup, magnifier;
+    char *ptr;
+    char filename[STRING_LENGTH], stripped_filename[STRING_LENGTH];
+    char title[STRING_LENGTH];
+
+    if (strcmp (domain, &quot;FILE&quot;) == 0) filename[0] = '\0';
+    else
+    {
+        strcpy (filename, domain);
+        strcat (filename, &quot;::&quot;);
+    }
+    strcat (filename, name);
+    strcpy (stripped_filename, filename);
+    if ( ( ptr = strrchr (stripped_filename, '.') ) != NULL )
+    {
+        if (strcmp (ptr, &quot;.kf&quot;) == 0) *ptr = '\0';
+    }
+    XtVaGetValues (image_display,
+                   XkwNpseudoColourCanvas, &amp;pseudo_canvas,
+                   XkwNmagnifier, &amp;magnifier,
+                   NULL);
+    XtVaGetValues (magnifier, XkwNvisibleCanvas, &amp;mag_pseudo_canvas, NULL);
+    izoomwinpopup = XtNameToWidget (image_display, &quot;izoomwinpopup&quot;);
+    if ( !process_image (multi_desc, &amp;pseudo_arr, &amp;min, &amp;max,
+                         pseudo_canvas, mag_pseudo_canvas,
+                         &amp;image, &amp;magnified_image) ) return (FALSE);
+    sprintf (title, &quot;%s  file: %s\n&quot;, title_name, filename);
+    XtVaSetValues (main_shell,
+                   XtNtitle, title,
+                   NULL);
+    XtVaSetValues (image_display,
+                   XkwNimageName, stripped_filename,
+                   NULL);
+    XkwDataclipNewArray (izoomwinpopup, pseudo_arr, min, max, TRUE);
+    XtVaSetValues (image_display,
+                   XkwNvisibleCanvas, pseudo_canvas,
+                   NULL);
+    iarray_get_data_scaling (pseudo_arr, &amp;pseudo_scale, &amp;pseudo_offset);
+    viewimg_set_attributes (image,
+                            VIEWIMG_VATT_DATA_SCALE, pseudo_scale,
+                            VIEWIMG_VATT_DATA_OFFSET, pseudo_offset,
+                            VIEWIMG_VATT_END);
+    viewimg_set_attributes (magnified_image,
+                            VIEWIMG_VATT_DATA_SCALE, pseudo_scale,
+                            VIEWIMG_VATT_DATA_OFFSET, pseudo_offset,
+                            VIEWIMG_VATT_END);
+    return (TRUE);
+}   /*  End Function data_event_func  */
+
+flag process_image (multi_array *multi_desc, iarray *image_arr,
+                    double *min, double *max,
+                    KWorldCanvas pseudo_canvas, KWorldCanvas mag_pseudo_canvas,
+                    ViewableImage *image, ViewableImage *magnified_image)
+/*  [PURPOSE] This routine will process an image and display it.
+    &lt;multi_desc&gt; The multi_array descriptor.
+    &lt;image_arr&gt; The image array is written here.
+    &lt;min&gt; The minimum image value is written here.
+    &lt;max&gt; The maximum image value is written here.
+    &lt;pseudo_canvas&gt; The PseudoColour canvas.
+    &lt;image&gt; If an image is loaded the ViewableImage is written here. If no
+    image is loaded, NULL is written here. The value written here must be
+    preserved between calls.
+    &lt;magnified_image&gt; If an image is loaded the magnified ViewableImage is
+    written here. If no image is loaded, NULL is written here. The value
+    written here must be preserved between calls.
+    [RETURNS] TRUE on success, else FALSE.
+*/
+{
+    KwcsAstro astro_projection;
+    /*static char function_name[] = &quot;process_image&quot;;*/
+
+    if ( !iarray_create_and_setup (image_arr, multi_desc, TRUE, 2, NONE,
+                                   min, max, TRUE, &amp;astro_projection) )
+    {
+        return (FALSE);
+    }
+    if (*image != NULL) viewimg_destroy (*image);
+    *image = NULL;
+    if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+    *magnified_image = NULL;
+    canvas_use_astro_transform (pseudo_canvas, NULL);
+    if ( ( *image = viewimg_create_from_iarray (pseudo_canvas, *image_arr,
+                                                FALSE) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error getting ViewableImage from Iarray\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        return (FALSE);
+    }
+    if ( ( *magnified_image =
+           viewimg_create_from_iarray (mag_pseudo_canvas, *image_arr,
+                                       FALSE) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error getting ViewableImage from Iarray\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        if (*image != NULL) viewimg_destroy (*image);
+        *image = NULL;
+        if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+        *magnified_image = NULL;
+        return (FALSE);
+    }
+    viewimg_set_attributes (*image,
+                            VIEWIMG_VATT_VALUE_MIN, *min,
+                            VIEWIMG_VATT_VALUE_MAX, *max,
+                            VIEWIMG_ATT_END);
+    viewimg_set_attributes (*magnified_image,
+                            VIEWIMG_VATT_VALUE_MIN, *min,
+                            VIEWIMG_VATT_VALUE_MAX, *max,
+                            VIEWIMG_ATT_END);
+    if ( !viewimg_make_active (*image) ||
+         !viewimg_make_active (*magnified_image) )
+    {
+        fprintf (stderr, &quot;Error making ViewableImage(s) active\n&quot;);
+        iarray_dealloc (*image_arr);
+        *image_arr = NULL;
+        if (*image != NULL) viewimg_destroy (*image);
+        *image = NULL;
+        if (*magnified_image != NULL) viewimg_destroy (*magnified_image);
+        *magnified_image = NULL;
+        return (FALSE);
+    }
+    canvas_use_astro_transform (pseudo_canvas, astro_projection);
+    return (TRUE);
+}   /*  End Function process_image  */
+
+static flag track_canvas_event (ViewableImage vimage, double x, double y,
+                                void *value, unsigned int event_code,
+                                void *e_info, void **f_info,
+                                double x_lin, double y_lin,
+                                unsigned int value_type,
+                                double x_im, double y_im, int x_pix, int y_pix)
+/*  [SUMMARY] Position event callback.
+    [PURPOSE] This routine is a position event consumer for a world canvas
+    which has a number of ViewableImage objects associated with it. Most
+    co-ordinate values are quantised to the nearest image pixel centre.
+    &lt;viewimg&gt; The active viewable image.
+    &lt;x&gt; The quantised horizontal world co-ordinate of the event.
+    &lt;y&gt; The quantised vertical world co-ordinate of the event.
+    &lt;value&gt; A pointer to the data value in the viewable image corresponding
+    to the event co-ordinates.
+    &lt;event_code&gt; The arbitrary event code.
+    &lt;e_info&gt; The arbitrary event information.
+    &lt;f_info&gt; The arbitrary function information pointer.
+    &lt;x_lin&gt; The quantised linear horizontal world co-ordinate (the co-ordinate
+    prior to the transform function being called).
+    &lt;y_lin&gt; The quantised linear vertical world co-ordinate (the co-ordinate
+    prior to the transform function being called).
+    &lt;value_type&gt; The type of the data value. This may be K_DCOMPLEX or
+    K_UB_RGB.
+    &lt;x_im&gt; The quantised horizontal image pixel co-ordinate. 0.0 is the pixel
+    centre.
+    &lt;y_im&gt; The quantised vertical image pixel co-ordinate. 0.0 is the pixel
+    centre.
+    &lt;x_pix&gt; The horizontal screen pixel co-ordinate.
+    &lt;y_pix&gt; The vertical screen pixel co-ordinate.
+    [NOTE] All co-ordinates are clipped to pixel boundaries.
+    [RETURNS] TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+*/
+{
+    KWorldCanvas magnifier_canvas;
+    Widget image_display = (Widget) *f_info;
+    Widget first_track_label, second_track_label, third_track_label, magnifier;
+    char pix_string[STRING_LENGTH];
+    char world_string[STRING_LENGTH], extra_string[STRING_LENGTH];
+    /*static char function_name[] = &quot;track_canvas_event&quot;;*/
+
+    if (event_code != K_CANVAS_EVENT_POINTER_MOVE) return (FALSE);
+    viewimg_track_compute (vimage, value, value_type, x, y, x_im, y_im,
+                           pix_string, world_string, extra_string);
+    first_track_label = XtNameToWidget (image_display, &quot;trackLabel0&quot;);
+    second_track_label = XtNameToWidget (image_display, &quot;trackLabel1&quot;);
+    third_track_label = XtNameToWidget (image_display, &quot;trackLabel2&quot;);
+    XtVaSetValues (first_track_label, XtNlabel, pix_string, NULL);
+    XtVaSetValues (second_track_label, XtNlabel, world_string, NULL);
+    XtVaSetValues (third_track_label, XtNlabel, extra_string, NULL);
+    XtVaGetValues (image_display, XkwNmagnifier, &amp;magnifier, NULL);
+    XtVaGetValues (magnifier, XkwNvisibleCanvas, &amp;magnifier_canvas, NULL);
+    viewimg_set_canvas_attributes (magnifier_canvas,
+                                   VIEWIMG_ATT_PAN_CENTRE_X,
+                                       (unsigned long) (x_im + 0.5),
+                                   VIEWIMG_ATT_PAN_CENTRE_Y,
+                                       (unsigned long) (y_im + 0.5),
+                                   VIEWIMG_ATT_END);
+    kwin_refresh_if_visible (canvas_get_pixcanvas (magnifier_canvas), FALSE);
+    return (TRUE);
+}   /*  End Function track_canvas_event  */</PRE>
+<P>
+<HR><A NAME="tex2html858" HREF="node17.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html856" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html850" HREF="node15.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html860" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html861" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html859" HREF="node17.html">Dynamic Extensions</A>
+<B>Up:</B> <A NAME="tex2html857" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html851" HREF="node15.html">Advanced Examples</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

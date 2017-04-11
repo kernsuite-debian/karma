@@ -1,0 +1,42 @@
+.TH DSXFR_REGISTER_CONNECTION_LIMITS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsxfr_register_connection_limits \- Register connection limits for "multi_array" protocol.
+.SH SYNOPSIS
+.B #include <karma_dsxfr.h>
+.sp
+.B void dsxfr_register_connection_limits
+.sp
+(int max_incoming, int max_outgoing)
+.SH DESCRIPTION
+This routine will register the maximum number of incoming
+(server) and outgoing (client) connections for the transfer of the general
+data structure. The protocol used is: "multi_array".
+.IP \fImax_incoming\fP 1i
+The maximum number of incoming connections. If this is less
+than 0, no connections are permitted. If this is 0, an unlimited number of
+connections is permitted.
+.IP \fImax_outgoing\fP 1i
+The maximum number of outgoing connections. If this is less
+than 0, no connections are permitted. If this is 0, an unlimited number of
+connections is permitted.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine ONLY registers the server and client callback routines,
+the application must first call <conn_register_managers> in all cases and
+must call <conn_become_server> if it wishes to accept connections.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

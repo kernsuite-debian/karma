@@ -1,0 +1,51 @@
+.TH MODULE_RUN 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+module_run \- Initialise and then run a generic module.
+.SH SYNOPSIS
+.B #include <karma_module.h>
+.sp
+.B void module_run
+.sp
+(int argc, char **argv, char *name_string,
+char *version_string, flag (*decode_func) (),
+int max_incoming, int max_outgoing, flag server)
+.SH DESCRIPTION
+Initialise and then run a generic module.
+.IP \fIargc\fP 1i
+The number of command line arguments.
+.IP \fIargv\fP 1i
+The command line arguments.
+.IP \fIname_string\fP 1i
+The name of the module.
+.IP \fIversion_string\fP 1i
+The version date of the module.
+.IP \fIdecode_func\fP 1i
+The command line decode function. The prototype function is
+<-panel_PROTO_decode_func->.
+.IP \fImax_incoming\fP 1i
+The maximum number of incoming "multi_array" protocol
+connections. If this is less than 0, no connections are permitted. If this
+is 0, an unlimited number of connections is permitted.
+.IP \fImax_outgoing\fP 1i
+The maximum number of outgoing "multi_array" protocol
+connections. If this is less than 0, no connections are permitted. If this
+is 0, an unlimited number of connections is permitted.
+.IP \fIserver\fP 1i
+If TRUE, the module can operate as a server (for at least one
+protocol).
+.SH RETURN VALUE
+Nothing. Upon return from the function, the module should exit.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

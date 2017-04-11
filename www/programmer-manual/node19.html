@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Internals of the Karma Data Format</TITLE>
+<META NAME="description" CONTENT="Internals of the Karma Data Format">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html894" HREF="node20.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html892" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html886" HREF="node18.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html896" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html897" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html895" HREF="node20.html">Glossary</A>
+<B>Up:</B> <A NAME="tex2html893" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html887" HREF="node18.html">Graphics without Widgets</A>
+<BR> <P>
+<H1><A NAME="SECTION001900000000000000000">Internals of the Karma Data Format</A></H1>
+<P>
+The Karma data format is generally meant to be hidden from the
+programmer. More friendly interfaces such as
+<A HREF="node11.html#chapteriarray">Intelligent Arrays</A> provide easy ways to create
+and manipulate multidimensional data arrays. This chapter is aimed at
+people who are developing interfaces between Karma and another
+package. One of the great strengths of Karma is that you don't have to
+be taken over completely just because you want to use a few bits of
+it. While Karma does provide a complete working environment, unlike
+some other large packages it does not insist that you immerse yourself
+in it.
+<P>
+Many people are justifably only interested in the Karma graphics and
+widget libraries, since they already have an environment in which to
+manipulate data. An example of this is <B>perlDL</B> (Perl Data
+Language), originally developed by Karl Glazebrook
+(<A NAME="tex2html288" HREF="mailto:kgb@aaoepp.aao.gov.au">kgb@aaoepp.aao.gov.au</A>) and has attracted a strong
+following. The perlDL environment provides powerful array manipulation
+in an interactive environment, but lacks a built-in data display
+facility (it does contain modules to send data to image display tools
+like SAOimage or Karma visualisation tools). In such an environment,
+it is desirable to be able to use the Karma graphics and widget
+libraries directly from within the intepreter, without loosing control
+to Karma.
+<P>
+The Karma data format may be thought of as a mechanism to describe the
+way data is stored in virtual memory. Naturally, functions are
+provided to translate between virtual memory data and permanent
+storage and to move data between different computers, although these
+functions are probably not of interest unless you want to specifically
+write or read in Karma format. This chapter will discuss the virtual
+memory layout of Karma data structures.
+<P>
+<H1><A NAME="SECTION001910000000000000000">Description of the Karma Data Structure</A></H1>
+<P>
+This section gives an overview of the Karma data structure and
+introduces some of the terms and concepts.
+<P>
+<H2><A NAME="SECTION001911000000000000000">Elements</A></H2>
+<P>
+The fundamental building block for Karma data is the the <B>
+element</B>. An element may fall into one of two classes: either <EM>
+named</EM> or <EM>unnamed</EM> elements. Unnamed elements are references to
+other Karma data structures, such as multi-dimensional arrays or
+linked lists. Named elements are further subclassed into <EM>atomic</EM>
+and <EM>non-atomic</EM> elements. Atomic elements include the basic C
+language datatypes (such as float, int, double and so on) as well as
+complex versions of C datatypes (the real and imaginary components are
+adjacent in memory, with the real component residing in lower
+memory). Non-atomic datatypes are somewhat more complicated datatypes
+such as variable-length strings or fixed-length strings. See Figure
+<A HREF="node19.html#figelementclasses">B.1</A> for a class heirarchy of elements.
+<P>
+<P><A NAME="2118">&#160;</A><A NAME="figelementclasses">&#160;</A><BR>
+<STRONG>Figure B.1:</STRONG> Element Class Heirarchy<BR>
+<P><H3><A NAME="SECTION001911100000000000000">Element Descriptors</A></H3>
+<P>
+Elements have descriptors associated with them which are used to partly
+describe them. For a named element, the descriptor is simply a string
+which contains the name. For unnamed elements, the descriptor is
+either an array descriptor (for elements which point to an array), or
+a linked list (packet) descriptor (for elements which point to a
+linked list).
+<P>
+<H3><A NAME="SECTION001911200000000000000">Element Data</A></H3>
+<P>
+The element data for an atomic element is the memory storage for the
+data itself. For variable-length strings the element data is a pointer
+to the string. For fixed-length string the element data is a <TT>
+FString</TT> structure. For array pointers the data is a structure
+containing a pointer to the start of the array and other
+information. For list pointers the data is a pointer to a linked list
+header. See Figure <A HREF="node19.html#figelementdata">B.2</A>.
+<P>
+<P><A NAME="2129">&#160;</A><A NAME="figelementdata">&#160;</A><BR>
+<STRONG>Figure B.2:</STRONG> Element Data<BR>
+<P><H2><A NAME="SECTION001912000000000000000">Packets</A></H2>
+<P>
+The recursive nature of the Karma data structure is due to the use of
+<B>packets</B>. A packet is a contiguous block of one or more
+elements, with no padding between the elements. The elements in a
+packet may be of any type.
+<P>
+<H2><A NAME="SECTION001913000000000000000">Arrays</A></H2>
+<P>
+Karma supports multi-dimensional arrays of packets. Because the arrays
+are composed of packets rather than atomic elements, it is possible to
+create data structures which are arrays of linked lists, or arrays
+with subarrays. Building a heirarchical data structure like this
+allows you to place data at many levels, for instance, a
+three-dimensional array which is structured as a one-dimensional array
+of packets, with each packet containing an atomic element (perhaps a
+scaling factor) and a pointer to a two-dimensional array. Such a
+structure allows you to define varying scaling factors for an
+array. There is no limit to the complexity you can create.
+<P>
+In practice, most array packets have only one atomic element, since
+that is the kind of data most people have. Sometimes arrays have three
+elements: ``Red Intensity'', ``Green Intensity'' and ``Blue
+Intensity'' (for TrueColour or so-called ``24bit'' images), but this
+is about as complicated it gets.
+<P>
+<H3><A NAME="SECTION001913100000000000000">Array Descriptors</A></H3>
+<P>
+An array descriptor describes the construction of a multi-dimensional
+array of packets. As well as containing a pointer to a packet
+descriptor, it also contains an array of pointers to dimension
+descriptors. Array descriptors also provide a field into which address
+offset arrays may be placed. These are usually created by the
+<A NAME="tex2html291" HREF="../lib/ds.html#ds_compute_array_offsets"><B>ds_compute_array_offsets</B></A> function. The array
+descriptor also provides for describing a tiling mechanism. A <EM>
+tiling level</EM> of 0 indicates the array is untiled.
+<P>
+<H3><A NAME="SECTION001913200000000000000">Dimension Descriptors</A></H3>
+<P>
+A dimension descriptor describes a dimension in an array. It contains
+a length field, a name field (all dimensions are uniquely named) as
+well as world co-ordinate information. By default, co-ordinates are
+linear, so all that is needed to describe the co-ordinate system for
+the dimension is the co-ordinate for the first index along the
+dimension and the co-ordinate for the last index. A non-linear
+co-ordinate system with <EM>separable co-ordinates</EM> is supported by
+providing a co-ordinate array. The only restriction on the
+co-ordinates in a co-ordinate array is that they are either
+monotonically increasing or decreasing. Random co-ordinates are not
+supported. Furthermore, in co-ordinate systems where the dimensions
+are not seperable (such as most projections of the astronomical RA,DEC
+co-ordinate system), the co-ordinate system supported by dimension
+descriptors is insufficient. For these co-ordinate systems a separate
+mechanism is supplied via the <A NAME="tex2html292" HREF="../lib/wcs.html"><B>wcs</B></A> package.
+<P>
+<H3><A NAME="SECTION001913300000000000000">Array Data</A></H3>
+<P>
+<A NAME="2143">&#160;</A><A NAME="2144">&#160;</A>
+<P>
+The element data for a multi-dimensional array consists of a pointer
+to the start of the array data, a function to call when the array data
+is to be freed, and an arbitrary pointer to pass to the free
+function. This allows enormous flexibility in allocation/deallocation
+strategies, without the need for explicit support from within the
+Karma library. Routines such as as
+<A NAME="tex2html293" HREF="../lib/ds.html#ds_easy_alloc_array_desc"><B>ds_easy_alloc_array_desc</B></A> and
+<A NAME="tex2html294" HREF="../lib/ds.html#ds_easy_alloc_array_from_array_desc"><B>ds_easy_alloc_array_from_array_desc</B></A> may be used
+to ``wrap'' an externally allocated array when you fill an
+<TT>array_pointer</TT> structure yourself. You can even allocate data in
+shared memory, either using the <A NAME="tex2html295" HREF="../lib/ds.html#ds_alloc_shm_array"><B>ds_alloc_shm_array</B></A>
+function, or filling in an <TT>array_pointer</TT> structure yourself.
+Figure <A HREF="node19.html#figelementdata">B.2</A> shows the element data for an array.
+<P>
+<H2><A NAME="SECTION001914000000000000000">Linked Lists</A></H2>
+<P>
+Karma also provides a doubly-linked list mechanism. Linked lists are
+convenient when you will be periodically adding data and don't know
+beforehand how much data you will end up with. Karma linked lists are
+simply linked lists of packets.
+<P>
+<H3><A NAME="SECTION001914100000000000000">Linked List Descriptors</A></H3>
+<P>
+Since a linked list is just a list of packets, the descriptor for a
+linked list is an ordinary packet descriptor.
+<P>
+<H3><A NAME="SECTION001914200000000000000">Linked List Data</A></H3>
+<P>
+The element data for a linked list is a pointer to a linked list
+header. This header contains fields indicating the length of the list,
+how the list has been sorted and fields referring to the list
+data. The data for a linked list comes in two parts: a contiguous and
+a fragmented section. The contiguous section is a contiguous block of
+list packets, and comes logically ``before'' the fragmented
+section. The rest of the list data is kept in a conventional
+doubly-linked list structure, with the list header containing a
+pointer to the first and last entries in the fragmented list. The
+reason for supporting the arrangement of data in these two ways is to
+save virtual memory space as well as performance. When a Karma file is
+read into virtual memory, it is already known how long the list will
+be, so a contiguous block of entries is allocated. It is much faster
+to allocate a single large block of virtual memory than to allocate a
+large number of small blocks. In some cases it is more convenient to
+deal with a contiguous block of data, and other cases it is more
+convenient to deal with a doubly-linked (fragmented) list. The
+<A NAME="tex2html296" HREF="../lib/ds.html#ds_list_unfragment"><B>ds_list_unfragment</B></A> and
+<A NAME="tex2html297" HREF="../lib/ds.html#ds_list_fragment"><B>ds_list_fragment</B></A> functions allow you to convert a
+list to either form.
+<P>
+<H2><A NAME="SECTION001915000000000000000">General Data Structure</A></H2>
+<P>
+The recursive nature of the Karma data structure may leave you
+wondering where it all starts? Part of the answer is the <B>General
+Data Structure</B>, which is a top-level packet descriptor and its
+matching (single) packet. Karma imposes the restriction that all names
+(i.e. dimension names and element names for named elements) in a
+General Data Structure are unique.
+<P>
+It is possible to create a General Data Structure which has two (or
+more) elements in its top-level packet, each which is an array
+pointer. You could have two arrays, with possibly different shapes,
+in a single General Data Structure. More commonly, you may want to
+have a top-level packet with a single array pointer but with many
+named elements. This is a simple way of describing FITS-style data:
+the array corresponds to the FITS array and the named elements
+correspond to the FITS keywords.
+<P>
+<H2><A NAME="SECTION001916000000000000000">multi_array structures</A></H2>
+<P>
+The highest level in the Karma data structure is provided by the <TT>
+multi_array</TT> structure. This supports one or more General Data
+Structures (sometimes confusingly referred to as <B>arrays</B>). In the
+case where the <TT>multi_array</TT> contains more than one General Data
+Structure, each is uniquely named. The namespace for each General Data
+Structure is separate. The <TT>multi_array</TT> structure provides a
+mechanism to package several data structures together into a single
+file. This is typically used to package a colourtable together with a
+multi-dimensional array.
+<P>
+The <TT>multi_array</TT> structure also provides the means to manage the
+creation, use and destruction of data structures. Packages like the
+<A NAME="tex2html298" HREF="../lib/iarray.html"><B>iarray</B></A> package will increment the <EM>attachment</EM> counter
+on a <TT>multi_array</TT> structure when they create their own ``view''
+into the data. Every time the <A NAME="tex2html299" HREF="../lib/ds.html#ds_dealloc_multi"><B>ds_dealloc_multi</B></A>
+function is called, the attachment count is decremented. Only when it
+reaches 0 is the data structure destroyed. The other mechanism
+provided by the <A NAME="tex2html300" HREF="../lib/ds.html"><B>ds</B></A> package is a list of destroy callbacks
+attached to the <TT>multi_array</TT> structure. This is another way to
+manage data structures which are a view into the <TT>multi_array</TT>
+data, but in a more self-contained way (perhaps used in the internals
+of a widget). In most cases, the attachment mechanism is more
+convenient, since it does not require you to deal with cleaning up
+properly when a <TT>multi_array</TT> data structure is destroyed: data
+is only destroyed when nobody is interested in it any more.
+<P>
+Finally, the <TT>multi_array</TT> structure contains a mechanism to
+record ``history'' information. These are just human-readable comments
+that are appended to a file which describe how the data has been
+processed. The history is usually manipulated with the
+<A NAME="tex2html301" HREF="../lib/ds.html#ds_history_append_string"><B>ds_history_append_string</B></A> function.
+<P>
+<H1><A NAME="SECTION001920000000000000000">Creating Your Own Karma Data Structure</A></H1>
+<P>
+This section discusses how to create your own Karma data structure, or
+how you might wrap your own data structure in a Karma data
+structure. Wrapping your own data structure is basically a matter of
+creating the correct Karma data structure descriptors: it doesn't
+affect your data, but it does allow you to use Karma functions to use
+and manipulate your data.
+<P>
+<H2><A NAME="SECTION001921000000000000000">Creating an Ordinary Array</A></H2>
+<P>
+The simplest interface available is the
+<A NAME="tex2html302" HREF="../lib/ds.html#ds_easy_alloc_array"><B>ds_easy_alloc_array</B></A> function. This will create a
+multi-dimensional array of uni-variate data (i.e. an ordinary array
+where each point in the array contains a single value). This function
+yields a pointer to the beginning of the array and a handle to a <TT>
+multi_array</TT> descriptor. This interface is not commonly used outside
+the Karma environment, since the <A NAME="tex2html303" HREF="../lib/iarray.html"><B>iarray</B></A> package provides a
+much simpler and more powerful interface for creation and manipulation
+of multi-dimensional data. The array is allocated from ordinary
+virtual memory.
+<P>
+<H2><A NAME="SECTION001922000000000000000">Creating an Array in Shared Memory</A></H2>
+<P>
+<A NAME="2188">&#160;</A><A NAME="2189">&#160;</A>
+<P>
+If you wanted to create an array using shared memory, you need to make
+a few function calls. While slightly more complicated, the advantage
+of shared memory is that if you subsequently transmit the array to
+another process on the same computer using Karma connections, the
+array data does not actually need to be transferred. What happens is
+that the destination process receives a handle to the same array
+data. This makes the cost of transferring array data essentially
+zero. Karma also supports auto-creation of files which are then memory
+mapped as an alternative mechanism for sharing arrays between
+processes. The following code first attempts to create a SysV shared
+memory array (by calling <A NAME="tex2html304" HREF="../lib/ds.html#ds_alloc_shm_array"><B>ds_alloc_shm_array</B></A>) and
+if that fails it attempts to create a memory mapped file (by calling
+<A NAME="tex2html305" HREF="../lib/ds.html#ds_alloc_mmap_array"><B>ds_alloc_mmap_array</B></A>).
+<P>
+Below is some sample code which creates a two-dimensional array
+(128x128) of floating-point data in shared memory and then obtains the
+pointer to the start of the array data. Error checking has been
+omitted in order to aid clarity.
+<P>
+<PRE>unsigned int type = K_FLOAT;
+char *array;
+array_pointer arrayp;
+array_desc *arr_desc;
+multi_array *multi_desc;
+uaddr lengths[2];
+CONST char *elem_name = &quot;Data Value&quot;;
+
+lengths[0] = 128;
+lengths[1] = 128;
+arr_desc = ds_easy_alloc_array_desc (2, lengths, NULL, NULL, NULL,
+                                     NULL, 1, &amp;type, &amp;elem_name);
+if ( !ds_alloc_shm_array (&amp;arrayp, arr_desc, TRUE, TRUE) &amp;&amp;
+     !ds_alloc_mmap_array (-1, 0, 0, TRUE, &amp;arrayp, arr_desc, TRUE, TRUE) )
+    exit (1);
+multi_desc = ds_easy_alloc_array_from_array_desc (arr_desc, &amp;arrayp, FALSE);
+array = arrayp.array;</PRE>
+<P>
+In the following example the code falls back to ordinary virtual
+memory if the shared memory allocation failed. Once again error
+checking has been omitted for the sake of clarity.
+<P>
+<PRE>unsigned int type = K_FLOAT;
+char *array;
+array_pointer arrayp;
+array_desc *arr_desc;
+multi_array *multi_desc;
+uaddr lengths[2];
+CONST char *elem_name = &quot;Data Value&quot;;
+
+lengths[0] = 128;
+lengths[1] = 128;
+arr_desc = ds_easy_alloc_array_desc (2, lengths, NULL, NULL, NULL,
+                                     NULL, 1, &amp;type, &amp;elem_name);
+if ( !ds_alloc_shm_array (&amp;arrayp, arr_desc, TRUE, FALSE) &amp;&amp;
+     !ds_alloc_mmap_array (-1, 0, 0, TRUE, &amp;arrayp, arr_desc, TRUE, FALSE) &amp;&amp;
+     !ds_alloc_vm_array (&amp;arrayp, arr_desc, TRUE, FALSE) )
+    exit (2);
+multi_desc = ds_easy_alloc_array_from_array_desc (arr_desc, &amp;arrayp, FALSE);
+array = arrayp.array;</PRE>
+<P>
+Here you can see that if the shared memory or memory mapped allocation
+fails, the <A NAME="tex2html306" HREF="../lib/ds.html#ds_alloc_vm_array"><B>ds_alloc_vm_array</B></A> function is called to
+allocate ordinary virtual memory.
+<P>
+<H2><A NAME="SECTION001923000000000000000">Wrapping Ordinary Arrays</A></H2>
+<P>
+If you had your own array of data that you wanted to wrap in a Karma
+data structure, you would probably use the
+<A NAME="tex2html307" HREF="../lib/ds.html#ds_wrap_preallocated_n_element_array"><B>ds_wrap_preallocated_n_element_array</B></A> which will
+take a pointer to your data and creates a <TT>multi_array</TT>
+descriptor. Of course, you have to supply some extra parameters to
+describe how your data is arranged. This function assumes that the
+data is contained in ordinary virtual memory. Note that it would be
+quite valid to use this function for an array which resides in shared
+memory, but then Karma would not know this and not be able to take
+advantage of this. In which case there probably wasn't any point to
+creating a shared memory array in the first place.
+<P>
+<H2><A NAME="SECTION001924000000000000000">Wrapping Shared Memory Arrays</A></H2>
+<P>
+This is similar to the example of creating an array in shared memory
+(above), but instead of making a call to
+<A NAME="tex2html308" HREF="../lib/ds.html#ds_alloc_shm_array"><B>ds_alloc_shm_array</B></A> you would need to fill in the
+contents of an <TT>array_pointer</TT> structure yourself. You should
+look at the Karma header files for the definition of this structure,
+as well as the magic constants. The structure definition is fully
+commented, so it should be clear what you need to do. A code extract
+from the <A NAME="tex2html309" HREF="../lib/ds.html#ds_alloc_shm_array"><B>ds_alloc_shm_array</B></A> function at the time
+of writing is given below.
+<P>
+<PRE>arrayp-&gt;array = addr;
+arrayp-&gt;free = ( void (*) (void *) ) m_shm_detach;
+arrayp-&gt;info = addr;
+arrayp-&gt;mem_type = K_ARRAY_MEM_TYPE_SHM;
+arrayp-&gt;u.shm.shmid = shmid;
+arrayp-&gt;u.shm.base = addr;</PRE>
+<P>
+Here the <TT>addr</TT> variable contains the pointer to the start of the
+shared memory segment and the <TT>shmid</TT> variable contains the shared
+memory ID. Note how the <TT>free</TT> member function is defined: this
+will be called when the Karma data structure is deallocated. You may
+substitute your own function here, or write a <TT>NULL</TT> to indicate
+that no action should be taken to deallocate the shared memory. This
+gives you complete flexibility in allocating and deallocating array
+data.
+<P>
+<H2><A NAME="SECTION001925000000000000000">Wrapping Memory Mapped Arrays</A></H2>
+<P>
+This is similar to the example of creating an array in mapped memory
+(above), but instead of making a call to
+<A NAME="tex2html310" HREF="../lib/ds.html#ds_alloc_mmap_array"><B>ds_alloc_mmap_array</B></A> you would need to fill in the
+contents of an <TT>array_pointer</TT> structure yourself. A code extract
+from the <A NAME="tex2html311" HREF="../lib/ds.html#ds_alloc_mmap_array"><B>ds_alloc_mmap_array</B></A> function at the time
+of writing is given below.
+<P>
+<PRE>arrayp-&gt;array = addr;
+arrayp-&gt;mem_type = K_ARRAY_MEM_TYPE_MMAP;
+arrayp-&gt;u.mmap.fd = fd;
+arrayp-&gt;u.mmap.size = size;
+arrayp-&gt;u.mmap.base = addr;</PRE>
+<P>
+Here the <TT>addr</TT> variable contains the pointer to the start of the
+mapped file, the <TT>fd</TT> variable is the open file and the <TT>size</TT>
+variable is the size of the mapped region (this may be larger than the
+actual array storage requirements).
+<P>
+<HR><A NAME="tex2html894" HREF="node20.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html892" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html886" HREF="node18.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html896" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html897" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html895" HREF="node20.html">Glossary</A>
+<B>Up:</B> <A NAME="tex2html893" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html887" HREF="node18.html">Graphics without Widgets</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

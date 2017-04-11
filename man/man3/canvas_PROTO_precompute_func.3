@@ -1,0 +1,56 @@
+.TH CANVAS_PROTO_PRECOMPUTE_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH PROTO_FUNC
+canvas_PROTO_precompute_func \- Precompute event callback.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_PROTO_precompute_func
+.sp
+(KWorldCanvas canvas, int width, int height,
+struct win_scale_type *win_scale,
+Kcolourmap cmap, flag cmap_resize,
+void **info, PostScriptPage pspage,
+unsigned int num_areas,
+KPixCanvasRefreshArea *areas)
+.SH DESCRIPTION
+This routine processes a precompute event for a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIwidth\fP 1i
+The width of the canvas in pixels.
+.IP \fIheight\fP 1i
+The height of the canvas in pixels.
+.IP \fIwin_scale\fP 1i
+A pointer to the window scaling information. The data are only
+valid during this callback.
+.IP \fIcmap\fP 1i
+The canvas colourmap.
+.IP \fIcmap_resize\fP 1i
+If TRUE, the refresh is due to a colourmap resize.
+.IP \fIinfo\fP 1i
+A pointer to the arbitrary information pointer.
+.IP \fIpspage\fP 1i
+The PostScriptPage object. If this is NULL, the refresh is *not*
+destined for a PostScript page.
+.IP \fInum_areas\fP 1i
+The number of areas that need to be refreshed. If this is
+0 then the entire pixel canvas needs to be refreshed.
+.IP \fIareas\fP 1i
+The list of areas that need to be refreshed. Note that these
+areas are given in pixel co-ordinates.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

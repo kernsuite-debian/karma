@@ -1,0 +1,123 @@
+<html><head><title>Widget: View2Datasets</title></head> 
+<body>
+<center><h1>The "View2Datasets" Widget</h1></center>    This widget provides a control for viewing two datasets.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=View2Datasets></a></table><h4>Tables</h4><table><tr><td><a href=View2Datasets.html#View2Datasets_ResourceNames>View2Datasets_ResourceNames</a></td><td>List of resource names for View2Datasets widget
+</td></tr>
+<tr><td><a href=View2Datasets.html#View2Datasets_Resources>View2Datasets_Resources</a></td><td>List of resources for View2Datasets widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=View2Datasets.html#XkwView2DatasetsRegisterDataset>XkwView2DatasetsRegisterDataset</a></td><td>Register a dataset.
+</td></tr>
+<tr><td><a href=View2Datasets.html#XkwView2DatasetsInvalidatePlane>XkwView2DatasetsInvalidatePlane</a></td><td>Register the change in data of a plane.
+</td></tr>
+<tr><td><a href=View2Datasets.html#XkwView2DatasetsInvalidateAll>XkwView2DatasetsInvalidateAll</a></td><td>Register the change in data of a dataset.
+</td></tr>
+<tr><td><a href=View2Datasets.html#XkwView2DatasetsCanvasEventHandler>XkwView2DatasetsCanvasEventHandler</a></td><td>Event handler provided by View2Datasets widget.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=View2Datasets_ResourceNames><b>View2Datasets_ResourceNames</b></a> List of resource names for View2Datasets widget
+<p> <table><tr><td>Name                     </td><td>Purpose
+</td></tr><tr><td>XkwNcursorChangeCallback </td><td>Callbacks when cursor moves
+</td></tr><tr><td>XkwNwmtitle              </td><td>The base title string to place above the window
+</td></tr><tr><td>XkwNverbose              </td><td>If TRUE verbose output is displayed
+</table><p><hr> <a name=View2Datasets_Resources><b>View2Datasets_Resources</b></a> List of resources for View2Datasets widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNcursorCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNcreateAtInit	</td><td>XkwCCreateAtInit	</td><td>XtRBool	</td><td>FALSE
+</td></tr><tr><td>XkwNverbose	</td><td>XkwCVerbose	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNwmtitle	</td><td>XkwCWMtitle	</td><td>XtRString	</td><td>NULL
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwView2DatasetsRegisterDataset></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>XkwView2DatasetsRegisterDataset</b><i>    (Widget W,
+				      iarray pseudo, double min, double max,
+				      iarray red, iarray green, iarray blue,
+				      unsigned int set_number)
+</i><br><p>    Register a dataset.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br><li><i>pseudo :</i> 
+    The PseudoColour dataset (i.e. single-channel). This may be NULL.
+<br><li><i>min :</i> 
+    The minimum (unscaled) value in the PseudoColour dataset.
+<br><li><i>max :</i> 
+    The maximum (unscaled) value in the PseudoColour dataset.
+<br><li><i>red :</i> 
+    The red component dataset. This may be NULL.
+<br><li><i>green :</i> 
+    The green component dataset. This may be NULL.
+<br><li><i>blue :</i> 
+    The blue component dataset. This may be NULL.
+<br><li><i>set_number :</i> 
+    The dataset number. This may be 0 or 1.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwView2DatasetsInvalidatePlane></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwView2DatasetsInvalidatePlane</b><i>    (Widget W, unsigned int set_number,
+				      unsigned int dim_index,
+				      unsigned long plane_index)
+</i><br><p>    Register the change in data of a plane.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br><li><i>set_number :</i> 
+    The dataset number. This may be 0 or 1.
+<br><li><i>dim_index :</i> 
+    The dimension index of the plane.
+<br><li><i>plane_index :</i> 
+    The index along the specified dimension.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwView2DatasetsInvalidateAll></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwView2DatasetsInvalidateAll</b><i>    (Widget W, unsigned int set_number)
+</i><br><p>    Register the change in data of a dataset.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br><li><i>set_number :</i> 
+    The dataset number. This may be 0 or 1.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwView2DatasetsCanvasEventHandler></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>XkwView2DatasetsCanvasEventHandler</b><i>    (ViewableImage vimage,
+					 double x, double y,
+					 void *value, unsigned int event_code,
+					 void *e_info, void **f_info,
+					 double x_lin, double y_lin,
+					 unsigned int value_type,
+					 double x_im, double y_im,
+					 int x_pix, int y_pix)
+</i><br><p>    This routine is a position event consumer for a world canvas
+    which has a number of ViewableImage objects associated with it.
+<p><b>Parameters:</b><ul><li><i>viewimg :</i> 
+    The active viewable image.
+<br><li><i>x :</i> 
+    The horizontal world co-ordinate of the event.
+<br><li><i>y :</i> 
+    The vertical world co-ordinate of the event.
+    These values will have been transformed by the registered transform
+    function (see  canvas_register_transform_func  ) for the associated
+    world canvas.
+<br><li><i>value :</i> 
+    A pointer to the data value in the viewable image corresponding
+    to the event co-ordinates.
+<br><li><i>event_code :</i> 
+    The arbitrary event code.
+<br><li><i>e_info :</i> 
+    The arbitrary event information.
+<br><li><i>f_info :</i> 
+    The arbitrary function information pointer.
+<br><li><i>x_lin :</i> 
+    The linear horizontal world co-ordinate (the co-ordinate prior
+    to the transform function being called).
+<br><li><i>y_lin :</i> 
+    The linear vertical world co-ordinate (the co-ordinate prior
+    to the transform function being called).
+<br><li><i>value_type :</i> 
+    The type of the data value. This may be K_DCOMPLEX or
+<br><li><i>x_im :</i> 
+    The horizontal image pixel co-ordinate. 0.0 is the pixel centre.
+<br><li><i>y_im :</i> 
+    The vertical image pixel co-ordinate. 0.0 is the pixel centre.
+<br><li><i>x_pix :</i> 
+    The horizontal screen pixel co-ordinate.
+<br><li><i>y_pix :</i> 
+    The vertical screen pixel co-ordinate.
+    K_UB_RGB.
+<br></ul><b>Returns:</b>     FALSE indicating that the event is still to be processed.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

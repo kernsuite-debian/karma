@@ -1,0 +1,55 @@
+.TH COL_HSB_SLICE_TO_RGB_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+col_hsb_slice_to_rgb_array \- Generate a table of RGB values from a slice of HSB space.
+.SH SYNOPSIS
+.B #include <karma_col.h>
+.sp
+.B void col_hsb_slice_to_rgb_array
+.sp
+(unsigned long rgb_array[65536],
+unsigned long red_mask,
+unsigned long green_mask,
+unsigned long blue_mask,
+float min_brightness, float max_brightness,
+float start_hue, float stop_hue,
+float saturation)
+.SH DESCRIPTION
+This routine will convert a slice in HSB (Hue, Saturation and
+Brightness) colour space to a 2-dimensional array of RGB (Red, Green and
+Blue) values. The HSB slice covers a range of hue and brightness at a fixed
+satutation.
+.IP \fIrgb_array\fP 1i
+The 256*256 array of RGB values will be written here. The upper
+dimension will map to brightness and the lower dimension will map to hue.
+.IP \fIred_mask\fP 1i
+The bitmask used when writing the red colour component.
+.IP \fIgreen_mask\fP 1i
+The bitmask used when writing the green colour component.
+.IP \fIblue_mask\fP 1i
+The bitmask used when writing the blue colour component.
+.IP \fImin_brightness\fP 1i
+The minimum brightness. The valid range is 0.0 to 1.0
+.IP \fImax_brightness\fP 1i
+The maximum brightness. The valid range is 0.0 to 1.0
+.IP \fIstart_hue\fP 1i
+The start hue. The valid range is 0.0 to just under 6.0
+.IP \fIstop_hue\fP 1i
+The end hue. The valid range is 0.0 to just under 6.0
+.IP \fIsaturation\fP 1i
+The saturation value. The valid range is 0.0 to 1.0
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

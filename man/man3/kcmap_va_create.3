@@ -1,0 +1,72 @@
+.TH KCMAP_VA_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_va_create \- Create a high level colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B Kcolourmap kcmap_va_create
+.sp
+(CONST char *name, unsigned int num_cells,
+flag tolerant,
+Kdisplay dpy_handle, unsigned int (*alloc_func) (),
+void (*free_func) (), void (*store_func) (),
+void (*location_func) (), ...)
+.SH DESCRIPTION
+This routine will create a high level colourmap. The colourmap
+may be associated with a hardware colourmap, or it may be a software-only
+colourmap. In either case, storage for an array of pixel values and arrays
+of colour components is maintained within the colourmap object.
+.IP \fIname\fP 1i
+The name of the function used to initialise the colour values. If
+this is NULL, the default "Greyscale1" function is used.
+.IP \fInum_cells\fP 1i
+The initial number of colourcells to allocate. This must not be
+less than 2.
+.IP \fItolerant\fP 1i
+If TRUE the routine will try to allocate as many colourcells as
+possible (up to <<num_cells>>), else it will fail if it could not
+allocate all required colourcells.
+.IP \fIdpy_handle\fP 1i
+The low level display handle. The meaning of this value
+depends on the lower level graphics library used.
+.IP \fIalloc_func\fP 1i
+The function which must be called in order to allocate
+colourcells. See the <-xc-> routines for examples. The prototype function
+is <-kcmap_PROTO_alloc_func->.
+.IP \fIfree_func\fP 1i
+The function which must be called to free colourcells. The
+The prototype function is <-kcmap_PROTO_free_func->.
+.IP \fIstore_func\fP 1i
+The function which is used to store colours into a low level
+colourmap. The prototype function is <-kcmap_PROTO_store_func->.
+.IP \fIlocation_func\fP 1i
+The function which is used to determine the location of a
+display. The prototype function is <-kcmap_PROTO_location_func->.
+.IP \fI...\fP 1i
+The optional list of parameter attribute-key attribute-value
+pairs must follow. This list must be terminated with the value
+KCMAP_ATT_END. See <-kcmap_ATTRIBUTES-> for a list of defined attributes.
+.SH RETURN VALUE
+A colourmap on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the above routines are NULL, the colourmap created is assumed to
+be a software colourmap, otherwise it is considered to be a
+hardware/virtual colourmap. A software colourmap, while maintaining storage
+for an array of pixel values, does not generate the pixel values. The
+<-kcmap_get_pixels-> routine may be used to modify the array of pixel
+values in a software colourmap.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

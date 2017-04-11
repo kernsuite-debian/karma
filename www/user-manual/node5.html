@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>4 Viewing Images and Cubes with the Multibeam</TITLE>
+<META NAME="description" CONTENT="4 Viewing Images and Cubes with the Multibeam">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html337" HREF="node6.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html335" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html329" HREF="node4.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html339" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html340" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html338" HREF="node6.html">5 Volume Rendering a </A>
+<B>Up:</B> <A NAME="tex2html336" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html330" HREF="node4.html">3 Viewing and Comparing </A>
+<BR> <P>
+<H1><A NAME="SECTION00500000000000000000">4 Viewing Images and Cubes with the Multibeam</A></H1>
+<P>
+<A NAME="chapterMultibeamView">&#160;</A>
+<P>
+<B>Note that this tool will be replaced</B> with the more powerful
+<A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A> programme.
+<P>
+The <B>&lt;MultibeamView&gt;</B> programme allows you to view two
+datasets. This allows you to compare different datasets in a very easy
+fashion. This programme uses the
+<A NAME="tex2html63" HREF="../lib/ImageDisplay.html"><B>ImageDisplay</B></A> widget (section <A HREF="node3.html#ImageDisplay">2.15</A>) to
+provide the usual interface. Pressing the <B>View</B> button will pop
+up the <A NAME="tex2html64" HREF="../lib/View2Datasets.html"><B>View2Datasets</B></A>
+widget. 
+<A NAME="View2Datasets">&#160;</A><A NAME="1244">&#160;</A>
+<A NAME="1245">&#160;</A>
+This widget provides an advanced control for two datasets (either
+two-dimensional or three-dimensional). It allows the user to display
+one dataset or the other, overlay contours of one over the other, show
+profiles along any axis, and much more. The controls provided are:
+<P>
+<UL>
+<LI> <B>Close</B> this will close the window
+<LI> <B>Movie</B> this will pop up the <A NAME="tex2html60" HREF="../lib/AnimateControl.html"><B>AnimateControl</B></A> widget
+(section <A HREF="node3.html#AnimateControl">2.3</A>), which will allow you to play movies
+and step through frames. In addition, the following key bindings are
+defined for the main display window:
+<UL><A NAME="1252">&#160;</A>
+<LI> <B>PgDn</B> go to previous frame
+<A NAME="1254">&#160;</A>
+<LI> <B>PgUp</B> go to next frame
+<A NAME="1256">&#160;</A>
+<LI> <B>Home</B> go to start frame
+<A NAME="1258">&#160;</A>
+<LI> <B>End</B> go to end frame
+</UL>
+On some keyboards, <TT>PgDn</TT> is marked as <TT>Next</TT> and <TT>PgUp</TT>
+is marked as <TT>Prev</TT>.
+<P>
+<A NAME="1265">&#160;</A>
+<A NAME="1266">&#160;</A>
+<LI> <B>Blink</B> if enabled, dataset 2 is displayed (if the display
+mode is set to blink), if disabled, dataset 1 is displayed. By
+repeatedly clicking this, the user can blink between the two
+datasets. You can also press the ``b'' key in the image window and get
+the same effect. Note that when blinking between two images with
+non-linear co-ordinate systems, the linear (data pixel) co-ordinates
+of the canvas boundary are preserved, <EM>not the non-linear world
+co-ordinates</EM>. This is especially noticable when blinking between two
+images with a different pixel scale
+<LI> <B>Profile Mode Menu</B> this allows you to pop up the
+<A NAME="tex2html61" HREF="../lib/TracePopup.html"><B>TracePopup</B></A> widget (section <A HREF="node3.html#TracePopup">2.11</A>) and choose the
+profile mode. The following modes are available:
+<P>
+<UL>
+<LI> <B>None</B> will pop down the <A NAME="tex2html58" HREF="../lib/TracePopup.html"><B>TracePopup</B></A> widget
+<P>
+<A NAME="1275">&#160;</A>
+<LI> <B>Line</B> will show a single profile in the selected direction
+<P>
+<A NAME="1277">&#160;</A>
+<LI> <B>Box Sum</B> lets you draw a box over the image window
+(using the middle mouse button, in a similar way as using the left
+mouse button to zoom) and then the sum of all the profiles in that
+region is displayed. Box mode only works for 3-dimensional datasets,
+and will always display a profile along the unseen dimension
+<P>
+<A NAME="1279">&#160;</A>
+<LI> <B>Box Average</B> is like the <B>box sum</B> mode except that the
+average of all profiles is displayed rather than the sum
+<P>
+<A NAME="1282">&#160;</A><A NAME="1283">&#160;</A>
+<A NAME="1284">&#160;</A><A NAME="1285">&#160;</A>
+<LI> <B>Radial</B> will azimuthally average the image plane data and
+produce a plot of average value versus radius. A gaussian is then
+fitted to the radial profile and overplotted in red and the FWHM (full
+width half max) of the gaussian is displayed over the profile. You
+must click the middle mouse button to define the centre of the object
+of interest, then, keeping the mouse button down, drag out to define
+the maximum radius of the profile and release the button to
+display. The algorithm automatically adjusts the centre position using
+a centroiding operation, so you don't have to be too careful about
+picking the centre of your object. More information on the
+<A NAME="tex2html59" HREF="../user-manual/centroidingalgorithm.html#pubcentroidingalgorithm">centroidingalgorithm</A> can be found in the Karma User
+Manual.
+<P>
+The programme should also work with a photographic negative. The
+centroiding algorithm is automatically modified to look for a trough
+rather than a peak
+<P>
+<A NAME="1288">&#160;</A>
+<LI> <B>Boxed Horiz</B> will produce a horizontal profile which is
+averaged vertically. The box is drawn the same way as for the <B>box
+sum</B> mode. The horizontal centroid of the profile is computed and a
+gaussian is fitted and displayed
+<LI> <B>Boxed Vert</B> will produce a vertical profile which is
+averaged horizontally. The box is drawn the same way as for the <B>
+box sum</B> mode. The vertical centroid of the profile is computed and
+a gaussian is fitted and displayed
+</UL>
+<LI> <B>Slice Direction Menu</B> this allows you to choose how you
+want to slice your cube. You can view XY, XZ or ZY planes
+<LI> <B>Profile Axis Menu</B> this allows you to choose along which
+axis you want the profile to be displayed (valid only for line profile
+mode)
+<LI> <B>Display Mode Menu</B> this allows you to choose how you want
+to view your two datasets. The following choices are available:
+<P>
+<A NAME="1297">&#160;</A><A NAME="1298">&#160;</A>
+<UL>
+<LI> <B>Set 1-&gt;image</B> view dataset 1 as an image
+<LI> <B>Set 2-&gt;image</B> view dataset 2 as an image
+<LI> <B>Set 1-&gt;image, Set 2-&gt;contour</B> view dataset 1 as an
+image and overlay dataset 2 as contours
+<LI> <B>Set 1-&gt;contour, Set 2-&gt;image</B> view dataset 2 as an
+image and overlay dataset 1 as contours
+<LI> <B>Blink between Set 1 and Set 2</B> enable blinking between
+the two datasets
+</UL>
+<LI> <B>Link Intensity Scales</B> if this is set then if the intensity
+scale for either dataset is modified using the <A NAME="tex2html62" HREF="../lib/Dataclip.html"><B>Dataclip</B></A> (section <A HREF="node3.html#Dataclip">2.2</A>)
+widget then the intensity scaling for <EM>both</EM> datasets is
+changed. This can be useful when blinking between two images
+<LI> <B>Link Frames</B> if this is set then whenever the the current
+frame number for the image dataset is changed, the frame number for
+the other dataset is also updated to have the same value. If the two
+frame dimensions have the same co-ordinate type, then the co-ordinate
+values are matched, rather than co-ordinate indices. This feature is
+often used when displaying a movie of both datasets, one as images and
+one as contours
+<LI> <B>Show Frame in Line Profile</B> if this is set the current
+frame displayed in the main image window is shown as a vertical red
+line in the profile window. This marker is only drawn if the profile
+axis is the unseen axis
+<LI> <B>Contour Levels</B> this controls the contour levels. Be
+careful not to hit return after filling in the levels!!! The syntax
+for the contour levels is as follows:
+<P>
+<A NAME="1312">&#160;</A>
+<UL>
+<LI> just type the levels you want eg. <TT>0.001 0.002 0.003 0.004</TT>
+<LI> levels with a constant increment: <TT>0.001:0.004+0.001</TT> means that
+the first level is <TT>0.001</TT>, that this level is incremented with
+<TT>0.001</TT> until <TT>0.004</TT> is reached.  So this example gives the
+same levels as in the first case
+<LI> levels incremented by a factor: <TT>0.001:0.016*2</TT>. This gives levels
+<TT>0.001 0.002 0.004 0.008 0.016</TT>
+<LI> levels as percentage of the peak: first character should be %,
+numbers are taken as percentage, the rest of the syntax is as above,
+e.g. %10:40+10 gives 10, 20, 30 and 40 % of the maximum of the data
+</UL>
+<P>
+These options can be mixed, i.e. <TT>-0.03:-0.01+0.01
+0.003:0.1+0.02 0.2 0.3</TT> is interpreted correctly.
+<LI> <B>Contour Colour</B> specifies the colour the contours should be
+drawn in
+<LI> <B>Apply Levels</B> this will apply the contour levels and colour
+<LI> <B>Reset Levels</B> will reset the contour levels to the default
+<LI> <B>Auto Apply</B> if this is on, then if you load a new
+dataset over one that is currently being displayed as contours, the
+old contour levels are automatically applied. The reason this is off
+by default is because the contour levels for one dataset may be
+incorrect for another. An inappropriate set of contours can take a
+long time to display, so mistakes are costly
+<LI> <B>Axis Labelling Title</B> this allows you to change the title
+placed above the image when axis labelling is enabled. Normally, the
+title is automatically generated
+<LI> <B>-ve Contour Width</B> this controls the width of negative
+contours
+<LI> <B>+ve Contour Width</B> this controls the width of positive
+contours
+<LI> <B>Auto Title</B> if enabled, the axis labelling title is
+automatically generated. Whenever this is disabled, the string
+specified by <B>Axis Labelling Title</B> is used instead
+<LI> <B>Show Beam</B> if enabled, the dataset headers are searched for
+``BPA'', ``BMAJ'' and ``BMIN'' FITS-style keywords. If these keywords
+are present, a representation of the telescope beam is overlaid on the
+image
+<LI> <B>Show Beam Name</B> if enabled, the name of the dataset for
+each beam is placed near the beam representation
+<LI> <B>Set 1 Beam Xpos</B> controls the horizontal position of the
+the beam for dataset 1
+<LI> <B>Set 1 Beam Ypos</B> controls the vertical position of the
+the beam for dataset 1
+<LI> <B>Set 2 Beam Xpos</B> controls the horizontal position of the
+the beam for dataset 2
+<LI> <B>Set 2 Beam Ypos</B> controls the vertical position of the
+the beam for dataset 2
+<P>
+</UL>
+<P>
+<A NAME="1339">&#160;</A>
+In addition, if you click the left mouse button in the display window
+without moving it in between the press and release, the image will pan
+across. If you click the middle mouse button, the image will zoom in
+2x (the new centre of the image will be the place where you
+clicked). Click the right mouse button to zoom out 2x. If the profile
+mode is ``box'' then you can't use the middle mouse button to zoom.
+<P>
+<A NAME="paragraphkviewscatterplot">&#160;</A>
+<A NAME="1341">&#160;</A><A NAME="1342">&#160;</A>
+Pressing the <TT>c</TT> key in the display window will compute and
+display a scatter plot of intensity values in one image versus
+intensity values in the other image. This is useful for seeing if
+there is a correlation between the values in the two images. You can
+use the left mouse button to define a sub-image (similarly to zooming
+in) from which the scatter plot is computed.
+<P>
+A screen snapshot is available
+<a href="../widget-snapshots/View2Datasets.gif" target=image_window>here</a>.
+<P>
+<H1><A NAME="SECTION00510000000000000000">Command-line Options</A></H1>
+<A NAME="1345">&#160;</A>
+<P>
+The following command-line options are supported by
+<B>&lt;MultibeamView&gt;</B>:
+<P>
+<UL>
+<LI> <TT>-set1 &lt;filename&gt;</TT> this will load the dataset <TT>filename</TT>
+as set 1
+<P>
+</UL><H1><A NAME="SECTION00520000000000000000">4.2 Special Movies</A></H1>
+<P>
+If you want to play a movie that was made using the
+<A HREF="node6.html#sectionhotgassubstances">Hot Gas Substances</A> or the
+<A HREF="node6.html#sectionhotgascontinuous">Hot Gas Continuous</A> shaders
+of the <A HREF="node6.html#chapterxray">xray</A> volume rendering tool, you
+should compress this movie from 24-bit to 8-bit.  Movies made with the
+other algorithms do not require compression and can be played
+directly.  The compression of 24-bit movies is done with the command:
+<P>
+<TT><code>conv_24to8 -com w -max &lt;max num of colours&gt; - &lt;inmovie&gt;</code></TT>
+<P>
+The switch <B>-com w</B> tells the program that it should compress such
+that it has the same colourmap for all the images.  In principle you
+could leave out this switch, but that is not recommended.  Your movie
+will look awful.
+<P>
+The switch <B>-max &lt;max num of colours&gt;</B> gives the maximum
+number of colours the final movie can have.  The recommended value to
+use is <B>-max 200</B>.  Do not give a higher number than 220.
+<P>
+Please note the space between the name of the movie and the minus-sign.
+<P>
+You do not have control over the name of the output file. The string
+<TT>conv_24to8_</TT> is prepended to the name of the input file:
+<P>
+<TT><code>conv_24to8 -c w -m 200 - ugc12441_movie</code></TT>
+<P>
+produces a file <TT>conv_24to8_ugc12441_movie.kf</TT> (!) with the
+compressed movie.
+<P>
+<H1><A NAME="SECTION00530000000000000000">4.3 Multiple Contour Images</A></H1>
+<A NAME="1366">&#160;</A>
+<P>
+The <B>&lt;MultibeamView&gt;</B> programme has special-purpose code to
+display two datasets, one as images and the other as contours. If you
+wish to display multiple images or cubes, you should use the
+<A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A> programme.
+<P>
+<H1><A NAME="SECTION00540000000000000000">Intensity-Intensity Scatter Plots</A></H1>
+<A NAME="1371">&#160;</A>
+<A NAME="1372">&#160;</A>
+<P>
+Earlier in this chapter (<A HREF="node5.html#paragraphkviewscatterplot">4</A>) is a
+brief description of how you can use the <TT>c</TT> key to compute and
+display an intensity-intensity scatter plot of two images. You may
+also use this facility to display a scatter plot of two channels from
+the same cube. Simply load the same cube in twice (i.e. using the <TT>
+Set1</TT> and <TT>Set2</TT> file browser buttons), and select the two
+channels, one from each cube. You will need to ensure that the
+<B>Link Frames</B> toggle is disabled.
+<P>
+If the <B>Link Frames</B> toggle is enabled, then the scatter plot is
+computed using the two frames which have corresponding co-ordinates
+for the frame dimensions. This is usually the desired setting when
+generating scatter plots from frames of two different cubes.
+<P>
+Note that when computing a scatter plot from two images with a
+different co-ordinate grid, the pixels from the unseen image
+correspond to pixels with the same world co-ordinates in the visible
+image. Thus, there is no need to regrid either of the images.
+<P>
+<HR><A NAME="tex2html337" HREF="node6.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html335" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html329" HREF="node4.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html339" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html340" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html338" HREF="node6.html">5 Volume Rendering a </A>
+<B>Up:</B> <A NAME="tex2html336" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html330" HREF="node4.html">3 Viewing and Comparing </A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

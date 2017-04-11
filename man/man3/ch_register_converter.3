@@ -1,0 +1,89 @@
+.TH CH_REGISTER_CONVERTER 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_register_converter \- Register channel converter function.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B ChConverter ch_register_converter
+.sp
+(Channel channel,
+unsigned int (*size_func) (),
+unsigned int (*read_func) (),
+unsigned int (*write_func) (),
+flag (*flush_func) (),
+void (*close_func) (),
+void *info)
+.SH DESCRIPTION
+This routine will register a set of converter functions which
+will be called when channel data is read or written. The operation of these
+routines is transparent. Converter functions are useful for automatic
+compression and encryption of data streams.
+It is permissable to register multiple converter functions with a channel.
+Converter functions are pushed down from the top (application) level. In
+other words, the last converter functions registered are called first.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIsize_func\fP 1i
+The function which will determine (approximately) how many
+bytes would be returned by the <<read_func>>. This routine is called when
+<-ch_get_bytes_readable-> is called for the channel. The prototype function
+is <-ch_PROTO_converter_size_func->.
+.IP \fIread_func\fP 1i
+The function which will convert data when reading.
+The prototype function is <-ch_PROTO_converter_read_func->.
+.IP \fIwrite_func\fP 1i
+The function which will convert data when writing. If this is
+NULL, no write conversion is performed. The prototype function is
+<-ch_PROTO_converter_write_func->.
+.IP \fIflush_func\fP 1i
+The function which is called when the channel is to be flushed
+The prototype function is <-ch_PROTO_converter_flush_func->.
+.IP \fIclose_func\fP 1i
+The function which is called when the channel is closed. If
+this is NULL, no special action is taken upon channel closure.
+The prototype function is <-ch_PROTO_converter_close_func->.
+.SH RETURN VALUE
+A ChConverter object on success (which may be used in a call to
+<-ch_unregister_converter->), else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+Converters impose restrictions on channel operations (i.e.
+<-ch_seek-> cannot be called).
+.sp
+Converter functions are expected to provide their own buffering as
+needed.
+.sp
+The <<flush_func>> will be called prior to the <<close_func>> upon
+channel closure.
+.sp
+The sequence of events when the application level calls <-ch_write-> is:
+The last registered write converter is popped from the stack and called.
+This write converter may buffer some or all of the data. It may call
+<-ch_write-> with some converted data.
+When <-ch_write-> is called from a write converter, the next last
+registered write converter is popped from the stack and called.
+This sequence is continued until data is actually transferred into the
+channel write buffer.
+A similar sequence of events occurs when  ch_read  is called.
+The sequence of events when the application level calls  ch_flush  is:
+The last registered flush converter is popped from the stack and called.
+This flush converter MUST write all data in it's buffer using  ch_write
+When  ch_write  is called from a flush converter, the next last
+registered write converter is popped from the stack and called.
+When the last registered flush converter returns, the sequence is
+repeated with the next last flush converter, and so on, until all data
+in all write buffers is flushed, including the channel write buffer.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

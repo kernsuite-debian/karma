@@ -1,0 +1,37 @@
+.TH CONN_REGISTER_CM_QUIESCENT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+conn_register_cm_quiescent_func \- Register callback for quiescence.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B void conn_register_cm_quiescent_func
+.sp
+( void (*func) () )
+.SH DESCRIPTION
+This routine will register a callback function to be called when
+the Connection Management tool or shell is quiescent (ie. all modules have
+started and all initial connections made). The function is ONLY called if
+the module is running under the Connection Management tool or shell.
+.IP \fIquiescent_func\fP 1i
+The routine which will be called when the Connection
+Management tool or shell is quiescent. The prototype function is
+<-conn_PROTO_quiescent_func->.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Only one callback may be registered.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

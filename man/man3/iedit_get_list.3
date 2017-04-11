@@ -1,0 +1,30 @@
+.TH IEDIT_GET_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_get_list \- Get list of edits in an image edit list.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B list_header * iedit_get_list
+.sp
+(KImageEditList ilist)
+.SH DESCRIPTION
+This routine will get the list of edit instructions associated
+with a managed image edit instruction list.
+.IP \fIilist\fP 1i
+The managed list.
+.SH RETURN VALUE
+The list of edit instructions.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

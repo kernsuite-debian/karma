@@ -1,0 +1,30 @@
+.TH R_GET_SERVICE_NUMBER 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_service_number \- Get service number for a module.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_get_service_number
+.sp
+(CONST char *module_name)
+.SH DESCRIPTION
+This routine uses a hashing function to determine the service
+number of a module.
+.IP \fImodule_name\fP 1i
+The name of the module.
+.SH RETURN VALUE
+The service number.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

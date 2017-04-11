@@ -1,0 +1,32 @@
+.TH CANVAS_REFRESH_IF_VISIBLE 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_refresh_if_visible \- Refresh a world canvas if it is visible.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_refresh_if_visible
+.sp
+(KWorldCanvas canvas, flag always_clear)
+.SH DESCRIPTION
+Refresh a world canvas if it is visible.
+.IP \fIcanvas\fP 1i
+The KWorldCanvas object. This may be NULL.
+.IP \fIalways_clear\fP 1i
+If TRUE, the canvas is always cleared before refreshing,
+else only parts are cleared.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

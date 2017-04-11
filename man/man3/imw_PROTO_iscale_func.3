@@ -1,0 +1,48 @@
+.TH IMW_PROTO_ISCALE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+imw_PROTO_iscale_func \- Intensity scaling callback.
+.SH SYNOPSIS
+.B #include <karma_imw.h>
+.sp
+.B flag imw_PROTO_iscale_func
+.sp
+(double *out, unsigned int out_stride,
+CONST double *inp, unsigned int inp_stride,
+unsigned int num_values,
+double i_min, double i_max, void *info)
+.SH DESCRIPTION
+This routine will perform an arbitrary intensity scaling on
+an array of values. This routine may be called many times to scale an
+image.
+.IP \fIout\fP 1i
+The output array.
+.IP \fIout_stride\fP 1i
+The stride (in doubles) of the output array.
+.IP \fIinp\fP 1i
+The input array.
+.IP \fIinp_stride\fP 1i
+The stride (in doubles) of the input array.
+.IP \fInum_values\fP 1i
+The number of values to scale.
+.IP \fIi_min\fP 1i
+The minimum intensity value.
+.IP \fIi_max\fP 1i
+The maximum intensity value.
+.IP \fIinfo\fP 1i
+A pointer to arbitrary information.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

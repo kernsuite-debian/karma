@@ -1,0 +1,43 @@
+.TH VIEWIMG_FILL_ELLIPSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_fill_ellipse \- Draw an ellipse into an array associated with a viewable image.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_fill_ellipse
+.sp
+(ViewableImage vimage,
+double centre_x, double centre_y,
+double radius_x, double radius_y, double value[2])
+.SH DESCRIPTION
+This routine will draw a filled ellipse into a 2 dimensional
+slice of data associated with a viewable image.
+.IP \fIvimage\fP 1i
+The viewable image.
+.IP \fIcentre_x\fP 1i
+The horizontal world co-ordinate of the centre of the ellipse.
+.IP \fIcentre_y\fP 1i
+The vertical world co-ordinate of the centre of the ellipse.
+.IP \fIradius_x\fP 1i
+The horizontal radius.
+.IP \fIradius_y\fP 1i
+The vertical radius.
+.IP \fIvalue\fP 1i
+The complex value to fill the ellipse. This must be of type
+K_DCOMPLEX.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

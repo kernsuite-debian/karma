@@ -1,0 +1,36 @@
+.TH CHM_PROTO_CLOSE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+chm_PROTO_close_func \- This routine is called when a channel closes.
+.SH SYNOPSIS
+.B #include <karma_chm.h>
+.sp
+.B void chm_PROTO_close_func
+.sp
+(Channel channel, void *info)
+.SH DESCRIPTION
+This routine is called when a channel closes.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIinfo\fP 1i
+The arbitrary pointer for the channel.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine MUST NOT unmanage the channel. The channel will be
+automatically unmanaged and deleted upon closure (even if no <<close_func>>
+is specified).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

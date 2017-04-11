@@ -1,0 +1,38 @@
+.TH DM_PROTO_INPUT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+dm_PROTO_input_func \- Input event callback.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B flag dm_PROTO_input_func
+.sp
+(int fd, void **info)
+.SH DESCRIPTION
+This routine is called when new input occurs on a descriptor.
+.IP \fIfd\fP 1i
+The file descriptor.
+.IP \fIinfo\fP 1i
+A pointer to the arbitrary information pointer. The pointer
+written here will persist until the descriptor is unmanaged (or a
+subsequent callback routine changes it).
+.SH RETURN VALUE
+TRUE if the descriptor is to remain managed and open, else it
+returns FALSE (indicating that the descriptor is to be unmanaged and
+closed). This routine MUST NOT unmanage or close the descriptor.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The <<close_func>> will be called if this routine returns FALSE.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

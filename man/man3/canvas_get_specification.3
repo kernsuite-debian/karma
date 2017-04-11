@@ -1,0 +1,48 @@
+.TH CANVAS_GET_SPECIFICATION 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_get_specification \- Get specification information for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_get_specification
+.sp
+(KWorldCanvas canvas, char **xlabel,
+char **ylabel, unsigned int *num_restr,
+char ***restr_names, double **restr_values)
+.SH DESCRIPTION
+This routine will get the specifications for a canvas. This
+includes the horizontal and vertical dimension labels and any restrictions.
+Only pointers are copied (i.e. the outputs may NOT be freed).
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIxlabel\fP 1i
+The pointer to the horizontal dimension label will be written
+here. This may be NULL.
+.IP \fIylabel\fP 1i
+The pointer to the vertical dimension label will be written here.
+This may be NULL.
+.IP \fInum_restr\fP 1i
+The number of restrictions will be written here. This may be
+NULL.
+.IP \fIrestr_names\fP 1i
+The pointer to the array of restriction names will be written
+here. This may be NULL.
+.IP \fIrestr_values\fP 1i
+The pointer to the array of restriction values will be
+written here. This may be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,40 @@
+.TH KWIN_CONVERT_TO_CANVAS_COORD 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_convert_to_canvas_coord \- Convert low-level co-ordinates to pixel co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_convert_to_canvas_coord
+.sp
+(KPixCanvas canvas, int xin, int yin,
+int *xout, int *yout)
+.SH DESCRIPTION
+This routine will convert co-ordinates in a lower level object
+(parent, ie. X window) to co-ordinates in a pixel canvas.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIxin\fP 1i
+The lower level horizontal co-ordinate.
+.IP \fIyin\fP 1i
+The lower level vertical co-ordinate.
+.IP \fIxout\fP 1i
+The horizontal canvas co-ordinate will be written here.
+.IP \fIyout\fP 1i
+The vertical canvas co-ordinate will be written here.
+.SH RETURN VALUE
+TRUE if the co-ordinate lies within the canvas boundaries, else
+FALSE (although a conversion is still performed).
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

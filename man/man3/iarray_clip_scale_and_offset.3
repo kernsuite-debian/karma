@@ -1,0 +1,50 @@
+.TH IARRAY_CLIP_SCALE_AND_OFFSET 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_clip_scale_and_offset \- Clip, scale and offset an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_clip_scale_and_offset
+.sp
+(iarray out, iarray inp, double scale,
+double offset,
+double lower_clip, double upper_clip,
+flag blank)
+.SH DESCRIPTION
+This routine will perform a clipping operation followed by a
+scale and offset on every element in  an "Intelligent Array". The operation
+following the clipping is: (output = input * scale + offset).
+.IP \fIout\fP 1i
+The output Intelligent Array.
+.IP \fIinp\fP 1i
+The input Intelligent Array.
+.IP \fIscale\fP 1i
+The scale value.
+.IP \fIoffset\fP 1i
+The offset value.
+.IP \fIlower_clip\fP 1i
+The input data is clipped so that no value is below this.
+.IP \fIupper_clip\fP 1i
+The input data is clipped so that no value is above this.
+.IP \fIblank\fP 1i
+If TRUE, clipped values are blanked.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The input and output arrays MUST be the same size (though not
+necessarily the same type). Both arrays must be real.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

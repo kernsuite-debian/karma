@@ -1,0 +1,44 @@
+.TH T_C_TO_C_1D_FFT_FLOAT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+t_c_to_c_1D_fft_float \- Compute a 1D complex to complex single precision FFT.
+.SH SYNOPSIS
+.B #include <karma_t.h>
+.sp
+.B unsigned int t_c_to_c_1D_fft_float
+.sp
+(float *real, float *imag,
+unsigned int length, unsigned int stride,
+int direction)
+.SH DESCRIPTION
+This routine will perform a complex to complex 1 dimensional FFT
+on an array of single precision complex data.
+The routine performs the transform in situ.
+.IP \fIreal\fP 1i
+The array of real components. This is modified.
+.IP \fIimag\fP 1i
+The array of imaginary components. This is modified.
+.IP \fIlength\fP 1i
+The number of complex values in the array to transform.
+.IP \fIstride\fP 1i
+The stride (in bytes) of successive components.
+.IP \fIdirection\fP 1i
+If the value is KARMA_FFT_FORWARD, the forward transform is
+performed. If the value is KARMA_FFT_INVERSE, the inverse transform is
+performed.
+.SH RETURN VALUE
+A value indicating the success / failure status of the transform.
+See <-t_FFT_STATUS-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

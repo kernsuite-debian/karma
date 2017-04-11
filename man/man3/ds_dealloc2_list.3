@@ -1,0 +1,32 @@
+.TH DS_DEALLOC2_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_dealloc2_list \- Deallocate linked list entries.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_dealloc2_list
+.sp
+(list_header *list_head)
+.SH DESCRIPTION
+This routine will deallocate the data and the list entries in a
+linked list. This routine does not recursively deallocate sub-arrays or
+linked lists: it will only remove the list. The list header is NOT
+deallocated.
+.IP \fIlist_head\fP 1i
+The list header.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

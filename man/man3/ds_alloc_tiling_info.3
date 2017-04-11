@@ -1,0 +1,33 @@
+.TH DS_ALLOC_TILING_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_tiling_info \- Allocate array tiling information.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_tiling_info
+.sp
+(array_desc *arr_desc, unsigned int num_levels)
+.SH DESCRIPTION
+This routine will allocate tiling information for an array
+descriptor which does not have any existing tiling information.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fInum_levels\fP 1i
+The number of levels of tiling. If this is 0, the array is not
+tiled.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

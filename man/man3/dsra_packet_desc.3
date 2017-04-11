@@ -1,0 +1,31 @@
+.TH DSRA_PACKET_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsra_packet_desc \- Read ASCII representation of a packet descriptor.
+.SH SYNOPSIS
+.B #include <karma_dsra.h>
+.sp
+.B packet_desc * dsra_packet_desc
+.sp
+(Channel channel)
+.SH DESCRIPTION
+This routine will read the ASCII representation of a packet
+descriptor from a channel object. The routine will recursively read in
+array and linked list descriptors if required.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.SH RETURN VALUE
+A pointer to the packet descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

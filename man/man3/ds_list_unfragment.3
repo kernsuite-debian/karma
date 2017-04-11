@@ -1,0 +1,43 @@
+.TH DS_LIST_UNFRAGMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_list_unfragment \- Unfragment a linked list.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_list_unfragment
+.sp
+(packet_desc *list_desc, list_header *list_head)
+.SH DESCRIPTION
+This routine will unfragment a linked list (i.e. all the entries
+and data packets in the linked list will be made contiguous in memory).
+This increases the storage efficiency (no  list_entry  structures are
+needed to link the data packets) as well as arbitrary indexing.
+This routine, used with a sorting routine (in either order of execution),
+can be used to speed up searching algorithms. If the routine is not
+successful in allocating the required memory, then no change is effected
+(and the  contiguous_length  value in the list header is not changed). I.e.
+data is not lost.
+.IP \fIlist_desc\fP 1i
+The packet descriptor for the list.
+.IP \fIlist_head\fP 1i
+The linked list header.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The <<contiguous_length>> value in the linked list header will be
+set to the length of the list.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

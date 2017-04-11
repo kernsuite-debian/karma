@@ -1,0 +1,35 @@
+.TH M_CLEAR 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_clear \- Clear a block of memory
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_clear
+.sp
+(void *ptr, uaddr length)
+.SH DESCRIPTION
+Clear a block of memory
+.IP \fIptr\fP 1i
+The memory block to clear.
+.IP \fIlength\fP 1i
+The length of the block (in bytes) to clear. If this is less than
+1 the routine does nothing. This is effective as a no-op.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The memory is cleared in long integers and chars.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

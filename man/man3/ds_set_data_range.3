@@ -1,0 +1,43 @@
+.TH DS_SET_DATA_RANGE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_set_data_range \- Set the data range for a data element in a packet.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_set_data_range
+.sp
+(CONST char *elem_name, packet_desc *pack_desc,
+char **packet, double minimum, double maximum)
+.SH DESCRIPTION
+Set the data range for a data element in a packet.
+.IP \fIelem_name\fP 1i
+The name of the element.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet.
+.IP \fIminimum\fP 1i
+The minimum value. The name of the minimum value is constructed
+by appending "__MINIMUM" to the element name.
+If appropriate, the FITS-style "DATAMIN" keyword is written instead.
+.IP \fImaximum\fP 1i
+The maximum value. The name of the maximum value is constructed
+by appending "__MAXIMUM" to the element name.
+If appropriate, the FITS-style "DATAMAX" keyword is written instead.
+.SH RETURN VALUE
+TRUE if the range information is different from what was
+already attached to the array, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

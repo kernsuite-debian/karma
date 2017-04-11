@@ -1,0 +1,34 @@
+.TH M_FREE2 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_free2 \- Free Virtual Memory.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_free2
+.sp
+(void *ptr)
+.SH DESCRIPTION
+Free Virtual Memory.
+.IP \fIptr\fP 1i
+The start of a previously allocated block of memory to be freed. This
+may be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH NOTE
+If the environment variable "M_ALLOC_DEBUG" is set to "TRUE" then
+the routine will print deallocation debugging information.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

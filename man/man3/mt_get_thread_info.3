@@ -1,0 +1,29 @@
+.TH MT_GET_THREAD_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_get_thread_info \- Get the thread information pointer for a pool of threads.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void * mt_get_thread_info
+.sp
+(KThreadPool pool)
+.SH DESCRIPTION
+Get the thread information pointer for a pool of threads.
+.IP \fIpool\fP 1i
+The thread pool.
+.SH RETURN VALUE
+A pointer to the thread information array.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,40 @@
+.TH VRENDER_GET_EYE_INFO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_get_eye_info \- Get eye information.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B void vrender_get_eye_info
+.sp
+(KVolumeRenderContext context, unsigned int eye_view,
+Kcoord_3d *ras_centre, Kcoord_3d *direction,
+Kcoord_3d *horizontal)
+.SH DESCRIPTION
+Get eye information.
+.IP \fIcontext\fP 1i
+The volume render context which determines the view information.
+.IP \fIeye_view\fP 1i
+The eye which will see the point. See <-vrender_EYES-> for a
+list of legal values.
+.IP \fIras_centre\fP 1i
+The centre of the raster plane is written here.
+.IP \fIdirection\fP 1i
+The direction towards infinity is written here.
+.IP \fIhorizontal\fP 1i
+The horizontal direction vector is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

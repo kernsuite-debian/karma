@@ -1,0 +1,60 @@
+.TH PSW_RGB_ARC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+psw_rgb_arc \- Write a colour arc to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_rgb_arc
+.sp
+(PostScriptPage pspage,
+double red, double green, double blue,
+double cx, double cy,
+double rx, double ry, double angle1, double angle2,
+double rotation, flag fill)
+.SH DESCRIPTION
+Write a colour arc to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIred\fP 1i
+The red component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIgreen\fP 1i
+The green component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIblue\fP 1i
+The blue component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIcx\fP 1i
+The x centre. This is scaled from 0.0 to 1.0
+.IP \fIcy\fP 1i
+The y centre. This is scaled from 0.0 to 1.0
+.IP \fIrx\fP 1i
+The x radius. This is scaled from 0.0 to 1.0
+.IP \fIry\fP 1i
+The y radius. This is scaled from 0.0 to 1.0
+.IP \fIangle1\fP 1i
+The start of the arc, in units of degrees, relative to +X.
+Increasing positive values are anticlockwise.
+.IP \fIangle2\fP 1i
+The end of the arc, in units of degrees, relative to +X.
+Increasing positive values are anticlockwise.
+.IP \fIrotation\fP 1i
+The rotation of the arc, in degrees. A rotation of 0 degrees
+corresponds to (x > 0, y = 0). A rotation of 90 degrees corresponds to
+(x = 0, y > 0). In other words, the angle increases anticlockwise from the
+right.
+.IP \fIfill\fP 1i
+If TRUE, the ellipse is filled.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

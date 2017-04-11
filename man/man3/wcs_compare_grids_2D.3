@@ -1,0 +1,50 @@
+.TH WCS_COMPARE_GRIDS_2D 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_compare_grids_2D \- Compare if two images have the same world co-ordinate grid.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B flag wcs_compare_grids_2D
+.sp
+(KwcsAstro ap1,
+CONST dim_desc *hd1, CONST dim_desc *vd1,
+unsigned int num_restr1, CONST char **restr_names1,
+CONST double *restr_values1,
+KwcsAstro ap2,
+CONST dim_desc *hd2, CONST dim_desc *vd2,
+unsigned int num_restr2, CONST char **restr_names2,
+CONST double *restr_values2,
+flag *same)
+.SH DESCRIPTION
+Compare if two images have the same world co-ordinate grid.
+.IP \fIap1\fP 1i
+The KwcsAstro object for the first image.
+.IP \fIhd1\fP 1i
+The horizontal dimension of the first image.
+.IP \fIvd1\fP 1i
+The vertical dimension of the first image.
+.IP \fIap2\fP 1i
+The KwcsAstro object for the second image.
+.IP \fIhd2\fP 1i
+The horizontal dimension of the second image.
+.IP \fIvd2\fP 1i
+The vertical dimension of the second image.
+.IP \fIsame\fP 1i
+TRUE is written here if the grids are the same, else FALSE is
+written here.
+.SH RETURN VALUE
+TRUE on success, else FALSE, indicating that comparison failed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

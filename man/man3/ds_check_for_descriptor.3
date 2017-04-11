@@ -1,0 +1,32 @@
+.TH DS_CHECK_FOR_DESCRIPTOR 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_check_for_descriptor \- Check if descriptor pointer lies in data structure.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_check_for_descriptor
+.sp
+(CONST packet_desc *pack_desc, void *pointer)
+.SH DESCRIPTION
+Check if descriptor pointer lies in data structure.
+.IP \fIpack_desc\fP 1i
+The packet descriptor to search recursively.
+.IP \fIpointer\fP 1i
+The pointer to search for. This may be an array or packet
+descriptor.
+.SH RETURN VALUE
+TRUE if the descriptor pointer was found, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

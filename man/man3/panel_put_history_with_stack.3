@@ -1,0 +1,32 @@
+.TH PANEL_PUT_HISTORY_WITH_STACK 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+panel_put_history_with_stack \- Put history into Karma multi_array structure.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B flag panel_put_history_with_stack
+.sp
+(multi_array *multi_desc, flag module_header)
+.SH DESCRIPTION
+Put history into Karma multi_array structure.
+.IP \fImulti_desc\fP 1i
+The data structure to append history to.
+.IP \fImodule_header\fP 1i
+If TRUE the module name and version are appended before the
+parameter information.
+.SH RETURN VALUE
+TRUE on sucess, else FALSE
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

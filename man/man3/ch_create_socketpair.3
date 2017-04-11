@@ -1,0 +1,33 @@
+.TH CH_CREATE_SOCKETPAIR 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_create_socketpair \- Create a pair of un-named connected sockets.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_create_socketpair
+.sp
+(Channel *ch1, Channel *ch2)
+.SH DESCRIPTION
+Create a pair of un-named connected sockets.
+.IP \fIch1\fP 1i
+The channel corresponding to one end of the pair is written here.
+.IP \fIch2\fP 1i
+The channel corresponding to the other end of the pair is written
+here.
+.SH RETURN VALUE
+TRUE on success, else FALSE and sets <<errno>> with the error
+code.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

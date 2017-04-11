@@ -1,0 +1,42 @@
+.TH R_WRITE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_write \- Write bytes to a file descriptor.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B iaddr r_write
+.sp
+(int fd, CONST char *buf, uaddr nbytes)
+.SH DESCRIPTION
+This routine is similar to the system <<write(2)>> call, except
+that the number of bytes requested is always returned (except on error).
+Hence, if the descriptor references a socket, the routine will write as
+much data as was requested, rather than a lesser amount due to
+packetisation or interrupted system calls.
+.IP \fIfd\fP 1i
+The file descriptor to write to. This descriptor must NOT be set to
+non-blocking IO.
+.IP \fIbuf\fP 1i
+The buffer in which to write the data.
+.IP \fInbytes\fP 1i
+The number of bytes to write.
+.SH RETURN VALUE
+The number of bytes requested on success, else -1 indicating
+error.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine will force  SIGPIPE  to be ignored.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

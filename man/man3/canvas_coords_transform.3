@@ -1,0 +1,45 @@
+.TH CANVAS_COORDS_TRANSFORM 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_coords_transform \- Transform world co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_coords_transform
+.sp
+(KWorldCanvas canvas, unsigned int num_coords,
+double *x, flag x_to_linear,
+double *y, flag y_to_linear)
+.SH DESCRIPTION
+This routine will transform co-ordinates in a world canvas using
+the registered co-ordinate transform function (see
+<-canvas_register_transforms_func->).
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates to transform.
+.IP \fIx\fP 1i
+The array of horizontal world co-ordinates. These are modified.
+.IP \fIx_to_linear\fP 1i
+If TRUE, then the horizontal co-ordinates are converted from
+non-linear to linear, else they are converted from linear to non-linear.
+.IP \fIy\fP 1i
+The array of vertical world co-ordinates. These are modified.
+.IP \fIy_to_linear\fP 1i
+If TRUE, then the vertical co-ordinates are converted from
+non-linear to linear, else they are converted from linear to non-linear.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

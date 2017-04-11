@@ -1,0 +1,30 @@
+.TH EN_IDEA_CLOSE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+en_idea_close \- Close a cipher stream.
+.SH SYNOPSIS
+.B #include <karma_en.h>
+.sp
+.B void en_idea_close
+.sp
+(idea_status status)
+.SH DESCRIPTION
+This routine will clean up an IDEA cipher status, removing
+sensitive key information.
+.IP \fIstatus\fP 1i
+The IDEA cipher status.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

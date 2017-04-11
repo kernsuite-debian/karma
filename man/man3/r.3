@@ -1,0 +1,117 @@
+.TH R 3 "24 Dec 2005" "Karma Distribution"
+.SH PACKAGE
+r \- Low level connection routines
+.SH PURPOSE
+These routines are meant to provide a low level mechanism to create and
+accept connections. Although these routines are made public, their use is
+NOT recommended. The <-conn-> package is the suggested means to create and
+accept connections.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIr_check_file_variants\fP 1i
+Test for variants of a filename.
+.IP \fIr_fork_and_execvp\fP 1i
+Fork and exec a process in a virtual memory efficient way.
+.IP \fIr_alloc_port\fP 1i
+Allocate a Karma port whic can receive connections.
+.IP \fIr_close_dock\fP 1i
+Close a dock.
+.IP \fIr_connect_to_port\fP 1i
+Make a connection to a Karma port on some machine.
+.IP \fIr_udp_alloc\fP 1i
+Create a UDP socket and bind to a random port number.
+.IP \fIr_accept_connection_on_dock\fP 1i
+Accept a connection on a dock.
+.IP \fIr_close_connection\fP 1i
+Close a connection.
+.IP \fIr_get_bytes_readable\fP 1i
+Get bytes readable on a connection.
+.IP \fIr_get_inet_addr_from_host\fP 1i
+Get the first listed Internet address of a hostname.
+.IP \fIr_read\fP 1i
+Read bytes from a file descriptor.
+.IP \fIr_write\fP 1i
+Write bytes to a file descriptor.
+.IP \fIr_test_input_event\fP 1i
+Test for activity on a connection.
+.IP \fIr_open_stdin\fP 1i
+Open the standard input.
+.IP \fIr_open_stdin2\fP 1i
+Open the standard input.
+.IP \fIr_getenv\fP 1i
+Get the value of an environment variable.
+.IP \fIr_setenv\fP 1i
+Set an environment variable.
+.IP \fIr_gethostname\fP 1i
+This routine will determine the local hostname.
+.IP \fIr_get_fq_hostname\fP 1i
+This routine will get the fully qualified local hostname.
+.IP \fIr_getppid\fP 1i
+Get the parent process ID.
+.IP \fIr_open_file\fP 1i
+Open a named file.
+.IP \fIr_create_pipe\fP 1i
+Create an un-named pipe.
+.IP \fIr_create_socketpair\fP 1i
+Create an un-named pair of connected sockets.
+.IP \fIr_get_fd_filetype\fP 1i
+Get filetype for a descriptor.
+.IP \fIr_gethostbyaddr\fP 1i
+Get hostname from Internet Address.
+.IP \fIr_set_nodelay\fP 1i
+Set the no-delay flag for a descriptor if appropriate.
+.IP \fIr_create_exclusive_file\fP 1i
+Exclusively create a file (typically for locking purposes).
+.IP \fIr_set_file_lock\fP 1i
+Grab or release the lock on a file.
+.IP \fIr_send_fd\fP 1i
+Send a file descriptor over a connection.
+.IP \fIr_recv_fd\fP 1i
+Receive a file descriptor over a connection.
+.IP \fIr_get_karmabase\fP 1i
+Get the pathname of the installed runtime Karma.
+.IP \fIr_get_service_number\fP 1i
+Get service number for a module.
+.IP \fIr_get_host_from_display\fP 1i
+Get the hostname in a display string.
+.IP \fIr_get_display_num_from_display\fP 1i
+Get display number from a display string.
+.IP \fIr_get_screen_num_from_display\fP 1i
+Get the screen number in a display string.
+.IP \fIr_get_def_port\fP 1i
+Get the default Karma port number for a module.
+.SH TABLE r_FILE_TYPES
+List of defined file types
+
+.TS
+l l
+_ _
+l l.
+Type                            Meaning
+
+KFTYPE_DISC                     Disc (regular file)
+KFTYPE_CHARACTER                Character device
+KFTYPE_FIFO                     FIFO (pipe)
+KFTYPE_UNIX_CONNECTION          Unix connection
+KFTYPE_LOCAL_tcpIP_CONNECTION   TCP/IP connection to local host
+KFTYPE_REMOTE_tcpIP_CONNECTION  TCP/IP connection to remote host
+KFTYPE_DIRECTORY                Directory
+KFTYPE_BLOCK                    Block device
+KFTYPE_SOCKET                   Socket
+KFTYPE_DANGLING_SYMLINK         Dangling symbolic link
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

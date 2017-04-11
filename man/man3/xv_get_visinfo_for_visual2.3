@@ -1,0 +1,34 @@
+.TH XV_GET_VISINFO_FOR_VISUAL2 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xv_get_visinfo_for_visual2 \- Get the visual information structure for a visual.
+.SH SYNOPSIS
+.B #include <karma_xv.h>
+.sp
+.B void xv_get_visinfo_for_visual2
+.sp
+(Display *dpy, Visual *visual,
+XVisualInfo *vinfo)
+.SH DESCRIPTION
+Get the visual information structure for a visual.
+.IP \fIdpy\fP 1i
+The X display.
+.IP \fIvisual\fP 1i
+The visual.
+.IP \fIvinfo\fP 1i
+The visual information is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

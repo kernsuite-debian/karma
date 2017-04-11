@@ -1,0 +1,33 @@
+.TH CH_GET_BYTES_READABLE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_get_bytes_readable \- Count unread bytes.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B int ch_get_bytes_readable
+.sp
+(Channel channel)
+.SH DESCRIPTION
+This routine will determine the number of bytes currently
+readable on a connection channel. This is equal to the maximum number of
+bytes that could be read from the channel at this time without blocking
+waiting for more input to be transmitted from the other end of the
+connection.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+The number of bytes readable on success, else -1 indicating error
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

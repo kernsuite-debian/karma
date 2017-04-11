@@ -1,0 +1,44 @@
+.TH CH_GETL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_getl \- Read a line from a channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_getl
+.sp
+(Channel channel, char *buffer, unsigned int length)
+.SH DESCRIPTION
+This routine will read a character string from a channel into a
+buffer.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIbuffer\fP 1i
+The buffer to write the data into.
+The routine will write a NULL terminator character at the end of the
+string.
+.IP \fIlength\fP 1i
+The length of the buffer. If the buffer is not large enough to
+contain the string, then the remainder of the string (including the
+newline character) is read in and discarded and a warning message is
+displayed. See also the <-ch_gets-> routine.
+.SH RETURN VALUE
+TRUE on success, else FALSE (indicating end-of-file was
+encountered). Data is still written to the buffer and NULL terminated on
+EOF.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The newline chanacter '\n' is NOT copied into the buffer.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

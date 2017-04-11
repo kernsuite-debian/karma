@@ -1,0 +1,37 @@
+.TH CH_PUTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_puts \- Write a character string to a channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_puts
+.sp
+(Channel channel, CONST char *string, flag newline)
+.SH DESCRIPTION
+Write a character string to a channel.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIstring\fP 1i
+The string.
+.IP \fInewline\fP 1i
+If TRUE, the routine will write a NEWLINE character after writing
+the string.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine will not write the NULL terminator character.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

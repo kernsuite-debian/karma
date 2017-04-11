@@ -1,0 +1,40 @@
+.TH DS_COPY_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_array \- Recursively copy array data.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_copy_array
+.sp
+(array_desc *inp_desc, CONST char *inp_data,
+array_desc *out_desc, char *out_data)
+.SH DESCRIPTION
+This routine will copy data from one array to another. The two
+arrays must be the same, else the copying process will stop.
+The routine recursively copies data in the array packets.
+For information on the copying rules when the two list descriptors differ,
+see the routine <-ds_copy_data->.
+.IP \fIinp_desc\fP 1i
+The input array descriptor.
+.IP \fIinp_data\fP 1i
+The input array data.
+.IP \fIout_desc\fP 1i
+The output array descriptor.
+.IP \fIout_data\fP 1i
+The output data memory allocation.
+.SH RETURN VALUE
+TRUE if the two array descriptors are identical, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

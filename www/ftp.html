@@ -1,0 +1,324 @@
+<!  THIS IS AN AUTOMATICALLY GENERATED FILE: DO NOT EDIT  >
+
+
+<title>Current Karma Runtime Distributions</title>
+
+<body>
+<h2>
+This page contains links to the current runtime distributions of
+Karma v1.7.25.
+</h2>
+
+<hr>
+Runtime distributions do not include source code.
+New features in the API which appear in a pre-release may change again in
+a later pre-release or full release, without warning. The main reason
+pre-release runtime distributions are made available is so people can try
+various applications supplied with Karma.
+Runtime distributions typically come out once or twice a month, whereas
+full public releases (i.e. with source code) only come out once or twice
+a year.
+<hr>
+<h3>
+Easy Installation and Upgrading: recommended
+</h3>
+The easiest method for installing and upgrading Karma is to run the
+<tt>install-karma</tt> script. This script figures out what kind of
+machine you are running on, and will install/update the appropriate
+runtime distribution of Karma. Below are the instructions for how to
+install/upgrade Karma using this script. It assumes you have privilege
+to install in <tt>/usr/local</tt>.
+<p>
+To install Karma, you will first need to run the following command:
+<pre>
+rsync -a rsync.ras.ucalgary.ca::karma/common/ /usr/local/karma
+</pre>
+After you have done this, the following command is used to complete
+installation or to perform an upgrade:
+<pre>
+/usr/local/karma/csh_script/install-karma [destdir]
+</pre>
+where <tt>destdir</tt> is an optional directory in which to
+install/upgrade (the default is <tt>/usr/local/karma</tt>).
+<br>
+The <tt>install-karma</tt> script is very efficient in the way it uses
+network resources, and will only download changes that you do not
+already have (it uses the excellent
+<a href="http://rsync.samba.org/">rsync</a> programme to achieve 
+this). Because of this, you can run the script periodically to obtain
+automatic upgrades without having to worry about wasting network
+resources. The simplest way to set up automatic upgrades is to create
+a crontab entry such as:
+<pre>
+7 1 * * * /usr/local/karma/csh_script/install-karma
+</pre>
+If you are unsure how to create a crontab entry, run the following
+commands:
+<pre>
+cd
+echo "7 1 * * * /usr/local/karma/csh_script/install-karma" > .crontab
+crontab .crontab
+</pre>
+Automatic Karma upgrades are now enabled. At 1:07 am each night (local
+time), Karma will be updated.
+<p>
+If you have <a href="http://www.gnupg.org/">gpg</a> (GNU Privacy Guard
+aka. GnuPG) installed, the <tt>install-karma</tt> script can be used
+to verify signatures on the files being downloaded. If a file is not
+properly signed, it will not be installed. This will protect you from
+a compromised download server. Before using this feature, make sure
+you have <tt>gpgv</tt> installed in your path. The public keys are
+kept in the <tt>share/signing-keys</tt> directory. The current signing
+key is:
+<pre>
+pub   1024D/1B912A8C 2000-07-22
+      Key fingerprint = 61D5 6EA3 29E8 BDBC C8AF  B8DA 826B A3AA 1B91 2A8C
+</pre>
+To use this feature, pass the <tt>-secure</tt> option to the
+<tt>install-karma</tt> script. Note that the signature verification
+can take a while on slower machines.
+
+<hr>
+<h4>
+Manual Downloading and Installing: <em>not</em> recommended
+</h4>
+
+<b>Do not send questions regarding installation unless you have first
+tried the recommended "Easy Installation and Upgrading" described
+above. If you experience a problem with easy installation, include
+any error output in your email.
+<p>
+Note that manual downloading requires the use of ftp, which is blocked
+by some firewalls. Use the rsync-based, easy installation method
+instead. I mean it.
+</b>
+<p>
+There is a binary distribution for each different machine/Operating System.
+There is also a common "share" distribution file
+"karma.share-v1.7.25.tar.gz" which contains documentation,
+include files, font files and so on.
+
+The combination of a binary distribution and share distribution makes up
+a runtime distribution, and contains everything you need to run Karma
+applications and build your own applications using the Karma library.
+<p>
+NOTE: the share distribution contains data required by the
+applications as well as include files (for programming with
+Karma). Since these change from one runtime release to the next, you
+<b>must</b> always get the share distribution as well as the binary
+distribution, otherwise your applications will not work properly.
+<hr>
+To install a runtime distribution, change directory to
+<tt>/usr/local</tt> and unpack the binary and share
+distributions. This will create a directory called <tt>karma</tt>
+which contains everything you need.<br>
+If you use the C shell, type: <tt>source /usr/local/karma/.login</tt><br>
+If you use Bash, type: <tt>. /usr/local/karma/.karmarc</tt><br>
+and your paths will be set up.
+
+<hr>
+Here are the files available for download (v1.7.25):
+<table>
+
+<tr>
+<td><b>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/karma.share-v1.7.25.tar.gz">
+karma.share-v1.7.25.tar.gz</a>
+</td></b>
+<td><b>
+common share distribution for all platforms
+</b></td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/amd64_Linux_libc6.3-v1.7.25.tar.gz">
+amd64_Linux_libc6.3-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for AMD64-compatible x86-64 running Linux/ELF (libc
+6.3). This is for x86 processors with the AMD 64 bit extensions (also
+supported by Intel, who call it IA32e or EM64T).
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/i386_Linux-v1.7.25.tar.gz">
+i386_Linux-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for Intel-compatible x386 running Linux/ELF (libc
+5). This is probably not the one you want
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/i386_Linux_libc6.2-v1.7.25.tar.gz">
+i386_Linux_libc6.2-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for Intel-compatible x386 running Linux/ELF (libc
+6.2)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/i386_Linux_libc6.3-v1.7.25.tar.gz">
+i386_Linux_libc6.3-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for Intel-compatible x386 running Linux/ELF (libc
+6.3)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/powerpc_Darwin-v1.7.25.tar.gz">
+powerpc_Darwin-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for PowerPC running Darwin (MacOS X). If you have
+missing library problems, install the
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/libs/libdl.powerpc_Darwin.tar.gz">
+dynamic library</a>
+package into the system root directory. If you use the
+<tt>install-karma</tt> script, this is done automatically (you need to
+be root to be able to install the dynamic library)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/sparc_Linux_libc6.2-v1.7.25.tar.gz">
+sparc_Linux_libc6.2-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for Sun sparc running Linux (libc 6.2)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/sparc_Solaris-v1.7.25.tar.gz">
+sparc_Solaris-v1.7.25.tar.gz</a>
+</td>
+<td>
+binary distribution for Sun sparc running Solaris 2.6
+</td>
+</tr>
+
+</table>
+
+<hr>
+Some hardware/OS versions are no longer supported/actively
+maintained. If you want these to be supported, provide me with the
+hardware. Binaries for older versions are available in these files:
+<table>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/alpha_OSF1-v1.7.13.tar.gz">
+alpha_OSF1-v1.7.13.tar.gz</a>
+</td>
+<td>
+binary distribution for Dec alpha running OSF1
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/i386_Linux_libc6.1-v1.7.8.tar.gz">
+i386_Linux_libc6.1-v1.7.8.tar.gz</a>
+</td>
+<td>
+binary distribution for Intel-compatible x386 running Linux/ELF (libc
+6.1)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/mips2_IRIX6-v1.7.18.tar.gz">
+mips2_IRIX6-v1.7.18.tar.gz</a>
+</td>
+<td>
+binary distribution for SGI mips2 (r4000) running IRIX6 with old-32
+format
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/mips3_IRIX6-v1.7.18.tar.gz">
+mips3_IRIX6-v1.7.18.tar.gz</a>
+</td>
+<td>
+binary distribution for SGI mips3 (r4000) running IRIX6 with new-32
+format
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/mips4_IRIX6-v1.7.18.tar.gz">
+mips4_IRIX6-v1.7.18.tar.gz</a>
+</td>
+<td>
+binary distribution for SGI mips4 (r8000) running IRIX6 (64 bit)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/powerpc_Linux_libc6.3-v1.7.13.tar.gz">
+powerpc_Linux_libc6.3-v1.7.13.tar.gz</a>
+</td>
+<td>
+binary distribution for PowerPC running Linux (libc 6.3)
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/rs6000_AIX-v1.6.21.tar.gz">
+rs6000_AIX-v1.6.21.tar.gz</a>
+</td>
+<td>
+binary distribution for IBM Power architecture running AIX
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/sparc_Solaris2.5-v1.6.29.tar.gz">
+sparc_Solaris2.5-v1.6.29.tar.gz</a>
+</td>
+<td>
+binary distribution for Sun sparc running Solaris 2.5
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="ftp://ftp.atnf.csiro.au/pub/software/karma/current/sparc_SunOS-v1.7.15.tar.gz">
+sparc_SunOS-v1.7.15.tar.gz</a>
+</td>
+<td>
+binary distribution for Sun sparc running SunOS 4.1.x
+</td>
+</tr>
+
+</table>
+
+<hr>
+
+<a href="index.html">Back to Karma Home Page</a>
+<hr>
+<center><address>
+  Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>
+  </address></center>
+</body>

@@ -1,0 +1,78 @@
+.TH PSW 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+psw \- Routines to write PostScript
+.SH PURPOSE
+These routines provide PostScript generation facilities.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIpsw_va_create\fP 1i
+Create a PostScriptPage object.
+.IP \fIpsw_mono_image\fP 1i
+Write a monochrome image to a PostScriptPage object.
+.IP \fIpsw_pseudocolour_image\fP 1i
+Write a pseudocolour image to a PostScriptPage object.
+.IP \fIpsw_rgb_image\fP 1i
+Write a truecolour image to a PostScriptPage object.
+.IP \fIpsw_directcolour_image\fP 1i
+Write a directcolour image to a PostScriptPage object.
+.IP \fIpsw_close\fP 1i
+Close a PostScriptPage object.
+.IP \fIpsw_rgb_line\fP 1i
+Write a colour line to a PostScriptPage object.
+.IP \fIpsw_rgb_polygon\fP 1i
+Write a colour polygon to a PostScriptPage object.
+.IP \fIpsw_rgb_arc\fP 1i
+Write a colour arc to a PostScriptPage object.
+.IP \fIpsw_rgb_ellipse\fP 1i
+Write a colour ellipse to a PostScriptPage object.
+.IP \fIpsw_rgb_text\fP 1i
+Write a colour string to a PostScriptPage object.
+.IP \fIpsw_set_attributes\fP 1i
+Set the attributes for a PostScriptPage object.
+.IP \fIpsw_get_media_size\fP 1i
+Get size of a known media type.
+.IP \fIpsw_set_clip_areas\fP 1i
+Set the clip areas.
+.SH TABLE psw_ATTRIBUTES
+List of attributes for PostScriptPage object
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                       Type         Meaning
+
+PSW_ATT_END                             End of varargs list
+PSW_ATT_LINEWIDTH_MM       double       Linewidth in mm
+PSW_ATT_LINEWIDTH_RELATIVE double       Linewidth scaled to page size
+PSW_ATT_THIN_LINEWIDTH_MM  double       Width of thin lines in mm
+PSW_ATT_TRAY               unsigned int Tray type, see <-psw_TRAY_TYPES->
+.TE
+.SH TABLE psw_TRAY_TYPES
+List of PostScript tray types
+
+.TS
+l l
+_ _
+l l.
+Name                       Meaning
+
+PSW_TRAY_DEFAULT           The default tray
+PSW_TRAY_PAPER             The paper tray
+PSW_ATT_TRAY_TRANSPARENCY  The transparency tray
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

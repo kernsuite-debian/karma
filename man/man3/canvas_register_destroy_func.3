@@ -1,0 +1,47 @@
+.TH CANVAS_REGISTER_DESTROY_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_register_destroy_func \- Register destroy callback.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B KCallbackFunc canvas_register_destroy_func
+.sp
+(KWorldCanvas canvas, flag wc_only,
+void (*func) (), void *info)
+.SH DESCRIPTION
+This routine will register a destroy function for a world
+canvas. The function will be called when the canvas is destroyed. Many
+destroy functions may be registered per canvas. The first function
+registered is the first function called upon destruction.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIwc_only\fP 1i
+If TRUE, the function is only called for a destroy of the world
+canvas; if the pixel canvas is being destroyed, the function is not called.
+If FALSE, the function is called regardless of whether the pixel canvas is
+being destroyed.
+.IP \fIfunc\fP 1i
+The function that is called when the canvas is destroyed. The
+prototype function is <-canvas_PROTO_destroy_func->.
+.IP \fIinfo\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+All functions registered with <<wc_only>> TRUE are called before
+those registered with <<wc_only>> FALSE.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

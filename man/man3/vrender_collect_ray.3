@@ -1,0 +1,56 @@
+.TH VRENDER_COLLECT_RAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_collect_ray \- Collect a ray projected from an image plane into a volume.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B CONST signed char * vrender_collect_ray
+.sp
+(KVolumeRenderContext context,
+unsigned int eye_view,
+Kcoord_2d pos_2d, Kcoord_3d *ray_start,
+Kcoord_3d *direction,
+float *t_enter, float *t_leave,
+unsigned int *ray_length)
+.SH DESCRIPTION
+Collect a ray projected from an image plane into a volume.
+.IP \fIcontext\fP 1i
+The volume rendering context. This specifies the volume and view
+information.
+.IP \fIeye_view\fP 1i
+The eye which sees the ray. See <-vrender_EYES-> for a list of
+legal values.
+.IP \fIpos_2d\fP 1i
+The 2-dimensional position in the image plane to project from.
+.IP \fIray_start\fP 1i
+The 3-dimensional position of the starting point of the ray is
+written here. This point lies on the raster plane.
+.IP \fIdirection\fP 1i
+The 3-dimensional direction vector of the ray is written here.
+This is not normalised.
+.IP \fIt_enter\fP 1i
+The distance down the ray corresponding to the first voxel is
+written here.
+.IP \fIt_leave\fP 1i
+The distance down the ray corresponding to the last voxel is
+written here.
+.IP \fIray_length\fP 1i
+The length of the ray through the volume is written here. If
+the ray does not intersect the volume, 0 is written here.
+.SH RETURN VALUE
+A pointer to the collected ray. This is a statically allocated
+array per context which is updated on each call. On error NULL is returned.
+.SH Multi-threading Level
+Unsafe per context.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

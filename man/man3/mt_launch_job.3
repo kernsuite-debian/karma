@@ -1,0 +1,49 @@
+.TH MT_LAUNCH_JOB 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_launch_job \- Launch a job onto a thread pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B void mt_launch_job
+.sp
+(KThreadPool pool,
+void (*func) (void *pool_info,
+void *call_info1, void *call_info2,
+void *call_info3, void *call_info4,
+void *thread_info),
+void *call_info1, void *call_info2,
+void *call_info3, void *call_info4)
+.SH DESCRIPTION
+This function will launch a job to a pool of threads, running the
+job on the first available thread.
+.IP \fIpool\fP 1i
+The thread pool.
+.IP \fIfunc\fP 1i
+The function to execute. The prototype function is <-mt_PROTO_func->
+.IP \fIcall_info1\fP 1i
+An arbitrary argument to <<func>>.
+.IP \fIcall_info2\fP 1i
+An arbitrary argument to <<func>>.
+.IP \fIcall_info3\fP 1i
+An arbitrary argument to <<func>>.
+.IP \fIcall_info4\fP 1i
+An arbitrary argument to <<func>>.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH NOTE
+Jobs must not modify any signal actions or masks.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

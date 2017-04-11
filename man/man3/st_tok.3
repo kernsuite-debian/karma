@@ -1,0 +1,34 @@
+.TH ST_TOK 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+st_tok \- Extract token from string.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B char * st_tok
+.sp
+(char *string, CONST char *sepset)
+.SH DESCRIPTION
+This routine will break a string into a series of tokens. This
+routine should be called until no more tokens are found.
+.IP \fIstring\fP 1i
+The string. On subsequent calls (for a series of tokens), NULL
+should be passed.
+.IP \fIsepset\fP 1i
+The set of delimiters (separators between tokens).
+.SH RETURN VALUE
+A pointer to the next token. NULL is returned if no tokens are
+found.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

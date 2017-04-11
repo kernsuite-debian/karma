@@ -1,0 +1,44 @@
+.TH M_TEST_ACCESS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_test_access \- Test if a block of memory is accessible.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B flag m_test_access
+.sp
+(void *start, uaddr size, flag write)
+.SH DESCRIPTION
+Test if a block of memory is accessible.
+.IP \fIstart\fP 1i
+The starting address of the memory block.
+.IP \fIsize\fP 1i
+The size (in bytes) of the memory block.
+.IP \fIwrite\fP 1i
+If TRUE a write test is performed in addition to a read test. This
+will temporarily change the contents of the memory block. The contents will
+be restored. If FALSE, only a read test is performed.
+.SH RETURN VALUE
+TRUE if the all requested tests succeeded, else FALSE if any test
+failed.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The SIGSEGV signal handler is temporarily changed.
+.sp
+The sigsetjmp(3) and siglongjmp(3) functions are used.
+.sp
+Since this function makes calls to the Operating System, frequent
+use may degrade performance.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

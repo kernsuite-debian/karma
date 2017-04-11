@@ -1,0 +1,47 @@
+.TH FOREIGN_GILDAS_READ_HEADER 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_gildas_read_header \- Read a GILDAS dataset header.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_gildas_read_header
+.sp
+(CONST char *setname, flag data_alloc,
+unsigned int mmap_option,
+flag writable,
+KGILDASDataContext *context)
+.SH DESCRIPTION
+Read a GILDAS dataset header.
+.IP \fIsetname\fP 1i
+The GILDAS dataset name.
+.IP \fIdata_alloc\fP 1i
+If TRUE, the data space is allocated.
+.IP \fImmap_option\fP 1i
+Control value which determines whether the channel is opened
+as an ordinary disc file or is mapped. See <-ch_MAP_CONTROLS-> for legal
+values. If the file is not mapped then the routine will attempt to open an
+ordinary disc channel. If the file is opened as a disc channel the access
+mode is: "rz".
+.IP \fIwritable\fP 1i
+If the mapped pages are to be writable, this must be TRUE. If
+this is FALSE and the memory pages are written to, a segmentation fault
+occurs.
+.IP \fIcontext\fP 1i
+The data reading context is written here, to be used in
+subsequent calls to <-foreign_gildas_read_data->. This may be NULL.
+.SH RETURN VALUE
+A multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

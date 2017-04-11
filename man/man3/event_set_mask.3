@@ -1,0 +1,36 @@
+.TH EVENT_SET_MASK 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+event_set_mask \- Set the event mask
+.SH SYNOPSIS
+.B #include <karma_event.h>
+.sp
+.B flag event_set_mask
+.sp
+(unsigned long mask, long num_events,
+Connection connection)
+.SH DESCRIPTION
+Set the event mask
+.IP \fImask\fP 1i
+The event mask. See <-event_MASKS-> for a list of event masks.
+.IP \fInum_events\fP 1i
+The number of events to receive per connection. If this is
+less than 0, an unlimited number of events may be received.
+.IP \fIconnection\fP 1i
+The connection to apply the mask to. If this is NULL, all
+connections will have the mask applied.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

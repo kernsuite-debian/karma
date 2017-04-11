@@ -1,0 +1,34 @@
+.TH WCS_ASTRO_GET_ASSOCIATED 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_get_associated \- Create/get associated Astronomical Sky Co-ordinate projections.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B KwcsAstro wcs_astro_get_associated
+.sp
+(multi_array *multi_desc,unsigned int index)
+.SH DESCRIPTION
+This routine will attempt create/get the associated Astronomical
+Sky Co-ordinate projection information for a general data structure. If the
+projection information is found, it is associated with the general data
+structure in the multi_array descriptor, to speed subsequent accesses.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor.
+.IP \fIindex\fP 1i
+The index of the general data structure in the descriptor.
+.SH RETURN VALUE
+A KwcsAstro object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

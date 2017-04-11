@@ -1,0 +1,38 @@
+.TH IARRAY_COPY_ATTACHED 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_copy_attached \- Copy attached data from one Intelligent Array to another.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_copy_attached
+.sp
+(iarray output, iarray input, flag fail_on_duplicate,
+flag replace)
+.SH DESCRIPTION
+Copy attached data from one Intelligent Array to another.
+.IP \fIoutput\fP 1i
+The output Intelligent Array.
+.IP \fIinput\fP 1i
+The input Intelligent Array.
+.IP \fIfail_on_duplicate\fP 1i
+If TRUE, the routine will fail if the element already
+exists in the output packet.
+.IP \fIreplace\fP 1i
+If TRUE and the element already exists in the output packet, it
+is replaced.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

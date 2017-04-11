@@ -1,0 +1,39 @@
+.TH VC 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+vc \- Routines to manipulate a VX display and colourmaps
+.SH PURPOSE
+These routines are meant to provide an abstracted interface to a VX display
+and colourmaps, used in the <-kcmap-> routines.
+.SH LIBRARY
+karmavx
+.SH LINK WITH
+-lkarmavx
+.SH FUNCTIONS
+.IP \fIvc_get_dpy_handle\fP 1i
+Generate a display handle for later use.
+.IP \fIvc_alloc_colours\fP 1i
+Allocate colourcells.
+.IP \fIvc_free_colours\fP 1i
+Free a number of colourcells in a low level colourmap.
+.IP \fIvc_store_colours\fP 1i
+Store colours into a low level colourmap.
+.IP \fIvc_store_colours_24bit\fP 1i
+Store colours into a low level colourmap.
+.IP \fIvc_get_location\fP 1i
+Determine the location of the graphics display being used.
+.IP \fIvc_set_visualtype\fP 1i
+Set the current visual of the viewable colourmap.
+.IP \fIvc_get_visualtype\fP 1i
+Get the current visual of the viewable colourmap.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

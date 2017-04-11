@@ -1,0 +1,34 @@
+.TH RP_GET_BYTES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+rp_get_bytes \- Get bytes of data from a random pool.
+.SH SYNOPSIS
+.B #include <karma_rp.h>
+.sp
+.B void rp_get_bytes
+.sp
+(RandPool rp, unsigned char *buf, unsigned int length)
+.SH DESCRIPTION
+Get bytes of data from a random pool.
+.IP \fIrp\fP 1i
+The random pool.
+.IP \fIbuf\fP 1i
+The bytes to get from the pool will be written here. These bytes
+should be random and cryptographically secure.
+.IP \fIlength\fP 1i
+The number of bytes to get from the pool.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

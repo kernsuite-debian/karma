@@ -1,0 +1,34 @@
+.TH R_CREATE_EXCLUSIVE_FILE 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+r_create_exclusive_file \- Exclusively create a file (typically for locking purposes).
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B flag r_create_exclusive_file
+.sp
+(CONST char *filename, flag do_wait)
+.SH DESCRIPTION
+This routine will create a file, guaranteeing that no other
+process (on any machine) created the file.
+.IP \fIfilename\fP 1i
+The name of the file to create.
+.IP \fIdo_wait\fP 1i
+If TRUE, the routine will wait until the file is created, or a
+failure occurs.
+.SH RETURN VALUE
+TRUE if the file was created exclusively by the process, else
+FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

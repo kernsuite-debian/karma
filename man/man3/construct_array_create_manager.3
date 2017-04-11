@@ -1,0 +1,35 @@
+.TH CONSTRUCT_ARRAY_CREATE_MANAGER 3 "13 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+construct_array_create_manager \- Create a management object for creating array data.
+.SH SYNOPSIS
+.B #include <karma_construct.h>
+.sp
+.B KConstructArrayManager construct_array_create_manager
+.sp
+(KListWidget listw,
+void (*change_name) (),
+void *info)
+.SH DESCRIPTION
+Create a management object for creating array data.
+.IP \fIlistw\fP 1i
+The list widget.
+.IP \fIchange_name\fP 1i
+The function to call when the default name changes.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer to pass to <<change_name>>.
+.SH RETURN VALUE
+A KConstructArrayManager object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

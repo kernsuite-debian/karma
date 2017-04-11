@@ -1,0 +1,53 @@
+.TH DS_COPY_UNIQUE_NAMED_ELEMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_copy_unique_named_element \- Copy a unique named element from one packet to another.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_copy_unique_named_element
+.sp
+(packet_desc *out_desc, char **out_packet,
+CONST packet_desc *in_desc,
+CONST char *in_packet, CONST char *name,
+flag fail_if_not_found,
+flag fail_on_duplicate, flag replace)
+.SH DESCRIPTION
+Copy a unique named element from one packet to another.
+.IP \fIout_desc\fP 1i
+The packet descriptor to add the name to. This descriptor will
+be modified.
+.IP \fIout_packet\fP 1i
+The pointer to the unique packet. Note that the existing
+packet data is copied to a new packet, and a pointer to this packet is
+written back here.
+.IP \fIin_desc\fP 1i
+The input packet descriptor.
+.IP \fIin_packet\fP 1i
+The input packet.
+.IP \fIname\fP 1i
+The name of the element to copy.
+.IP \fIfail_if_not_found\fP 1i
+If TRUE, the routine will fail if the element does not
+exist in the input packet.
+.IP \fIfail_on_duplicate\fP 1i
+If TRUE, the routine will fail if the element already
+exists in the output packet.
+.IP \fIreplace\fP 1i
+If TRUE and the element already exists in the output packet, it
+is replaced.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

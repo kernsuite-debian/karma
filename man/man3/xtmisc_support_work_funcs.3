@@ -1,0 +1,30 @@
+.TH XTMISC_SUPPORT_WORK_FUNCS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xtmisc_support_work_funcs \- Register support for work functions within an Xt application.
+.SH SYNOPSIS
+.B #include <karma_xtmisc.h>
+.sp
+.B void xtmisc_support_work_funcs
+.sp
+(XtAppContext app_context)
+.SH DESCRIPTION
+This routine will register Xt support for work functions using
+the <-w-> package.
+.IP \fIapp_context\fP 1i
+The Xt application context.
+.SH RETURN VALUE
+Nothing. On failure the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

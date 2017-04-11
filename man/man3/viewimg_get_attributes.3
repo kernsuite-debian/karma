@@ -1,0 +1,33 @@
+.TH VIEWIMG_GET_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_get_attributes \- Get the attributes for a viewable image.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B void viewimg_get_attributes
+.sp
+(ViewableImage vimage, ...)
+.SH DESCRIPTION
+Get the attributes for a viewable image.
+.IP \fIvimage\fP 1i
+The ViewableImage.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value-ptr pairs
+must follow. This list must be terminated with the VIEWIMG_VATT_END. See
+<-viewimg_VIMAGE_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

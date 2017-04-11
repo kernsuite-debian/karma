@@ -1,0 +1,79 @@
+#! /bin/csh -f
+
+#   This C shell script will create the library build tree under the specified
+#   directory or $KARMABASE/build/lib if not specified.
+
+#   Copyright (C) 1993-2005  Richard Gooch
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#   Richard Gooch may be reached by email at  karma-request@atnf.csiro.au
+#   The postal address is:
+#     Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+
+
+# Written by		Richard Gooch	6-JAN-1993
+
+# Last updated by	Richard Gooch	30-NOV-2005
+
+
+set echo_style = both
+
+if ($#argv == 1) then
+    set build_dir = $argv[1]/lib
+else
+    set build_dir = $KARMABASE/build/lib
+endif
+
+if ( ! -d $build_dir ) then
+    mkdir $build_dir
+endif
+
+cd ${KARMAROOT}/source/lib
+
+set libraries = (karma* shared-objects)
+set dir = makefiles
+if ( ! -f $dir/$OS/GNUmakefile.rules ) then
+    echo "Directory:  $dir/$OS/GNUmakefile.rules  does not exist"
+    exit 1
+endif
+
+touch zzz_write_test >& /dev/null
+if ("$status" == "0") then
+    rm -f zzz_write_test
+    echo "Cleaning..."
+    find . \( -name '*~' -o -name '.*~' \) -print -exec rm {} \;
+endif
+
+cd $dir
+
+echo '-include .GNUmakefile.before\ninclude $(KARMAROOT)/source/lib/makefiles/$(OS)/Master\n-include .GNUmakefile.after' > $build_dir/GNUmakefile
+
+foreach i ($libraries)
+    if ( ! -r ${OS}/$i) continue
+    if ( ("$i" == "karmaxview") && ( ! -d $build_dir/$i ) ) continue
+    if ( ! -d $build_dir/$i ) then
+	echo "Making directory: $build_dir/$i"
+	mkdir $build_dir/$i
+    endif
+    if ( ! -r $build_dir/$i/dependfile ) then
+	echo "Creating empty file: $build_dir/$i/dependfile"
+	touch $build_dir/$i/dependfile
+    endif
+    echo $i
+    echo include \$\(KARMAROOT\)/source/lib/makefiles/\$\(OS\)/$i > $build_dir/$i/GNUmakefile
+end
+
+exit 0

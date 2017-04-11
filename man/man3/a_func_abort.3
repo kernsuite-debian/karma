@@ -1,0 +1,32 @@
+.TH A_FUNC_ABORT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+a_func_abort \- Print a warning message.
+.SH SYNOPSIS
+.B #include <karma_a.h>
+.sp
+.B void a_func_abort
+.sp
+(CONST char *function_name, CONST char *reason)
+.SH DESCRIPTION
+This routine will print an error message to the standard error
+indicating that a function is terminating abnormally.
+.IP \fIfunction_name\fP 1i
+The name of the function.
+.IP \fIreason\fP 1i
+The reason for the function aborting.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

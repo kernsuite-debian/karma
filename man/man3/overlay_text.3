@@ -1,0 +1,47 @@
+.TH OVERLAY_TEXT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_text \- Add a text string to an overlay object list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_text
+.sp
+(KOverlayList olist, char *string, unsigned int type,
+double x, double y, CONST char *colourname,
+char *fontname, flag clear_under)
+.SH DESCRIPTION
+Add a text string to an overlay object list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIstring\fP 1i
+The text string.
+.IP \fItype\fP 1i
+The type of the co-ordinate. See <-overlay_COORDINATE_TYPES-> for a
+list of supported co-ordinate types.
+.IP \fIx\fP 1i
+The horizontal position of the co-ordinate.
+.IP \fIy\fP 1i
+The vertical position of the co-ordinate.
+.IP \fIcolourname\fP 1i
+The colourname.
+.IP \fIfontname\fP 1i
+The font name.
+.IP \fIclear_under\fP 1i
+If TRUE, then both the foreground and background of the
+characters will be drawn.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

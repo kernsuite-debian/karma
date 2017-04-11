@@ -1,0 +1,51 @@
+.TH MT 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+mt \- Routines to manage a thread pool (MultiThreading support)
+.SH PURPOSE
+These routines are meant to provide management of a pool of threads which
+may execute concurrently.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fImt_create_pool\fP 1i
+Create a pool of threads which may have jobs launched onto it.
+.IP \fImt_get_shared_pool\fP 1i
+Create or get the shared thread pool.
+.IP \fImt_destroy_pool\fP 1i
+This routine will destroy a thread pool.
+.IP \fImt_destroy_all_pools\fP 1i
+This routine will destroy all thread pools.
+.IP \fImt_num_threads\fP 1i
+Get the number of threads in a thread pool.
+.IP \fImt_num_processors\fP 1i
+Get the number of processors available on the system.
+.IP \fImt_launch_job\fP 1i
+Launch a job onto a thread pool.
+.IP \fImt_setlock\fP 1i
+Set a lock on a thread pool.
+.IP \fImt_new_thread_info\fP 1i
+Register new thread information for the threads in a pool.
+.IP \fImt_get_thread_info\fP 1i
+Get the thread information pointer for a pool of threads.
+.IP \fImt_wait_for_all_jobs\fP 1i
+Wait for all previously launched jobs to complete.
+.IP \fImt_get_notify_pipe\fP 1i
+Create/get the notification pipe.
+.IP \fImt_disable_notify_pipe\fP 1i
+Disable the notification pipe.
+.IP \fImt_PROTO_func\fP 1i
+Perform a job.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

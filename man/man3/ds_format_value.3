@@ -1,0 +1,48 @@
+.TH DS_FORMAT_VALUE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_format_value \- Format a data value into a string.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_format_value
+.sp
+(char string[STRING_LENGTH], double value,
+CONST char *value_name, double scale, double offset,
+double format_value,
+CONST packet_desc *pack_desc, CONST char *packet)
+.SH DESCRIPTION
+Format a data value into a string.
+.IP \fIstring\fP 1i
+The string to write to.
+.IP \fIvalue\fP 1i
+The (raw) value to format.
+.IP \fIvalue_name\fP 1i
+The name of the value to format.
+.IP \fIscale\fP 1i
+The scale value to apply to the data. If this is TOOBIG and
+<<pack_desc>> and <<packet>> are non-NULL, the routine uses the scale and
+offset attached to the data. See <-ds_get_data_scaling-> for details.
+.IP \fIoffset\fP 1i
+The offset to apply after scaling the data.
+.IP \fIformat_value\fP 1i
+The (raw) value to use for beautifying the unit name.
+.IP \fIpack_desc\fP 1i
+The packet descriptor containing associated data scaling.
+.IP \fIpacket\fP 1i
+The packet containing associated data scaling.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

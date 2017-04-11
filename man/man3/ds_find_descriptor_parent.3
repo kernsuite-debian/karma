@@ -1,0 +1,34 @@
+.TH DS_FIND_DESCRIPTOR_PARENT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_find_descriptor_parent \- Find the index of the data structure containing a descriptor.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_find_descriptor_parent
+.sp
+(CONST multi_array *multi_desc,
+void *pointer)
+.SH DESCRIPTION
+Find the index of the data structure containing a descriptor.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor to search.
+.IP \fIpointer\fP 1i
+The pointer to search for. This may be an array or packet
+descriptor.
+.SH RETURN VALUE
+The index of the top-level data structure if found, else the
+number of data structures.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

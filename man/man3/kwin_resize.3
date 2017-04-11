@@ -1,0 +1,48 @@
+.TH KWIN_RESIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_resize \- Resize a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_resize
+.sp
+(KPixCanvas canvas, flag clear, int xoff, int yoff,
+int width, int height)
+.SH DESCRIPTION
+This routine will register a resize in the pixel canvas size.
+This will cause any refresh routines registered for the canvas to be
+called. This routine is meant to be called by an X event handler for the
+underlying window, however the routine is available for all graphics
+systems.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIclear\fP 1i
+If TRUE, the canvas is first cleared.
+.IP \fIxoff\fP 1i
+The horizontal offset of the canvas origin (upper-left corner)
+relative to the parent window.
+.IP \fIyoff\fP 1i
+The vertical offset of the canvas origin (upper-left corner)
+relative to the parent window.
+.IP \fIwidth\fP 1i
+The new width (horizontal extent) of the canvas. If this is less
+than 1 canvas is not resized, it is only refreshed.
+.IP \fIheight\fP 1i
+The new height (vertical extent) of the canvas. If this is less
+than 1 canvas is not resized, it is only refreshed.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

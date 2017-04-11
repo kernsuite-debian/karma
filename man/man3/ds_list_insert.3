@@ -1,0 +1,40 @@
+.TH DS_LIST_INSERT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_list_insert \- Insert an entry into the fragmented section of a linked list.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_list_insert
+.sp
+(list_header *list_head, list_entry *new_entry,
+list_entry *entry)
+.SH DESCRIPTION
+Insert an entry into the fragmented section of a linked list.
+.IP \fIlist_head\fP 1i
+The list header.
+.IP \fInew_entry\fP 1i
+The entry to be inserted.
+.IP \fIentry\fP 1i
+The list entry which is to be moved beyond the new entry. If this
+is NULL, the new entry is inserted at the start of the fragmented section
+of the list.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Inserting an entry into a list with no entries in the fragmented
+section is safe (however, in this case <<entry>> must be NULL).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

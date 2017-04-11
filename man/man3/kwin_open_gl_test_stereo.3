@@ -1,0 +1,31 @@
+.TH KWIN_OPEN_GL_TEST_STEREO 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_open_gl_test_stereo \- Test if a particular visual can display stereo.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_open_gl_test_stereo
+.sp
+(Display *display, XVisualInfo *visinfo)
+.SH DESCRIPTION
+Test if a particular visual can display stereo.
+.IP \fIdisplay\fP 1i
+The X11 display handle.
+.IP \fIvisinfo\fP 1i
+The XVisualInfo structure.
+.SH RETURN VALUE
+TRUE if stereo is available, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

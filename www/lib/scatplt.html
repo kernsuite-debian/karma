@@ -1,0 +1,324 @@
+<html><head><title>Package: scatplt</title></head> 
+<body>
+<center><h1>The "scatplt" Package</h1></center>    These routines are meant to provide a high level mechanism to create and
+    manipulate scatter plots (2-dimensional slices of Karma data structures).
+    These scatter plots utilise the world canvases available in the
+    <a href=canvas.html#canvas>canvas</a> package, hence the resulting code is device independent.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=scatplt></a></table><h4>Functions</h4><table><tr><td><a href=scatplt.html#scatplt_init>scatplt_init</a></td><td>Initialise the package for a particular canvas.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_create>scatplt_create</a></td><td>Create scatter plot.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_set_active>scatplt_set_active</a></td><td>Set active state for a scatter plot controlled refresh.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_set_all_inactive>scatplt_set_all_inactive</a></td><td>Clear active state all scatter plots controlled refresh.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_destroy>scatplt_destroy</a></td><td>Destroy scatter plot.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_register_destroy_func>scatplt_register_destroy_func</a></td><td>Register destroy callback.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_get_worldcanvas>scatplt_get_worldcanvas</a></td><td>Get the world canvas for a scatter plot.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_find_closest>scatplt_find_closest</a></td><td>Find the closest point to a specified position.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_find_closest_all>scatplt_find_closest_all</a></td><td>Find the closest point to a specified position.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_create_vv>scatplt_create_vv</a></td><td>Create a value-value scatter plot from two 2D sub-arrays.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_create_smart_cursor>scatplt_create_smart_cursor</a></td><td>Create a smart cursor.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=scatplt.html#scatplt_PROTO_destroy_func>scatplt_PROTO_destroy_func</a></td><td>Process a destroy event on a scatter plot.
+</td></tr>
+<tr><td><a href=scatplt.html#scatplt_PROTO_cursor_func>scatplt_PROTO_cursor_func</a></td><td>Process a smart cursor event on a scatter plot.
+</td></tr>
+</table><h4>Tables</h4><table><tr><td><a href=scatplt.html#scatplt_CANVAS_ATTRIBUTES>scatplt_CANVAS_ATTRIBUTES</a></td><td>List of canvas attributes for scatter plots
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=scatplt_init></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>scatplt_init</b><i>    (KWorldCanvas canvas, ...)
+</i><br><p>    This routine will initialise the <a href=scatplt.html#scatplt>scatplt</a> package for a
+    particular world canvas. Calling this routine causes a number of callback
+    routines internal to the package to be registered with the canvas (such
+    as refresh and position event callbacks). This routine must be called
+    before creating scatter plots.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas object.
+<br><li><i>... :</i> 
+    The list of parameter attribute-key attribute-value-ptr pairs
+    must follow. This list must be terminated with the SCATPLT_CANVAS_ATT_END.
+    See <a href=scatplt.html#scatplt_CANVAS_ATTRIBUTES>scatplt_CANVAS_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_create></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KScatterPlot
+ <b>scatplt_create</b><i>    (KWorldCanvas canvas, unsigned int num_points,
+			     CONST double *x, CONST double *y, uaddr key)
+</i><br><p>    This routine will create a scatter plot object from two arrays of
+    values. At a later time, this scatter plot may be made visible. This
+    routine will not cause the canvas to be refreshed.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas onto which the scatter plot may be drawn. Many
+    scatter plots may be associated with a single canvas.
+<br><li><i>num_points :</i> 
+    The number of points in this scatter plot.
+<br><li><i>x :</i> 
+    The array of horizontal values.
+<br><li><i>y :</i> 
+    The array of vertical values.
+<br><li><i>key :</i> 
+    The key to associate with this scatter plot.
+<br></ul><b>Returns:</b>     A KScatterPlot object on success, NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KScatterPlot will be automatically destroyed if the canvas is
+    destroyed.
+</ul><p><hr> <a name=scatplt_set_active></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>scatplt_set_active</b><i>    (KScatterPlot plot, flag active, flag force_refresh,
+			 flag refresh_if_changed, flag exclusive, uaddr key)
+</i><br><p>    This routine will make a scatter plot active or inactive.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The scatter plot.
+<br><li><i>active :</i> 
+    If TRUE, the scatter plot is made active, else it is made
+    inactive.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the scatter plot
+    active state changed.
+<br><li><i>exclusive :</i> 
+    If TRUE and <em>active</em> is TRUE, make this scatter plot the only
+    active one for this canvas. Other scatter plots for this canvas will be
+    made inactive.
+<br><li><i>key :</i> 
+    The key to use for inactivation of other scatter plots. If this is 0
+    then all other scatter plots will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_set_all_inactive></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>scatplt_set_all_inactive</b><i>    (KWorldCanvas canvas, flag force_refresh,
+			       flag refresh_if_changed, uaddr key)
+</i><br><p>    This routine will make all scatter plots associated with a
+    world canvas inactive.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>force_refresh :</i> 
+    If TRUE, the canvas is always refreshed.
+<br><li><i>refresh_if_changed :</i> 
+    If TRUE, the canvas is refreshed if the active state
+    of any scatter plot changed.
+<br><li><i>key :</i> 
+    The key to use for inactivation of scatter plots. If this is 0 then
+    all scatter plots will be made inactive.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>scatplt_destroy</b><i>    (KScatterPlot plot)
+</i><br><p>    This routine will destroy a scatter plot.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The scatter plot.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_register_destroy_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>scatplt_register_destroy_func</b><i>    (KScatterPlot plot,
+					     void (*func) (), void *info)
+</i><br><p>    This routine will register a destroy function for a scatter plot.
+    The function will be called when the canvas is destroyed. Many destroy
+    functions may be registered per plot. The first function registered is
+    the first function called upon destruction.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The scatter plot.
+<br><li><i>func :</i> 
+    The function that is called when the plot is destroyed. The
+    prototype function is <a href=scatplt.html#scatplt_PROTO_destroy_func>scatplt_PROTO_destroy_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_get_worldcanvas></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KWorldCanvas
+ <b>scatplt_get_worldcanvas</b><i>    (KScatterPlot plot)
+</i><br><p>    Get the world canvas for a scatter plot.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The scatter plot.
+<br></ul><b>Returns:</b>     The KWorldCanvas object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_find_closest></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>scatplt_find_closest</b><i>    (KScatterPlot plot, double xin, double yin,
+			   double *xout, double *yout, uaddr *index,
+			   flag subpixel, double search_radius)
+</i><br><p>    Find the closest point to a specified position.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The scatter plot to search.
+<br><li><i>xin :</i> 
+    The X world co-ordinate to search from.
+<br><li><i>yin :</i> 
+    The Y world co-ordinate to search from.
+<br><li><i>xout :</i> 
+    The exact X co-ordinate of the point found is written here.
+<br><li><i>yout :</i> 
+    The exact Y co-ordinate of the point found is written here.
+<br><li><i>index :</i> 
+    The index of the point is written here.
+<br><li><i>subpixel :</i> 
+    If TRUE, search with subpixel resolution so that multiple points
+    lying on the same screen pixel will be searched to find the closest point.
+    If FALSE, the search will terminate early on the first point which lies on
+    the same screen pixel. It is highly recommended that subpixel resolution is
+    not used, as it may be orders of magnitude slower.
+<br><li><i>search_radius :</i> 
+    The maximum search radius. Points further from the search
+    position will be ignored.
+<br></ul><b>Returns:</b>     TRUE if a close point was found, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_find_closest_all></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>scatplt_find_closest_all</b><i>    (KWorldCanvas canvas, double xin, double yin,
+			       double *xout, double *yout, uaddr *index,
+			       KScatterPlot *plot,
+			       flag subpixel, double search_radius)
+</i><br><p>    Find the closest point to a specified position.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The canvas to search. All active scatter plots are searched.
+<br><li><i>xin :</i> 
+    The X world co-ordinate to search from.
+<br><li><i>yin :</i> 
+    The Y world co-ordinate to search from.
+<br><li><i>xout :</i> 
+    The exact X co-ordinate of the point found is written here.
+<br><li><i>yout :</i> 
+    The exact Y co-ordinate of the point found is written here.
+<br><li><i>index :</i> 
+    The index of the point is written here.
+<br><li><i>plot :</i> 
+    The KScatterPlot the point was found in is written here.
+<br><li><i>subpixel :</i> 
+    If TRUE, search with subpixel resolution so that multiple points
+    lying on the same screen pixel will be searched to find the closest point.
+    If FALSE, the search will terminate early on the first point which lies on
+    the same screen pixel. It is highly recommended that subpixel resolution is
+    not used, as it may be orders of magnitude slower.
+<br><li><i>search_radius :</i> 
+    The maximum search radius. Points further from the search
+    position will be ignored.
+<br></ul><b>Returns:</b>     TRUE if a close point was found, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_create_vv></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KScatterPlot
+ <b>scatplt_create_vv</b><i>    (KWorldCanvas canvas,
+				CONST char *array1,CONST array_desc *arr_desc1,
+				unsigned int xdim1, unsigned int ydim1,
+				unsigned int type1,
+				double scale1, double offset1, KwcsAstro ap1,
+				unsigned int num_restr1,
+				CONST char **restr_names1,
+				CONST double *restr_values1,
+				double *min1, double *max1,
+				uaddr xstart, uaddr xlen,
+				uaddr ystart, uaddr ylen,
+				CONST char *array2,CONST array_desc *arr_desc2,
+				unsigned int xdim2, unsigned int ydim2,
+				unsigned int type2,
+				double scale2, double offset2, KwcsAstro ap2,
+				unsigned int num_restr2,
+				CONST char **restr_names2,
+				CONST double *restr_values2,
+				double *min2, double *max2)
+</i><br><p>    Create a value-value scatter plot from two 2D sub-arrays.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas onto which the scatter plot may be drawn.
+<br><li><i>array1 :</i> 
+    The data for the first array.
+<br><li><i>arr_desc1 :</i> 
+    The array descriptor for the first array.
+<br><li><i>xdim1 :</i> 
+    The X dimension index for the first array.
+<br><li><i>ydim1 :</i> 
+    The Y dimension index for the first array.
+<br><li><i>type1 :</i> 
+    The data type for the first array.
+<br><li><i>scale1 :</i> 
+    The data scaling for the first array.
+<br><li><i>offset1 :</i> 
+    The data offset for the first array.
+<br><li><i>ap1 :</i> 
+    The KwcsAstro object for the first array.
+<br><li><i>num_restr1 :</i> 
+    The number of restrictions for the first array.
+<br><li><i>restr_names1 :</i> 
+    The array of restriction names for the first array.
+<br><li><i>restr_values1 :</i> 
+    The restriction values for the first array.
+<br><li><i>min1 :</i> 
+    The minimum value from the first array. This is updated.
+<br><li><i>max1 :</i> 
+    The maximum value from the first array. This is updated.
+<br><li><i>xstart :</i> 
+    The X dimension start of the sub-array in the first array.
+<br><li><i>xlen :</i> 
+    The X dimension length of the sub-array in the first array.
+<br><li><i>ystart :</i> 
+    The Y dimension start of the sub-array in the first array.
+<br><li><i>ylen :</i> 
+    The Y dimension length of the sub-array in the first array.
+<br><li><i>array2 :</i> 
+    The data for the second array.
+<br><li><i>arr_desc2 :</i> 
+    The array descriptor for the second array.
+<br><li><i>xdim2 :</i> 
+    The X dimension index for the second array.
+<br><li><i>ydim2 :</i> 
+    The Y dimension index for the second array.
+<br><li><i>type2 :</i> 
+    The data type for the second array.
+<br><li><i>scale2 :</i> 
+    The data scaling for the second array.
+<br><li><i>offset2 :</i> 
+    The data offset for the second array.
+<br><li><i>ap2 :</i> 
+    The KwcsAstro object for the second array.
+<br><li><i>num_restr :</i> 
+    The number of restrictions for the second array.
+<br><li><i>restr_names :</i> 
+    The array of restriction names for the second array.
+<br><li><i>restr_values :</i> 
+    The restriction values for the second array.
+<br><li><i>min2 :</i> 
+    The minimum value from the second array. This is updated.
+<br><li><i>max2 :</i> 
+    The maximum value from the second array. This is updated.
+<br></ul><b>Returns:</b>     A KScatterPlot object on success, NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The KScatterPlot will be automatically destroyed if the canvas is
+    destroyed.
+</ul><p><hr> <a name=scatplt_create_smart_cursor></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>scatplt_create_smart_cursor</b><i>    (KWorldCanvas canvas, double search_radius,
+				  flag (*func) (), void *info)
+</i><br><p>    Create a smart cursor.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The world canvas.
+<br><li><i>search_radius :</i> 
+    The maximum search radius. Points further from the search
+    position will be ignored.
+<br><li><i>func :</i> 
+    The function that is called when the plot is destroyed. The
+    prototype function is <a href=scatplt.html#scatplt_PROTO_cursor_func>scatplt_PROTO_cursor_func</a>.
+<br><li><i>info :</i> 
+    The arbitrary function information pointer.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=scatplt_PROTO_destroy_func></a> void
+ <b>scatplt_PROTO_destroy_func</b><i>    (void *info)
+</i><br><p>    Process a destroy event on a scatter plot.
+<p><b>Parameters:</b><ul><li><i>info :</i> 
+    An arbitrary function information pointer.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=scatplt_PROTO_cursor_func></a> flag
+ <b>scatplt_PROTO_cursor_func</b><i>    (KScatterPlot plot, double x, double y,
+				uaddr index, void **info)
+</i><br><p>    Process a smart cursor event on a scatter plot.
+<p><b>Parameters:</b><ul><li><i>plot :</i> 
+    The KScatterPlot object the cursor event matched.
+<br><li><i>x :</i> 
+    The X co-ordinate of the point matched.
+<br><li><i>y :</i> 
+    The Y co-ordinate of the point matched.
+<br><li><i>index :</i> 
+    The index of the point matched.
+<br><li><i>info :</i> 
+    A pointer to the arbitrary information pointer.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Tables</h2></center><hr> <a name=scatplt_CANVAS_ATTRIBUTES><b>scatplt_CANVAS_ATTRIBUTES</b></a> List of canvas attributes for scatter plots
+<p> <table><tr><td>Name                           </td><td>Get Type       </td><td>Set Type      </td><td>Meaning
+</td></tr><tr><td>
+</td></tr><tr><td>SCATPLT_CANVAS_ATT_END         </td><td>               </td><td>              </td><td>End of varargs list             
+
+</table><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

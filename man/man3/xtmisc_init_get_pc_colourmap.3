@@ -1,0 +1,41 @@
+.TH XTMISC_INIT_GET_PC_COLOURMAP 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+xtmisc_init_get_pc_colourmap \- Get PseudoColour colourmap with a minimum of free colourcells.
+.SH SYNOPSIS
+.B #include <karma_xtmisc.h>
+.sp
+.B Colormap xtmisc_init_get_pc_colourmap
+.sp
+(Screen *screen, unsigned int min_ccells,
+unsigned int num_ccells, flag verbose,
+flag *avoid_flash)
+.SH DESCRIPTION
+Get PseudoColour colourmap with a minimum of free colourcells.
+.IP \fIscreen\fP 1i
+The screen.
+.IP \fImin_ccells\fP 1i
+The minimum number of free colourcells required.
+.IP \fInum_ccells\fP 1i
+The number of free colourcells desired.
+.IP \fIverbose\fP 1i
+If TRUE, verbose messages are given.
+.IP \fIavoid_flash\fP 1i
+If this is not NULL and a PseudoColour colourmap has to be
+created to satisfy colour requirements and a TrueColour visual is available
+then TRUE is written here, else FALSE is written here.
+.SH RETURN VALUE
+The colourmap.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,82 @@
+.TH PANEL 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+panel \- Routines to manipulate control panels (user interface code)
+.SH PURPOSE
+These routines are meant to provide high level definition and processing of
+command lines.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIpanel_create\fP 1i
+Create a control panel object.
+.IP \fIpanel_create_group\fP 1i
+Create a panel to contain a group.
+.IP \fIpanel_add_item\fP 1i
+Add an item to a panel.
+.IP \fIpanel_push_onto_stack\fP 1i
+Push a control panel object onto the control panel stack.
+.IP \fIpanel_pop_from_stack\fP 1i
+Pop last pushed control panel object from control panel stack.
+.IP \fIpanel_process_command_with_stack\fP 1i
+Process a command.
+.IP \fIpanel_put_history_with_stack\fP 1i
+Put history into Karma multi_array structure.
+.IP \fIpanel_set_extra_comment_string\fP 1i
+Set the extra comment string for a panel.
+.IP \fIpanel_item_register_callback\fP 1i
+Register a function to be called when a panel item changes.
+.IP \fIpanel_PROTO_decode_func\fP 1i
+Command line decode callback.
+.IP \fIpanel_PROTO_change_func\fP 1i
+Item change callback.
+.SH TABLE panel_ATTRIBUTES
+List of attributes for panel item objects
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                    Type            Meaning
+
+PIA_END                                 End of varargs list
+PIA_NUM_CHOICE_STRINGS  unsigned int    Number of choice strings
+PIA_CHOICE_STRINGS      char **         Choice strings
+PIA_ARRAY_LENGTH        unsigned int *  Current array length
+PIA_ARRAY_MIN_LENGTH    unsigned int    Minimum array length
+PIA_ARRAY_MAX_LENGTH    unsigned int    Maximum array length
+PIA_CHOICE_COMMENTS     char **         Choice string comments
+PIA_MIN_VALUE           double          Minimum value
+PIA_MAX_VALUE           double          Maximum value
+PIA_TOP_OF_PANEL        flag            Place item at top of panel
+.TE
+.SH TABLE panel_ITEM_TYPES
+List of Karma data types
+
+.TS
+l l l
+_ _ _
+l l l.
+Name              value_ptr type     Meaning
+
+PIT_FUNCTION      void (*) (char *)  Execute function
+PIT_EXIT_FORM                        Exit form
+PIT_FLAG          flag *             Flag type
+PIT_CHOICE_INDEX  unsigned int *     Choice index (requires:
+                                     PIA_NUM_CHOICE_STRINGS and
+                                     PIA_CHOICE_STRINGS)
+PIT_GROUP         KControlPanel      Group item
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

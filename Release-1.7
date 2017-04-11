@@ -1,0 +1,269 @@
+Subject: <wf> package renamed to <w>
+Date: 15-DEC-1996
+
+SUMMARY:
+  The experimental package <wf> has been renamed to the <w> package.
+
+CODE AFFECTED:
+  All code which uses the <wf> package needs to be changed.
+
+HEADER CHANGED:
+  <karma_wf.h>
+
+DESCRIPTION:
+  The experimental <wf> package has been renamed to the experimental
+<w> package, with almost exactly the same functionality. The only
+difference is that the new <w_register_notify_func> function does not
+return a KCallbackFunc object.
+
+REASON:
+  The <wf> package was inconveniently placed. The new <w> package is
+below the <dm> package, allowing the native descriptor management
+support to also dispatch work functions.
+-------------------------------------------------------------------------------
+Subject: CHANGES to <dm> package
+Date: 15-DEC-1996
+
+SUMMARY:
+  The experimental <dm> has changed.
+
+CODE AFFECTED:
+  All code which uses the <dm> package needs to be changed.
+
+HEADER CHANGED:
+  <karma_dm.h>
+
+DESCRIPTION:
+  The <dm_manage> function has had an extra parameter added.
+The new <dm_native_setup> function must be called to setup the <dm>
+package for native descriptor management.
+The <dm_poll> function has been renamed to the <dm_native_poll>
+function.
+-------------------------------------------------------------------------------
+Subject: CHANGES to <conn> package
+Date: Wed, 1 Jan 1997 20:49:53 +1100
+
+SUMMARY:
+  The <conn_register_managers> function is now obsolete.
+
+HEADER CHANGED:
+  <karma_conn.h>
+
+DESCRIPTION:
+  The <conn_register_managers> function is now obsolete, and will be
+removed in Karma v2.0. The new <conn_initialise> function should be
+used instead, after the <dm> package has been initialised.
+
+REASON:
+  Event management on I/O objects is now based on the <dm> package,
+rather than the <chm> package. This allows Unix file descriptors to be
+managed as well as Channel objects.
+
+For native (i.e. non-GUI) applications, the <dm_native_setup> function
+should be called prior to <conn_initialise>.
+
+For Xt-based applications, the <dmx_register_app_context> function
+should be called prior to <conn_initialise>.
+-------------------------------------------------------------------------------
+Subject: NEW FUNCTION <iarray_put_double>
+Date: Wed, 1 Jan 1997 20:57:29 +1100
+
+SUMMARY:
+  The <iarray_put_double> function has been created.
+
+HEADER CHANGED:
+  <karma_iarray.h>
+
+DESCRIPTION:
+  The <iarray_put_double> function will attach a named double
+precision floating point number to an Intelligent Array. This function
+is more convenient to use than the <iarray_put_named_value> which was
+previously required to add double precision attachments.
+-------------------------------------------------------------------------------
+Subject: CHANGES to <xtmisc_init_app_initialise>
+Date: 1-JUL-1997
+
+SUMMARY:
+  The <xtmisc_init_app_initialise> function interface has changed.
+
+HEADER CHANGED:
+  <karma_xtmisc.h>
+
+CODE AFFECTED:
+  All code which uses the <xtmisc_init_app_initialise> function must
+be changed.
+
+DESCRIPTION:
+  The <xtmisc_init_app_initialise> experimental function has changed
+to a double varargs-list interface. The previous interface had a
+single varargs-list which contained the Xt resources.
+
+REASON:
+  The <xtmisc_init_app_initialise> function has been modified a few
+times over it's life, in order to add parameters. To allow for future
+additions without the need to modify applications, the function has
+been changed to a double varargs-list interface.
+-------------------------------------------------------------------------------
+Many more changes have happened since JUL-1997, but this level of
+detailed change reporting has been dropped. This release includes many
+optimsations, bug fixes and new features. Some of the new features are
+listed below.
+
+- Support for Glish events in most visualisation tools
+
+- New Karma Programming Manual available under the Karma home page
+
+- Supported selection of trays in PostScript widget (i.e. select
+transparency tray)
+
+- New tool <kview> which allows you to load 2 datasets and switch
+between them in various ways (i.e. view one as an image and the other
+as a contour map, or vice versa). You can also view slices other than
+the conventional XY (RA-DEC); XZ (RA-VEL) and ZY (VEL-DEC) slices may
+also be viewed. You can also select the profile axis (rather than just
+a fixed Z profile). Image blinking is also supported
+
+- Improved axis labelling (supports RA,DEC,Frequency,Velocity,TIME,BEAM
+and JY/BEAM scales, as well as generic linear scales). This is the
+first "production release" of the axis labelling
+
+- Axis labelling also available in Profile windows
+
+- Added "Show Beam" control in View Control window for <kview>. This
+allows you to overlay the beam onto your image. This requires the data
+to have the "BMAJ", "BMIN" and "BPA" keywords
+
+- Complete Unix manual pages for all library packages and functions
+
+- Added support for Galactic co-ordinates (GLON,GLAT)
+
+- New "filter" control in file browser lets you subcube and decimate
+(average N pixels together) as you read. This is *very* handy when
+reading large datasets
+
+- Support for automatic uncompression of Karma and FITS files
+(this requires <gzip> to be in your PATH)
+
+- <koords> now handles intensity inverted images (i.e. photographic
+negatives), provided you "Reverse" the colourmap
+
+- Support for displaying greyscale and false-colour images on
+TrueColour-only displays (most PC hardware is limited to 8bit-only or
+TrueColour-only at any one time). Note that "24 bit" display is often
+used to refer to TrueColour display, but that TrueColour displays may
+be 8 bit, 15 bit, 16 bit, 24 bit and many other possibilities,
+depending on your hardware
+
+- Support for displaying 24bit TrueColour images on TrueColour and
+DirectColour displays of any depth
+
+- Support for statistics display (with 's' key) on any monoscopic
+(i.e. non-stereoscopic) display
+
+- New Karma User Manual available under the Karma home page
+
+- Took account of scaling of RA/DEC cell size with frequency. In
+cubes with high bandwidth, the cell size change becomes significant
+(chromatic aberration distortion)
+
+- Support DRAO (Dominion Radio Astronomy Observatory) catalogue-based
+datasets
+
+- Support AIPS (Astronomical Image Processing System) catalogue-based
+datasets
+
+- Added support for writing PPM movies
+
+- New tool <kpolar> to interactively convert images from cartesian to
+polar co-ordinates
+
+- New facility for interactively drawing overlay onto an image (select
+"Editor" from "Overlays" menu). See user manual
+
+- Added text display and edit field in file browser to display and
+modify current directory
+
+- Shell-like variable expansion of directory name typed into file
+browser
+
+- New extension mechanism to load external code
+
+- Added support for AIPS++ Image datasets. This requires the
+<image2fits> programme (see the user manual for details). A
+precompiled binary is available at:
+ftp://ftp.atnf.csiro.au/pub/software/karma/other-packages/aips++/
+
+- Added support for Starlink Images (see the user manual for
+details). Thanks to Karl Glazebrook for writing <sdf2karma>. A
+precompiled binary is available at:
+ftp://ftp.atnf.csiro.au/pub/software/karma/other-packages/starlink/
+
+- Created new panner display
+
+- Added buttons to intensity scaling widget to clip to 95%, 98%,
+99.5%, 99.9% and 99.99% of the number of data values
+
+- Added cursor key bindings: you can now move the cursor a screen
+pixel at a time using the keyboard
+
+- Support for datagram (unreliable) connections, including IP/UDP
+
+- Support for ATM SVCs using AAL5
+
+- Support for shared memory (SHM) arrays, which reduces transfer time
+  of large arrays to zero
+
+- Added support for loading overlays from an ASCII file. Thanks to
+  Steven Gibson of the University of Calgary
+
+- Support foreign data formats in <kminmax>, turning it into a useful
+  diagnostic tool for data files with illegal values
+
+- Added new cursor event communication with <event> package
+
+- Added support for reading tga (Targa TrueVision), GIF and TIFF
+  images
+
+- Added support for linear co-ordinate types in <overlay> package
+
+- New <kview-rgb> tool to allow easy overlaying of images in red,
+  green and blue
+
+- New "Contours" option in Overlay Menu which allows loading of
+  an unlimited number of contour images in all tools
+
+- Added support for FORE Systems ATM interface
+  Thanks to Jane LLoyd of Uni of Wollongong
+
+- Added menu to ZoomPolicy to select between pixel replication and
+  bi-linear interpolation when expanding images
+
+- Supported unloading of datasets in <kview> and <kpvslice>
+
+- Added "thin" linewidth control for PostScript output
+
+- Added 'l' binding to most tools to write cursor position to
+  standard output
+
+- Added control-C trap to GUI tools so some long operations can be
+  aborted without killing tool
+
+- Added dirbutton config file support to file browser
+
+- Added 'v' and 'V' key bindings to show image pixel values in a
+  rectangle
+
+- Added histogram style to profile display
+
+- Create new command-line tool <krotate> for easy "de-rotation" of
+  images (i.e. align the longitude axis with the horizontal axis)
+
+- Added profile display to colourmap control panel
+
+- Added support for multiple cubes/slice windows to <kpvslice>
+
+- Added support for IRAF files (requires IRAF to be installed)
+
+- Created <kreadtape> utility which reads raw (i.e. not written using
+  tar) files from a tape and writes to disc, using filenames derived
+  from the headers

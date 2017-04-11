@@ -1,0 +1,33 @@
+.TH PANEL_PROTO_DECODE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+panel_PROTO_decode_func \- Command line decode callback.
+.SH SYNOPSIS
+.B #include <karma_panel.h>
+.sp
+.B flag panel_PROTO_decode_func
+.sp
+(char *command, FILE *fp)
+.SH DESCRIPTION
+This function is called whenever a command string is to be
+processed.
+.IP \fIcommand\fP 1i
+The command string.
+.IP \fIfp\fP 1i
+The output file.
+.SH RETURN VALUE
+TRUE if more commands should be processed, else FALSE,
+indicating that the "exit" command was entered.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

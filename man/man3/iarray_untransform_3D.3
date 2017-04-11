@@ -1,0 +1,44 @@
+.TH IARRAY_UNTRANSFORM_3D 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_untransform_3D \- Transform an array by iterating over the output array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_untransform_3D
+.sp
+(iarray out_arr, KwcsAstro out_ap,
+iarray in_arr, KwcsAstro in_ap,
+void (*func) (void *info, unsigned long length,
+double *x, double *y, double *z),
+void *info)
+.SH DESCRIPTION
+Transform an array by iterating over the output array.
+.IP \fIout_arr\fP 1i
+The output array. The new grid must already be defined.
+.IP \fIout_ap\fP 1i
+The output KwcsAstro object.
+.IP \fIin_arr\fP 1i
+The input array.
+.IP \fIin_ap\fP 1i
+The input KwcsAstro object.
+.IP \fIfunc\fP 1i
+The function used to convert from output world co-ordinates to input
+world co-ordinates.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer passed to <<func>>.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

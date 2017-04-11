@@ -1,0 +1,36 @@
+.TH MODULE_PROCESS_ARGVS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+module_process_argvs \- Process a shell command line.
+.SH SYNOPSIS
+.B #include <karma_module.h>
+.sp
+.B void module_process_argvs
+.sp
+( int argc, char **argv, flag (*unknown_func) () )
+.SH DESCRIPTION
+This routine will process a shell command line, using the
+<-panel_process_command_with_stack-> routine.
+.IP \fIargc\fP 1i
+The number of command line arguments.
+.IP \fIargv\fP 1i
+The command line arguments. These do not include command used to
+execute the process ( cf. main() ).
+.IP \fIunknown_func\fP 1i
+The function which is called when the command is not
+understood. The prototype function is <-panel_PROTO_decode_func->.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

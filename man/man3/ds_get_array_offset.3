@@ -1,0 +1,33 @@
+.TH DS_GET_ARRAY_OFFSET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_array_offset \- Compute offset of a co-ordinate in an array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned long ds_get_array_offset
+.sp
+(CONST array_desc *arr_desc,
+CONST unsigned long *coordinates)
+.SH DESCRIPTION
+Compute offset of a co-ordinate in an array.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIcoordinates\fP 1i
+The array of dimension co-ordinates which specifies the
+co-ordinate.
+.SH RETURN VALUE
+The offset of the co-ordinate in packets.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

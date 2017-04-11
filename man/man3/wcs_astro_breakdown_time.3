@@ -1,0 +1,51 @@
+.TH WCS_ASTRO_BREAKDOWN_TIME 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_breakdown_time \- Breakdown a time value into components.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B void wcs_astro_breakdown_time
+.sp
+(unsigned int *year, unsigned int *month,
+unsigned int *day_of_month,
+unsigned int *day_of_year,
+unsigned int *hours, unsigned int *minutes,
+double *seconds, unsigned int *whole_seconds,
+double *subseconds, double time_val)
+.SH DESCRIPTION
+Breakdown a time value into components.
+.IP \fItime_val\fP 1i
+The time in Modified Julian Date (units of seconds).
+.IP \fIyear\fP 1i
+The year is written here.
+.IP \fImonth\fP 1i
+The month is written here.
+.IP \fIday_of_month\fP 1i
+The day of the month is written here.
+.IP \fIhours\fP 1i
+The hours are written here. This may be NULL.
+.IP \fIminutes\fP 1i
+The minutes are written here. This may be NULL.
+.IP \fIseconds\fP 1i
+The seconds are written here. This may be NULL.
+.IP \fIwhole_seconds\fP 1i
+The integer truncated seconds are written here. This may be
+NULL.
+.IP \fIsubseconds\fP 1i
+The fractional seconds are written here. This may be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

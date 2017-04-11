@@ -1,0 +1,481 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Command-line Tools</TITLE>
+<META NAME="description" CONTENT="Command-line Tools">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html433" HREF="node14.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html431" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html425" HREF="node12.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html435" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html436" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html434" HREF="node14.html">A Chromatic Aberration</A>
+<B>Up:</B> <A NAME="tex2html432" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html426" HREF="node12.html">11 Superimposing Images</A>
+<BR> <P>
+<H1><A NAME="SECTION001300000000000000000">Command-line Tools</A></H1>
+<P>
+<A NAME="chaptercommandline">&#160;</A><A NAME="1797">&#160;</A>
+<P>
+<B>Karma</B> has a number of command-line tools to manipulate data
+files. There are tools for converting from foreign data formats to
+Karma format, tools to convert from Karma to foreign formats as well
+as tools to manipulate data files in various ways (i.e. regridding).
+<P>
+<H1><A NAME="SECTION001310000000000000000">12.1 Common Interface</A></H1>
+<P>
+All of the command-line tools use the <A NAME="tex2html68" HREF="../lib/panel.html"><B>panel</B></A> package in the
+Karma library to implement a common ``feel''. This package defines a
+set of <EM>panel items</EM> which are simply parameters you can set or
+actions you can take. The tools may be started in interactive mode by
+giving no arguments to the tool, or they may be started in batch mode,
+giving a set of arguments to the tool. Once the tool has completed
+processing, it exits.
+<P>
+<H1><A NAME="SECTION001320000000000000000">12.2 Interactive Mode</A></H1>
+<P>
+To start a tool in interactive mode, just type in its name at the
+shell prompt. You should then see a prompt with the name of the tool
+followed by a ``&gt; ''. In this discussion it is assumed that you will
+press the return key after typing something in.
+<P>
+Probably the first thing you will want to do is press <TT>?</TT> to see a
+list of parameters and actions. On the left hand side you will see all
+the parameter and action names. For parameters, you will then see zero
+or more values after the parameter name. For actions, you will not see
+any values. Finally, you will see a ``#'' character usually followed
+by a short description of the parameter or action.
+<P>
+To specify a parameter or action, type in its name, followed by any
+arguments required. You can type shorter, non-ambiguous name if you
+wish. You can only specify a single parameter or action on one line.
+<P>
+<H2><A NAME="SECTION001321000000000000000">12.2.1 Actions</A></H2>
+<P>
+Actions are things that happen when you type their name. Some actions
+require no further arguments (such as the <TT>exit</TT> action), while
+others may require any number of arguments. The brief description for
+the action should indicate what arguments are needed.
+<P>
+<H2><A NAME="SECTION001322000000000000000">12.2.2 Scalar Parameters</A></H2>
+<P>
+These are parameters which take as argument a single scalar value or
+string. After typing in the name of the parameter, followed by a
+space, you must type in the value or string.
+<P>
+Strings do not need to be enclosed in quotes <EM>unless they contain
+a space</EM>. You may use either single or double quotes to enclose a
+string. Naturally, you must use the same type of quote character to
+close the string as you used to open it. To encase a quote character
+inside a string, just type it if you used the other type of quote
+character to enclose the string, or type the quote character twice if
+the string is enclosed by the same type of quote.
+<P>
+Scalar values may be integer or floating point, and may be real or
+complex depending on the type of the parameter. If it is a complex
+value, the real and imaginary components must be separated by a space.
+<P>
+<H2><A NAME="SECTION001323000000000000000">12.2.3 Vector Parameters</A></H2>
+<P>
+A vector parameter is an array of scalar parameters. The parameter is
+displayed with a trailing <TT>[n..m]</TT> after its name. The value <I>n</I>
+is the minimum number of elements in the array and the value <I>m</I> is
+the maximum number of elements in the array.
+<P>
+After typing in the name of the parameter, you must type in the array
+of scalar elements. Elements in the array must be separated by a
+space. You must type in at least the minimum number of elements,
+otherwise your input is rejected. If you type in more than the maximum
+number of elements allowed, the excess elements are discarded.
+<P>
+If you wish to append elements to an existing array, simply type <TT>
++</TT> followed by the parameter name and then followed by the scalar
+elements.
+<P>
+If you want to empty out the contents of an array, just type the name
+of the parameter without any elements after it. This does not work if
+the minimum number of elements is greater than 1.
+<P>
+<H2><A NAME="SECTION001324000000000000000">12.2.4 Choice Parameters</A></H2>
+<P>
+A choice parameter allows you to choose from a selection of
+possibilities. If you wish to see what all the possibilities are, type
+<TT>??</TT> and you will see a list of choices for each choice
+parameter.
+<P>
+After typing in the name of the parameter, type in your choice. You
+can type the minimum non-ambiguous choice string if you wish.
+<P>
+<H2><A NAME="SECTION001325000000000000000">12.2.5 ``Eternal'' Actions</A></H2>
+<P>
+There are a few actions which are common to all tools, which allow you
+to exit the ``panel'' (exit the tool), with or without saving
+parameters, and others which manipulate the communications
+infrastructure.
+<P>
+<H2><A NAME="SECTION001326000000000000000">12.2.6 Other Arguments</A></H2>
+<P>
+Most tools define some other arguments which are not parameters or
+actions. They are usually filenames to process, although they can be
+other things too (like dimension to filter along). An unlimited number
+of other arguments may be typed in one line.
+<P>
+Some tools will show the other arguments by printing ``General
+usage:&nbsp;'' followed by the arguments.
+<P>
+<H2><A NAME="SECTION001327000000000000000">12.2.7 Exiting Interactive Mode</A></H2>
+<P>
+The <TT>abort</TT> action will abort the tool without saving any
+parameters. The <TT>exit</TT> and <TT>quit</TT> actions will exit the tool
+after saving parameters. Pressing control-D has the same effect as
+typing <TT>exit</TT>.
+<P>
+<H1><A NAME="SECTION001330000000000000000">12.3 Batch Mode</A></H1>
+<P>
+Another term for ``batch mode'' is ``shell mode'', which just means
+that the tool is started from the shell, with arguments, and exits
+when it has completed. From the shell, you can pass in any number of
+parameters and actions. The limitation in interactive mode of only
+typing a single parameter or action is removed.
+<P>
+<H2><A NAME="SECTION001331000000000000000">12.3.1 Passing in Parameters and Actions</A></H2>
+<P>
+You simply need to place the <TT>-</TT> character in front of the name of
+the parameter or action (with no intervening space). This marks the
+start of a new parameter or action. All subsequent shell arguments are
+treated arguments for the action or parameter, until the the list is
+broken. A new parameter or action name with a preceeding <TT>-</TT> will
+break the list, as will a solitary <TT>-</TT> character. The solitary
+<TT>-</TT> character marks the start of remaining ``other arguments'',
+after which there can be no further action or parameters.
+<P>
+<H2><A NAME="SECTION001332000000000000000">12.3.2 Passing in Strings</A></H2>
+<P>
+If a string contains spaces, you should enclose it in quotes on the
+shell command line. If you are familiar with how most shells work, you
+will know that it removes enclosing quotes before passing them onto
+the programme. Karma deals with this by checking if a shell argument
+has a space in it, and if it does, it puts a pair of double quotes
+around the argument again. This should be transparent to you unless
+you start doing esoteric things with embedded quotes.
+<P>
+<H2><A NAME="SECTION001333000000000000000">12.3.3 Passing in Negative Values</A></H2>
+<P>
+Passing in a negative number is not a problem, because this case is
+trapped (note all parameter or action names must begin with an
+alphabetic character). If you wish to pass in a string with a
+preceeding <TT>-</TT> then you should type in <TT>-</TT> at the shell
+command line. The double minus will be reduced to a single minus
+before being used.
+<P>
+<H2><A NAME="SECTION001334000000000000000">12.3.4 Passing in Other Arguments</A></H2>
+<P>
+If you do not pass in any parameters or actions, then you can just
+type in the other arguments as you would in interactive mode. However,
+if you preceed the other arguments with parameters or actions, you
+need to type a solitary <TT>-</TT> between the last argument to the last
+parameter or action and the first ``other argument''. This solitary
+<TT>-</TT> should be surrounded by at least one space on either side.
+<P>
+<H1><A NAME="SECTION001340000000000000000">12.4 Saving and Restoring Parameters</A></H1>
+<P>
+Each of the command-line tools will look for a file called ``.<B>
+name</B>.defaults'', where <EM>name</EM> is the name of the programme. This
+file (the ``defaults'' file) contains saved parameters which will be
+read by the tool as it starts. First the current working directory is
+searched, and then each parent directory in turn, until either a
+defaults file is found, or the root directory is reached. If still a
+defaults file is not found, then the tool will look in the <TT>
+.karma/module-defaults</TT> directory under the users home directory, and
+then finally it looks in the <TT>$KARMABASE/defaults</TT> directory. If
+no defaults file can be found then internally hard-coded defaults are
+used.
+<P>
+Upon normal exit, each tool will write its defaults file in the
+current working directory.
+<P>
+<H1><A NAME="SECTION001350000000000000000">12.5 List of Tasks</A></H1>
+<P>
+<H2><A NAME="SECTION001351000000000000000">12.5.1 chlen</A></H2>
+<A NAME="1840">&#160;</A><A NAME="1841">&#160;</A>
+<A NAME="1842">&#160;</A>
+<P>
+This tool will change the length of a dimension in a Karma file. You
+can increase the length of a dimension by zero-padding or resampling
+and decrease the length by truncating, windowing or resampling. The
+<TT>option</TT> parameter controls whether a dimension is resampled,
+truncated or padded. The resampling option is the same as a
+one-dimensional regridding.
+<P>
+If you have chosen to resample a dimension, then the <TT>
+resample_option</TT> parameter controls whether a nearest neighbour copy
+or linear interpolation is performed.
+<P>
+The general usage for the programme is:
+<P>
+<TT>chlen infile dimension_name</TT>
+<P>
+where <TT>infile</TT> is the input data file and <TT>dimension_name</TT>
+is the name of the dimension to change. Note that the input file may
+be of any format.
+<P>
+<H3><A NAME="SECTION001351100000000000000">Examples</A></H3>
+<P>
+If you had a spectral-line datacube and you wanted to resample the
+velocity axis to, say, 600 data pixels, the following options would be
+needed:
+<PRE>resample_option     linear_interpolation
+option              resample
+num_coordinates     600</PRE>
+<P>
+and then you would type something like:<BR> <TT>mycube VELO-HEL</TT>
+<P>
+<H2><A NAME="SECTION001352000000000000000">12.5.2 images2karma</A></H2>
+<A NAME="1851">&#160;</A>
+<P>
+This tool will convert multiple images of any format into a Karma
+cube. This tool is not implemented with the <A NAME="tex2html69" HREF="../lib/panel.html"><B>panel</B></A> and hence
+does not have settable parameters or an interactive mode. The usage
+for this programme is:
+<P>
+<TT>images2karma infiles [...] outfile</TT>
+<P>
+The input images must be of the same shape, size and type, but do not
+need to be of the same file format.
+<P>
+<H2><A NAME="SECTION001353000000000000000">12.5.3 karma2ppm</A></H2>
+<A NAME="1855">&#160;</A><A NAME="sectionkarma2ppm">&#160;</A>
+<P>
+This tool will convert a Karma image or cube file into one or more
+<B>PPM</B> (Portable Pixel Map) files. The <B>PPM</B> format is a 24bit
+TrueColour image format. A <B>Karma</B> image or cube (movie) may be
+either TrueColour or PseudoColour with an associated colourmap in the
+file.
+<P>
+If the input image or cube is greyscale (i.e. no colour information is
+available), then it is still possible to write out a <B>PPM</B> file if
+you supply a colourmap file, previously saved with a
+<A NAME="tex2html70" HREF="../lib/Cmapwinpopup.html"><B>Cmapwinpopup</B></A> widget (section <A HREF="node3.html#Cmapwinpopup">2.2</A>). You
+specify the colourmap file using the <TT>cmapfile</TT> parameter.
+<P>
+The general usage for this programme is:
+<P>
+<TT>karma2ppm infile outfile</TT>
+<P>
+where <TT>infile</TT> is the input <B>Karma</B> file and <TT>outfile</TT> is
+the output <B>PPM</B> file. If the input file is a 3-dimensional array,
+a sequence of numbered output files will be written.
+<P>
+<H3><A NAME="SECTION001353100000000000000">Writing other Image Formats</A></H3>
+<P>
+You can also use <B>&lt;karma2ppm&gt;</B> to write out images in other
+popular formats, such as <B>GIF</B>, <B>TIFF</B>, <B>Targa TrueVision</B>
+and so on. To do this requires that you have the NetPBM tools
+installed. These tools are freely available and very popular, as they
+allow conversion between many different image formats. To use this
+facility, you need to set the <TT>converter</TT> and <TT>extension</TT>
+parameters. The <TT>converter</TT> is the name of the programme which
+converts PPM/PNM images to the image format you desire. The <TT>
+extension</TT> is the conventional filename extension for that image
+format.
+<P>
+For example, if you wanted to convert a <B>Karma</B> image or cube to
+a <B>TIFF</B> image or sequence of images, you would need the
+following settings:<BR> 
+<TT>converter pnmtotiff<BR> 
+     extension tiff
+</TT>
+<P>
+On the other hand, if you wanted to generate <B>GIF</B> images, you
+would need the following settings:<BR> 
+<TT>converter ppmtogif<BR> 
+     extension gif
+</TT>
+<P>
+Notice how the the <B>TIFF</B> converter seems to require <B>PNM</B>
+files whereas the <B>GIF</B> converter seems to require <B>PPM</B>
+files. This is not a problem, since <B>PNM</B> (Portable aNy Map) is
+the generic format and <B>PPM</B> (Portable Pixel Map) is a specific
+subset of <B>PNM</B>.
+<P>
+<H3><A NAME="SECTION001353200000000000000">Changing the Output Image Size</A></H3>
+<P>
+If you wish to write out images of a different size from your input
+image/cube, then you will need to use the <TT>out_width</TT> and <TT>
+out_height</TT> parameters. If your input is smaller than this, the image
+will be blank-filled and centred onto the desired output image
+size. If the input is larger than this, it will be centred and
+truncated. No pixel averaging or replication is performed.
+<P>
+<H2><A NAME="SECTION001354000000000000000">12.5.4 kdecimate</A></H2>
+<A NAME="1894">&#160;</A><A NAME="1895">&#160;</A>
+<P>
+This tool will decimate a cube, averaging a specified number of values
+along an axis to produce a single value. This decimation is performed
+along all 3 axes. This tool provides a simplified version of the
+<A NAME="tex2html71" HREF="../lib/LoadAndDecimate.html"><B>LoadAndDecimate</B></A> widget (section <A HREF="node3.html#LoadAndDecimate">2.1.1</A>). The
+only reason to use it is if you are developing batch mode scripts to
+process large number of datacubes.
+<P>
+The general usage for this programme is:
+<P>
+<TT>kdecimate infile outfile</TT>
+<P>
+<H2><A NAME="SECTION001355000000000000000">12.5.5 kminmax</A></H2>
+<A NAME="1900">&#160;</A>
+<A NAME="1901">&#160;</A><A NAME="1902">&#160;</A><A NAME="1903">&#160;</A>
+<A NAME="1904">&#160;</A><A NAME="1905">&#160;</A><A NAME="1906">&#160;</A>
+<A NAME="1907">&#160;</A>
+<P>
+This tool will show the minimum and maximum value in a datafile. It
+will also display the number of blank values (TOOBIGs) and the number
+of illegal values. Note that illegal values should never occur, and
+are the result of an incorrectly written file. Illegal values will
+cause problems for Karma programmes (such as a segmentation fault or
+other crash). Hence this programme is an excellent diagnostic to
+determine if the data you are giving to a programme is legal.
+<P>
+This programme supports many data formats. The general usage for this
+programme is:
+<P>
+<TT>kminmax infile dataname</TT>
+<P>
+where <TT>infile</TT> is the file to load and <TT>dataname</TT> is the name
+of the data elements to process (this is usually the same as the unit
+name, for example ``JY/BEAM'' or ``HZ'').
+<P>
+<H2><A NAME="SECTION001356000000000000000">12.5.6 kprinthead</A></H2>
+<A NAME="1912">&#160;</A><A NAME="1913">&#160;</A>
+<P>
+This tool will show the header in a datafile. It supports many data
+formats. The general usage for this programme is:
+<P>
+<TT>kprinthead infile</TT>
+<P>
+where <TT>infile</TT> is the file to print the header for.
+<P>
+<H2><A NAME="SECTION001357000000000000000">12.5.7 kregrid</A></H2>
+<A NAME="1917">&#160;</A><A NAME="1918">&#160;</A><A NAME="1919">&#160;</A>
+<P>
+This tool will regrid one or more input images or a cube onto an
+output image or cube. It is possible to use this tool to mosaic
+several images or cubes together onto a new grid. The general usage
+for this programme is:
+<P>
+<TT>kregrid infile</TT>
+<P>
+where <TT>infile</TT> is the input file to regrid or is a file containing
+a list of files to regrid and mosaic. The output filename will be
+``kregrid_<TT>infile</TT>.kf''
+<P>
+<H2><A NAME="SECTION001358000000000000000">12.5.8 krotate</A></H2>
+<A NAME="1924">&#160;</A><A NAME="1925">&#160;</A><A NAME="1926">&#160;</A>
+<P>
+This tool will rotate (by regridding) an image or cube such that the
+longitude axis (Right Ascension or Galactic Longitude) is aligned with
+the horizontal axis. This is often used to rotate images to a more
+convenient or familiar orientation (e.g. images from the Hubble Space
+Telescope). The general usage for this programme is:
+<P>
+<TT>krotate infile outfile</TT>
+<P>
+where <TT>infile</TT> is the input file to rotate and <TT>outfile</TT> is
+the name of the output (rotated) file you wish to create. If you
+specify an extension of <TT>.fits</TT> then a FITS file will be written,
+otherwise a Karma file will be written. You may use the <TT>
+projection</TT> option to control the output projection (the default is to
+use the same projection as the input).
+<P>
+<H2><A NAME="SECTION001359000000000000000">12.5.9 ksend</A></H2>
+<A NAME="1933">&#160;</A><A NAME="1934">&#160;</A>
+<A NAME="1935">&#160;</A><A NAME="1936">&#160;</A>
+<P>
+This tool allows you to send commands to various GUI tools. The
+commands include loading a file, writing PostScript to a file, setting
+display ranges and so on. This can be useful for batch processing many
+different datasets using the same control settings.
+<P>
+If you wanted to load the files <TT>mom0</TT> and <TT>mom1</TT> into the
+<A HREF="node4.html#chapterkvis"><B>&lt;kvis&gt;</B></A> programme, displaying <TT>
+mom0</TT> as an image and <TT>mom1</TT> as contours and then write PostScript
+to the <TT>ps</TT> file, you would first need to start <B>&lt;kvis&gt;</B>
+and set up the controls appropriately to display contours. Then you
+can use the command:
+<P>
+<TT>ksend -add_connection unix kvis multi_array -load ARRAY:FILE0 mom0<BR> 
+-load ARRAY:FILE0 mom1 -print ps</TT>
+<P>
+A variation of this would be to generate a Portable Pixel Map
+(<B>PPM</B>) file with name <TT>fred.ppm</TT>:
+<P>
+<TT>ksend -add_connection unix kvis multi_array -load ARRAY:FILE0 mom0<BR> 
+-load ARRAY:FILE0 mom1 -ppm fred.ppm</TT>
+<P>
+You can use the above command many times, each time specifying
+different files, and hence obtain batch mode operation.
+<P>
+If you wanted to set the intensity display range to 1.0 and 1.5
+for dataset 1 you would do something like this:
+<P>
+<TT>ksend -add_connection unix kvis multi_array<BR> 
+-rclip &quot;Dataset 1&quot; 1.0 1.5</TT>
+<P>
+Alternatively, if you wanted to set the intensity display range to 95%
+of the data, you would do something like this:
+<P>
+<TT>ksend -add_connection unix kvis multi_array<BR> 
+-hclip &quot;Dataset 1&quot; 0.95</TT>
+<P>
+<H2><A NAME="SECTION0013510000000000000000">send-contours</A></H2>
+<A NAME="sectionsendcontours">&#160;</A>
+<A NAME="1953">&#160;</A><A NAME="1954">&#160;</A>
+<P>
+This tool allows you to load an image and compute contour overlays
+which may then be sent to any GUI programme for display. This facility
+is only useful when you want to add contours to a tool which doesn't
+already have built-in support.
+<P>
+For each extra dataset you wish to display as contours, you need to
+run a copy of the <B>&lt;send-contours&gt;</B> programme. To start the
+programme, type:
+<P>
+<TT>send-contours</TT>
+<P>
+Once in the tool, you will need to specify the desired contours
+levels. This interface is quite primitive, requiring you to enter the
+actual values for each level. For example, if you have a 1st moment
+map with interesting contours at 1.419 GHz and 1.420 GHz, you would
+type the following:
+<P>
+<TT>contour_levels 1.419e9 1.420e9</TT>
+<P>
+You then need to specify the input file containing the image data:
+<P>
+<TT>in_file infile</TT>
+<P>
+where <TT>infile</TT> is the input filename. Next you need to make a
+connection from the tool to a GUI tool. Typically, this will be the
+<B>&lt;kvis&gt;</B> programme which is running on the same machine. For
+example, type:
+<P>
+<TT>add_connection unix 7605 2D_overlay</TT>
+<P>
+The number <TT>7605</TT> is the Karma port number of the GUI tool, and is
+displayed in the title bar of the GUI tool. Other GUI tools will have
+different port numbers. Once you have done all this setup, type <TT>
+go</TT> and you should see your new contours. The normal GUI functions for
+zooming are supported. You can use the <TT>empty_list</TT> command to
+remove the contours and clean up the display.
+<P>
+<HR><A NAME="tex2html433" HREF="node14.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html431" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html425" HREF="node12.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html435" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html436" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html434" HREF="node14.html">A Chromatic Aberration</A>
+<B>Up:</B> <A NAME="tex2html432" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html426" HREF="node12.html">11 Superimposing Images</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

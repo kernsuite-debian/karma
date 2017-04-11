@@ -1,0 +1,35 @@
+.TH DISPDATA_GET_NEXT_BLINKSTATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_get_next_blinkstate \- Get next blinkstate for a window.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataBlinkState dispdata_get_next_blinkstate
+.sp
+(KDisplayDataBlinkState blinkstate, flag circular, void **info)
+.SH DESCRIPTION
+Get next blinkstate for a window.
+.IP \fIblinkstate\fP 1i
+The current blinkstate.
+.IP \fIcircular\fP 1i
+If TRUE, the list of blinkstates is treated as circular.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer is written here. If this is NULL,
+nothing is written here.
+.SH RETURN VALUE
+A KDisplayDataBlinkState object. NULL is returned if there are no
+more blinkstates associated with this window.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

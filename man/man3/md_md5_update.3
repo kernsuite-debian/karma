@@ -1,0 +1,33 @@
+.TH MD_MD5_UPDATE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+md_md5_update \- Add data to an MD5 context.
+.SH SYNOPSIS
+.B #include <karma_md.h>
+.sp
+.B void md_md5_update
+.sp
+(MD5Context ctx, CONST unsigned char *buf, unsigned int len)
+.SH DESCRIPTION
+Add data to an MD5 context.
+.IP \fIctx\fP 1i
+The MD5 context.
+.IP \fIbuf\fP 1i
+The block of bytes to add.
+.IP \fIlen\fP 1i
+The length of the block.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

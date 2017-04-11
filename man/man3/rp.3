@@ -1,0 +1,45 @@
+.TH RP 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+rp \- Routines to manage cryptographically strong random pools
+.SH PURPOSE
+These routines are meant to provide management of cryptographically strong
+random pools of bytes. Partially random data (entropy) may be added and
+extracted from a pool. As data is added, the pool is stirred to randomly
+distribute the bits. Data extracted from a random pool may be used in the
+generation of unpredictable (secure) session keys for cryptographic
+algorithms.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIrp_create\fP 1i
+Create a pool of random bytes.
+.IP \fIrp_add_bytes\fP 1i
+Add bytes (entropy) to a random pool.
+.IP \fIrp_get_bytes\fP 1i
+Get bytes of data from a random pool.
+.IP \fIrp_destroy\fP 1i
+Destroy a random pool of bytes, erasing all information.
+.IP \fIrp_destroy_all\fP 1i
+Destroy all randpools.
+.IP \fIrp_add_time_noise\fP 1i
+Add time-based entropy to a randpool.
+.IP \fIrp_register_destroy_func\fP 1i
+Register randpool destroy callback.
+.IP \fIrp_PROTO_hash_func\fP 1i
+Hash callback.
+.IP \fIrp_PROTO_destroy_func\fP 1i
+Destroy callback.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

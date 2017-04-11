@@ -1,0 +1,45 @@
+.TH ST_EXPR_EXPAND 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+st_expr_expand \- Expand an expression using Borne Shell-like unquoted rules.
+.SH SYNOPSIS
+.B #include <karma_st.h>
+.sp
+.B flag st_expr_expand
+.sp
+(char *output, unsigned int length, CONST char *input,
+CONST char *(*get_variable) (CONST char *variable,
+void *info),
+void *info, FILE *errfp)
+.SH DESCRIPTION
+Expand an expression using Borne Shell-like unquoted rules.
+.IP \fIoutput\fP 1i
+The output expanded expression is written here.
+.IP \fIlength\fP 1i
+The size of the output buffer.
+.IP \fIinput\fP 1i
+The input expression. This may equal <<output>>.
+.IP \fIget_variable\fP 1i
+A function which will be used to get variable values. If
+this returns NULL, the environment is searched instead. If this is NULL,
+only the environment is searched.
+.IP \fIinfo\fP 1i
+An arbitrary pointer passed to <<get_variable>>.
+.IP \fIerrfp\fP 1i
+Diagnostic messages are written here. If this is NULL the global
+stderr is used instead.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

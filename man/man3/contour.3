@@ -1,0 +1,99 @@
+.TH CONTOUR 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+contour \- Routines to manipulate contour images
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate contour images (2-dimensional slices of Karma data structures).
+These contour images utilise the world canvases available in the
+<-canvas-> package, hence the resulting code is device independent.
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIcontour_init\fP 1i
+Initialise the package for a particular canvas.
+.IP \fIcontour_create_group\fP 1i
+Create a container to hold a group of KContourImage objects.
+.IP \fIcontour_destroy_group\fP 1i
+Destroy a group of KContourImage objects.
+.IP \fIcontour_create_restr\fP 1i
+Create contour image from 2D slice with restrictions.
+.IP \fIcontour_create_from_iarray\fP 1i
+Create a contour image from an Intelligent Array.
+.IP \fIcontour_create_sequence\fP 1i
+Create a sequence of contour images from a 3D slice.
+.IP \fIcontour_create_sequence_from_iarray\fP 1i
+Create a sequence of contour images from an Intelligent Array.
+.IP \fIcontour_destroy\fP 1i
+Destroy contour image.
+.IP \fIcontour_create_viewable_group\fP 1i
+Create container to hold group of KViewableContourImage objects.
+.IP \fIcontour_destroy_viewable_group\fP 1i
+Destroy a group of KViewableContourImage objects.
+.IP \fIcontour_create_viewable\fP 1i
+Create viewable contour image.
+.IP \fIcontour_create_viewable_sequence\fP 1i
+Create a sequence of viewable contour images.
+.IP \fIcontour_destroy_viewable\fP 1i
+Destroy a viewable contour image.
+.IP \fIcontour_set_active\fP 1i
+Set active state for a viewable contour image.
+.IP \fIcontour_set_all_inactive\fP 1i
+Clear active state for all viewable contour images in a group.
+.IP \fIcontour_register_data_change\fP 1i
+Notify data for contour image has changed.
+.IP \fIcontour_set_canvas_attributes\fP 1i
+Set the contour image attributes for a world canvas.
+.IP \fIcontour_set_levels\fP 1i
+Set/update the contour levels for a KContourImage object.
+.IP \fIcontour_set_group_levels\fP 1i
+Set/update contour levels for a group of KContourImage objects.
+.IP \fIcontour_set_level_styles\fP 1i
+Set/update contour level styles for KViewableContourImage object.
+.IP \fIcontour_set_group_level_styles\fP 1i
+Set/update clevel styles for KViewableContourImage objects.
+.IP \fIcontour_get_worldcanvas\fP 1i
+Get the world canvas for a viewable contour image.
+.IP \fIcontour_parse_levels\fP 1i
+Parse a textual contour level specification.
+.IP \fIcontour_unscale_levels\fP 1i
+Unscale contour levels.
+.SH TABLE contour_CANVAS_ATTRIBUTES
+List of canvas attributes for contourable images
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                           Get Type       Set Type      Meaning
+
+CONTOUR_CANVAS_ATT_END                                      End of varargs list
+CONTOUR_CANVAS_ATT_COLOURNAME                 CONST char *  Colour name
+.TE
+.SH TABLE contour_CONTOUR_ATTRIBUTES
+List of attributes for contourable images
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                       Get Type       Set Type Meaning
+
+CONTOUR_CIMAGE_ATT_END                             End of varargs list
+CONTOUR_CIMAGE_ATT_ACTIVE  flag *         flag     Active state
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

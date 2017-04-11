@@ -1,0 +1,42 @@
+.TH FOREIGN_FITS_READ 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_fits_read \- Read a FITS file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_fits_read
+.sp
+(CONST char *filename,
+flag convert_int_to_float, flag sanitise,
+...)
+.SH DESCRIPTION
+Read a FITS file.
+.IP \fIfilename\fP 1i
+The name of the file.
+.IP \fIconvert_int_to_float\fP 1i
+If TRUE, integer FITS data is converted to floating
+point data.
+.IP \fIsanitise\fP 1i
+If TRUE, FITS axes with length 1 are ignored. This is highly
+recommended.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_FITS_READ_END. See <-foreign_ATT_FITS_READ-> for a list of defined
+attributes.
+.SH RETURN VALUE
+A multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

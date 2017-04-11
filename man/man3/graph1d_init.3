@@ -1,0 +1,33 @@
+.TH GRAPH1D_INIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_init \- Initialise the package for a particular canvas.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B void graph1d_init
+.sp
+(KWorldCanvas canvas)
+.SH DESCRIPTION
+This routine will initialise the <-graph1d-> package for a
+particular world canvas. Calling this routine causes a number of callback
+routines internal to the package to be registered with the canvas (such
+as refresh and position event callbacks). This routine must be called
+before creating viewable graphs.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

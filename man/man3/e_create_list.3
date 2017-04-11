@@ -1,0 +1,38 @@
+.TH E_CREATE_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+e_create_list \- Create a periodic event management list.
+.SH SYNOPSIS
+.B #include <karma_e.h>
+.sp
+.B KPeriodicEventList e_create_list
+.sp
+(unsigned long interval_us,
+unsigned long interval_s, void *list_info)
+.SH DESCRIPTION
+Create a periodic event management list.
+.IP \fIinterval_us\fP 1i
+The microsecond component time between timeouts on this list.
+.IP \fIinterval_s\fP 1i
+The second component time between timeouts on this list.
+.IP \fIlist_info\fP 1i
+An arbitrary pointer passed to event functions on this list.
+.SH RETURN VALUE
+A KPeriodicEventList on success, else the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The specified interval may be rounded up to the system timer
+resolution (10ms on many systems).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

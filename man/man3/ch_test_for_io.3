@@ -1,0 +1,32 @@
+.TH CH_TEST_FOR_IO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_test_for_io \- Test if I/O possible on channel.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B flag ch_test_for_io
+.sp
+(Channel channel)
+.SH DESCRIPTION
+This routine will test if a channel object is capable of
+supporting reading and writing operations. Most channels fall under this
+category. The notable exceptions are the dock channel and channels created
+by a call to <<ch_attach_to_asynchronous_descriptor>>.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+TRUE if the channel is capable of reading and writing, else FALSE
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

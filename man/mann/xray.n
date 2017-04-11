@@ -1,0 +1,110 @@
+.\" Copyright (C) 1996-1999  Richard Gooch
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.\" Richard Gooch may be reached by email at  rgooch@atnf.csiro.au
+.\" The postal address is:
+.\"   Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+.\"
+.\"	xray.1		Richard Gooch	18-JUN-1999
+.\"
+.TH XRAY 1 "18 Jun 1999" "Karma Distribution"
+.SH NAME
+xray \- volume rendering tool
+.SH SYNOPSIS
+.B xray
+[
+.B -private_cmap
+]
+[
+.B -num_colours
+]
+[
+.B -fullscreen
+]
+[
+.B -verbose
+]
+[
+.B -no_work_funcs
+]
+[
+.B -no_slice_win
+]
+[
+.B -no_images
+]
+[
+.B -show_timings
+]
+.SH DESCRIPTION
+The \fIxray\fP module is an interactive tool which volume renders a
+data volume.
+
+The \fIxray\fP module is almost entirely GUI based, with the
+exception of the options described below, its operation being
+(hopefully) self-evident. There is a WWW page documenting this module
+as well as many other visualisation tools.
+.SH OPTIONS
+.TP
+.B \-private_cmap
+This option will force \fIxray\fP to use a private colourmap for
+its PseudoColour window. Otherwise, \fIxray\fP trys to allocate
+colours from the default colourmap.
+.TP
+.B \-num_colours
+This option specifies the number of colour cells that \fIxray\fP
+will try to allocate for its PsuedoColour window upon startup. If less
+colours are available it allocates as many as possible (minimum 2).
+.TP
+.B \-fullscreen
+This option will make the image display window take up the entire
+screen. This is useful if you wish to make a video of the data. You
+will need to configure your window manager to cycle the window
+stacking order when a special key is pressed (e.g. the "Back" key with
+the Open Look window manager).
+.TP
+.B \-verbose
+This option makes \fIxray\fP display verbose information about what it
+is doing. This not of general interest unless debugging or you want to
+see timing information.
+.TP
+.B \-no_work_funcs
+This option prevents \fIxray\fP from building a cache in the
+background. Note that the cache is still built if you choose the
+"always smooth" render mode. This option is really only useful when
+experimenting with code optimisation.
+.TP
+.B \-no_slice_win
+This option prevents the 3D slice window from being created. This is
+mostly useful if you are running over a slow network and don't care
+about viewing orthogonal slices.
+.TP
+.B \-no_images
+This option prevents rendered images from being displayed. This option
+is really only useful when experimenting with code optimisation.
+.TP
+.B \-show_timings
+This option will display timing information.
+.SH SEE ALSO
+.BR kview (1)
+http://www.atnf.csiro.au/karma/
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABILITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+wuarchive.wustl.edu:graphics/graphics/packages/karma

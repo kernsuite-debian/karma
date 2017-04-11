@@ -1,0 +1,31 @@
+.TH M_SHM_ALLOC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_shm_alloc \- Allocate a shared memory segment.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B int m_shm_alloc
+.sp
+(uaddr size, mode_t prot)
+.SH DESCRIPTION
+Allocate a shared memory segment.
+.IP \fIsize\fP 1i
+The size in bytes of the segment.
+.IP \fIprot\fP 1i
+The protection mask.
+.SH RETURN VALUE
+The shared memory ID on success, else -1.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,32 @@
+.TH VIEWIMG_DRAW_EDIT_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_draw_edit_object \- Draw edit object into array associated with viewable image.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B flag viewimg_draw_edit_object
+.sp
+(ViewableImage vimage, char *object)
+.SH DESCRIPTION
+This routine will draw one edit object to the 2-dimensional data
+associated with a viewable image object.
+.IP \fIvimage\fP 1i
+The viewable image.
+.IP \fIobject\fP 1i
+The edit object.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

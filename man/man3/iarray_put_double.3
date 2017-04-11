@@ -1,0 +1,34 @@
+.TH IARRAY_PUT_DOUBLE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_put_double \- Attach a double precision data value to an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_put_double
+.sp
+(iarray array, CONST char *name, double value)
+.SH DESCRIPTION
+This routine will put a unique named float value into the
+underlying Karma general data structure of an "Intelligent Array".
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element.
+.IP \fIvalue\fP 1i
+The value of the data.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

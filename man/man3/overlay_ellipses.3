@@ -1,0 +1,56 @@
+.TH OVERLAY_ELLIPSES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_ellipses \- Add many ellipses to an overlay list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B unsigned int overlay_ellipses
+.sp
+(KOverlayList olist, unsigned int num_ellipses,
+unsigned int *ctypes, double *cx, double *cy,
+unsigned int *rtypes, double *rx, double *ry,
+CONST char *colourname, flag filled)
+.SH DESCRIPTION
+This routine will add a number of ellipses to an overlay object
+list. These ellipses will form a single object. Using this routine is far
+more efficient than calling <-overlay_ellipse-> repeatedly.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fInum_ellipses\fP 1i
+The number of ellipses.
+.IP \fIctypes\fP 1i
+The types of the centre co-ordinates. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIcx\fP 1i
+The horizontal positions of the centre co-ordinates.
+.IP \fIcy\fP 1i
+The vertical positions of the centre co-ordinates.
+.IP \fIrtypes\fP 1i
+The types of the radii co-ordinates. If this is NULL, all
+co-ordinates are assumed to be world co-ordinates. See
+<-overlay_COORDINATE_TYPES-> for a list of supported co-ordinate types.
+.IP \fIrx\fP 1i
+The horizontal radii.
+.IP \fIry\fP 1i
+The vertical radii.
+.IP \fIcolourname\fP 1i
+The colour name.
+.IP \fIfilled\fP 1i
+If TRUE the ellipses will be filled.
+.SH RETURN VALUE
+The objectID on success, else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

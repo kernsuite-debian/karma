@@ -1,0 +1,31 @@
+.TH DS_GET_COORDINATE_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_coordinate_array \- Get co-ordinate array for a dimension.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B double * ds_get_coordinate_array
+.sp
+(CONST dim_desc *dimension)
+.SH DESCRIPTION
+This routine will get a co-ordinate array for a dimension. If the
+dimension is regularly spaced, then the co-ordinate array is computed, else
+if it is irregularly spaced, it is copied from the dimension descriptor.
+.IP \fIdimension\fP 1i
+The dimension descriptor.
+.SH RETURN VALUE
+A pointer to a co-ordinate array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

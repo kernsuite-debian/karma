@@ -1,0 +1,34 @@
+.TH XTMISC_SET_ICON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xtmisc_set_icon \- Create an icon for an application's top level widget.
+.SH SYNOPSIS
+.B #include <karma_xtmisc.h>
+.sp
+.B void xtmisc_set_icon
+.sp
+( Widget top_level,
+void (*icon_func) (Display *display, Pixmap pixmap,
+int width, int height) )
+.SH DESCRIPTION
+Create an icon for an application's top level widget.
+.IP \fItop_level\fP 1i
+The top level widget.
+.IP \fIicon_func\fP 1i
+The function to use when writing the icon. The prototype
+function is <-xtmisc_PROTO_icon_func->.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

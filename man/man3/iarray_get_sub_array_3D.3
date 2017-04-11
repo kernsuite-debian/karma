@@ -1,0 +1,54 @@
+.TH IARRAY_GET_SUB_ARRAY_3D 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_get_sub_array_3D \- Create a 3-dimensional alias Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_get_sub_array_3D
+.sp
+(iarray array,
+int startz, int starty, int startx,
+unsigned int zlen, unsigned int ylen,
+unsigned int xlen)
+.SH DESCRIPTION
+This routine will create an "Intelligent Array" which is an alias
+or a sub-array of another "Intelligent Array". Subsequent modification of
+the alias array will modify the data of the original array. Sub-arrays may
+be created from other sub-arrays. The attachment count of the underlying
+<<multi_array>> data structure is incremented on successful completion.
+.IP \fIarray\fP 1i
+The original array.
+.IP \fIstartz\fP 1i
+The starting z (plane) index in the original array corresponding
+to the first plane of the alias array.
+.IP \fIstarty\fP 1i
+The starting y (row) index in the original array corresponding to
+the first row of the alias array.
+.IP \fIstartx\fP 1i
+The starting x (column) index in the original array corresponding
+to the first column of the alias array.
+.IP \fIzlen\fP 1i
+The number of z co-ordinates (planes) in the alias array.
+.IP \fIylen\fP 1i
+The number of y co-ordinates (rows) in the alias array.
+.IP \fIxlen\fP 1i
+The number of x co-ordinates (columns) in the alias array.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Sub-arrays cannot be saved to disc.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

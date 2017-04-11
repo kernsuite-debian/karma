@@ -1,0 +1,49 @@
+.TH KCMAP_PROTO_COLOUR_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+kcmap_PROTO_colour_func \- Modify colour values.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_PROTO_colour_func
+.sp
+(unsigned int num_cells, unsigned short *reds,
+unsigned short *greens, unsigned short *blues,
+unsigned int stride, double x, double y,
+void *var_param)
+.SH DESCRIPTION
+This routine will write RGB colour intensity values to a
+number of colourcells. This routine is called in response to a call to
+<-kcmap_modify->.
+.IP \fInum_cells\fP 1i
+The number of colour cells to modify.
+.IP \fIreds\fP 1i
+The array of red intensity values.
+.IP \fIgreens\fP 1i
+The array of green intensity values.
+.IP \fIblues\fP 1i
+The array of blue intensity values.
+.IP \fIstride\fP 1i
+The stride (in unsigned shorts) between intensity values in
+each array.
+.IP \fIx\fP 1i
+A parameter used to compute the colour values.
+.IP \fIy\fP 1i
+A parameter used to compute the colour values.
+.IP \fImax_cells\fP 1i
+A parameter used to compute the colour values.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

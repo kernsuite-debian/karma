@@ -1,0 +1,36 @@
+.TH CANVAS_USE_LOG_SCALE 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_use_log_scale \- Enable logarithmic scaling for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_use_log_scale
+.sp
+(KWorldCanvas canvas, flag x_log, flag y_log)
+.SH DESCRIPTION
+This routine will enable logarithmic scaling of the co-ordinates
+for a world canvas object.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIx_log\fP 1i
+If TRUE, the horizontal co-ordinates will be scaled
+logarithmically, else they will be scaled linearly.
+.IP \fIy_log\fP 1i
+If TRUE the vertical co-ordinates should be scaled logarithmically,
+else they will be scaled linearly.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

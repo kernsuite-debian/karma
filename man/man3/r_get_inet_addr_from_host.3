@@ -1,0 +1,33 @@
+.TH R_GET_INET_ADDR_FROM_HOST 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_inet_addr_from_host \- Get the first listed Internet address of a hostname.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B unsigned long r_get_inet_addr_from_host
+.sp
+(CONST char *host, flag *local)
+.SH DESCRIPTION
+Get the first listed Internet address of a hostname.
+.IP \fIhost\fP 1i
+The hostname.
+.IP \fIlocal\fP 1i
+If the specified host is the local machine, then the routine will
+write the value TRUE here, else it will write the value FALSE here. If
+this is NULL, nothing is written here.
+.SH RETURN VALUE
+The Internet address on success (in host byte order), else 0.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,58 @@
+.TH DSRA 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dsra \- Routines to read an ASCII data structure from an open channel
+.SH PURPOSE
+These routines are meant to provide a mechanism to read the recursive,
+heirarchical data structure supported in Karma from open channels, in
+ASCII format.
+The use of these routines is NOT recommended. The <-dsxfr-> routines are
+the preferred means of transferring data structures.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIdsra_multi_desc\fP 1i
+Read ASCII representation of a multi_array data structure.
+.IP \fIdsra_packet_desc\fP 1i
+Read ASCII representation of a packet descriptor.
+.IP \fIdsra_element_desc\fP 1i
+Read ASCII representation of an element descriptor.
+.IP \fIdsra_array_desc\fP 1i
+Read ASCII representation of an array descriptor.
+.IP \fIdsra_dim_desc\fP 1i
+Read ASCII representation of a dimension descriptor.
+.IP \fIdsra_multi_data\fP 1i
+READ ASCII representation of data in a multi_array descriptor.
+.IP \fIdsra_packet\fP 1i
+Read ASCII representation of a data packet.
+.IP \fIdsra_element\fP 1i
+Read ASCII representation of an element.
+.IP \fIdsra_array\fP 1i
+Read ASCII representation of an array of data packets.
+.IP \fIdsra_list\fP 1i
+Read ASCII represention of a linked list.
+.IP \fIdsra_flag\fP 1i
+Read ASCII representation of a boolean value.
+.IP \fIdsra_type\fP 1i
+Read ASCII representation of a data type.
+.IP \fIdsra_uint\fP 1i
+Read the ASCII representation of an unsigned integer.
+.IP \fIdsra_int\fP 1i
+Read the ASCII representation of a signed integer.
+.IP \fIdsra_float\fP 1i
+Read the ASCII representation of a floating point value.
+.IP \fIdsra_double\fP 1i
+Read ASCII representation of a double floating point value.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

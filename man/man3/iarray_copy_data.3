@@ -1,0 +1,41 @@
+.TH IARRAY_COPY_DATA 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_copy_data \- Copy data between Intelligent Arrays.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_copy_data
+.sp
+(iarray output, iarray input, flag magnitude)
+.SH DESCRIPTION
+This routine will copy data from one "Intelligent Array" to
+another. The sizes of the two arrays must be identical.
+The routine can deal with the types of the two arrays being different
+.IP \fIoutput\fP 1i
+The output Intelligent Array.
+.IP \fIinput\fP 1i
+The input Intelligent Array.
+.IP \fImagnitude\fP 1i
+If TRUE then when converting from a complex array to a real
+array, the magnitude of the complex data is taken, else the real component
+is copied.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+When converting from a real array to a complex data array, the
+imaginary components are set to zero.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>A Chromatic Aberration</TITLE>
+<META NAME="description" CONTENT="A Chromatic Aberration">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html445" HREF="node15.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html443" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html437" HREF="node13.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html447" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html448" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html446" HREF="node15.html">B Setting up</A>
+<B>Up:</B> <A NAME="tex2html444" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html438" HREF="node13.html">Command-line Tools</A>
+<BR> <P>
+<H1><A NAME="SECTION001400000000000000000">A Chromatic Aberration</A></H1>
+<A NAME="1966">&#160;</A>
+<P>
+Radio telescope interferometers exhibit chromatic aberration
+effects. This is because the resolution of the instrument changes with
+wavelength. For low-bandwidth spectral-line observations, these
+effects are minor and can usually be ignored. However, for
+high-bandwidth observations (say 128&nbsp;MHz) these effects can pose a
+problem.
+<P>
+Reduction packages such as AIPS and AIPS++ will produce a beam pattern
+image for each frequency channel. This allows these packages to
+compute a spectral-line cube which has a pixel size (cellsize)
+independent of frequency. The chromatic aberration manifests itself in
+the dirty cubes as a changing antenna pattern. In other words, if you
+play a movie of the channel maps, you will see the grating ring
+pattern change. Once the cube has been properly cleaned, you should no
+longer see grating rings and hence the cromatic aberration has been
+effectively corrected.
+<P>
+Reduction packages such as Miriad will only produce a single beam
+pattern for a nominal reference frequency channel (this approach has
+the advantage of saving disc space). Because of this, Miriad produces
+cubes where the pixel size changes with frequency. You can see this
+when you play a movie of the channel maps: an object distant from the
+phase centre will appear to move, although the grating ring pattern
+will not change: it only shifts with the source object. This shifting
+of an object with frequency is of itself not a serious problem,
+however it is important that the co-ordinate system takes the variable
+pixel size into account, so that it tracks the moving object
+correctly.
+<P>
+The scaling of the cell size with frequency is accounted for in the
+coordinate handling within Miriad. The correction is quite small for
+narrow bandwidths (e.g. 4 MHz), but quite noticable for cubes with
+128 MHz bandwidths at 20cm (a 7 pixel shift is not unheard of).
+<P>
+The FITS convention assumes that pixel sizes are constant. The
+visualisation software also makes this assumption.
+<P>
+Since June 1997 <B>Karma</B> has taken account of this chromatic
+aberration by adding the new ``CELLSCAL'' keyword as it reads in
+Miriad cubes. This keyword is used in the astronomical world
+co-ordinate package to correctly track variable pixel sizes. At the
+same time Miriad was modified to add the ``CELLSCAL'' keyword when it
+writes FITS files. Prior to this, old FITS cubes written by Miriad did
+not have this keyword, and hence violated the FITS convention. If you
+have such old cubes, you should either regenerate the FITS from the
+original Miriad cube or else manually edit the FITS header by adding a
+line such as:<BR> 
+<TT>CELLSCAL = '1/F'</TT>
+<P>
+If you use a current version of Miriad and Karma then the co-ordinate
+system will correctly handle the chromatic aberration effects. Note
+that the source object will <EM>still</EM> appear to move as you play a
+movie of channel maps. I have been asked to change this, but this
+would require the visualisation software to regrid the cube. Apart
+from the computational cost involved, it is also not the correct
+approach, as subtle artefacts can be introduced. The correct approach
+is to produce a cube in Miriad which does not have a variable pixel
+size. This is possible to do (although a little awkward). It involves
+computing each channel image independently. This will mean that Miriad
+computes a beam pattern image for each channel. If you manually
+specify the pixel size, each computed image will have the same pixel
+size. After this you clean each image and collect them into a single
+cube. You can make this procedure easier by writing a script. Once you
+have produced such a cube, check the header to ensure that you don't
+have a ``CELLSCAL'' keyword with value ``1/F'' (Miriad should only do
+this when a 3-dimensional ``invert'' is performed).
+<P>
+<HR><A NAME="tex2html445" HREF="node15.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html443" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html437" HREF="node13.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html447" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html448" HREF="node22.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html446" HREF="node15.html">B Setting up</A>
+<B>Up:</B> <A NAME="tex2html444" HREF="book.html">Karma User Manual</A>
+<B> Previous:</B> <A NAME="tex2html438" HREF="node13.html">Command-line Tools</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:25:04 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

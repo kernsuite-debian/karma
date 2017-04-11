@@ -1,0 +1,212 @@
+.TH CH 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+ch \- Routines to manipulate channel objects
+.SH PURPOSE
+These routines are meant to provide an alternative to the standard C
+library streams (FILE *).
+The channel package provides far more powerful channels (streams),
+especially when transferring data over connections.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIch_open_file\fP 1i
+Open a file.
+.IP \fIch_open_connection\fP 1i
+Open a connection to a Karma server.
+.IP \fIch_accept_on_dock\fP 1i
+Accept a connection.
+.IP \fIch_alloc_port\fP 1i
+Allocate a port.
+.IP \fIch_attach_to_asynchronous_descriptor\fP 1i
+Create a channel object from an asynchronous descriptor.
+.IP \fIch_open_stdin\fP 1i
+Create starndard input channel.
+.IP \fIch_open_stdout\fP 1i
+Create starndard output channel.
+.IP \fIch_create_pipe\fP 1i
+Create a pipe.
+.IP \fIch_create_socketpair\fP 1i
+Create a pair of un-named connected sockets.
+.IP \fIch_test_for_asynchronous\fP 1i
+Test if a channel object is an asynchronous channel.
+.IP \fIch_test_for_connection\fP 1i
+Test if a channel object is a connection channel.
+.IP \fIch_test_for_local_connection\fP 1i
+Test if a connection channel object is a local connection.
+.IP \fIch_get_buffer_sizes\fP 1i
+Get the read and write buffer sizes for a channel.
+.IP \fIch_set_buffer_sizes\fP 1i
+Set the read and write buffer sizes for a channel.
+.IP \fIch_udp_alloc\fP 1i
+Create a UDP socket and bind to a random port number.
+.IP \fIch_set_nodelay\fP 1i
+Set the no-delay flag for a channel if appropriate.
+.IP \fIch_get_qos\fP 1i
+Get the Quality of Service parameters for a connection.
+.IP \fIch_register_close_func\fP 1i
+Register close callback.
+.IP \fIch_close\fP 1i
+Close a channel.
+.IP \fIch_flush\fP 1i
+Flush the write buffer of a channel object.
+.IP \fIch_read\fP 1i
+Read from a channel.
+.IP \fIch_read2\fP 1i
+Read from a channel.
+.IP \fIch_write\fP 1i
+Write to a channel.
+.IP \fIch_close_all_channels\fP 1i
+Close all open channels.
+.IP \fIch_seek\fP 1i
+Move read/write pointer.
+.IP \fIch_get_bytes_readable\fP 1i
+Count unread bytes.
+.IP \fIch_test_for_io\fP 1i
+Test if I/O possible on channel.
+.IP \fIch_test_for_converters\fP 1i
+Test if a channel object has converters.
+.IP \fIch_tell\fP 1i
+Get the read and write pointers for a channel.
+.IP \fIch_register_converter\fP 1i
+Register channel converter function.
+.IP \fIch_unregister_converter\fP 1i
+Unregister converter.
+.IP \fIch_tap_io_events\fP 1i
+Register I/O tap function.
+.IP \fIch_test_valid\fP 1i
+Test if a channel is valid.
+.IP \fIch_skip\fP 1i
+Skip bytes in a channel, seeking if possible.
+.IP \fIch_get_descriptor\fP 1i
+Get the file descriptor associated with a channel.
+.IP \fIch_map_disc\fP 1i
+Map a disc file.
+.IP \fIch_map_fd\fP 1i
+Map a disc file.
+.IP \fIch_open_memory\fP 1i
+Open a memory channel.
+.IP \fIch_test_for_mmap\fP 1i
+Test if a channel object is a memory mapped disc channel.
+.IP \fIch_get_mmap_addr\fP 1i
+Get memory mapped address.
+.IP \fIch_get_memory_addr\fP 1i
+Get memory address.
+.IP \fIch_get_mmap_access_count\fP 1i
+Get memory mapped access count.
+.IP \fIch_get_mem_size\fP 1i
+Get memory buffer size.
+.IP \fIch_open_and_fill_memory\fP 1i
+Create and fill memory channel.
+.IP \fIch_gets\fP 1i
+Read a line from a channel.
+.IP \fIch_getl\fP 1i
+Read a line from a channel.
+.IP \fIch_puts\fP 1i
+Write a character string to a channel.
+.IP \fIch_drain\fP 1i
+Drain bytes from a channel.
+.IP \fIch_fill\fP 1i
+Fill a channel with bytes.
+.IP \fIch_printf\fP 1i
+Write formatted output to a channel.
+.IP \fIch_scanf\fP 1i
+Read formatted input from a channel.
+.IP \fIch_drain_to_boundary\fP 1i
+Drain bytes from a channel until a specified boundary.
+.IP \fIch_skip_to_boundary\fP 1i
+Skip bytes from a channel until a specified boundary.
+.IP \fIch_fill_to_boundary\fP 1i
+Write bytes to a channel until a specified boundary.
+.IP \fIch_read_and_swap_blocks\fP 1i
+Read blocks from a channel and swap bytes.
+.IP \fIch_swap_and_write_blocks\fP 1i
+Write blocks to a channel after swapping bytes.
+.IP \fIch_copy\fP 1i
+Copy bytes from one channel to another in an optimal way.
+.IP \fIch_map_disc2\fP 1i
+Attempt to map a disc file, fallback to reading.
+.IP \fIch_open_compressed_file\fP 1i
+Open a file, with possible decompression.
+.IP \fIch_get_bytes_remaining_in_disc\fP 1i
+Return the number of bytes remaining in a disc file.
+.IP \fIch_create_sink\fP 1i
+Create data sink.
+.IP \fIch_create_zero\fP 1i
+Create data source.
+.IP \fIch_PROTO_converter_size_func\fP 1i
+Get number of bytes readable.
+.IP \fIch_PROTO_converter_read_func\fP 1i
+Read bytes.
+.IP \fIch_PROTO_converter_write_func\fP 1i
+Write bytes.
+.IP \fIch_PROTO_converter_flush_func\fP 1i
+Flush.
+.IP \fIch_PROTO_converter_close_func\fP 1i
+Close.
+.IP \fIch_PROTO_tap_func\fP 1i
+Tap I/O callback.
+.IP \fIch_PROTO_close_func\fP 1i
+Process a destroy event for an object.
+.SH TABLE ch_FILE_MODES
+List of defined file modes
+
+.TS
+l l
+_ _
+l l.
+Mode         Meaning
+
+"r"          open for reading
+"w"          open (truncate) or create for writing
+"a"          open or create for writing at end of file (append)
+"r+"         open for update (reading and writing)
+"w+"         open for reading and writing after truncation
+"a+"         open or create for update (reading and writing) at EOF
+"W"          open for writing
+"s"          like "w", but create holes when writing zero blocks
+"t"          set the sticky bit
+"z"          uncompress if file was compressed (has ".gz" extension)
+"l"          lock the file, fail if lock not grabbed, unlock on close
+"L"          lock the file, waiting for lock, unlock on close
+.TE
+.SH TABLE ch_MAP_CONTROLS
+List of mapping control values
+
+.TS
+l l
+_ _
+l l.
+Control                      Meaning
+
+K_CH_MAP_NEVER               Never map
+K_CH_MAP_LARGE_LOCAL         Map if local filesystem and file size > 1MB
+K_CH_MAP_LOCAL               Map if local filesystem
+K_CH_MAP_LARGE               Map if file over 1 MByte
+K_CH_MAP_IF_AVAILABLE        Map if operating system supports it
+K_CH_MAP_ALWAYS              Always map, fail if not supported.
+.TE
+.SH TABLE ch_ENVIRONMENT
+List of environment variables
+
+.TS
+l l
+_ _
+l l.
+Variable                     Meaning
+
+CH_MMAP_DISABLE              Disable memory mapping
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,71 @@
+.TH IARRAY_READ_ND 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_read_nD \- Read in a Karma arrayfile and yield an "Intelligent Array".
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_read_nD
+.sp
+(CONST char *object, flag cache, CONST char *arrayname,
+unsigned int num_dim, CONST char **dim_names,
+CONST char *elem_name,
+unsigned int mmap_option)
+.SH DESCRIPTION
+Read in a Karma arrayfile and yield an "Intelligent Array".
+.IP \fIobject\fP 1i
+The name of the arrayfile to read. This parameter is passed
+directly to the <-dsxfr_get_multi-> routine. In order to understand the
+operation of this routine, the operation of the <-dsxfr_get_multi-> routine
+must be understood.
+.IP \fIcache\fP 1i
+This is passed directly to the <-dsxfr_get_multi-> routine.
+This controls whether disc arrayfiles are cached in memory for later use.
+.IP \fIarrayname\fP 1i
+The name of the general data structure in the arrayfile to
+search for. If this is NULL, the routine searches for the default name
+"Intelligent Array". If the arrayfile has only one general data structure,
+then this parameter is ignored.
+.IP \fInum_dim\fP 1i
+The routine searches for an n-dimensional array with a single
+atomic element at each point in multi-dimensional space. If this parameter
+is greater than 0, the routine will only return an array with the specified
+number of dimensions. If the value is 0, then the routine will return an
+n-dimensional array.
+.IP \fIdim_names\fP 1i
+If <<num_dim>> is not 0, then if this parameter is NULL, the
+routine will search for and return an array with the default dimension
+names (see <-iarray_create-> for a list of these) if more than one
+n-dimensional, single element array exists in the general data structure,
+or the only n-dimensional array with the specified number of dimensions.
+If the routine can't find an adequate default, it will not return an array.
+If <<num_dim>> is not 0, and this parameter points to an array of strings,
+then the routine will only return an array which matches the specified
+dimension names. The first name in the array of strings must be the highest
+order dimension.
+.IP \fIelem_name\fP 1i
+If this is NULL, the routine will ignore the element name of
+the array which is located, else it will insist on the array element name
+matching the specified name.
+.IP \fImmap_option\fP 1i
+This is passed directly to the <-dsxfr_get_multi-> routine.
+This parameter controls the memory mapping of disc arrayfiles.
+If the data structure is likely to be subsequently modified, the value must
+be K_CH_MAP_NEVER, otherwise the data may be read-only memory mapped
+and writing to it will cause a segmentation fault.
+.SH RETURN VALUE
+A dynamically allocated intelligent array on success, else an
+error message is printed to the standard output and NULL is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

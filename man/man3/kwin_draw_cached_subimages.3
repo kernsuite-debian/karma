@@ -1,0 +1,46 @@
+.TH KWIN_DRAW_CACHED_SUBIMAGES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_draw_cached_subimages \- Draw previously computed cached subimages.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B flag kwin_draw_cached_subimages
+.sp
+(KPixCanvasImageCache cache,
+int x_off, int y_off,
+unsigned int num_areas,
+KPixCanvasRefreshArea *areas)
+.SH DESCRIPTION
+This routine will draw sections of a previously computed image
+cache data (computed by <<kwin_draw_pc_image>>) onto the canvas on which
+the original image was drawn.
+.IP \fIcache\fP 1i
+The cache data.
+.IP \fIx_off\fP 1i
+The horizontal offset, relative to the top-left corner of the
+canvas, which corresponds to the image origin.
+.IP \fIy_off\fP 1i
+The vertical offset, relative to the top-left corner of the canvas,
+which corresponds to the image origin.
+.IP \fInum_areas\fP 1i
+The number of image areas to draw.
+.IP \fIareas\fP 1i
+The list of image areas.
+.SH RETURN VALUE
+TRUE on success if there is valid cache data, else FALSE
+indicating that the image must be recomputed and drawn using
+<<kwin_draw_pc_image>>.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,248 @@
+<html><head><title>Package: p</title></head> 
+<body>
+<center><h1>The "p" Package</h1></center>    These routines are meant to provide a low level means of converting C data
+    types to the "network" data format (ie. big endian, IEEE 754).
+    These are memory to memory routines only. Although they are made public,
+    their use is NOT recommended.
+    When reading or writing raw data from and to files or connections, the
+    <a href=pio.html#pio>pio</a> routines are suggested.
+<p><b>Library:</b> karma
+<br><b>Link With:</b> -lkarma
+<br><p><a name=p></a></table><h4>Functions</h4><table><tr><td><a href=p.html#p_write_buf_float>p_write_buf_float</a></td><td>Write a floating point number to a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf_float_trap>p_write_buf_float_trap</a></td><td>Write a floating point number to a buffer, trapping blanks.
+</td></tr>
+<tr><td><a href=p.html#p_read_buf_float>p_read_buf_float</a></td><td>Read a floating point number from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_read_buf_floats>p_read_buf_floats</a></td><td>Read floating point data from a buffer, trapping NaNs.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf_double>p_write_buf_double</a></td><td>Write a double precision floating point number to a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf_double_trap>p_write_buf_double_trap</a></td><td>Write a dfloating point number to a buffer, trapping blanks.
+</td></tr>
+<tr><td><a href=p.html#p_read_buf_double>p_read_buf_double</a></td><td>Read a double precision floating point number from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_read_buf_doubles>p_read_buf_doubles</a></td><td>Read double floating point data from a buffer, trapping NaNs.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf16s>p_write_buf16s</a></td><td>Write 16 bits of signed data to a buffer,
+</td></tr>
+<tr><td><a href=p.html#p_read_buf16s>p_read_buf16s</a></td><td>Read 16 bits of signed data from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf32s>p_write_buf32s</a></td><td>Write 32 bits of signed data to a buffer,
+</td></tr>
+<tr><td><a href=p.html#p_read_buf32s>p_read_buf32s</a></td><td>Read 32 bits of signed data from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf16>p_write_buf16</a></td><td>Write 16 bits of unsigned data to a buffer,
+</td></tr>
+<tr><td><a href=p.html#p_read_buf16>p_read_buf16</a></td><td>Read 16 bits of unsigned data from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf32>p_write_buf32</a></td><td>Write 32 bits of unsigned data to a buffer,
+</td></tr>
+<tr><td><a href=p.html#p_read_buf32>p_read_buf32</a></td><td>Read 32 bits of unsigned data from a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_write_buf64>p_write_buf64</a></td><td>Write 64 bits of data to a buffer.
+</td></tr>
+<tr><td><a href=p.html#p_read_buf64>p_read_buf64</a></td><td>Read 64 bits of signed data from a buffer.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=p_write_buf_float></a> flag
+ <b>p_write_buf_float</b><i>    (char *buffer, float data)
+</i><br><p>    Write a floating point number to a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 4 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to IEEE network format prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf_float_trap></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>p_write_buf_float_trap</b><i>    (char *buffer, float data, flag blank_to_nan)
+</i><br><p>    This routine will write a floating point number to a buffer
+    and will optionally convert blank values (TOOBIGs) to IEEE Not-A-Number
+    (NaN) values.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 4 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to IEEE network format prior to writing.
+<br><li><i>blank_to_nan :</i> 
+    If TRUE, TOOBIG values are converted to NaNs.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf_float></a> flag
+ <b>p_read_buf_float</b><i>    (CONST char *buffer, float *data)
+</i><br><p>    Read a floating point number from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 4 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The data will be converted from IEEE network format after reading.
+</ul><p><hr> <a name=p_read_buf_floats></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>p_read_buf_floats</b><i>    (CONST char *buffer, uaddr num_values, float *data,
+			uaddr *num_nan)
+</i><br><p>    This routine will read many floating point numbers from a buffer
+    and will optionally trap IEEE Not-A-Number (NaN) values. Trapped NaNs are
+    converted to the TOOBIG value.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least
+    4 * <em>num_values</em> bytes long
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br><li><i>data :</i> 
+    The data will be written here. This will be written in host natural
+    format. The data will be converted from IEEE network format prior to
+    writing.
+<br><li><i>num_nan :</i> 
+    The number of NaN values found will be written here. If this is
+    NULL then NaN values are not trapped.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf_double></a> flag
+ <b>p_write_buf_double</b><i>    (char *buffer, double data)
+</i><br><p>    Write a double precision floating point number to a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 8 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to IEEE network format prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf_double_trap></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>p_write_buf_double_trap</b><i>    (char *buffer, double data, flag blank_to_nan)
+</i><br><p>    This routine will write a double precision floating point number
+    to a buffer and will optionally convert blank values (TOOBIGs) to IEEE
+    Not-A-Number (NaN) values.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 8 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to IEEE network format prior to writing.
+<br><li><i>blank_to_nan :</i> 
+    If TRUE, TOOBIG values are converted to NaNs.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf_double></a> flag
+ <b>p_read_buf_double</b><i>    (CONST char *buffer, double *data)
+</i><br><p>    Read a double precision floating point number from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 8 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The data will be converted from IEEE network format after reading.
+</ul><p><hr> <a name=p_read_buf_doubles></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>p_read_buf_doubles</b><i>    (CONST char *buffer, uaddr num_values, double *data,
+			 uaddr *num_nan)
+</i><br><p>    This routine will read many double precision floating point
+    numbers from a buffer and will optionally trap IEEE Not-A-Number (NaN)
+    values. Trapped NaNs are converted to the TOOBIG value.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least
+    8 * <em>num_values</em> bytes long
+<br><li><i>num_values :</i> 
+    The number of values to read.
+<br><li><i>data :</i> 
+    The data will be written here. This will be written in host natural
+    format. The data will be converted from IEEE network format prior to
+    writing.
+<br><li><i>num_nan :</i> 
+    The number of NaN values found will be written here. If this is
+    NULL then NaN values are not trapped.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf16s></a> flag
+ <b>p_write_buf16s</b><i>    (char *buffer, long data)
+</i><br><p>    Write 16 bits of signed data to a buffer,
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to network byte order prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf16s></a> flag
+ <b>p_read_buf16s</b><i>    (CONST char *buffer, long *data)
+</i><br><p>    Read 16 bits of signed data from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf32s></a> flag
+ <b>p_write_buf32s</b><i>    (char *buffer, long data)
+</i><br><p>    Write 32 bits of signed data to a buffer,
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to network byte order prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf32s></a> flag
+ <b>p_read_buf32s</b><i>    (CONST char *buffer, long *data)
+</i><br><p>    Read 32 bits of signed data from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf16></a> flag
+ <b>p_write_buf16</b><i>    (char *buffer, unsigned long data)
+</i><br><p>    Write 16 bits of unsigned data to a buffer,
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to network byte order prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf16></a> flag
+ <b>p_read_buf16</b><i>    (CONST char *buffer, unsigned long *data)
+</i><br><p>    Read 16 bits of unsigned data from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 2 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf32></a> flag
+ <b>p_write_buf32</b><i>    (char *buffer, unsigned long data)
+</i><br><p>    Write 32 bits of unsigned data to a buffer,
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 4 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to network byte order prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf32></a> flag
+ <b>p_read_buf32</b><i>    (CONST char *buffer, unsigned long *data)
+</i><br><p>    Read 32 bits of unsigned data from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 4 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_write_buf64></a> flag
+ <b>p_write_buf64</b><i>    (char *buffer, unsigned long data)
+</i><br><p>    Write 64 bits of data to a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 8 bytes long
+<br><li><i>data :</i> 
+    The data. This must be in host natural byte order. The data will be
+    converted to network byte order prior to writing.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=p_read_buf64></a> flag
+ <b>p_read_buf64</b><i>    (CONST char *buffer, unsigned long *data)
+</i><br><p>    Read 64 bits of signed data from a buffer.
+<p><b>Parameters:</b><ul><li><i>buffer :</i> 
+    A pointer to the buffer. This buffer must be at least 8 bytes long
+<br><li><i>data :</i> 
+    The output data will be written here. This will be in host natural
+    byte order. The data will be converted from network byte order after
+    reading.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

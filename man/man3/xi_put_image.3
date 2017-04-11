@@ -1,0 +1,59 @@
+.TH XI_PUT_IMAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+xi_put_image \- Write an XImage structure to a drawable.
+.SH SYNOPSIS
+.B #include <karma_xi.h>
+.sp
+.B void xi_put_image
+.sp
+(Display *display, Drawable drawable, GC gc, XImage *ximage,
+int src_x, int src_y, int dest_x, int dest_y,
+unsigned int width, unsigned int height, flag shared_memory,
+flag wait)
+.SH DESCRIPTION
+Write an XImage structure to a drawable.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIdrawable\fP 1i
+The ID of the drawable.
+.IP \fIgc\fP 1i
+The graphics context.
+.IP \fIximage\fP 1i
+The image structure.
+.IP \fIsrc_x\fP 1i
+The horizontal position of the upper left corner of the subimage.
+.IP \fIsrc_y\fP 1i
+The vertical position of the upper left corner of the subimage.
+.IP \fIdest_x\fP 1i
+The horizontal position in the drawable where the upper left
+corner will be drawn.
+.IP \fIdest_y\fP 1i
+The vertical position in the drawable where the upper left
+corner will be drawn.
+.IP \fIwidth\fP 1i
+The width of the subimage.
+.IP \fIheight\fP 1i
+The height of the subimage.
+.IP \fIshared_memory\fP 1i
+If TRUE the routine assmumes the XImage structure resides
+in a shared memory segment.
+.IP \fIwait\fP 1i
+If TRUE and the XImage structure resides in a shared memory segment
+the routine will wait for the X server to copy the contents from the
+segment.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,33 @@
+.TH OVERLAY_SPECIFY_CANVAS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_specify_canvas \- Extract specification from a world canvas.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B void overlay_specify_canvas
+.sp
+(KOverlayList olist, KWorldCanvas canvas)
+.SH DESCRIPTION
+This routine will register a world canvas to extract
+specification information from for all future overlay objects which are
+created with an overlay object list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

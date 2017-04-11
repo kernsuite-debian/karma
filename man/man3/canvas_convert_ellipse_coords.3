@@ -1,0 +1,49 @@
+.TH CANVAS_CONVERT_ELLIPSE_COORDS 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_convert_ellipse_coords \- Convert co-ordinates for an ellipse.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_convert_ellipse_coords
+.sp
+(KWorldCanvas canvas, flag to_world,
+flag linear,
+double *centre_x, double *centre_y,
+double *radius_x, double *radius_y,
+double *rotation)
+.SH DESCRIPTION
+Convert co-ordinates for an ellipse.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIto_world\fP 1i
+If TRUE a pixel->world conversion is performed, else a
+world->pixel conversion is performed.
+.IP \fIlinear\fP 1i
+If TRUE the co-ordinate conversions are pixel<->linear rather than
+pixel<->world.
+.IP \fIcentre_x\fP 1i
+The horizontal co-ordinate of the centre of the ellipse.
+.IP \fIcentre_y\fP 1i
+The vertical co-ordinate of the centre of the ellipse.
+.IP \fIradius_x\fP 1i
+The horizontal radius.
+.IP \fIradius_y\fP 1i
+The vertical radius.
+.IP \fIrotation\fP 1i
+The rotation of the arc, in degrees.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

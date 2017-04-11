@@ -1,0 +1,42 @@
+.TH IEDIT_CREATE_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+iedit_create_list \- Create a managed image edit instruction list.
+.SH SYNOPSIS
+.B #include <karma_iedit.h>
+.sp
+.B KImageEditList iedit_create_list
+.sp
+(void (*add_func) (), void (*loss_func) (),
+void (*apply_func) (), void *info)
+.SH DESCRIPTION
+Create a managed image edit instruction list.
+.IP \fIadd_func\fP 1i
+The function which will be called when a new instruction has
+been added to the list. The prototype function is <-iedit_PROTO_add_func->.
+The interface to this routine is as follows:
+.IP \fIloss_func\fP 1i
+The function which will be called when an instruction has been
+removed from the list. The prototype function is <-iedit_PROTO_loss_func->.
+.IP \fIapply_func\fP 1i
+The function which will be called when the edit instructions
+are to be applied (prior to clearing of the list). The prototype function
+is <-iedit_PROTO_apply_func->.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer for the edit list. This may be
+NULL.
+.SH RETURN VALUE
+A KImageEditList object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,61 @@
+.TH ST 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+st \- String manipulation routines
+.SH PURPOSE
+These routines are meant to supplement the standard C library str* routines
+Since each version of Unix has a different set of "extra" string functions,
+this package is meant to bridge the gap, and provides some of the more
+useful "extras".
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIst_expr_expand\fP 1i
+Expand an expression using Borne Shell-like unquoted rules.
+.IP \fIst_find\fP 1i
+Search a list of strings for a string.
+.IP \fIst_chr\fP 1i
+Search a string for the first occurrence of a character.
+.IP \fIst_cmp_wild\fP 1i
+Compare strings with wildcard support.
+.IP \fIst_cspn\fP 1i
+Find maximum leading segment in string with exclusion.
+.IP \fIst_icmp\fP 1i
+Compare strings, ignoring case.
+.IP \fIst_lwr\fP 1i
+Convert a string to lowercase.
+.IP \fIst_nicmp\fP 1i
+Compare strings, ignoring case, up to a specified length.
+.IP \fIst_nupr\fP 1i
+Convert a string to uppercase, up to a specified length.
+.IP \fIst_nlwr\fP 1i
+Convert a string to lowercase, up to a specified length.
+.IP \fIst_pbrk\fP 1i
+Search a string for a character from a set.
+.IP \fIst_rchr\fP 1i
+Search a string for the last occurrence of a character.
+.IP \fIst_spn\fP 1i
+Find maximum leading segment in string with inclusion.
+.IP \fIst_tok\fP 1i
+Extract token from string.
+.IP \fIst_tol\fP 1i
+Convert a string to a long integer.
+.IP \fIst_upr\fP 1i
+Convert a string to uppercase.
+.IP \fIst_dup\fP 1i
+Make a duplicate copy of a string.
+.IP \fIst_qsort\fP 1i
+Perform a quicksort on an array of strings.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH KWIN_SET_GC_X 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_set_gc_x \- Set Graphics Context for an X-based pixel canavas.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_set_gc_x
+.sp
+(KPixCanvas canvas, GC gc)
+.SH DESCRIPTION
+This routine will register a new Graphics Context to be used
+when drawing into the pixel canvas. Subsequent drawing operations will use
+the new Graphics Context.
+.IP \fIcanvas\fP 1i
+The canvas.
+.IP \fIgc\fP 1i
+The Graphics Context.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine is only available with the X window system.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

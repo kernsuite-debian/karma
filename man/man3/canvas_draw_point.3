@@ -1,0 +1,36 @@
+.TH CANVAS_DRAW_POINT 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_draw_point \- Draw a single point onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_draw_point
+.sp
+(KWorldCanvas canvas, double x, double y,
+double value[2])
+.SH DESCRIPTION
+Draw a single point onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIx\fP 1i
+The horizontal world co-ordinate of the point.
+.IP \fIy\fP 1i
+The vertical world co-ordinate of the point.
+.IP \fIvalue\fP 1i
+The data value to use. This is of type K_DCOMPLEX.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

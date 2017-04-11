@@ -1,0 +1,32 @@
+.TH R_GET_HOST_FROM_DISPLAY 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_get_host_from_display \- Get the hostname in a display string.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B CONST char * r_get_host_from_display
+.sp
+(CONST char *display)
+.SH DESCRIPTION
+This routine will get the hostname from a display string.
+The syntax for the display string is the same as for the X Windows system
+DISPLAY environmental variable.
+.IP \fIdisplay\fP 1i
+The display string. If this is NULL, the host "unix" is returned.
+.SH RETURN VALUE
+A pointer to a statically allocated string which will contain the
+host name on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

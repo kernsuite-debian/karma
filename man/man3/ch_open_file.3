@@ -1,0 +1,43 @@
+.TH CH_OPEN_FILE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_open_file \- Open a file.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_open_file
+.sp
+(CONST char *filename, CONST char *type)
+.SH DESCRIPTION
+This routine will open a file channel. The file may be a regular
+disc file, a named FIFO, a character special device, a Unix domain
+connection or a TCP/IP connection. The channel may be later tested
+to determine what the true channel type is by calling routines such as:
+<-ch_test_for_asynchronous-> and <-ch_test_for_io->.
+.IP \fIfilename\fP 1i
+The pathname of the file to open. This parameter has the same
+meaning as the first parameter to <<open(2)>>. Filenames of the form
+"//tcpIP/{hostname}:{port}" indicate a connection to a TCP/IP port on host
+<<hostname>> with raw port number <<port>> is requested.
+.IP \fItype\fP 1i
+The mode of the file. See <-ch_FILE_MODES-> for a list of allowable
+modes.
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+For character special files and named FIFOs, these modes
+degenerate into read-write, read-only and write-only.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

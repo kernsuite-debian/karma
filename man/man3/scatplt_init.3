@@ -1,0 +1,37 @@
+.TH SCATPLT_INIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+scatplt_init \- Initialise the package for a particular canvas.
+.SH SYNOPSIS
+.B #include <karma_scatplt.h>
+.sp
+.B void scatplt_init
+.sp
+(KWorldCanvas canvas, ...)
+.SH DESCRIPTION
+This routine will initialise the <-scatplt-> package for a
+particular world canvas. Calling this routine causes a number of callback
+routines internal to the package to be registered with the canvas (such
+as refresh and position event callbacks). This routine must be called
+before creating scatter plots.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fI...\fP 1i
+The list of parameter attribute-key attribute-value-ptr pairs
+must follow. This list must be terminated with the SCATPLT_CANVAS_ATT_END.
+See <-scatplt_CANVAS_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

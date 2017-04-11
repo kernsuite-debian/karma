@@ -1,0 +1,40 @@
+.TH DS_IDENTIFY_NAME 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_identify_name \- Search a data structure for a name.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B unsigned int ds_identify_name
+.sp
+(CONST multi_array *multi_desc, CONST char *name,
+char **encls_desc, unsigned int *index)
+.SH DESCRIPTION
+Search a data structure for a name.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor.
+.IP \fIname\fP 1i
+The name of the item to search for.
+.IP \fIencls_desc\fP 1i
+A pointer to the enclosing descriptor of the item is written
+here. If this is NULL, nothing is written here.
+.IP \fIindex\fP 1i
+The index (general data structure number, dimension number or
+element number) of the item in the enclosing structure will be written
+here. If this is NULL, nothing is written here.
+.SH RETURN VALUE
+A code based on the type of the item with the same name. See
+<-ds_IDENT_TABLE-> for a list of possible values.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

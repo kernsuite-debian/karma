@@ -1,0 +1,32 @@
+.TH CANVAS_GET_ASSOCIATED_OBJECT 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_get_associated_object \- Get an associated object for a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void * canvas_get_associated_object
+.sp
+(KWorldCanvas canvas, CONST void *key)
+.SH DESCRIPTION
+Get an associated object for a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas.
+.IP \fIkey\fP 1i
+The key to search for.
+.SH RETURN VALUE
+A pointer to the associated object. NULL is returned if the key
+is not found.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,54 @@
+.TH DS_ALLOC_MMAP_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_alloc_mmap_array \- Allocate storage for an array using shared anon mmap.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_alloc_mmap_array
+.sp
+(int fd, uaddr offset, uaddr size, flag writable,
+array_pointer *arrayp, CONST array_desc *arr_desc,
+flag clear, flag warn)
+.SH DESCRIPTION
+Allocate storage for an array using shared anon mmap.
+.IP \fIfd\fP 1i
+The file descriptor to map. If this is less than zero, "/dev/zero" is
+mapped.
+.IP \fIoffset\fP 1i
+The offset from the start of the file where the array data should
+reside.
+.IP \fIsize\fP 1i
+The size of the region to map. If this is 0 the size is taken from
+the array size.
+.IP \fIwritable\fP 1i
+If the mapped pages are to be writable, this must be TRUE. If
+this is FALSE and the memory pages are written to, a segmentation fault
+occurs.
+.IP \fIarrayp\fP 1i
+Information describing the shared memory region is written here.
+.IP \fIarr_desc\fP 1i
+The array descriptor describing the array data. This is used to
+determine the amount of memory require to store the array.
+.IP \fIclear\fP 1i
+If TRUE the array data is initialised to zero.
+.IP \fIwarn\fP 1i
+If TRUE, warning messages are displayed if there are any problems.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The file is mapped from its start.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

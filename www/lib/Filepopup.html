@@ -1,0 +1,46 @@
+<html><head><title>Widget: Filepopup</title></head> 
+<body>
+<center><h1>The "Filepopup" Widget</h1></center>    This widget provides a file selector (browser) in a popup window.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=Filepopup></a></table><h4>Tables</h4><table><tr><td><a href=Filepopup.html#Filepopup_ResourceNames>Filepopup_ResourceNames</a></td><td>List of resource names for Filepopup widget
+</td></tr>
+<tr><td><a href=Filepopup.html#Filepopup_Resources>Filepopup_Resources</a></td><td>List of resources for Filepopup widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=Filepopup.html#XkwFilepopupPopupCallback>XkwFilepopupPopupCallback</a></td><td>Popup all Filepopup widgets in a family.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=Filepopup_ResourceNames><b>Filepopup_ResourceNames</b></a> List of resource names for Filepopup widget
+<p> <table><tr><td>Name                   </td><td>Purpose
+</td></tr><tr><td>XkwNautoPopdown        </td><td>If TRUE, the window is closed upon file selection
+</td></tr><tr><td>XkwNfileSelectCallback </td><td>Callbacks for file selection
+</td></tr><tr><td>XkwNfilenameTester     </td><td>Callbacks to test filenames
+</td></tr><tr><td>XkwNloadFiles          </td><td>If TRUE, files are automatically loaded upon selection
+</td></tr><tr><td>XkwNpreferFloat        </td><td>If TRUE, try to convert files to type K_FLOAT
+</td></tr><tr><td>XtNx                   </td><td>The horizontal position to place the widget at
+</td></tr><tr><td>XtNy                   </td><td>The vertical position to place the widget at
+</table><p><hr> <a name=Filepopup_Resources><b>Filepopup_Resources</b></a> List of resources for Filepopup widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNautoPopdown	</td><td>XkwCAutoPopdown	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNfileSelectCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNfilenameTester	</td><td>XtCCallback	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNloadFiles	</td><td>XkwCLoadFiles	</td><td>XtRBool	</td><td>FALSE
+</td></tr><tr><td>XkwNpreferFloat	</td><td>XkwCPreferFloat	</td><td>XtRBool	</td><td>FALSE
+</td></tr><tr><td>XkwNdomainName	</td><td>XkwCDomainName	</td><td>XtRString	</td><td>"unknown"
+</td></tr><tr><td>XkwNboxWidget	</td><td>XkwCBoxWidget	</td><td>XtRWidget	</td><td>NULL
+</td></tr><tr><td>XkwNfilewinWidget	</td><td>XkwCFilewinWidget	</td><td>XtRWidget	</td><td>NULL
+</td></tr><tr><td>XtNx	</td><td>XtCPosition	</td><td>XtRPosition	</td><td>0
+</td></tr><tr><td>XtNy	</td><td>XtCPosition	</td><td>XtRPosition	</td><td>0
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwFilepopupPopupCallback></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwFilepopupPopupCallback</b><i>    (Widget w, XtPointer client_data,
+				XtPointer call_data)
+</i><br><p>    Popup all Filepopup widgets in a family.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget the event occurred on. This is ignored.
+<br><li><i>client_data :</i> 
+    A pointer to a Filepopup widget which is part of a family.
+<br><li><i>call_data :</i> 
+    Ignored.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

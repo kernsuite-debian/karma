@@ -1,0 +1,41 @@
+.TH KCMAP_READ_RGB_VALUES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_read_rgb_values \- Get RGB values in a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B unsigned int kcmap_read_rgb_values
+.sp
+(Kcolourmap cmap, unsigned int num,
+unsigned short *red, unsigned short *green,
+unsigned short *blue, unsigned int stride)
+.SH DESCRIPTION
+Get RGB values in a colourmap.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fInum\fP 1i
+The maximum number of colours to read.
+.IP \fIred\fP 1i
+The red values are written here.
+.IP \fIgreen\fP 1i
+The green values are written here.
+.IP \fIblue\fP 1i
+The blue values are written here.
+.IP \fIstride\fP 1i
+The stride (in shorts) between values in the arrays.
+.SH RETURN VALUE
+The number of RGB values written.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

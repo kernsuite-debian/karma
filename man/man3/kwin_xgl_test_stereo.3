@@ -1,0 +1,36 @@
+.TH KWIN_XGL_TEST_STEREO 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kwin_xgl_test_stereo \- Test if stereo supported using XGL.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B unsigned int kwin_xgl_test_stereo
+.sp
+(Display *display, Window window)
+.SH DESCRIPTION
+This routine will determine if stereoscopic display is supported
+using XGL on a particular display.
+.IP \fIdisplay\fP 1i
+The X display.
+.IP \fIwindow\fP 1i
+The window ID of a window of the same class as the desired stereo
+window.
+.SH RETURN VALUE
+A status code. See <-kwin_XGL_STATUS-> for a list of values.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine is only available with the X window system.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

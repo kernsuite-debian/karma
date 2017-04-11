@@ -1,0 +1,38 @@
+.TH DMP_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dmp_list \- Dump a linked list to a file.
+.SH SYNOPSIS
+.B #include <karma_dmp.h>
+.sp
+.B void dmp_list
+.sp
+(FILE *fp, packet_desc *pack_desc, list_header *list_head,
+flag comments)
+.SH DESCRIPTION
+This routine will dump an array descriptor to a file,
+writing in ASCII format.
+.IP \fIfp\fP 1i
+The file pointer.
+.IP \fIpack_desc\fP 1i
+The list descriptor.
+.IP \fIlist_head\fP 1i
+A pointer to the list header.
+.IP \fIcomments\fP 1i
+If TRUE, the routine will append comments to the lines written,
+else it will not.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

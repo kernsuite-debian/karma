@@ -1,0 +1,43 @@
+.TH CANVAS_REGISTER_SIZE_CONTROL_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_register_size_control_func \- Register size control callback.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_register_size_control_func
+.sp
+(KWorldCanvas canvas,
+void (*size_control_func) (),
+void *info)
+.SH DESCRIPTION
+This routine will register the size control function for a world
+canvas. This function will be called whenever the lower level pixel canvas
+resizes, or the associated Kcolourmap object is resized, OR a call is made
+to <-canvas_resize->. The function may alter the window scaling information
+for the canvas. Only one size control function is permitted per canvas. The
+size control routine is called before any refresh functions are called.
+This is a means for a higher level object to take control of the world
+canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIsize_control_func\fP 1i
+The function that is called when the canvas is to be
+refreshed. The prototype function is <-canvas_PROTO_size_control_func->.
+.IP \fIinfo\fP 1i
+The initial arbitrary canvas information pointer.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

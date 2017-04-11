@@ -1,0 +1,36 @@
+.TH DS_LIST_DELETE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_list_delete \- Delete an entry from the fragmented section of a linked list.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_list_delete
+.sp
+(packet_desc *list_desc, list_header *list_head,
+list_entry *entry)
+.SH DESCRIPTION
+Delete an entry from the fragmented section of a linked list.
+.IP \fIlist_desc\fP 1i
+The packet descriptor for the list entry data. If this is not
+NULL, the routine will recursively deallocate the packet data.
+.IP \fIlist_head\fP 1i
+The list header.
+.IP \fIentry\fP 1i
+The entry to be deleted. The entry and it's data packet are
+deallocated.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

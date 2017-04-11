@@ -1,0 +1,54 @@
+.TH CHM_MANAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+chm_manage \- Manage a channel for activity by registering callback routines.
+.SH SYNOPSIS
+.B #include <karma_chm.h>
+.sp
+.B KManagedChannel chm_manage
+.sp
+( Channel channel, void *info,
+flag (*input_func) (), void (*close_func) (),
+flag (*output_func) (),flag (*exception_func) () )
+.SH DESCRIPTION
+Manage a channel for activity by registering callback routines.
+.IP \fIchannel\fP 1i
+The channel object to manage.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer associated with the managed
+channel. This pointer may be modified by the callback routines.
+.IP \fIinput_func\fP 1i
+This routine is called when new input occurs on the channel.
+If this is NULL, no callback routine is installed. The prototype function
+is <-chm_PROTO_input_func->.
+.IP \fIclose_func\fP 1i
+This routine is called when the channel closes. If this is
+NULL, no callback routine is installed. The prototype function is
+<-chm_PROTO_close_func->. The channel object MUST be capable of detecting
+closure if this routine is supplied (i.e. this routine cannot be supplied
+for dock channels). Any unread buffered data in the channel will be lost
+upon closure. The call to this function is the last chance to read this
+buffered data.
+.IP \fIoutput_func\fP 1i
+This routine is called when the channel becomes ready for
+output. If this is NULL, no callback routine is installed. The prototype
+function is <-chm_PROTO_output_func->.
+.IP \fIexception_func\fP 1i
+This routine is called when exceptions occur on the
+channel. If this is NULL, no callback routine is installed. The prototype
+function is <-chm_PROTO_exception_func->.
+.SH RETURN VALUE
+A KManagedChannel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,37 @@
+.TH OVERLAY_VA_CREATE_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_va_create_list \- Create a managed overlay object list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B KOverlayList overlay_va_create_list
+.sp
+(void *info, CONST char *name, ...)
+.SH DESCRIPTION
+Create a managed overlay object list.
+.IP \fIinfo\fP 1i
+The arbitrary information pointer for the overlay list. This may be
+NULL.
+.IP \fIname\fP 1i
+The name to be associated with the list. If this is NULL a default
+name is choosen.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. The list must be terminated with
+OVERLAY_ATT_END. See <-overlay_ATTRIBUTES-> for the list of attributes.
+.SH RETURN VALUE
+A KOverlayList object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,34 @@
+.TH DSRA_ELEMENT_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsra_element_desc \- Read ASCII representation of an element descriptor.
+.SH SYNOPSIS
+.B #include <karma_dsra.h>
+.sp
+.B flag dsra_element_desc
+.sp
+(Channel channel, unsigned int *type, char name[])
+.SH DESCRIPTION
+Read ASCII representation of an element descriptor.
+.IP \fIchannel\fP 1i
+The channel object to read from.
+.IP \fItype\fP 1i
+The type of the element is written here.
+.IP \fIname\fP 1i
+The name of the element is written here. The length of the buffer
+must be <<STRING_LENGTH>> bytes.
+.SH RETURN VALUE
+TRUE if a valid element descriptor was read, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

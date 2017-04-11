@@ -1,0 +1,51 @@
+.TH R_OPEN_FILE 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+r_open_file \- Open a named file.
+.SH SYNOPSIS
+.B #include <karma_r.h>
+.sp
+.B int r_open_file
+.sp
+(CONST char *filename, int flags, int mode,
+unsigned int *filetype, unsigned int *blocksize)
+.SH DESCRIPTION
+This routine will open a file. The file may be a regular disc
+file, a named FIFO, a character special device, a Unix domain socket or a
+TCP/IP connection (where supported). This routine provides an enhanced
+interface to the <<open(2)>>, <<socket(2)>> and <<connect(2)>> routines.
+.IP \fIfilename\fP 1i
+The pathname of the file to open. This parameter has the same
+meaning as the first parameter to <<open(2)>>.
+Filenames of the form: "//tcpIP/{hostname}:{port}" indicate a connection to
+a TCP/IP port on host {hostname} with raw port number {port} is
+requested.
+.IP \fIflags\fP 1i
+The access flags. This parameter has the same meaning as the second
+parameter to <<open(2)>>.
+.IP \fImode\fP 1i
+If the file is created, the file protection modes will be determined
+by the combination of the process  umask  and this value. This parameter
+has the same meaning as the third parameter to <<open(2)>>.
+.IP \fIfiletype\fP 1i
+The type of the file will be written here. This may be NULL.
+.IP \fIblocksize\fP 1i
+The blocksize (in bytes) of the file will be written here (this
+is only valid for a disc file). If the blocksize cannot be determined, the
+value 0 will be written here. This may be NULL.
+.SH RETURN VALUE
+The file descriptor on success, else -1 and sets <<errno>> with
+the error code.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

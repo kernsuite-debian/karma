@@ -1,0 +1,49 @@
+.TH CANVAS_CONVERT_FROM_CANVAS_COORDS 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_convert_from_canvas_coords \- Convert world co-ordinates to pixel co-ordinates.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_convert_from_canvas_coords
+.sp
+(KWorldCanvas canvas,
+flag clip, flag linear,
+unsigned int num_coords,
+CONST double *xin, CONST double *yin,
+double *xout, double *yout)
+.SH DESCRIPTION
+Convert world co-ordinates to pixel co-ordinates.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIclip\fP 1i
+If TRUE, world co-ordinates are first clipped to the canvas
+boundaries prior to conversion.
+.IP \fIlinear\fP 1i
+If TRUE, the input world co-ordinates are assumed to be linear,
+hence no non-linear to linear co-ordinate transformation is applied.
+.IP \fInum_coords\fP 1i
+The number of co-ordinates to convert.
+.IP \fIxin\fP 1i
+The array of input horizontal world co-ordinates.
+.IP \fIyin\fP 1i
+The array of input vertical world co-ordinates.
+.IP \fIxout\fP 1i
+The array of output horizontal pixel co-ordinates are written here.
+.IP \fIyout\fP 1i
+The array of output vertical pixel co-ordinates are written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

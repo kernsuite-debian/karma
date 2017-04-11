@@ -1,0 +1,230 @@
+.TH IARRAY 3 "14 Aug 2006" "Karma Distribution"
+.SH PACKAGE
+iarray \- Routines to manipulate Intelligent Arrays
+.SH PURPOSE
+These routines provide a simple interface to the recursive,
+heirarchical data structure supported in Karma, when only n-dimensional
+data is to be represented.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIiarray_contour\fP 1i
+Extract contours from a 2-dimensional Intelligent Array.
+.IP \fIiarray_get_image_from_multi\fP 1i
+Get an image from a Karma data structure.
+.IP \fIiarray_get_movie_from_multi\fP 1i
+Get a movie from a Karma data structure.
+.IP \fIiarray_get_nD_from_multi\fP 1i
+Get a n-dimensional array from a Karma data structure.
+.IP \fIiarray_read_nD\fP 1i
+Read in a Karma arrayfile and yield an "Intelligent Array".
+.IP \fIiarray_write\fP 1i
+Write an "Intelligent Array" in the Karma data format.
+.IP \fIiarray_create\fP 1i
+Create an Intelligent Array.
+.IP \fIiarray_create2\fP 1i
+Create an Intelligent Array.
+.IP \fIiarray_get_from_multi_array\fP 1i
+Create an Intelligent Array from a Karma data structure.
+.IP \fIiarray_create_from_array_desc\fP 1i
+Create an Intelligent Array from a preallocated nD array.
+.IP \fIiarray_dealloc\fP 1i
+Deallocate an Intelligent Array.
+.IP \fIiarray_dealloc2\fP 1i
+Deallocate an Intelligent Array.
+.IP \fIiarray_put_named_value\fP 1i
+Attach a data value to an Intelligent Array.
+.IP \fIiarray_put_named_string\fP 1i
+Attach a string to an Intelligent Array.
+.IP \fIiarray_get_named_value\fP 1i
+Get attached data from an Intelligent Array.
+.IP \fIiarray_get_named_string\fP 1i
+Get attached string from an Intelligent Array.
+.IP \fIiarray_get_sub_array_2D\fP 1i
+Create a 2-dimensional alias Intelligent Array.
+.IP \fIiarray_get_2D_slice_from_3D\fP 1i
+Create a 2-dimensional Intelligent Array alias from a slice.
+.IP \fIiarray_get_sub_array_3D\fP 1i
+Create a 3-dimensional alias Intelligent Array.
+.IP \fIiarray_get_3D_slice_from_4D\fP 1i
+Create a 3-dimensional Intelligent Array alias from a slice.
+.IP \fIiarray_remap_torus\fP 1i
+Remap Intelligent Array into a torus.
+.IP \fIiarray_dim_length\fP 1i
+Get length of a dimension in an Intelligent Array.
+.IP \fIiarray_dim_name\fP 1i
+Get dimension name in an Intelligent Array.
+.IP \fIiarray_set_world_coords\fP 1i
+Set the world co-ordinates of an Intelligent Array dimension.
+.IP \fIiarray_get_world_coords\fP 1i
+Get the world co-ordinates of an Intelligent Array dimension.
+.IP \fIiarray_get_dim_desc\fP 1i
+Get a dimension descriptor from an Intelligent Array.
+.IP \fIiarray_get_restrictions\fP 1i
+Get restriction information.
+.IP \fIiarray_is_full_array\fP 1i
+Test if iarray is the same size as the underlying array.
+.IP \fIiarray_compare_sizes\fP 1i
+Compare if two Intelligent Arrays are the same size.
+.IP \fIiarray_copy_data\fP 1i
+Copy data between Intelligent Arrays.
+.IP \fIiarray_clear\fP 1i
+Clear (set to zero) an Intelligent Array.
+.IP \fIiarray_fill\fP 1i
+Fill an Intelligent Array with a single value.
+.IP \fIiarray_min_max\fP 1i
+Determine the minimum and maximum value of an Intelligent Array.
+.IP \fIiarray_scale_and_offset\fP 1i
+Scale and offset an Intelligent Array.
+.IP \fIiarray_clip_scale_and_offset\fP 1i
+Clip, scale and offset an Intelligent Array.
+.IP \fIiarray_add_and_scale\fP 1i
+Add Intelligent Arrays and scale.
+.IP \fIiarray_add_and_scale2\fP 1i
+Add Intelligent Arrays and scale.
+.IP \fIiarray_sub_and_scale\fP 1i
+Subtract Intelligent Arrays and scale.
+.IP \fIiarray_multiply_divide\fP 1i
+Multiply or divide Intelligent Arrays and scale.
+.IP \fIiarray_compute_histogram\fP 1i
+Compute a histogram of an "Intelligent Array".
+.IP \fIiarray_sum\fP 1i
+Determine the sum of an Intelligent Array.
+.IP \fIiarray_matrix_multiply\fP 1i
+Perform a matrix multiply.
+.IP \fIiarray_dim_index\fP 1i
+This routine will find the index of a named dimension.
+.IP \fIiarray_get_data_scaling\fP 1i
+Get the scale and offset for data in an Intelligent Array.
+.IP \fIiarray_set_data_scaling\fP 1i
+Set the scale and offset for data in an Intelligent Array.
+.IP \fIiarray_get_data_range\fP 1i
+Get the range of data in an Intelligent Array.
+.IP \fIiarray_set_data_range\fP 1i
+Set the range of data in an Intelligent Array.
+.IP \fIiarray_format_value\fP 1i
+Format a data value into a string.
+.IP \fIiarray_create_from_template\fP 1i
+Create an Intelligent Array from a template array.
+.IP \fIiarray_create_from_template2\fP 1i
+Create an Intelligent Array from a template array.
+.IP \fIiarray_get_coordinate\fP 1i
+Get a co-ordinate along a dimension.
+.IP \fIiarray_set_dim_name\fP 1i
+Change the name of a dimension of an Intelligent Array.
+.IP \fIiarray_append_history_string\fP 1i
+Add a history string to an Intelligent Array.
+.IP \fIiarray_copy_named_element\fP 1i
+Copy a named element from one Intelligent Array to another.
+.IP \fIiarray_get_fits_axis\fP 1i
+Get the FITS axis number of a dimension.
+.IP \fIiarray_create_and_setup\fP 1i
+Create an Intelligent Array and setup.
+.IP \fIiarray_get_associated_wcs_astro\fP 1i
+Get the KwcsAstro object associated with an Intelligent Array.
+.IP \fIiarray_set_value_name\fP 1i
+Change the data name of an Intelligent Array.
+.IP \fIiarray_find_centroid\fP 1i
+Find the centroid inside an ellipse.
+.IP \fIiarray_copy_attached\fP 1i
+Copy attached data from one Intelligent Array to another.
+.IP \fIiarray_compare_grids_2D\fP 1i
+Compare if two image slices have the same world co-ordinate grid.
+.IP \fIiarray_get_beam_correction\fP 1i
+Get the beam correction for an area in an array.
+.IP \fIiarray_register_data_change\fP 1i
+Notify data for Intelligent Array has changed.
+.IP \fIiarray_get_values\fP 1i
+Convert Intelligent Array data to double precision complex values
+.IP \fIiarray_moment_compute\fP 1i
+Compute the 0th and 1st moments along the Z axis of a cube.
+.IP \fIiarray_moment_create\fP 1i
+Create 2-D arrays to contain computed moment maps.
+.IP \fIiarray_write_mono_ps\fP 1i
+Write an Intelligent Array as monochrome PostScript.
+.IP \fIiarray_write_pseudocolour_ps\fP 1i
+Write an Intelligent Array as PseudoColour PostScript.
+.IP \fIiarray_write_rgb_ps\fP 1i
+Write an Intelligent Array as TrueColour PostScript.
+.IP \fIiarray_regrid_2D\fP 1i
+Regrid an array by iterating over the output array.
+.IP \fIiarray_regrid_3D\fP 1i
+Regrid an array by iterating over the output array.
+.IP \fIiarray_scroll\fP 1i
+Scroll an Intelligent Array.
+.IP \fIiarray_rect_to_polar\fP 1i
+Transform an image from rectangular to polar co-ordinates.
+.IP \fIiarray_transform_3D\fP 1i
+Transform an array by iterating over the input array.
+.IP \fIiarray_untransform_3D\fP 1i
+Transform an array by iterating over the output array.
+.IP \fIiarray_create_1D\fP 1i
+Create a 1-dimensional Intelligent Array.
+.IP \fIiarray_create_2D\fP 1i
+Create a 2-dimensional Intelligent Array.
+.IP \fIiarray_create_3D\fP 1i
+Create a 3-dimensional Intelligent Array.
+.IP \fIiarray_create_4D\fP 1i
+Create a 4-dimensional Intelligent Array.
+.IP \fIiarray_create_shm\fP 1i
+Create an n-dimensional Intelligent Array in shared memory.
+.IP \fIiarray_put_double\fP 1i
+Attach a double precision data value to an Intelligent Array.
+.IP \fIiarray_put_float\fP 1i
+Attach a float data value to an Intelligent Array.
+.IP \fIiarray_put_int\fP 1i
+Attach an integer data value to an Intelligent Array.
+.IP \fIiarray_get_double\fP 1i
+Get attached double float from an Intelligent Array.
+.IP \fIiarray_get_float\fP 1i
+Get attached float from an Intelligent Array.
+.IP \fIiarray_get_int\fP 1i
+Get attached integer from an Intelligent Array.
+.IP \fIiarray_fill_double\fP 1i
+Fill an Intelligent Array with a double precision float value.
+.IP \fIiarray_fill_float\fP 1i
+Fill an Intelligent Array with a single float value.
+.IP \fIiarray_fill_int\fP 1i
+Fill an Intelligent Array with a single integer value.
+.IP \fIiarray_min_max_float\fP 1i
+Determine the minimum and maximum value of an Intelligent Array.
+.IP \fIiarray_min_max_int\fP 1i
+Determine the minimum and maximum value of an Intelligent Array.
+.IP \fIiarray_scale_and_offset_float\fP 1i
+Scale and offset an Intelligent Array.
+.IP \fIiarray_scale_and_offset_int\fP 1i
+Scale and offset an Intelligent Array.
+.IP \fIiarray_num_dim\fP 1i
+Get number of dimensions in an Intelligent Array.
+.IP \fIiarray_type\fP 1i
+Get type of data in an Intelligent Array.
+.IP \fIiarray_value_name\fP 1i
+Get name of data in an Intelligent Array.
+.IP \fIiarray_register_destroy_func\fP 1i
+Register destroy function for an Intelligent Array.
+.IP \fIiarray_multi_array\fP 1i
+Get the multi_array for an Intelligent Array.
+.IP \fIiarray_multi_index\fP 1i
+Get the index of the Intelligent Array within the multi_array.
+.IP \fIiarray_array_desc\fP 1i
+Get the array_desc for an Intelligent Array.
+.IP \fIiarray_arrayp\fP 1i
+Get the array_pointer for an Intelligent Array.
+.IP \fIiarray_register_data_change_func\fP 1i
+Register data change function for an Intelligent Array.
+.IP \fIiarray_PROTO_destroy_func\fP 1i
+Register destruction of an Intelligent Array.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

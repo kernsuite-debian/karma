@@ -1,0 +1,70 @@
+<html><head><title>Widget: Dataclip</title></head> 
+<body>
+<center><h1>The "Dataclip" Widget</h1></center>    This widget provides an interactive way to select a range of data.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=Dataclip></a></table><h4>Tables</h4><table><tr><td><a href=Dataclip.html#Dataclip_ResourceNames>Dataclip_ResourceNames</a></td><td>List of resource names for Dataclip widget
+</td></tr>
+<tr><td><a href=Dataclip.html#Dataclip_Resources>Dataclip_Resources</a></td><td>List of resources for Dataclip widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=Dataclip.html#XkwDataclipNewArray>XkwDataclipNewArray</a></td><td>Register new array.
+</td></tr>
+<tr><td><a href=Dataclip.html#XkwDataclipArrayChanged>XkwDataclipArrayChanged</a></td><td>Register a change in the array.
+</td></tr>
+<tr><td><a href=Dataclip.html#XkwDataclipSetRegions>XkwDataclipSetRegions</a></td><td>Set the regions.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=Dataclip_ResourceNames><b>Dataclip_ResourceNames</b></a> List of resource names for Dataclip widget
+<p> <table><tr><td>Name                    </td><td>Purpose
+</td></tr><tr><td>XkwNmaxDataRegions      </td><td>The maximum number of data regions
+</td></tr><tr><td>XkwNregionCallback      </td><td>The callback when regions change
+</td></tr><tr><td>XkwNshowBlankControl    </td><td>If TRUE show the "Blank" button
+</td></tr><tr><td>XkwNfixedOutputType     </td><td>Specify a fixed output type
+</td></tr><tr><td>XkwNverbose             </td><td>If TRUE verbose messages are enabled
+</td></tr><tr><td>XkwNautoPopdown         </td><td>If TRUE widget is popped down on array deallocation
+</table><p><hr> <a name=Dataclip_Resources><b>Dataclip_Resources</b></a> List of resources for Dataclip widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNmaxDataRegions	</td><td>XkwCMaxDataRegions	</td><td>XtRInt	</td><td>1
+</td></tr><tr><td>XkwNscaledRegionCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNrawRegionCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNshowBlankControl	</td><td>XkwCShowBlankControl	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNfixedOutputType	</td><td>XkwCFixedOutputType	</td><td>XtRCardinal	</td><td>NONE
+</td></tr><tr><td>XkwNverbose	</td><td>XkwCVerbose	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNautoPopdown	</td><td>XkwCAutoPopdown	</td><td>XtRBool	</td><td>FALSE
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwDataclipNewArray></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwDataclipNewArray</b><i>    (Widget W, iarray array, double min, double max,
+			  flag reset_hscale)
+</i><br><p>    Register new array.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The Dataclip widget.
+<br><li><i>array :</i> 
+    The new array. This may be NULL.
+<br><li><i>min :</i> 
+    The minimum (unscaled) data value in the array.
+<br><li><i>max :</i> 
+    The maximum (unscaled) data value in the array. If this is less than
+    <em>min</em> then the minimum and maximum values are computed.
+<br><li><i>reset_hscale :</i> 
+    If TRUE the horizontal scale is reset.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwDataclipArrayChanged></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwDataclipArrayChanged</b><i>    (Widget W, double min, double max)
+</i><br><p>    Register a change in the array.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The Dataclip widget.
+<br><li><i>min :</i> 
+    The minimum (unscaled) data value in the array.
+<br><li><i>max :</i> 
+    The maximum (unscaled) data value in the array. If this is less than
+    <em>min</em> then the minimum and maximum values are computed.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwDataclipSetRegions></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwDataclipSetRegions</b><i>    (Widget W, CONST DataclipRegions *regions)
+</i><br><p>    Set the regions.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The Dataclip widget.
+<br><li><i>regions :</i> 
+    The regions. These are unscaled (raw) values.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

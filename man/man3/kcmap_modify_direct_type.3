@@ -1,0 +1,60 @@
+.TH KCMAP_MODIFY_DIRECT_TYPE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_modify_direct_type \- Change colours in a colourmap.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B void kcmap_modify_direct_type
+.sp
+(Kcolourmap cmap,
+double red_x, double red_y, void *red_var_param,
+double green_x, double green_y,
+void *green_var_param,
+double blue_x, double blue_y,
+void *blue_var_param)
+.SH DESCRIPTION
+This routine will call the active colour compute function to
+change the colourmap colours in a colourmap.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.IP \fIred_x\fP 1i
+A parameter used to compute the red component colour values.
+.IP \fIred_y\fP 1i
+A parameter used to compute the red component colour values.
+.IP \fIred_var_param\fP 1i
+A parameter used to compute the red component colour
+values.
+.IP \fIgreen_x\fP 1i
+A parameter used to compute the green component colour values.
+.IP \fIgreen_y\fP 1i
+A parameter used to compute the green component colour values.
+.IP \fIgreen_var_param\fP 1i
+A parameter used to compute the green component colour
+values.
+.IP \fIblue_x\fP 1i
+A parameter used to compute the blue component colour values.
+.IP \fIblue_y\fP 1i
+A parameter used to compute the blue component colour values.
+.IP \fIblue_var_param\fP 1i
+A parameter used to compute the blue component colour
+values.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the REVERSE attribute for the colourmap is set, the colourmap is
+reversed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

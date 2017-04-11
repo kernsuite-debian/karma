@@ -1,0 +1,37 @@
+.TH XC 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+xc \- Routines to manipulate X displays and colourmaps
+.SH PURPOSE
+These routines are meant to provide an abstracted interface to X displays
+and colourmaps, used in the <-kcmap-> routines.
+.SH LIBRARY
+karmaX11
+.SH LINK WITH
+-lkarmaX11
+.SH FUNCTIONS
+.IP \fIxc_get_dpy_handle\fP 1i
+Generate a display handle for later use.
+.IP \fIxc_alloc_colours\fP 1i
+Allocate colourcells.
+.IP \fIxc_free_colours\fP 1i
+Free a number of colourcells in a low level colourmap.
+.IP \fIxc_store_colours\fP 1i
+Store colours into a low level colourmap.
+.IP \fIxc_get_location2\fP 1i
+Determine the location of the graphics display being used.
+.IP \fIxc_get_cmap\fP 1i
+Get the X11 colourmap for a display handle.
+.IP \fIxc_free_handle\fP 1i
+Free a display handle.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

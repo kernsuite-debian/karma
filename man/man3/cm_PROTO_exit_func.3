@@ -1,0 +1,34 @@
+.TH CM_PROTO_EXIT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+cm_PROTO_exit_func \- This routine is called when a child process exits.
+.SH SYNOPSIS
+.B #include <karma_cm.h>
+.sp
+.B void cm_PROTO_exit_func
+.sp
+(int pid, int value, struct rusage *rusage)
+.SH DESCRIPTION
+This routine is called when a child process exits.
+.IP \fIpid\fP 1i
+The process ID.
+.IP \fIvalue\fP 1i
+The value passed to <<_exit>>.
+.IP \fIrusage\fP 1i
+The resource usage information. If this is NULL, the platform does
+not support this.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

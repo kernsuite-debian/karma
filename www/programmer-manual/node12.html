@@ -1,0 +1,461 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Foreign Data</TITLE>
+<META NAME="description" CONTENT="Foreign Data">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html810" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html808" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html802" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html812" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html813" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html811" HREF="node13.html">Multi-Threading</A>
+<B>Up:</B> <A NAME="tex2html809" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html803" HREF="node11.html">Intelligent Arrays</A>
+<BR> <P>
+<H1><A NAME="SECTION001200000000000000000">Foreign Data</A></H1>
+<A NAME="chapterforeigndata">&#160;</A><A NAME="626">&#160;</A>
+<P>
+<H1><A NAME="SECTION001210000000000000000">Purpose</A></H1>
+<P>
+While the Karma data format is a very fast and compact way of storing
+data, for some reason not everyone uses this format. Hence a means of
+reading in data in other formats and converting to Karma format is
+required. The <A NAME="tex2html156" HREF="../lib/foreign.html"><B>foreign</B></A> package provides routines which will
+read and write many different formats, including:
+<P>
+<UL>
+<LI> FITS
+<LI> PNM/PPM/PGM (Portable aNy Map and derivatives)
+<LI> Sun Rasterfile
+<LI> Miriad Image file
+<LI> GIPSY (Groningen Image Processing SYstem)
+<LI> DRAO (Dominion Radio Astronomy Observatory) catalogue datasets
+<LI> AIPS (Astronomical Image Processing System) catalogue datasets
+<LI> AIPS++ (Astronomical Information Processing System) directory datasets
+<LI> Starlink datasets
+</UL>
+<P>
+The <A NAME="tex2html157" HREF="../lib/foreign.html"><B>foreign</B></A> package also provides routines to write a Karma
+data structure to a file in a foreign data format.
+<P>
+Combined with the powerful ``Intelligent Array'' (<A NAME="tex2html158" HREF="../lib/iarray.html"><B>iarray</B></A>)
+package in the Karma library, easy access to foreign data is possible.
+<P>
+<H1><A NAME="SECTION001220000000000000000">Related documents</A></H1>
+<P>
+The documentation on ``Intelligent Arrays'' is highly recommended.
+<P>
+<H1><A NAME="SECTION001230000000000000000">Tutorial</A></H1>
+<P>
+Some sample code extracts are shown below which demonstrate how to
+read data in foreign formats.
+<P>
+<H2><A NAME="SECTION001231000000000000000">Example 1</A></H2>
+<P>
+This routine will read a file of any supported format (including Karma
+format) and returns a 2-dimensional Intelligent Array.
+<P>
+<PRE>iarray read_2d_array (CONST char *filename)
+/*  [PURPOSE] This routine will read a file containing a 2-dimensional
+    array and will return an Intelligent Array.
+    &lt;filename&gt; The name of the file to read.
+    [RETURNS] An Intelligent Array on success, else NULL.
+*/
+{
+    iarray arr;
+    multi_array *multi_desc;
+
+    if ( ( multi_desc = foreign_guess_and_read (filename, K_CH_MAP_LOCAL,
+                                                FALSE, NULL,
+                                                FA_GUESS_READ_END) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error reading file: \"%s\"\n&quot;, filename);
+        return (NULL);
+    }
+    if ( ( arr = iarray_get_from_multi_array (multi_desc, NULL, 2,
+					      (CONST char **) NULL, NULL) )
+        == NULL )
+    {
+        fprintf (stderr, &quot;Error extracting 2-D Intelligent Array\n&quot;);
+        return (NULL);
+    }
+    return (arr);
+}</PRE>
+<P>
+<H2><A NAME="SECTION001232000000000000000">Example 2</A></H2>
+<P>
+This programme will read in an image of any supported format (including
+Karma format) and doubles all the data values. If the FITS-style
+``DATAMIN'' and ``DATAMAX'' keywords are present, the value of these
+are doubled as well. The new image is then written out in Karma
+format. The way you would run this programme is as follows:
+<P>
+<TT>doubler &lt;infile&gt; &lt;outfile&gt;</TT>
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Image Processing sample programme                       */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_foreign.h&gt;
+#include &lt;karma_iarray.h&gt;
+
+int main (int argc, char **argv)
+{
+    iarray in, out;
+    unsigned int xlen, ylen, x, y;
+    double value[2];
+
+    /*  Read argv[1] for input file  */
+    if ( !foreign_read_and_setup (argv[1], K_CH_MAP_LOCAL,
+                                  FALSE, NULL, TRUE, 2, K_FLOAT, TRUE,
+                                  &amp;in, NULL, NULL, TRUE, NULL) ) exit (1);
+    /*  Create output array  */
+    if ( ( out = iarray_create_from_template (in, K_FLOAT, TRUE, TRUE, TRUE) )
+         == NULL ) exit (2);
+    /*  Double data values  */
+    xlen = iarray_dim_length (in, 1);
+    ylen = iarray_dim_length (in, 0);
+    for (y = 0; y &lt; ylen; ++y) for (x = 0; x &lt; xlen; ++x)
+    {
+        F2 (out, y, x) = F2 (in, y, x) * 2.0;
+    }
+    /* Update the FITS-style &quot;DATAMIN&quot; and &quot;DATAMAX&quot; keywords if they exist */
+    if ( iarray_get_named_value (in, &quot;DATAMIN&quot;, NULL, value) )
+    {
+        iarray_put_double (out, &quot;DATAMIN&quot;, value[0] * 2.0);
+    }
+    if ( iarray_get_named_value (in, &quot;DATAMAX&quot;, NULL, value) )
+    {
+        iarray_put_double (out, &quot;DATAMAX&quot;, value[0] * 2.0);
+    }
+    /*  Write the result to the file in argv[2]  */
+    iarray_write (out, argv[2]);
+}   /*  End Function main   */</PRE>
+<P>
+<H1><A NAME="SECTION001240000000000000000">Implementing a Data Filter</A></H1>
+<A NAME="pubdatafilters">&#160;</A>
+<A NAME="640">&#160;</A>
+<P>
+This section shows you how you would implement you own custom data
+filter which would provide automatic support for new data formats. See
+the section on <A NAME="tex2html159" HREF="../user-manual/datafilters.html#pubdatafilters">datafilters</A> in the Karma User Manual
+for a description on how to configure a data filter. The data filters
+must write either <B>Karma</B>, <B>FITS</B> or <B>PNM</B> format. This
+section deals with writing <B>Karma</B> format (it is assumed that if
+you want to write <B>FITS</B> or <B>PNM</B> format you will use
+something else).
+<P>
+There are two ways you can write a data filter. The first way requires
+you to allocate a Karma data structure of the required size and fill
+in the array with data from the input file. You then write the entire
+Karma data structure to the standard output. This approach is the
+easiest to implement, but has the disadvantage that the data filter
+programme will require as much virtual memory as the input data
+file. The second approach is to write a ``streaming'' data filter,
+which writes the Karma descriptors first (descriptors are similar to
+headers), and then reads in blocks of input data and writes out blocks
+of data in Karma format. This approach is a little harder to
+implement, but it requires very little virtual memory (swap),
+irrespective of how big your datafile is.
+<P>
+Note that for all types of data filter, only the following values are
+permitted for blank data:
+<UL>
+<LI> <B>8 bit signed integer</B> -128
+<LI> <B>16 bit signed integer</B> -32768
+<LI> <B>32 bit signed integer</B> -2147483648
+<LI> <B>floating point</B> 1e30
+</UL>
+<P>
+The use of IEEE not-a-number (NaN) values is not permitted.
+<P>
+<H2><A NAME="SECTION001241000000000000000">Example VM Data Filter</A></H2>
+<P>
+This section shows you how to code a data filter which reads in all
+the input data into virtual memory and then writes it out again. Below
+is the source code. The filter supports an extremely simple file
+format which has two ASCII lines describing each axis followed by data
+values.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_iarray.h&gt;
+#include &lt;karma_dsrw.h&gt;
+#include &lt;karma_ch.h&gt;
+
+int main (int argc, char **argv)
+{
+    iarray a;
+    int naxis1, naxis2, x, y;
+    float value;
+    double crval1, crval2, crpix1, crpix2, cdelt1, cdelt2;
+    char ctype1[STRING_LENGTH], ctype2[STRING_LENGTH];
+    uaddr dim_lengths[2];
+    FILE *fp;
+    extern char *sys_errlist[];
+    static char usage_string[] = &quot;filter1 infile&quot;;
+
+    if (argc != 2)
+    {
+        fprintf (stderr, &quot;Usage:\t%s\n&quot;, usage_string);
+        exit (RV_BAD_PARAM);
+    }
+    /*  Open the input file (this is a simple 2D format)  */
+    if ( ( fp = fopen (argv[1], &quot;r&quot;) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error opening file: \"%s\"\t%s\n&quot;,
+                 argv[1], sys_errlist[errno]);
+        exit (RV_CANNOT_OPEN);
+    }
+    /*  Read the horizontal axis information. Format is:
+        naxis1 crval1 crpix1 cdelt1 ctype1  */
+    fscanf (fp, &quot;%d %le %le %le %s&quot;,
+            &amp;naxis1, &amp;crval1, &amp;crpix1, &amp;cdelt1, ctype1);
+    /*  Read the vertical axis information. Format is:
+        naxis2 crval2 crpix2 cdelt2 ctype2  */
+    fscanf (fp, &quot;%d %le %le %le %s&quot;,
+            &amp;naxis2, &amp;crval2, &amp;crpix2, &amp;cdelt2, ctype2);
+    /*  Create 2D float Intelligent Array, preferably in SHM  */
+    dim_lengths[0] = naxis2;
+    dim_lengths[1] = naxis1;
+    if ( ( a = iarray_create_shm (K_FLOAT, 2, NULL, dim_lengths, NULL, FALSE) )
+         == NULL )
+    {
+        fprintf (stderr, &quot;Error allocating image\n&quot;);
+        exit (RV_MEM_ERROR);
+    }
+    /*  Change dimension names  */
+    iarray_set_dim_name (a, 0, ctype2, TRUE);
+    iarray_set_dim_name (a, 1, ctype1, TRUE);
+    /*  Attach FITS-style keywords  */
+    iarray_put_named_string (a, &quot;CTYPE1&quot;, ctype1);
+    iarray_put_double (a, &quot;CRVAL1&quot;, crval1);
+    iarray_put_double (a, &quot;CRPIX1&quot;, crpix1);
+    iarray_put_double (a, &quot;CDELT1&quot;, cdelt1);
+    iarray_put_named_string (a, &quot;CTYPE2&quot;, ctype2);
+    iarray_put_double (a, &quot;CRVAL2&quot;, crval2);
+    iarray_put_double (a, &quot;CRPIX2&quot;, crpix2);
+    iarray_put_double (a, &quot;CDELT2&quot;, cdelt2);
+    /*  Now read data values in from the input file and write to the array  */
+    for (y = 0; y &lt; naxis2; ++y) for (x = 0; x &lt; naxis1; ++x)
+    {
+        fscanf (fp, &quot;%e&quot;, &amp;value);
+        F2 (a, y, x) = value;
+    }
+    fclose (fp);
+    /*  Create the special standard output channel  */
+    ch_open_stdout ();
+    /*  Write out the Karma array  */
+    dsrw_write_multi (ch_stdout, a-&gt;multi_desc);
+    iarray_dealloc (a);
+    return (RV_OK);
+}   /*  End Function main  */</PRE>
+<P>
+The programme opens up the input file, grabs the ``header''
+information and constructs an Intelligent Array from this. The
+Intelligent Array will be placed into a shared memory segment if
+possible. The header information is attached to the array and then the
+input data is read in an element at a time and placed into the
+array. Finally the array is written to the standard output and the
+programme returns the status code <TT>RV_OK</TT> indicating that the
+conversion was successful. If the array was allocated in shared
+memory and the standard output is piped into a Karma programme, the
+transfer time to the programme is effectively zero, because no data
+has to be transferred. Both programmes will share the same copy of the
+data. When both programmes terminate the shared memory segment is
+deleted.
+<P>
+You may also need to refer to the chapter on
+<A HREF="node11.html#chapteriarray">Intelligent Arrays</A>.
+<P>
+An example input file is given below. It contains a 3*4 array.
+<PRE>3 1.0 2.0 3.0 x-axis
+4 5.0 6.0 7.0 y-axis
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</PRE>
+<P>
+<H2><A NAME="SECTION001242000000000000000">Example Streaming Data Filter</A></H2>
+<P>
+This section shows you how to code a data filter which reads the input
+in blocks and writes out each block as it goes. Below is the source
+code. The file format supported is the same as the one in the example
+above. This is the kind of filter you should write, because it has the
+best performance and lowest resource utilisation under all
+circumstances.
+<P>
+<PRE>#include &lt;stdio.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_dsrw.h&gt;
+#include &lt;karma_ds.h&gt;
+#include &lt;karma_ch.h&gt;
+#include &lt;karma_im.h&gt;
+
+
+STATIC_FUNCTION (flag read_func,
+                 (void *buffer, uaddr num_values, void *info) );
+
+
+int main (int argc, char **argv)
+{
+    int naxis1, naxis2;
+    unsigned int data_type = K_FLOAT;
+    double crval1, crval2, crpix1, crpix2, cdelt1, cdelt2;
+    multi_array *multi_desc;
+    array_desc *arr_desc;
+    char ctype1[STRING_LENGTH], ctype2[STRING_LENGTH];
+    uaddr dim_lengths[2];
+    char *dim_names[2];
+    double dval[2];
+    FILE *fp;
+    extern char *sys_errlist[];
+    static char *bunit = &quot;JY/BEAM&quot;;
+    static char usage_string[] = &quot;filter1 infile&quot;;
+
+    if (argc != 2)
+    {
+        fprintf (stderr, &quot;Usage:\t%s\n&quot;, usage_string);
+        exit (RV_BAD_PARAM);
+    }
+    /*  A few initialisation so that we get nice history  */
+    im_register_module_name (&quot;filter1&quot;);
+    im_register_module_version_date (&quot;1.0&quot;);
+    im_register_lib_version (KARMA_VERSION);
+    /*  Open the input file (this is a simple 2D format)  */
+    if ( ( fp = fopen (argv[1], &quot;r&quot;) ) == NULL )
+    {
+        fprintf (stderr, &quot;Error opening file: \"%s\"\t%s\n&quot;,
+                 argv[1], sys_errlist[errno]);
+        exit (RV_CANNOT_OPEN);
+    }
+    /*  Read the horizontal axis information. Format is:
+        naxis1 crval1 crpix1 cdelt1 ctype1  */
+    fscanf (fp, &quot;%d %le %le %le %s&quot;,
+            &amp;naxis1, &amp;crval1, &amp;crpix1, &amp;cdelt1, ctype1);
+    /*  Read the vertical axis information. Format is:
+        naxis2 crval2 crpix2 cdelt2 ctype2  */
+    fscanf (fp, &quot;%d %le %le %le %s&quot;,
+            &amp;naxis2, &amp;crval2, &amp;crpix2, &amp;cdelt2, ctype2);
+    /*  Create a low-level Karma data structure descriptor without allocating
+        space for the array data yet  */
+    dim_lengths[0] = naxis2;
+    dim_lengths[1] = naxis1;
+    dim_names[0] = ctype2;
+    dim_names[1] = ctype1;
+    if ( ( arr_desc = ds_easy_alloc_array_desc (2, dim_lengths, NULL, NULL,
+                                                NULL,(CONST char **) dim_names,
+                                                1, &amp;data_type,
+                                                (CONST char **) &amp;bunit) )
+         == NULL )
+    {
+        fprintf (stderr, &quot;Error allocating descriptors\n&quot;);
+        exit (RV_MEM_ERROR);
+    }
+    /*  Create the special standard output channel  */
+    ch_open_stdout ();
+    if ( ( multi_desc = dsrw_filter_setup (ch_stdout, arr_desc,
+                                           argv[1], &quot;stdout&quot;) ) == NULL )
+    {
+        exit (RV_MEM_ERROR);
+    }
+    /*  Attach FITS-style keywords  */
+    dval[1] = 0.0;
+    ds_put_unique_named_string (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                                &quot;CTYPE1&quot;, ctype1, FALSE);
+    dval[0] = crval1;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CRVAL1&quot;, K_DOUBLE, dval, FALSE);
+    dval[0] = crpix1;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CRPIX1&quot;, K_DOUBLE, dval, FALSE);
+    dval[0] = cdelt1;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CDELT1&quot;, K_DOUBLE, dval, FALSE);
+    ds_put_unique_named_string (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                                &quot;CTYPE2&quot;, ctype2, FALSE);
+    dval[0] = crval2;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CRVAL2&quot;, K_DOUBLE, dval, FALSE);
+    dval[0] = crpix2;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CRPIX2&quot;, K_DOUBLE, dval, FALSE);
+    dval[0] = cdelt2;
+    ds_put_unique_named_value (multi_desc-&gt;headers[0], multi_desc-&gt;data,
+                               &quot;CDELT2&quot;, K_DOUBLE, dval, FALSE);
+    if ( !dsrw_filter_process (ch_stdout, multi_desc, read_func, fp) )
+        exit (RV_SYS_ERROR);
+    ds_dealloc_multi (multi_desc);
+    return (RV_OK);
+}   /*  End Function main  */
+
+static flag read_func (void *buffer, uaddr num_values, void *info)
+/*  [SUMMARY] Read data and write to a buffer.
+    &lt;buffer&gt; The buffer to write to.
+    &lt;num_values&gt; The number of values to read.
+    &lt;info&gt; The arbitrary function information pointer.
+    [RETURNS] TRUE on success, else FALSE.
+*/
+{
+    float *ptr = (float *) buffer;
+    FILE *fp = (FILE *) info;
+
+    while (num_values-- &gt; 0) fscanf (fp, &quot;%e&quot;, ptr++);
+    return (TRUE);
+}   /*  End Function read_func  */</PRE>
+<P>
+The programme opens up the input file, grabs the ``header''
+information and constructs a low-level Karma data structure from
+this. The<BR> 
+<A NAME="tex2html160" HREF="../lib/ds.html#ds_easy_alloc_array_desc"><B>ds_easy_alloc_array_desc</B></A> function is
+used to create a two-dimensional array descriptor. A special utility
+function for data filters <A NAME="tex2html161" HREF="../lib/dsrw.html#dsrw_filter_setup"><B>dsrw_filter_setup</B></A> is then
+called to create the data structure. The data structure created is
+specially constructed and cannot be used by the ordinary functions in
+the <A NAME="tex2html162" HREF="../lib/dsrw.html"><B>dsrw</B></A> package. The header information is then attached to
+the structure. To actually perform the filtering process the
+<A NAME="tex2html163" HREF="../lib/dsrw.html#dsrw_filter_process"><B>dsrw_filter_process</B></A> function is called, which will
+call your <TT>read_func</TT> function many times, each time reading some
+data and then writing out the converted data in Karma format.  Finally
+the programme returns the status code <TT>RV_OK</TT> indicating that the
+conversion was successful.
+<P>
+This filter will also attempt to use shared memory to transfer the
+data to the Karma programme, in which case the transfer time is
+effictively zero. If shared memory is not available, the filter falls
+back to a streaming mode which consumes very little virtual memory.
+<P>
+As you will note, the streaming data filter is slightly more
+complicated than the VM data filter, but it is much more efficient in
+its use of virtual memory. You should be aware that the programme
+which is receiving the data (i.e. your visualisation tool) will keep a
+copy of the data in virtual memory, so if you only implement a VM data
+filter, your virtual memory requirements will <EM>double</EM>, unless
+your system has shared memory support. Transferring shared memory
+arrays is by far the fastest mode of operation.
+<P>
+<HR><A NAME="tex2html810" HREF="node13.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html808" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html802" HREF="node11.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html812" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html813" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html811" HREF="node13.html">Multi-Threading</A>
+<B>Up:</B> <A NAME="tex2html809" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html803" HREF="node11.html">Intelligent Arrays</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

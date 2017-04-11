@@ -1,0 +1,49 @@
+.TH KWIN_HERSHEY_GET_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_hershey_get_string \- Get string using Hershey (stroke) font for later drawing.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B KPixCanvasHersheyString kwin_hershey_get_string
+.sp
+(CONST char *string,
+double angle, double size,
+double *width, double *height,
+double *ascent,
+double *descent)
+.SH DESCRIPTION
+Get string using Hershey (stroke) font for later drawing.
+.IP \fIangle\fP 1i
+The rotation angle of the string in degrees.
+.IP \fIsize\fP 1i
+The size of the font in pixels (typically 12.8).
+.IP \fIwidth\fP 1i
+The width of the string in pixels (ignoring rotations) is written
+here. If this is NULL nothing is written here.
+.IP \fIheight\fP 1i
+The height of the string in pixels (ignoring rotations) is written
+here. If this is NULL nothing is written here.
+.IP \fIascent\fP 1i
+The ascent of the string in pixels (ignoring rotations) is written
+here. This is typically positive. If this is NULL nothing is written here.
+.IP \fIdescent\fP 1i
+The descent of the string in pixels (ignoring rotations) is
+written here. This is typically negative. If this is NULL nothing is
+written here.
+.SH RETURN VALUE
+A KPixCanvasHersheyString object on success, else NULL. This is
+valid until the next call to this function.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

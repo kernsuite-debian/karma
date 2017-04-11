@@ -1,0 +1,44 @@
+.TH IARRAY_CREATE_FROM_TEMPLATE 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_create_from_template \- Create an Intelligent Array from a template array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B iarray iarray_create_from_template
+.sp
+(iarray template_arr,unsigned int elem_type,
+flag copy_world_coords, flag copy_names,
+flag copy_aux_info)
+.SH DESCRIPTION
+This routine will create an Intelligent Array of a specified type
+using an existing Intelligent Array as the template for the size,
+dimensionality and other attributes.
+.IP \fItemplate_arr\fP 1i
+The template Intelligent Array.
+.IP \fIelem_type\fP 1i
+The element type for the new Intelligent Array.
+.IP \fIcopy_world_coords\fP 1i
+If TRUE, the world co-ordinates for each dimension in
+the template array are copied, otherwise the defaults are used.
+.IP \fIcopy_names\fP 1i
+If TRUE, the dimension names and the value name of the
+template array are copied, else the defaults are used.
+.IP \fIcopy_aux_info\fP 1i
+If TRUE, auxilary information (attachments) in the template
+array is copied to the new array.
+.SH RETURN VALUE
+An Intelligent Array on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

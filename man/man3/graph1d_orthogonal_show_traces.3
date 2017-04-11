@@ -1,0 +1,56 @@
+.TH GRAPH1D_ORTHOGONAL_SHOW_TRACES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_show_traces \- Show a weighted, summed trace.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B void graph1d_orthogonal_show_traces
+.sp
+(KOrthogonalProfile profile,
+CONST unsigned int *dim_indices,
+flag correct_aberration,
+flag sum, float global_weight,
+unsigned int num_traces,
+CONST uaddr *coord_indices, uaddr refpos,
+CONST float *weights)
+.SH DESCRIPTION
+Show a weighted, summed trace.
+.IP \fIprofile\fP 1i
+The orthogonal profile.
+.IP \fIdim_indices\fP 1i
+The dimension indicies. The length of this array must be one
+less than the number of dimensions in the array.
+.IP \fIcorrect_aberration\fP 1i
+If TRUE, attempt to correct for chromatic aberration.
+.IP \fIsum\fP 1i
+If TRUE, the data are summed rather than averaged.
+.IP \fIglobal_weight\fP 1i
+This weight value is applied to each trace as it is
+combined.
+.IP \fInum_traces\fP 1i
+The number of traces to combine.
+.IP \fIcoord_indices\fP 1i
+The co-ordinate indices for the traces. This is grouped
+into <<num_traces>> contiguous blocks of co-ordinate traces. Each block
+must contain <<num_dim>> - 1 co-ordinate indices.
+.IP \fIrefpos\fP 1i
+The reference position along the profile dimension.
+.IP \fIweights\fP 1i
+The weights to apply to each trace as it is combined. If this is
+NULL no weights are applied.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

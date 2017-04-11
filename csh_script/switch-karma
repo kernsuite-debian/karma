@@ -1,0 +1,108 @@
+#! /bin/echo Must be sourced, not executed
+
+# usage: switch-karma  production|experimental
+
+if ("$#argv" != "1") then
+    echo "Usage: switch-karma  production|experimental"
+    echo "Found $#argv arguments, expecting 1"
+    if ("$shell:t" == "csh") then
+	echo "You appear to be using the standard C shell. Use tcsh instead".
+    endif
+    exit 1
+endif
+
+if ("$?HOSTNAME" == "0") then
+    # Find out hostname: so many ways...
+    if (-x /bin/uname) then
+	setenv HOSTNAME `/bin/uname -n`
+    else if (-x /usr/bin/uname) then
+	setenv HOSTNAME `/usr/bin/uname -n`
+    else if (-x /bin/hostname) then
+	setenv HOSTNAME `/bin/hostname`
+    else if (-x /usr/bin/hostname) then
+	setenv HOSTNAME `/usr/bin/hostname`
+    else
+	echo "I don't know how to find out your hostname. Not another way!"
+	exit 1
+    endif
+endif
+
+switch ("$HOSTNAME")
+  case "vindaloo":
+  case "workaholix":
+  case "mobilix":
+  case "tinylinux":
+    exit 0
+    breaksw
+endsw
+
+if ("$argv[1]" == "production") then
+    if ( ! -d /usr/local/karma ) then
+	echo "Production version of ${MACHINE_OS} Karma not available"
+	exit 2
+    endif
+    if (-d /usr/local/karmaexp) then
+	set oldbase = /usr/local/karmaexp
+	set newbase = /usr/local/karma
+    echo "Using production version of ${MACHINE_OS} Karma"
+    #if ("$user" == "rgooch") setenv MAKE_STATIC_KLIBS TRUE
+    endif
+endif
+
+if ("$argv[1]" == "experimental") then
+    if (-d /usr/local/karmaexp) then
+	set oldbase = /usr/local/karma
+	set newbase = /usr/local/karmaexp
+    endif
+    if ( ! -d $newbase ) then
+	echo "Experimental version of $MACHINE_OS Karma not available"
+	exit 2
+    endif
+    echo "Using experimental version of ${MACHINE_OS} Karma"
+    #if ("$user" == "rgooch") unsetenv MAKE_STATIC_KLIBS
+endif
+
+if ("$oldbase" != "$KARMABASE") then
+    echo "KARMABASE: $KARMABASE is not $oldbase"
+    exit 1
+endif
+
+setenv KARMABASE $newbase
+if ("$?newbinpath" == "0") then
+    setenv KARMABINPATH $KARMABASE/bin
+else
+    setenv KARMABINPATH $newbinpath
+endif
+if ("$?oldbinpath" == "0") then
+    set oldbinpath = ${oldbase}/bin
+endif
+setenv KARMALIBPATH $KARMABASE/lib
+setenv KARMASTATICLIBPATH $KARMABASE/static-lib
+setenv KARMASTATICBINPATH $KARMABASE/static-bin
+setenv KARMAINCLUDEPATH $KARMABASE/include
+
+if ("$?_newpath" == 0) then
+    set _np = ($path)
+else
+    set _np = ($_newpath)
+endif
+set _np = (`echo "$_np" | sed -e "s*${oldbinpath}*${KARMABINPATH}*g" | sed -e "s*${oldbase}/*${newbase}/*g"`)
+if ("$?_newpath" == 0) then
+    set path = ($_np)
+else
+    set _newpath = ($_np)
+endif
+unset _np
+
+# Set version number environment variable
+set _versionfile = $KARMAINCLUDEPATH/k_version.h
+set tmp = `fgrep KARMA_VERSION $_versionfile | tr '"' ' '`
+setenv KARMA_VERSION "$tmp[$#tmp]"
+if ("$KARMA_VERSION" == "") then
+    echo "WARNING: KARMA_VERSION environment variable could not be computed."
+endif
+unset _versionfile
+
+if (-r ~/.karma/.switch-karma.rc) then
+    source ~/.karma/.switch-karma.rc
+endif

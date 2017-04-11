@@ -1,0 +1,39 @@
+.TH MT_GET_SHARED_POOL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_get_shared_pool \- Create or get the shared thread pool.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B KThreadPool mt_get_shared_pool
+.sp
+()
+.SH DESCRIPTION
+This routine will get a pool of threads which may be shared
+between several services within a process. This shared pool may be used to
+reduce the number of thread pools created. Creating large numbers of thread
+pools may consume significant system resources on some platforms. The first
+time this routine is called the shared pool is created.
+.SH RETURN VALUE
+The shared KThreadPool object on success. On failure the process
+aborts.
+.SH Multi-threading Level
+Safe under Solaris 2.
+.SH NOTES
+The environment variable MT_MAX_THREADS may be used to limit the
+number of threads used.
+.sp
+This shared pool cannot be used with the <-mt_new_thread_info-> and
+<-mt_get_thread_info-> routines.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

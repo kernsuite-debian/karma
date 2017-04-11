@@ -1,0 +1,35 @@
+.TH DS_COMPARE_ARRAY_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_compare_array_desc \- Recursively compare two array descriptors.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_compare_array_desc
+.sp
+(CONST array_desc *desc1, CONST array_desc *desc2,
+flag recursive)
+.SH DESCRIPTION
+Recursively compare two array descriptors.
+.IP \fIdesc1\fP 1i
+One of the array descriptors.
+.IP \fIdesc2\fP 1i
+The other array descriptor.
+.IP \fIrecursive\fP 1i
+If TRUE the routine will perform a recursive comparison of the
+array packet descriptors.
+.SH RETURN VALUE
+TRUE if the two array descriptors are equal, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

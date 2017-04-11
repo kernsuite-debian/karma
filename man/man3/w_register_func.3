@@ -1,0 +1,39 @@
+.TH W_REGISTER_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+w_register_func \- Register a work function.
+.SH SYNOPSIS
+.B #include <karma_w.h>
+.sp
+.B KWorkFunc w_register_func
+.sp
+(flag (*func) (void **info), void *info,
+unsigned int priority)
+.SH DESCRIPTION
+This routine will register a work function. The work function at
+the top of the list is the one that is always called. Only when the work
+function at the top of the list is unregistered will the next work function
+be called.
+.IP \fIfunc\fP 1i
+The routine to be called. The prototype function is
+<-w_PROTO_work_func->.
+.IP \fIinfo\fP 1i
+The initial arbitrary work function information pointer.
+.IP \fIpriority\fP 1i
+The priority level of the work function. See <-w_PRIORITIES->
+for a list of legal values.
+.SH RETURN VALUE
+A KWorkFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

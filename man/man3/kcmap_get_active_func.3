@@ -1,0 +1,31 @@
+.TH KCMAP_GET_ACTIVE_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+kcmap_get_active_func \- Get active colourmap function.
+.SH SYNOPSIS
+.B #include <karma_kcmap.h>
+.sp
+.B CONST char * kcmap_get_active_func
+.sp
+(Kcolourmap cmap)
+.SH DESCRIPTION
+This routine will get the name of the active colour function for
+a colourmap.
+.IP \fIcmap\fP 1i
+The colourmap object.
+.SH RETURN VALUE
+A pointer to the name of the colour function. This name must not
+be freed.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,36 @@
+.TH DISPDATA_SET_DATA_ATTRIBUTES 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_set_data_attributes \- Set the attributes for a data object.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_set_data_attributes
+.sp
+(KDisplayDataObject dataobject, ...)
+.SH DESCRIPTION
+Set the attributes for a data object.
+.IP \fIdataobject\fP 1i
+The KDisplayDataObject.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+KDISPLAYDATA_DATA_ATT_END.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Some windows may be refreshed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

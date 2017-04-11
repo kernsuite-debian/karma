@@ -1,0 +1,33 @@
+.TH DS_ALLOC_LIST_HEAD 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_alloc_list_head \- Allocate a linked list header.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B list_header * ds_alloc_list_head
+.sp
+()
+.SH DESCRIPTION
+This routine will allocate a linked list header.
+The length of the linked list specified in the header will be 0, and the
+<<contiguous_until>> entry will be set to 0.
+The <<sort_type>> field in the header will be set to SORT_UNDEF. This MUST
+be set to some other value (i.e. SORT_RANDOM) prior to use with other
+library routines.
+The <<list_start>> and <<list_end>> pointers will be set to NULL.
+.SH RETURN VALUE
+A pointer to the header on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

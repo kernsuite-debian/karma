@@ -1,0 +1,682 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1-h (September 30, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Event generation and dispatch</TITLE>
+<META NAME="description" CONTENT="Event generation and dispatch">
+<META NAME="keywords" CONTENT="book">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="book.css">
+</HEAD>
+<BODY LANG="EN" >
+ <A NAME="tex2html750" HREF="node8.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html748" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html742" HREF="node6.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html752" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html753" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html751" HREF="node8.html">Device-independent data-oriented graphics library</A>
+<B>Up:</B> <A NAME="tex2html749" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html743" HREF="node6.html">Security</A>
+<BR> <P>
+<H1><A NAME="SECTION00700000000000000000">Event generation and dispatch</A></H1>
+<A NAME="382">&#160;</A>
+<P>
+A number of event management facilities are available in Karma, each
+designed for a different class of events. All schemes can co-exist in
+harmony. Each is described separately.
+<P>
+<H1><A NAME="SECTION00710000000000000000">Generic Callback Mechanism</A></H1>
+<A NAME="384">&#160;</A>
+<P>
+This is based on the <A NAME="tex2html68" HREF="../lib/c.html"><B>c</B></A> package, and is used widely in the
+library wherever events have to be distributed through the library
+and/or application. Complex applications can also take advantage of
+this facility by limiting the flow of information/events between
+various components of the application.
+<P>
+Any event may be dispatched to an arbitrary number of callbacks
+(functions which are called to process an event) through the use of a
+callback list. The code (termed the ``service'') which wishes to
+dispatch the events need only make a call to
+<A NAME="tex2html69" HREF="../lib/c.html#c_call_callbacks"><B>c_call_callbacks</B></A>, without any knowledge of the individual
+callbacks that are being called. All that is required is that the
+means is provided to add callbacks to the list, and this is done
+through the <A NAME="tex2html70" HREF="../lib/c.html#c_register_callback"><B>c_register_callback</B></A> function. No code
+is needed to unregister callbacks, as this is done through the generic
+<A NAME="tex2html71" HREF="../lib/c.html#c_unregister_callback"><B>c_unregister_callback</B></A> function, so clients of the service
+simply call that function when they are no longer interested in the
+event in question.
+<P>
+The package provides the flexibility to allow callback functions to
+``consume'' events (i.e. the event is not dispatched any further).
+<P>
+<H1><A NAME="SECTION00720000000000000000">Periodic Events</A></H1>
+<A NAME="393">&#160;</A>
+<P>
+Periodic events are useful in realtime process and instrumentation
+systems, where certain operations must be performed on a regular
+basis.
+<P>
+<H2><A NAME="SECTION00721000000000000000">Architecture</A></H2>
+<P>
+The event generation is separated from the dispatch and management in
+order to provide a fairly uniform interface on a variety of
+platforms. Of course, some platforms provide less functionality than
+others, but in general this should not prevent applications from
+working, rather, a small amount of performance may be lost.
+<P>
+<H3><A NAME="SECTION00721100000000000000">Generic Interface</A></H3>
+<P>
+The <A NAME="tex2html72" HREF="../lib/e.html"><B>e</B></A> package provides the generic support for manipulating
+periodic event lists. Callback functions may be added using the
+<A NAME="tex2html73" HREF="../lib/e.html#e_register_func"><B>e_register_func</B></A> function and removed with the
+<A NAME="tex2html74" HREF="../lib/e.html#e_unregister_func"><B>e_unregister_func</B></A> function from an event list. An
+unlimited number of functions may be registered with an event list,
+and, in theory, an arbitrary number of event lists may be created (not
+all drivers support this: see below).
+<P>
+Event functions are called periodically, measured in units of the
+event list timeout (which is determined at creation time for the event
+list). So, for example, if you wanted three event functions to be
+called, with 30&nbsp;ms, 100&nbsp;ms and 1&nbsp;s intervals, respectively, you would
+create a single event list with timeout of 10&nbsp;ms. Then each function
+would have an interval of 3, 10 and 100, respectively.
+<P>
+Events are dispatched at a number of levels (priorities), so that
+event functions registered with a higher class are called
+quickly. Some drivers have only a single dispatch class, in which case
+all event functions are called in the order they were registered with
+the event list.
+<P>
+An event list is created using a specific driver, described below:
+<P>
+<H3><A NAME="SECTION00721200000000000000">Unix Timer driver</A></H3>
+<P>
+The <A NAME="tex2html75" HREF="../lib/e.html"><B>e</B></A> package provides a Unix itimer (interval timer)
+implementation. Since Unix only defines one interval timer, only one
+event list may be created using the interval timer. This driver
+supports two levels of dispatch:
+<P>
+<UL>
+<LI> <B>Synchronous</B>: dispatch synchronously with the application
+main thread. There is the very small possibility of jitter with this
+dispatch level, although events are not lost. You can reduce jitter by
+decreasing the event list timeout and increasing the interval for the
+functions
+<LI> <B>Asynchronous</B>: dispatch asynchronously (like a Unix signal
+handler). Use with caution, as race conditions may result if you
+manipulate application data structures within the event function. You
+must ensure that the total time taken by all asynchronous functions is
+less than the event list timeout, otherwise you will lose events
+<P>
+</UL>
+<P>
+Note that the operating system will round up the specified interval to
+the timer resolution (typically 10&nbsp;ms).
+<P>
+Jitter of synchronous events can occur if the interval timer times out
+while the process is not polling for file descriptor activity. While
+the application is outside the <A NAME="tex2html76" HREF="../lib/dm.html#dm_native_poll"><B>dm_native_poll</B></A>
+function, any synchronous events will be queued. Provided
+<A NAME="tex2html77" HREF="../lib/dm.html#dm_native_poll"><B>dm_native_poll</B></A> is called before the next timeout,
+there should be no jitter.
+<P>
+It would be possible to modify the implementation to reduce the
+possible jitter time down to the time taken to execute a system
+call. If you have an application which absolutely requires minimal
+jitter and you cannot use asynchronous events or use the minimum timer
+timeout, then please contact Richard Gooch so the implementation can
+be changed. However, please bear in mind that the probability of
+jitter is very small.
+<P>
+<H3><A NAME="SECTION00721300000000000000">Xt driver</A></H3>
+<P>
+The <A NAME="tex2html78" HREF="../lib/xtmisc.html"><B>xtmisc</B></A> package provides a driver which may be used with
+the Xt Intrinsics toolkit event management scheme. Note that you
+cannot use the Unix driver in an Xt application.
+<P>
+This driver allows multiple event lists, but all events are dispatched
+synchronously.
+<P>
+<H2><A NAME="SECTION00722000000000000000">Tutorials</A></H2>
+<P>
+A few examples follow which demonstrate how event functions may be set
+up in a variety of programming environments.
+<P>
+<H3><A NAME="SECTION00722100000000000000">Example 1</A></H3>
+<P>
+This example shows how event functions are setup and dispatched in a
+command-line application under a Unix operating system. Note that the
+<A NAME="tex2html79" HREF="../lib/panel.html"><B>panel</B></A> package is used to provide the command-line user
+interface, and the <A NAME="tex2html80" HREF="../lib/module.html#module_run"><B>module_run</B></A> function contains the
+event handler loop. This function only returns when the application
+should finish.
+<P>
+A single event list is created with a 10&nbsp;ms timeout. A ``fast''
+(asynchronous) function is registered which is called every 10
+timeouts (i.e. every 100&nbsp;ms), and a ``slow'' (synchronous) function is
+registered which is called every 100 timeouts (i.e. every 1&nbsp;s).
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Event dispatch sample programme: Unix/command-line      */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_module.h&gt;
+#include &lt;karma_panel.h&gt;
+#include &lt;karma_m.h&gt;
+#include &lt;karma_e.h&gt;
+
+
+#define VERSION &quot;1.0&quot;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag fast_func, (KPeriodicEventFunc func, void *info) );
+STATIC_FUNCTION (flag slow_func, (KPeriodicEventFunc func, void *info) );
+
+
+/*  Public functions follow  */
+
+int main (int argc, char **argv)
+{
+    KPeriodicEventList event_list;
+    KControlPanel panel;
+    static char function_name[] = &quot;main&quot;;
+
+    if ( ( panel = panel_create (FALSE) ) == NULL )
+    {
+        m_abort (function_name, &quot;control panel&quot;);
+    }
+    panel_push_onto_stack (panel);
+    event_list = e_unix_create_list (10000, 0, NULL);
+    e_register_func (event_list, fast_func, NULL, 10, DISPATCH_ASYNCHRONOUS);
+    e_register_func (event_list, slow_func, NULL, 100, DISPATCH_SYNCHRONOUS);
+    module_run (argc, argv, &quot;event-test&quot;, VERSION, NULL, -1, 0, FALSE);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static flag fast_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;fast_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */
+
+static flag slow_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;slow_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00722200000000000000">Example 2</A></H3>
+<P>
+This example is similar to the previous example, except that no
+command-line user interface is implemented, rather, the event handler
+loop is implemented directly. This example is more appropriate for a
+process/instrumentation control daemon which does not require any user
+input. The <A NAME="tex2html81" HREF="../lib/dm.html#dm_native_poll"><B>dm_native_poll</B></A> function is used in an
+event handler loop. If the application did not require any
+communications support, the Unix ``pause()'' system call would
+suffice.
+<P>
+A single event list is created with a 10&nbsp;ms timeout. A ``fast''
+(asynchronous) function is registered which is called every 10
+timeouts (i.e. every 100&nbsp;ms), and a ``slow'' (synchronous) function is
+registered which is called every 100 timeouts (i.e. every 1&nbsp;s).
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Event dispatch sample programme: Unix/daemon            */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_e.h&gt;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag fast_func, (KPeriodicEventFunc func, void *info) );
+STATIC_FUNCTION (flag slow_func, (KPeriodicEventFunc func, void *info) );
+
+
+/*  Public functions follow  */
+
+int main (int argc, char **argv)
+{
+    KPeriodicEventList event_list;
+
+    dm_native_setup ();
+    event_list = e_unix_create_list (10000, 0, NULL);
+    e_register_func (event_list, fast_func, NULL, 10, DISPATCH_ASYNCHRONOUS);
+    e_register_func (event_list, slow_func, NULL, 100, DISPATCH_SYNCHRONOUS);
+    while (TRUE) dm_native_poll (-1);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static flag fast_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;fast_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */
+
+static flag slow_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;slow_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00722300000000000000">Example 3</A></H3>
+<P>
+This example is similar to the previous examples, except that the Xt
+event dispatching mechanism is used.
+<P>
+A single event list is created with a 100&nbsp;ms timeout. A ``fast''
+(synchronous) function is registered which is called every timeout
+(i.e. every 100&nbsp;ms), and a ``slow'' (synchronous) function is
+registered which is called every 10 timeouts (i.e. every 1&nbsp;s).
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Event dispatch sample programme: Xt                     */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;X11/Xatom.h&gt;
+#include &lt;X11/Intrinsic.h&gt;
+#include &lt;X11/StringDefs.h&gt;
+#include &lt;X11/Xaw/Command.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_xtmisc.h&gt;
+#include &lt;karma_e.h&gt;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (void quit_cbk,
+                 (Widget w, XtPointer client_data, XtPointer call_data) );
+STATIC_FUNCTION (flag fast_func, (KPeriodicEventFunc func, void *info) );
+STATIC_FUNCTION (flag slow_func, (KPeriodicEventFunc func, void *info) );
+
+
+int main (int argc, char **argv)
+{
+    KPeriodicEventList event_list;
+    XtAppContext app_context;
+    Widget main_shell, btn;
+
+    /*  Start up Xt  */
+    main_shell = XtVaAppInitialize (&amp;app_context, &quot;EventTest&quot;, NULL, 0,
+                                    &amp;argc, argv, NULL,
+                                    NULL);
+    btn = XtVaCreateManagedWidget (&quot;quit&quot;, commandWidgetClass, main_shell,
+                                   NULL);
+    XtAddCallback (btn, XtNcallback, quit_cbk, NULL);
+    XtRealizeWidget (main_shell);
+    event_list = xtmisc_event_create_list (app_context, 100000, 0, NULL);
+    e_register_func (event_list, fast_func, NULL, 1, DISPATCH_SYNCHRONOUS);
+    e_register_func (event_list, slow_func, NULL, 10, DISPATCH_SYNCHRONOUS);
+    XtAppMainLoop (app_context);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static void quit_cbk (Widget w, XtPointer client_data, XtPointer call_data)
+{
+    exit (RV_OK);
+}   /*  End Function quit_cbk  */
+
+static flag fast_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;fast_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */
+
+static flag slow_func (KPeriodicEventFunc func, void *info)
+/*  [SUMMARY] Event callback.
+    [PURPOSE] This routine is called when a periodic event occurs.
+    &lt;func&gt; The KPeriodicEventFunc object.
+    &lt;info&gt; A pointer to arbitrary information.
+    [RETURNS] TRUE if the event function should be called again, else FALSE.
+*/
+{
+    fprintf (stderr, &quot;slow_func...\n&quot;);
+    return (TRUE);
+}   /*  End Function fast_func  */</PRE>
+<P>
+<H1><A NAME="SECTION00730000000000000000">Work Functions</A></H1>
+<A NAME="423">&#160;</A>
+<P>
+This provides a means to implement backgound processing. This differs
+from the technique of creating a separate kernel scheduling context
+(often termed a ``thread'') in which the background processing is
+performed in that thread. The threaded approach suffers from the
+disadvantage that the background thread and the main thread compete
+for the system CPU resources. This is particularly noticable in
+applications with graphical user interfaces (GUIs), where the main
+thread controls the GUI, and reponse slows down while background
+processing is underway. The other disadvantage of the threaded
+approach is that more care is needed to ensure that global data is not
+modified/accessed at the same time. Threaded applications open up
+whole new areas of bugs.
+<P>
+The approach taken in Karma requires the application main context to
+periodically pass control to the work function <EM>while the
+application is idle</EM>. The work function must run for a sufficiently
+short period (100&nbsp;ms is usually short enough) so that the user of the
+application does not notice any delays. While the application main
+context is busy, the work functions are not called, and hence the main
+context does not have to compete, and runs at maximum speed.
+The disadvantage of this technique is that the background processing
+must be organised so that it can divide up the work to be done in
+short segments and save it's state before it returns control back to
+the main context. In other words: it's more effort for the
+programmer. If you really prefer the threaded approach, you are free
+to do so (you may find the Karma <A NAME="tex2html82" HREF="../lib/mt.html"><B>mt</B></A> package of use here).
+<P>
+<H2><A NAME="SECTION00731000000000000000">Architecture</A></H2>
+<P>
+The management and dispatch of work functions is separate from the
+passing of control from the main application context. Note that there
+is only one context for dispatching work functions.
+<P>
+<H3><A NAME="SECTION00731100000000000000">Generic Interface</A></H3>
+<P>
+The generic interface provides the means to register functions to be
+called when the main context is idle (see
+<A NAME="tex2html83" HREF="../lib/w.html#w_register_func"><B>w_register_func</B></A>) and unregister (see
+<A NAME="tex2html84" HREF="../lib/w.html#w_unregister_func"><B>w_unregister_func</B></A>). Other calls allow the application to
+test whether work functions are supported (in other words, if a driver
+is installed). A few priority levels are defined, which enhances the
+flexibility of the package.
+<P>
+<H3><A NAME="SECTION00731200000000000000">Standard driver</A></H3>
+<P>
+The <A NAME="tex2html85" HREF="../lib/w.html"><B>w</B></A> package provides the <A NAME="tex2html86" HREF="../lib/w.html#w_do_work"><B>w_do_work</B></A>
+function which dispatches the next work function. This may be used in
+conjunction with whatever polling loop the application employs.
+<P>
+<H3><A NAME="SECTION00731300000000000000">Xt driver</A></H3>
+<P>
+The <A NAME="tex2html87" HREF="../lib/xtmisc.html"><B>xtmisc</B></A> package provides a driver which may be used with
+the Xt Intrinsics toolkit event management scheme. All that is
+required is to call the <A NAME="tex2html88" HREF="../lib/xtmisc.html#xtmisc_support_work_funcs"><B>xtmisc_support_work_funcs</B></A>
+function.
+<P>
+Those familiar with Xt may wonder why not use Xt's native work
+procedure scheme, using the ``XtAppAddWorkProc'' function. The
+advantage of using the Karma scheme is firstly that it is more
+portable (i.e. the same interface may be used when switching to the
+standard driver), and secondly that it is more flexible, having a
+number of defined priorities.
+<P>
+<H2><A NAME="SECTION00732000000000000000">Tutorials</A></H2>
+<P>
+A few examples follow which demonstrate how work functions may be set
+up in a variety of programming environments.
+<P>
+<H3><A NAME="SECTION00732100000000000000">Example 1</A></H3>
+<P>
+This example shows how work functions are setup and dispatched in a
+command-line application under a Unix operating system. Note that the
+<A NAME="tex2html89" HREF="../lib/panel.html"><B>panel</B></A> package is used to provide the command-line user
+interface, and the <A NAME="tex2html90" HREF="../lib/module.html#module_run"><B>module_run</B></A> function contains the
+event handler loop. This function only returns when the application
+should finish.
+<P>
+A single work function is registered, which does a small amount of
+work before returning control the the main application context. This
+work function can consume the full CPU resources, without slowing down
+the main context.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Work function sample programme: Unix/command-line       */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_module.h&gt;
+#include &lt;karma_panel.h&gt;
+#include &lt;karma_w.h&gt;
+#include &lt;karma_m.h&gt;
+
+
+#define VERSION &quot;1.0&quot;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag work_func, (void **info) );
+
+
+/*  Public functions follow  */
+
+int main (int argc, char **argv)
+{
+    KControlPanel panel;
+    static char function_name[] = &quot;main&quot;;
+
+    if ( ( panel = panel_create (FALSE) ) == NULL )
+    {
+        m_abort (function_name, &quot;control panel&quot;);
+    }
+    panel_push_onto_stack (panel);
+    w_register_support ();
+    w_register_func (work_func, NULL, KWF_PRIORITY_HIGH);
+    module_run (argc, argv, &quot;work-test&quot;, VERSION, NULL, -1, 0, FALSE);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static flag work_func (void **info)
+/*  [SUMMARY] Work function.
+    [PURPOSE] This routine is called to perform some work.
+    &lt;info&gt; A pointer to the arbitrary work function information pointer.
+    [RETURNS] TRUE if the work function should be called again, else FALSE
+    indicating that the work function is to be unregistered.
+*/
+{
+    int count;
+    static int cycle = 0;
+
+    /*  A simple &quot;computation&quot;  */
+    for (count = 0; count &lt; 10000000; ++count);
+    if (++cycle &gt; 10)
+    {
+        fprintf (stderr, &quot;10 iterations passed...\n&quot;);
+        cycle = 0;
+    }
+    return (TRUE);
+}   /*  End Function work_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00732200000000000000">Example 2</A></H3>
+<P>
+This example is similar to the previous example, except that no
+command-line user interface is implemented, rather, the event handler
+loop is implemented directly. This example is more appropriate for a
+process/instrumentation control daemon which does not require any user
+input. The <A NAME="tex2html91" HREF="../lib/dm.html#dm_native_poll"><B>dm_native_poll</B></A> function is used in an
+event handler loop. If the application did not require any
+communications support, the <A NAME="tex2html92" HREF="../lib/w.html#w_do_work"><B>w_do_work</B></A> function
+would suffice.
+<P>
+A single work function is registered, which does a small amount of
+work before returning control the the main application context. This
+work function can consume the full CPU resources, without slowing down
+the main context.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Work function sample programme: Unix/daemon             */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_dm.h&gt;
+#include &lt;karma_w.h&gt;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (flag work_func, (void **info) );
+
+
+/*  Public functions follow  */
+
+int main (int argc, char **argv)
+{
+    dm_native_setup ();
+    w_register_support ();
+    w_register_func (work_func, NULL, KWF_PRIORITY_HIGH);
+    while (TRUE) dm_native_poll (-1);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static flag work_func (void **info)
+/*  [SUMMARY] Work function.
+    [PURPOSE] This routine is called to perform some work.
+    &lt;info&gt; A pointer to the arbitrary work function information pointer.
+    [RETURNS] TRUE if the work function should be called again, else FALSE
+    indicating that the work function is to be unregistered.
+*/
+{
+    int count;
+    static int cycle = 0;
+
+    /*  A simple &quot;computation&quot;  */
+    for (count = 0; count &lt; 10000000; ++count);
+    if (++cycle &gt; 10)
+    {
+        fprintf (stderr, &quot;10 iterations passed...\n&quot;);
+        cycle = 0;
+    }
+    return (TRUE);
+}   /*  End Function work_func  */</PRE>
+<P>
+<H3><A NAME="SECTION00732300000000000000">Example 3</A></H3>
+<P>
+This example is similar to the previous examples, except that the Xt
+event dispatching mechanism is used.
+<P>
+A single work function is registered, which does a small amount of
+work before returning control the the main application context. This
+work function can consume the full CPU resources, without slowing down
+the main context.
+<P>
+<PRE>/*----------------------------------------------------------*/
+/*  Event dispatch sample programme: Xt                     */
+/*----------------------------------------------------------*/
+
+#include &lt;stdio.h&gt;
+#include &lt;X11/Xatom.h&gt;
+#include &lt;X11/Intrinsic.h&gt;
+#include &lt;X11/StringDefs.h&gt;
+#include &lt;X11/Xaw/Command.h&gt;
+#include &lt;karma.h&gt;
+#include &lt;karma_xtmisc.h&gt;
+#include &lt;karma_w.h&gt;
+
+
+/*  Private functions  */
+STATIC_FUNCTION (void quit_cbk,
+                 (Widget w, XtPointer client_data, XtPointer call_data) );
+STATIC_FUNCTION (flag work_func, (void **info) );
+
+
+int main (int argc, char **argv)
+{
+    XtAppContext app_context;
+    Widget main_shell, btn;
+
+    /*  Start up Xt  */
+    main_shell = XtVaAppInitialize (&amp;app_context, &quot;WorkTest&quot;, NULL, 0,
+                                    &amp;argc, argv, NULL,
+                                    NULL);
+    btn = XtVaCreateManagedWidget (&quot;quit&quot;, commandWidgetClass, main_shell,
+                                   NULL);
+    XtAddCallback (btn, XtNcallback, quit_cbk, NULL);
+    XtRealizeWidget (main_shell);
+    xtmisc_support_work_funcs (app_context);
+    w_register_func (work_func, NULL, KWF_PRIORITY_HIGH);
+    XtAppMainLoop (app_context);
+    return (RV_OK);
+}   /*  End Function main   */
+
+
+/*  Private functions follow  */
+
+static void quit_cbk (Widget w, XtPointer client_data, XtPointer call_data)
+{
+    exit (RV_OK);
+}   /*  End Function quit_cbk  */
+
+static flag work_func (void **info)
+/*  [SUMMARY] Work function.
+    [PURPOSE] This routine is called to perform some work.
+    &lt;info&gt; A pointer to the arbitrary work function information pointer.
+    [RETURNS] TRUE if the work function should be called again, else FALSE
+    indicating that the work function is to be unregistered.
+*/
+{
+    int count;
+    static int cycle = 0;
+
+    /*  A simple &quot;computation&quot;  */
+    for (count = 0; count &lt; 10000000; ++count);
+    if (++cycle &gt; 10)
+    {
+        fprintf (stderr, &quot;10 iterations passed...\n&quot;);
+        cycle = 0;
+    }
+    return (TRUE);
+}   /*  End Function work_func  */</PRE>
+<P>
+<HR><A NAME="tex2html750" HREF="node8.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="../images/icons/next_motif.gif"></A> <A NAME="tex2html748" HREF="book.html"><IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="../images/icons/up_motif.gif"></A> <A NAME="tex2html742" HREF="node6.html"><IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="../images/icons/previous_motif.gif"></A> <A NAME="tex2html752" HREF="node1.html"><IMG WIDTH=65 HEIGHT=24 ALIGN=BOTTOM ALT="contents" SRC="../images/icons/contents_motif.gif"></A> <A NAME="tex2html753" HREF="node21.html"><IMG WIDTH=43 HEIGHT=24 ALIGN=BOTTOM ALT="index" SRC="../images/icons/index_motif.gif"></A> <A NAME="tex2html1" HREF="../index.html">Karma Home Page</A><BR>
+<B> Next:</B> <A NAME="tex2html751" HREF="node8.html">Device-independent data-oriented graphics library</A>
+<B>Up:</B> <A NAME="tex2html749" HREF="book.html">Karma Programming Manual</A>
+<B> Previous:</B> <A NAME="tex2html743" HREF="node6.html">Security</A>
+<P><ADDRESS>
+<I>Richard Gooch <BR>
+Mon Aug 14 22:12:47 PDT 2006</I>
+</ADDRESS>
+</BODY>
+</HTML>

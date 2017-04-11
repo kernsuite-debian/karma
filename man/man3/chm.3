@@ -1,0 +1,41 @@
+.TH CHM 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+chm \- Routines to manage channel objects
+.SH PURPOSE
+These routines are meant to provide a generic and simple to use channel
+management facility (i.e. event processing on pipes, connections and
+terminals).
+A similar set of routines: chx_ provide identical functionality
+(with the exception of the polling routine), except that they rely on the
+Xt Intrinsics event dispatching system.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIchm_manage\fP 1i
+Manage a channel for activity by registering callback routines.
+.IP \fIchm_unmanage\fP 1i
+Terminate the management of a channel for activity.
+.IP \fIchm_unmanage_by_handle\fP 1i
+Terminate the management of a channel for activity.
+.IP \fIchm_PROTO_input_func\fP 1i
+This routine is called when new input occurs on a channel.
+.IP \fIchm_PROTO_close_func\fP 1i
+This routine is called when a channel closes.
+.IP \fIchm_PROTO_output_func\fP 1i
+This routine is called when a channel becomes ready for writing.
+.IP \fIchm_PROTO_exception_func\fP 1i
+This routine is called when an exception occurs on channel.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

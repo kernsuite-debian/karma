@@ -1,0 +1,35 @@
+.TH CH_GET_MEMORY_ADDR 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_get_memory_addr \- Get memory address.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B char * ch_get_memory_addr
+.sp
+(Channel channel)
+.SH DESCRIPTION
+This routine will get the starting address of the data for a
+memory channel. The channel MUST be a memory mapped disc channel or a
+memory channel.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+The address of the memory.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If the memory mapped address space is read-only, any attempt to
+write to this address space will cause a segmentation fault.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,39 @@
+.TH GRAPH1D_ORTHOGONAL_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+graph1d_orthogonal_create \- Create an object for later viewing of orthogonal profiles.
+.SH SYNOPSIS
+.B #include <karma_graph1d.h>
+.sp
+.B KOrthogonalProfile graph1d_orthogonal_create
+.sp
+(KWorldCanvas canvas,iarray array,
+KViewableGraph *vgraph)
+.SH DESCRIPTION
+Create an object for later viewing of orthogonal profiles.
+.IP \fIcanvas\fP 1i
+The world canvas object where profiles will be drawn.
+.IP \fIarray\fP 1i
+The Intelligent Array which contains the data.
+.IP \fIvgraph\fP 1i
+The KViewableGraph that is created is written here. This may be
+NULL.
+.SH RETURN VALUE
+A KOrthogonalProfile object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The KOrthogonalProfile will be automatically destroyed if the canvas
+or Intelligent Array are destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

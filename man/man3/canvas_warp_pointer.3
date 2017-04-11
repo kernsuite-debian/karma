@@ -1,0 +1,36 @@
+.TH CANVAS_WARP_POINTER 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+canvas_warp_pointer \- Warp the pointer to a new location.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_warp_pointer
+.sp
+(KWorldCanvas canvas, double x, double y, flag linear,
+flag discard)
+.SH DESCRIPTION
+Warp the pointer to a new location.
+.IP \fIx\fP 1i
+The horizontal position to warp to.
+.IP \fIy\fP 1i
+The vertical position to warp to.
+.IP \fIlinear\fP 1i
+If TRUE, input co-orindates are in linear co-ordinates.
+.IP \fIdiscard\fP 1i
+If TRUE, any pending events are discarded.
+.SH RETURN VALUE
+TRUE if warping is supported, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

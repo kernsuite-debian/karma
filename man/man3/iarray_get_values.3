@@ -1,0 +1,43 @@
+.TH IARRAY_GET_VALUES 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_get_values \- Convert Intelligent Array data to double precision complex values
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B void iarray_get_values
+.sp
+(iarray array, CONST uaddr *coords, double *values,
+flag *complex, unsigned int num_values)
+.SH DESCRIPTION
+This routine will convert many values along the least significant
+axis of an Intelligent Array to an array of double precision complex
+values.
+.IP \fIarray\fP 1i
+The array.
+.IP \fIcoords\fP 1i
+The co-ordinate position to start converting from. The length of
+this array must equal the number of dimensions in the Intelligent Array.
+.IP \fIvalues\fP 1i
+The data values will be written here. Must be a  double  boundary.
+.IP \fIcomplex\fP 1i
+If the data are a complex type, then the value of TRUE is
+written here, else the value FALSE is written here. If this is NULL,
+nothing is written here.
+.IP \fInum_values\fP 1i
+The number of data values to convert.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

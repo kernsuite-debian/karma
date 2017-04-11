@@ -1,0 +1,134 @@
+.\" Copyright (C) 1995-2004  Richard Gooch
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.\" Richard Gooch may be reached by email at  rgooch@atnf.csiro.au
+.\" The postal address is:
+.\"   Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+.\"
+.\"	kvis.1		Richard Gooch	12-JUL-2004
+.\"
+.TH KVIS 1 "12 Jul 2004" "Karma Distribution"
+.SH NAME
+kvis \- display and compare images and movies in an X11 window
+.SH SYNOPSIS
+.B kvis
+[
+.B -private_cmap
+]
+[
+.B -num_colours
+]
+[
+.B -cmap_master host:port
+]
+[
+.B -fullscreen
+]
+[
+.B -create_at_init
+]
+[
+.B -no_initial_data_browser
+]
+[
+.B -new_window slave_cmap|independent_cmap
+]
+[
+.B -verbose
+]
+[
+.B files...
+]
+.SH DESCRIPTION
+The \fIkvis\fP module will display 2-dimension and 3-dimensional
+arrays (Either PseudoColour or TrueColour) in an X11 window. When
+displaying TrueColour images the module attempts to use a TrueColour
+or DirectColour visual. If neither is available, it automatically
+compresses the image to PseudoColour using a compression algorithm
+designed to yield the highest quality image.
+
+The \fIkvis\fP module is almost entirely GUI based, with the
+exception of the options described below, its operation being
+(hopefully) self-evident.
+.SH OPTIONS
+.TP
+.B \-private_cmap
+This option will force \fIkvis\fP to use a private colourmap for
+its PseudoColour window. Otherwise, \fIkvis\fP trys to allocate
+colours from the default colourmap.
+.TP
+.B \-num_colours
+This option specifies the number of colour cells that \fIkvis\fP
+will try to allocate for its PsuedoColour window upon startup. If less
+colours are available it allocates as many as possible (minimum 2).
+.TP
+.B \-cmap_master host:port
+This option will make the tool use the colourmap of another tool. The
+\fIhost\fP portion of the second argument is the Internet hostname or
+address where another Karma tool is running. If this is "unix" or
+"localhost" the tool to connect to is running on the same machine. The
+\fIport\fP portion specifies which Karma programme to connect to. You
+may use the port number which is displayed in the other tools title
+bar, or you may use the name of the tool (such as "kvis"), and it
+will connect to the first "kvis" tool you started on that machine.
+.TP
+.B \-fullscreen
+This option will make the image display window take up the entire
+screen. This is useful if you wish to make a video of the data. You
+will need to configure your window manager to cycle the window
+stacking order when a special key is pressed (e.g. the "Back" key with
+the Open Look window manager).
+.TP
+.B \-create_at_init
+This will create all internal resources required by the programme when
+it starts rather than creating them when needed. This option is only
+needed if you are manipulating resources at initialisation via an
+external programme.
+.TP
+.B \-no_initial_data_browser
+This will prevent the initial (first) data browser from being popped
+up when the programme starts. This option is subject to change without
+notice.
+.TP
+.B \-new_window slave_cmap|independent_cmap
+Create a new display window when the programme starts. If
+\fBslave_cmap\fP is given, the new window will have a slaved
+colourmap. If \fBindependent_cmap\fP is given, the new window will
+have an independent colourmap. This option is subject to change
+without notice.
+.TP
+.B \-verbose
+Enable verbose debugging output. If you have a bug to report, enable
+this and run the programme again to reproduce the bug and send the
+complete debugging output to the author.
+.TP
+.B files
+The file(s) to load. More files can be loaded after the programme has
+started by using the file browser.
+.SH SEE ALSO
+.BR xray (1),
+.BR kpvslice (1),
+.BR kshell (1),
+.BR koords (1),
+.BR kslice_3d (1)
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABILITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://ftp.ras.ucalgary.ca/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/

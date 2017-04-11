@@ -1,0 +1,44 @@
+.TH DISPDATA_CREATE_WINDOW 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_create_window \- Create a display data window.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B KDisplayDataWindow dispdata_create_window
+.sp
+(KDisplayDataCanvas pc,
+KDisplayDataCanvas rgb,
+void (*show_canvas)
+(void *info, KWorldCanvas canvas),
+void *info )
+.SH DESCRIPTION
+Create a display data window.
+.IP \fIpc\fP 1i
+The PseudoColour canvas. This may contain NULL KWorldCanvas objects.
+.IP \fIrgb\fP 1i
+The TrueColour/DirectColour canvas. This may contain NULL
+KWorldCanvas objects.
+.IP \fIshow_canvas\fP 1i
+The function that is called when a canvas needs to be shown.
+.IP \fIinfo\fP 1i
+An arbitrary information pointer passed to <<show_canvas>>.
+.SH RETURN VALUE
+A KDisplayDataWindow object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+If either of the main canvases is destroyed, the KDisplayDataWindow
+object is automatically destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

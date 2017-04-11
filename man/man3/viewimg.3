@@ -1,0 +1,155 @@
+.TH VIEWIMG 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+viewimg \- Routines to manipulate viewable images
+.SH PURPOSE
+These routines are meant to provide a high level mechanism to create and
+manipulate viewable images (2-dimensional slices of Karma data structures).
+These viewable images utilise the world canvases available in the
+<-canvas-> package, hence the resulting code is device independent.
+.SH LIBRARY
+karmagraphics
+.SH LINK WITH
+-lkarmagraphics
+.SH FUNCTIONS
+.IP \fIviewimg_colourbar_create\fP 1i
+Create a colourbar world canvas for another world canvas.
+.IP \fIviewimg_create_drag_and_zoom_interface\fP 1i
+Create a drag and zoom user interface for a canvas.
+.IP \fIviewimg_draw_edit_list\fP 1i
+Draw edit list into array associated with viewable image.
+.IP \fIviewimg_draw_edit_object\fP 1i
+Draw edit object into array associated with viewable image.
+.IP \fIviewimg_header_position_func\fP 1i
+Position event callback.
+.IP \fIviewimg_init\fP 1i
+Initialise the package for a particular canvas.
+.IP \fIviewimg_create_restr\fP 1i
+Create viewable image from 2D slice with restrictions.
+.IP \fIviewimg_create\fP 1i
+Create viewable image from 2D slice.
+.IP \fIviewimg_create_from_iarray\fP 1i
+Create a viewable image from an Intelligent Array.
+.IP \fIviewimg_create_sequence\fP 1i
+Create a sequence of viewable images from a 3D slice.
+.IP \fIviewimg_create_sequence_from_iarray\fP 1i
+Create a sequence of viewable images from an Intelligent Array.
+.IP \fIviewimg_create_rgb\fP 1i
+Create a TrueColour viewable image.
+.IP \fIviewimg_create_rgb2\fP 1i
+Create a TrueColour viewable image.
+.IP \fIviewimg_create_rgb_sequence\fP 1i
+Create sequence of TrueColour viewable images from 3D slice.
+.IP \fIviewimg_create_rgb_sequence2\fP 1i
+Create sequence of TrueColour viewable images from 3D slice.
+.IP \fIviewimg_make_active\fP 1i
+Make viewable image active and possibly refresh.
+.IP \fIviewimg_set_active\fP 1i
+Make viewable image active with controlled refresh.
+.IP \fIviewimg_register_data_change\fP 1i
+Notify data for viewable image has changed.
+.IP \fIviewimg_destroy\fP 1i
+Destroy viewable image.
+.IP \fIviewimg_get_active\fP 1i
+Get the active ViewableImage associated with a world canvas.
+.IP \fIviewimg_test_active\fP 1i
+Test if viewable image is active.
+.IP \fIviewimg_register_position_event_func\fP 1i
+Register position event callback.
+.IP \fIviewimg_register_destroy_func\fP 1i
+Register destroy callback.
+.IP \fIviewimg_fill_ellipse\fP 1i
+Draw an ellipse into an array associated with a viewable image.
+.IP \fIviewimg_fill_polygon\fP 1i
+Draw a polygon into an array associated with a viewable image.
+.IP \fIviewimg_get_canvas_attributes\fP 1i
+Get the viewable image attributes for a world canvas.
+.IP \fIviewimg_set_canvas_attributes\fP 1i
+Set the viewable image attributes for a world canvas.
+.IP \fIviewimg_get_attributes\fP 1i
+Get the attributes for a viewable image.
+.IP \fIviewimg_set_attributes\fP 1i
+Set the attributes for a viewable image.
+.IP \fIviewimg_set_array_attributes\fP 1i
+Set the attributes for an array of viewable images.
+.IP \fIviewimg_partial_refresh\fP 1i
+Perform a partial refresh of a canvas.
+.IP \fIviewimg_get_worldcanvas\fP 1i
+Get the world canvas for a viewable image.
+.IP \fIviewimg_statistics_position_func\fP 1i
+Position event callback.
+.IP \fIviewimg_statistics_geom_func\fP 1i
+Process a geometry editor event on a pixel canvas.
+.IP \fIviewimg_statistics_compute\fP 1i
+Compute and display statistics for a subimage.
+.IP \fIviewimg_track_compute\fP 1i
+Compute track strings.
+.IP \fIviewimg_values_position_func\fP 1i
+Position event callback.
+.IP \fIviewimg_values_geom_func\fP 1i
+Process a geometry editor event on a pixel canvas.
+.IP \fIviewimg_values_display\fP 1i
+Compute and display values for a subimage.
+.IP \fIviewimg_PROTO_position_func\fP 1i
+Position event callback.
+.IP \fIviewimg_PROTO_destroy_func\fP 1i
+Process a destroy event on a ViewableImage.
+.SH TABLE viewimg_CANVAS_ATTRIBUTES
+List of canvas attributes for viewable images
+
+.TS
+l l l
+_ _ _
+l l l.
+Name                          Type  Meaning
+
+VIEWIMG_ATT_END                            End of varargs list
+VIEWIMG_ATT_AUTO_X            flag         Enable automatic horizontal scaling
+VIEWIMG_ATT_AUTO_Y            flag         Enable automatic vertical scaling
+VIEWIMG_ATT_AUTO_V            flag         Enable automatic intensity scaling
+VIEWIMG_ATT_INT_X             flag         Force integer horizontal zoom-in/zoom-out factor
+VIEWIMG_ATT_INT_Y             flag         Force integer vertical zoom-in/zoom-out factor
+VIEWIMG_ATT_MAINTAIN_ASPECT   flag         Maintain data image aspect ratio
+VIEWIMG_ATT_ALLOW_TRUNCATION  flag         Allow shrunken images to be truncated
+VIEWIMG_ATT_ENABLE_PANNING    flag         Enable panning mode
+VIEWIMG_ATT_PAN_CENTRE_X      flag         Horizontal panning centre
+VIEWIMG_ATT_PAN_CENTRE_Y      flag         Horizontal panning centre
+VIEWIMG_ATT_PAN_CENTRE_Y      flag         Vertical panning centre
+VIEWIMG_ATT_PAN_MAGNIFICATION unsigned int Panner magnification
+.TE
+.SH TABLE viewimg_VIMAGE_ATTRIBUTES
+List of attributes for viewable images
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                      Get Type       Set Type Meaning
+
+VIEWIMG_VATT_END                                  End of varargs list
+VIEWIMG_VATT_TRUECOLOUR   flag *                  Image is TrueColour
+VIEWIMG_VATT_ARRAY_DESC   array_desc **           The array descriptor for the image
+VIEWIMG_VATT_SLICE        char **                 Start of the image data
+VIEWIMG_VATT_HDIM         unsigned int *          The horizontal dimension
+VIEWIMG_VATT_VDIM         unsigned int *          The vertical dimension
+VIEWIMG_VATT_PSEUDO_INDEX unsigned int *          The PseudoColour element index
+VIEWIMG_VATT_RED_INDEX    unsigned int *          The TrueColour red element index
+VIEWIMG_VATT_GREEN_INDEX  unsigned int *          The TrueColour green element index
+VIEWIMG_VATT_BLUE_INDEX   unsigned int *          The TrueColour blue element index
+VIEWIMG_VATT_MULTI_ARRAY  multi_array **          The multi_array descriptor
+VIEWIMG_VATT_DATA_SCALE   double *       double   PsueodoColour data multiplier
+VIEWIMG_VATT_DATA_OFFSET  double *       double   PsueodoColour data offset
+VIEWIMG_VATT_VALUE_MIN    double *       double   PseudoColour minimum value override
+VIEWIMG_VATT_VALUE_MAX    double *       double   PseudoColour maximum value override
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

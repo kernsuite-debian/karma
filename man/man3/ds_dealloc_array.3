@@ -1,0 +1,35 @@
+.TH DS_DEALLOC_ARRAY 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_dealloc_array \- Recursively deallocate array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B void ds_dealloc_array
+.sp
+(array_desc *arr_desc, char *arr_element)
+.SH DESCRIPTION
+This routine will deallocate all memory associated with the
+storage of data for an array.
+Any sub-arrays or linked lists are recursively deallocated.
+The routine is quite robust, deallocating in the correct order and cleanly
+bypassing missing sections in the hierarchy.
+.IP \fIarr_desc\fP 1i
+The array descriptor.
+.IP \fIarr_element\fP 1i
+The element containing the array pointer.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

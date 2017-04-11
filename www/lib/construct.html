@@ -1,0 +1,74 @@
+<html><head><title>Package: construct</title></head> 
+<body>
+<center><h1>The "construct" Package</h1></center>    These routines are meant to provide a high level mechanism to manage the
+    construction of data.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=construct></a></table><h4>Functions</h4><table><tr><td><a href=construct.html#construct_array_list_algorithms>construct_array_list_algorithms</a></td><td>List available algorithms.
+</td></tr>
+<tr><td><a href=construct.html#construct_array_create_manager>construct_array_create_manager</a></td><td>Create a management object for creating array data.
+</td></tr>
+<tr><td><a href=construct.html#construct_array_destroy_manager>construct_array_destroy_manager</a></td><td>Destroy a management object for creating array data.
+</td></tr>
+<tr><td><a href=construct.html#construct_array_select_algorithm>construct_array_select_algorithm</a></td><td>Select an algorithm for constructing data.
+</td></tr>
+<tr><td><a href=construct.html#construct_array_change_name>construct_array_change_name</a></td><td>Change the default output name for constructed data.
+</td></tr>
+<tr><td><a href=construct.html#construct_array_create_data>construct_array_create_data</a></td><td>Construct an array.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=construct_array_list_algorithms></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>CONST char **
+ <b>construct_array_list_algorithms</b><i>    (unsigned int *num_algorithms)
+</i><br><p>    List available algorithms.
+<p><b>Parameters:</b><ul><li><i>num_algorithms :</i> 
+    The number of available algorithms is written here.
+<br></ul><b>Returns:</b>     A pointer to the list of algorithm names.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=construct_array_create_manager></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KConstructArrayManager
+ <b>construct_array_create_manager</b><i>    (KListWidget listw,
+						       void (*change_name) (),
+						       void *info)
+</i><br><p>    Create a management object for creating array data.
+<p><b>Parameters:</b><ul><li><i>listw :</i> 
+    The list widget.
+<br><li><i>change_name :</i> 
+    The function to call when the default name changes.
+<br><li><i>info :</i> 
+    An arbitrary information pointer to pass to <em>change_name</em>.
+<br></ul><b>Returns:</b>     A KConstructArrayManager object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=construct_array_destroy_manager></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>construct_array_destroy_manager</b><i>    (KConstructArrayManager manager)
+</i><br><p>    Destroy a management object for creating array data.
+<p><b>Parameters:</b><ul><li><i>manager :</i> 
+    The management object.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=construct_array_select_algorithm></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>construct_array_select_algorithm</b><i>    (KConstructArrayManager manager,
+				       unsigned int index)
+</i><br><p>    Select an algorithm for constructing data.
+<p><b>Parameters:</b><ul><li><i>manager :</i> 
+    The management object.
+<br><li><i>index :</i> 
+    The index into <em>construct_array_algorithm_choices</em>.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=construct_array_change_name></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>construct_array_change_name</b><i>    (KConstructArrayManager manager,
+				  CONST char *name)
+</i><br><p>    Change the default output name for constructed data.
+<p><b>Parameters:</b><ul><li><i>manager :</i> 
+    The management object.
+<br><li><i>name :</i> 
+    The new default name.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=construct_array_create_data></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>construct_array_create_data</b><i>    (KConstructArrayManager manager,
+				  CONST char *name)
+</i><br><p>    Construct an array.
+<p><b>Parameters:</b><ul><li><i>manager :</i> 
+    The management object.
+<br><li><i>name :</i> 
+    The name to give the new array.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

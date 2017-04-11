@@ -1,0 +1,43 @@
+.TH DS_APPEND_GEN_STRUCT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_append_gen_struct \- Append a general data structure to a multi_array structure.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_append_gen_struct
+.sp
+(multi_array *multi_desc, packet_desc *pack_desc,
+char *packet, char *existing_arrayname,
+char *append_arrayname)
+.SH DESCRIPTION
+This routine will append a general data structure to a
+multi_array general data structure.
+.IP \fImulti_desc\fP 1i
+The multi-array general data structure to append to.
+.IP \fIpack_desc\fP 1i
+The top level packet descriptor of the general data structure
+to append.
+.IP \fIpacket\fP 1i
+The corresponding data for the general data structure.
+.IP \fIexisting_arrayname\fP 1i
+If the multi-array data structure previously had only
+one general data structure, then this name will become the arrayname for
+that data structure.
+.IP \fIappend_arrayname\fP 1i
+The name of the appended data structure.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

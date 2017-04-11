@@ -1,0 +1,38 @@
+.TH CH_TAP_IO_EVENTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ch_tap_io_events \- Register I/O tap function.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B KCallbackFunc ch_tap_io_events
+.sp
+(void (*tap_func) (), void *info)
+.SH DESCRIPTION
+This routine will tap I/O events by calling a registered function
+whenever data is transferred to/from a disc, connection or FIFO channel.
+Reading and writing memory mapped or memory channels does *not* constitute
+an I/O event.
+Multiple tap functions may be registered, with the first one registered
+being the first one called upon a channel I/O event.
+.IP \fItap_func\fP 1i
+The function which is called when I/O occurs. The prototype
+function is <-ch_PROTO_tap_func->.
+.IP \fIinfo\fP 1i
+The arbitrary information passed to the tap function. This may be
+NULL.
+.SH RETURN VALUE
+A KCallbackFunc. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

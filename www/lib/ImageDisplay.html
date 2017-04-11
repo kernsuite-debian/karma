@@ -1,0 +1,119 @@
+<html><head><title>Widget: ImageDisplay</title></head> 
+<body>
+<center><h1>The "ImageDisplay" Widget</h1></center>    This widget allows you to create an image display application with minimal
+    work. Many other widgets are created by this.
+<p><b>Library:</b> karmawidgets
+<br><b>Link With:</b> -lkarmawidgets
+<br><p><a name=ImageDisplay></a></table><h4>Tables</h4><table><tr><td><a href=ImageDisplay.html#ImageDisplay_ResourceNames>ImageDisplay_ResourceNames</a></td><td>List of resource names for ImageDisplay widget
+</td></tr>
+<tr><td><a href=ImageDisplay.html#ImageDisplay_Resources>ImageDisplay_Resources</a></td><td>List of resources for ImageDisplay widget
+</td></tr>
+</table><h4>Functions</h4><table><tr><td><a href=ImageDisplay.html#XkwImageDisplayRefresh>XkwImageDisplayRefresh</a></td><td>Refresh the active display canvas for an ImageDisplay widget.
+</td></tr>
+<tr><td><a href=ImageDisplay.html#XkwImageDisplayGetWindow>XkwImageDisplayGetWindow</a></td><td>Get/create the KDisplayDataWindow for an ImageDisplay widget.
+</td></tr>
+<tr><td><a href=ImageDisplay.html#XkwImageDisplaySetSmoothCallback>XkwImageDisplaySetSmoothCallback</a></td><td>Ktoggle callback for double buffering for an ImageDisplay widget.
+</td></tr>
+</table><p><hr><center><h2>Tables</h2></center><hr> <a name=ImageDisplay_ResourceNames><b>ImageDisplay_ResourceNames</b></a> List of resource names for ImageDisplay widget
+<p> <table><tr><td>Name                            </td><td>Purpose
+</td></tr><tr><td>XkwNpseudoColourCanvas          </td><td>The PseudoColour world canvas
+</td></tr><tr><td>XkwNdirectColourCanvas          </td><td>The DirectColour world canvas
+</td></tr><tr><td>XkwNtrueColourCanvas            </td><td>The TrueColour world canvas
+</td></tr><tr><td>XkwNpseudoColourLeftCanvas      </td><td>The PseudoColour left world canvas
+</td></tr><tr><td>XkwNpseudoColourRightCanvas     </td><td>The PseudoColour right world canvas
+</td></tr><tr><td>XkwNdirectColourLeftCanvas      </td><td>The DirectColour left world canvas
+</td></tr><tr><td>XkwNdirectColourRightCanvas     </td><td>The DirectColour right world canvas
+</td></tr><tr><td>XkwNtrueColourLeftCanvas        </td><td>The TrueColour left world canvas
+</td></tr><tr><td>XkwNtrueColourRightCanvas       </td><td>The TrueColour right world canvas
+</td></tr><tr><td>XkwNvisibleCanvas               </td><td>The visible world canvas
+</td></tr><tr><td>XkwNmagnifier                   </td><td>The magnifier popup
+</td></tr><tr><td>XkwNimageName                   </td><td>The name of the image being shown
+</td></tr><tr><td>XkwNenableAnimation             </td><td>If TRUE the <a href=AnimateControl.html#AnimateControl>AnimateControl</a> widget is created
+</td></tr><tr><td>XkwNshowAnimateButton           </td><td>If TRUE the "Movie" button is created
+</td></tr><tr><td>XkwNshowQuitButton              </td><td>If TRUE the "Quit" button is created
+</td></tr><tr><td>XkwNcmapSize                    </td><td>The size of the PseudoColour colourmap
+</td></tr><tr><td>XkwNcmapMaster                  </td><td>The location of a colourmap master (server)
+</td></tr><tr><td>XkwNfullscreen                  </td><td>If TRUE the main window should be fullscreen
+</td></tr><tr><td>XkwNnumTrackLabels              </td><td>The number of track labels
+</td></tr><tr><td>XkwNview2Datasets               </td><td>If TRUE the <a href=View2Datasets.html#View2Datasets>View2Datasets</a> widget is created
+</td></tr><tr><td>XkwNnumDatasets                 </td><td>The number of datasets
+</td></tr><tr><td>XkwNmainRealisedCallback        </td><td>Callbacks when all main canvases are realised
+</td></tr><tr><td>XkwNafterMainRealisedCallback   </td><td>Callbacks after <em>XkwNmainRealisedCallback</em> called
+</td></tr><tr><td>XkwNdatasetNames                </td><td>The names of each dataset
+</td></tr><tr><td>XkwNnewVisibleCanvasCallback    </td><td>Callbacks for when the visible canvas changes
+</td></tr><tr><td>XkwNpanner                      </td><td>The panner popup
+</td></tr><tr><td>XkwNverbose                     </td><td>If TRUE verbose output is generated
+</table><p><hr> <a name=ImageDisplay_Resources><b>ImageDisplay_Resources</b></a> List of resources for ImageDisplay widget
+<p> <table><tr><td>Name	</td><td>Class	</td><td>Rep. Type	</td><td>Default
+</td></tr><tr><td>XkwNpseudoColourCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNdirectColourCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNtrueColourCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNpseudoColourLeftCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNpseudoColourRightCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNdirectColourLeftCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNdirectColourRightCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNtrueColourLeftCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNtrueColourRightCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNvisibleCanvas	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNcanvasList	</td><td>XkwCWorldCanvas	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNmagnifier	</td><td>XtCWidget	</td><td>XtRWidget	</td><td>NULL
+</td></tr><tr><td>XkwNimageName	</td><td>XkwCImageName	</td><td>XtRString	</td><td>NULL
+</td></tr><tr><td>XkwNcreateFilepopup	</td><td>XkwCCreateFilepopup	</td><td>XtRBool	</td><td>True
+</td></tr><tr><td>XkwNenableAnimation	</td><td>XkwCEnableAnimation	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNshowQuitButton	</td><td>XkwCShowQuitButton	</td><td>XtRBool	</td><td>True
+</td></tr><tr><td>XkwNcmapSize	</td><td>XkwCCmapSize	</td><td>XtRInt	</td><td>200
+</td></tr><tr><td>XkwNcmapMaster	</td><td>XkwCCmapMaster	</td><td>XtRString	</td><td>NULL
+</td></tr><tr><td>XkwNfullscreen	</td><td>XkwCFullscreen	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNnumTrackLabels	</td><td>XkwCNumTrackLabels	</td><td>XtRInt	</td><td>0
+</td></tr><tr><td>XkwNviewDatasets	</td><td>XkwCViewDatasets	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNnumDatasets	</td><td>XkwCNumDatasets	</td><td>XtRInt	</td><td>1
+</td></tr><tr><td>XkwNmainRealisedCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNafterMainRealisedCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNdatasetNames	</td><td>XkwCDatasetNames	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNnewVisibleCanvasCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNpanner	</td><td>XtCWidget	</td><td>XtRWidget	</td><td>NULL
+</td></tr><tr><td>XkwNfastPanner	</td><td>XkwCFastPanner	</td><td>XtRBool	</td><td>True
+</td></tr><tr><td>XkwNupdateTrackLabels	</td><td>XkwCUpdateTrackLabels	</td><td>XtRBool	</td><td>False
+</td></tr><tr><td>XkwNnewEditorContextCallback	</td><td>XtCCallback	</td><td>XtRCallback	</td><td>NULL
+</td></tr><tr><td>XkwNmultiCanvas	</td><td>XtCWidget	</td><td>XtRWidget	</td><td>NULL
+</td></tr><tr><td>XkwNpseudoCmap	</td><td>XkwCColourmap	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNrenzoPseudoCmap	</td><td>XkwCColourmap	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNrenzoTrueCmap	</td><td>XkwCColourmap	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNhueIntensityCmap	</td><td>XkwCColourmap	</td><td>XtRPointer	</td><td>NULL
+</td></tr><tr><td>XkwNrequestMask	</td><td>XkwCMask	</td><td>XtRInt	</td><td>~0
+</td></tr><tr><td>XkwNallowedMask	</td><td>XkwCMask	</td><td>XtRInt	</td><td>~0
+</td></tr><tr><td>XkwNpseudoXColourMap	</td><td>XtCColormap	</td><td>XtRColormap	</td><td>None
+</td></tr><tr><td>XkwNverbose	</td><td>XkwCVerbose	</td><td>XtRBool	</td><td>False
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=XkwImageDisplayRefresh></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwImageDisplayRefresh</b><i>    (Widget W, flag clear)
+</i><br><p>    This routine will refresh the active display canvas for the
+    ImageDisplay widget. If the active canvas is a stereo canvas both the left
+    and right canvases are refreshed.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br><li><i>clear :</i> 
+    If TRUE, the canvas is cleared prior to refresh.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=XkwImageDisplayGetWindow></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KDisplayDataWindow
+ <b>XkwImageDisplayGetWindow</b><i>    (Widget W)
+</i><br><p>    Get/create the KDisplayDataWindow for an ImageDisplay widget.
+<p><b>Parameters:</b><ul><li><i>W :</i> 
+    The widget.
+<br></ul><b>Returns:</b>     The KDisplayDataWindow object.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The widget must be realised before calling this function.
+</ul><p><hr> <a name=XkwImageDisplaySetSmoothCallback></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>XkwImageDisplaySetSmoothCallback</b><i>    (Widget w, XtPointer client_data,
+				       XtPointer call_data)
+</i><br><p>    Ktoggle callback for double buffering for an ImageDisplay widget.
+<p><b>Parameters:</b><ul><li><i>w :</i> 
+    The widget the event occurred on.
+<br><li><i>client_data :</i> 
+    Client data. This must point to the ImageDisplay widget.
+<br><li><i>call_data :</i> 
+    Call data. This must point to the toggle state data.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     The ImageDisplay widget must be realised before calling this
+    function.
+</ul><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

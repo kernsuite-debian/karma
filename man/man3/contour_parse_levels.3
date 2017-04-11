@@ -1,0 +1,39 @@
+.TH CONTOUR_PARSE_LEVELS 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_parse_levels \- Parse a textual contour level specification.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B unsigned int contour_parse_levels
+.sp
+(double *contour_levels,
+unsigned int max_levels, CONST char *string,
+double min, double max)
+.SH DESCRIPTION
+Parse a textual contour level specification.
+.IP \fIcontour_levels\fP 1i
+The raw contour levels are written here.
+.IP \fImax_levels\fP 1i
+The maximum number of levels.
+.IP \fIstring\fP 1i
+The string to parse.
+.IP \fImin\fP 1i
+The minimum value in the data range.
+.IP \fImax\fP 1i
+The maximum value in the data range.
+.SH RETURN VALUE
+The number of levels. On error 0 is returned.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

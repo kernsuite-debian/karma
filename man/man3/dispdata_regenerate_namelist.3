@@ -1,0 +1,52 @@
+.TH DISPDATA_REGENERATE_NAMELIST 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_regenerate_namelist \- Regenerate the list of (sorted) data names for a dataclass.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B char ** dispdata_regenerate_namelist
+.sp
+(KDisplayDataClass dataclass,
+KDisplayDataPrivateNameList *namelist_ptr,
+unsigned int num_reserved,
+unsigned int *num_entries,
+KDisplayDataObject **dataobjects,
+flag (*filter_func) (void *info,
+KDisplayDataObject dataobject),
+void *info)
+.SH DESCRIPTION
+Regenerate the list of (sorted) data names for a dataclass.
+.IP \fIdataclass\fP 1i
+The KDisplayDataClass object.
+.IP \fInamelist_ptr\fP 1i
+A pointer to a special buffer. This may be updated.
+.IP \fInum_reserved\fP 1i
+The number of characters to reserve for each entry. The
+reserved characters will be filled with ' ' (space).
+.IP \fInum_entries\fP 1i
+The number of entries in the list is written here.
+.IP \fIdataobjects\fP 1i
+The array of dataobjects is written here. This may be NULL.
+.IP \fIfilter_func\fP 1i
+A function to filter dataobjects. If it returns TRUE, a
+dataobject will be included in the list, otherwise it won't. If this is
+NULL, all dataobjects are included.
+.IP \fIinfo\fP 1i
+An arbitrary pointer passed to <<filter_func>>.
+.SH RETURN VALUE
+The array of string pointers. The string contents may be modified
+and will persist until the next call to this function.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

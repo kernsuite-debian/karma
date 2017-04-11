@@ -1,0 +1,32 @@
+.TH OVERLAY_REMOVE_OBJECTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+overlay_remove_objects \- Remove objects from the end of an overlay object list.
+.SH SYNOPSIS
+.B #include <karma_overlay.h>
+.sp
+.B flag overlay_remove_objects
+.sp
+(KOverlayList olist, unsigned int num_objects)
+.SH DESCRIPTION
+Remove objects from the end of an overlay object list.
+.IP \fIolist\fP 1i
+The overlay list object.
+.IP \fInum_objects\fP 1i
+The number of objects to remove. If this is 0, then the list
+is emptied.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

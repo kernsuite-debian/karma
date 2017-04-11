@@ -1,0 +1,34 @@
+.TH EVENT_WAIT 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+event_wait \- Wait for an event.
+.SH SYNOPSIS
+.B #include <karma_event.h>
+.sp
+.B flag event_wait
+.sp
+(unsigned long mask, Connection connection, KEvent *event)
+.SH DESCRIPTION
+Wait for an event.
+.IP \fImask\fP 1i
+The event mask. After an event is received the event mask is set to
+0. See <-event_MASKS-> for a list of event masks.
+.IP \fIconnection\fP 1i
+The connection to receive the event from.
+.IP \fIevent\fP 1i
+The event data will be written here
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

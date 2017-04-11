@@ -1,0 +1,37 @@
+.TH CONTOUR_SET_ALL_INACTIVE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+contour_set_all_inactive \- Clear active state for all viewable contour images in a group.
+.SH SYNOPSIS
+.B #include <karma_contour.h>
+.sp
+.B flag contour_set_all_inactive
+.sp
+(KViewableContourImageGroup group,
+flag refresh_if_changed)
+.SH DESCRIPTION
+This routine will make all viewable contour images in a group
+inactive.
+.IP \fIgroup\fP 1i
+The group of viewable contour images.
+.IP \fIrefresh_if_changed\fP 1i
+If TRUE, canvases are refreshed if the active state
+of any viewable contour image changed.
+.IP \fIkey\fP 1i
+The key to use for inactivation of viewable contour images. If this
+is 0 then all viewable contour images will be made inactive.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

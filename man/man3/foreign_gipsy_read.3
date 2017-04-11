@@ -1,0 +1,37 @@
+.TH FOREIGN_GIPSY_READ 3 "24 Dec 2005" "Karma Distribution"
+.SH FUNCTION
+foreign_gipsy_read \- Read a GIPSY file set.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B multi_array * foreign_gipsy_read
+.sp
+(CONST char *filename, flag sanitise, ...)
+.SH DESCRIPTION
+Read a GIPSY file set.
+.IP \fIfilename\fP 1i
+The name of any file in the GIPSY file set.
+.IP \fIsanitise\fP 1i
+If TRUE, GIPSY axes with length 1 are ignored. This is highly
+recommended.
+.IP \fI...\fP 1i
+The optional attributes are given as pairs of attribute-key
+attribute-value pairs. This list must be terminated with
+FA_GIPSY_READ_END. See <-foreign_ATT_GIPSY_READ-> for a list of defined
+attributes.
+.SH RETURN VALUE
+A multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

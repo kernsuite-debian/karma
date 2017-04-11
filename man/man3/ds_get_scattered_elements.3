@@ -1,0 +1,46 @@
+.TH DS_GET_SCATTERED_ELEMENTS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_scattered_elements \- Convert scattered atomic data to double precision complex values.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_get_scattered_elements
+.sp
+(CONST char *data, unsigned int data_type,
+CONST uaddr *offsets, double *values,
+flag *complex, unsigned int num_values)
+.SH DESCRIPTION
+This routine will convert many atomic data to an array of double
+precision complex values. The data values may be scattered randomly (an
+offset array is used to index to the actual data).
+.IP \fIdata\fP 1i
+The data to be converted. Misaligned data will cause bus errors on
+some platforms.
+.IP \fIdata_type\fP 1i
+The type of the data.
+.IP \fIoffsets\fP 1i
+The offset array (in bytes).
+.IP \fIvalues\fP 1i
+The data values will be written here. Must be a  double  boundary.
+.IP \fIcomplex\fP 1i
+If the data are a complex type, then the value of TRUE is
+written here, else the value FALSE is written here. If this is NULL,
+nothing is written here.
+.IP \fInum_values\fP 1i
+The number of data values to convert.
+.SH RETURN VALUE
+TRUE if the data was successfully converted, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

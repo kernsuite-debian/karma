@@ -1,0 +1,56 @@
+.TH CANVAS_PROTO_SIZE_CONTROL_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH PROTO_FUNC
+canvas_PROTO_size_control_func \- Size control callback.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_PROTO_size_control_func
+.sp
+(KWorldCanvas canvas,
+int width, int height,
+struct win_scale_type *win_scale,
+void **info, flag *boundary_clear,
+flag *force)
+.SH DESCRIPTION
+This routine will modify the window scaling information for a
+world canvas. While this routine is running, colourmap resize events are
+ignored. Hence this routine may safely cause the associated Kcolourmap
+object to be resized.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIwidth\fP 1i
+The width of the canvas in pixels after removing the space consumed
+by the dressing.
+.IP \fIheight\fP 1i
+The height of the canvas in pixels after removing the space
+consumed by the dressing.
+.IP \fIwin_scale\fP 1i
+The window scaling information. This may be modified.
+.IP \fIinfo\fP 1i
+A pointer to the arbitrary canvas information pointer.
+.IP \fIboundary_clear\fP 1i
+If the value TRUE is written here then the
+<-canvas_resize-> routine will attempt to clear only the boundary between
+the pixel canvas and the world canvas. If the value FALSE is written here
+or nothing is written here, the <-canvas_resize-> routine will clear the
+entire pixel canvas as appropriate.
+.IP \fIforce\fP 1i
+If the value TRUE is written here, the location is forced. If the
+value FALSE is written here, or nothing is written here, the canvas
+boundary may be centred.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

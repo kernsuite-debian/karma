@@ -1,0 +1,35 @@
+.TH DM_UNMANAGE 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dm_unmanage \- Terminate the management of a file descriptor for activity.
+.SH SYNOPSIS
+.B #include <karma_dm.h>
+.sp
+.B void * dm_unmanage
+.sp
+(int fd, KManagedDescriptor md)
+.SH DESCRIPTION
+Terminate the management of a file descriptor for activity.
+.IP \fIfd\fP 1i
+The descriptor to unmanage. This must always be valid.
+.IP \fImd\fP 1i
+The entry to unmanage. If this is NULL then <<fd>> is used.
+.SH RETURN VALUE
+The arbitrary pointer passed when the descriptor was managed.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The routine will NOT close the descriptor (nor does it assume the
+descriptor is open).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

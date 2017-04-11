@@ -1,0 +1,14 @@
+depend:
+	(builddir=`pwd`; cd source; touch $$builddir/dependfile; makedepend -DMAKEDEPEND -D__$(MACHINE)__ -DOS_$(OS) -DMACHINE_$(MACHINE) -I$(KARMAINCLUDEPATH) $(CFLAGS) -D__KARMA__ -f$$builddir/dependfile $(sources) )
+
+
+remove:
+	\rm -f $(TARGETS)
+
+
+generic_clean:
+	rm -f *.BAK *.log *.sed .#* *~ *.bak .*_*/*.bak
+	find . -maxdepth 1 ! -type l -exec chmod u+rw,go-w {} \;
+
+
+-include dependfile

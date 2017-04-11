@@ -1,0 +1,35 @@
+.TH VIEWIMG_INIT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+viewimg_init \- Initialise the package for a particular canvas.
+.SH SYNOPSIS
+.B #include <karma_viewimg.h>
+.sp
+.B void viewimg_init
+.sp
+(KWorldCanvas canvas)
+.SH DESCRIPTION
+This routine will initialise the <-viewimg-> package for a
+particular world canvas. Calling this routine causes a number of callback
+routines internal to the package to be registered with the canvas (such
+as refresh and position event callbacks). The use of this routine is
+optional at the moment: the routines which create viewable images perform
+this function automatically. In version 2.0 of Karma, this use of this
+routine before creating viewable images will become mandatory.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

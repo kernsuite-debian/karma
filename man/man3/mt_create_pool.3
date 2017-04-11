@@ -1,0 +1,33 @@
+.TH MT_CREATE_POOL 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+mt_create_pool \- Create a pool of threads which may have jobs launched onto it.
+.SH SYNOPSIS
+.B #include <karma_mt.h>
+.sp
+.B KThreadPool mt_create_pool
+.sp
+(void *pool_info)
+.SH DESCRIPTION
+Create a pool of threads which may have jobs launched onto it.
+.IP \fIpool_info\fP 1i
+An arbitrary pointer passed to work functions.
+.SH RETURN VALUE
+A KThreadPool object on success, else NULL.
+.SH Multi-threading Level
+Safe under Solaris 2.
+.SH NOTE
+The environment variable MT_MAX_THREADS may be used to limit the
+number of threads used.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

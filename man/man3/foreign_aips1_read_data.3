@@ -1,0 +1,36 @@
+.TH FOREIGN_AIPS1_READ_DATA 3 "24 Dec 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+foreign_aips1_read_data \- Read data in an AIPS file.
+.SH SYNOPSIS
+.B #include <karma_foreign.h>
+.sp
+.B flag foreign_aips1_read_data
+.sp
+(KAIPS1DataContext context, char *data,
+uaddr num_values)
+.SH DESCRIPTION
+This routine will read the data of an AIPS dataset from a
+KAIPS1DataContext object. The header section is NOT read.
+.IP \fIcontext\fP 1i
+The context to read from.
+.IP \fIdata\fP 1i
+The array to write the data into. If this is NULL, input data are
+skipped and nothing is written.
+.IP \fInum_values\fP 1i
+The number of values to read.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

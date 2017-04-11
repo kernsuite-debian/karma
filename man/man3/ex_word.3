@@ -1,0 +1,31 @@
+.TH EX_WORD 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ex_word \- Extract word from string.
+.SH SYNOPSIS
+.B #include <karma_ex.h>
+.sp
+.B char * ex_word
+.sp
+(CONST char *str, CONST char **rest)
+.SH DESCRIPTION
+Extract word from string.
+.IP \fIstr\fP 1i
+The string to extract from.
+.IP \fIrest\fP 1i
+A pointer beyond the word will be written here.
+.SH RETURN VALUE
+The word.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

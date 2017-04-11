@@ -1,0 +1,61 @@
+.TH WCS_ASTRO_FORMAT_ALL 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+wcs_astro_format_all \- Transform and format all available information.
+.SH SYNOPSIS
+.B #include <karma_wcs.h>
+.sp
+.B void wcs_astro_format_all
+.sp
+(KwcsAstro ap, unsigned int spherical_format,
+char coord_string[STRING_LENGTH],
+CONST char *name0, double coord0,
+CONST char *name1, double coord1,
+CONST char *name2, double coord2,
+unsigned int num_restr, CONST char **restr_names,
+CONST double *restr_values,
+char other_string[STRING_LENGTH])
+.SH DESCRIPTION
+This routine will transform and format all available information.
+The data are transformed from linear to non-linear values.
+.IP \fIap\fP 1i
+The KwcsAstro object.
+.IP \fIspherical_format\fP 1i
+The format type for a spherical axis.
+.IP \fIcoord_string\fP 1i
+Formatted co-ordinate information is written here.
+.IP \fIname0\fP 1i
+The name of co-ordinate 0.
+.IP \fIcoord0\fP 1i
+Co-ordinate 0.
+.IP \fIname1\fP 1i
+The name of co-ordinate 1. If this is NULL, it is ignored.
+.IP \fIcoord1\fP 1i
+Co-ordinate 1.
+.IP \fIname2\fP 1i
+The name of co-ordinate 2. If this is NULL, it is ignored.
+.IP \fIcoord2\fP 1i
+Co-ordinate 2.
+.IP \fInum_restr\fP 1i
+The number of restrictions.
+.IP \fIrestr_names\fP 1i
+The array of restriction names.
+.IP \fIrestr_values\fP 1i
+The restriction values.
+.IP \fIother_string\fP 1i
+Formatted extra information is written here.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

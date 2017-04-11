@@ -1,0 +1,30 @@
+.TH CONN_GET_CONNECTION_REMOTE_ADDR 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+conn_get_connection_remote_addr \- Get the address of the machine at the other end of a connection.
+.SH SYNOPSIS
+.B #include <karma_conn.h>
+.sp
+.B unsigned long conn_get_connection_remote_addr
+.sp
+(Connection connection)
+.SH DESCRIPTION
+Get the address of the machine at the other end of a connection.
+.IP \fIconnection\fP 1i
+The connection object. The routine aborts the process if the
+connection is not valid.
+.SH RETURN VALUE
+The IP address.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

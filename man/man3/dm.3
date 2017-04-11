@@ -1,0 +1,72 @@
+.TH DM 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+dm \- Routines to manage events on (file) descriptors
+.SH PURPOSE
+These routines are meant to provide a generic and simple to use descriptor
+management facility (ie. event processing on pipes, connections and
+terminals).
+NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIdm_register_managers\fP 1i
+Register the managers.
+.IP \fIdm_manage\fP 1i
+Manage a file descriptor for events.
+.IP \fIdm_unmanage\fP 1i
+Terminate the management of a file descriptor for activity.
+.IP \fIdm_native_setup\fP 1i
+Setup descriptor management using native implementation.
+.IP \fIdm_native_poll\fP 1i
+Poll all managed descriptors for any activity.
+.IP \fIdm_native_clear_activity_counter\fP 1i
+Clear the idle counter.
+.IP \fIdm_native_get_activity_count\fP 1i
+Get the current activity count.
+.IP \fIdm_native_clear_idle_timer\fP 1i
+Clear the idle timer.
+.IP \fIdm_native_get_idle_time\fP 1i
+Get the idle time in microseconds.
+.IP \fIdm_native_wait_input\fP 1i
+Block waiting for input on a file descriptor.
+.IP \fIdm_PROTO_input_func\fP 1i
+Input event callback.
+.IP \fIdm_PROTO_close_func\fP 1i
+Close event callback.
+.IP \fIdm_PROTO_output_func\fP 1i
+Output event callback.
+.IP \fIdm_PROTO_exception_func\fP 1i
+Exception event callback.
+.IP \fIdm_PROTO_inode_write_func\fP 1i
+Inode write event callback.
+.SH TABLE dm_EVENTS
+List of event types
+
+.TS
+l l l l
+_ _ _ _
+l l l l.
+Name                         Function Prototype             Meaning
+
+KARMA_FD_EVENT_END                                          End of varargs list
+KARMA_FD_EVENT_INPUT         <-dm_PROTO_input_func->        
+KARMA_FD_EVENT_OUTPUT        <-dm_PROTO_output_func->       
+KARMA_FD_EVENT_EXCEPTION     <-dm_PROTO_exception_func->    
+KARMA_FD_EVENT_CLOSE         <-dm_PROTO_close_func->        
+KARMA_FD_EVENT_INODE_WRITE   <-dm_PROTO_inode_write_func->  
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

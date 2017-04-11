@@ -1,0 +1,57 @@
+.TH CANVAS_PROTO_POSITION_FUNC 3 "07 Aug 2006" "Karma Distribution"
+.SH PROTO_FUNC
+canvas_PROTO_position_func \- Position event callback.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_PROTO_position_func
+.sp
+(KWorldCanvas canvas, double x, double y,
+unsigned int event_code, void *e_info,
+void **f_info, double x_lin, double y_lin,
+int x_pix, int y_pix)
+.SH DESCRIPTION
+This routine is a position event consumer for a world canvas.
+.IP \fIcanvas\fP 1i
+The canvas on which the event occurred.
+.IP \fIx\fP 1i
+The horizontal world co-ordinate of the event.
+.IP \fIy\fP 1i
+The vertical world co-ordinate of the event.
+.IP \fIevent_code\fP 1i
+The arbitrary event code.
+.IP \fIe_info\fP 1i
+A pointer to arbitrary event information.
+.IP \fIf_info\fP 1i
+A pointer to an arbitrary function information pointer.
+.IP \fIx_lin\fP 1i
+The horizontal linear world co-ordinate prior to the transform
+function being called.
+.IP \fIy_lin\fP 1i
+The vertical linear world co-ordinate prior to the transform
+function being called.
+.IP \fIx_pix\fP 1i
+The horizontal pixel co-ordinate.
+.IP \fIy_pix\fP 1i
+The vertical pixel co-ordinate.
+.SH RETURN VALUE
+TRUE if the event was consumed, else FALSE indicating that
+the event is still to be processed.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The world co-ordinate values will have been transformed by the
+registered transform function (see <-canvas_register_transforms_func->).
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

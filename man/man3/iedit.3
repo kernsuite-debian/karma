@@ -1,0 +1,52 @@
+.TH IEDIT 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+iedit \- Routines to manipulate 2D (image) editing instructions
+.SH PURPOSE
+These routines provide a simple interface to the recursive,
+heirarchical data structure supported in Karma, to define 2-dimensional
+(image) editing instructions.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIiedit_create_list\fP 1i
+Create a managed image edit instruction list.
+.IP \fIiedit_free_list\fP 1i
+Destroy image edit list.
+.IP \fIiedit_get_instruction_desc\fP 1i
+Get the list descriptor for image edit instructions.
+.IP \fIiedit_alloc_edit_coords\fP 1i
+Allocate an array of edit co-ordinates.
+.IP \fIiedit_get_edit_coords\fP 1i
+Get a number of editing co-ordinates from a co-ordinate list.
+.IP \fIiedit_add_instruction\fP 1i
+Add an image edit instruction to a list.
+.IP \fIiedit_remove_instructions\fP 1i
+Remove instructions from an image edit list.
+.IP \fIiedit_apply_instructions\fP 1i
+Apply image edit instructions.
+.IP \fIiedit_get_list\fP 1i
+Get list of edits in an image edit list.
+.IP \fIiedit_make_list_default_master\fP 1i
+Prepare image edit list for mastery.
+.IP \fIiedit_make_list_default_slave\fP 1i
+Prepare image edit list for slavery.
+.IP \fIiedit_PROTO_add_func\fP 1i
+Image edit instruction add callback.
+.IP \fIiedit_PROTO_loss_func\fP 1i
+Image edit instruction loss callback.
+.IP \fIiedit_PROTO_apply_func\fP 1i
+Image edit instruction apply callback.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

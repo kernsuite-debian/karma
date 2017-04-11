@@ -1,0 +1,38 @@
+.TH DS_GET_ELEMENT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_get_element \- Convert an atomic datum to a double precision complex value.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_get_element
+.sp
+(CONST char *datum, unsigned int datum_type,
+double value[2], flag *complex)
+.SH DESCRIPTION
+Convert an atomic datum to a double precision complex value.
+.IP \fIdatum\fP 1i
+A pointer to the datum to be converted.
+.IP \fIdatum_type\fP 1i
+The type of the datum.
+.IP \fIvalue\fP 1i
+The data value will be written here.
+.IP \fIcomplex\fP 1i
+If the datum is a complex type, then the value of TRUE is written
+here, else the value FALSE is written here. If this is NULL, nothing is
+written here.
+.SH RETURN VALUE
+TRUE if the data was successfully converted, else FALSE.
+.SH Multi-threading Level
+Safe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH M_FREE_AND_CLEAR_POINTER 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+m_free_and_clear_pointer \- Free and clear pointer to a pointer.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_free_and_clear_pointer
+.sp
+(void *ptr)
+.SH DESCRIPTION
+Free and clear pointer to a pointer.
+.IP \fIptr\fP 1i
+A pointer to a pointer to a block of memory. The block of memory is
+freed and NULL is written to the memory block pointer. This may be NULL,
+and the memory block pointer may also be NULL.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,35 @@
+.TH RP_ADD_BYTES 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+rp_add_bytes \- Add bytes (entropy) to a random pool.
+.SH SYNOPSIS
+.B #include <karma_rp.h>
+.sp
+.B void rp_add_bytes
+.sp
+(RandPool rp, CONST unsigned char *buf, unsigned int length)
+.SH DESCRIPTION
+This routine will add bytes of data (entropy) into a pool. The
+pool is then stirred using its registered hash function in order to
+distribute the bits.
+.IP \fIrp\fP 1i
+The random pool.
+.IP \fIbuf\fP 1i
+The bytes to add to the pool.
+.IP \fIlength\fP 1i
+The number of bytes to add to the pool.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

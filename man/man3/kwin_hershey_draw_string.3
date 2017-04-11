@@ -1,0 +1,42 @@
+.TH KWIN_HERSHEY_DRAW_STRING 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+kwin_hershey_draw_string \- Draw string using Hershey (stroke) font.
+.SH SYNOPSIS
+.B #include <karma_kwin.h>
+.sp
+.B void kwin_hershey_draw_string
+.sp
+(KPixCanvas canvas,
+KPixCanvasHersheyString string,
+double x, double y, double size,
+unsigned long pixel_value)
+.SH DESCRIPTION
+Draw string using Hershey (stroke) font.
+.IP \fIcanvas\fP 1i
+The KPixCanvas to draw onto.
+.IP \fIstring\fP 1i
+The string to draw.
+.IP \fIx\fP 1i
+The starting horizontal position of the string.
+.IP \fIy\fP 1i
+The starting vertical position of the string.
+.IP \fIsize\fP 1i
+The size of the font in pixels (typically 12.8).
+.IP \fIpixel_value\fP 1i
+The pixel value to use when drawing the string.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

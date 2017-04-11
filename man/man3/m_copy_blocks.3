@@ -1,0 +1,41 @@
+.TH M_COPY_BLOCKS 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_copy_blocks \- Copy multiple blocks of data.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void m_copy_blocks
+.sp
+(void *dest, CONST void *source, unsigned int dest_stride,
+unsigned int source_stride, unsigned int block_size,
+unsigned int num_blocks)
+.SH DESCRIPTION
+Copy multiple blocks of data.
+.IP \fIdest\fP 1i
+The destination for the first block copy.
+.IP \fIsource\fP 1i
+The source for the first block copy.
+.IP \fIdest_stride\fP 1i
+The spacing (in bytes) between destintion blocks.
+.IP \fIsource_stride\fP 1i
+The spacing (in bytes) between source blocks.
+.IP \fIblock_size\fP 1i
+The size of each block (in bytes).
+.IP \fInum_blocks\fP 1i
+The number of blocks to copy.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

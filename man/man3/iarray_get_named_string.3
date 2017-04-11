@@ -1,0 +1,33 @@
+.TH IARRAY_GET_NAMED_STRING 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_named_string \- Get attached string from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B char * iarray_get_named_string
+.sp
+(iarray array, CONST char *name)
+.SH DESCRIPTION
+This routine will get a unique named string from the underlying
+Karma general data structure of an "Intelligent Array".
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIname\fP 1i
+The name of the element.
+.SH RETURN VALUE
+A pointer to a dynamically allocated copy of the string on
+success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,47 @@
+.TH CH_MAP_DISC2 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_map_disc2 \- Attempt to map a disc file, fallback to reading.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B Channel ch_map_disc2
+.sp
+(CONST char *filename, unsigned int option)
+.SH DESCRIPTION
+This routine will attempt to open a memory channel with the
+memory pages being mapped from a disc file. The disc file must already
+exist. If memory mapping cannot be performed, a normal memory channel is
+created and the data is read in.
+.IP \fIfilename\fP 1i
+The pathname of the file to open.
+.IP \fIoption\fP 1i
+Control value which determines whether the channel is opened as an
+ordinary disc file or is mapped. See <-ch_MAP_CONTROLS-> for legal values.
+If the file is not mapped then the routine will attempt to open an ordinary
+disc channel. If the file is opened as a disc channel the access mode is:
+"rz".
+.SH RETURN VALUE
+A channel object on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTES
+The channel may be queried to determine if it has been memory mapped
+using the call <<ch_test_for_mmap>>.
+.sp
+If the "CH_MMAP_DISABLE" environment variable is defined, then
+memory mapping is disabled.
+.sp
+Writing to the memory may cause a segmentation fault.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

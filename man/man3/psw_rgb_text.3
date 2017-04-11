@@ -1,0 +1,52 @@
+.TH PSW_RGB_TEXT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_rgb_text \- Write a colour string to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_rgb_text
+.sp
+(PostScriptPage pspage, double red, double green,double blue,
+CONST char *string, CONST char *fontname,
+unsigned int fontsize,
+double xstart, double ystart, double angle)
+.SH DESCRIPTION
+Write a colour string to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIred\fP 1i
+The red component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIgreen\fP 1i
+The green component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIblue\fP 1i
+The blue component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIstring\fP 1i
+The string.
+.IP \fIfontname\fP 1i
+The fontname to use. If this is NULL, the default font will be
+used.
+.IP \fIfontsize\fP 1i
+The size of the font (in millimeters).
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIangle\fP 1i
+The angle to rotate the text through (in degrees). Positive angles
+rotate counter-clockwise from horizontal.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

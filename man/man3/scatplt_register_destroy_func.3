@@ -1,0 +1,38 @@
+.TH SCATPLT_REGISTER_DESTROY_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+scatplt_register_destroy_func \- Register destroy callback.
+.SH SYNOPSIS
+.B #include <karma_scatplt.h>
+.sp
+.B KCallbackFunc scatplt_register_destroy_func
+.sp
+(KScatterPlot plot,
+void (*func) (), void *info)
+.SH DESCRIPTION
+This routine will register a destroy function for a scatter plot.
+The function will be called when the canvas is destroyed. Many destroy
+functions may be registered per plot. The first function registered is
+the first function called upon destruction.
+.IP \fIplot\fP 1i
+The scatter plot.
+.IP \fIfunc\fP 1i
+The function that is called when the plot is destroyed. The
+prototype function is <-scatplt_PROTO_destroy_func->.
+.IP \fIinfo\fP 1i
+The arbitrary function information pointer.
+.SH RETURN VALUE
+A KCallbackFunc object. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

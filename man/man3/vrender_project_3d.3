@@ -1,0 +1,41 @@
+.TH VRENDER_PROJECT_3D 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+vrender_project_3d \- Project a point in 3-dimensional space onto a view plane.
+.SH SYNOPSIS
+.B #include <karma_vrender.h>
+.sp
+.B flag vrender_project_3d
+.sp
+(KVolumeRenderContext context, unsigned int eye_view,
+Kcoord_3d point_3d, Kcoord_2d *point_2d,
+flag test_visible)
+.SH DESCRIPTION
+Project a point in 3-dimensional space onto a view plane.
+.IP \fIcontext\fP 1i
+The volume render context which determines the view information.
+.IP \fIeye_view\fP 1i
+The eye which will see the point. See <-vrender_EYES-> for a
+list of legal values.
+.IP \fIpoint_3d\fP 1i
+The 3 dimensional point to be projected.
+.IP \fIpoint_2d\fP 1i
+The projected 2 dimensional point will be written here.
+.IP \fItest_visible\fP 1i
+If TRUE, the point is tested for visibility.
+.SH RETURN VALUE
+TRUE if the point is visible, else FALSE if it would be obscured
+by the volume or <<test_visible>> is FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

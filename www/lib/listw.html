@@ -1,0 +1,128 @@
+<html><head><title>Package: listw</title></head> 
+<body>
+<center><h1>The "listw" Package</h1></center>    These routines are meant to provide a simple mechanism to display a list of
+    strings.
+    NOTE: THIS PACKAGE IS WORK IN PROGRESS. THE INTERFACE MAY CHANGE IN THE
+    NEXT RELEASE, POSSIBLY WITHOUT NOTICE.
+<p><b>Library:</b> karmagraphics
+<br><b>Link With:</b> -lkarmagraphics
+<br><p><a name=listw></a></table><h4>Functions</h4><table><tr><td><a href=listw.html#listw_create>listw_create</a></td><td>Create a list widget.
+</td></tr>
+<tr><td><a href=listw.html#listw_bind>listw_bind</a></td><td>Bind a list widget to a pixel canvas.
+</td></tr>
+<tr><td><a href=listw.html#listw_destroy>listw_destroy</a></td><td>Destroy a list widget
+</td></tr>
+<tr><td><a href=listw.html#listw_register_position_event_func>listw_register_position_event_func</a></td><td>Register position event callback.
+</td></tr>
+<tr><td><a href=listw.html#listw_get_attributes>listw_get_attributes</a></td><td>Get list widget attributes.
+</td></tr>
+<tr><td><a href=listw.html#listw_set_attributes>listw_set_attributes</a></td><td>Set list widget attributes.
+</td></tr>
+<tr><td><a href=listw.html#listw_register_att_notify_func>listw_register_att_notify_func</a></td><td>Register an attribute change function.
+</td></tr>
+</table><h4>Prototype Functions</h4><table><tr><td><a href=listw.html#listw_PROTO_position_func>listw_PROTO_position_func</a></td><td>Position event callback.
+</td></tr>
+<tr><td><a href=listw.html#listw_PROTO_att_notify_func>listw_PROTO_att_notify_func</a></td><td>Registers a change in the attributes of a list widget.
+</td></tr>
+</table><p><hr><center><h2>Functions</h2></center><hr> <a name=listw_create></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KListWidget
+ <b>listw_create</b><i>    ()
+</i><br><p>    Create a list widget.
+<p><b>Parameters:</b><ul>This function takes no parameters<br></ul><b>Returns:</b>     A list widget object on success, else NULL.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_bind></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>listw_bind</b><i>    (KListWidget list, KPixCanvas canvas)
+</i><br><p>    Bind a list widget to a pixel canvas.
+<p><b>Parameters:</b><ul><li><i>canvas :</i> 
+    The pixel canvas object.
+<br></ul><b>Returns:</b>     Nothing. On failure, the process aborts.
+<br><b>Multithreading Level:</b> Unsafe<br><b>Note:</b><ul> <li>     Only one list widget may be bound per pixel canvas.
+</ul><p><hr> <a name=listw_destroy></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>listw_destroy</b><i>    (KListWidget list)
+</i><br><p>    Destroy a list widget
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_register_position_event_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>listw_register_position_event_func</b><i>    (KListWidget list,
+						  flag (*func) (),
+						  void *f_info)
+</i><br><p>    This routine will register a position event function for a list
+    widget. The position event function will be called whenever a position
+    event on the list widget has not been consumed. Many position event
+    functions may be registered per list widget. The first function registered
+    is the first function called upon a position event.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br><li><i>func :</i> 
+    The function that is called when a position event occurs. The
+    prototype function is <a href=listw.html#listw_PROTO_position_func>listw_PROTO_position_func</a>.
+<br><li><i>f_info :</i> 
+    The initial arbitrary function information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_get_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>void
+ <b>listw_get_attributes</b><i>    (KListWidget list, ...)
+</i><br><p>    Get list widget attributes.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pointer pairs. The list must be terminated with
+    LISTW_ATT_END. See <a href=listw.html#listw_ATTRIBUTES>listw_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_set_attributes></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>flag
+ <b>listw_set_attributes</b><i>    (KListWidget list, flag refresh_if_needed, ...)
+</i><br><p>    Set list widget attributes.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br><li><i>refresh_if_needed :</i> 
+    If TRUE, the list display is refreshed if something has
+    changed.
+<br><li><i>... :</i> 
+    The optional attributes are given as pairs of attribute-key
+    attribute-value pairs. The list must be terminated with
+    LISTW_ATT_END. See <a href=listw.html#listw_ATTRIBUTES>listw_ATTRIBUTES</a> for the list of attributes.
+<br></ul><b>Returns:</b>     TRUE on success, else FALSE.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_register_att_notify_func></a> <font color="cc0000"><h4>EXPERIMENTAL FUNCTION: subject to change without notice</h4></font>KCallbackFunc
+ <b>listw_register_att_notify_func</b><i>    (KListWidget list,
+					      void (*func) (), void *info)
+</i><br><p>    This routine will register an attribute notify function for a
+    list widget. The attribute notify function will be called whenever
+    the list widget attributes are changed (see <a href=listw.html#listw_set_attributes>listw_set_attributes</a>).
+    Many attribute notify functions may be registered per list widget. The
+    first function registered is the first function called upon attribute
+    changes.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br><li><i>func :</i> 
+    The function which is called when the attributes are changed.
+    The prototype function is <a href=listw.html#listw_PROTO_att_notify_func>listw_PROTO_att_notify_func</a>.
+<br><li><i>info :</i> 
+    The initial arbitrary information pointer.
+<br></ul><b>Returns:</b>     A KCallbackFunc object.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr><center><h2>Prototype Functions</h2></center><hr> <a name=listw_PROTO_position_func></a> flag
+ <b>listw_PROTO_position_func</b><i>    (KListWidget list, unsigned int index,
+				unsigned int event_code, void *e_info,
+				void **f_info)
+</i><br><p>    This routine is a position event consumer for a list widget.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget on which the event occurred.
+<br><li><i>index :</i> 
+    The index in list of strings for which the event occurred.
+<br><li><i>event_code :</i> 
+    The arbitrary event code.
+<br><li><i>e_info :</i> 
+    A pointer to arbitrary event information.
+<br><li><i>f_info :</i> 
+    A pointer to an arbitrary function information pointer.
+<br></ul><b>Returns:</b>     TRUE if the event was consumed, else FALSE indicating that
+    the event is still to be processed.
+<br><b>Multithreading Level:</b> Unsafe<br><p><hr> <a name=listw_PROTO_att_notify_func></a> void
+ <b>listw_PROTO_att_notify_func</b><i>    (KListWidget list, void **info)
+</i><br><p>    Registers a change in the attributes of a list widget.
+<p><b>Parameters:</b><ul><li><i>list :</i> 
+    The list widget.
+<br><li><i>info :</i> 
+    A pointer to an arbitrary information pointer.
+<br></ul><b>Returns:</b>     Nothing.
+<br><b>Multithreading Level:</b> Unsafe<br><p>
+<hr><a href="../index.html">Back to Karma Home Page</a>
+<hr><center><address>Contact: <a href="http://www.atnf.csiro.au/~rgooch/">Richard Gooch</a><br>Web Development: <a href="http://www.ariel.com.au/">Ariel Internet Services</a></address></center></body></html>

@@ -1,0 +1,36 @@
+.TH DSRW_WRITE_PACKET 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_write_packet \- Write packet data in binary format.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_write_packet
+.sp
+(Channel channel, CONST packet_desc *pack_desc,
+CONST char *packet)
+.SH DESCRIPTION
+This routine will write the binary representation of a data
+packet to a channel object. The routine will recursively write sub arrays
+and linked lists of packets.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.IP \fIpacket\fP 1i
+The packet data.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,66 @@
+.TH DSPROC_OBJECT 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsproc_object \- Process a Karma file.
+.SH SYNOPSIS
+.B #include <karma_dsproc.h>
+.sp
+.B void dsproc_object
+.sp
+(CONST char *object, char *array_names[],
+unsigned int num_arrays,
+flag save_unproc_data, flag (*pre_process) (),
+flag (*process_array) (), flag (*post_process) (),
+unsigned int mmap_option)
+.SH DESCRIPTION
+Process a Karma file.
+.IP \fIobject\fP 1i
+The name of the Karma file to process. This is passed directly to
+<-dsxfr_get_multi->. If this name is "connection" or is of the form:
+"connection[#]" then the routine will attempt to find data sent from a
+network connection using the "multi_array" protocol and will also send the
+resultant information down any network connections.
+.IP \fIarray_names\fP 1i
+The array names (general data structures) which are to be
+processed.
+.IP \fInum_arrays\fP 1i
+The number of array names supplied. If this is 0, all array
+names are processed.
+.IP \fIsave_unproc_data\fP 1i
+If TRUE, then arrays with names which do not match are
+copied, rather than ignored.
+.IP \fIpre_process\fP 1i
+The function which will process the input file prior to any
+general data structures being processed. The prototype function is
+<-dsproc_PROTO_pre_process->. If this returns FALSE further processing is
+aborted.
+.IP \fIprocess_array\fP 1i
+The function which is called to process each general data
+structure. The prototype function is <-dsproc_PROTO_process_array->.
+.IP \fIpost_process\fP 1i
+The function which is called to process the multi_array
+descriptors prior to the output being saved/transmitted. The prototype
+function is <-dsproc_PROTO_post_process->. This routine will usually add
+history information and copy over history information from the input array.
+.IP \fImmap_option\fP 1i
+This is passed directly to the <-dsxfr_get_multi-> routine.
+If the input data structure is likely to be modified, this value must be
+K_CH_MAP_NEVER, otherwise the data may be read-only memory mapped and
+writing to it will cause a segmentation fault.
+In addition, the <<cache>> parameter for <-dsxfr_get_multi-> is set to
+TRUE.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

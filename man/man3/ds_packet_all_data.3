@@ -1,0 +1,32 @@
+.TH DS_PACKET_ALL_DATA 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_packet_all_data \- Test if packet contains only atomic data elements.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_packet_all_data
+.sp
+(CONST packet_desc *pack_desc)
+.SH DESCRIPTION
+This routine will determine if all the elements in a packet are
+atomic (i.e. no sub-arrays, linked lists or strings). All element types in
+the packet descriptor must be legal, else the routine will print an error
+message and abort processing.
+.IP \fIpack_desc\fP 1i
+The packet descriptor.
+.SH RETURN VALUE
+TRUE if the data elements are all atomic, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

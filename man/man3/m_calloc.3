@@ -1,0 +1,29 @@
+.TH M_CALLOC 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+m_calloc \- Allocate Virtual Memory and initialise with zeros.
+.SH SYNOPSIS
+.B #include <karma_m.h>
+.sp
+.B void * m_calloc
+.sp
+(uaddr size)
+.SH DESCRIPTION
+Allocate Virtual Memory and initialise with zeros.
+.IP \fIsize\fP 1i
+The number of bytes to allocate.
+.SH RETURN VALUE
+A pointer to the memory on success, else NULL.
+.SH Multi-threading Level
+Safe under POSIX threads.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

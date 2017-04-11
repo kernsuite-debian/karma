@@ -1,0 +1,36 @@
+.TH DS_PROTO_EVENT_FUNC 3 "13 Nov 2005" "Karma Distribution"
+.SH PROTO_FUNC
+ds_PROTO_event_func \- Process an event.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_PROTO_event_func
+.sp
+(void *object, multi_array *multi_desc,
+CONST char *domain, CONST char *name)
+.SH DESCRIPTION
+Process an event.
+.IP \fIobject\fP 1i
+The object information pointer.
+.IP \fImulti_desc\fP 1i
+The multi_array descriptor.
+.IP \fIdomain\fP 1i
+The domain from where the event was generated.
+.IP \fIname\fP 1i
+The name of the event in its domain.
+.SH RETURN VALUE
+TRUE if further callbacks should not be called, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

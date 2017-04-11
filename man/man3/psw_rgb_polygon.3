@@ -1,0 +1,46 @@
+.TH PSW_RGB_POLYGON 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+psw_rgb_polygon \- Write a colour polygon to a PostScriptPage object.
+.SH SYNOPSIS
+.B #include <karma_psw.h>
+.sp
+.B flag psw_rgb_polygon
+.sp
+(PostScriptPage pspage,
+double red, double green, double blue,
+CONST double *x_arr, CONST double *y_arr,
+unsigned int num_points, flag fill)
+.SH DESCRIPTION
+Write a colour polygon to a PostScriptPage object.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIred\fP 1i
+The red component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIgreen\fP 1i
+The green component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIblue\fP 1i
+The blue component value. The range is: 0.0 (dark) to 1.0 (light)
+.IP \fIx_arr\fP 1i
+The array of x vertices. This is scaled from 0.0 to 1.0
+.IP \fIy_arr\fP 1i
+The array of y vertices. This is scaled from 0.0 to 1.0
+.IP \fInum_points\fP 1i
+The number of vertices.
+.IP \fIfill\fP 1i
+If TRUE, the polygon is filled.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

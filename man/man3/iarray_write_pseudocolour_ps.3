@@ -1,0 +1,48 @@
+.TH IARRAY_WRITE_PSEUDOCOLOUR_PS 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_write_pseudocolour_ps \- Write an Intelligent Array as PseudoColour PostScript.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_write_pseudocolour_ps
+.sp
+(iarray image, PostScriptPage pspage,
+double xstart, double ystart,
+double xend, double yend,
+unsigned short *cmap,unsigned int cmap_size)
+.SH DESCRIPTION
+This routine will convert a 2-dimensional Intelligent Array to
+colour PostScript. The routine does NOT write PostScript headers or tails.
+.IP \fIimage\fP 1i
+The Intelligent Array.
+.IP \fIpspage\fP 1i
+The PostScriptPage object.
+.IP \fIxstart\fP 1i
+The x starting point (scaled from 0.0 to 1.0).
+.IP \fIystart\fP 1i
+The y starting point (scaled from 0.0 to 1.0).
+.IP \fIxend\fP 1i
+The x ending point (scaled from 0.0 to 1.0).
+.IP \fIyend\fP 1i
+The y ending point (scaled from 0.0 to 1.0).
+.IP \fIcmap\fP 1i
+The colourmap. This must be the same format as returned by
+<-ds_cmap_find_colourmap->.
+.IP \fIcmap_size\fP 1i
+The size of the colourmap. The maximum size is 256.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,57 @@
+.\" Copyright (C) 1995  Richard Gooch
+.\"
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+.\"
+.\" Richard Gooch may be reached by email at  rgooch@atnf.csiro.au
+.\" The postal address is:
+.\"   Richard Gooch, c/o ATNF, P. O. Box 76, Epping, N.S.W., 2121, Australia.
+.\"
+.\"	kslice_3d.1		Richard Gooch	17-APR-1995
+.\"
+.TH KSLICE_3D 1 "17 Apr 1995" "Karma Distribution"
+.SH NAME
+kslice_3d \- display orthogonal slices of a 3-D Karma data file in an
+X11 window
+.SH SYNOPSIS
+.B kslice_3d
+[
+.B -private_cmap
+]
+.SH DESCRIPTION
+The \fIkslice_3d\fP module will display a 3-D Karma data file in an
+X11 window. Three orthogonal slices through the volume are displayed.
+These slices may be interactively changed by pressing/dragging the
+left mouse button in any of the three slice windows. The corresponding
+slices in the other windows will be appropriately displayed.
+
+The \fIkslice_3d\fP module is almost entirely GUI based, with the
+exception of the options described below, its operation being
+(hopefully) self-evident.
+.SH OPTIONS
+.TP
+.B \-private_cmap
+This option will force \fIkslice_3d\fP to use a private colourmap for
+its PseudoColour window. Otherwise, \fIkslice_3d\fP trys to allocate
+colours from the default colourmap.
+.SH SEE ALSO
+.BR kview_2d (1),
+.BR kmovie (1)
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABILITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp.atnf.csiro.au:pub/software/karma
+wuarchive.wustl.edu:graphics/graphics/packages/karma

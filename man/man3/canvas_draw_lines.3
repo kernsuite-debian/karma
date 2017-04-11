@@ -1,0 +1,44 @@
+.TH CANVAS_DRAW_LINES 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_draw_lines \- Draw multiple connected lines onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B void canvas_draw_lines
+.sp
+(KWorldCanvas canvas,
+CONST double *x_array, CONST double *y_array,
+int num_points, double value[2])
+.SH DESCRIPTION
+Draw multiple connected lines onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIx_array\fP 1i
+The horizontal world co-ordinates of the points. If this is NULL,
+the routine assumes horizontal co-ordinates equally spaced across the world
+canvas.
+.IP \fIy_array\fP 1i
+The vertical world co-ordinates of the points. If this is NULL,
+the routine assumes vertical co-ordinates equally spaced across the world
+canvas.
+.IP \fInum_points\fP 1i
+The number of points. The number of lines drawn is 1 less than
+this value.
+.IP \fIvalue\fP 1i
+The data value to use. This is of type K_DCOMPLEX.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

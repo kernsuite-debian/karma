@@ -1,0 +1,51 @@
+.TH DS_FOREACH_IN_LIST 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+ds_foreach_in_list \- Recursively traverse a linked list, searching for an item.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B flag ds_foreach_in_list
+.sp
+( packet_desc *list_desc, list_header *list_head,
+CONST char *item, flag as_whole, flag (*func) () )
+.SH DESCRIPTION
+Recursively traverse a linked list, searching for an item.
+.IP \fIlist_desc\fP 1i
+The packet descriptor for the linked list.
+.IP \fIlist_head\fP 1i
+The linked list header.
+.IP \fIitem\fP 1i
+The name of the item to search for.
+.IP \fIas_whole\fP 1i
+If FALSE:
+If the item pointed to is the name of a dimension, then <<func>>
+will be called for each occurrence of that dimension (ie. the other
+dimensions will be iterated through).
+If the item pointed to is the name of an element, then <<func>>
+will be called for each occurrence of the element in the array or
+linked list which it is in.
+If TRUE:
+If the item pointed to is the name of a dimension or an element within
+a packet within an array, <<func>> is called once for each
+occurrence of the entire array.
+If the item pointed to is the name of an element in a linked list, then
+<<func>> will be called once for each occurrence of the linked list
+.IP \fIfunc\fP 1i
+The function to call for each occurrence. The prototype function is
+<-ds_PROTO_foreach_func->. If this returns FALSE, iterations are stopped.
+.SH RETURN VALUE
+TRUE if all iterations completed successfully, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

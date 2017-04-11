@@ -1,0 +1,45 @@
+.TH SCATPLT_CREATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+scatplt_create \- Create scatter plot.
+.SH SYNOPSIS
+.B #include <karma_scatplt.h>
+.sp
+.B KScatterPlot scatplt_create
+.sp
+(KWorldCanvas canvas, unsigned int num_points,
+CONST double *x, CONST double *y, uaddr key)
+.SH DESCRIPTION
+This routine will create a scatter plot object from two arrays of
+values. At a later time, this scatter plot may be made visible. This
+routine will not cause the canvas to be refreshed.
+.IP \fIcanvas\fP 1i
+The world canvas onto which the scatter plot may be drawn. Many
+scatter plots may be associated with a single canvas.
+.IP \fInum_points\fP 1i
+The number of points in this scatter plot.
+.IP \fIx\fP 1i
+The array of horizontal values.
+.IP \fIy\fP 1i
+The array of vertical values.
+.IP \fIkey\fP 1i
+The key to associate with this scatter plot.
+.SH RETURN VALUE
+A KScatterPlot object on success, NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The KScatterPlot will be automatically destroyed if the canvas is
+destroyed.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

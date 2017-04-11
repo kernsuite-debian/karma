@@ -1,0 +1,32 @@
+.TH CH_GET_MEM_SIZE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ch_get_mem_size \- Get memory buffer size.
+.SH SYNOPSIS
+.B #include <karma_ch.h>
+.sp
+.B uaddr ch_get_mem_size
+.sp
+(Channel channel)
+.SH DESCRIPTION
+Get memory buffer size.
+.IP \fIchannel\fP 1i
+The channel object.
+.SH RETURN VALUE
+The number of bytes in the memory channel.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+The channel MUST be a memory channel.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

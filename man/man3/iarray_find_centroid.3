@@ -1,0 +1,54 @@
+.TH IARRAY_FIND_CENTROID 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_find_centroid \- Find the centroid inside an ellipse.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_find_centroid
+.sp
+(iarray array, double *background, flag *inverted,
+double *xpos, uaddr xradius,
+double *ypos, uaddr yradius)
+.SH DESCRIPTION
+This routine will search for the centroid of an object inside a
+specified ellipse.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIinverted\fP 1i
+If TRUE the algorithms should search for a minimum, rather than
+a maximum.
+.IP \fIbackground\fP 1i
+The background value is written here. This may be NULL.
+.IP \fIinverted\fP 1i
+The value TRUE will be written here if the image values are
+inverted (i.e. the object of interested is in a local minimum rather than a
+maximum).
+.IP \fIxpos\fP 1i
+The horizontal data pixel position. The original value must be a
+reasonable approximation. This is modified to the centroid position.
+.IP \fIxradius\fP 1i
+The horizontal radius of the ellipse.
+.IP \fIypos\fP 1i
+The vertical data pixel position. The original value must be a
+reasonable approximation. This is modified to the centroid position.
+.IP \fIyradius\fP 1i
+The vertical radius of the ellipse.
+.SH RETURN VALUE
+TRUE on succes, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+(0.0, 0.0) corresponds to the centre of the first pixel.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,31 @@
+.TH IARRAY_GET_DIM_DESC 3 "14 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+iarray_get_dim_desc \- Get a dimension descriptor from an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B dim_desc * iarray_get_dim_desc
+.sp
+(iarray array, unsigned int index)
+.SH DESCRIPTION
+Get a dimension descriptor from an Intelligent Array.
+.IP \fIarray\fP 1i
+The Intelligent Array.
+.IP \fIindex\fP 1i
+The index of the dimension.
+.SH RETURN VALUE
+A pointer to the dimension descriptor.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

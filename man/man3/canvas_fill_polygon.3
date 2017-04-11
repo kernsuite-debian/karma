@@ -1,0 +1,40 @@
+.TH CANVAS_FILL_POLYGON 3 "07 Aug 2006" "Karma Distribution"
+.SH FUNCTION
+canvas_fill_polygon \- Draw a filled polygon onto a world canvas.
+.SH SYNOPSIS
+.B #include <karma_canvas.h>
+.sp
+.B flag canvas_fill_polygon
+.sp
+(KWorldCanvas canvas, edit_coord *coords,
+unsigned int num_vertices, double value[2],
+flag convex)
+.SH DESCRIPTION
+Draw a filled polygon onto a world canvas.
+.IP \fIcanvas\fP 1i
+The world canvas object.
+.IP \fIcoords\fP 1i
+The array of world co-ordinates of vertices of the polygon.
+.IP \fInum_vertices\fP 1i
+The number of vertices in the polygon.
+.IP \fIvalue\fP 1i
+The complex value to fill the polygon with. This must be of type
+K_DCOMPLEX.
+.IP \fIconvex\fP 1i
+If TRUE, then the points must form a convex polygon.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

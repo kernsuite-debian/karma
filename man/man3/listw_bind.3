@@ -1,0 +1,32 @@
+.TH LISTW_BIND 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+listw_bind \- Bind a list widget to a pixel canvas.
+.SH SYNOPSIS
+.B #include <karma_listw.h>
+.sp
+.B void listw_bind
+.sp
+(KListWidget list, KPixCanvas canvas)
+.SH DESCRIPTION
+Bind a list widget to a pixel canvas.
+.IP \fIcanvas\fP 1i
+The pixel canvas object.
+.SH RETURN VALUE
+Nothing. On failure, the process aborts.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+Only one list widget may be bound per pixel canvas.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,41 @@
+.TH IARRAY_GET_DATA_RANGE 3 "14 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+iarray_get_data_range \- Get the range of data in an Intelligent Array.
+.SH SYNOPSIS
+.B #include <karma_iarray.h>
+.sp
+.B flag iarray_get_data_range
+.sp
+(iarray array, double *minimum, double *maximum)
+.SH DESCRIPTION
+This routine will determine the range of data in an Intelligent
+Array. Range information should be attached to the header.
+.IP \fIarray\fP 1i
+The array.
+.IP \fIminimum\fP 1i
+The minimum value will be written here. The name of the minimum
+value is constructed by appending "__MINIMUM" to the element name. If no
+minimum value is found, -TOOBIG is written here. As a fallback, if the
+FITS-style "DATAMIN" keyword is found and is appropriate, this is used.
+.IP \fImaximum\fP 1i
+The minimum value will be written here. The name of the minimum
+value is constructed by appending "__MINIMUM" to the element name. If no
+minimum value is found, TOOBIG is written here. As a fallback, if the
+FITS-style "DATAMAX" keyword is found and is appropriate, this is used.
+.SH RETURN VALUE
+TRUE if either the minimum or maximum value were found,
+else FALSE
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

@@ -1,0 +1,34 @@
+.TH EN_IDEA_CFB 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+en_idea_cfb \- Encrypt bytes using the IDEA cipher.
+.SH SYNOPSIS
+.B #include <karma_en.h>
+.sp
+.B void en_idea_cfb
+.sp
+(idea_status status, char *buffer, unsigned int length)
+.SH DESCRIPTION
+This routine will encrypt (or decrypt) a sequence of bytes using
+the IDEA cipher in Cipher Feed Back mode.
+.IP \fIstatus\fP 1i
+The IDEA cipher status.
+.IP \fIbuffer\fP 1i
+The data to encrypt. This is modified.
+.IP \fIlength\fP 1i
+The number of bytes to encrypt (or decrypt).
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

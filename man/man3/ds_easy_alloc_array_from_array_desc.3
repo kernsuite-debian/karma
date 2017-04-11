@@ -1,0 +1,44 @@
+.TH DS_EASY_ALLOC_ARRAY_FROM_ARRAY_DESC 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+ds_easy_alloc_array_from_array_desc \- Wrap a data structure around an array.
+.SH SYNOPSIS
+.B #include <karma_ds.h>
+.sp
+.B multi_array * ds_easy_alloc_array_from_array_desc
+.sp
+(CONST array_desc *arr_desc,
+CONST array_pointer *arrayp,
+flag clear)
+.SH DESCRIPTION
+This routine will "wrap" an externally allocated array by
+allocating the required descriptors. The array is NOT tiled nor are any
+address offsets computed. The data packet that may be stored in the array
+contains many atomic data.
+.IP \fIarr_desc\fP 1i
+The array descriptor describing the array data.
+.IP \fIarrayp\fP 1i
+The array data pointer. If this is NULL the array data is
+internally allocated.
+.IP \fIclear\fP 1i
+If TRUE, then the routine will initialise (set to zero) all the
+data, if that data is internally allocated.
+.SH RETURN VALUE
+A pointer the multi_array descriptor on success, else NULL.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This routine does NOT create a Karma arrayfile. This must be done
+with a call to <-dsxfr_put_multi->.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

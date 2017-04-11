@@ -1,0 +1,98 @@
+.TH M 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+m \- Routines to manipulate memory blocks
+.SH PURPOSE
+These routines are meant to provide a better memory allocation service
+than the malloc(3) call. The supplied allocation and deallocation routines
+perform periodic checks to see if array boundaries have been overrun.
+A set of memory manipulation and error message routines are also provided
+in this package.
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIm_test_access\fP 1i
+Test if a block of memory is accessible.
+.IP \fIm_alloc\fP 1i
+Allocate Virtual Memory.
+.IP \fIm_alloc_no_checks\fP 1i
+Allocate Virtual Memory.
+.IP \fIm_free\fP 1i
+Free Virtual Memory.
+.IP \fIm_abort\fP 1i
+Print memory error notification message and abort.
+.IP \fIm_verify_memory_integrity\fP 1i
+Periodically verify memory integrity.
+.IP \fIm_get_total_allocated\fP 1i
+Get total number of bytes currently allocated.
+.IP \fIm_trap_allocations\fP 1i
+Trap memory allocations within a certain range and abort.
+.IP \fIm_clear\fP 1i
+Clear a block of memory
+.IP \fIm_calloc\fP 1i
+Allocate Virtual Memory and initialise with zeros.
+.IP \fIm_free2\fP 1i
+Free Virtual Memory.
+.IP \fIm_copy\fP 1i
+Copy a block of memory.
+.IP \fIm_copy_blocks\fP 1i
+Copy multiple blocks of data.
+.IP \fIm_copy_and_swap_blocks\fP 1i
+Copy and byte-swap multiple blocks of data.
+.IP \fIm_fill\fP 1i
+Fill memory blocks with a specified value.
+.IP \fIm_cmp\fP 1i
+Compare two blocks of memory.
+.IP \fIm_dup\fP 1i
+Duplicate a block of memory into a freshly allocated block.
+.IP \fIm_alloc_scratch\fP 1i
+Allocate a block of scratch memory.
+.IP \fIm_free_scratch\fP 1i
+Free the scratch memory.
+.IP \fIm_free_and_clear_pointer\fP 1i
+Free and clear pointer to a pointer.
+.IP \fIm_error_notify\fP 1i
+Print memory error notification message.
+.IP \fIm_map_fd\fP 1i
+Map a file descriptor
+.IP \fIm_unmap\fP 1i
+Unmap a region of memory.
+.IP \fIm_map_test\fP 1i
+Test if memory mapping is supported.
+.IP \fIm_shm_test_if_available\fP 1i
+Test if shared memory available.
+.IP \fIm_shm_alloc\fP 1i
+Allocate a shared memory segment.
+.IP \fIm_shm_delete\fP 1i
+Delete a shared memory segment.
+.IP \fIm_shm_attach\fP 1i
+Attach a shared memory segment to the process address space.
+.IP \fIm_shm_detach\fP 1i
+Detach a shared memory segment from the process address space.
+.SH TABLE m_ENVIRONMENT
+List of environment variables
+
+.TS
+l l
+_ _
+l l.
+Variable                     Meaning
+
+M_ALLOC_MAX_CHECK_INTERVAL   Interval between consistency checks
+M_ALLOC_DEBUG                If TRUE, enable verbose debugging
+M_ALLOC_FAST                 If TRUE, skip consistency checks
+M_ALLOC_ABORT                If TRUE, memory errors cause an abort
+.TE
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

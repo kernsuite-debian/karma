@@ -1,0 +1,35 @@
+.TH DISPDATA_COPY_BLINKSTATE 3 "13 Nov 2005" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+dispdata_copy_blinkstate \- Copy blink state.
+.SH SYNOPSIS
+.B #include <karma_dispdata.h>
+.sp
+.B void dispdata_copy_blinkstate
+.sp
+(KDisplayDataBlinkState dest,
+KDisplayDataBlinkState source)
+.SH DESCRIPTION
+Copy blink state.
+.IP \fIdest\fP 1i
+The destination KDisplayDataBlinkState object to copy to.
+.IP \fIsource\fP 1i
+The source KDisplayDataBlinkState object to copy from.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH NOTE
+This function does not refresh the blink state interface.
+.sp
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

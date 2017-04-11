@@ -1,0 +1,36 @@
+.TH ARLN 3 "13 Nov 2005" "Karma Distribution"
+.SH PACKAGE
+arln \- Routines to asynchronously read from the standard input
+.SH PURPOSE
+These routines are meant to provide a simple to use asynchronous line
+reading facility. When reading from pipes, connections and terminals, the
+routines continue polling for events (using the chm_poll and cm_poll
+routines). They are not usable in a module which also uses an alternative
+event management scheme (such as Xt Intrinsics or the XView notifier).
+.SH LIBRARY
+karma
+.SH LINK WITH
+-lkarma
+.SH FUNCTIONS
+.IP \fIarln_read_float\fP 1i
+Read a floating point value from the user.
+.IP \fIarln_read_int\fP 1i
+Read an integer value from the user.
+.IP \fIarln_read_flag\fP 1i
+Read a boolean value from the user.
+.IP \fIarln_read_line\fP 1i
+Read a string from the user.
+.IP \fIarln_read_from_stdin\fP 1i
+Read a line from the user.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

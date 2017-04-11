@@ -1,0 +1,32 @@
+.TH C_MOVE_CALLBACK 3 "07 Aug 2006" "Karma Distribution"
+.SH EXPERIMENTAL_FUNC
+c_move_callback \- Move a callback function.
+.SH SYNOPSIS
+.B #include <karma_c.h>
+.sp
+.B void c_move_callback
+.sp
+(KCallbackFunc callback, flag last)
+.SH DESCRIPTION
+Move a callback function.
+.IP \fIcallback\fP 1i
+The callback function.
+.IP \fIlast\fP 1i
+If TRUE the callback is placed last in the list, else it is placed
+first in the list.
+.SH RETURN VALUE
+Nothing.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/

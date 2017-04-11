@@ -1,0 +1,31 @@
+.TH DSRW_WRITE_FLAG 3 "13 Nov 2005" "Karma Distribution"
+.SH FUNCTION
+dsrw_write_flag \- Write a boolean value in binary format to a channel object.
+.SH SYNOPSIS
+.B #include <karma_dsrw.h>
+.sp
+.B flag dsrw_write_flag
+.sp
+(Channel channel, flag logical)
+.SH DESCRIPTION
+Write a boolean value in binary format to a channel object.
+.IP \fIchannel\fP 1i
+The channel object.
+.IP \fIlogical\fP 1i
+The boolean value.
+.SH RETURN VALUE
+TRUE on success, else FALSE.
+.SH Multi-threading Level
+Unsafe.
+.SH AUTHOR
+Richard Gooch (rgooch@atnf.csiro.au)
+.SH AVAILABLITY
+The Karma Distribution is available for anonymous ftp from:
+
+ftp://ftp.atnf.csiro.au/pub/software/karma/
+ftp://wuarchive.wustl.edu/graphics/graphics/packages/karma/
+ftp://ftp.pwr.wroc.pl/pub/karma/
+
+The Karma Home Page is:
+
+http://www.atnf.csiro.au/karma/
