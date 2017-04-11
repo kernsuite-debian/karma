@@ -1,0 +1,4 @@
+bin/* usr/bin
+include/* usr/include
+lib/* usr/lib
+share/* usr/share/karma

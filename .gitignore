@@ -1,0 +1,5 @@
+debian/debhelper-build-stamp
+debian/files
+debian/karma.debhelper.log
+debian/karma.substvars
+debian/karma/
