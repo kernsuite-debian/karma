@@ -1,3 +1,9 @@
+karma (1.7.25-1kern2) xenial; urgency=medium
+
+  * build with new key
+
+ -- KERN packaging <packaging@kernsuite.info>  Sun, 03 Dec 2017 16:19:20 +0200
+
 karma (1.7.25-1kern1) xenial; urgency=medium
 
   * don't install anything in /usr/local
