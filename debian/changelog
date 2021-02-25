@@ -1,3 +1,10 @@
+karma (1.7.25-1kern4) focal; urgency=medium
+
+  [ Athanaseus Javas Ramaila ]
+  * Build for focal
+
+ -- KERN packaging <packaging@kernsuite.info>  Thu, 25 Feb 2021 13:54:55 +0000
+
 karma (1.7.25-1kern3) bionic; urgency=medium
 
   * new upstream release for bionic
